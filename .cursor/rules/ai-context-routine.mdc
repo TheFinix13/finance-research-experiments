@@ -1,0 +1,37 @@
+---
+description: ai_context.md routine for confluence-lab
+alwaysApply: true
+---
+
+# ai_context.md routine (confluence-lab)
+
+`ai_context.md` (repo root) is the compact state summary used to start
+fresh chats cheaply in THIS workspace. It must never go stale.
+
+This repo is a standalone research lab, fully separate from the trading
+agent repo (`eurusd-ai-agent`). Never write lab docs, reports, results or
+tests into the agent repo, and never import lab code into it. The only
+allowed coupling is read-only use of the agent's data cache via PYTHONPATH.
+
+## When starting a fresh session
+
+If the user references `@ai_context.md` or asks "where did we leave off",
+read it FIRST, then `REPORT.md` / `PROTOCOL.md` for depth. Do not re-derive
+history from code or old chats.
+
+## When to UPDATE it (proactively, don't wait to be asked)
+
+- A study stage completes or a verdict registry changes.
+- A protocol is pre-registered or amended.
+- The user signals the session is ending ("summarize", "brain dump",
+  "starting fresh", "closing this thread").
+
+## How to update it
+
+Keep the three-section structure (what is built / key paths / next goal),
+exact numbers, < 90 lines. Bump the date in the header. Statistical
+honesty rules (pre-registration, FDR accounting, no post-freeze retuning,
+negative results reported) are part of the state — keep them visible.
+
+After updating, tell the user it was updated. Commit `ai_context.md`
+together with the work it describes (when the user asks for a commit).
