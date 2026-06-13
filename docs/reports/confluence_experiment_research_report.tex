@@ -1,0 +1,160 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\title{Do Classical Price-Action Events Carry Directional Information?\\
+Test A of a Role-Structured Confluence Study}
+\author{Fiyin Akano}
+\date{June 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Traders often claim that overlapping technical patterns---``confluence''---
+produce stronger price reactions than isolated signals. We pre-registered and
+executed Test A of a staged screening study: 76 price-action event types
+across four timeframes (284 cells) on EURUSD (2015--2021 screen split).
+A critical methodological finding emerged: uniform random-time controls were
+invalid on M15 due to session-volatility confounding (random forward movement
+varied 3.7$\times$ by hour-of-day). After amendment to hour-matched controls,
+five cells survived screening (all M15). One confirmed on frozen 2022--2024
+data (\texttt{trendline\_liquidity\_sweep\_low}, +0.30 ATR effect); one
+replicated on frozen GBPUSD (\texttt{channel\_top\_touch}). Effects are
+real but small---suitable as gate inputs, not standalone strategies. This
+repository is observation-only and does not trade.
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{Research question}
+\begin{quote}
+\emph{H$_0$}: Conditional on a classical price-action event, ATR-normalised
+directional forward excursion is indistinguishable from direction- and
+time-matched random baselines.
+
+\emph{H$_1$}: Specific (timeframe $\times$ event type) cells beat that
+baseline; specific cross-timeframe combinations beat their parts.
+\end{quote}
+
+This is Test A (price action only) of a three-family program (Tests B:
+indicators; C: cross-family interactions). Test A tests each method
+individually by timeframe before any combination claims.
+
+\section{Methodology}
+
+\subsection{Event dictionary (Stage 0)}
+Eighteen detector modules emit 76 causal event types: market structure
+(BOS/CHoCH), zones/order blocks/breakers, fair-value gaps, liquidity pools
+and sweeps, trendlines/channels, horizontal S/R, chart patterns, fibonacci
+tags, and candlestick patterns. Each event carries a pre-registered
+directional hypothesis (+1 up / $-$1 down). The dictionary was frozen before
+any statistics were computed.
+
+\subsection{Outcome metric}
+For an event at bar $t$: maximum favourable excursion (MFE) in the event
+direction over horizon $H$ (D1: 30, H4/H1: 20, M15: 16 bars), divided by
+ATR(14); plus binary hit = reaches +1 ATR before $-$1 ATR.
+
+\subsection{Controls and amendment v2.1}
+Pre-registered controls: random bar indices with directions resampled from
+the event mix. This produced 41/284 ``significant'' cells---including
+mutually contradictory hypotheses---indicating a broken null. Diagnostic
+analysis showed MFE at random M15 times varies from 1.09 ATR (19:00 UTC) to
+4.03 ATR (05:00 UTC) because ATR(14) lags the intraday session cycle.
+
+\textbf{Amendment v2.1} (documented before re-run): controls matched to each
+event's hour-of-day and direction. The invalid uniform run is retained as a
+cautionary record.
+
+\subsection{Statistics}
+Permutation test (2{,}000 shuffles), one-sided; Benjamini--Hochberg FDR at
+5\% across adequately powered cells ($n \geq 100$). Four-tier verdicts:
+\texttt{alive}, \texttt{parked\_weak\_effect}, \texttt{parked\_insufficient\_n},
+\texttt{dead}.
+
+\subsection{Data splits}
+\begin{table}[h]
+\centering
+\begin{tabular}{lll}
+\toprule
+Split & Range & Use \\
+\midrule
+Screen & 2015-01-01 -- 2021-12-31 & selection \\
+Confirm & 2022-01-01 -- 2024-12-31 & frozen test of survivors \\
+Sealed & 2025-01-01+ & untouched \\
+Cross-pair & GBPUSD & frozen replication \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Results}
+
+\subsection{Stage 1 (hour-matched controls)}
+284 cells screened: \textbf{5 alive}, 16 parked weak, 77 insufficient-$n$,
+186 dead. All survivors on M15:
+
+\begin{table}[h]
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Event type & $n$ & Effect (ATR) & Screen $p$ \\
+\midrule
+\texttt{channel\_top\_touch} & 19{,}793 & +0.075 & 0.0005 \\
+\texttt{fib\_50\_tag} & 5{,}134 & +0.152 & 0.0005 \\
+\texttt{trendline\_liquidity\_sweep\_low} & 1{,}133 & +0.303 & 0.0005 \\
+\texttt{fib\_618\_tag} & 4{,}676 & +0.124 & 0.0010 \\
+\texttt{fib\_ext\_1272\_tag} & 2{,}482 & +0.189 & 0.0010 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Out-of-sample confirmation}
+\begin{itemize}
+  \item \textbf{Confirm split}: \texttt{trendline\_liquidity\_sweep\_low}
+        confirmed (+0.308 ATR, $p=0.0065$).
+  \item \textbf{GBPUSD replication}: \texttt{channel\_top\_touch} replicated
+        (+0.099 ATR, $p=0.0005$).
+  \item All five survivors positive on both OOS tests (sign-consistency
+        $\approx$3\% under random-sign null).
+\end{itemize}
+
+\subsection{Stage 2}
+Strict Stage 2 (alive cells only) was \textbf{empty by construction}---no
+higher-timeframe survivor to serve as context. Exploratory Stage 2 (including
+parked-weak cells) found most ``context $\times$ setup'' lift explained by
+setup marginals; H1 \texttt{equal\_highs\_pool} context flagged for
+pre-registered Stage-2b.
+
+\section{Discussion}
+
+The session-volatility confound is a general lesson for intraday FX research:
+ATR-normalised metrics on M15 require time-matched nulls. Surviving effects
+(+0.05 to +0.35 ATR MFE) are too small for standalone M15 strategies after
+spread but may inform confluence gating or exit logic in a validated main
+agent---only via that agent's separate pipeline.
+
+\section{Limitations}
+\begin{itemize}
+  \item Detector definitions are one auditable formalisation per concept.
+  \item D1 cells are structurally underpowered at $n \geq 100$ per pair.
+  \item MFE measures opportunity, not net P\&L; costs not modelled.
+  \item Tests B and C not yet pre-registered.
+\end{itemize}
+
+\section{Conclusion}
+Classical price-action confluence is \textbf{partially supported} on M15
+trendline/channel geometry, not broadly across the full dictionary. The
+honest headline: a handful of modest, reproducible signals---not the
+``everything works on M15'' illusion the broken first analysis suggested.
+This lab never trades; findings are hypothesis-generating for external
+validation.
+
+\section*{Artifacts}
+Registries and summary figure: \texttt{output/}. Full narrative:
+\texttt{REPORT.md}. Protocol: \texttt{PROTOCOL.md}.
+
+\end{document}
