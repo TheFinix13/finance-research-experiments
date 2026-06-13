@@ -19,8 +19,8 @@ import numpy as np
 import pandas as pd
 
 from conflab.events import Event, all_detectors
-from conflab.experiment import _permutation_pvalue, benjamini_hochberg
 from conflab.indicators import atr
+from conflab.stats import _permutation_pvalue, benjamini_hochberg
 
 log = logging.getLogger(__name__)
 

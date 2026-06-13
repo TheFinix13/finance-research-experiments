@@ -1,15 +1,17 @@
-# AI Context — confluence-lab brain dump (updated 2026-06-12)
+# AI Context — confluence experiment brain dump (updated 2026-06-13)
 
 Read this first in a fresh chat in THIS workspace. Strictly technical.
 This repo is fully separate from the trading agent (`eurusd-ai-agent`):
 observation-only, no broker code, no imports INTO the agent, zero authority
 over live trading. It borrows only the agent's parquet data cache at
-runtime via PYTHONPATH (see Running, README.md).
+runtime via PYTHONPATH (see PROTOCOL.md §Reproducibility / REPORT.md §7).
 
 ## 1) What is built and working
 
-- **v1 (closed):** pooled band-density experiment — H0 stood (EURUSD H4,
-  p=0.23, no source survived FDR). Recorded in README.md.
+- **v1 (closed, code removed 2026-06-13):** pooled band-density pilot —
+  H0 stood (EURUSD H4, p = 0.23, no source survived FDR). The numerical
+  result is preserved in PROTOCOL.md/REPORT.md; the code itself was a
+  dead end and was pruned.
 - **Protocol v2 (PROTOCOL.md):** pre-registered role-structured study.
   Three test families: A price action, B indicators, C cross-family.
   Staged funnel: Stage 0 frozen event dictionary → Stage 1 marginal screen
@@ -18,7 +20,7 @@ runtime via PYTHONPATH (see Running, README.md).
   dead), BH-FDR 5% per stage, n-gates (S1 ≥100, S2 ≥50). Splits: screen
   2015-21, confirm 2022-24, sealed 2025+, cross-pair GBPUSD frozen.
 - **Test A COMPLETE (REPORT.md is the deliverable):**
-  - Dictionary: 18 detectors, 76 event types, all causal, 53 tests green.
+  - Dictionary: 18 detectors, 76 event types, all causal, 42 tests green.
   - Pre-registered uniform controls were INVALID: session-volatility
     confound (random-time MFE 1.09→4.03 ATR by hour on M15; ATR(14) lags
     the session cycle). Amendment v2.1 = hour-of-day-matched controls;
@@ -46,12 +48,12 @@ runtime via PYTHONPATH (see Running, README.md).
 | Detectors | `conflab/detectors_{structure,liquidity,levels,zones,trendlines,chartpatterns,fib,patterns,sessions}.py` |
 | Stage 1 | `conflab/screening.py`, `scripts/run_stage1.py` |
 | Stage 2 | `conflab/stage2.py`, `scripts/run_stage2.py` |
+| Shared stats | `conflab/stats.py` (permutation p + BH-FDR) |
+| Helpers | `conflab/indicators.py`, `conflab/patterns.py`, `conflab/data.py` |
 | Diagnostics/figure | `scripts/diagnose_m15_controls.py`, `scripts/render_registry_figure.py` |
-| v1 (closed) | `conflab/{indicators,patterns,levels,confluence,reaction,experiment,render}.py`, `scripts/{scan,run_experiment}.py` |
-| Data bridge | `conflab/data.py` (BarLoader via PYTHONPATH; synthetic for tests) |
 | Evidence | `output/*.jsonl` registries, `output/stage1_summary.png`, logs |
 
-Tests: `tests/` (53). Run everything with the agent repo's venv:
+Tests: `tests/` (42). Run everything with the agent repo's venv:
 `PYTHONPATH=../eurusd-ai-agent:. ../eurusd-ai-agent/.venv/bin/python ...`
 
 ## 3) Next immediate goal (roadmap, in value order)

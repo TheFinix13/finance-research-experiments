@@ -4,7 +4,7 @@ Every function takes an OHLCV DataFrame (columns: open, high, low, close,
 volume; DatetimeIndex) and returns a Series or DataFrame aligned to it.
 Defaults are the standard textbook parameters and are FIXED for the
 experiment — tuning them to make confluence "work" is forbidden by the
-protocol in README.md.
+protocol in PROTOCOL.md.
 
 Note on volume: FX retail feeds carry tick volume only. OBV/VWAP here are
 tick-volume proxies, not institutional order flow.

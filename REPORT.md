@@ -46,8 +46,8 @@ direction-and-time-matched random baselines.
 specific cross-timeframe combinations beat their parts.
 
 This is Test A (price action only) of the three-family program in
-`PROTOCOL.md`; it follows the v1 omnibus band-density experiment
-(README.md), which found nothing (EURUSD H4, p = 0.23) but tested a
+`PROTOCOL.md`; it follows a v1 omnibus band-density pilot (code removed
+after the study), which found nothing (EURUSD H4, p = 0.23) but tested a
 role-free pooled hypothesis. Test A tests each method *individually by
 timeframe* — the "1 by 1" design — before any combination claims.
 
@@ -300,6 +300,6 @@ Permutation floor: p ≥ 1/2001 (Stage 1), ≥ 1/1001 (Stage 2).
 | Stage 1 screen (uniform, cautionary) | `output/stage1_EURUSD_screen_2026-06-12_1334.jsonl` |
 | Confirm split | `output/stage1_EURUSD_confirm_2026-06-12_1342.jsonl` |
 | GBPUSD replication | `output/stage1_GBPUSD_screen_replication_2026-06-12_1345.jsonl` |
-| Stage 2 strict (empty) | `output/stage2_EURUSD_2026-06-12_1346.jsonl` |
+| Stage 2 strict | empty family by construction (no higher-TF survivor); recorded as such |
 | Stage 2 exploratory | `output/stage2_EURUSD_2026-06-12_1348.jsonl` |
 | Summary figure | `output/stage1_summary.png` |

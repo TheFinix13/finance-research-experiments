@@ -1,10 +1,10 @@
 # Protocol v2 — role-structured cross-timeframe study (pre-registered)
 
 Status: PRE-REGISTERED 2026-06-12, before any v2 code or results exist.
-Supersedes the pooled band-density experiment (v1, README.md), whose result
-stands as recorded: H0 not rejected on EURUSD H4 (p=0.23, no source
-survived FDR). v1 tested an omnibus, role-free question; v2 tests the
-structured hypothesis it could not address.
+Supersedes a pooled band-density pilot (v1, code removed after the
+study), whose result stands as recorded: H0 not rejected on EURUSD H4
+(p = 0.23, no source survived FDR). v1 tested an omnibus, role-free
+question; v2 tests the structured hypothesis it could not address.
 
 ## Hypothesis
 

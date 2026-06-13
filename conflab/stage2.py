@@ -26,9 +26,9 @@ import numpy as np
 import pandas as pd
 
 from conflab.events import Event
-from conflab.experiment import benjamini_hochberg
 from conflab.indicators import atr
 from conflab.screening import directional_outcome
+from conflab.stats import benjamini_hochberg
 
 log = logging.getLogger(__name__)
 
