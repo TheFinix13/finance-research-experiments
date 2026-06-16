@@ -1,4 +1,4 @@
-# AI Context — confluence experiment brain dump (updated 2026-06-13)
+# AI Context — confluence experiment brain dump (updated 2026-06-16)
 
 Read this first in a fresh chat in THIS workspace. Strictly technical.
 This repo is fully separate from the trading agent (`eurusd-ai-agent`):
@@ -38,12 +38,29 @@ runtime via PYTHONPATH (see PROTOCOL.md §Reproducibility / REPORT.md §7).
     amplifier (selection +0.10…+0.46 ATR) → Stage-2b hypothesis.
   - Effects are gate/exit-input sized (≤0.35 ATR, hit-rate deltas <2pts),
     NOT tradeable standalone after spread.
+- **Test B COMPLETE (REPORT_TEST_B.md is the deliverable):** impulse-origin
+  return → bounce study. Pre-registered `protocols/TEST_B_PROTOCOL.md`
+  (commit `b9715d9`), then a one-shot amendment 6.2 to relax
+  `max_retrace_frac` 0.30→0.50 BEFORE any MFE was scored (cautionary
+  record kept). 12-cell family (`TF × dir × M_atr`) screened on EURUSD
+  2015-2021 with hour-matched controls + permutation p + BH-FDR α=0.05.
+  **0/12 alive.** 9 `parked_weak_effect` (effect +4 to +14 pips, none
+  cleared FDR; best raw p = 0.034 vs required 0.0042 at rank 1), 3 `dead`
+  (H4 down-impulse — events actually bounced LESS than hour-matched
+  controls). Headline: events reach ≥0.5R 93.4% of the time vs 91.6% at
+  random hour-matched levels. Stop rule §3.7 fired; Stages 2/3/4 did not
+  run (stop-state JSONs preserved). User's "always bounces" intuition is
+  directionally correct but the conditional edge is statistically
+  indistinguishable from baseline. Friction recipe + quartile cutoffs
+  (Q1/Q2 −1.1916, Q2/Q3 −0.2472, Q3/Q4 +0.9864) frozen for any future
+  H2-only re-look under a fresh pre-registration. Trading agent
+  unchanged.
 
 ## 2) Key file paths
 
 | Area | Files |
 |---|---|
-| Protocol + report | `PROTOCOL.md` (v2 + amendment v2.1 + execution record), `REPORT.md` |
+| Protocol + report | `PROTOCOL.md` + `REPORT.md` (Test A); `protocols/TEST_B_PROTOCOL.md` + `REPORT_TEST_B.md` (Test B) |
 | Event framework | `conflab/events.py` (Event, all_detectors registry) |
 | Detectors | `conflab/detectors_{structure,liquidity,levels,zones,trendlines,chartpatterns,fib,patterns,sessions}.py` |
 | Stage 1 | `conflab/screening.py`, `scripts/run_stage1.py` |
@@ -51,10 +68,12 @@ runtime via PYTHONPATH (see PROTOCOL.md §Reproducibility / REPORT.md §7).
 | Shared stats | `conflab/stats.py` (permutation p + BH-FDR) |
 | Helpers | `conflab/indicators.py`, `conflab/patterns.py`, `conflab/data.py` |
 | Diagnostics/figure | `scripts/diagnose_m15_controls.py`, `scripts/render_registry_figure.py` |
-| Evidence | `output/*.jsonl` registries, `output/stage1_summary.png`, logs |
+| Test B detector + friction | `conflab/detectors_impulse_return.py`, `conflab/friction.py` |
+| Test B runners | `scripts/test_b/run_stage{1,2,3,4_friction}.py`, `scripts/test_b/render_figures.py`, `scripts/test_b/_lib.py` |
+| Evidence | `output/*.jsonl` (Test A) registries, `output/stage1_summary.png`, `output/test_b/*` (Test B registries + `figures/`) |
 
-Tests: `tests/` (42). Run everything with the agent repo's venv:
-`PYTHONPATH=../eurusd-ai-agent:. ../eurusd-ai-agent/.venv/bin/python ...`
+Tests: `tests/` (70 — 42 Test A + 28 Test B). Run with the agent repo's venv:
+`PYTHONPATH=../eurusd-ai-agent:. ../eurusd-ai-agent/.venv/bin/python -m pytest -q`
 
 ## 3) Next immediate goal (roadmap, in value order)
 
@@ -63,7 +82,11 @@ Tests: `tests/` (42). Run everything with the agent repo's venv:
    split only, FDR over the planned pair family. Write the protocol
    BEFORE running anything.
 2. **Test B (indicators):** own pre-registration; reuse the Stage-1
-   harness — hour-matched controls transfer directly.
+   harness — hour-matched controls transfer directly. *(Note: this is
+   the v2-Protocol Test B about TECHNICAL INDICATORS — separate and
+   distinct from the IMPULSE-ORIGIN study we already ran under the
+   name "Test B" via `protocols/TEST_B_PROTOCOL.md`. Rename if the two
+   ever risk collision.)*
 3. **Test C (cross-family):** A-survivors+parked × B-survivors+parked;
    only after B.
 4. **D1 power redesign:** cross-pair panel pooling for daily-TF cells

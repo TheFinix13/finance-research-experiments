@@ -1,0 +1,24 @@
+{
+  "stage": 4,
+  "timestamp": "2026-06-16_1701",
+  "stage3_path": "output/test_b/stage3_cross_pair_2026-06-16_1701.stop.json",
+  "upstream_stop": {
+    "stage": 3,
+    "timestamp": "2026-06-16_1701",
+    "stage2_path": "output/test_b/stage2_EURUSD_confirm_2026-06-16_1701.stop.json",
+    "upstream_stop": {
+      "stage": 2,
+      "timestamp": "2026-06-16_1701",
+      "stage1_registry": "output/test_b/stage1_EURUSD_screen_2026-06-16_1656.jsonl",
+      "n_alive_in_stage1": 0,
+      "stop_rule_fired": "TEST_B_PROTOCOL \u00a73.7 \u2014 H1 (main) dies at Stage 1; H2 and H3 do not run.",
+      "verdict": "stopped_no_survivors"
+    },
+    "n_h4_alive_in_stage2": 0,
+    "stop_rule_fired": "TEST_B_PROTOCOL \u00a73.7 \u2014 H1 dies upstream; Stage 3 cross-pair does not run.",
+    "verdict": "stopped_no_survivors"
+  },
+  "n_alive_in_stage3": 0,
+  "stop_rule_fired": "TEST_B_PROTOCOL \u00a73.7 \u2014 H3 dies upstream; Stage 4 friction conditioning does not run.",
+  "verdict": "stopped_no_survivors"
+}

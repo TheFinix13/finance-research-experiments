@@ -1,0 +1,8 @@
+{
+  "stage": 2,
+  "timestamp": "2026-06-16_1701",
+  "stage1_registry": "output/test_b/stage1_EURUSD_screen_2026-06-16_1656.jsonl",
+  "n_alive_in_stage1": 0,
+  "stop_rule_fired": "TEST_B_PROTOCOL \u00a73.7 \u2014 H1 (main) dies at Stage 1; H2 and H3 do not run.",
+  "verdict": "stopped_no_survivors"
+}
