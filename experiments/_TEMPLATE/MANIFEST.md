@@ -14,5 +14,5 @@
 
 ## Agent cross-links (if any)
 
-| Artifact | Path in `eurusd-ai-agent` |
+| Artifact | Path in `multi-pair-trading-agent` |
 |---|---|

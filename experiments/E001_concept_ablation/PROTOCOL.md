@@ -1,6 +1,6 @@
 # E001 — ICT concept ablation (retrospective protocol)
 
-Status: **executed-then-registered 2026-06-16** (work ran in `eurusd-ai-agent`
+Status: **executed-then-registered 2026-06-16** (work ran in `multi-pair-trading-agent`
 2026-06-09 → 2026-06-10 before this repo existed).
 
 Pre-registration: **not available at execution time.** This document records

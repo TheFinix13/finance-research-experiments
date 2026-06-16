@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Executed in | `eurusd-ai-agent` |
+| Executed in | `multi-pair-trading-agent` |
 | Splits | 7× rolling IS/OOS on 2015–2025 |
 
 ## Lab copies (`results/`)
@@ -14,4 +14,4 @@
 
 ## Agent originals
 
-`eurusd-ai-agent/docs/reviews/` (same filenames)
+`multi-pair-trading-agent/docs/reviews/` (same filenames)

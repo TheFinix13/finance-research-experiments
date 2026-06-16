@@ -164,7 +164,7 @@ not supported."
 
 ### 3.8 Practical constraints (data availability)
 
-Audited 2026-06-16 against `eurusd-ai-agent/data/parquet/`:
+Audited 2026-06-16 against `multi-pair-trading-agent/data/parquet/`:
 
 - **EURUSD H4, EURUSD H1**: 2015 → 2026 (full coverage for screen + confirm).
 - **GBPUSD H4**: 2015 → 2026.
@@ -222,7 +222,7 @@ out as "frozen after Stage 1 screen; never relearned per pair/stage."
    Stage 4 = 342 (independent across stages so a single-bit run-order
    accident cannot rotate seeds).
 6. Test B does not modify any Test A artifact. The trading agent
-   (`eurusd-ai-agent`) is not touched.
+   (`multi-pair-trading-agent`) is not touched.
 
 ## 6. Amendments
 

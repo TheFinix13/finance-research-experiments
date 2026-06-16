@@ -9,7 +9,7 @@ stop-rule record), the protocol stops. This script writes a stop-rule
 record and exits cleanly.
 
 Usage:
-    PYTHONPATH=/path/to/eurusd-ai-agent:. \
+    PYTHONPATH=/path/to/multi-pair-trading-agent:. \
         python scripts/test_b/run_stage3.py \
         --stage2-registry output/test_b/stage2_EURUSD_confirm_<stamp>.jsonl
 """

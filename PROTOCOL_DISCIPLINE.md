@@ -6,7 +6,7 @@ extend this document; they may not weaken it without an explicit amendment
 commit **before** the affected analysis runs.
 
 This repo is the **central research workshop**. The trading agent
-(`eurusd-ai-agent`) is the **production execution system**. Nothing here
+(`multi-pair-trading-agent`) is the **production execution system**. Nothing here
 trades, routes orders, or changes live parameters without the agent's own
 validation pipeline (grid → holdout → walk-forward → cross-pair → sealed).
 
@@ -42,8 +42,8 @@ touches a `(pair, TF, split)` slice. A slice used in `sealed` status cannot
 honestly be claimed as unseen in a later experiment without documenting
 the prior use.
 
-Parquet bars live in **`eurusd-ai-agent/data/parquet/`** (canonical). This
-repo reads them via `PYTHONPATH=../eurusd-ai-agent:.` — never duplicate
+Parquet bars live in **`multi-pair-trading-agent/data/parquet/`** (canonical). This
+repo reads them via `PYTHONPATH=../multi-pair-trading-agent:.` — never duplicate
 the cache.
 
 ---
@@ -115,7 +115,7 @@ Commit prefix: `E00X:` for experiment-scoped work.
 | Proposing candidates for agent validation | Auto-deploying lab survivors without agent pipeline |
 | Reading agent parquet via PYTHONPATH | Duplicating or mutating agent strategy code here |
 
-Validated agent parameters live in `eurusd-ai-agent` only. Lab findings
+Validated agent parameters live in `multi-pair-trading-agent` only. Lab findings
 that might affect deployment are **candidates** until the agent's full
 validation chain re-locks them.
 

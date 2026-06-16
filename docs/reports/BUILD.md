@@ -9,3 +9,6 @@ pdflatex confluence_experiment_research_report.tex
 ```
 
 Output: `confluence_experiment_research_report.pdf`
+
+Requires a LaTeX distribution with `booktabs`, `hyperref`, `csquotes`,
+`cleveref`, and `xcolor` (e.g. TinyTeX, MacTeX, TeX Live).

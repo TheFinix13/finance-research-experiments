@@ -9,7 +9,7 @@ If Stage 3 produced a stop record (or no survivors), this script writes
 its own stop record and exits cleanly.
 
 Usage:
-    PYTHONPATH=/path/to/eurusd-ai-agent:. \
+    PYTHONPATH=/path/to/multi-pair-trading-agent:. \
         python scripts/test_b/run_stage4_friction.py \
         --stage3-registry output/test_b/stage3_cross_pair_<stamp>.jsonl \
         --friction-reference output/test_b/stage1_friction_reference_<stamp>.json \

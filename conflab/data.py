@@ -13,7 +13,7 @@ log = logging.getLogger(__name__)
 def load_frames(symbol: str, timeframes: list[str], *,
                 days: int = 400, start: str | datetime | None = None,
                 end: str | datetime | None = None) -> dict[str, pd.DataFrame]:
-    """Load OHLCV frames from eurusd-ai-agent's BarLoader/parquet cache.
+    """Load OHLCV frames from multi-pair-trading-agent's BarLoader/parquet cache.
 
     Explicit ``start``/``end`` (ISO strings or datetimes) override ``days``
     — used by the staged protocol's split discipline. Requires the main
@@ -25,8 +25,8 @@ def load_frames(symbol: str, timeframes: list[str], *,
         from agent.types import Timeframe
     except ImportError as e:
         raise ImportError(
-            "eurusd-ai-agent not importable. Run with "
-            "PYTHONPATH=/path/to/eurusd-ai-agent:. (see README)") from e
+            "multi-pair-trading-agent not importable. Run with "
+            "PYTHONPATH=/path/to/multi-pair-trading-agent:. (see README)") from e
 
     def _to_dt(value, default: datetime) -> datetime:
         if value is None:

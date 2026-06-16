@@ -8,7 +8,7 @@ Stage-0 build queue is empty. Runs before that are BUILD-PROGRESS previews
 (clearly labelled) — useful for sanity, not for claims.
 
 Usage:
-    PYTHONPATH=/path/to/eurusd-ai-agent:. python scripts/run_stage1.py \
+    PYTHONPATH=/path/to/multi-pair-trading-agent:. python scripts/run_stage1.py \
         --symbol EURUSD --tfs D1,H4,H1
 """
 from __future__ import annotations

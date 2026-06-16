@@ -9,7 +9,7 @@ Among zone-only configurations (`zone` and `zone_d1_against`), which
 
 ## Method
 
-- **Script:** `eurusd-ai-agent/scripts/run_zone_all_tfs.py`
+- **Script:** `multi-pair-trading-agent/scripts/run_zone_all_tfs.py`
 - **Window:** 2015 → 2025 (in-sample to later holdout/walk-forward)
 - **Output:** 13 BH-significant cells (candidate list, not deployment list)
 

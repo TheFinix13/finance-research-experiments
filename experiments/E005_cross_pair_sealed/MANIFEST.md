@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Executed in | `eurusd-ai-agent` |
+| Executed in | `multi-pair-trading-agent` |
 | Script | `scripts/run_cross_pair_frozen.py` |
 | Sealed | EURUSD 2026-01 → 2026-06 |
 

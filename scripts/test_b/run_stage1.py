@@ -10,10 +10,10 @@ After cells are scored, pools the unique events across the 12 cells
 the FROZEN friction reference distribution and quartile cutoffs, and
 writes them next to the registry.
 
-Usage (PYTHONPATH=eurusd-ai-agent so `conflab.data.load_frames` can reach
+Usage (PYTHONPATH=multi-pair-trading-agent so `conflab.data.load_frames` can reach
 the parquet cache; the venv is the parent's):
 
-    PYTHONPATH=/path/to/eurusd-ai-agent:. \
+    PYTHONPATH=/path/to/multi-pair-trading-agent:. \
         python scripts/test_b/run_stage1.py
 """
 from __future__ import annotations

@@ -9,7 +9,7 @@ fires: this script writes a stop-rule record and exits cleanly. That is
 the case for the canonical 2026-06-16 run.
 
 Usage:
-    PYTHONPATH=/path/to/eurusd-ai-agent:. \
+    PYTHONPATH=/path/to/multi-pair-trading-agent:. \
         python scripts/test_b/run_stage2.py \
         --stage1-registry output/test_b/stage1_EURUSD_screen_<stamp>.jsonl
 """

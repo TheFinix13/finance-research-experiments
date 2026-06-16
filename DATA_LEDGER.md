@@ -7,7 +7,7 @@ run (or retrospective registration) for that experiment.
 **Status key:** `pristine` (never used) · `screen` · `confirm` · `sealed` ·
 `excluded` (tested, rejected for deployment) · `live` (production monitor)
 
-Parquet cache: `../eurusd-ai-agent/data/parquet/` (single canonical copy).
+Parquet cache: `../multi-pair-trading-agent/data/parquet/` (single canonical copy).
 
 Last updated: **2026-06-16**
 

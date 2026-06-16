@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Executed in | `eurusd-ai-agent` |
+| Executed in | `multi-pair-trading-agent` |
 | Lab registration | 2026-06-16 |
 | Primary pair | EURUSD (+ grid all pairs in harness) |
 | Splits used | Full 2015–2025 research window (see ledger) |

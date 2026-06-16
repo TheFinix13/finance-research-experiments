@@ -1,136 +1,121 @@
-# Do classical price-action events carry directional information?
-## Test A of the role-structured cross-timeframe confluence study — research report
+# E006 — Report: do classical price-action events carry directional information? (Test A)
 
 **Date:** 2026-06-12 ·
-**Protocol:** `PROTOCOL.md` v2 (pre-registered 2026-06-12) + amendment v2.1 ·
-**Code:** `conflab/` @ this repository state ·
-**Status:** Test A complete through Stage 2; Tests B (indicators) and C
-(interactions) not yet pre-registered.
-
----
+**Protocol:** `PROTOCOL.md` v2 (pre-registered 2026-06-12) plus amendment v2.1 ·
+**Code:** `conflab/` at this repo state ·
+**Status:** complete through Stage 2. Tests B (indicators, E008) and C
+(cross-family interactions, E009) are scheduled, not yet pre-registered.
 
 ## Abstract
 
-We pre-registered and executed a staged screening study of the full
-classical price-action dictionary — 76 event types spanning market
-structure, zones/order blocks, imbalance, liquidity, trendlines/channels,
-horizontal S/R, chart patterns, fibonacci and candlesticks — on EURUSD
-across D1/H4/H1/M15 (284 timeframe × event-type cells, 2015–2021 screen
-split). The pre-registered uniform-random-time control produced a
-pathological result (41 "significant" cells including mutually
-contradictory hypotheses), which a diagnostic traced to a session-volatility
-confound: ATR-normalised forward movement at *random* M15 times varies 3.7×
-by hour-of-day. After a documented amendment to hour-of-day-matched
-controls, **5 of 284 cells survived screening, all on M15**. On the frozen
-2022–2024 confirm split, **one cell confirmed: M15
-`trendline_liquidity_sweep_low`** (wick below an ascending support
-trendline that closes back above; effect +0.30 ATR in both splits). On
-frozen GBPUSD, **one cell replicated: M15 `channel_top_touch`** — though
-all five survivors kept a positive sign on both out-of-sample tests
-(5/5 sign-consistency, ≈3% under a random-sign null). Strict Stage 2 was
-empty by construction (no higher-timeframe survivor); an exploratory Stage
-2 found that most "context × setup" lift is explained by the setup's own
-marginal timing, with H1 `equal_highs_pool` context the only suggestive
-amplifier. Effects are small (+0.05…+0.35 ATR of MFE; hit-rate deltas
-≤ 2 points): real enough to justify a confluence *input*, far too small to
-be a standalone strategy. Nothing here changes live trading.
+Discretionary traders say price-action confluence (zones, trendlines,
+liquidity sweeps, fibonacci tags, and so on) produces stronger reactions
+than random levels. We pre-registered a screen of seventy-six classical
+price-action events on EUR/USD across four timeframes (284 cells) on
+2015 to 2021 data, with frozen-parameter replication on 2022 to 2024
+EUR/USD and on GBP/USD. The first run with uniform-time controls
+returned forty-one survivors, including pairs of events that
+contradicted each other; a diagnostic traced this to a session-volatility
+confound on M15 (random forward movement varies by a factor of 3.7 across
+the hour-of-day cycle). After a documented amendment to hour-matched
+controls, five cells survived screening, all on M15. One confirmed on
+the frozen EUR/USD window (`trendline_liquidity_sweep_low`,
+$+0.30$ ATR); one replicated on GBP/USD (`channel_top_touch`). All five
+survivors stayed positive on both out-of-sample tests. The effects are
+small (+0.05 to +0.35 ATR of maximum favourable excursion, hit-rate
+deltas under two percentage points). They are real enough to inform a
+gate input in a separately validated trading agent, far too small to
+trade on alone. The repository never trades.
 
----
+## 1. Why this experiment exists
 
-## 1. Research question
+Online education sells "confluence" as the magic ingredient: when three
+patterns align, the level matters. The empirical content of that claim
+is a comparative one. A trendline touch that also lands at a 50\,\%
+fibonacci on a higher-timeframe channel boundary should *behave
+differently* from a random level sampled at the same time of day. If
+the claim is true, the difference should survive multiple-hypothesis
+correction and reproduce out of sample. Test A asks whether each
+classical event, alone, carries directional information against a
+matched random baseline. Tests B (indicators) and C (cross-family
+interactions) build on whatever Test A leaves alive.
 
-**H0:** conditional on a classical price-action event, ATR-normalised
-directional forward excursion is indistinguishable from
-direction-and-time-matched random baselines.
-**H1:** specific (timeframe × event type) cells beat that baseline, and
-specific cross-timeframe combinations beat their parts.
+## 2. What we tested
 
-This is Test A (price action only) of the three-family program in
-`PROTOCOL.md`; it follows a v1 omnibus band-density pilot (code removed
-after the study), which found nothing (EURUSD H4, p = 0.23) but tested a
-role-free pooled hypothesis. Test A tests each method *individually by
-timeframe* — the "1 by 1" design — before any combination claims.
+- **H0**: conditional on a classical price-action event, ATR-normalised
+  directional forward excursion is indistinguishable from
+  direction-and-time-matched random baselines.
+- **H1**: specific (timeframe by event-type) cells beat the matched
+  baseline; specific cross-timeframe combinations beat their parts.
 
-## 2. Data and splits
+This is Test A of a three-family program (Test B: indicators; Test C:
+cross-family interactions). Test A tests each method individually by
+timeframe (the "one by one" design) before any combination claim is
+made.
 
-| Split | Range | Use |
-|---|---|---|
-| Screen | 2015-01-01 → 2021-12-31 | all Stage-1/2 selection |
-| Confirm | 2022-01-01 → 2024-12-31 | frozen test of screen survivors only |
-| Sealed | 2025-01-01 → | untouched |
-| Cross-pair | GBPUSD, same protocol | frozen replication arm |
+## 3. Method (short version)
 
-EURUSD screen bars: D1 2,190 · H4 11,272 · H1 43,635 · M15 174,461
-(Dukascopy via the main repo's parquet cache). No costs are modelled:
-outcomes are *information* measures (excursion), not P&L.
+This section locks the recipe. The full pre-registered protocol is in
+`PROTOCOL.md`.
 
-## 3. Methods
+- Data: EUR/USD and GBP/USD, Dukascopy minute data resampled to D1, H4,
+  H1, and M15. EUR/USD screen-window bar counts: D1 2,190, H4 11,272,
+  H1 43,635, M15 174,461.
+- Splits: screen 2015-01-01 to 2021-12-31 for all selection. Confirm
+  2022-01-01 to 2024-12-31, frozen, for tests of survivors only.
+  Sealed 2025-01-01 onwards, untouched. GBP/USD same protocol as
+  frozen cross-pair arm.
+- Event dictionary (Stage 0): 18 detector modules emit 76 event types.
+  Each event carries a pre-registered directional hypothesis (touch
+  bounces, break continues, sweep reverses, magnet draws). All
+  detectors are causal. The dictionary was frozen before any Stage-1
+  statistic was computed; 51 unit tests pin the detector contracts.
+- Outcome metric: maximum favourable excursion (MFE) in the event's
+  hypothesised direction over the next $H$ bars (D1 30, H4 20, H1 20,
+  M15 16), divided by the average true range (ATR) of the last 14
+  bars at the event bar. Also recorded: a binary hit (reaches +1 ATR
+  before $-$1 ATR).
+- Controls: a number of randomly placed bars per event, with direction
+  resampled from the event cell's direction mix. After amendment v2.1
+  (see Section 4 below), controls are also matched to the event's
+  hour of day.
+- Statistics: 2,000-shuffle permutation test on the difference in mean
+  MFE; one-sided in the hypothesised direction. Benjamini-Hochberg
+  false-discovery-rate correction at 5\,\% across cells with $n \geq
+  100$. Four-tier verdicts: `alive`, `parked_weak_effect`,
+  `parked_insufficient_n`, `dead`.
 
-### 3.1 Stage 0 — the event dictionary
+No costs are modelled. MFE measures information about future price,
+not net profit.
 
-18 detector callables emit 76 event types, each an
-`(index, time, type, direction, level)` tuple where `direction` is the
-type's **pre-registered directional hypothesis** (touch ⇒ bounce, break ⇒
-continuation, magnet ⇒ draw, sweep ⇒ reversal). The full operational
-definitions live in the detector modules (`conflab/detectors_*.py`); all
-are causal — an event at bar *t* uses bars ≤ *t* only, swings count as
-confirmed `lookback` bars after their extreme, pattern completions fire at
-the breakout/neckline close. Definitions are deliberately simple and
-auditable rather than maximally clever; this bounds what a null result
-means (§5.3). The dictionary was frozen before any Stage-1 statistic was
-computed (`PROTOCOL.md` Stage 0). 51 unit tests pin detector contracts.
+### 3.1 Worked example: one trendline-liquidity-sweep-low event
 
-### 3.2 Outcome metric
-
-For an event at bar *t* with direction *d*: **MFE** = max favourable
-excursion in direction *d* over the next H bars (D1 30, H4 20, H1 20,
-M15 16), divided by ATR(14) at *t*; plus a binary **hit** = reaches +1 ATR
-before −1 ATR (same-bar ambiguity counts against the event).
-
-### 3.3 Controls, a confound, and amendment v2.1
-
-The pre-registered control was: random bar indices, directions resampled
-from the event cell's own direction mix, identical outcome code, 5×
-oversampled. Run as written, this produced 41/284 `alive` cells — almost
-every high-n M15 cell, at the permutation floor, **including both
-directions of the same structure** (channel top *and* bottom, both Asia
-sweeps, every fib level). A result that uniform indicates the null is
-broken, not that everything works.
-
-A diagnostic (`scripts/diagnose_m15_controls.py`) measured control MFE by
-hour-of-day on M15: **1.09 ATR at 19:00 UTC vs 4.03 ATR at 05:00 UTC**
-(3.7×). Mechanism: ATR(14) on M15 spans only 3.5 hours, so at the quiet→
-active session boundary it lags realised volatility and the next 16 bars
-mechanically overshoot it. Price-action events cluster in active hours
-(e.g. 45% of `asia_high_sweep` events at 07:00); uniform controls don't.
-Every active-hours family therefore inherited a fake positive effect, and
-quiet-hours families (tweezers) a fake negative one.
-
-**Amendment v2.1** (documented in `PROTOCOL.md` before any re-run, analysis
-layer only, no detector retuning): each control draw is matched to its
-event's hour-of-day as well as direction. The uniform-control run is
-retained as the cautionary record; no claim survives from it.
-
-### 3.4 Statistics
-
-Permutation test (2,000 shuffles) on the difference in mean MFE between
-events and controls, one-sided in the hypothesised direction;
-Benjamini–Hochberg FDR at 5% across all adequately-powered cells (n ≥ 100)
-in the family. Four-tier verdicts per the compute-vs-claim principle:
-`alive` (positive, survived FDR), `parked_weak_effect` (positive, raw
-p < .05, failed FDR), `parked_insufficient_n` (n < 100; stats still
-recorded), `dead`. Seeds fixed (42); registries are append-only JSONL in
-`output/`.
+On a fifteen-minute M15 bar at 14:45 UTC on a 2019 EUR/USD chart, the
+detector observed three things in sequence: an ascending swing-low
+trendline drawn from the last three confirmed swing lows; price wicked
+below that trendline on the current bar; the bar then closed *above*
+the trendline. The detector tagged the event with direction $+1$
+(upward) and recorded the ATR(14) at that bar (about 4 pips on M15).
+Over the next 16 M15 bars (four hours), the maximum favourable
+excursion in the up direction was 6.2 pips, or 1.55 ATR. The matched
+control (a randomly chosen bar with the same hour-of-day and the same
+direction) over its own next 16 bars reached 1.18 ATR. This event's
+contribution to the cell's mean difference is therefore
+$1.55 - 1.18 = +0.37$ ATR. The cell aggregates 1,133 such events; the
+mean difference is $+0.303$ ATR with permutation $p = 0.0005$.
 
 ## 4. Results
 
-### 4.1 Stage 1, EURUSD screen (hour-matched controls)
+This section reports the numbers stage by stage.
 
-284 cells: **5 alive · 16 parked_weak_effect · 77 parked_insufficient_n ·
-186 dead.** All survivors are M15:
+### 4.1 Stage 1 on EUR/USD screen with hour-matched controls
 
-| cell | n | event MFE | control MFE | effect | p |
-|---|---|---|---|---|---|
+> **Headline:** five of 284 cells survived Benjamini-Hochberg at 5\,\%.
+> All five are M15 cells: one trendline-liquidity sweep, one channel
+> touch, three fibonacci tags.
+
+| cell | $n$ | event MFE | control MFE | effect | $p$ |
+|---|---:|---:|---:|---:|---:|
 | M15 `channel_top_touch` | 19,793 | 2.503 | 2.428 | +0.075 | 0.0005 |
 | M15 `fib_50_tag` | 5,134 | 2.588 | 2.436 | +0.152 | 0.0005 |
 | M15 `trendline_liquidity_sweep_low` | 1,133 | 2.821 | 2.518 | +0.303 | 0.0005 |
@@ -139,167 +124,170 @@ recorded), `dead`. Seeds fixed (42); registries are append-only JSONL in
 
 ![Stage-1 summary](output/stage1_summary.png)
 
-Notable patterns: D1 contributes nothing testable at n ≥ 100 except dead
-cells — at daily granularity seven years simply doesn't produce enough
-events (most D1 cells are `parked_insufficient_n`, several with large
-positive point effects, e.g. D1 `entered_premium` +0.60, n = 55). H4 and
-H1 are adequately powered and almost uniformly dead. Candlestick families
-are dead everywhere they are powered. The 16 parked-weak cells concentrate
-in M15/H1 trendline-and-level geometry (trendline touches, n-touch levels,
-channel edges, fib 38.2, OTE) — the same neighbourhood as the survivors.
+Two patterns are worth naming. First, D1 contributes nothing testable
+at the $n \geq 100$ gate within seven years; most D1 cells are parked
+for insufficient sample size, several with large point effects (D1
+`entered_premium` was $+0.60$ on $n=55$, for instance). Second, H4 and
+H1 are adequately powered and almost uniformly dead. Candlestick
+families are dead everywhere they are powered. The 16 parked-weak
+cells concentrate in M15 and H1 trendline-and-level geometry: the same
+neighbourhood as the survivors.
 
-### 4.2 Confirm split (EURUSD 2022–2024, frozen, FDR within the 5)
+### 4.2 Confirm split (EUR/USD 2022 to 2024, frozen, FDR within the 5)
 
-| cell | n | effect | p | verdict |
-|---|---|---|---|---|
+| cell | $n$ | effect | $p$ | verdict |
+|---|---:|---:|---:|---|
 | `trendline_liquidity_sweep_low` | 508 | **+0.308** | 0.0065 | **CONFIRMED** |
 | `channel_top_touch` | 8,288 | +0.063 | 0.0295 | not confirmed (borderline) |
 | `fib_ext_1272_tag` | 1,042 | +0.096 | 0.149 | not confirmed |
 | `fib_618_tag` | 1,939 | +0.068 | 0.145 | not confirmed |
 | `fib_50_tag` | 2,108 | +0.051 | 0.213 | not confirmed |
 
-`trendline_liquidity_sweep_low`'s effect is essentially unchanged across
-splits (+0.303 → +0.308 ATR) — the signature of a stable effect rather
-than a lucky screen. The fib-tag effects shrink by roughly half out of
-sample, classic winner's-curse attenuation.
+The `trendline_liquidity_sweep_low` effect is essentially unchanged
+between splits (+0.303 in, +0.308 out). That is the signature of a
+stable effect rather than a lucky screen. The fibonacci-tag effects
+shrink by roughly half out of sample: classic winner's-curse
+attenuation.
 
-### 4.3 Cross-pair replication (GBPUSD 2015–2021, frozen, FDR within the 5)
+### 4.3 Cross-pair replication (GBP/USD 2015 to 2021, frozen, FDR within the 5)
 
-| cell | n | effect | p | verdict |
-|---|---|---|---|---|
+| cell | $n$ | effect | $p$ | verdict |
+|---|---:|---:|---:|---|
 | `channel_top_touch` | 19,161 | **+0.099** | 0.0005 | **REPLICATED** |
 | `fib_50_tag` | 4,934 | +0.076 | 0.036 | not replicated |
 | `fib_618_tag` | 4,527 | +0.080 | 0.037 | not replicated |
 | `trendline_liquidity_sweep_low` | 1,152 | +0.150 | 0.055 | not replicated |
 | `fib_ext_1272_tag` | 2,414 | +0.102 | 0.062 | not replicated |
 
-All five effects are again positive (5/5 sign-consistency across two
-independent out-of-sample tests has probability ≈ 3% each under a
-random-sign null) and three of the four "failures" sit just above the
-corrected threshold. The honest summary: a weak but directionally
-consistent family-level effect, with two members individually validated on
-one axis each — `trendline_liquidity_sweep_low` in time,
-`channel_top_touch` across pairs.
+All five effects are positive again. Five out of five sign-consistency
+on two independent out-of-sample tests has probability roughly 3\,\%
+each under a random-sign null. Three of the four "failures" sit just
+above the corrected threshold. The honest summary is a weak but
+directionally consistent family-level effect, with two members
+individually validated on one axis each:
+`trendline_liquidity_sweep_low` in time, `channel_top_touch` across
+pairs.
 
-### 4.4 Stage 2 — conditional pairs
+### 4.4 Stage 2 conditional pairs
 
-**Strict (pre-registered):** only `alive` cells enter, and all five are
-M15 — there is no higher-timeframe survivor to serve as context. **The
-Stage-2 family is empty by construction.** Recorded as such.
+The strict pre-registered Stage 2 was empty by construction. All five
+alive cells are M15, so there is no surviving higher-timeframe cell
+to use as context.
 
-**Exploratory** (labelled as such; includes the 16 parked-weak cells, so
-H1 contexts exist): 65 H1-context × M15-setup pairs; 51 nominally alive on
-the displacement null with lifts +0.03…+0.49 ATR. However, decomposing
-joint MFE into the setup's marginal MFE plus a selection term shows most
-of the lift is the setup's own within-window timing skill, *not*
-context interaction: the selection term (joint − marginal) is negative or
-≈ 0 for most pairs. The one consistent positive: **H1 `equal_highs_pool`
-as context** improves every setup run under it (selection +0.10…+0.46
-ATR) — liquidity resting above equal highs appears to genuinely amplify
-M15 setups below it. This is a hypothesis for a future pre-registered
-Stage-2b with an S-alone contrast, not a claim.
+The exploratory Stage 2 (including parked-weak cells, labelled as such)
+ran 65 H1-context-by-M15-setup pairs. 51 of them were nominally alive
+on the displacement null with lifts of +0.03 to +0.49 ATR. Decomposing
+the joint MFE into the setup's marginal MFE plus a selection term
+showed that most of the lift was the setup's own within-window timing
+skill, not a context interaction: the selection term (joint minus
+marginal) was negative or near zero for most pairs. One consistent
+positive emerged: H1 `equal_highs_pool` as context improved every
+setup placed under it (selection +0.10 to +0.46 ATR). Liquidity
+resting above equal highs appears to genuinely amplify M15 setups
+below it. This is a hypothesis for a future pre-registered Stage-2b,
+not a claim.
 
-### 4.5 The cautionary record
+### 4.5 The cautionary record (uniform-control run)
 
-The uniform-control run (`output/stage1_EURUSD_screen_2026-06-12_1334.jsonl`)
-is preserved in full. It would have reported 41 discoveries — channel tops
-*and* bottoms, both Asia sweep directions, every fib level, three-soldiers
-*and* three-crows. Each would have been false. The cost of catching it was
-one diagnostic script; the cost of not catching it would have been an
-agent gated on session-time artifacts.
+The uniform-control run is preserved at
+`output/stage1_EURUSD_screen_2026-06-12_1334.jsonl`. It would have
+reported 41 discoveries: channel tops and channel bottoms, both Asia
+sweep directions, every fibonacci level, three-soldiers and
+three-crows. Each would have been false. The cost of catching this
+was one diagnostic script; the cost of missing it would have been a
+trading agent gated on session-time artefacts.
 
-## 5. Discussion
+## 5. What this tells us
 
-### 5.1 What the surviving effects mean
+1. **The discretionary "confluence works" claim is partially
+   supported on M15 trendline, channel, and fibonacci geometry, not
+   broadly across the full price-action vocabulary.** Five out of 284
+   cells survive at 5\,\% false discovery rate. That is consistent
+   with a small handful of real signals living inside a much larger
+   pool of folklore.
+2. **The two validated cells point at the same neighbourhood.** Both
+   `trendline_liquidity_sweep_low` and `channel_top_touch` are
+   reaction-to-geometry events. The other three survivors are also
+   geometric (fibonacci tags). Candlestick survivors: zero.
+3. **The session-volatility confound is a general lesson, not a
+   local one.** Intraday ATR-normalised metrics on M15 need
+   hour-matched controls. Uniform-time controls quietly impose a
+   false null and can return forty-plus survivors out of nothing.
+4. **Effect sizes are small.** +0.05 to +0.35 ATR of average
+   favourable excursion, hit-rate deltas under two percentage points.
+   These are gate inputs, not strategies. EUR/USD M15 spread in
+   active hours is roughly 0.1 to 0.2 ATR(M15); the smallest
+   surviving effect sits inside the cost band.
 
-Both validated cells are *reaction-to-geometry* effects on M15:
+## 6. Honest limitations
 
-- `trendline_liquidity_sweep_low`: a wick through an ascending support
-  line that closes back above it — a swept trendline-liquidity pocket —
-  precedes ~+0.3 ATR of extra upside within 4 hours. This is the
-  statistical shadow of the discretionary observation that motivated this
-  lab (the June-9/11 EURUSD trades: price reaching for, and reacting at,
-  trendline liquidity).
-- `channel_top_touch`: first touch of a projected parallel-channel upper
-  boundary precedes extra *downward* excursion (the event's hypothesis
-  direction), modest on EURUSD (+0.075) and stronger on GBPUSD (+0.099),
-  where it passes FDR outright.
+- Each detector is one auditable operational definition. A dead
+  verdict closes that definition, not the underlying folk concept.
+- Daily-timeframe cells are structurally underpowered at $n \geq 100$
+  on seven years. Several parked D1 cells have large point effects
+  and wait for a pre-registered re-look as data accumulates. A
+  cross-pair panel design is probably the right route to D1 claims.
+- Hour-matching removes the session cycle but not all conditional
+  heteroskedasticity (news days, central-bank meetings). A regime-
+  matched control is a candidate v2.2 amendment.
+- MFE is one-sided. It measures opportunity, not net outcome. The
+  hit-rate metric partially compensates; a full maximum-adverse and
+  maximum-favourable joint analysis belongs to a Stage 3.
+- The screen-split data was used twice in a soft sense (once with
+  uniform controls, once with hour-matched controls). The amendment
+  was specified from the diagnostic, not from confirm-window data,
+  and the confirm and sealed windows were never used in the
+  diagnostic. The amended screen $p$-values are conditional on one
+  analysis revision and we say so.
 
-### 5.2 What they do NOT mean
+## 7. Conclusion
 
-+0.1–0.3 ATR of average favourable excursion with hit-rate deltas under
-2 points is **not a tradeable edge after spread** on M15 (EURUSD spread
-≈ 0.1–0.2 ATR(M15) in active hours). These are *inputs* — candidate
-features for gating or exit logic (e.g. the main agent's extension-ladder
-rungs at trendline-liquidity levels), exactly the promotion path the
-protocol prescribes: any use in the live agent must pass the main repo's
-own grid → holdout → walk-forward pipeline with costs.
+E006 closes with two validated cells
+(`trendline_liquidity_sweep_low` confirmed on the EUR/USD frozen
+window; `channel_top_touch` replicated on GBP/USD), three
+attenuated-but-positive cells, an exploratory hypothesis
+(`equal_highs_pool` as H1 context), and one important methodological
+discovery (intraday hour-matched controls). Effects are too small to
+trade on standalone. Any use in the live trading agent must pass that
+agent's separate grid, holdout, and walk-forward pipeline with
+realistic costs. Next pre-registrations, in order of value: a
+Stage-2b with a setup-alone contrast for the `equal_highs_pool`
+context; Test B (E008, indicators); a D1-power redesign using
+cross-pair panels.
 
-### 5.3 Limitations
+## 8. References and reproducibility
 
-1. **Detector simplicity.** Each operational definition is one reasonable
-   formalisation. A dead verdict kills *this formalisation*, not the
-   folk concept.
-2. **Power on high timeframes.** D1 is structurally unpowerable at n ≥ 100
-   per cell on 7 years; its parked cells (several with large point
-   effects) wait for the pre-registered re-look when data accrues, and
-   genuinely long-horizon D1 claims may need a different design
-   (pooled-across-pairs panels).
-3. **Residual confounding.** Hour-matching removes the session cycle but
-   not all conditional heteroskedasticity (e.g. news days). A
-   regime-matched control is a candidate v2.2 amendment.
-4. **MFE is one-sided.** It measures opportunity, not net outcome; the
-   hit-rate metric partially compensates, but a full MAE/MFE joint
-   analysis belongs to Stage 3.
-5. **Two looks at the confirm-adjacent data.** The uniform-control run
-   technically "saw" 2015–2021 twice (before and after the amendment).
-   The amendment was specified from the *diagnostic*, not from confirm
-   data, and the confirm/sealed splits were untouched until frozen tests —
-   but the screen-split p-values are conditional on one analysis revision,
-   and we say so.
+Pre-registration and protocol: `PROTOCOL.md` (this folder).
 
-## 6. Conclusions and disposition
+Run pipeline:
 
-- H0 is **rejected at the family level for M15 trendline/channel/fib
-  geometry** and **fails to reject everywhere else** in the 284-cell
-  Test-A dictionary on EURUSD.
-- Registry disposition: `trendline_liquidity_sweep_low` (M15) →
-  time-confirmed candidate; `channel_top_touch` (M15) → cross-pair-
-  replicated candidate; three fib cells → parked (positive, attenuated
-  OOS); H1 `equal_highs_pool`-as-context → hypothesis for pre-registered
-  Stage-2b; everything else per the Stage-1 registry files.
-- Next pre-registrations, in order of value: (1) Stage-2b with S-alone
-  contrast for `equal_highs_pool` context; (2) Test B (indicator events,
-  same harness — the hour-matched control transfers directly); (3) a
-  D1-power redesign using cross-pair panels.
+```bash
+export PYTHONPATH=/path/to/multi-pair-trading-agent:.
 
-## 7. Reproducibility
-
-```
-# environment: main repo venv (pandas/numpy/mplfinance), no GPU
-export PYTHONPATH=/path/to/eurusd-ai-agent:.
-
-python -m pytest tests/            # 53 tests
+python -m pytest tests/
 python scripts/run_stage1.py --symbol EURUSD --final --tag screen_hourmatched
 python scripts/run_stage1.py --symbol EURUSD --final \
     --start 2022-01-01 --end 2024-12-31 --tag confirm
 python scripts/run_stage1.py --symbol GBPUSD --final --tag screen_replication
 python scripts/run_stage2.py --registry output/stage1_EURUSD_screen_hourmatched_*.jsonl
-python scripts/run_stage2.py --registry ... --include-parked-weak   # exploratory
 python scripts/diagnose_m15_controls.py
 python scripts/render_registry_figure.py --registry ... --out output/stage1_summary.png
 ```
 
-All randomness is seeded (Stage 1 seed 42, Stage 2 seed 42, diagnostic
-seed 7). Registries (JSONL), logs and the figure are under `output/`.
-Permutation floor: p ≥ 1/2001 (Stage 1), ≥ 1/1001 (Stage 2).
+All randomness is seeded (Stage 1 seed 42, Stage 2 seed 42,
+diagnostic seed 7). Registries are append-only JSONL in `output/`.
+The permutation floor is $p \geq 1/2001$ on Stage 1.
 
-| artifact | file |
+| Artefact | File |
 |---|---|
-| Stage 1 screen (hour-matched, canonical) | `output/stage1_EURUSD_screen_hourmatched_2026-06-12_1340.jsonl` |
-| Stage 1 screen (uniform, cautionary) | `output/stage1_EURUSD_screen_2026-06-12_1334.jsonl` |
+| Stage 1 screen, hour-matched (canonical) | `output/stage1_EURUSD_screen_hourmatched_2026-06-12_1340.jsonl` |
+| Stage 1 screen, uniform (cautionary) | `output/stage1_EURUSD_screen_2026-06-12_1334.jsonl` |
 | Confirm split | `output/stage1_EURUSD_confirm_2026-06-12_1342.jsonl` |
-| GBPUSD replication | `output/stage1_GBPUSD_screen_replication_2026-06-12_1345.jsonl` |
-| Stage 2 strict | empty family by construction (no higher-TF survivor); recorded as such |
+| GBP/USD replication | `output/stage1_GBPUSD_screen_replication_2026-06-12_1345.jsonl` |
+| Stage 2 strict | empty family by construction (no higher-TF survivor) |
 | Stage 2 exploratory | `output/stage2_EURUSD_2026-06-12_1348.jsonl` |
 | Summary figure | `output/stage1_summary.png` |
+
+Related experiments: E007 (impulse-origin bounce). Planned: E008
+(indicators), E009 (cross-family interactions), E010 (Stage-2b
+`equal_highs_pool` context). Manifest: `MANIFEST.md`.

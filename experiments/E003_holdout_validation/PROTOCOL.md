@@ -6,7 +6,7 @@ Status: **executed-then-registered 2026-06-16**.
 
 - **IS:** 2015-01-01 → 2022-12-31
 - **OOS:** 2023-01-01 → 2025-12-31
-- **Script:** `eurusd-ai-agent/scripts/run_holdout_validation.py`
+- **Script:** `multi-pair-trading-agent/scripts/run_holdout_validation.py`
 - **Input:** IS-survivors from E002-style grid (8 cells)
 
 ## Claim tested

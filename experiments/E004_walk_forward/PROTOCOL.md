@@ -5,7 +5,7 @@ Status: **executed-then-registered 2026-06-16**.
 ## Design
 
 - **Windows:** 7 rolling 4-year IS / 1-year OOS
-- **Script:** `eurusd-ai-agent/scripts/run_walk_forward.py`
+- **Script:** `multi-pair-trading-agent/scripts/run_walk_forward.py`
 - **Analysis:** `scripts/analyze_walk_forward.py`
 
 ## Claim tested

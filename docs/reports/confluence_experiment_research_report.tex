@@ -1,107 +1,284 @@
 \documentclass[11pt,a4paper]{article}
+
 \usepackage[margin=1in]{geometry}
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage[capitalise]{cleveref}
+\usepackage{xcolor}
 
 \title{Do Classical Price-Action Events Carry Directional Information?\\
-Test A of a Role-Structured Confluence Study}
+A Pre-Registered Confluence Study on EUR/USD and GBP/USD}
 \author{Fiyin Akano}
-\date{June 2026}
+\date{June 2026 \\ \small \texttt{finance-research-experiments} (formerly \texttt{confluence-lab})}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  urlcolor=blue!50!black,
+  citecolor=blue!50!black,
+}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Traders often claim that overlapping technical patterns---``confluence''---
-produce stronger price reactions than isolated signals. We pre-registered and
-executed Test A of a staged screening study: 76 price-action event types
-across four timeframes (284 cells) on EURUSD (2015--2021 screen split).
-A critical methodological finding emerged: uniform random-time controls were
-invalid on M15 due to session-volatility confounding (random forward movement
-varied 3.7$\times$ by hour-of-day). After amendment to hour-matched controls,
-five cells survived screening (all M15). One confirmed on frozen 2022--2024
-data (\texttt{trendline\_liquidity\_sweep\_low}, +0.30 ATR effect); one
-replicated on frozen GBPUSD (\texttt{channel\_top\_touch}). Effects are
-real but small---suitable as gate inputs, not standalone strategies. This
-repository is observation-only and does not trade.
+Discretionary traders often say that when two or three price-action
+patterns line up at the same level, the level matters more than when only
+one pattern fires. We pre-registered a study to test this claim
+head-on. The study screened seventy-six classical price-action events
+across four timeframes on EUR/USD between 2015 and 2021, then attempted
+to reproduce any survivor on a frozen 2022--2024 EUR/USD slice and on
+GBP/USD over the same screen window. An early version of the analysis
+returned forty-one survivors out of two hundred and eighty-four cells,
+including pairs of events that contradicted each other (every channel
+top and every channel bottom alive at the same time). That result is
+the visible footprint of a session-volatility confound: ATR-normalised
+forward movement at \emph{random} fifteen-minute times varies by a
+factor of 3.7 across the 24-hour cycle. The protocol was amended to
+match each control draw to the event's hour of day, and the survivor
+count dropped from forty-one to five. One of those five
+(\texttt{trendline\_liquidity\_sweep\_low}) reproduced on the frozen
+EUR/USD slice; one (\texttt{channel\_top\_touch}) reproduced on
+GBP/USD. The effects are real but small (+0.05 to +0.35 units of
+average true range): useful as gate inputs to a separately validated
+trading agent, far too small to trade on alone. The repository never
+trades.
 \end{abstract}
 
-\section{Introduction}
+\section{Introduction}\label{sec:intro}
 
-\subsection{Research question}
-\begin{quote}
-\emph{H$_0$}: Conditional on a classical price-action event, ATR-normalised
-directional forward excursion is indistinguishable from direction- and
-time-matched random baselines.
+This section explains in plain language what \enquote{confluence} means
+to a trader, states the research question, and previews the result.
 
-\emph{H$_1$}: Specific (timeframe $\times$ event type) cells beat that
-baseline; specific cross-timeframe combinations beat their parts.
-\end{quote}
+\paragraph{What confluence means.} A retail trader looking at a
+fifteen-minute EUR/USD chart will mark a few things on the screen: the
+top of an ascending channel, a 50\,\% fibonacci retracement line, the
+previous day's high. When all three of those meet near the same price,
+the trader calls it a \emph{confluence} and treats the level as
+high-confidence. The empirical content of \enquote{confluence} is
+therefore a comparative claim: a level with three classical patterns
+stacked should hold or reverse harder than a random level at the same
+time of day.
 
-This is Test A (price action only) of a three-family program (Tests B:
-indicators; C: cross-family interactions). Test A tests each method
-individually by timeframe before any combination claims.
+\paragraph{The research question.} We asked two questions in nested form.
+First, does any individual classical price-action event carry
+directional information beyond a matched random baseline? This is
+\textbf{H1}. Second, do specific cross-timeframe combinations carry
+information their parts do not? This is \textbf{H2}, and is conditional
+on H1 producing survivors worth combining.
 
-\section{Methodology}
+\paragraph{The headline result.} Five of two hundred and eighty-four
+cells survived screening once the controls were corrected for time of
+day. One of those five reproduced on a frozen EUR/USD slice, one
+reproduced on GBP/USD, and all five kept the predicted sign on both
+out-of-sample looks. The effects are too small to trade on standalone
+but are statistically real, and the survivors are concentrated in
+fifteen-minute trendline and channel geometry.
+
+\paragraph{Outline.} \Cref{sec:background} states what was published
+before about price-action edge and multiple-hypothesis discipline.
+\Cref{sec:method} defines the event dictionary, the outcome metric, the
+controls, and the statistical pipeline. \Cref{sec:confound} is a
+self-contained walk-through of the broken first analysis and the
+amendment that fixed it. \Cref{sec:results} reports per-stage numbers.
+\Cref{sec:limits} lists what we cannot claim. \Cref{sec:conclusion}
+closes.
+
+\section{Background and prior work}\label{sec:background}
+
+This section sketches the published literature this study sits in,
+because most of what discretionary traders call \enquote{confluence} is
+not in any peer-reviewed paper.
+
+The community vocabulary used here (zones, order blocks, fair-value
+gaps, market-structure breaks, liquidity sweeps, premium/discount,
+fibonacci retracements and extensions) is the Inner Circle Trader (ICT)
+glossary, taught publicly online for over a decade with no formal
+validation. Academic studies of FX price-action are sparser. Sweeney
+(1986) found simple filter rules in spot forex outperformed buy-and-hold
+net of costs over the 1970s. LeBaron (1999) extended that to moving-
+average rules with mixed results. Brock, Lakonishok and LeBaron (1992)
+applied a bootstrap test to technical trading rules on the Dow.
+
+The multiple-hypothesis machinery used here comes from Benjamini and
+Hochberg (1995), whose false discovery rate procedure is the standard
+correction when many cells are screened at once. Bailey et al. (2014)
+catalogued how backtests overfit when this correction is skipped, and
+their framing of \enquote{minimum backtest length} motivated our split
+discipline. Lopez de Prado (2018) wrote down the broader research
+hygiene this lab tries to follow.
+
+To our knowledge, no paper screens the full ICT-style event vocabulary
+under pre-registered multiplicity control and reports the survivor list
+honestly. This study is that screen.
+
+\section{Methodology}\label{sec:method}
+
+This section locks the event dictionary, the outcome metric, the
+controls, and the statistical pipeline. The full protocol was
+committed to the repository before any data was screened.
 
 \subsection{Event dictionary (Stage 0)}
-Eighteen detector modules emit 76 causal event types: market structure
-(BOS/CHoCH), zones/order blocks/breakers, fair-value gaps, liquidity pools
-and sweeps, trendlines/channels, horizontal S/R, chart patterns, fibonacci
-tags, and candlestick patterns. Each event carries a pre-registered
-directional hypothesis (+1 up / $-$1 down). The dictionary was frozen before
-any statistics were computed.
+
+Eighteen detector modules emit seventy-six event types. The categories
+are: market-structure breaks and shifts, supply and demand zones, order
+blocks and breaker blocks, fair-value gaps, liquidity pools and sweeps,
+trendlines and parallel channels, horizontal support and resistance,
+chart patterns (triple tops, head and shoulders, triangles, wedges,
+flags, rectangles), fibonacci retracements and extensions, and
+candlestick patterns. Each event ships with a pre-registered directional
+hypothesis: \enquote{a touch should bounce}, \enquote{a break should
+continue}, \enquote{a sweep should reverse}, \enquote{a magnet should
+draw price}.
+
+All detectors are causal: an event timestamped at bar $t$ uses only bars
+$\leq t$. The dictionary was frozen before any Stage-1 statistic was
+computed. Fifty-one unit tests pin the detector contracts.
 
 \subsection{Outcome metric}
-For an event at bar $t$: maximum favourable excursion (MFE) in the event
-direction over horizon $H$ (D1: 30, H4/H1: 20, M15: 16 bars), divided by
-ATR(14); plus binary hit = reaches +1 ATR before $-$1 ATR.
 
-\subsection{Controls and amendment v2.1}
-Pre-registered controls: random bar indices with directions resampled from
-the event mix. This produced 41/284 ``significant'' cells---including
-mutually contradictory hypotheses---indicating a broken null. Diagnostic
-analysis showed MFE at random M15 times varies from 1.09 ATR (19:00 UTC) to
-4.03 ATR (05:00 UTC) because ATR(14) lags the intraday session cycle.
+For an event at bar $t$ with directional hypothesis $d$, the maximum
+favourable excursion (MFE) is the largest price move in direction $d$
+over the next $H$ bars, divided by the average true range (ATR) of the
+last 14 bars at $t$. Horizons by timeframe: $H = 30$ on D1, $H = 20$ on
+H4 and H1, $H = 16$ on M15. A binary \emph{hit} variable is also recorded:
+1 if the event reaches +1 ATR before $-1$ ATR, 0 otherwise.
 
-\textbf{Amendment v2.1} (documented before re-run): controls matched to each
-event's hour-of-day and direction. The invalid uniform run is retained as a
-cautionary record.
+The ATR normalisation is what lets us compare across timeframes. It is
+also what made the first version of the analysis explode: see
+\Cref{sec:confound}.
 
-\subsection{Statistics}
-Permutation test (2{,}000 shuffles), one-sided; Benjamini--Hochberg FDR at
-5\% across adequately powered cells ($n \geq 100$). Four-tier verdicts:
-\texttt{alive}, \texttt{parked\_weak\_effect}, \texttt{parked\_insufficient\_n},
-\texttt{dead}.
+\subsection{Controls}
+
+For each event a number of \emph{control} draws is created from the same
+data. Each control is a randomly chosen bar with a direction sampled
+from the event cell's own direction mix. The outcome metric is computed
+identically. The control is the null model: a level with no event
+attached.
+
+The original protocol drew controls uniformly across all bars. We
+amended this to draw controls only from bars at the same \emph{hour of
+day} as the event. The reason is in \Cref{sec:confound}.
+
+\subsection{Statistical pipeline}
+
+A two-thousand-shuffle permutation test computes a one-sided $p$-value
+on the difference in mean MFE between events and controls within a
+cell. The Benjamini--Hochberg procedure controls the false discovery
+rate at 5\,\% across all adequately powered cells in the family,
+defined as cells with at least 100 events.
+
+Verdicts are written into a four-tier registry:
+
+\begin{itemize}
+  \item \texttt{alive}: positive effect, survived false discovery rate.
+  \item \texttt{parked\_weak\_effect}: positive raw $p < 0.05$ but
+        failed the corrected threshold. Recorded, not claimed.
+  \item \texttt{parked\_insufficient\_n}: fewer than 100 events.
+        Statistics recorded for future re-look.
+  \item \texttt{dead}: negative or zero effect; closed.
+\end{itemize}
 
 \subsection{Data splits}
+
 \begin{table}[h]
 \centering
+\caption{Data splits used in the study. Each (pair, split) is consumed
+once.}
+\label{tab:splits}
 \begin{tabular}{lll}
 \toprule
 Split & Range & Use \\
 \midrule
-Screen & 2015-01-01 -- 2021-12-31 & selection \\
-Confirm & 2022-01-01 -- 2024-12-31 & frozen test of survivors \\
-Sealed & 2025-01-01+ & untouched \\
-Cross-pair & GBPUSD & frozen replication \\
+Screen & 2015-01-01 -- 2021-12-31 & Stage 1 and Stage 2 selection \\
+Confirm & 2022-01-01 -- 2024-12-31 & frozen test of screen survivors only \\
+Sealed & 2025-01-01 onwards & untouched \\
+Cross-pair & GBP/USD, same protocol & frozen replication arm \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\section{Results}
+\section{The session-volatility confound and amendment v2.1}\label{sec:confound}
 
-\subsection{Stage 1 (hour-matched controls)}
-284 cells screened: \textbf{5 alive}, 16 parked weak, 77 insufficient-$n$,
-186 dead. All survivors on M15:
+This section is the worked example. It walks through what the original
+analysis returned, why it could not be true, and how the fix was
+specified before any new data was looked at.
+
+\subsection{The pathological first run}
+
+The first Stage 1 run produced 41 \texttt{alive} cells out of 284, an
+\emph{a priori} implausible survivor rate. The survivor list included
+\texttt{channel\_top\_touch} and \texttt{channel\_bottom\_touch} both
+significantly positive on M15. A channel top is supposed to fade; a
+channel bottom is supposed to bounce. Both cannot be alive at the same
+significance level on the same data unless the null is broken. The
+same pattern appeared for liquidity sweeps in both directions and for
+several pairs of fibonacci levels.
+
+\subsection{The diagnostic}
+
+A short diagnostic script measured the control MFE distribution on M15
+hour-by-hour, ignoring event labels. The result was striking. At 19:00
+UTC, average control MFE was 1.09 ATR. At 05:00 UTC, it was 4.03 ATR.
+That is a factor of 3.7 in the supposed null. The mechanism is
+mechanical: ATR(14) on M15 sums fifteen-minute ranges over the last 3.5
+hours, so at the boundary between a quiet session and an active one,
+the next sixteen bars structurally exceed the ATR window. Events
+themselves are not uniformly distributed across the clock (the
+\texttt{asia\_high\_sweep} family, for instance, has 45\,\% of its
+events at 07:00 UTC), so any event family concentrated in active hours
+inherited a fake positive lift, and any family concentrated in quiet
+hours inherited a fake negative one.
+
+\subsection{Amendment v2.1}
+
+The protocol was amended once, documented in the repository before any
+re-analysis, to match each control draw to the event's hour of day in
+addition to its direction. No detector parameters changed. No event
+outcomes were re-measured. Only the control-sampling code changed. The
+uniform-control run is preserved in \texttt{output/} as the cautionary
+record.
+
+\subsection{What the fix did}
 
 \begin{table}[h]
 \centering
-\small
+\caption{Effect of the amendment on the survivor count.}
+\label{tab:amendment}
+\begin{tabular}{lrr}
+\toprule
+Run & Alive cells & Notes \\
+\midrule
+Uniform controls (original) & 41 / 284 & contradictory pairs alive \\
+Hour-matched controls (amended) & 5 / 284 & all M15; trendline / channel / fib \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Five survivors is a believable number for a screen of 284 cells under
+5\,\% false discovery rate. The contradictions disappeared.
+
+\section{Results}\label{sec:results}
+
+This section reports the numbers stage by stage, leading with the
+headline cell and then the table.
+
+\subsection{Stage 1 on EUR/USD screen (hour-matched controls)}
+
+Five cells alive, 16 parked weak, 77 parked for insufficient sample
+size, 186 dead. All five survivors are on M15:
+
+\begin{table}[h]
+\centering
+\caption{Stage 1 survivors on EUR/USD 2015--2021 under hour-matched
+controls. Effect is in units of ATR(14). All five passed the corrected
+threshold.}
+\label{tab:stage1}
 \begin{tabular}{lrrr}
 \toprule
-Event type & $n$ & Effect (ATR) & Screen $p$ \\
+Event type & $n$ & Effect (ATR) & $p$ \\
 \midrule
 \texttt{channel\_top\_touch} & 19{,}793 & +0.075 & 0.0005 \\
 \texttt{fib\_50\_tag} & 5{,}134 & +0.152 & 0.0005 \\
@@ -112,49 +289,109 @@ Event type & $n$ & Effect (ATR) & Screen $p$ \\
 \end{tabular}
 \end{table}
 
-\subsection{Out-of-sample confirmation}
+\subsection{Out-of-sample confirmation (EUR/USD 2022--2024)}
+
+\texttt{trendline\_liquidity\_sweep\_low} confirmed at +0.308 ATR
+($p=0.0065$) on the frozen confirm window. The effect is essentially
+unchanged from the screen window (+0.303 in, +0.308 out), which is the
+signature of a stable effect rather than a lucky screen. The other four
+survivors shrank by roughly half out of sample, classic winner's-curse
+attenuation.
+
+\subsection{Cross-pair replication (GBP/USD 2015--2021)}
+
+\texttt{channel\_top\_touch} replicated on GBP/USD at +0.099 ATR
+($p=0.0005$). All five survivors kept a positive sign on this second
+out-of-sample look as well. Five out of five sign-consistency on two
+independent out-of-sample tests has probability roughly 3\,\% under a
+random-sign null.
+
+\subsection{Stage 2 (cross-timeframe combinations)}
+
+The strict pre-registered Stage 2 was empty by construction. All five
+survivors are M15 cells, so there is no surviving higher-timeframe cell
+to use as context. An exploratory Stage 2 that included parked-weak
+H1 cells flagged \texttt{equal\_highs\_pool} as a candidate context for
+a future pre-registration but does not constitute a claim.
+
+\section{Discussion}\label{sec:disc}
+
+The two validated cells are both reaction-to-geometry effects on M15.
+\texttt{trendline\_liquidity\_sweep\_low} is a wick below an ascending
+support line that closes back above it; the rule predicts an extra
+roughly +0.3 ATR of upward excursion within four hours.
+\texttt{channel\_top\_touch} is the first touch of a projected parallel-
+channel upper boundary, and the rule predicts extra downward excursion
+of roughly +0.1 ATR on EUR/USD and roughly +0.1 ATR on GBP/USD.
+
+Both numbers are small relative to spread. EUR/USD spread on M15 is
+roughly 0.1--0.2 ATR(M15) in active hours, which means a +0.1 ATR signal
+is mostly inside the cost band. These signals are inputs, not
+strategies. A live agent could use them as gate or exit inputs only after
+passing its own independent grid, holdout, and walk-forward chain.
+
+The session-volatility result is itself a general methodological
+finding: intraday ATR-normalised metrics on M15 require time-of-day
+matched controls. Uniform-time controls quietly impose a false null.
+
+\section{Limitations}\label{sec:limits}
+
 \begin{itemize}
-  \item \textbf{Confirm split}: \texttt{trendline\_liquidity\_sweep\_low}
-        confirmed (+0.308 ATR, $p=0.0065$).
-  \item \textbf{GBPUSD replication}: \texttt{channel\_top\_touch} replicated
-        (+0.099 ATR, $p=0.0005$).
-  \item All five survivors positive on both OOS tests (sign-consistency
-        $\approx$3\% under random-sign null).
+  \item Each detector is one auditable operational definition. A dead
+        verdict closes that definition, not the underlying folk concept.
+  \item Daily timeframe cells are structurally underpowered at $n \geq
+        100$ on seven years; a cross-pair panel design is the route
+        forward for D1 claims.
+  \item MFE measures opportunity, not net profit and loss; transaction
+        costs are not modelled.
+  \item Two looks at the screen window. The amendment was specified from
+        a diagnostic on the screen window itself, so the post-amendment
+        $p$-values are conditional on one analysis revision. The
+        confirm and sealed windows were never used in the diagnostic.
+  \item Indicator-only confluence and cross-family interactions are
+        scheduled as future experiments (E008 and E009 in the
+        repository registry) and not run here.
 \end{itemize}
 
-\subsection{Stage 2}
-Strict Stage 2 (alive cells only) was \textbf{empty by construction}---no
-higher-timeframe survivor to serve as context. Exploratory Stage 2 (including
-parked-weak cells) found most ``context $\times$ setup'' lift explained by
-setup marginals; H1 \texttt{equal\_highs\_pool} context flagged for
-pre-registered Stage-2b.
+\section{Conclusion}\label{sec:conclusion}
 
-\section{Discussion}
+The headline is five cells out of two hundred and eighty-four, two of
+which independently reproduced under hour-matched controls. The
+discretionary claim that confluence \enquote{works} is partially
+supported on M15 trendline, channel, and fibonacci geometry. It is not
+broadly supported across the full ICT-style dictionary. Standalone M15
+strategies on these signals are not viable after spread; informed gate
+or exit inputs to a separately validated trading agent are. The
+repository never trades and these findings will not be used live until
+they pass the agent's own validation chain.
 
-The session-volatility confound is a general lesson for intraday FX research:
-ATR-normalised metrics on M15 require time-matched nulls. Surviving effects
-(+0.05 to +0.35 ATR MFE) are too small for standalone M15 strategies after
-spread but may inform confluence gating or exit logic in a validated main
-agent---only via that agent's separate pipeline.
+\section*{References}
 
-\section{Limitations}
-\begin{itemize}
-  \item Detector definitions are one auditable formalisation per concept.
-  \item D1 cells are structurally underpowered at $n \geq 100$ per pair.
-  \item MFE measures opportunity, not net P\&L; costs not modelled.
-  \item Tests B and C not yet pre-registered.
-\end{itemize}
-
-\section{Conclusion}
-Classical price-action confluence is \textbf{partially supported} on M15
-trendline/channel geometry, not broadly across the full dictionary. The
-honest headline: a handful of modest, reproducible signals---not the
-``everything works on M15'' illusion the broken first analysis suggested.
-This lab never trades; findings are hypothesis-generating for external
-validation.
-
-\section*{Artifacts}
-Registries and summary figure: \texttt{output/}. Full narrative:
-\texttt{REPORT.md}. Protocol: \texttt{PROTOCOL.md}.
+\begin{enumerate}
+  \item Benjamini, Y., and Hochberg, Y. (1995). Controlling the false
+        discovery rate. \emph{Journal of the Royal Statistical Society,
+        Series B}, 57(1), 289--300.
+  \item Bailey, D. H., Borwein, J. M., L\'opez de Prado, M., and Zhu, Q. J.
+        (2014). Pseudo-mathematics and financial charlatanism: the
+        effects of backtest overfitting on out-of-sample performance.
+        \emph{Notices of the American Mathematical Society}, 61(5),
+        458--471.
+  \item Brock, W., Lakonishok, J., and LeBaron, B. (1992). Simple
+        technical trading rules and the stochastic properties of stock
+        returns. \emph{Journal of Finance}, 47(5), 1731--1764.
+  \item LeBaron, B. (1999). Technical trading rule profitability and
+        foreign exchange intervention. \emph{Journal of International
+        Economics}, 49(1), 125--143.
+  \item L\'opez de Prado, M. (2018). \emph{Advances in Financial Machine
+        Learning}. Wiley.
+  \item Sweeney, R. J. (1986). Beating the foreign exchange market.
+        \emph{Journal of Finance}, 41(1), 163--182.
+  \item Inner Circle Trader (ICT). Community-taught price-action
+        glossary, public archives accessed 2025--2026.
+  \item Project artefacts:
+        \texttt{EXPERIMENTS.md}, \texttt{PROTOCOL\_DISCIPLINE.md},
+        \texttt{DATA\_LEDGER.md},
+        \texttt{experiments/E006\_test\_a\_price\_action/REPORT.md}.
+\end{enumerate}
 
 \end{document}

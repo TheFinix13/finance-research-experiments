@@ -1,14 +1,14 @@
 # AI Context — finance research experiments (updated 2026-06-16)
 
 Read this first in a fresh chat. This repo is the **central research workshop**
-for all hypothesis tests. The trading agent (`eurusd-ai-agent`) executes only
+for all hypothesis tests. The trading agent (`multi-pair-trading-agent`) executes only
 what survived the agent validation chain (E001–E005); lab experiments (E006+)
 never auto-change live params.
 
 **Index:** `EXPERIMENTS.md` · **Rules:** `PROTOCOL_DISCIPLINE.md` ·
 **Data accounting:** `DATA_LEDGER.md`
 
-Parquet cache: borrow via `PYTHONPATH=../eurusd-ai-agent:.` (no duplicate data).
+Parquet cache: borrow via `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
 
 ## 1) What is built and working
 
@@ -23,7 +23,7 @@ Parquet cache: borrow via `PYTHONPATH=../eurusd-ai-agent:.` (no duplicate data).
 - **E005** cross-pair frozen: GBPUSD +10.24/trade p=0.001; USDCAD +4.63
   p=0.028; AUD/NZD excluded. Sealed 2026: 16 trades +7.75/trade p=0.29.
 
-Agent code stays in `eurusd-ai-agent`; reports copied under `experiments/E00X/`.
+Agent code stays in `multi-pair-trading-agent`; reports copied under `experiments/E00X/`.
 
 ### Lab experiments (pre-registered in this repo)
 
@@ -51,7 +51,7 @@ Agent code stays in `eurusd-ai-agent`; reports copied under `experiments/E00X/`.
 | Outputs | `output/` (E006), `output/test_b/` (E007) |
 
 Tests: **70** passing. Run:
-`PYTHONPATH=../eurusd-ai-agent:. ../eurusd-ai-agent/.venv/bin/python -m pytest -q`
+`PYTHONPATH=../multi-pair-trading-agent:. ../multi-pair-trading-agent/.venv/bin/python -m pytest -q`
 
 ## 3) Next immediate goal
 

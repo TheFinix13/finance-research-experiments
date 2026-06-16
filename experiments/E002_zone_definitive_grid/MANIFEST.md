@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Executed in | `eurusd-ai-agent` |
+| Executed in | `multi-pair-trading-agent` |
 | Script | `scripts/run_zone_all_tfs.py` |
 | Splits | Full window 2015–2025 (ledger: screen) |
 

@@ -5,7 +5,7 @@ AI stack (forex agent today; portfolio agent and dividend agent next).
 Observation-only — nothing here trades or changes any live agent without
 that agent's own validation pipeline.
 
-**Production agent:** [`eurusd-ai-agent`](../eurusd-ai-agent) (separate repo).
+**Production agent:** [`multi-pair-trading-agent`](../multi-pair-trading-agent) (separate repo).
 
 ---
 
@@ -41,15 +41,15 @@ Each folder under [`experiments/`](experiments/) has `PROTOCOL.md`,
 
 ```bash
 # From finance-research-experiments root; uses agent venv + parquet cache
-export PYTHONPATH=../eurusd-ai-agent:.
+export PYTHONPATH=../multi-pair-trading-agent:.
 
-../eurusd-ai-agent/.venv/bin/python -m pytest -q
+../multi-pair-trading-agent/.venv/bin/python -m pytest -q
 
 # E006 Stage 1 example
-../eurusd-ai-agent/.venv/bin/python scripts/run_stage1.py --symbol EURUSD
+../multi-pair-trading-agent/.venv/bin/python scripts/run_stage1.py --symbol EURUSD
 
 # E007 Stage 1 example
-../eurusd-ai-agent/.venv/bin/python scripts/test_b/run_stage1.py
+../multi-pair-trading-agent/.venv/bin/python scripts/test_b/run_stage1.py
 ```
 
 ---

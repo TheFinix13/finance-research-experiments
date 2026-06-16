@@ -2,7 +2,7 @@
 survivors, on the screen split only.
 
 Usage:
-    PYTHONPATH=/path/to/eurusd-ai-agent:. python scripts/run_stage2.py \
+    PYTHONPATH=/path/to/multi-pair-trading-agent:. python scripts/run_stage2.py \
         --registry output/stage1_EURUSD_screen_<stamp>.jsonl
 """
 from __future__ import annotations
