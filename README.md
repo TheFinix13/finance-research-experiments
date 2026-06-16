@@ -1,60 +1,72 @@
-# Trading AI Confluence Experiment
+# Trading AI Confluence Lab
 
-A small research project I built alongside my main trading agent to answer
-one question honestly.
+Central **research workshop** for hypothesis tests about price structure,
+confluence, and reaction strength. Observation-only — nothing here trades
+or changes the live agent without the agent's own validation pipeline.
 
-## The question
+**Production agent:** [`eurusd-ai-agent`](../eurusd-ai-agent) (separate repo).
 
-> Traders constantly talk about "confluence" — the idea that price reacts
-> more strongly where several different signals line up at the same level.
-> Is that actually true on EUR/USD and GBP/USD, or is it just a story
-> told after the fact?
+---
 
-## How I tried to answer it
+## Start here
 
-I picked a long list of patterns and levels that traders care about —
-support and demand zones, trendlines, channels, double tops/bottoms,
-head & shoulders, fibonacci levels, fair-value gaps, liquidity sweeps,
-candlestick patterns and a few others — and turned each into a rule that
-a computer can spot on a chart.
+| Doc | Purpose |
+|---|---|
+| [`EXPERIMENTS.md`](EXPERIMENTS.md) | Master index — every test E001+ |
+| [`PROTOCOL_DISCIPLINE.md`](PROTOCOL_DISCIPLINE.md) | Binding rules (pre-reg, FDR, splits) |
+| [`DATA_LEDGER.md`](DATA_LEDGER.md) | Which pair/TF/slice each experiment used |
+| [`ai_context.md`](ai_context.md) | Compact state for fresh chats |
 
-Then, on seven years of historical price data, I asked: when one of these
-events happens, does the next few hours move more in the expected
-direction than at a random moment in time? I split the data into a
-**screen** half (used to look for promising signals) and a **confirm**
-half (kept hidden until the screen was finished, used to test whether the
-signals still worked on fresh data). I also re-ran the whole thing on
-GBP/USD as an independent check.
+---
 
-Statistical multiplicity, time-of-day biases, and the temptation to
-re-tune things after seeing results are all genuine traps, so the rules
-of the experiment were written down **before** I looked at any results.
+## Experiment timeline
 
-## What I found
+| ID | What | Where |
+|---|---|---|
+| E001 | ICT concept ablation → zone survivor | Agent (documented here) |
+| E002 | Zone definitive grid (13 BH cells) | Agent |
+| E003 | Holdout IS/OOS | Agent |
+| E004 | Walk-forward → H4/all deployed | Agent |
+| E005 | Cross-pair frozen + sealed 2026 | Agent |
+| E006 | Price-action confluence screening | Lab (`conflab/`, `output/`) |
+| E007 | Impulse-origin bounce | Lab (`output/test_b/`) |
 
-A short version (the full write-up with charts and numbers is in
-[`REPORT.md`](REPORT.md)):
+Each folder under [`experiments/`](experiments/) has `PROTOCOL.md`,
+`REPORT.md`, and `MANIFEST.md`.
 
-- Out of the patterns I tested, **a handful look genuinely informative**,
-  but the effects are modest — useful as one input among many, not as a
-  standalone strategy.
-- The most interesting two: **a wick below a rising trendline that closes
-  back above** (a swept support trendline) and **the first touch of the
-  upper edge of a parallel channel** — both held up in out-of-sample
-  tests.
-- Everything else either failed to beat random timing, or didn't appear
-  often enough in seven years to be sure either way.
+---
 
-Nothing here trades real money. The lab is observation-only by design,
-and any finding can only influence my main trading agent after going
-through that agent's separate, stricter validation pipeline.
+## Running lab code
 
-## Repo guide
+```bash
+# From confluence-lab root; uses agent venv + parquet cache
+export PYTHONPATH=../eurusd-ai-agent:.
 
-- [`REPORT.md`](REPORT.md) — the research report (methods, results,
-  limitations, what I'd do next).
-- [`PROTOCOL.md`](PROTOCOL.md) — the rules of the experiment, written
-  before any results existed.
-- [`conflab/`](conflab/) — the code.
-- [`output/`](output/) — the actual data the report is based on
-  (registries, logs, the summary figure).
+../eurusd-ai-agent/.venv/bin/python -m pytest -q
+
+# E006 Stage 1 example
+../eurusd-ai-agent/.venv/bin/python scripts/run_stage1.py --symbol EURUSD
+
+# E007 Stage 1 example
+../eurusd-ai-agent/.venv/bin/python scripts/test_b/run_stage1.py
+```
+
+---
+
+## Adding a new experiment
+
+1. Register **E0XX** in `EXPERIMENTS.md`.
+2. Copy `experiments/_TEMPLATE/` → `experiments/E0XX_name/`.
+3. Write and commit `PROTOCOL.md` **before** screening data.
+4. Update `DATA_LEDGER.md` when Stage 1 starts.
+5. Commit results + `REPORT.md` + `MANIFEST.md`.
+
+---
+
+## Legacy paths
+
+Root `PROTOCOL.md`, `REPORT.md`, and `protocols/TEST_B_PROTOCOL.md` redirect
+to **E006** / **E007** canonical folders. Scripts still write to `output/`
+and `output/test_b/`; manifests link both paths.
+
+Formal PDF: [`docs/reports/confluence_experiment_research_report.pdf`](docs/reports/confluence_experiment_research_report.pdf) (E006-era write-up).
