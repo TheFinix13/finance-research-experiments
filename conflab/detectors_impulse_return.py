@@ -42,7 +42,16 @@ log = logging.getLogger(__name__)
 
 @dataclass(frozen=True)
 class ImpulseReturnConfig:
-    """Locked-by-TF detector knobs (protocol §3)."""
+    """Locked-by-TF detector knobs (protocol §3 + amendment 6.2).
+
+    `max_retrace_frac` was originally locked at 0.30 (protocol §3.1) but
+    the pre-data-screen feasibility diagnostic (count-only, no MFE peek)
+    found <30 candidate legs per cell on EURUSD H4/H1 2015-2021 at 0.30.
+    Amendment 6.2 (committed 2026-06-16, BEFORE outcomes were inspected)
+    relaxed the ceiling to 0.50, the smallest value that crosses the
+    n_gate=30 in every cell. The runner uses 0.50 by default; 0.30 is
+    still the unit-test default to keep the synthetic fixtures honest.
+    """
     M_atr: float = 1.5      # gridded in {1.0, 1.5, 2.0} at Stage 1
     M_pips: float = 40.0    # H4 default; H1 uses 20
     K: int = 3              # max bars to complete impulse
@@ -57,14 +66,17 @@ def _pip(value: float, pip_size: float) -> float:
 
 
 def _impulse_leg(highs: np.ndarray, lows: np.ndarray, t: int, K: int,
-                 direction: int) -> tuple[bool, float, float]:
+                 direction: int, *, max_retrace_frac: float = 0.30
+                 ) -> tuple[bool, float, float]:
     """Return (valid, leg_top, leg_bottom). For up-impulse, leg_top is the
     final-bar high and leg_bottom is the start-bar low; the worst-retrace
-    check uses bar-by-bar drawdown from the running maximum.
+    check uses bar-by-bar intrabar drawdown from the running maximum (or
+    minimum, mirrored for down impulses).
     """
     start = t - K + 1
     if start < 0:
         return False, 0.0, 0.0
+    cap = float(max_retrace_frac) + 1e-9
     if direction > 0:
         leg_top = float(highs[t])
         leg_bottom = float(lows[start])
@@ -75,7 +87,7 @@ def _impulse_leg(highs: np.ndarray, lows: np.ndarray, t: int, K: int,
         for j in range(start, t + 1):
             running_max = max(running_max, float(highs[j]))
             drawdown = running_max - float(lows[j])
-            if drawdown / leg_height > 0.30 + 1e-9:
+            if drawdown / leg_height > cap:
                 return False, 0.0, 0.0
         return True, leg_top, leg_bottom
     else:
@@ -88,7 +100,7 @@ def _impulse_leg(highs: np.ndarray, lows: np.ndarray, t: int, K: int,
         for j in range(start, t + 1):
             running_min = min(running_min, float(lows[j]))
             run_up = float(highs[j]) - running_min
-            if run_up / leg_height > 0.30 + 1e-9:
+            if run_up / leg_height > cap:
                 return False, 0.0, 0.0
         return True, leg_top, leg_bottom
 
@@ -163,7 +175,9 @@ def detect_impulse_origin_return_events(
         if not (np.isfinite(a[t]) and a[t] > 0):
             continue
 
-        valid, leg_top, leg_bottom = _impulse_leg(h, l, t, cfg.K, direction)
+        valid, leg_top, leg_bottom = _impulse_leg(
+            h, l, t, cfg.K, direction,
+            max_retrace_frac=cfg.max_retrace_frac)
         if not valid:
             continue
         leg_height = leg_top - leg_bottom

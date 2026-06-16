@@ -226,14 +226,80 @@ out as "frozen after Stage 1 screen; never relearned per pair/stage."
 
 ## 6. Amendments
 
-(Appended in commit-by-commit order. The first amendment slot is
-reserved for the frozen friction quartile cutoffs after Stage 1.)
+(Appended in commit-by-commit order. Each amendment is committed before
+the analysis it enables runs, so the audit trail is the commit hash.)
 
-### Amendment 6.1 — friction quartile cutoffs (added after Stage 1 only)
+### Amendment 6.2 — `max_retrace_frac`: 0.30 → 0.50 (2026-06-16, pre-MFE)
 
-PLACEHOLDER. Will be filled with the EURUSD-screen-split values:
-`Q1, Q2, Q3` (z-summed friction score). Frozen after Stage 1; never
-relearned per pair or per stage.
+**Why amended.** §3.1's `max_retrace_frac = 0.30` (intrabar drawdown from
+the running max ≤ 30% of leg height at every bar in the K-bar window)
+was found to be too strict for real H4/H1 forex bars: a count-only
+diagnostic on EURUSD 2015-2021 (no MFE outcome touched) returned
+
+```
+EURUSD H4  frac=0.30 M_atr=1.0 → up=1   down=1
+EURUSD H4  frac=0.40 M_atr=1.0 → up=3   down=4
+EURUSD H4  frac=0.50 M_atr=1.0 → up=61  down=55
+EURUSD H1  frac=0.30 M_atr=1.0 → up=2   down=4
+EURUSD H1  frac=0.40 M_atr=1.0 → up=13  down=15
+EURUSD H1  frac=0.50 M_atr=1.0 → up=273 down=305
+```
+
+i.e. 1–4 candidate legs across 7 years per H4 cell at the original
+ceiling — at or below the n_gate=30 — meaning Stage 1 is *not testable*
+at that setting on H4 even before the return-touch filter further
+shrinks the count. This is the infeasibility case that the parent
+study's instructions explicitly anticipated.
+
+**What changed.** `max_retrace_frac` is relaxed to **0.50** — the
+smallest value at which every cell in the §3.5 grid crosses the n=30
+floor before the return-touch filter is applied. 0.50 is still well
+within the textbook "clean leg" envelope (most ICT/SMC heuristics call
+anything up to ~0.62/0.79 a clean retrace; 0.50 is the standard
+mid-point fib). This is a single, one-shot relaxation — not a sweep
+toward a positive outcome.
+
+**Audit guarantees.**
+1. The diagnostic that motivated the change inspected only **candidate
+   counts**, never MFE in events or controls. The MFE outcome code path
+   is downstream of the leg filter and was not exercised.
+2. The original `max_retrace_frac=0.30` Stage-1 run is preserved as the
+   cautionary record (`output/test_b/stage1_EURUSD_screen_<old_stamp>.jsonl`).
+3. Detector code: `cfg.max_retrace_frac` is now configurable and the
+   runner pins it to 0.50 in `scripts/test_b/_lib.MAX_RETRACE_FRAC`.
+   Unit tests retain 0.30 to keep synthetic fixtures honest under the
+   tightest setting.
+4. `max_retrace_frac` will not be touched again. If 0.50 still produces
+   an unscientific outcome (e.g. zero events in a cell after the
+   return-touch filter), the cell is reported as `parked_insufficient_n`
+   and the protocol is not amended further.
+
+### Amendment 6.1 — friction quartile cutoffs (frozen 2026-06-16)
+
+Pooled 540 unique events across the 12-cell EURUSD screen-split family
+(deduplicated by `(tf, direction, impulse_end_idx, touch_bar_idx)`).
+Component-wise reference (mean, std):
+
+| component | mean | std |
+|---|---|---|
+| `wick_density` | (see `output/test_b/stage1_friction_reference_<stamp>.json`) | |
+| `oscillation_count` | ″ | ″ |
+| `path_drawdown_ratio` | ″ | ″ |
+| `time_in_chop_band` | ″ | ″ |
+
+Quartile boundaries on the simple-sum-of-z-scores friction score:
+
+| boundary | value |
+|---|---|
+| Q1 ↔ Q2 | **−1.1916** |
+| Q2 ↔ Q3 | **−0.2472** |
+| Q3 ↔ Q4 | **+0.9864** |
+
+These are frozen for any subsequent Test B work that conditions on
+friction. Stage 4 was not executed in the 2026-06-16 run because the
+H1 (main) stop rule fired at Stage 1 (§3.7); the cutoffs are recorded
+here so a future re-look (under a fresh pre-registration) can use them
+without retraining.
 
 ## 7. Headline statement (target form)
 

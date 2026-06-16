@@ -1,0 +1,30 @@
+{
+  "fit_at": "2026-06-16_1656",
+  "symbol": "EURUSD",
+  "split_start": "2015-01-01",
+  "split_end": "2021-12-31",
+  "n_unique_events": 540,
+  "reference_mean_std": {
+    "wick_density": {
+      "mean": 0.5476870890904907,
+      "std": 0.14887065894225499
+    },
+    "oscillation_count": {
+      "mean": 1.5,
+      "std": 3.310197487674626
+    },
+    "path_drawdown_ratio": {
+      "mean": 0.6490065238035083,
+      "std": 0.33409293496763404
+    },
+    "time_in_chop_band": {
+      "mean": 0.13014129145665762,
+      "std": 0.2788176873545718
+    }
+  },
+  "quartile_cutoffs": {
+    "Q1_Q2": -1.1915537909668859,
+    "Q2_Q3": -0.24718200570219334,
+    "Q3_Q4": 0.9864357911256914
+  }
+}
