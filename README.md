@@ -1,8 +1,9 @@
-# Trading AI Confluence Lab
+# Finance Research Experiments
 
-Central **research workshop** for hypothesis tests about price structure,
-confluence, and reaction strength. Observation-only — nothing here trades
-or changes the live agent without the agent's own validation pipeline.
+Central **research workshop** for hypothesis tests across the finance/trading
+AI stack (forex agent today; portfolio agent and dividend agent next).
+Observation-only — nothing here trades or changes any live agent without
+that agent's own validation pipeline.
 
 **Production agent:** [`eurusd-ai-agent`](../eurusd-ai-agent) (separate repo).
 
@@ -39,7 +40,7 @@ Each folder under [`experiments/`](experiments/) has `PROTOCOL.md`,
 ## Running lab code
 
 ```bash
-# From confluence-lab root; uses agent venv + parquet cache
+# From finance-research-experiments root; uses agent venv + parquet cache
 export PYTHONPATH=../eurusd-ai-agent:.
 
 ../eurusd-ai-agent/.venv/bin/python -m pytest -q

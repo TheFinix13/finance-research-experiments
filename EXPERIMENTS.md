@@ -33,7 +33,7 @@ Register in this table **before** writing `experiments/E00X_*/PROTOCOL.md`.
 ## Agent-side vs lab-side
 
 | E001–E005 | Ran in `eurusd-ai-agent` (validation harness). Documented here retrospectively; code stays in agent. |
-| E006–E007 | Ran in `confluence-lab`. Code and outputs live here. |
+| E006–E007 | Ran in this repo (`finance-research-experiments`). Code and outputs live here. |
 
 Production strategy locked in agent: **`zone_d1_against` / H4 / all** on
 EURUSD, GBPUSD, USDCAD. See E004 + E005 reports.

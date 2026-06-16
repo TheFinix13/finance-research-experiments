@@ -45,12 +45,12 @@ pair via `P(MFE ≥ 0.5R within W bars)` reach probabilities.
 
 | Concern | Test B path |
 |---|---|
-| Pre-registration | `confluence-lab/protocols/TEST_B_PROTOCOL.md` (this file) |
+| Pre-registration | `protocols/TEST_B_PROTOCOL.md` (this file, in repo root) |
 | Detector | `conflab/detectors_impulse_return.py` (NOT in `events.all_detectors`) |
 | Friction module | `conflab/friction.py` (pure functions, unit tested) |
 | Runners | `scripts/test_b/run_stage1.py`, `run_stage2.py`, `run_stage3.py`, `run_stage4_friction.py`, `render_figures.py` |
 | Outputs | `output/test_b/` (JSONL registries) and `output/test_b/figures/` (PNGs) |
-| Report | `confluence-lab/REPORT_TEST_B.md` |
+| Report | `REPORT_TEST_B.md` (repo root, redirects to this folder's `REPORT.md`) |
 
 Test A's PROTOCOL.md, REPORT.md, registries, and detector dictionary are
 not modified. The shared `conflab.screening`, `conflab.stage2`,

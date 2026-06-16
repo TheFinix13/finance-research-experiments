@@ -1,9 +1,9 @@
 ---
-description: ai_context.md routine for confluence-lab
+description: ai_context.md routine for finance-research-experiments
 alwaysApply: true
 ---
 
-# ai_context.md routine (confluence-lab)
+# ai_context.md routine (finance-research-experiments)
 
 `ai_context.md` (repo root) is the compact state summary used to start
 fresh chats cheaply in THIS workspace. It must never go stale.

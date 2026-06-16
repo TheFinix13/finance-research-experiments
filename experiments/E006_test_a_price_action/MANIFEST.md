@@ -3,7 +3,7 @@
 | Field | Value |
 |---|---|
 | Pre-registered | 2026-06-12 (`PROTOCOL.md` in this folder) |
-| Pre-reg commit | confluence-lab history (see git log for `PROTOCOL.md`) |
+| Pre-reg commit | repo history (see git log for `PROTOCOL.md`) |
 | Report | `REPORT.md` (canonical; root `REPORT.md` redirects here) |
 
 ## Code (lab)

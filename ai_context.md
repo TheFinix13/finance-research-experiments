@@ -1,4 +1,4 @@
-# AI Context — confluence lab (updated 2026-06-16)
+# AI Context — finance research experiments (updated 2026-06-16)
 
 Read this first in a fresh chat. This repo is the **central research workshop**
 for all hypothesis tests. The trading agent (`eurusd-ai-agent`) executes only
