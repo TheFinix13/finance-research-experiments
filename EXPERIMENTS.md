@@ -29,7 +29,7 @@ Master index of every hypothesis test in this repository. Numeric IDs
 
 | ID | Short name | Repo folder | Pre-reg | Notes |
 |---|---|---|---|---|
-| E010 | Stage-2b equal_highs_pool | [E010_equal_highs_pool_stage2b](experiments/E010_equal_highs_pool_stage2b/) | yes (`<HEAD-after-commit>`, 2026-06-24) | H1 `equal_highs_pool` × 10 M15 setups; selection-term + displacement-null lift ≥ +0.10 ATR; BH-FDR α=0.05; Stage 1 EURUSD 2015–2021, Stage 2 EURUSD 2022–2024, Stage 3 GBPUSD 2015–2021 (cache-constrained), Stage 4 EURUSD H1+M15 2025–2026-06-09 (sealed, reserved). Runs parallel with M001; A6 Nagi confluence-only deployment-grade waits on E010 alive verdict. |
+| E010 | Stage-2b equal_highs_pool | [E010_equal_highs_pool_stage2b](experiments/E010_equal_highs_pool_stage2b/) | yes (`fd8eb3d`, 2026-06-24) | H1 `equal_highs_pool` × 10 M15 setups; selection-term + displacement-null lift ≥ +0.10 ATR; BH-FDR α=0.05; Stage 1 EURUSD 2015–2021, Stage 2 EURUSD 2022–2024, Stage 3 GBPUSD 2015–2021 (cache-constrained), Stage 4 EURUSD H1+M15 2025–2026-06-09 (sealed, reserved). Runs parallel with M001; A6 Nagi confluence-only deployment-grade waits on E010 alive verdict. |
 
 Register in this table **before** writing `experiments/E00X_*/PROTOCOL.md`.
 
