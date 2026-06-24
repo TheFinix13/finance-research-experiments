@@ -20,7 +20,7 @@ from __future__ import annotations
 
 import json
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterable, Iterator, Protocol
@@ -140,19 +140,39 @@ def _apply_guards(
 class _JsonlBackend:
     """Append-only JSONL backend keyed by (agent_id, UTC date).
 
-    Reads are non-cached for Phi2.5 (research-standards section 8). They
-    scan only the files that overlap the requested window — for the
-    scaffold this means "scan everything" which is fine at <= 10^4 rows.
+    Reads scan only the files that overlap the requested window.
+
+    Performance notes (Φ4.1 hardening, doctrine sec 3.9 is unchanged):
+    Dedup uses a `set` keyed by `thought_id`, and the in-memory mirror
+    maintains a per-symbol bucket so that a `read(..., symbol=X)` call
+    only scans thoughts on `X` rather than the entire ledger. Both are
+    pure performance optimisations -- guard semantics in `_apply_guards`
+    are preserved verbatim, and the disk-side JSONL files are byte-
+    identical to the pre-optimisation backend.
+
+    The Φ4 squad gate ran with the legacy O(N) append/read fine (12.5k
+    bars × 4 agents -> ~50k Thoughts). The Φ4.1 expanded squad runs
+    53k bars × ~5 active agents -> ~265k Thoughts; with the old O(N²)
+    aggregate cost the harness did not complete inside the user's
+    interactive budget. Index keeps the run linear in bar count.
     """
 
     root: Path
-    _in_memory: list[Thought]  # mirror for fast reads during a single run
+    _in_memory: list[Thought]
+    # Indexes (rebuilt incrementally on each append). Keep the list as
+    # the source of truth so iteration order across all thoughts is
+    # deterministic (insertion order) -- callers that rely on that
+    # ordering (e.g. F17 audit replays) see no change.
+    _seen_ids: set[str] = field(default_factory=set)
+    _by_symbol: dict[str, list[Thought]] = field(default_factory=dict)
 
     def append(self, t: Thought) -> None:
-        # Idempotency: if a Thought with the same id is in memory, drop.
-        if any(x.thought_id == t.thought_id for x in self._in_memory):
+        # Idempotency: O(1) lookup instead of O(N) scan.
+        if t.thought_id in self._seen_ids:
             return
+        self._seen_ids.add(t.thought_id)
         self._in_memory.append(t)
+        self._by_symbol.setdefault(t.symbol, []).append(t)
         if self.root is None:
             return
         day = _utc_date_key(t.timestamp)
@@ -182,6 +202,19 @@ class _JsonlBackend:
                         continue
                     seen.add(t.thought_id)
                     yield t
+
+    def iter_by_symbol(self, symbol: str) -> Iterator[Thought]:
+        """Iterate ONLY the in-memory thoughts matching `symbol`.
+
+        Used by `FullLedger.read` when the caller passes a `symbol`
+        filter. The on-disk side is intentionally skipped here: the
+        in-memory mirror is authoritative within a single run (replay
+        continuations across runs use `iter_all`).
+        """
+        bucket = self._by_symbol.get(symbol)
+        if bucket is None:
+            return iter(())
+        return iter(bucket)
 
 
 # ---------------------------------------------------------------------------
@@ -213,6 +246,18 @@ class FullLedger:
         current_tick: int,
         symbol: str | None = None,
     ) -> list[Thought]:
+        # Fast path: per-symbol bucket when a `symbol` filter is given.
+        # The disk-side replay-continuation source still scans iter_all
+        # if no symbol is specified (preserves existing semantics).
+        if symbol is not None and (
+            self._backend.root is None or not self._backend.root.exists()
+        ):
+            return _apply_guards(
+                self._backend.iter_by_symbol(symbol),
+                as_of=as_of,
+                current_tick=current_tick,
+                symbol=symbol,
+            )
         return _apply_guards(
             self._backend.iter_all(),
             as_of=as_of,
