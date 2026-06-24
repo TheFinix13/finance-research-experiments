@@ -1,14 +1,23 @@
 # 06 — Blue Lock Doctrine
 
-**Status:** `DRAFT v0.2` — 2026-06-24. v0.2 resolves Q-doc-1 through
-Q-doc-5 (see §8), adds §3.1.b on the principled-form of ego
-(information ratio across peers), formalises the A+ setup score
-(§3.7) and replaces the universal H4 emission cadence with per-agent
-home-TF cadence gated by A+ threshold, expands metavision in §1.1 to
-its evolved order-flow form (with Isagi v1's primitive seed being the
-existing `zone_d1_against` detector), and introduces the **Sentinel**
-as a non-character architectural role for external-shock containment
-(§4.2). Q-doc-6 is added and resolved together with the others.
+**Status:** `DRAFT v0.2` — 2026-06-24. v0.2 (this revision, second
+pass) formalises the **Thought Ledger** as a first-class object
+(§3.8), the **three-tier access model** decided empirically by ΔInfo
+(§3.9), and the **canon-role vs information-tier** orthogonality
+(§3.10); splits the striker base class into an **`observe` / `intend`
+pair** (§4.1); appends **Sentinel hard rules R1–R5** for the $100 /
+1:1000 account (§4.3); and cites E006 Stage-2 exploratory evidence
+(`audits/2026-06-24_E001-E007_audit.md` §2.6, §4.3) inside the
+chemical-reaction discussion (§3.3). The first-pass v0.2 resolved
+Q-doc-1 through Q-doc-5 (see §8), added §3.1.b on the principled-form
+of ego (information ratio across peers), formalised the A+ setup
+score (§3.7) and replaced the universal H4 emission cadence with
+per-agent home-TF cadence gated by A+ threshold, expanded metavision
+in §1.1 to its evolved order-flow form (with Isagi v1's primitive
+seed being the existing `zone_d1_against` detector), and introduced
+the **Sentinel** as a non-character architectural role for external-
+shock containment (§4.2). Q-doc-6 is added and resolved together with
+the others.
 
 > "Soccer is a sport where you devour each other to score." — Ego Jinpachi
 >
@@ -98,6 +107,10 @@ or in `04-quant-foundations.md`.
 | Coach (Ego Jinpachi) | Risk Conductor + Allocator | architectural layer | `03-architecture` |
 | Sentinel | External-shock auxiliary | architectural role | §4.2 |
 | Striker | Specialist agent | base class | §4 |
+| Thought Ledger | Append-only journal of every agent's reasoning | JSONL stream + `ThoughtLedger` reader | §3.8 |
+| Thought | One agent's per-tick narrative + tags + optional coordinate | `Thought` dataclass | §3.8 |
+| Canon role | Fixed identity layer (weapon, ego, narrative voice) | `CanonRole` dataclass | §3.10 |
+| Information tier | Empirical read-permission layer (ΔInfo-decided) | Tier ∈ {1, 2, 3} | §3.9, F17 |
 | Opponent (Kaiser/Loki) | Human discretionary trades | adversarial benchmark | §5, F14 |
 | Pitch | Demo account ($100, 1:1000) | environment | §6 |
 | Goal | Closed profitable trade scored by TQS | event | §3.5 |
@@ -248,6 +261,19 @@ SL is the **tightest** SL among participants — any agent's
 invalidation pulls the whole trade out. This bakes ego back in:
 "if any of you was wrong, we're all out."
 
+**Empirical prior for the chemical-reaction layer.** E006 Stage-2
+exploratory (the pre-M001 lab) found that H1 `equal_highs_pool`
+lifts every M15 setup placed under it by +0.10 to +0.46 ATR
+(selection term, displacement null), across 65 H1-context × M15-setup
+pairs. See `audits/2026-06-24_E001-E007_audit.md` §2.6 and §4.3 for
+the per-cell numbers and the protocol notes. This is the first piece
+of *evidence* (rather than analogy) that the late-fusion frame —
+context primitive amplifies setup primitive — produces non-trivial
+lift in FX intraday data. E010 will validate this independently in
+parallel with M001 development (pre-registered Stage-2b); A6 Nagi's
+deployment-grade confluence layer waits for E010 to confirm before
+graduating, but the doctrine treats this as a directional prior now.
+
 ### 3.4 Devour (competitive capital reallocation)
 
 Standard ensemble methods reweight by Sharpe or PnL. We reweight by
@@ -378,39 +404,169 @@ emits *negative* coordinates only). The character egos drive the
 firing personality; the principled-form ego (§3.1.b) eventually
 replaces the placeholder values once the data tells us who is unique.
 
+### 3.8 The Thought Ledger
+
+A first-class append-only journal of agent reasoning. Every agent
+emits `Thought` objects at every observation tick; some Thoughts
+crystallise into `AgentProposal` objects at decision ticks. The
+ledger is the canonical evidence stream the dashboard renders, the
+post-hoc evaluation harness consumes (F14, F17), and the Tier-2
+agents (per §3.9) read during decision.
+
+```python
+@dataclass(frozen=True)
+class Thought:
+    schema_version: int           # = 1 for v0; bumped on schema change
+    agent_id: str
+    tick_id: int                  # global squad tick (monotonic)
+    timestamp: datetime
+    symbol: str
+    narrative: str                # 1-3 sentence prose reasoning
+    tags: list[str]               # semantic labels:
+                                  #   ["supply_zone", "d1_against",
+                                  #    "h1_pattern", ...]
+    confidence_in_thought: float  # [0, 1]
+    expected_action: str | None   # e.g. "long_on_break", "wait", None
+    coordinate: Coordinate | None # optional; None for observation-only
+    decision_horizon: datetime    # latest bar timestamp this thought
+                                  # could legitimately have used
+    ttl_ticks: int                # writer's TF ticks; bounds reads
+    references: list[str]         # IDs of other thoughts this builds
+                                  # on (empty in v0 for Tier-3 agents)
+```
+
+Two architectural guarantees the schema gives us:
+
+- **`decision_horizon` is a look-ahead guard.** Reading agents at
+  tick T may only consume thoughts where `decision_horizon ≤ T's
+  bar_time`. This is the architectural translation of the E006 hour-
+  matched-controls episode (where uniform-time controls leaked 3.7×
+  hour-of-day variance into the null — fixed pre-MFE by amendment
+  v2.1). See `audits/2026-06-24_E001-E007_audit.md` §2.6 and §3.2.
+  The same discipline applies to inter-agent reads: a thought whose
+  validity extends past `decision_horizon` is dropped by the reader,
+  not the writer.
+- **`references` only points BACKWARDS in time** (`tick_id <
+  current_tick`). Same-tick reads are forbidden. This breaks
+  reflexive loops between writer and reader agents — Reo cannot read
+  Isagi's current-tick thought before forming his own, only Isagi's
+  prior-tick thoughts.
+
+Forward-declared in `07-research-standards.md` §6 as `Thought` with
+the same `schema_version` / `decision_horizon` / `ttl_ticks` fields;
+the v0.2 schema above is the formalisation that satisfies that
+forward declaration. v0.1 consumers may assume schema 1.
+
+Implementation lives at `sim/thought_ledger/` (Φ2.5+), with one JSONL
+file per agent per UTC day. Consumer API is a thin reader that
+returns the slice satisfying both guards.
+
+### 3.9 Three-tier access model
+
+Who reads the Thought Ledger:
+
+| Tier | Who | Read access |
+|---|---|---|
+| **Tier 1** (always read) | Human dashboard, the Aggregator (for journalling fused decisions), the post-hoc evaluation harness (for F14 adversarial comparison and F17 ΔInfo) | Full ledger, no restriction |
+| **Tier 2** (conditional read, decided empirically) | Agents whose ΔInfo > 0 and bootstrap-significant at α = 0.05 | Full ledger (subject to `decision_horizon`/`ttl_ticks`/`references` guards from §3.8) |
+| **Tier 3** (information-isolated) | Agents whose ΔInfo ≤ 0 (or not yet measured at C1 promotion); their edge is independently measurable and acts as the **control** for Tier-2 agents | Own agent's past thoughts only (`agent_id == self`) |
+
+**Critical: tier assignment is empirical, NOT a priori.** Every agent
+is trained and evaluated **twice** on identical windows — once with
+full Thought Ledger access (informed), once with ledger access
+restricted to the agent's own thoughts (isolated). The ΔInfo metric
+(F17 in `04-quant-foundations.md`) decides which deployment ships.
+
+This supersedes the placeholder tier definitions in
+`07-research-standards.md` v0.1 §7.2 / §7.3 (which described Tier 2
+as "own + one cluster of peers" and Tier 3 as "audit-only"). Those
+definitions were forward-declared research debt before F17 existed;
+v0.2 lands the data-driven model above.
+
+### 3.10 Canon role vs information tier
+
+Two orthogonal layers:
+
+| Layer | Set how | Mutable? |
+|---|---|---|
+| **Canon role** (weapon, ego, preferred coordinate type, narrative voice, target hold) | A priori, from Blue Lock canon | Fixed at Φ0 |
+| **Information tier** (reads ledger? Y/N, scope of reads) | Empirically, from ΔInfo measurement | Reviewed each phase gate |
+
+A Tier-3 Bachira still has Bachira's improvisational identity in
+narrative + tags + weapon — he just doesn't read peers' thoughts
+during decision. Both Bachira-isolated and Bachira-informed are
+evaluated; the data picks the deployment. If informed Bachira beats
+isolated Bachira by enough to clear the α = 0.05 bootstrap on F17,
+he ships with ledger access; otherwise he ships information-isolated
+and his isolated performance becomes part of the Tier-2 control
+comparison for the next phase.
+
+This is the formal answer to a confusion that ran through v0.1: the
+character-feel egos in `05-agent-roster-v0.md` (A1 0.60, A7 1.00,
+A10 0.00, etc.) are *canon* — they belong to the agent's identity
+and stay fixed. The information tier is *empirical* and lives on a
+different axis. A high-canon-ego agent (A7 Barou) can be Tier-3 if
+F17 says his contribution is redundant with A4 Chigiri's; a low-
+canon-ego agent (A10 Kunigami) can be Tier-2 if his anti-tilt
+signal contains marginal information no one else carries.
+
+The doctrine governs *what an agent is*; the tier governs *what the
+agent is allowed to read* in the ensemble's collective deliberation.
+
 ---
 
 ## 4. The striker base class (Φ3 stub)
 
+### 4.1 `BlueLockStriker` — the observe / intend split
+
 Every roster agent inherits from `BlueLockStriker`. The class
-captures the canonical contract — coordinate emission, proposal
-emission, KPI reporting — without prescribing strategy logic.
+captures the canonical contract — Thought emission on every tick,
+Proposal emission only at home-TF close, KPI reporting weekly —
+without prescribing strategy logic. v0.2 splits the v0.1 single
+`emit_proposal` entry point into a **two-method protocol**: every
+agent always *observes*, only sometimes *intends*.
 
 ```python
-class BlueLockStriker(ABC):
+class BlueLockStriker(Protocol):
     """Base contract for every roster agent.
 
-    Three things every striker must do:
-      1. Emit coordinates on H4 close (forward-looking claim).
-      2. Emit proposals when triggers fire inside its coordinates.
-      3. Report KPIs weekly.
+    Two-method protocol:
+      1. `observe` is called every squad tick. Always emits a Thought.
+         Tier-3 agents (per §3.9) receive a redacted ledger view
+         containing only their own past thoughts; Tier-2 agents receive
+         the full ledger subject to the §3.8 guards.
+      2. `intend` is called only at the agent's `home_tf` close. May
+         return a Proposal or None.
+
+    Weekly KPI reporting (assertion / coexistence / devour / goal /
+    beauty, doctrine §3.6) has a default implementation that reads
+    from the per-agent journal; weapon-specific overrides allowed.
     """
 
     agent_id: str
-    weapon: str         # one-line description of the agent's edge
-    ego: float          # [0, 1] — see §3.1
-    target_hold: timedelta  # for TQS time_score
-    canon_player: str   # "Isagi", "Bachira", ... (for ledger)
+    canon_role: CanonRole           # fixed at Phi0; carries weapon,
+                                    # ego, target_hold, canon_player,
+                                    # narrative_voice
+    home_tf: Timeframe              # primary cadence for `intend`
+    symbols: list[Symbol]           # whitelist of tradable symbols
 
-    @abstractmethod
-    def emit_coordinates(self, state: MarketState) -> list[Coordinate]: ...
+    def observe(
+        self,
+        market: MarketState,
+        ledger: ThoughtLedger,      # full or redacted, per tier
+    ) -> Thought:
+        """Called every tick. Always emits a Thought. The thought
+        may be observation-only (coordinate is None, expected_action
+        is None or 'wait'); it is appended to the ledger regardless."""
 
-    @abstractmethod
-    def emit_proposal(
-        self, state: MarketState, active_coordinate: Coordinate,
+    def intend(
+        self,
+        market: MarketState,
+        my_recent_thought: Thought,  # this tick's own observation
     ) -> AgentProposal | None:
-        """Called when price enters one of this agent's active
-        coordinate boxes. Return a full proposal or None."""
+        """Called only at home_tf close. May return a full Proposal
+        if the agent's A+ score (§3.7) clears its threshold and a
+        trigger fires inside an active coordinate; else None."""
 
     def report_kpis(self, week_id: str) -> dict:
         """Default implementation reads from the journal and computes
@@ -418,10 +574,19 @@ class BlueLockStriker(ABC):
         only override for weapon-specific metrics."""
 ```
 
+Decoupling observation from intention means the ledger captures the
+*evolution* of each agent's view, not just its final decisions.
+Canonical Blue Lock: players constantly observe the pitch; they only
+*intend* when an opportunity crystallises. v0.1's `emit_proposal`
+collapsed these two beats into one and lost everything in between.
+
 The base class lives at `sim/striker.py` (Φ3). Existing
 `SupplyDemandAlpha` is wrapped into `IsagiYoichi(BlueLockStriker)`
-as the seeded first agent — see `05-agent-roster-v0.md` for full
-character roster.
+as the seeded first agent — its v0.1 `emit_proposal` becomes
+`intend`, and a new `observe` is written that emits a `Thought` per
+H1 close with tags `["zone_d1_against", "h4_close", ...]` and
+`coordinate = None` on most ticks. See `05-agent-roster-v0.md` for
+full character roster.
 
 ### 4.2 The Sentinel (Q-doc-5 resolution)
 
@@ -467,6 +632,52 @@ a `BlueLockStriker` subclass — it has no Coordinate, no proposal, no
 TQS. It is an architectural auxiliary that sits between the
 Aggregator output and the Risk Conductor's order ladder, with veto
 power and an audit log. Operational-translation row added in §2.
+
+### 4.3 Sentinel hard rules for the $100 / 1:1000 account
+
+The Sentinel is not a Blue Lock character; it is the systemic risk
+role. The §4.2 triggers handle external shocks (correlation jumps,
+spread spikes, calendar events, DXY shocks). The rules below handle
+the *account-shape* shocks that are unique to a 0.01-min-lot,
+$100-equity, 1:1000-leverage pitch. **Any single violation = trade
+blocked.** No agent's conviction overrides a hard rule.
+
+- **R1 — Min-lot risk floor.** If `realised_SL_distance_pips × 0.01
+  lot pip_value` exceeds **5 % of current equity**, the trade is
+  blocked regardless of conviction. On a $100 account with EURUSD
+  pip value ≈ $0.10 at 0.01 lot, the implied max stop distance is
+  ~50 pips. Wider stops are not "size down" cases — they are
+  *refusals*. The doctrine accepts that some setups become untradable
+  at this pitch by design (§6).
+- **R2 — Discrete position sizing.** Position sizes are discrete
+  (0.01, 0.02, 0.03, …) not continuous. The Capital Allocator's HRP
+  weights produce a *desired* fractional lot; the Sentinel rounds to
+  the nearest min-lot multiple. **Rounding direction is always "down"**
+  (toward smaller risk). 0.017 lot becomes 0.01, not 0.02.
+- **R3 — Pass bias.** Most ticks, most agents emit observation-only
+  Thoughts (`coordinate = None`, `expected_action = None | "wait"`).
+  The expected proposal-rate per agent per day is typically `< 1`.
+  The Sentinel's audit log flags any agent whose daily proposal rate
+  exceeds 3 — that is over-firing, not edge, and triggers a roster
+  review.
+- **R4 — Concentration cap.** No single agent receives `> 40 %` of
+  risk budget on any tick. This sits *above* the v0.1 HRP allocator's
+  35 % cap (architecture §4) as a hard backstop — if an HRP edge
+  case produces a 38 % weight, the allocator passes; if a bug
+  produces a 60 % weight, the Sentinel blocks.
+- **R5 — Loss-streak dampener.** Three consecutive losses → **50 %
+  risk-scale** for the next 24 hours, applied to all agents. This is
+  distinct from A10 Kunigami's anti-tilt logic (which is an in-cast
+  agent and can be overridden by the allocator's confluence boosts);
+  R5 is a hard multiplier the Sentinel applies *after* the allocator
+  and after Kunigami. Restated: Kunigami dampens his own roster's
+  enthusiasm; R5 dampens the *Sentinel's view of* the roster's
+  output. The two compound multiplicatively if both fire.
+
+All five rules are deterministic, journalled with the trigger reason
+in the same vault as the §4.2 triggers (different key namespace),
+and cannot be disabled by any agent. They are the floor below which
+"the squad is allowed to play" stops being true.
 
 ---
 
@@ -635,7 +846,11 @@ can be added below the line.
 ## 9. References (forward-pointing)
 
 - Roster instantiating this doctrine: `05-agent-roster-v0.md`
-- Architecture (Conductor, Aggregator, Allocator): `03-architecture-v0-sketch.md`
-- Math (TQS, confluence, coordinate overlap): `04-quant-foundations.md` §F11–F14
-- Literature (PBT, MARL, intrinsic motivation): `02-literature-survey-plan.md` §1.6 (to be added)
+- Architecture (Conductor, Aggregator, Allocator, Thought Ledger, Sentinel placement): `03-architecture-v0-sketch.md`
+- Math (TQS, confluence, coordinate overlap, ΔInfo, regime-conditional KPIs): `04-quant-foundations.md` §F11–F18
+- Standards (forward-declared schema, evaluation hygiene, data-plane trajectory): `07-research-standards.md` §6, §4, §8
+- Dashboard surface (panel inventory, verdict translation, Φ2.5 Streamlit): `08-dashboard-spec.md`
+- Charter (C1 numeric gate, discrete sizing, Sentinel rules): `00-charter.md` §7.1–§7.3
+- Literature (PBT, MARL, intrinsic motivation, COMA): `02-literature-survey-plan.md` §1.6
+- Empirical priors (E001–E007 evidence inheritance): `audits/2026-06-24_E001-E007_audit.md`
 - The week that triggered this: `01-week-2026-06-15-archive.md`

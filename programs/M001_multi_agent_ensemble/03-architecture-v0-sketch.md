@@ -1,10 +1,17 @@
 # 03 — Architecture v0 Sketch
 
-**Status:** `DRAFT v0.1` — 2026-06-23. Pre-literature-pass.
+**Status:** `DRAFT v0.2` — 2026-06-24. v0.2 lands the **Thought
+Ledger** as a first-class data-plane object alongside the Proposal
+Bus (see §2 diagram and §3.b); replaces the v0.1 "no agent reads
+another's proposal" rule with the **tier-conditional read model** of
+`06-blue-lock-doctrine.md` §3.9 (§3.a); reframes `Coordinate` as an
+optional field on `Thought` rather than a parallel artefact (§3.b);
+and pins the data-plane trajectory (JSONL → SQLite shadow →
+WebSocket/Grafana) to `07-research-standards.md` §8 (§11).
 
-> This is the *strawman* architecture. Every box on the diagram is
-> open for revision after Φ1 (literature pass) and Φ4 (fusion sweep).
-> Nothing here is committed.
+> The boxes are still subject to revision after Φ4 (fusion sweep),
+> but the typed objects are now committed enough that Φ3 can build
+> against them without expecting structural change.
 
 ## 1. Mental model
 
@@ -44,14 +51,27 @@ layer) — with the additional constraint that the meta-learner produces
 │ zone │  │ break│  │ pattern  │                 │ liquidity│  │ vol-     │  │ carry /  │
 │ fade │  │ -out │  │ trader   │                 │ sweep    │  │ event    │  │ macro    │
 │ (MR) │  │ (MOM)│  │ (H&S/DT) │                 │ trader   │  │ trader   │  │ trader   │
-└───┬──┘  └──┬───┘  └────┬─────┘                 └────┬─────┘  └────┬─────┘  └────┬─────┘
-    │        │           │                            │             │             │
-    └────────┴───────────┴─────────────┬──────────────┴─────────────┴─────────────┘
-                                       ▼
+└──┬───┘  └──┬───┘  └────┬─────┘                 └────┬─────┘  └────┬─────┘  └────┬─────┘
+   │ obs+intend            (every tick: observe → Thought; home_tf close: maybe intend → Proposal)
+   │
+   │  ╔══════════════════════════════════════════════════════════════════════╗
+   ├─►║   THOUGHT LEDGER  (append-only JSONL; doctrine §3.8)                 ║◄─┐
+   │  ║   • Tier-1 readers: dashboard, Aggregator (journal), F14/F17 harness ║  │
+   │  ║   • Tier-2 readers: agents with ΔInfo > 0 (full ledger, §3.9)        ║  │
+   │  ║   • Tier-3 readers: agents with ΔInfo ≤ 0 (own thoughts only)        ║  │
+   │  ║   guards: `decision_horizon` (look-ahead), `references` (backwards)  ║  │
+   │  ╚══════════════════════════════════════════════════════════════════════╝  │
+   │                                                                            │
+   │  Tier-2 agents read prior-tick ledger snapshot before `intend`────────────┘
+   │
+   │       │           │                            │             │             │
+   └───────┴───────────┴─────────────┬──────────────┴─────────────┴─────────────┘
+                                     ▼
                        ┌──────────────────────────────────┐
                        │       PROPOSAL BUS               │
                        │  (typed AgentProposal objects;   │
-                       │   no agent reads another's prop) │
+                       │   one per agent per home_tf      │
+                       │   close, when intend fires)      │
                        └─────────────────┬────────────────┘
                                          │
               ┌──────────────────────────┴───────────────────────────┐
@@ -73,14 +93,26 @@ layer) — with the additional constraint that the meta-learner produces
               │      conviction wins; loser is journalled as veto    │
               │    • Disagreement across pairs → independent         │
               │      tickets, basket-correlation-aware sizing        │
+              │  also: writes the fused decision (and its            │
+              │  contributing Thought IDs) back to the Thought       │
+              │  Ledger as a Tier-1 journal entry                    │
               │  outputs: list[OrderIntent]                          │
+              └──────────────────────────┬───────────────────────────┘
+                                         │
+              ┌──────────────────────────┴───────────────────────────┐
+              │              SENTINEL  (doctrine §4.2 + §4.3)        │
+              │  triggers: ρ-jump, spread-spike, calendar event,     │
+              │            DXY shock; hard rules R1-R5 (min-lot      │
+              │            floor, discrete sizing, pass bias,        │
+              │            concentration cap, loss-streak dampener)  │
+              │  effect: veto + 24h halt, or per-trade block         │
               └──────────────────────────┬───────────────────────────┘
                                          │
               ┌──────────────────────────┴───────────────────────────┐
               │              RISK CONDUCTOR                          │
               │  hard caps:                                          │
-              │    • Per-trade risk ≤ 1 % equity                     │
-              │    • Per-basket risk ≤ 2 % equity (USD-long,         │
+              │    • Per-trade risk ≤ 5 % equity ($100 / 1:1000)     │
+              │    • Per-basket risk ≤ 7 % equity (USD-long,         │
               │      USD-short, JPY-long, ...)                       │
               │    • Daily DD ≤ 4 % → flatten + cooldown             │
               │    • Margin level floor ≥ 200 % (4× broker stop-out) │
@@ -95,32 +127,91 @@ layer) — with the additional constraint that the meta-learner produces
                        └──────────────────────────────────┘
 ```
 
-## 3. The contract every agent honours
+The Thought Ledger and the Proposal Bus are two distinct streams.
+Every agent writes to the ledger every tick; only some agents, on
+their home-TF close, write to the Proposal Bus. The Aggregator
+consumes the Proposal Bus and writes back to the ledger as a Tier-1
+journal entry (so the dashboard and the F17/F14 harness can replay
+the fused decision against the contributing Thoughts).
+
+## 3. The contracts every agent honours
+
+The agent contract is now **two typed objects**: a per-tick `Thought`
+and a per-home-TF-close `AgentProposal`. `Coordinate` (doctrine §3.2)
+is no longer a parallel artefact — it lives as an optional field on
+`Thought`, so its lifecycle is the lifecycle of the thought that
+emitted it.
+
+### 3.a `Thought` — the per-tick contract
 
 ```python
-# pseudocode — not the final type
+# pseudocode — see 06-blue-lock-doctrine.md §3.8 for the canonical schema
+@dataclass(frozen=True)
+class Thought:
+    schema_version: int               # = 1 for v0
+    agent_id: str
+    tick_id: int                      # global squad tick (monotonic)
+    timestamp: datetime
+    symbol: str
+    narrative: str                    # 1-3 sentence prose
+    tags: list[str]                   # semantic labels
+    confidence_in_thought: float      # [0, 1]
+    expected_action: str | None       # e.g. "long_on_break", None
+    coordinate: Coordinate | None     # optional; doctrine §3.2
+    decision_horizon: datetime        # look-ahead guard
+    ttl_ticks: int                    # read bound
+    references: list[str]             # IDs of prior-tick thoughts;
+                                      # MUST be backwards in time
+```
+
+### 3.b `Coordinate` — the embedded forward claim
+
+```python
+@dataclass(frozen=True)
+class Coordinate:
+    agent_id: str
+    symbol: str
+    price_lo: float
+    price_hi: float
+    time_start: datetime
+    time_end: datetime
+    vol_band: tuple[float, float]
+    regime_predicate: str
+    expected_strength: float          # [0, 1]
+    direction_bias: Literal["long", "short", "either"]
+    rationale: dict
+```
+
+(v0.1 fields, unchanged from doctrine §3.2. The change in v0.2 is
+*where* it lives: as `Thought.coordinate`, not as a standalone
+emission.)
+
+### 3.c `AgentProposal` — the per-home-TF-close contract
+
+```python
 @dataclass(frozen=True)
 class AgentProposal:
-    agent_id: str                 # e.g. "zone_fade_v1"
+    agent_id: str                     # e.g. "zone_fade_v1"
+    tick_id: int                      # the squad tick this proposal
+                                      # was emitted on
+    source_thought_id: str            # the Thought that crystallised
+                                      # into this proposal
     timestamp: datetime
     symbol: str
     direction: Literal["long", "short", "flat"]
-    entry: float                  # market or limit; the price the
-                                  # agent wants the trade taken at
-    stop: float                   # hard SL price; mandatory
-    ladder: list[LadderRung]      # [(price, fraction_to_close), ...]
-                                  # must sum to 1.0
-    conviction: float             # [0, 1] — agent's own confidence
-    regime_fit: float             # [0, 1] — how well the current
-                                  # regime matches this agent's edge
-    valid_until: datetime         # proposal expires; agents do not
-                                  # carry stale conviction
-    rationale: dict[str, Any]     # explainability payload
-    feature_vector: np.ndarray    # for the meta-learner, not the
-                                  # aggregator
+    entry: float                      # market or limit
+    stop: float                       # hard SL price; mandatory
+    ladder: list[LadderRung]          # [(price, fraction_to_close), ...]
+                                      # must sum to 1.0
+    conviction: float                 # [0, 1]
+    regime_fit: float                 # [0, 1]
+    valid_until: datetime             # proposal expires
+    rationale: dict[str, Any]         # explainability payload
+    feature_vector: np.ndarray        # for the meta-learner, not the
+                                      # aggregator
 ```
 
-Key constraints:
+### 3.d Key constraints
 
 - **Every proposal carries a hard SL.** Aggregator refuses
   proposals without one. This kills the L6 failure mode (no-SL
@@ -128,12 +219,22 @@ Key constraints:
 - **Every proposal carries a ladder.** This unblocks per-rung
   partial-exit execution and ends the demo/live "exited too early"
   problem at the architecture level.
+- **Every proposal references the Thought that produced it**
+  (`source_thought_id`). The journal is bidirectional: a closed
+  trade can be replayed against the Thought that crystallised it
+  AND every Thought (own and peers') that informed that Thought via
+  `references`.
 - **`regime_fit` is computed by the agent**, not the allocator.
   Each agent owns the answer to "does the current regime suit me?"
   because the agent has the most context to answer.
-- **No agent reads another's proposal.** Information isolation is
-  the whole point of late fusion. Cross-talk happens only at the
-  aggregator.
+- **Tier-3 agents are information-isolated; Tier-2 agents read the
+  Thought Ledger with the schema-enforced look-ahead guard**
+  (`decision_horizon`, `references` backwards-only). This replaces
+  the v0.1 rule "no agent reads another's proposal". Information
+  isolation is *still* the default in v0.2 — but now it is decided
+  empirically per agent (via ΔInfo, F17) rather than by blanket
+  prohibition. See `06-blue-lock-doctrine.md` §3.9 for the tier
+  model and §3.8 for the read guards.
 
 ## 4. The capital allocator (v0 plan)
 
@@ -176,15 +277,18 @@ Aggregator is **pure logic** (no state). Trivially testable.
 Sits between aggregator and execution. The "no veto, no order"
 invariant lives here.
 
-| Cap | Default | Adjustable? |
+| Cap | Default ($100 / 1:1000) | Adjustable? |
 |---|---|---|
-| Per-trade risk | 1 % equity | per-account config |
-| Per-basket risk (correlated pairs) | 2 % equity | per-account config |
+| Per-trade risk | 5 % equity (sandbox-relaxed; original spec was 1 %) | per-account config |
+| Per-basket risk (correlated pairs) | 7 % equity (sandbox-relaxed; original spec was 2 %) | per-account config |
 | Daily drawdown | 4 % equity → flatten + 24h cooldown | per-account config |
 | Margin level floor | 200 % (4× broker stop-out) | per-broker config |
 | Concurrent positions | 4 | per-account config |
 | No-add to winners | enforced | non-configurable |
 | Stop loss present | enforced | non-configurable |
+| Discrete position sizes (Sentinel R2) | round to min-lot 0.01, direction "down" | non-configurable |
+| Min-lot risk floor (Sentinel R1) | block trade if SL distance × 0.01 lot > 5 % equity | non-configurable |
+| Loss-streak dampener (Sentinel R5) | 50 % risk-scale × 24h after 3 consecutive losses | non-configurable |
 
 Basket detection: when two pending OrderIntents touch correlated
 instruments (|ρ| > 0.7 on rolling 30-d H1 returns), they are sized
@@ -257,3 +361,22 @@ In order of dependency, smallest first:
 
 Each step lands in `experiments/multi_agent/`, has a one-paragraph
 note in `docs/reviews/`, and is byte-deterministic.
+
+## 11. Data plane (Φ2.5 → Φ4 → Φ6+)
+
+The architecture above is the **logical** flow. The data-plane
+trajectory — what actually stores and serves the Thought Ledger,
+Proposal Bus, and trade journals — is pinned to
+`07-research-standards.md` §8 and summarised here so the diagram
+does not paint Φ2.5 storage choices into a corner.
+
+| Phase | Storage | Index | Dashboard | Trigger to upgrade |
+|---|---|---|---|---|
+| Φ2.5 (now) | JSONL append-only; one file per agent per UTC day for the Thought Ledger; one parquet per backtest result; per-trade journal as a single growing JSONL keyed by `trade_id` | None beyond filesystem layout | Streamlit running locally, no autorefresh | First PBT run or sweep > 100 configurations |
+| Φ4 (fusion sweep) | JSONL remains source of truth; **SQLite shadow** rebuilt from JSONLs on demand (one table per stream: thoughts, coordinates, proposals, trades, KPIs) | SQLite + materialised view per dashboard panel | Streamlit + autorefresh | First live shadow run for capital-promotion eval |
+| Φ6+ (live shadow + capital) | JSONL append-only remains long-term truth; SQLite shadow upgraded to small Postgres OR kept as SQLite (decision deferred) | SQL + thin **WebSocket sidecar** publishing new ledger entries + **FastAPI** in front of read paths | Either small React/Svelte frontend on WebSocket+FastAPI, **or** Grafana on the SQL store — choose one when we get there | n/a |
+
+JSONL append-only is the through-line; everything else is indices,
+views, and transports built on top of that immutable spine. The
+dashboard spec in `08-dashboard-spec.md` describes the Φ2.5
+Streamlit panel inventory that consumes this data plane.

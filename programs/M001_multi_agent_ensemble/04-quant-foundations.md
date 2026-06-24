@@ -1,9 +1,16 @@
 # 04 — Quant Foundations
 
-**Status:** `DRAFT v0.3` — 2026-06-24. v0.3 adds F15 (devour bonus δ
-derived from TQS autocorrelation; closes the previously-arbitrary
-`δ = 0.25` choice) and F16 (Sae composite baseline; closes the C6
-adversarial gate). v0.2 (Pre-literature-pass) source-cited F1–F10 in
+**Status:** `DRAFT v0.4` — 2026-06-24. v0.4 appends F17 (ΔInfo —
+marginal information value of inter-agent observability; the
+empirical metric that decides Tier-2 vs Tier-3 per
+`06-blue-lock-doctrine.md` §3.9) and F18 (regime-conditional KPIs +
+HRP allocation), and extends F11 with the **thought-resonance
+trigger** so chemical reactions can fire on semantic-tag overlap of
+Thoughts (per `06-blue-lock-doctrine.md` §3.8) even when coordinates
+differ. v0.3 added F15 (devour bonus δ derived from TQS
+autocorrelation; closes the previously-arbitrary `δ = 0.25` choice)
+and F16 (Sae composite baseline; closes the C6 adversarial gate).
+v0.2 (Pre-literature-pass) source-cited F1–F10 in
 `02-literature-survey-plan.md` and added F11–F14 to instantiate the
 doctrine in `06-blue-lock-doctrine.md`.
 
@@ -315,6 +322,64 @@ the simpler baseline kept for ablation in Φ4.
 voices can still produce a confluent trade with stronger combined
 evidence than any single voice).
 
+### F11 extension (v0.4) — chemical reaction via thought-resonance
+
+Originally F11 fired only when two agents' *Coordinates* overlapped
+(per F13). v0.4 widens the trigger surface: F11 also fires when two
+agents' *Thoughts* (per `06-blue-lock-doctrine.md` §3.8) resonate
+semantically, even if their coordinates differ or one or both have
+`coordinate = None`.
+
+**Thought-resonance binary predicate.** Two Thoughts `Tᵢ`, `Tⱼ`
+*resonate* when **all** hold:
+
+1. `Tᵢ.symbol == Tⱼ.symbol`.
+2. `|Tᵢ.tick_id − Tⱼ.tick_id| ≤ 1` (same tick or adjacent ticks
+   under the §3.8 backwards-references rule; never future).
+3. `|tags(Tᵢ) ∩ tags(Tⱼ)| ≥ 2` (at least two shared semantic
+   labels — e.g. both fire on `{"supply_zone", "d1_against"}`).
+4. `Tᵢ.confidence_in_thought ≥ 0.7` AND
+   `Tⱼ.confidence_in_thought ≥ 0.7`.
+5. `Tᵢ.expected_action` is compatible with `Tⱼ.expected_action`
+   (same direction, or one is `None`).
+
+When the resonance predicate fires, F11's conviction-lift formula
+(`c_combined = 1 − ∏ᵢ (1 − cᵢ × eᵢ)`) is applied with
+`cᵢ = confidence_in_thought`. The size_multiplier rule is unchanged.
+
+**Why the widening.** v0.1 F11 required both agents to have crossed
+their A+ threshold and emitted Coordinates. That misses the canonical
+case where one agent is observing-only ("I see the same pool you do,
+but I'm not firing — my Fib distance is wrong") and another is
+intending ("I'm taking this on the pool break"). In Blue Lock, players
+react to each other's *intentions* (visible in body language, eye
+contact, run-shape) not just to their final actions. The Thought
+Ledger surface is the operational analogue of that body language.
+
+**Why the strict conviction floor.** Setting `≥ 0.7` for both agents
+prevents the resonance trigger from amplifying weak-and-weak
+combinations (which would over-fire the aggregator). The conviction
+floor in v0.1 F11 was *implicit* in the requirement to emit a
+Coordinate; in v0.4 we name it explicitly because Thoughts can be
+emitted at any conviction.
+
+**Failure mode.** Tag inflation — agents incentivised to emit shared
+tags to harvest the resonance bonus. **Mitigation:** the tag
+vocabulary is fixed per agent at Φ0 (each agent declares its tag
+set in its spec and cannot add tags post-hoc), and the aggregator
+audits the tag-share distribution per agent-pair monthly; a pair
+whose tag-share exceeds the median by 2σ is flagged for review.
+
+**Decision.** v0.4 ships the Coordinate-overlap trigger (F11 + F13)
+AND the thought-resonance trigger together as two independent firing
+conditions for the chemical-reaction layer. Either fires; both never
+double-count (an aggregator-side de-duplication keys on
+`(symbol, tick_id, sorted_agent_ids)`).
+
+**Closes constraints.** Doctrine commitment 3 (chemical reactions
+detected and rewarded) at a finer granularity than coordinate
+geometry alone permits.
+
 ---
 
 ## F12 — Trade Quality Score (TQS)
@@ -607,6 +672,149 @@ placeholder with a competitive composite. The original Sae bullet in
 
 ---
 
+## F17 — Marginal information value of inter-agent observability (ΔInfo)
+
+**Setting.** The doctrine in `06-blue-lock-doctrine.md` §3.9 assigns
+agents to Tier 2 (reads the Thought Ledger) or Tier 3 (information-
+isolated) **empirically**, not by character. ΔInfo is the metric that
+decides. It answers: *does this agent perform better when it can read
+the rest of the ledger, or is its edge independent?*
+
+**Formula:**
+
+> *ΔInfo*(agent_i) = TQS̄(agent_i with ledger) − TQS̄(agent_i isolated)
+
+where `TQS̄` is the median TQS (F12) over the agent's closed trades
+in the sealed evaluation window.
+
+**Procedure.**
+
+1. Each agent is trained on its character-specified weapon, then
+   evaluated **twice** on identical windows (the same sealed window
+   used for C1 in `00-charter.md` §7.1):
+   - **Informed run.** Agent calls `observe(market, ledger)` and
+     `intend(market, my_recent_thought)` with `ledger` containing
+     all prior-tick Thoughts from every agent (subject to the §3.8
+     `decision_horizon`, `ttl_ticks`, backwards-only `references`
+     guards).
+   - **Isolated run.** Identical, except `ledger` is filtered to
+     `{t ∈ ledger : t.agent_id == self.agent_id}` — the agent sees
+     only its own past thoughts.
+2. Both runs produce per-trade TQS series. Compute `ΔInfo` and a
+   pairwise-block bootstrap CI at α = 0.05 (block size = 5 trades to
+   absorb the agent's own autocorrelation).
+3. **Tier assignment.** `ΔInfo > 0` AND lower bootstrap bound
+   `> 0` → Tier 2 (read access kept). Else → Tier 3 (read access
+   stripped; agent ships in information-isolated mode for
+   production).
+
+**Honesty note.** ΔInfo cannot be measured during squad-coupled
+training because the coupling itself changes individual TQS (an
+informed Tier-2 agent's thoughts shape the ledger that the next
+informed agent reads, and so on). ΔInfo is therefore measured on
+**independent rollouts** where the evaluated agent is run against
+the **fixed prior-tick ledger snapshot** produced by the rest of the
+squad's most recent training run. This is the COMA-style
+counterfactual credit assignment frame (Foerster 2018; see lit-plan
+§1.6) translated to the information-access dimension rather than the
+action-credit dimension.
+
+**Why we use it.** Without F17, tier assignment is character-feel
+guesswork (and the v0.1 placeholder definitions in
+`07-research-standards.md` §7.2/§7.3 prove that). F17 makes the
+tier decision a verifiable property of the data, with the same
+discipline as F12 (TQS) and F14 (adversarial validation).
+
+**Failure mode.** Small-sample ΔInfo is unstable; an agent with 50
+trades on a 6-month window can show ΔInfo of either sign by chance.
+**Mitigation:** require `n_trades ≥ 30` per evaluation arm before F17
+is computed (mirrors the F6 DSR n-floor); require the bootstrap CI
+to exclude 0 (not just the point estimate to be positive); re-run
+F17 at every phase gate so the tier decision is refreshed with the
+latest data.
+
+**Decision.** F17 is the canonical tier-assignment metric for
+`06-blue-lock-doctrine.md` §3.9, computed at C1 promotion gate and
+re-run at each subsequent phase gate. v0.1 placeholder text in
+`07-research-standards.md` §7.2/§7.3 is superseded.
+
+**Closes constraints.** Doctrine §3.9 (Tier 2 vs Tier 3 is
+empirical) and `07-research-standards.md` §7.2 ("Tier 2/3 assignment
+is empirical (ΔInfo, F17)" — that doc already named F17 as the
+missing metric; this entry lands it).
+
+---
+
+## F18 — Regime-conditional KPIs and allocation
+
+**Setting.** `07-research-standards.md` §4.3 requires every per-agent
+KPI from `06-blue-lock-doctrine.md` §3.6 to be reported *per regime*,
+not pooled. F18 formalises the metric machinery and the allocator
+override that follows.
+
+**Regime taxonomy** (matches the diversity matrix in
+`05-agent-roster-v0.md` §2):
+
+> r ∈ {trending, chop, vol_spike, news}
+
+The regime label per bar comes from a regime classifier trained as a
+Φ2.5 prerequisite. v0 classifier inputs: D1 ADX bucket (trending if
+> 25; chop if < 20), 10-bar realised-σ percentile (vol_spike if > 90th
+percentile of trailing 80 bars), calendar tag (news if high-impact
+event window). Multi-label ties resolved by priority: `news >
+vol_spike > trending > chop`.
+
+**Per-agent per-regime KPI:**
+
+> *KPI*(agent_i, r) = aggregation_fn({KPI computed on bar t : regime(t) == r})
+
+where the aggregation is the same as the doctrine's pooled version
+(median for TQS, count-ratio for assertion/coexistence/devour/goal,
+mean for beauty).
+
+**Regime-conditional HRP allocation:**
+
+> *w*(agent_i, r) = HRP({ρⱼₖ | regime = r}, {Sharpe_j,r})
+
+where the covariance `ρⱼₖ` and per-agent Sharpe inputs to HRP (F3)
+are computed *only over bars in regime r*. Agents whose
+regime-conditional KPIs are dominated by one bucket (e.g., A9 Aoshi
+ships nearly all its TQS in `news` windows) get **bucket-conditional
+capital allocation** under F18 — at every tick, the allocator looks
+up the current regime r and applies `w(·, r)` rather than flat HRP.
+
+**Decision rule for "dominated by one bucket":** an agent qualifies
+for bucket-conditional allocation if `max_r(median TQS_{i,r}) >
+1.5 × second_max_r(median TQS_{i,r})` AND `n_trades(i, argmax_r) ≥
+30`. Otherwise flat HRP applies. The 1.5× and n_trades floors are
+v0 placeholders pending Φ4 sweep.
+
+**Why we use it.** Pooled KPIs hide regime mismatch — an agent with
++TQS in trending and −TQS in chop reports a net-zero pool that looks
+like "no edge", when the right intervention is "deploy in trending,
+abstain in chop". F18 turns the §3.6 KPI table into a per-regime
+matrix and lets the allocator act on it.
+
+**Failure mode.** Regime classification error contaminates every
+downstream metric. A bar mislabelled `trending` when it is actually
+`chop` adds noise to both the `trending` regime stats and the `chop`
+regime stats. **Mitigation:** classifier output is logged per bar
+with a confidence; bars with classifier confidence < 0.5 are
+pooled-only (not assigned to any regime bucket) for KPI computation.
+The pooled total minus the four bucket totals is reported as
+`unclassified_residual` and audited monthly.
+
+**Decision.** F18 is the canonical machinery for `07-research-
+standards.md` §4.3 (regime-conditional KPIs) and the allocator
+override `06-blue-lock-doctrine.md` §3.4 (devour) inherits at
+deployment for agents that qualify per the 1.5× rule above.
+
+**Closes constraints.** §4.3 of research standards (KPIs without a
+regime label are placeholders) and the implicit charter-side request
+that the allocator be regime-aware (G3 in `00-charter.md`).
+
+---
+
 ## A note on what is *not* in this doc
 
 - Anything market-microstructure-specific (order-flow imbalance, queue
@@ -636,17 +844,29 @@ Doctrine-driven additions:
 
 | Doctrine commitment (06-…doctrine §7) | Formula(s) / mechanism that close it |
 |---|---|
-| 1 — Coordinate API on every agent | F13 (overlap measure) + Coordinate dataclass |
+| 1 — Coordinate API on every agent | F13 (overlap measure) + Coordinate dataclass (now embedded in `Thought`, doctrine §3.8) |
 | 2 — TQS not P&L is fitness | F12 (TQS) + F3 reweighting on TQS-vector |
-| 3 — Chemical reactions detected and rewarded | F11 (independent-OR conviction) + F13 (overlap detection) + size_multiplier rule |
+| 3 — Chemical reactions detected and rewarded | F11 (independent-OR conviction; v0.4 extension fires on Thought-tag resonance too) + F13 (overlap detection) + size_multiplier rule |
 | 4 — Devour is competitive | F3 HRP + devour bonus *δ* derived by F15 (TQS autocorrelation, Ledoit-Wolf shrunk) + 2 % floor / 35 % cap |
 | 5 — Human is the opponent | F14 (adversarial validation) → charter gate C6, with F16 (Sae composite) as the synthetic adversary the squad must also beat |
-| 6 — Pitch shapes the squad | F4 (Kelly cap) refusing sub-minimum-lot trades on $100 / 1:1000 |
+| 6 — Pitch shapes the squad | F4 (Kelly cap) refusing sub-minimum-lot trades on $100 / 1:1000, plus Sentinel hard rules R1–R5 (`06-blue-lock-doctrine.md` §4.3) |
+
+v0.4 additions:
+
+| Doctrine / standards commitment | Formula that closes it |
+|---|---|
+| Doctrine §3.9 — Tier 2 vs Tier 3 is empirical, not character-feel | F17 ΔInfo (informed vs isolated TQS, pairwise-block bootstrap) |
+| Doctrine §3.8 — Thought Ledger as first-class object with resonance triggers | F11 extension (semantic-tag overlap + confidence floor ≥ 0.7) |
+| Standards §4.3 — every KPI carries a regime label | F18 (regime taxonomy + per-regime aggregation + regime-conditional HRP) |
+| Charter §7.3 / Doctrine §4.3 — Sentinel hard rules R1–R5 | Architectural, enforced by `sim/sentinel.py`; F4 (Kelly cap) refines R1 |
 
 F15 closes the previously-arbitrary `δ = 0.25` placeholder flagged
 in Q-doc-3 of `06-blue-lock-doctrine.md`. F16 closes the C6
 adversarial gate by replacing the v0 frozen-relic Sae with a
-genuinely competitive composite.
+genuinely competitive composite. F17 closes the tier-assignment
+debt explicitly named in `07-research-standards.md` §7.2. F18
+closes the regime-conditional KPI requirement explicitly named in
+`07-research-standards.md` §4.3.
 
 Every formula has a constraint it closes. Every constraint has at
 least one formula or architectural element that closes it.
