@@ -1,0 +1,103 @@
+{
+  "counts": {
+    "n_disagreements_sampled": 30,
+    "n_disagreements_total": 106,
+    "n_scored_bars": 772,
+    "n_total_bars": 1617,
+    "n_unknown_weak_label": 845,
+    "predicted_class_counts": {
+      "chop": 83,
+      "news": 0,
+      "trending": 594,
+      "vol_spike": 95
+    },
+    "weak_label_class_counts": {
+      "chop": 79,
+      "news": 0,
+      "trending": 670,
+      "vol_spike": 23
+    }
+  },
+  "gate": {
+    "note": "Pass here means the classifier is at least as good as the rule-based heuristic on bars where the heuristic votes confidently. It does NOT clear the \u03a62\u2192\u03a63 G4 gate, which still requires hand-labelled validation.",
+    "pass": false,
+    "threshold_agreement_f1": 0.5
+  },
+  "manifest": {
+    "_note": "Weak-label agreement F1 is NOT ground-truth F1. The heuristic and the classifier disagree on a real label is the trigger to escalate to hand-labelling; see sim/regime/README.md for the interpretation guide.",
+    "generated_at_utc": "2026-06-24T17:56:05.897610+00:00",
+    "model_path": "/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/sim/regime/model_v1.pkl",
+    "news_calendar_available": false,
+    "parquet_path": "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/data/parquet/EURUSD_H4.parquet",
+    "requested_window": [
+      "2024-01-01",
+      "2025-01-01"
+    ],
+    "rv_window": 500,
+    "seed": 42,
+    "window_end": "2024-12-31 20:00:00+00:00",
+    "window_start": "2024-01-01 20:00:00+00:00",
+    "window_substitution": null
+  },
+  "metrics": {
+    "agreement_f1_macro": 0.4963859885416418,
+    "confusion_matrix_rows_weak_cols_pred": [
+      [
+        582,
+        0,
+        88,
+        0
+      ],
+      [
+        0,
+        78,
+        1,
+        0
+      ],
+      [
+        12,
+        5,
+        6,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "label_order": [
+      "trending",
+      "chop",
+      "vol_spike",
+      "news"
+    ],
+    "per_class": {
+      "chop": {
+        "f1": 0.9629629629629629,
+        "precision": 0.9397590361445783,
+        "recall": 0.9873417721518988,
+        "support": 79
+      },
+      "news": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "support": 0
+      },
+      "trending": {
+        "f1": 0.9208860759493671,
+        "precision": 0.9797979797979798,
+        "recall": 0.8686567164179104,
+        "support": 670
+      },
+      "vol_spike": {
+        "f1": 0.1016949152542373,
+        "precision": 0.06315789473684211,
+        "recall": 0.2608695652173913,
+        "support": 23
+      }
+    }
+  }
+}
