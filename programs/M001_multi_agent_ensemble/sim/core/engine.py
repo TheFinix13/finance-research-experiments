@@ -102,8 +102,21 @@ def run_replay(
 ) -> ReplayOutput:
     """Walk `bars` once, call `observe`/`intend`, return the run output.
 
-    Pure function-of-inputs (modulo the ledger, which is itself fed by
-    these calls). Determinism is verified by `tests/test_determinism.py`.
+    Phi4 two-phase tick order (`doctrine 06 sec 3.8 + 09 sec 1.2`):
+
+      Phase 1: every eligible striker `observe()` at tick T -- all
+               Thoughts at tick T appended to the ledger (the writes
+               are visible to readers ONLY on tick >= T+1 because the
+               ledger's `_apply_guards` filters `tick_id >= current_tick`).
+      Phase 2: every eligible striker `intend()` -- reads only
+               `tick_id < T` Thoughts. Same-tick reads forbidden by
+               doctrine; the ledger guard enforces this whether or
+               not we split the phases. The explicit split is for
+               READABILITY and ordering symmetry across agents.
+
+    Agents are visited in lexicographic `agent_id` order on every
+    tick so the run is byte-deterministic when the roster's instance
+    list is permuted.
     """
     if ledger is None:
         ledger = FullLedger()
@@ -111,17 +124,30 @@ def run_replay(
     bars = list(bars)
 
     for bar in bars:
-        eligible = [a for a in agents if bar.symbol in a.symbols]
-        proposals_this_tick: list[AgentProposal] = []
+        eligible = sorted(
+            [a for a in agents if bar.symbol in a.symbols],
+            key=lambda a: a.agent_id,
+        )
+
+        # Phase 1 -- everyone observes; writes land in the ledger but
+        # are not visible to peers until next tick (guard rule).
+        my_thought: dict[str, Thought] = {}
         for agent in eligible:
             t = agent.observe(bar, ledger)
             ledger.append(t)
             out.thoughts.append(t)
-            if _is_home_tf_close(bar, agent):
-                p = agent.intend(bar, t)
-                if p is not None:
-                    proposals_this_tick.append(p)
-                    out.proposals.append(p)
+            my_thought[agent.agent_id] = t
+
+        # Phase 2 -- everyone intends; reads only tick_id < T.
+        proposals_this_tick: list[AgentProposal] = []
+        for agent in eligible:
+            if not _is_home_tf_close(bar, agent):
+                continue
+            t = my_thought[agent.agent_id]
+            p = agent.intend(bar, t)
+            if p is not None:
+                proposals_this_tick.append(p)
+                out.proposals.append(p)
         if proposals_this_tick:
             intents = aggregate(
                 proposals_this_tick,
