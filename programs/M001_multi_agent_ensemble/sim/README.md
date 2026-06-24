@@ -38,12 +38,11 @@ PYTHONPATH=../multi-pair-trading-agent:. \
   -m pytest programs/M001_multi_agent_ensemble/sim/tests/ -q
 ```
 
-Expected: 84 tests pass + 2 skipped (the skipped ones are the
-real-data friction-calibration bounds test, which lights up
-automatically once `sim/core/friction_calibration_2026-06.json` is
-present, and a parallel skip in the gate harness for absent
-production data). The full repo suite reports 154+ passing (70
-pre-existing lab + 84 sim + the skips).
+Expected: **125 tests pass + 3 skipped** (the skipped ones are the
+real-data friction-calibration bounds test, the slow Phi3 gate
+real-data integration, and the slow Phi4 squad gate real-data
+integration). The full repo suite reports **195 passing** (70
+pre-existing lab + 125 sim + 3 slow skips).
 
 ### 2. Train the regime classifier (synthetic data smoke test)
 
@@ -158,6 +157,72 @@ Verdict thresholds (per spec):
 Slow integration tests are skipped by default. Enable with
 `M001_RUN_SLOW=1 pytest -m slow`.
 
+## Running Φ4 gate (4-agent MVP squad vs Isagi-alone)
+
+The Φ4 → Φ5 gate (`09-experiment-architecture.md` §1.5 G5) drives the
+four MVP strikers concurrently and asks whether the squad TQS beats
+Isagi-alone:
+
+| Outcome | Rule |
+|---|---|
+| `PASS` | squad median OOS-window mean TQS ≥ **1.10 ×** Isagi-alone |
+| `PARTIAL` | 1.00 × ≤ ratio < 1.10 × — positive lift below the gate floor |
+| `FAIL` | ratio < 1.00 × — adding agents LOST edge (reported honestly per user constraint) |
+| `PROVISIONAL` | < 30 squad trades; below the statistical-claim floor |
+
+```bash
+PYTHONPATH=../multi-pair-trading-agent:. \
+  M001_PRODUCTION_REPO=../multi-pair-trading-agent \
+  ../multi-pair-trading-agent/.venv/bin/python \
+  -m programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate \
+  --verbose
+```
+
+Default window: EURUSD + USDCAD H4 2015-01-01 → 2025-12-31 (GBPUSD
+skipped — Barou is USDCAD-only and EURUSD is the apples-to-apples
+comparator vs Phi3). Walk-forward 4 yr IS / 1 yr OOS (7 windows).
+
+Outputs written to `programs/M001_multi_agent_ensemble/reviews/`:
+
+* `phi4_squad_v1.md` — verdict, per-agent KPIs, walk-forward table,
+  F17 ΔInfo for Nagi + Barou, engine telemetry, **Diagnosis section
+  on FAIL/PARTIAL**, honest caveats.
+* `phi4_isagi_rejection_analysis.md` — cross-striker rejection
+  bucket distribution (same/opposite/silent/elsewhere).
+* `phi4_squad_v1_trades.jsonl` — every closed trade with TQS components.
+* `phi4_squad_v1_proposals_all.jsonl` — every proposal (accepted +
+  rejected) for replay debugging.
+* `phi4_squad_v1_rejected_proposals.jsonl` — only the rejected
+  proposals, structured for the rejection-analysis harness.
+
+CLI flags:
+
+* `--start YYYY-MM-DD`, `--end YYYY-MM-DD` — narrow the window.
+* `--out-dir PATH` — override the default reviews directory.
+* `--delta-info-windows N` — how many of the 7 OOS windows to use for
+  F17 ΔInfo (default 3; max 7). The isolated arm re-runs the full
+  4-agent squad per window with a `RedactedLedger(self_only)` for
+  the candidate Tier-2 agent (Nagi or Barou) — compute scales linearly.
+
+The harness implements the Phi4 contract from `09 §1.5` + doctrine §3.8:
+
+1. **Two-phase tick order** — every striker `observe()` runs before
+   ANY striker `intend()` in the same bar; the ledger guard
+   (`tick_id < current_tick`) blocks same-tick reads. This means
+   Nagi's chemical-reaction predicate fires against tick T-1 peer
+   thoughts at the earliest. The one-bar lag is **intentional**.
+2. **Deterministic agent ordering** — lexicographic on `agent_id`,
+   independent of roster YAML order.
+3. **Per-symbol single-position rule** — preserves the E004 execution
+   contract; concurrent positions allowed across symbols.
+4. **Phi4 aggregator** — per `(symbol, tick)`, highest-conviction
+   proposal wins; all losers logged to `rejected_proposals.jsonl`
+   with full provenance.
+5. **F17 ΔInfo for Tier-2 candidates** — each candidate (Nagi, Barou)
+   runs both informed (FullLedger) and isolated
+   (`RedactedLedger(self_only)`) arms; bootstrap CI per
+   `sim/scoring/delta_info.py`.
+
 ## Phi3 build order (next phase)
 
 Per architecture §10 and 09 §2:
@@ -168,16 +233,24 @@ Per architecture §10 and 09 §2:
 2. [x] Φ3 gate (A1 Isagi v1) — **PASS @ +11.04 median OOS pips/trade**
    (drift −2.7 % vs Sae +11.34; 7/7 OOS windows positive). Review:
    `reviews/phi3_gate_isagi_v1.md`.
-3. [ ] Replace synthetic bars in the regime trainer with real parquet
+3. [x] Φ4 gate (4-agent MVP squad) — **FAIL @ 0.98× Isagi-alone TQS**
+   on EURUSD + USDCAD H4 2015–2025 (squad mean TQS 0.311 vs Isagi-
+   alone 0.317; 2006 squad trades; Nagi fired 0 confluence thoughts,
+   Barou's median is negative -7.28 pips, dilutes Isagi's median).
+   Honest diagnostic in `reviews/phi4_squad_v1.md`. Rejection
+   analysis in `reviews/phi4_isagi_rejection_analysis.md`.
+4. [ ] Replace synthetic bars in the regime trainer with real parquet
    feeds from `multi-pair-trading-agent`'s data cache.
-4. [ ] Hand-label the 30 disagreement bars seeded in
+5. [ ] Hand-label the 30 disagreement bars seeded in
    `sim/regime/disagreements_for_review.csv` via the Streamlit tool
    at [`sim/regime/label_disagreements.py`](regime/label_disagreements.py)
    (Φ3-prep deliverable 2026-06-24) and extend to ≥ 200 hand-labelled
    bars for the G4 regime F1 gate.
-5. [ ] Wire HRP allocator (F3 + F18) + chemical-reaction layer
-   (F11 + F13) into the aggregator (currently a Φ2.5 stub).
-6. [ ] On the VM, run [`scripts/vm_calibrate_friction.py`](../scripts/vm_calibrate_friction.py)
+6. [ ] Wire HRP allocator (F3 + F18) + chemical-reaction layer
+   (F11 + F13) into the aggregator (currently a Φ2.5 stub). **HRP
+   is the empirical remedy for the Phi4 FAIL diagnosis #2 above
+   (Barou's right-tail-skewed contribution dilutes Isagi's median).**
+7. [ ] On the VM, run [`scripts/vm_calibrate_friction.py`](../scripts/vm_calibrate_friction.py)
    to calibrate friction against the live broker fills for
    EURUSD/GBPUSD/USDCAD, then commit the resulting
    `sim/core/friction_calibration_2026-06.json` via a single

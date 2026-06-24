@@ -1,15 +1,19 @@
 # 05 — Agent Roster v0 (Blue Lock cast)
 
-**Status:** `DRAFT v0.5` — 2026-06-24. v0.5 instantiates
-`06-blue-lock-doctrine.md` §3.11 (Agent Evolution Arcs) into the
-per-agent specs: each A1–A10 block gains three new fields
-(**Current version**, **Evolution arc**, **Defeat trigger**) right
-after **Information tier status**, with content seeded from the
-§3.11.3 starter sketches. A1 Isagi v1 is the only implemented +
-gate-passed entry (commit `12c2bf4`, Φ3 wrap); A6/A7/A10 v1
-implementations are in flight under the Φ4 parallel workers;
-A2/A3/A4/A5/A8/A9 are not yet implemented. The version field
-points at the audit trail in `reviews/evolution_ledger.md`. v0.4
+**Status:** `DRAFT v0.6` — 2026-06-24. v0.6 marks the **Φ4 v1 squad
+gate landing**: A6 Nagi v1, A7 Barou v1, and A10 Kunigami v1 are now
+**implemented**, tested, and have run end-to-end against the 2015–2025
+EURUSD + USDCAD H4 squad gate. The gate FAILed at 0.98× Isagi-alone
+TQS — reported honestly per user constraint, with a Diagnosis section
+in `reviews/phi4_squad_v1.md` explaining each agent's contribution
+(Nagi predicate-starved, Barou median-dilutes, Kunigami silent in the
+regime). The per-agent rows below carry the **v1 implemented** status
+plus the empirical telemetry from the squad gate run. v0.5 introduced
+the §3.11 evolution-arc fields (**Current version**, **Evolution arc**,
+**Defeat trigger**); v0.6 fills in the post-Φ4-v1 empirical state for
+A1/A6/A7/A10. The version field points at the audit trail in
+`reviews/evolution_ledger.md` (evolution ledger remains empty — no
+vN+1 has been claimed yet). v0.4
 added per-agent **canon_role** (fixed identity), **info_tier_status**
 (TBD pending Φ3 ΔInfo, F17 in `04-quant-foundations.md`),
 **conflab/ inheritance** (specific lab-side primitives the agent
@@ -51,11 +55,11 @@ Ten strikers, one coach, one club official, three named opponents.
 | A3 | **Itoshi Rin** | Cold technician | Technical perfection | Fibonacci / harmonic / Elliott ratio mathematics | `itoshi_rin` | H4 | D1 source-swing, H1 entry | 0.40 | Φ4+ | to-build |
 | A4 | **Hyoma Chigiri** | Speedster | Pure breakaway speed | Range-break + ATR vol-expansion momentum | `chigiri_hyoma` | M15 | H1 confirmation, H4 trend bias | 0.80 | yes | to-build |
 | A5 | **Reo Mikage** | Chameleon | Adaptive copying | Regime-conditional dynamic copier (mimics best trailing-TQS agent) | `reo_mikage` | inherits | inherits | 0.30 | Φ4+ | to-build |
-| A6 | **Seishiro Nagi** | Lazy genius | Perfect trap (ball stops dead) | Confluence-only multi-signal AND gate; lowest frequency | `nagi_seishiro` | multi-TF native | M15/H1/H4/D1 simultaneously | 0.45 | Φ4+ | to-build |
-| A7 | **Shoei Barou** | King / lone wolf | Dominant solo finishing | Single-pair specialist; locks one symbol end-to-end | `barou_shoei` | H4 (locked pair) | pair-specific D1+H1 | 1.00 | Φ4+ | to-build |
+| A6 | **Seishiro Nagi** | Lazy genius | Perfect trap (ball stops dead) | Confluence-only multi-signal AND gate; lowest frequency | `nagi_seishiro` | H4 (Φ4 v1) | M15/H1/H4/D1 (canon) | 0.45 | Φ4 v1 | **v1 implemented (Φ4 squad gate)** — fired 0 confluence thoughts (predicate-starved; see `reviews/phi4_squad_v1.md` Diagnosis) |
+| A7 | **Shoei Barou** | King / lone wolf | Dominant solo finishing | Single-pair specialist; locks one symbol end-to-end | `barou_shoei` | H4 (locked pair) | pair-specific D1+H1 | 1.00 | Φ4 v1 | **v1 implemented (Φ4 squad gate)** — 1150 trades, +9.79 mean / −7.28 median pips, devour mechanic shipped (0 lifts in 11-yr run) |
 | A8 | **Kenyu Yukimiya** | Smooth dribbler | Clean execution | Sub-bar entry-timing refiner (improves *other* agents' fills) | `yukimiya_kenyu` | M1–M5 sub-bar | inherits parent | 0.35 | Φ4+ | to-build (depends on A1+) |
 | A9 | **Aoshi Tokimitsu** | Berserker | Overwhelming physicality (event mode) | Macro-event-only vol-breakout (FOMC / NFP / CPI) | `aoshi_tokimitsu` | M5 event-window | M15 follow-through, H1 fade-protection | 0.75 | Φ4+ | to-build |
-| A10 | **Rensuke Kunigami** | Reformed power-shooter | Recovery / discipline | Anti-tilt risk auxiliary (post-loss recalibration) | `kunigami_rensuke` | daily state, not market state | n/a | 0.00 | yes | to-build |
+| A10 | **Rensuke Kunigami** | Reformed power-shooter | Recovery / discipline | Anti-tilt risk auxiliary (post-loss recalibration) | `kunigami_rensuke` | H4 (Φ4 v1) | daily state (canon) | 0.00 | Φ4 v1 | **v1 implemented (Φ4 squad gate)** — 0 warnings emitted; 3-of-5 high-conf-loss predicate never tripped in 2006-trade run |
 | — | **Jinpachi Ego** | Coach (non-player) | Egoist doctrine | Allocator + Risk Conductor | `coach_ego` | n/a | n/a | n/a | n/a | architectural — see `03-architecture` |
 | — | **Anri Teieri** | Club executive | Process / records | Validation harness + evidence ledger | `harness_anri` | n/a | n/a | n/a | n/a | architectural — see `reviews/` |
 | — | **Michael Kaiser** | Opponent | Engineered single decisive shot | Human's high-conviction discretionary trades | `opponent_kaiser` | n/a | n/a | n/a | n/a | adversarial benchmark |
@@ -273,11 +277,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Sizing rule** | Highest conviction floor → largest single-trade size in the squad; capped at 1.5 % equity |
 | **Exit rule** | SL at chemical-reaction's tightest agent SL; ladder = 1.5R / 2.5R / 4R (asymmetric — Nagi only takes high-RR shots) |
 | **Anti-thesis** | A2 Bachira — Bachira shoots from anywhere, Nagi shoots only from the perfect spot |
-| **Status** | to-build (depends on chemical-reaction detector being live) |
-| **MVP Φ3?** | Φ4+ |
+| **Status** | **v1 implemented (Φ4 squad gate)** — Φ4 squad ran 2015–2025 EURUSD + USDCAD H4, Nagi fired **0 confluence-firing thoughts** (the 2-distinct-peer floor was never met because MVP squad has only 2 tradable strikers; predicate-starved by design, not by the one-bar lag). See `reviews/phi4_squad_v1.md` Diagnosis #1. |
+| **MVP Φ3?** | Φ4 v1 (shipped) |
 | **Canon role (fixed)** | Lazy genius; perfect trap; lowest-frequency, highest-RR; fires only on multi-signal confluence |
-| **Information tier status** | **Structural Tier 2 (by design).** Nagi is the canonical chemical-reaction agent — his trigger is overlap of other agents' coordinates and resonance of their Thoughts. Cannot operate as Tier-3. F17 still measured to verify the design. |
-| **Current version** | **v1 implementation in flight** (Φ4 parallel worker; MVP roster member per `09-experiment-architecture.md` §2). Live-capital allocation blocked until E010 (pre-registered Stage-2b) confirms the H1 `equal_highs_pool` × M15 setup exploratory finding. |
+| **Information tier status** | **Structural Tier 2 (by design).** Nagi is the canonical chemical-reaction agent — his trigger is overlap of other agents' coordinates and resonance of their Thoughts. Cannot operate as Tier-3. F17 still measured to verify the design. v1 F17 ΔInfo = +0.000 [underpowered] — uninformative until enough Tier-2 source signal exists for Nagi to fire on. |
+| **Current version** | **v1 implemented** — code: `sim/agents/a06_nagi.py`; tests: `sim/tests/test_a06_nagi_wrap.py` (8 tests, all passing). Predicate: ≥ 2 OTHER strikers' Thoughts at tick T-1 with conviction > 0.7, ≥ 2 shared tags, overlapping coordinate price bands, matching direction. F11 lift via 1 − ∏(1 − cᵢ). Home TF H4 (Φ4 v1) per `09-experiment-architecture.md` §2; the multi-TF canon home is a Φ5+ wiring. Live-capital allocation still blocked until E010 confirms the H1 `equal_highs_pool` × M15 setup exploratory finding. |
 | **Evolution arc** | v1 → v2 boredom into mastery (`06-blue-lock-doctrine.md` §3.11.3). *Trigger:* confluence-only firing rate too low — sample size never clears C1 under the v1 ≥ 3-striker overlap rule. *v2 hypothesis:* tolerate 2-striker overlaps with lower aggregate conviction floor when regime is favourable per F18 |
 | **Defeat trigger** | Expected: v1 trade count too low for statistical power on the rolling 12-week window (< 5 trades per pair); insufficient-n verdict on the C1 gate |
 | **Home TF (fixed)** | multi-TF native (M15 / H1 / H4 / D1 simultaneously) |
@@ -297,11 +301,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Sizing rule** | Independent of the rest of the ensemble — operates outside the fusion layer |
 | **Exit rule** | Symbol-specific; for USDCAD: SL beyond the H4 swing structure; ladder = 1R / 1.5R / 2.5R |
 | **Anti-thesis** | The entire ensemble — Barou's existence asks the question "did fusion add value over a single specialist?" |
-| **Status** | to-build (Φ4+; the architectural control agent) |
-| **MVP Φ3?** | Φ4+ |
+| **Status** | **v1 implemented (Φ4 squad gate)** — 1150 trades on USDCAD H4 2015–2025, **+9.79 mean pips** but **−7.28 median pips**, 49.8 % win rate. Mean-positive but median-negative (E005's fat-right-tail asymmetry confirmed); dilutes the squad's median-of-means TQS. **0 devour lifts** in 11-year run — Isagi was either silent or directionally aligned on every USDCAD signal tick. See `reviews/phi4_squad_v1.md` Diagnosis #2. |
+| **MVP Φ3?** | Φ4 v1 (shipped) |
 | **Canon role (fixed)** | King / lone wolf; dominant solo finishing; refuses to participate in chemical reactions |
-| **Information tier status** | **Structural Tier 3 (by design).** Barou is the architectural control — his thesis is *end-to-end single-specialist beats fusion*. Information isolation is not a deficiency; it is the experiment. F17 still measured to confirm he does not benefit from ledger access (if he does, the v0.1 control-agent rationale falls apart and Barou is re-specified). |
-| **Current version** | **v1 implementation in flight** (Φ4 parallel worker; MVP roster member per `09-experiment-architecture.md` §2). USDCAD-locked baseline `zone` (without D1-against gate) per E005 cross-pair side-note (audit §2.5). |
+| **Information tier status** | **Structural Tier 2 by canon revision (devour mechanic).** Barou's devour lift reads Isagi's prior-tick high-conviction thoughts to detect directional disagreement; the original v0.1 "Tier-3 by design" framing referenced the *default* state when Isagi is silent. With devour wired, Barou is Tier-2 with isolation as the experimental control. v1 F17 ΔInfo measured: +0.000 [underpowered] — devour fired 0 times so isolation made no measurable difference. |
+| **Current version** | **v1 implemented** — code: `sim/agents/a07_barou.py`; tests: `sim/tests/test_a07_barou_wrap.py` (6 tests, all passing). Wraps production `agent.alphas.concepts.zone_alpha.SupplyDemandAlpha` with `htf_align=None` and `target_rr=1.5` (baseline zone, no D1 gate). USDCAD-only; abstains on EURUSD/GBPUSD via observation-only Thoughts. Devour mechanic: +0.10 conviction lift (cap 1.0) when Isagi has prior-tick thought on USDCAD at conviction ≥ 0.7 with opposite direction. |
 | **Evolution arc** | v1 → v2 devour mechanic awakens (`06-blue-lock-doctrine.md` §3.11.3). *Trigger:* USDCAD baseline `zone` alone is a small edge (audit §2.5, +4.63 pips/trade vs EURUSD's +11.34); the King is not yet eating. *v2 hypothesis:* when Isagi shows high conviction on USDCAD that Barou disagrees with, Barou takes the opposite side at scaled size; devour bonus δ becomes measurable per F15 |
 | **Defeat trigger** | Expected: v1 TQS on USDCAD does not clear C1 vs Sae despite the baseline-zone asymmetry; "lone wolf" PnL underperforms even simple equal-weight fusion |
 | **Home TF (fixed)** | H4 (locked pair) |
@@ -369,11 +373,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Sizing rule** | Halves the next aggregator output for 24 h; cannot be overridden |
 | **Exit rule** | n/a |
 | **Anti-thesis** | Every shooting agent — Kunigami dampens them all without taking direction sides |
-| **Status** | to-build (mandatory before live promotion; this is the agent that would have prevented the 2026-06-19 blow-up) |
-| **MVP Φ3?** | yes |
+| **Status** | **v1 implemented (Φ4 squad gate)** — **0 trades, 0 warnings emitted** in 2006-trade squad run (loss-streak 3-of-5 high-conviction predicate never tripped; overconfidence ≥ 10-sample 0.85-mean predicate never tripped). The conservative predicates are tight enough to never produce a false positive; possibly TOO tight for the 2015–2025 EURUSD+USDCAD volatility regime. See `reviews/phi4_squad_v1.md` Diagnosis. Sentinel R5 wiring lives in `sim/core/sentinel.py` and is exercised by `sim/tests/test_a10_kunigami_wrap.py::test_warning_active_at_24h_window`. |
+| **MVP Φ3?** | Φ4 v1 (shipped); mandatory before live promotion |
 | **Canon role (fixed)** | Reformed power-shooter; recovery / discipline; anti-tilt risk auxiliary |
-| **Information tier status** | **Structural Tier 2 (by design).** Kunigami's signal *is* the ledger aggregate (drawdown state, recent-loss streak across the squad, recent-PostLossGuard activations) — he cannot exist as Tier-3. F17 still measured to verify. |
-| **Current version** | **v1 implementation in flight** (Φ4 parallel worker; MVP roster member per `09-experiment-architecture.md` §2; mandatory before live promotion) |
+| **Information tier status** | **Structural Tier 1 (by design).** Kunigami reads the ledger AGGREGATE (squad-wide confidence + per-striker closed-trade outcomes), not individual peer Thoughts during decision. The v0.1 "Tier 2" framing is superseded — aggregate reads are Tier-1 by definition (doctrine §3.9). F17 still measured in squad gate for the audit trail. |
+| **Current version** | **v1 implemented** — code: `sim/agents/a10_kunigami.py`; tests: `sim/tests/test_a10_kunigami_wrap.py` (9 tests, all passing). `intend()` always returns None — Kunigami never trades. External harness pushes closed-trade outcomes via `record_closed_trade(rec)`. Two predicates: (1) **loss-streak warning** if ≥ 3 of last 5 closed trades were losses AND from high-conviction (≥ 0.7) proposals; (2) **overconfidence warning** if mean confidence-in-thought across non-Kunigami peer Thoughts in the last 50 ticks exceeds 0.85 (with n ≥ 10 floor). `warning_active_at(ts)` exposes a 24-h `kunigami_loss_streak_warning` window for the Sentinel R5 dampener. |
 | **Evolution arc** | v1 → v2 gentle giant (`06-blue-lock-doctrine.md` §3.11.3). *Trigger:* loss-streak dampener fires *after* damage is done — three losses before the half-size kicks in. *v2 hypothesis:* read forward-looking ledger confidence aggregates (low aggregate conviction × high pairwise correlation) and dampen **pre-emptively**, before the third loss lands; anti-tilt becomes anticipatory |
 | **Defeat trigger** | Expected: v1 activates only after the loss has accumulated (post-hoc); on the 2026-06-19 replay window, v1 would have halved size after −$48 of damage rather than before. The defeat is the lateness, not the direction |
 | **Home TF (fixed)** | daily state (fires off internal equity/streak triggers, not bar closes) |
