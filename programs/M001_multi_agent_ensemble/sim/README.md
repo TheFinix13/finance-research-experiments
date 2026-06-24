@@ -13,14 +13,22 @@ inside `sim/`; the live demo (Phi5+) is out-of-sample validation only.
 sim/
   core/         types, ledger, striker, engine, seed, friction, sentinel, aggregator
   regime/       four-class classifier (trending / chop / vol_spike / news) + train/eval
+                + Streamlit `label_disagreements.py` (Φ3-prep human-data-loop)
   scoring/      F12 TQS · F17 ΔInfo · F18 regime-conditional KPIs
   roster/       mvp_phi4.yaml (4-agent Φ4 v1) + full_canon.yaml (10-agent target)
   agents/       Phi2.5 stubs: a01_isagi, a06_nagi, a07_barou, a10_kunigami, placeholder
   dashboard/    Streamlit v0 (six panels per `08-dashboard-spec.md`)
   tests/        determinism, ledger look-ahead, friction, sentinel, seed
+../scripts/     VM-side CLIs run on the Windows deployment box
+                (e.g. `vm_calibrate_friction.py`)
 ```
 
 ## Quickstart
+
+The repo-root `Makefile` carries shortcuts for the most common
+operations (`make test-sim`, `make label-regime`, `make vm-calibrate`,
+`make vm-calibrate-dry`). The raw invocations below stay as the
+canonical reference; the Makefile is a thin alias layer over them.
 
 ### 1. Run the test suite
 
@@ -30,11 +38,12 @@ PYTHONPATH=../multi-pair-trading-agent:. \
   -m pytest programs/M001_multi_agent_ensemble/sim/tests/ -q
 ```
 
-Expected: 55 tests pass + 1 skipped (the skipped one is the real-data
-friction-calibration bounds test, which lights up automatically once
-`sim/core/friction_calibration_2026-06.json` is present). The full
-repo suite reports 125 passing + 1 skipped (70 pre-existing lab + 55
-sim + the skip).
+Expected: 84 tests pass + 2 skipped (the skipped ones are the
+real-data friction-calibration bounds test, which lights up
+automatically once `sim/core/friction_calibration_2026-06.json` is
+present, and a parallel skip in the gate harness for absent
+production data). The full repo suite reports 154+ passing (70
+pre-existing lab + 84 sim + the skips).
 
 ### 2. Train the regime classifier (synthetic data smoke test)
 
@@ -82,8 +91,8 @@ Per `09-experiment-architecture.md` §1.5 the G4 exit criteria are:
 | Criterion | Status (Phi2.5 scaffold + Phi3-prep 2026-06-24) |
 |---|---|
 | Replay fidelity: simulator median pips/trade per rolling OOS window reproduces E004 `zone_d1_against / H4 / all` baseline **±5 %** per window (reference +11.34 pips/trade) | **deferred** — requires Phi3 cross-repo import of the production `zone_d1_against` cell + parquet bar feed |
-| Regime classifier: macro-regime labels achieve holdout F1 >= 0.75 vs hand-labelled validation set (>= 200 bars) | **research debt acknowledged**: synthetic F1=0.999 is circular (trains and scores against the same rule); real-data weak-label agreement F1=**0.496** on EURUSD H4 2024 (vs the heuristic rules; `vol_spike`/`news` drag the macro). 30 disagreements saved to `sim/regime/disagreements_for_review.csv` for human labelling — see `sim/regime/README.md` for the interpretation guide |
-| Friction model calibrated against June 2026 VM broker fills (09 §1.8) | **machinery in place, data deferred**: text-log parser, JSONL vault reader, ATR-aware k estimator, and `load_calibration()` JSON loader all wired in `sim/core/friction.py`. No real fills on this Mac host (only `~/Documents/TradingAgentLogs/summaries/` weekly text); calibration runs on the VM in Phi3 and writes `sim/core/friction_calibration_2026-06.json`. Defaults remain conservative. |
+| Regime classifier: macro-regime labels achieve holdout F1 >= 0.75 vs hand-labelled validation set (>= 200 bars) | **research debt acknowledged + human-data-loop tool shipped**: synthetic F1=0.999 is circular (trains and scores against the same rule); real-data weak-label agreement F1=**0.496** on EURUSD H4 2024 (vs the heuristic rules; `vol_spike`/`news` drag the macro). 30 disagreements saved to `sim/regime/disagreements_for_review.csv`. Streamlit labelling tool at [`sim/regime/label_disagreements.py`](regime/label_disagreements.py) — run with `streamlit run …/label_disagreements.py` to convert the 30 anchors into a ground-truth label slice. See `sim/regime/README.md` for the interpretation guide. |
+| Friction model calibrated against June 2026 VM broker fills (09 §1.8) | **machinery in place, data deferred, VM script shipped**: text-log parser, JSONL vault reader, ATR-aware k estimator, and `load_calibration()` JSON loader all wired in `sim/core/friction.py`. No real fills on this Mac host (only `~/Documents/TradingAgentLogs/summaries/` weekly text); the VM-side CLI at [`scripts/vm_calibrate_friction.py`](../scripts/vm_calibrate_friction.py) auto-detects `C:\Users\Fiyin\Documents\TradingAgentLogs\` (with `~/Documents/TradingAgentLogs` and `D:\TradingAgentLogs` fallbacks), pulls ATR(14) at signal time from the production parquet cache, prints a paste-friendly per-symbol summary, and writes `sim/core/friction_calibration_2026-06.json`. Defaults remain conservative until a real run lands the JSON. |
 | Dashboard: Streamlit v0 renders all six panels in `08-dashboard-spec.md` §2 against synthetic + one real replay run without exception | **scaffold renders all six with placeholder data**; first-run-against-real-replay validates in Phi3 |
 
 Phi2.5 deliverables that land in this folder:
@@ -162,15 +171,17 @@ Per architecture §10 and 09 §2:
 3. [ ] Replace synthetic bars in the regime trainer with real parquet
    feeds from `multi-pair-trading-agent`'s data cache.
 4. [ ] Hand-label the 30 disagreement bars seeded in
-   `sim/regime/disagreements_for_review.csv` (Φ3-prep deliverable
-   2026-06-24) and extend to ≥ 200 hand-labelled bars for the G4
-   regime F1 gate.
+   `sim/regime/disagreements_for_review.csv` via the Streamlit tool
+   at [`sim/regime/label_disagreements.py`](regime/label_disagreements.py)
+   (Φ3-prep deliverable 2026-06-24) and extend to ≥ 200 hand-labelled
+   bars for the G4 regime F1 gate.
 5. [ ] Wire HRP allocator (F3 + F18) + chemical-reaction layer
    (F11 + F13) into the aggregator (currently a Φ2.5 stub).
-6. [ ] On the VM, run `calibrate_against_fills(symbol, log_root=...)`
-   for each of EURUSD/GBPUSD/USDCAD, persist via
-   `write_calibration_file(...)`, and bump the friction defaults via a
-   single calibration commit.
+6. [ ] On the VM, run [`scripts/vm_calibrate_friction.py`](../scripts/vm_calibrate_friction.py)
+   to calibrate friction against the live broker fills for
+   EURUSD/GBPUSD/USDCAD, then commit the resulting
+   `sim/core/friction_calibration_2026-06.json` via a single
+   calibration commit.
 
 ## Determinism contract
 
