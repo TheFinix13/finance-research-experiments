@@ -76,6 +76,28 @@ First, the **ego column**. Each ego value is justified two-line:
 
 Second, **A7 Barou is intentionally outside the fusion layer.** He is the experimental control agent that tests "what if we just let one specialised striker run end-to-end without participating in confluence?" His PnL is the apples-to-apples baseline that any fusion mechanism must beat.
 
+### §1.1 MVP Φ4 roster (four agents — v1 fusion experiment)
+
+The **10-agent canon** in §1 above is unchanged — infrastructure
+implements all ten strikers. The **first Φ4 fusion sweep** (v1) ships a
+deliberately small roster to limit degrees of freedom while the replay
+kernel and ΔInfo harness mature (`09-experiment-architecture.md` §2).
+
+| Agent | `agent_id` | MVP role |
+|---|---|---|
+| **A1 Isagi** | `isagi_yoichi` | E004 baseline wrapper; must clear C1 alone before squad fusion counts |
+| **A6 Nagi** | `nagi_seishiro` | Confluence-only chemical-reaction layer; lowest frequency, highest conviction floor |
+| **A7 Barou** | `barou_shoei` | End-to-end lone-wolf control (USDCAD-locked in spec §3.7); does not participate in fusion |
+| **A10 Kunigami** | `kunigami_rensuke` | Anti-tilt risk auxiliary; post-loss dampening across the squad |
+
+**Not in Φ4 v1 (benched, not cut):** A2 Bachira, A3 Rin, A4 Chigiri,
+A5 Reo, A8 Yukimiya, A9 Aoshi. These agents are built and measured under
+G5 (10 implemented, ≥ 6 with TQS > 0 in ≥ 1 regime) but excluded from
+the first fusion config until Φ4 v2 ablation sweeps.
+
+Ablation is config-only: drop or swap agents via `sim/config/roster.yaml`
+without code changes (`09-experiment-architecture.md` §1.10).
+
 ---
 
 ## 2. Diversity matrix
