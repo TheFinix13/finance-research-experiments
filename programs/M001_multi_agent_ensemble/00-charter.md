@@ -1,11 +1,19 @@
 # 00 — Charter, Scope & Success Criteria
 
-**Status:** `DRAFT v0.3` — 2026-06-24. v0.3 lands the repo split into a
-research repo + production repo (G9), inserts a Φ2.5 infrastructure +
-standards phase (G10, `07-research-standards.md`), scopes the Φ3 MVP
-down to 5 components (A1 Isagi, A4 Chigiri, A10 Kunigami, Sentinel, Sae),
-and adds C7 (no retro-fit in adversarial benchmark). v0.2 added the Blue
-Lock doctrine (`06-blue-lock-doctrine.md`) as the project's philosophical
+**Status:** `DRAFT v0.4` — 2026-06-24. v0.4 makes the §7 account
+profile *operational*: §7.1 fixes the C1 promotion gate to a numeric
+TQS bar against the **E004 deployed cell** (median +11.34 pips/trade,
+7/7 OOS sign test, p ≈ 0.008, per `audits/2026-06-24_E001-E007_
+audit.md` §2.4); §7.2 makes position sizing **discrete** (0.01,
+0.02, … min-lot multiples, rounded down) instead of continuous; §7.3
+points at the Sentinel hard rules R1–R5 in `06-blue-lock-doctrine.md`
+§4.3 as pre-trade gates that override every agent's conviction. v0.3
+landed the repo split into a research repo + production repo (G9),
+inserted a Φ2.5 infrastructure + standards phase (G10,
+`07-research-standards.md`), scoped the Φ3 MVP down to 5 components
+(A1 Isagi, A4 Chigiri, A10 Kunigami, Sentinel, Sae), and added C7
+(no retro-fit in adversarial benchmark). v0.2 added the Blue Lock
+doctrine (`06-blue-lock-doctrine.md`) as the project's philosophical
 spine, the 10-character roster (`05-agent-roster-v0.md`), TQS-driven
 fitness (G7), the human-as-opponent benchmark (G8 / C6), and the new
 $100 / 1:1000 demo account profile (§7).
@@ -179,6 +187,91 @@ Implications for agent design (full discussion in doctrine §6):
 
 The pitch is *intentionally* hostile to indiscriminate trading — it is
 the stress test that proves which agents can play.
+
+### §7.1 — C1 promotion gate is numeric
+
+C1 ("Beat single-agent baseline") in the success-criteria table above
+collapses to a **single numeric bar** against the E004 deployed cell:
+
+> **Beat Sae by ≥ 10 % on TQS over the sealed 2026 H1 panel.**
+
+Where "Sae" here means the E004-validated configuration —
+`zone_d1_against / H4 / all sessions`, with `htf_align = D1`,
+`htf_align_mode = against`, `htf_lookback = 10`,
+`htf_min_move_pips = 60`, `target_rr = 1.5`. The reference numbers
+that constitute the bar:
+
+| Metric | E004 Sae baseline | Squad must clear |
+|---|---|---|
+| Median pips/trade | **+11.34** | n/a (TQS-based; pips reported for reference) |
+| Trades per OOS window | ~66 | n/a |
+| Sign-test (7 rolling 4-yr-IS / 1-yr-OOS windows) | **7/7 positive**, p ≈ 0.008 | n/a |
+| Median **TQS** over sealed 2026 H1 panel | computed at C1 evaluation time | **≥ baseline × 1.10** |
+
+Source for the baseline numbers: `audits/2026-06-24_E001-E007_
+audit.md` §2.4 (E004 walk-forward, the cleanest single piece of
+evidence in the pre-M001 lab). The TQS conversion uses F12 in
+`04-quant-foundations.md`. C1 is **only** evaluated against this
+baseline; the v0.1 placeholder language "baseline" without a
+quantitative referent is superseded.
+
+### §7.2 — Discrete position sizing under $100 / 1:1000
+
+The pitch's mechanics:
+
+- Minimum broker lot: **0.01**.
+- EURUSD pip value at 0.01 lot: **≈ $0.10**.
+- A 50-pip stop on 0.01 lot is therefore **≈ $5.00 ≈ 5 % of $100
+  equity** — exactly at the R1 floor (`06-blue-lock-doctrine.md`
+  §4.3).
+
+Implications:
+
+1. **Position sizes are discrete**, not continuous. The Capital
+   Allocator (`03-architecture-v0-sketch.md` §4) emits HRP weights
+   that imply *desired* fractional lots; the Sentinel rounds those
+   fractions to the nearest min-lot multiple.
+2. **Rounding direction is always "down"** (toward smaller risk).
+   0.017 lot → 0.01, not 0.02. This is intentionally pessimistic
+   on the small account.
+3. **Position-sizing math is integer optimisation, not continuous
+   optimisation.** The HRP weights become an *upper bound*; the
+   actual size is the largest min-lot multiple that fits under
+   every Sentinel rule simultaneously.
+4. **Some agents will mechanically refuse trades** at this pitch
+   because their realised SL distance × 0.01 lot exceeds 5 %
+   equity (Sentinel R1). This is the doctrine §6 prediction made
+   binding: wide-stop H4 zone fades (Isagi v1 standalone) are the
+   primary refusal candidates; confluence (F11 + F13) is how they
+   get sized back in.
+
+The full mapping from HRP-weight → discrete-lot → Sentinel-block
+decision lives in `sim/sentinel.py` (Φ3).
+
+### §7.3 — Sentinel hard rules
+
+The Sentinel sits between the Aggregator output and the Risk
+Conductor's order ladder (architecture diagram, `03-architecture-
+v0-sketch.md` §2). It is **not** an agent — it has no Coordinate,
+no Proposal, no TQS — it is a deterministic pre-trade gate.
+
+The five hard rules are defined in `06-blue-lock-doctrine.md` §4.3:
+
+- **R1 — Min-lot risk floor.** Block trade if SL distance × 0.01
+  lot > 5 % equity.
+- **R2 — Discrete position sizing.** Round HRP weights down to
+  nearest min-lot multiple.
+- **R3 — Pass bias.** Most ticks, most agents emit observation-only
+  Thoughts. Daily proposal-rate > 3 per agent triggers roster
+  review.
+- **R4 — Concentration cap.** No agent gets > 40 % of risk budget
+  on any tick (hard backstop above HRP's 35 %).
+- **R5 — Loss-streak dampener.** 3 consecutive losses → 50 % risk-
+  scale × 24 h, applied to all agents.
+
+R1–R5 are non-configurable and cannot be overridden by any agent's
+conviction or by the Allocator. They are the floor below which "the
+squad is allowed to play" stops being true.
 
 ## Phases (intended cadence)
 

@@ -1,11 +1,20 @@
 # 05 — Agent Roster v0 (Blue Lock cast)
 
-**Status:** `DRAFT v0.3` — 2026-06-24. v0.3 adds per-agent home /
-supporting timeframes, the Φ3 MVP scope flag (yes for A1, A4, A10
-only), and the principled-form note on the ego column (numeric egos
-are placeholders until F-information-ratio derivation in Φ4+).
-Supersedes v0.1 (2026-06-23, deleted before pivot to the doctrine in
-`06-blue-lock-doctrine.md`).
+**Status:** `DRAFT v0.4` — 2026-06-24. v0.4 adds per-agent
+**canon_role** (fixed identity), **info_tier_status** (TBD pending
+Φ3 ΔInfo, F17 in `04-quant-foundations.md`), **conflab/ inheritance**
+(specific lab-side primitives the agent reuses), and **empirical
+prior** (one-line E0XX citation per agent, from `audits/2026-06-24_
+E001-E007_audit.md` §4.2). The character-feel ego column is
+unchanged. The two-method protocol from `06-blue-lock-doctrine.md`
+§4.1 (`observe` / `intend`) applies to every agent below; the per-
+agent specs continue to describe `intend` triggers, with `observe`
+being the every-tick Thought emitter using each agent's tag set.
+v0.3 added per-agent home / supporting timeframes, the Φ3 MVP scope
+flag (yes for A1, A4, A10 only), and the principled-form note on the
+ego column (numeric egos are placeholders until F-information-ratio
+derivation in Φ4+). Supersedes v0.1 (2026-06-23, deleted before
+pivot to the doctrine in `06-blue-lock-doctrine.md`).
 
 > "I am the protagonist of this story." — Yoichi Isagi
 
@@ -113,6 +122,12 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Anti-thesis** | A4 Chigiri — same H1 close interpreted as breakout-momentum continuation, not reversion |
 | **Status** | **seeded** — wraps existing `agent/alphas/concepts/zone_alpha.py` as Isagi v1 (zone-only sub-detector on the legacy H4 cadence); v2 adds full IRL/ERL/FVG/OB on the H1 home TF once Φ3 stabilises |
 | **MVP Φ3?** | yes |
+| **Canon role (fixed)** | Field-general striker reading the field's future state via metavision |
+| **Information tier status** | TBD — pending Φ3 ΔInfo measurement (F17 in `04-quant-foundations.md`) |
+| **Home TF (fixed)** | H1 |
+| **Symbols (fixed)** | EURUSD, GBPUSD, USDCAD |
+| **conflab/ inheritance (v1)** | `agent/alphas/concepts/zone_alpha.py` (production, untouched). Empirical prior: **E004** walk-forward 7/7 OOS, median +11.34 pips/trade (audit §2.4). Baseline for the C1 promotion gate. |
+| **conflab/ inheritance (v2)** | `conflab/detectors_liquidity.py` (`equal_highs_pool`, `equal_lows_pool`, `liquidity_sweep_high`, `liquidity_sweep_low`), `conflab/detectors_zones.py` (lab-native zone re-impl as cross-check). Empirical prior: **E006** exploratory — H1 `equal_highs_pool` is the strongest context amplifier (+0.10 to +0.46 ATR lift across 65 M15 setups; audit §2.6, §4.3). |
 
 ### 3.2 A2 — Meguru Bachira (`bachira_meguru`)
 
@@ -129,6 +144,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Anti-thesis** | A1 Isagi — Isagi often sees the H&S right shoulder as a fade-able zone touch; Bachira sees it as the pattern's confirmation |
 | **Status** | to-build |
 | **MVP Φ3?** | Φ4+ |
+| **Canon role (fixed)** | Wild striker; monstrous-dribble creativity; pattern geometry as non-linear improvisation |
+| **Information tier status** | TBD — pending Φ3 ΔInfo measurement |
+| **Home TF (fixed)** | H1 |
+| **Symbols (fixed)** | EURUSD, GBPUSD, USDCAD |
+| **conflab/ inheritance** | `conflab/detectors_chartpatterns.py` (H&S, double tops/bottoms, triples, triangles, wedges, flags, rectangles). Empirical prior: **E001** killed 6/7 ICT standalone concepts and **E006** killed candlestick families everywhere they were powered (audit §2.1, §2.6). Bachira's edge cannot come from a standalone pattern; it must come from pattern × HTF-lid/floor combination — i.e. confluence is mandatory, not optional. |
 
 ### 3.3 A3 — Itoshi Rin (`itoshi_rin`)
 
@@ -145,6 +165,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Anti-thesis** | A6 Nagi — Rin shoots when geometry is clean even without confluence; Nagi waits for confluence even when geometry is clean |
 | **Status** | to-build |
 | **MVP Φ3?** | Φ4+ |
+| **Canon role (fixed)** | Cold technician; technical perfection via mathematical ratios |
+| **Information tier status** | TBD — pending Φ3 ΔInfo measurement |
+| **Home TF (fixed)** | H4 |
+| **Symbols (fixed)** | EURUSD, GBPUSD, USDCAD |
+| **conflab/ inheritance** | `conflab/detectors_fib.py` (retracement, OTE, extensions), `conflab/detectors_trendlines.py` (trendline + channel touch, break+retest, parallel-channel boundary). Empirical prior: **E006** Stage-1 found `fib_50_tag` and `fib_618_tag` alive on the EURUSD screen (effect +0.12 to +0.15 ATR) but **not confirmed** on the 2022–2024 confirm split and **not replicated** on GBPUSD (audit §2.6). Rin's edge is conditional on multi-TF Fib confluence, not standalone — the data says single-Fib tags do not survive OOS. |
 
 ### 3.4 A4 — Hyoma Chigiri (`chigiri_hyoma`)
 
@@ -161,6 +186,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Anti-thesis** | A1 Isagi — same close interpreted as zone touch to fade |
 | **Status** | to-build |
 | **MVP Φ3?** | yes |
+| **Canon role (fixed)** | Speedster; pure breakaway speed; commit-and-run once the range resolves |
+| **Information tier status** | TBD — pending Φ3 ΔInfo measurement |
+| **Home TF (fixed)** | M15 |
+| **Symbols (fixed)** | EURUSD, GBPUSD, USDCAD |
+| **conflab/ inheritance** | `conflab/detectors_impulse_return.py` (impulse-leg detector with K-bar net-move + ATR floor + intra-leg retrace ceiling) — the primitive that recognises a "strong leg" Chigiri rides. Empirical prior: **E007** is a *negative* prior at the retest layer — 0/12 cells alive on impulse-origin retest at Stage 1, BH-FDR α=0.05 (audit §2.7). **Chigiri's edge must therefore live in the *continuation* of the impulse, not in the retest of the origin zone.** Up-impulse cells were +4 to +14 pips on EURUSD 2015–2021 vs negative H4 down-impulse cells — a symmetric-long-short warning that Chigiri must respect at the spec level. |
 
 ### 3.5 A5 — Reo Mikage (`reo_mikage`)
 
@@ -177,6 +207,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Anti-thesis** | A7 Barou — Reo defines himself by deference to peers; Barou refuses to defer to anyone |
 | **Status** | to-build (depends on at least 4 weeks of A1+A4 KPIs) |
 | **MVP Φ3?** | Φ4+ |
+| **Canon role (fixed)** | Chameleon; adaptive copying; ego defers to whoever is winning this week |
+| **Information tier status** | **Structural Tier 2 (by design).** Reo's weapon *is* reading the leader's thoughts; he cannot exist as Tier-3. ΔInfo (F17) is still measured to verify the design — if informed Reo does not beat isolated Reo on F17, Reo is cut from the roster (not relegated). |
+| **Home TF (fixed)** | inherits (whichever TF the current trailing-K-week TQS leader runs on) |
+| **Symbols (fixed)** | inherits |
+| **conflab/ inheritance** | No direct conflab primitive — Reo's weapon is the Thought Ledger itself (he reads other agents' Thoughts and emits a coordinate co-located with the leader's). No empirical prior from E001–E007 applies. |
 
 ### 3.6 A6 — Seishiro Nagi (`nagi_seishiro`)
 
@@ -193,6 +228,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Anti-thesis** | A2 Bachira — Bachira shoots from anywhere, Nagi shoots only from the perfect spot |
 | **Status** | to-build (depends on chemical-reaction detector being live) |
 | **MVP Φ3?** | Φ4+ |
+| **Canon role (fixed)** | Lazy genius; perfect trap; lowest-frequency, highest-RR; fires only on multi-signal confluence |
+| **Information tier status** | **Structural Tier 2 (by design).** Nagi is the canonical chemical-reaction agent — his trigger is overlap of other agents' coordinates and resonance of their Thoughts. Cannot operate as Tier-3. F17 still measured to verify the design. |
+| **Home TF (fixed)** | multi-TF native (M15 / H1 / H4 / D1 simultaneously) |
+| **Symbols (fixed)** | EURUSD, GBPUSD, USDCAD |
+| **conflab/ inheritance** | `conflab/stage2.py` (context × setup pair-screening with displacement null and hour-restricted re-draws — the methodological template for Nagi's confluence layer). Empirical prior: **E006 exploratory** Stage-2 (audit §2.6, §4.3) found H1 `equal_highs_pool` × M15 setups lift +0.10 to +0.46 ATR (selection term). **This is the canonical chemical-reaction event.** Nagi's deployment-grade confluence layer waits for **E010** (pre-registered Stage-2b) to confirm the exploratory finding before live capital is allocated. |
 
 ### 3.7 A7 — Shoei Barou (`barou_shoei`)
 
@@ -209,6 +249,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Anti-thesis** | The entire ensemble — Barou's existence asks the question "did fusion add value over a single specialist?" |
 | **Status** | to-build (Φ4+; the architectural control agent) |
 | **MVP Φ3?** | Φ4+ |
+| **Canon role (fixed)** | King / lone wolf; dominant solo finishing; refuses to participate in chemical reactions |
+| **Information tier status** | **Structural Tier 3 (by design).** Barou is the architectural control — his thesis is *end-to-end single-specialist beats fusion*. Information isolation is not a deficiency; it is the experiment. F17 still measured to confirm he does not benefit from ledger access (if he does, the v0.1 control-agent rationale falls apart and Barou is re-specified). |
+| **Home TF (fixed)** | H4 (locked pair) |
+| **Symbols (fixed)** | USDCAD (locked; ignores all other instruments) |
+| **conflab/ inheritance** | `conflab/detectors_zones.py` (lab-native zone re-impl). Empirical prior: **E005 cross-pair side-note** (audit §2.5, §4.3) — the *baseline* `zone` (WITHOUT the D1-trend gate) is **stronger** than `zone_d1_against` on USDCAD, AUDUSD, NZDUSD — the **inverse** of the EURUSD pattern. **This asymmetry is Barou's entire thesis.** USDCAD-locked zone-without-D1-gate is the configuration that would have made USDCAD work where A1 Isagi v1 (zone × D1-against) only managed +4.63 pips/trade vs EURUSD's +11.34. Acting on this in production requires its own pre-registered walk-forward (a new E0XX experiment), per audit §4.3. |
 
 ### 3.8 A8 — Kenyu Yukimiya (`yukimiya_kenyu`)
 
@@ -225,6 +270,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Anti-thesis** | None directly — Yukimiya is positive-sum for the squad |
 | **Status** | to-build (Φ4+; depends on stable A1+A4) |
 | **MVP Φ3?** | Φ4+ |
+| **Canon role (fixed)** | Smooth dribbler; clean execution; sub-bar entry-timing refiner; doesn't take shots, refines them |
+| **Information tier status** | **Structural Tier 2 (by design).** Yukimiya's weapon is reading parent agents' OrderIntents — he cannot exist as Tier-3. F17 still measured to verify the design. |
+| **Home TF (fixed)** | M1–M5 sub-bar (inherits parent agent's home TF for context) |
+| **Symbols (fixed)** | inherits from parent OrderIntent |
+| **conflab/ inheritance** | `conflab/friction.py` (`wick_density`, `oscillation_count`, `path_drawdown_ratio`, `time_in_chop_band`) — the path-quality measurement primitives. Empirical prior: **E007** friction-quartile cutoffs (audit §4.1) — frozen reference distribution `Q1/Q2 = −1.1916`, `Q2/Q3 = −0.2472`, `Q3/Q4 = +0.9864` on the simple-sum-of-z-scores friction score, with per-component (mean, std) in `output/test_b/stage1_friction_reference_2026-06-16_1656.json`. **Re-usable calibration for the F12 TQS efficiency/cleanliness components without re-training.** |
 
 ### 3.9 A9 — Aoshi Tokimitsu (`aoshi_tokimitsu`)
 
@@ -241,6 +291,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Anti-thesis** | A1 Isagi — Isagi fades the post-event move; Aoshi rides it |
 | **Status** | to-build |
 | **MVP Φ3?** | Φ4+ |
+| **Canon role (fixed)** | Berserker; overwhelming physicality only in event mode (FOMC / NFP / CPI / ECB) |
+| **Information tier status** | TBD — pending Φ3 ΔInfo measurement |
+| **Home TF (fixed)** | M5 event-window |
+| **Symbols (fixed)** | EURUSD, GBPUSD, USDCAD |
+| **conflab/ inheritance** | `conflab/indicators.py:atr` for the post-event range-z computation; vol-regime detection (to be written as part of the F18 regime classifier in `04-quant-foundations.md`). **No direct empirical prior from E001–E007** — Aoshi is a novel weapon; the program will produce its own empirical prior at first Φ3 sealed run. |
 
 ### 3.10 A10 — Rensuke Kunigami (`kunigami_rensuke`)
 
@@ -257,6 +312,11 @@ Eight fields per agent, same template throughout. The fields define what the cod
 | **Anti-thesis** | Every shooting agent — Kunigami dampens them all without taking direction sides |
 | **Status** | to-build (mandatory before live promotion; this is the agent that would have prevented the 2026-06-19 blow-up) |
 | **MVP Φ3?** | yes |
+| **Canon role (fixed)** | Reformed power-shooter; recovery / discipline; anti-tilt risk auxiliary |
+| **Information tier status** | **Structural Tier 2 (by design).** Kunigami's signal *is* the ledger aggregate (drawdown state, recent-loss streak across the squad, recent-PostLossGuard activations) — he cannot exist as Tier-3. F17 still measured to verify. |
+| **Home TF (fixed)** | daily state (fires off internal equity/streak triggers, not bar closes) |
+| **Symbols (fixed)** | all squad symbols (his negative coordinates apply globally) |
+| **conflab/ inheritance** | No direct conflab primitive — Kunigami reads ledger aggregate sentiment and equity-state triggers; the implementation lives at `sim/kunigami.py` (Φ3 MVP). No empirical prior from E001–E007 applies; the prior is the 2026-06-19 live blow-up itself (per `01-week-2026-06-15-archive.md`). |
 
 ---
 
