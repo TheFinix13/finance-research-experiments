@@ -1,6 +1,6 @@
 # Multi-Agent Ensemble — Research & Development (M001 program root)
 
-**Status:** `OPEN`, started 2026-06-23, migrated to research repo 2026-06-24.
+**Status:** `OPEN`, doctrine v0.2, started 2026-06-23, migrated to research repo 2026-06-24.
 **Owner:** the1finix (research lead), assistant (R&D + implementation).
 **Parent repo:** the production repo at `/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/` — only validated agents from this program graduate back into it.
 **Brain-box node:** `life/finance-research/multi-pair-trading-agent.md`.
@@ -42,7 +42,8 @@ promotion to live capital. Many egos, one scoreboard.
 | 04 | [`04-quant-foundations.md`](04-quant-foundations.md) | Math we will rely on: combination weights, risk parity, correlation-adjusted sizing, Kelly fraction, PBO |
 | 05 | [`05-agent-roster-v0.md`](05-agent-roster-v0.md) | The 10-striker Blue Lock cast (Isagi / Bachira / Rin / Chigiri / Reo / Nagi / Barou / Yukimiya / Aoshi / Kunigami) + Ego (coach) + Kaiser/Loki/Sae (opponents). Diversity matrix + per-agent specs + build order. |
 | 06 | [`06-blue-lock-doctrine.md`](06-blue-lock-doctrine.md) | **The philosophical spine.** Translates ego, weapon, metavision, coordinate, chemical reaction, devour, awakening, TQS, and the human-as-opponent into typed objects, formulas, and measurable KPIs. Read this *before* `05` to understand what the cast is instantiating. |
-| 07 | [`07-research-standards.md`](07-research-standards.md) | Φ2.5 standards: nested walk-forward CV, reproducibility manifests, experiment tracking, null-baseline suite, shadow-mode-first policy, locked human-adversary submission protocol. |
+| 07 | [`07-research-standards.md`](07-research-standards.md) | Φ2.5 standards: nested walk-forward CV, reproducibility manifests, experiment tracking, null-baseline suite, shadow-mode-first policy, locked human-adversary submission protocol. **v0.2 §10** appends post-audit amendments (E010 parallel, agent promotion internal to M001, E008 skipped, hybrid verdict registry, v0.1 tier definitions superseded). |
+| 08 | [`08-dashboard-spec.md`](08-dashboard-spec.md) | **v0.2 new.** Streamlit v0 surface: panel inventory (league table, thought feed, chemical-reaction graph, human-vs-squad scoreboard, Sentinel state, per-trade explainability), verdict-vocabulary translation (`alive`/`parked_*`/`dead` → `starter`/`sub`/`benched`/`cut`), tier display, data-plane bindings, auth (local-only), and a ~200-LoC implementation skeleton. |
 
 Each doc carries a `Status:` banner at the top: `DRAFT` / `IN REVIEW` /
 `STABLE` / `SUPERSEDED-BY: …`.
