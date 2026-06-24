@@ -24,7 +24,7 @@ Master index of every hypothesis test in this repository. Numeric IDs
 |---|---|---|
 | E008 | Technical indicators only | v2-PROTOCOL "Test B" family — EMA/RSI/MACD/etc.; own pre-registration |
 | E009 | Cross-family confluence | v2-PROTOCOL "Test C"; A×B survivors; last |
-| E010 | Stage-2b equal_highs_pool | H1 context amplifier from E006 exploratory Stage 2 |
+| E010 | Stage-2b equal_highs_pool | H1 context amplifier — **pre-registered skeleton** [`experiments/E010_equal_highs_pool_stage2b/PROTOCOL.md`](experiments/E010_equal_highs_pool_stage2b/PROTOCOL.md); cites E006 exploratory finding; runs parallel with M001 |
 
 Register in this table **before** writing `experiments/E00X_*/PROTOCOL.md`.
 
