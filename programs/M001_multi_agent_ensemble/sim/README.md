@@ -102,25 +102,75 @@ Phi2.5 deliverables that land in this folder:
 - [x] Streamlit v0 dashboard with all six panels
 - [x] Tests pass: determinism, ledger look-ahead, friction, sentinel, seed
 
+## Running Φ3 gate (A1 Isagi v1 vs Sae)
+
+The Φ3 → Φ4 gate (`09-experiment-architecture.md` §1.5 G4) wraps the
+production `zone_d1_against / H4 / all` cell as A1 Isagi v1 and
+validates that the `BlueLockStriker.observe`/`intend` protocol preserves
+E004's `+11.34 median OOS pips/trade` baseline (`docs/findings/2026-06-09_walk_forward_validation.md`).
+
+### Cross-repo import contract
+
+The wrapper imports
+`agent.alphas.concepts.zone_alpha.SupplyDemandAlpha` from the
+production repo. Resolution order (`sim/_cross_repo.py`):
+
+1. `M001_PRODUCTION_REPO` environment variable (preferred).
+2. Default dev path `~/Documents/GitHub/multi-pair-trading-agent`.
+
+A clear `ProductionRepoMissing` error fires if neither location
+contains `agent/alphas/concepts/zone_alpha.py`. **Lab code never
+recreates or copies the production cell** — that is a doctrine §7
+commitment (`06-blue-lock-doctrine.md`).
+
+### Run the gate
+
+```bash
+PYTHONPATH=../multi-pair-trading-agent:. \
+  M001_PRODUCTION_REPO=../multi-pair-trading-agent \
+  ../multi-pair-trading-agent/.venv/bin/python \
+  -m programs.M001_multi_agent_ensemble.sim.scoring.run_isagi_phi3_gate \
+  --verbose
+```
+
+Default window: EURUSD H4 2015-01-01 → 2025-12-31 (matches E004's
+7-window walk-forward: 4 yr IS / 1 yr OOS rolling). Output:
+`programs/M001_multi_agent_ensemble/reviews/phi3_gate_isagi_v1.md`.
+
+Verdict thresholds (per spec):
+
+| Outcome | Rule |
+|---|---|
+| `PASS` | median OOS-window mean pips/trade within ± 5 % of +11.34, AND ≥ 5/7 OOS windows positive |
+| `PARTIAL` | OOS windows pass but median pip drift outside ± 5 % |
+| `FAIL` | median OOS mean < +9.0 pips OR < 5/7 OOS windows positive |
+| `PROVISIONAL` | data window incomplete / wrapper missing — numbers reported, gate not graded |
+
+Slow integration tests are skipped by default. Enable with
+`M001_RUN_SLOW=1 pytest -m slow`.
+
 ## Phi3 build order (next phase)
 
 Per architecture §10 and 09 §2:
 
-1. Wire the production `zone_d1_against` cell into `IsagiYoichi.intend`
-   via cross-repo import (PYTHONPATH=../multi-pair-trading-agent:.).
-2. Replace synthetic bars in the regime trainer with real parquet
+1. [x] Wire the production `zone_d1_against` cell into `A1IsagiV1.intend`
+   via cross-repo import (`PYTHONPATH=../multi-pair-trading-agent:.` or
+   `M001_PRODUCTION_REPO=...`).
+2. [x] Φ3 gate (A1 Isagi v1) — **PASS @ +11.04 median OOS pips/trade**
+   (drift −2.7 % vs Sae +11.34; 7/7 OOS windows positive). Review:
+   `reviews/phi3_gate_isagi_v1.md`.
+3. [ ] Replace synthetic bars in the regime trainer with real parquet
    feeds from `multi-pair-trading-agent`'s data cache.
-3. Hand-label the 30 disagreement bars seeded in
+4. [ ] Hand-label the 30 disagreement bars seeded in
    `sim/regime/disagreements_for_review.csv` (Φ3-prep deliverable
    2026-06-24) and extend to ≥ 200 hand-labelled bars for the G4
    regime F1 gate.
-4. Wire HRP allocator (F3 + F18) + chemical-reaction layer (F11 + F13)
-   into the aggregator (currently a Phi2.5 stub).
-5. Run the first replay fidelity check vs E004's +11.34 pips/trade
-   baseline; then on the VM run
-   `calibrate_against_fills(symbol, log_root=...)` for each of
-   EURUSD/GBPUSD/USDCAD, persist via `write_calibration_file(...)`,
-   and bump the friction defaults via a single calibration commit.
+5. [ ] Wire HRP allocator (F3 + F18) + chemical-reaction layer
+   (F11 + F13) into the aggregator (currently a Φ2.5 stub).
+6. [ ] On the VM, run `calibrate_against_fills(symbol, log_root=...)`
+   for each of EURUSD/GBPUSD/USDCAD, persist via
+   `write_calibration_file(...)`, and bump the friction defaults via a
+   single calibration commit.
 
 ## Determinism contract
 
