@@ -1,0 +1,84 @@
+# sim/roster/mvp_phi4.yaml — the 4-agent Φ4 MVP roster.
+#
+# Per 09-experiment-architecture.md §2, the first Φ4 fusion experiment
+# ships four specialists chosen for diversity and Φ3 readiness:
+# Isagi / Nagi / Barou / Kunigami. The full 10-agent canon lives in
+# `full_canon.yaml`.
+#
+# `info_tier` starts as "TBD" for every agent until ΔInfo (F17) is
+# measured at the C1 promotion gate (doctrine §3.9, standards §10.5).
+# Switching from "TBD" -> 2 or 3 is a manifest amendment per
+# `09-experiment-architecture.md` §6.
+
+manifest_version: 1
+manifest_label: mvp_phi4_v1
+ledger:
+  mode: full
+allocator: tqs_hrp_v1   # placeholder; actual HRP lives in sim/allocator/* (Φ3+)
+seed: 42
+
+agents:
+  - agent_id: isagi_yoichi
+    module: programs.M001_multi_agent_ensemble.sim.agents.a01_isagi
+    class: IsagiYoichi
+    canon_role:
+      canon_player: "Yoichi Isagi"
+      weapon: "metavision"
+      ego: 0.60
+      target_hold_hours: 24.0
+      narrative_voice: "metavision read of the field's future state"
+    home_tf: H1
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+    conflab_inheritance:
+      - "agent/alphas/concepts/zone_alpha.py (production, untouched, via cross-repo import)"
+      - "conflab/detectors_zones.py (lab-side cross-check)"
+      - "conflab/detectors_liquidity.py (v2 metavision: equal_highs_pool, equal_lows_pool, liquidity_sweep_high, liquidity_sweep_low)"
+    empirical_prior: "E004 walk-forward 7/7 OOS, median +11.34 pips/trade (audit §2.4) — baseline for C1"
+
+  - agent_id: nagi_seishiro
+    module: programs.M001_multi_agent_ensemble.sim.agents.a06_nagi
+    class: NagiSeishiro
+    canon_role:
+      canon_player: "Seishiro Nagi"
+      weapon: "perfect trap (multi-signal AND)"
+      ego: 0.45
+      target_hold_hours: 24.0
+      narrative_voice: "confluence-only; will not fire without multi-signal alignment"
+    home_tf: H1
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+    conflab_inheritance:
+      - "conflab/detectors_liquidity.py (equal_highs_pool as primary context primitive)"
+    empirical_prior: "E006 exploratory: H1 equal_highs_pool lifts every M15 setup +0.10..+0.46 ATR (audit §2.6); WAITS for E010 confirmation before live"
+
+  - agent_id: barou_shoei
+    module: programs.M001_multi_agent_ensemble.sim.agents.a07_barou
+    class: BarouShoei
+    canon_role:
+      canon_player: "Shoei Barou"
+      weapon: "lone-wolf dominant finishing"
+      ego: 1.00
+      target_hold_hours: 32.0
+      narrative_voice: "King — refuses to participate in chemical reactions"
+    home_tf: H4
+    symbols: ["USDCAD"]  # Barou is single-pair-locked by design (roster §3.7)
+    info_tier: TBD
+    conflab_inheritance:
+      - "conflab/detectors_zones.py (baseline zone, not zone_d1_against)"
+    empirical_prior: "E005 USDCAD side-note: baseline zone > zone_d1_against on USDCAD (audit §2.5); Barou's edge thesis"
+
+  - agent_id: kunigami_rensuke
+    module: programs.M001_multi_agent_ensemble.sim.agents.a10_kunigami
+    class: KunigamiRensuke
+    canon_role:
+      canon_player: "Rensuke Kunigami"
+      weapon: "recovery / discipline (no shooting drive)"
+      ego: 0.00
+      target_hold_hours: 0.0  # auxiliary — never holds a position
+      narrative_voice: "anti-tilt; dampens after losses"
+    home_tf: H1   # ticks daily; placeholder home_tf
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+    conflab_inheritance: []
+    empirical_prior: "No standalone edge claim; Kunigami is a risk auxiliary (roster §3.10)"

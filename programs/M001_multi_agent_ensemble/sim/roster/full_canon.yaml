@@ -1,0 +1,148 @@
+# sim/roster/full_canon.yaml — the 10-agent canon target end-state.
+#
+# Per 05-agent-roster-v0.md §1. Six of these (A2 Bachira, A3 Rin,
+# A4 Chigiri, A5 Reo, A8 Yukimiya, A9 Aoshi) are "benched" in Φ4 v1
+# (`mvp_phi4.yaml`) but implemented as part of the G5 infrastructure
+# gate (10 agents implemented; ΔInfo measured for all 10).
+#
+# Phi2.5 ships skeleton implementations for A1, A6, A7, A10 only;
+# the remaining six are listed here so the manifest is complete and
+# the harness can iterate over the full canon when it lands.
+
+manifest_version: 1
+manifest_label: full_canon_v1
+ledger:
+  mode: full
+allocator: tqs_hrp_v1
+seed: 42
+
+agents:
+  - agent_id: isagi_yoichi
+    module: programs.M001_multi_agent_ensemble.sim.agents.a01_isagi
+    class: IsagiYoichi
+    canon_role:
+      canon_player: "Yoichi Isagi"
+      weapon: "metavision"
+      ego: 0.60
+      target_hold_hours: 24.0
+      narrative_voice: "metavision read of the field's future state"
+    home_tf: H1
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+
+  - agent_id: bachira_meguru
+    module: programs.M001_multi_agent_ensemble.sim.agents.placeholder
+    class: PlaceholderAgent
+    canon_role:
+      canon_player: "Meguru Bachira"
+      weapon: "monstrous dribble (pattern geometry)"
+      ego: 0.85
+      target_hold_hours: 8.0
+      narrative_voice: "non-linear creativity; pattern triggers"
+    home_tf: H1
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+
+  - agent_id: itoshi_rin
+    module: programs.M001_multi_agent_ensemble.sim.agents.placeholder
+    class: PlaceholderAgent
+    canon_role:
+      canon_player: "Itoshi Rin"
+      weapon: "technical perfection (Fib / harmonic)"
+      ego: 0.40
+      target_hold_hours: 20.0
+      narrative_voice: "cold; refuses to shoot unless geometry is perfect"
+    home_tf: H4
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+
+  - agent_id: chigiri_hyoma
+    module: programs.M001_multi_agent_ensemble.sim.agents.placeholder
+    class: PlaceholderAgent
+    canon_role:
+      canon_player: "Hyoma Chigiri"
+      weapon: "speed (breakout momentum)"
+      ego: 0.80
+      target_hold_hours: 3.0
+      narrative_voice: "pure breakaway"
+    home_tf: M15
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+
+  - agent_id: reo_mikage
+    module: programs.M001_multi_agent_ensemble.sim.agents.placeholder
+    class: PlaceholderAgent
+    canon_role:
+      canon_player: "Reo Mikage"
+      weapon: "adaptive copying (chameleon)"
+      ego: 0.30
+      target_hold_hours: 12.0
+      narrative_voice: "mirrors the trailing leader; low ego by construction"
+    home_tf: H1
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+
+  - agent_id: nagi_seishiro
+    module: programs.M001_multi_agent_ensemble.sim.agents.a06_nagi
+    class: NagiSeishiro
+    canon_role:
+      canon_player: "Seishiro Nagi"
+      weapon: "perfect trap (multi-signal AND)"
+      ego: 0.45
+      target_hold_hours: 24.0
+      narrative_voice: "confluence-only; will not fire without multi-signal alignment"
+    home_tf: H1
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+
+  - agent_id: barou_shoei
+    module: programs.M001_multi_agent_ensemble.sim.agents.a07_barou
+    class: BarouShoei
+    canon_role:
+      canon_player: "Shoei Barou"
+      weapon: "lone-wolf dominant finishing"
+      ego: 1.00
+      target_hold_hours: 32.0
+      narrative_voice: "King — refuses to participate in chemical reactions"
+    home_tf: H4
+    symbols: ["USDCAD"]
+    info_tier: TBD
+
+  - agent_id: yukimiya_kenyu
+    module: programs.M001_multi_agent_ensemble.sim.agents.placeholder
+    class: PlaceholderAgent
+    canon_role:
+      canon_player: "Kenyu Yukimiya"
+      weapon: "smooth dribbler (sub-bar timing refiner)"
+      ego: 0.35
+      target_hold_hours: 4.0
+      narrative_voice: "doesn't take shots; refines them"
+    home_tf: M5
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+
+  - agent_id: aoshi_tokimitsu
+    module: programs.M001_multi_agent_ensemble.sim.agents.placeholder
+    class: PlaceholderAgent
+    canon_role:
+      canon_player: "Aoshi Tokimitsu"
+      weapon: "berserker (event-only vol breakout)"
+      ego: 0.75
+      target_hold_hours: 4.0
+      narrative_voice: "explodes only inside 6h event window"
+    home_tf: M5
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+
+  - agent_id: kunigami_rensuke
+    module: programs.M001_multi_agent_ensemble.sim.agents.a10_kunigami
+    class: KunigamiRensuke
+    canon_role:
+      canon_player: "Rensuke Kunigami"
+      weapon: "recovery / discipline"
+      ego: 0.00
+      target_hold_hours: 0.0
+      narrative_voice: "anti-tilt; dampens after losses"
+    home_tf: H1
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
