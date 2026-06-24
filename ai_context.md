@@ -1,67 +1,66 @@
-# AI Context — finance research experiments (updated 2026-06-16)
+# AI Context — finance research experiments (updated 2026-06-24)
 
-Read this first in a fresh chat. This repo is the **central research workshop**
-for all hypothesis tests. The trading agent (`multi-pair-trading-agent`) executes only
-what survived the agent validation chain (E001–E005); lab experiments (E006+)
-never auto-change live params.
+Read this first in a fresh chat. This repo is the **central research workshop**.
+Production execution lives in `multi-pair-trading-agent`; lab experiments never
+auto-change live params.
 
 **Index:** `EXPERIMENTS.md` · **Rules:** `PROTOCOL_DISCIPLINE.md` ·
-**Data accounting:** `DATA_LEDGER.md`
+**M001 program:** `programs/M001_multi_agent_ensemble/` (branch `multi-agent-ensemble`)
 
-Parquet cache: borrow via `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
+Parquet cache: `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
 
 ## 1) What is built and working
 
-### Agent validation chain (documented retrospectively as E001–E005)
+### Lab Phase 1 (E001–E007) — closed
 
-- **E001** concept ablation: 6 ICT concepts eliminated; zone sole survivor;
-  `zone_d1_against` (fade H4 zone against D1) discovered.
-- **E002** zone grid: 13 BH cells on full window (candidate list only).
-- **E003** holdout: 1/8 IS-survivors OOS — selection-bias lesson.
-- **E004** walk-forward: `H4/all` 7/7 positive OOS windows, median +11.34
-  pips/trade → deployed cell.
-- **E005** cross-pair frozen: GBPUSD +10.24/trade p=0.001; USDCAD +4.63
-  p=0.028; AUD/NZD excluded. Sealed 2026: 16 trades +7.75/trade p=0.29.
+- Tag **`lab-phase-1-closed`** marks pre-M001 lab state (do not recreate).
+- **E004** walk-forward: 7/7 OOS, median +11.34 pips/trade → deployed cell.
+  Promoted: `docs/findings/2026-06-09_walk_forward_validation.md`.
+- **E005** cross-pair: GBPUSD/USDCAD replicate; AUD/NZD excluded.
+  Promoted: `docs/findings/2026-06-10_cross_pair_replication.md`.
+- **E006** price-action: 5/284 alive; hour-matched controls (v2.1).
+  Exploratory `equal_highs_pool` → `docs/findings/2026-06-12_equal_highs_pool_context.md`.
+- **E007** impulse bounce: 0/12 alive; clean negative at Stage 1.
+- Methodology promoted: `docs/methodology/` (hour_matched_controls,
+  verdict_registry, exploratory_stage2, amendments).
+- Audit: `audits/2026-06-24_E001-E007_audit.md`.
 
-Agent code stays in `multi-pair-trading-agent`; reports copied under `experiments/E00X/`.
+### M001 multi-agent ensemble (doctrine)
 
-### Lab experiments (pre-registered in this repo)
-
-- **E006** price-action confluence (legacy Test A): 18 detectors, 76 event
-  types; hour-matched controls (v2.1); 5/284 alive on EURUSD screen; gate-
-  sized effects only. Canonical: `experiments/E006_test_a_price_action/`.
-- **E007** impulse-origin bounce: 0/12 alive; bounce ≈ random hour-matched
-  levels; stop at Stage 1. Canonical: `experiments/E007_impulse_origin_bounce/`.
+- **v0.2 complete** (commits after `11cdde4`): Thought Ledger, F17/F18,
+  `08-dashboard-spec.md`, charter §7, standards §10.
+- **v0.3 landed:** `09-experiment-architecture.md` — replay-first kernel,
+  numeric gates G1–G7, TQS-only optimisation, 4-agent Φ4 MVP roster.
+- Branch: **`multi-agent-ensemble`** only for M001; structure docs on same branch.
 
 ### Planned
 
-- **E008** technical indicators only (v2-PROTOCOL "Test B" family).
-- **E009** cross-family A×B (v2-PROTOCOL "Test C").
-- **E010** Stage-2b `equal_highs_pool` context (from E006 exploratory).
+- **E010** Stage-2b `equal_highs_pool` — skeleton pre-reg at
+  `experiments/E010_equal_highs_pool_stage2b/PROTOCOL.md`; parallel with M001.
+- E008 skipped per M001 standards §10.3; E009 cross-family parked.
 
 ## 2) Key file paths
 
 | Area | Files |
 |---|---|
 | Registry | `EXPERIMENTS.md`, `DATA_LEDGER.md`, `PROTOCOL_DISCIPLINE.md` |
-| Experiments | `experiments/E001_…` through `E007_…`, `experiments/_TEMPLATE/` |
-| E006 code | `conflab/detectors_*.py`, `conflab/screening.py`, `scripts/run_stage1.py` |
-| E007 code | `conflab/detectors_impulse_return.py`, `conflab/friction.py`, `scripts/test_b/` |
-| Shared stats | `conflab/stats.py` |
-| Outputs | `output/` (E006), `output/test_b/` (E007) |
+| Findings | `docs/findings/2026-06-09_*.md`, `2026-06-10_*.md`, `2026-06-12_*.md` |
+| Methodology | `docs/methodology/*.md` |
+| Audits | `audits/README.md`, `audits/2026-06-24_E001-E007_audit.md` |
+| M001 doctrine | `programs/M001_multi_agent_ensemble/00`–`09` + `README.md` |
+| E006/E007 code | `conflab/`, `scripts/run_stage1.py`, `scripts/test_b/` |
+| Outputs | `output/` (legacy paths; reorganise deferred — needs git mv + MANIFEST sync) |
 
-Tests: **70** passing. Run:
+Tests: **70** passing.
 `PYTHONPATH=../multi-pair-trading-agent:. ../multi-pair-trading-agent/.venv/bin/python -m pytest -q`
 
 ## 3) Next immediate goal
 
-**Use the registry for every new hypothesis.** Before screening:
+**M001 Φ2.5:** simulator scaffold + data manifest + Streamlit v0 six panels
+(per `09-experiment-architecture.md` G4). **E010:** finalise locked params
+in PROTOCOL before Stage 1.
 
-1. Assign E0XX in `EXPERIMENTS.md`.
-2. Pre-register in `experiments/E0XX_*/PROTOCOL.md`.
-3. Check `DATA_LEDGER.md` — prefer pristine slices (USDCAD H1/M15, etc.).
-4. Never import lab findings into agent execution without agent validation.
+Parked: `output/` reorganisation; E009 cross-family; agent-side path
+re-check after repo rename (audit follow-up).
 
-Parked: E010 Stage-2b; E008 indicators; E009 cross-family; D1 power redesign.
-
-Honesty rules binding: see `PROTOCOL_DISCIPLINE.md`.
+Honesty rules: `PROTOCOL_DISCIPLINE.md`. M001 gates: `09` §1.5.
