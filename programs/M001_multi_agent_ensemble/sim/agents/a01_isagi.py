@@ -1,81 +1,275 @@
-"""A1 — Yoichi Isagi (`isagi_yoichi`) — Phi2.5 skeleton.
+"""A1 — Yoichi Isagi v1 (`isagi_yoichi`) — Phi3 production wrapper.
 
-The production `zone_d1_against` detector lives in the **production
-repo** at
-`~/Documents/GitHub/multi-pair-trading-agent/agent/alphas/concepts/zone_alpha.py`
-and is NOT modified by this scaffold. Phi3 wraps the production cell
-into Isagi v1 via a cross-repo import (PYTHONPATH=../multi-pair-trading-agent).
+A1 Isagi v1 is the BlueLockStriker (`06-blue-lock-doctrine.md` section 4.1)
+wrapper around the production `zone_d1_against / H4 / all` cell that
+clears E004's walk-forward gate (+11.34 median pips/trade, 7/7 OOS;
+`docs/findings/2026-06-09_walk_forward_validation.md`).
 
-This file is intentionally a stub: it inherits `BaseStriker`, emits an
-observation-only Thought every tick, and returns None from `intend`.
-Once the cross-repo import lands, the v1 `intend` implementation
-becomes a thin adapter around `SupplyDemandAlpha.emit_proposal` from
-the production repo.
+Canon role and parameters are locked (roster 05 section 3.1 + the E004
+walk-forward configuration):
 
-Documented expected PYTHONPATH for Phi3 import (sim/README.md):
+* `htf_align="D1"`, `htf_align_mode="against"`, `htf_lookback=10`,
+  `htf_min_move_pips=60`, `target_rr=1.5`.
+* Symbols whitelist: EURUSD / GBPUSD / USDCAD.
+* Home TF for `intend`: H4 (the legacy detector cadence Isagi v1
+  inherits; Isagi v2 will move to H1).
+* Information tier: TBD pending Phi3 ΔInfo measurement (F17). The
+  wrapper does not depend on any peer Thoughts -- the Tier-3
+  `RedactedLedger` produces byte-identical proposals to `FullLedger`
+  in v1 (regression-tested in `tests/test_a01_isagi_wrap.py`).
 
-    PYTHONPATH=../multi-pair-trading-agent:.
+Implementation notes
+--------------------
+The production `SupplyDemandAlpha.signal(actx, i)` operates on
+`(bars: list[Bar], ctx: PrecomputedContext)` indexed by the current bar
+position. The M001 engine drives the wrapper via `MarketState` snapshots
+keyed by `as_of` timestamps. The wrapper bridges the two by:
 
-If the production repo is not on PYTHONPATH, this stub falls back to
-observation-only Thoughts so the protocol end-to-end test still
-passes.
+1. `prepare(symbol, bars)` -- called once per symbol *before* the replay
+   loop. Stores the full bar series and the precomputed detector context,
+   plus a `timestamp -> index` map. The harness in
+   `sim/scoring/run_isagi_phi3_gate.py` calls this on the dev window.
+2. `observe(market, ledger)` -- emits a Thought every tick. If the
+   wrapper has prepared bars for this symbol *and* the current timestamp
+   exists in the index map, the thought carries a `bar_index` rationale
+   tag and a non-zero conviction if the underlying signal fires.
+3. `intend(market, my_recent_thought)` -- called at H4 close; returns an
+   AgentProposal iff the wrapped `SupplyDemandAlpha.signal` returns a
+   non-None signal at the current index.
+
+If `prepare()` was never called for the active symbol, both methods
+degrade safely: `observe` emits an observation-only Thought tagged
+`unprepared`, and `intend` returns None. This keeps the engine
+smoke-test path green even without real bars in scope.
+
+Cross-repo import is bracketed by
+`sim._cross_repo.ensure_production_repo_on_path()`; the contract is
+documented in `sim/README.md` under "Running Phi3 gate".
 """
 from __future__ import annotations
 
-import importlib
+import logging
+from dataclasses import dataclass
+from datetime import datetime, timedelta
+from typing import Any, Optional
 
+from programs.M001_multi_agent_ensemble.sim._cross_repo import (
+    ProductionRepoMissing,
+    ensure_production_repo_on_path,
+)
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
 from programs.M001_multi_agent_ensemble.sim.core.striker import BaseStriker
 from programs.M001_multi_agent_ensemble.sim.core.types import (
     SCHEMA_VERSION,
     AgentProposal,
     CanonRole,
+    Coordinate,
+    LadderRung,
     MarketState,
     Thought,
 )
 
-
-# Phi2.5 keeps this as a function-level lazy import so the scaffold
-# doesn't crash if the production repo isn't on PYTHONPATH. Phi3 makes
-# this a hard requirement and lands the proposal-adapter.
-def _try_production_zone_alpha():
-    try:
-        return importlib.import_module("agent.alphas.concepts.zone_alpha")
-    except Exception:
-        return None
+log = logging.getLogger(__name__)
 
 
-class IsagiYoichi(BaseStriker):
-    """Isagi v1 — wraps the production `zone_d1_against` cell.
+# ---------------------------------------------------------------------------
+# Locked E004 deployment parameters (`docs/findings/2026-06-09_*.md`).
+# Edits require an amendment commit on `09-experiment-architecture.md`.
+# ---------------------------------------------------------------------------
+ISAGI_V1_PARAMS: dict[str, Any] = {
+    "name": "A1_isagi_v1_zone_d1_against",
+    "htf_align": "D1",
+    "htf_align_mode": "against",
+    "htf_lookback": 10,
+    "htf_min_move_pips": 60.0,
+    "target_rr": 1.5,
+}
 
-    Phi2.5 scope: observation-only stub. Phi3 implements `intend` as
-    a thin adapter over the production cell's proposal output.
+# Default symbol whitelist per roster 05 section 3.1.
+ISAGI_V1_SYMBOLS: tuple[str, ...] = ("EURUSD", "GBPUSD", "USDCAD")
+
+# Default canon role per doctrine 06 section 3.10 + roster 05 section 3.1.
+ISAGI_V1_CANON_ROLE = CanonRole(
+    canon_player="isagi_yoichi",
+    weapon="metavision_seed_zone_d1_against",
+    ego=0.60,
+    target_hold_hours=24.0,  # H4 zone fades typically resolve in ~6 H4 bars.
+    narrative_voice="field_general_metavision",
+)
+
+
+@dataclass
+class _PreparedSeries:
+    """Per-symbol cache populated by `prepare()`."""
+
+    bars: list  # production Bar list
+    ctx: Any   # PrecomputedContext from agent.rules.engine.precompute
+    index_by_ts: dict[datetime, int]
+
+
+class A1IsagiV1(BaseStriker):
+    """A1 Isagi v1 -- BlueLockStriker wrapper around production zone_d1_against.
+
+    Public surface (called from the engine):
+
+    * `observe(market, ledger) -> Thought` -- always emits a Thought.
+    * `intend(market, my_recent_thought) -> AgentProposal | None` -- only at
+      H4 close; only fires when the production signal fires at the current
+      `(symbol, as_of)` and the wrapper has been `prepare()`'d on that
+      symbol.
+
+    Harness-only surface:
+
+    * `prepare(symbol, bars)` -- pre-load bars + precomputed context.
+    * `inner_signal_at(symbol, i)` -- direct access to the underlying
+      `SupplyDemandAlpha.signal(actx, i)` for the proof-of-equivalence
+      test in `tests/test_a01_isagi_wrap.py`.
     """
 
     def __init__(
         self,
-        agent_id: str,
-        canon_role: CanonRole,
-        home_tf: str,
-        symbols: list[str],
+        agent_id: str = "isagi_yoichi",
+        canon_role: Optional[CanonRole] = None,
+        home_tf: str = "H4",
+        symbols: Optional[list[str]] = None,
+        *,
+        production_cfg: Any | None = None,
     ) -> None:
-        super().__init__(agent_id, canon_role, home_tf, symbols)
-        self._production_module = _try_production_zone_alpha()
+        super().__init__(
+            agent_id=agent_id,
+            canon_role=canon_role or ISAGI_V1_CANON_ROLE,
+            home_tf=home_tf,
+            symbols=list(symbols) if symbols is not None else list(ISAGI_V1_SYMBOLS),
+        )
+        ensure_production_repo_on_path()  # raises ProductionRepoMissing if absent
+        from agent.alphas.concepts.zone_alpha import SupplyDemandAlpha  # noqa: E402
+        from agent.config import load_config  # noqa: E402
+
+        self._cfg = production_cfg if production_cfg is not None else load_config()
+        self._inner = SupplyDemandAlpha(cfg=self._cfg, **ISAGI_V1_PARAMS)
+        self._prepared: dict[str, _PreparedSeries] = {}
+
+    # ------------------------------------------------------------------
+    # Harness API
+    # ------------------------------------------------------------------
+
+    def prepare(self, symbol: str, bars: list) -> None:
+        """Pre-load bars + precompute detector context for `symbol`.
+
+        Idempotent on `(symbol, len(bars))`. The harness calls this once
+        per symbol before the replay loop. Bars must be production
+        `agent.types.Bar` objects (see `agent.data.loader.df_to_bars`).
+        """
+        ensure_production_repo_on_path()
+        from agent.rules.engine import precompute  # noqa: E402
+
+        ctx = precompute(list(bars), self._cfg)
+        index_by_ts = {b.time: i for i, b in enumerate(bars)}
+        self._prepared[symbol] = _PreparedSeries(
+            bars=list(bars), ctx=ctx, index_by_ts=index_by_ts,
+        )
+        log.info(
+            "A1IsagiV1 prepared %s: %d bars, %d zones, %d swings",
+            symbol, len(bars), len(ctx.zones), len(ctx.swings),
+        )
+
+    def inner_signal_at(self, symbol: str, i: int):
+        """Direct passthrough to the wrapped `SupplyDemandAlpha.signal`.
+
+        Used by `tests/test_a01_isagi_wrap.py` to assert byte-equivalent
+        signals between the wrapper and the raw production alpha.
+        """
+        prep = self._prepared.get(symbol)
+        if prep is None:
+            return None
+        from agent.alphas.base import AlphaContext  # noqa: E402
+        actx = AlphaContext(bars=prep.bars, ctx=prep.ctx, cfg=self._cfg)
+        return self._inner.signal(actx, i)
 
     @property
-    def has_production_link(self) -> bool:
-        return self._production_module is not None
+    def prepared_symbols(self) -> tuple[str, ...]:
+        return tuple(self._prepared.keys())
+
+    # ------------------------------------------------------------------
+    # BlueLockStriker contract
+    # ------------------------------------------------------------------
 
     def observe(self, market: MarketState, ledger: ThoughtLedger) -> Thought:
-        # Tier-3 read by default (Phi2.5 — own thoughts only).
-        peers = ledger.read(
-            as_of=market.as_of,
-            current_tick=market.tick_id,
+        prep = self._prepared.get(market.symbol)
+        tags = ["zone_d1_against", "htf_against", "canon:isagi", "weapon:metavision_seed"]
+
+        if prep is None:
+            return Thought(
+                schema_version=SCHEMA_VERSION,
+                agent_id=self.agent_id,
+                tick_id=market.tick_id,
+                timestamp=market.as_of,
+                symbol=market.symbol,
+                narrative=(
+                    f"[isagi v1] {market.symbol} {market.timeframe} @ {market.as_of} "
+                    f"-- wrapper not prepared for this symbol; observation-only."
+                ),
+                tags=tags + ["unprepared"],
+                confidence_in_thought=0.0,
+                expected_action="wait",
+                coordinate=None,
+                decision_horizon=market.as_of,
+                ttl_ticks=1,
+                references=[],
+            )
+
+        i = prep.index_by_ts.get(market.as_of)
+        if i is None:
+            return Thought(
+                schema_version=SCHEMA_VERSION,
+                agent_id=self.agent_id,
+                tick_id=market.tick_id,
+                timestamp=market.as_of,
+                symbol=market.symbol,
+                narrative=(
+                    f"[isagi v1] {market.symbol} {market.timeframe} @ {market.as_of} "
+                    "-- timestamp not in prepared bar index; observation-only."
+                ),
+                tags=tags + ["timestamp_miss"],
+                confidence_in_thought=0.0,
+                expected_action="wait",
+                coordinate=None,
+                decision_horizon=market.as_of,
+                ttl_ticks=1,
+                references=[],
+            )
+
+        sig = self.inner_signal_at(market.symbol, i)
+        if sig is None:
+            return Thought(
+                schema_version=SCHEMA_VERSION,
+                agent_id=self.agent_id,
+                tick_id=market.tick_id,
+                timestamp=market.as_of,
+                symbol=market.symbol,
+                narrative=(
+                    f"[isagi v1] {market.symbol} H4 close {market.as_of}: "
+                    "no zone-touch + D1-counter alignment; waiting."
+                ),
+                tags=tags,
+                confidence_in_thought=0.0,
+                expected_action="wait",
+                coordinate=None,
+                decision_horizon=market.as_of,
+                ttl_ticks=1,
+                references=[],
+            )
+
+        meta_tags = _meta_to_tags(getattr(sig, "meta", {}) or {})
+        coord = _coordinate_from_signal(
+            sig=sig,
+            agent_id=self.agent_id,
             symbol=market.symbol,
+            as_of=market.as_of,
+            home_tf=self.home_tf,
+            target_hold_hours=self.canon_role.target_hold_hours,
         )
-        peer_count = len(peers)
-        link_note = "production zone_alpha import OK" if self.has_production_link \
-            else "production zone_alpha not on PYTHONPATH (Phi3 wires this)"
+        direction = sig.direction.value  # "long" | "short"
         return Thought(
             schema_version=SCHEMA_VERSION,
             agent_id=self.agent_id,
@@ -83,21 +277,16 @@ class IsagiYoichi(BaseStriker):
             timestamp=market.as_of,
             symbol=market.symbol,
             narrative=(
-                f"[isagi v1] H1 close on {market.symbol}; metavision seed "
-                f"= zone_d1_against detector. {link_note}. "
-                f"{peer_count} prior-tick peer thoughts in window."
+                f"[isagi v1] {market.symbol} H4 close {market.as_of}: "
+                f"zone-touch {direction} fade against D1 bias; "
+                f"entry={sig.entry:.5f} stop={sig.stop:.5f} tp={sig.take_profit:.5f}."
             ),
-            tags=[
-                "phi2_placeholder",
-                "zone_d1_against",
-                "metavision_v1",
-                f"canon:isagi",
-            ],
-            confidence_in_thought=0.0,
-            expected_action="wait",
-            coordinate=None,
+            tags=tags + meta_tags + [f"signal_reason:{sig.reason}"],
+            confidence_in_thought=float(sig.conviction),
+            expected_action=f"{direction}_on_H4_close",
+            coordinate=coord,
             decision_horizon=market.as_of,
-            ttl_ticks=1,
+            ttl_ticks=6,  # zone is fresh until next ~6 H4 bars (~1 trading day)
             references=[],
         )
 
@@ -106,6 +295,134 @@ class IsagiYoichi(BaseStriker):
         market: MarketState,
         my_recent_thought: Thought,
     ) -> AgentProposal | None:
-        # Phi3 lands the proposal-adapter; Phi2.5 never intends.
-        # See sim/README.md `Phi3 build order` for the wiring contract.
-        return None
+        if market.timeframe != self.home_tf:
+            return None
+        prep = self._prepared.get(market.symbol)
+        if prep is None:
+            return None
+        i = prep.index_by_ts.get(market.as_of)
+        if i is None:
+            return None
+
+        sig = self.inner_signal_at(market.symbol, i)
+        if sig is None:
+            return None
+
+        # Conviction-in-thought matches conviction-in-proposal directly: the
+        # production alpha emits 0.65 conviction on zone touches by default.
+        # No M001-specific scaling -- this is the *wrapper validation*.
+        direction = sig.direction.value
+        ladder = [LadderRung(price=float(sig.take_profit), fraction=1.0)]
+        # Risk: stop distance in price space.  Used to set `valid_until` to
+        # the agent's target_hold_hours horizon -- if the trade isn't taken
+        # within that window the proposal stales.
+        horizon = market.as_of + timedelta(
+            hours=float(self.canon_role.target_hold_hours),
+        )
+
+        meta = getattr(sig, "meta", {}) or {}
+        rationale: dict[str, Any] = {
+            "wrapped": "agent.alphas.concepts.zone_alpha.SupplyDemandAlpha",
+            "params": dict(ISAGI_V1_PARAMS),
+            "signal_reason": sig.reason,
+            "htf_bias": meta.get("htf_bias"),
+            "htf_align": meta.get("htf_align"),
+            "htf_align_mode": meta.get("htf_align_mode"),
+            "htf_lookback": meta.get("htf_lookback"),
+            "htf_min_move_pips": meta.get("htf_min_move_pips"),
+            "bar_index": int(i),
+        }
+        return AgentProposal(
+            agent_id=self.agent_id,
+            tick_id=market.tick_id,
+            source_thought_id=my_recent_thought.thought_id,
+            timestamp=market.as_of,
+            symbol=market.symbol,
+            direction=direction,  # "long" | "short"
+            entry=float(sig.entry),
+            stop=float(sig.stop),
+            ladder=ladder,
+            conviction=float(sig.conviction),
+            regime_fit=0.5,  # Phi3 placeholder; regime classifier consumer wires this later.
+            valid_until=horizon,
+            rationale=rationale,
+        )
+
+
+# ---------------------------------------------------------------------------
+# Helpers (pure, no I/O)
+# ---------------------------------------------------------------------------
+
+def _meta_to_tags(meta: dict[str, Any]) -> list[str]:
+    """Translate `AlphaSignal.meta` HTF context into Thought tag strings.
+
+    Doctrine 06 section 3.8: `Thought.tags` carry semantic labels the
+    aggregator + dashboard read. Encoding the production gate inputs into
+    tag strings lets the F14 / F17 harnesses filter by HTF context without
+    a separate column.
+    """
+    out: list[str] = []
+    bias = meta.get("htf_bias")
+    if bias:
+        out.append(f"htf_bias:{bias}")
+    if meta.get("htf_align"):
+        out.append(f"htf_align:{meta['htf_align']}")
+    if meta.get("htf_align_mode"):
+        out.append(f"htf_align_mode:{meta['htf_align_mode']}")
+    lb = meta.get("htf_lookback")
+    if lb is not None:
+        out.append(f"htf_lookback:{int(lb)}")
+    mp = meta.get("htf_min_move_pips")
+    if mp is not None:
+        out.append(f"htf_min_move_pips:{float(mp):.1f}")
+    return out
+
+
+def _coordinate_from_signal(
+    *,
+    sig,
+    agent_id: str,
+    symbol: str,
+    as_of: datetime,
+    home_tf: str,
+    target_hold_hours: float,
+) -> Coordinate:
+    """Build a `Coordinate` from a production AlphaSignal.
+
+    The price band is centred on the signal entry +/- the stop distance
+    (so the box is the agent's risk envelope). Time window runs from
+    `as_of` to `as_of + target_hold_hours`. Vol band is the wide default
+    `(0.5, 2.0)` that doctrine 06 section 3.2 suggests until F18 wires in
+    a measured prior. Regime predicate carries the literal HTF-against
+    rule key so the chemical-reaction overlap detector (F13) can match
+    Coordinates by predicate text. `expected_strength` mirrors signal
+    conviction (one-to-one with the production prior).
+    """
+    direction = sig.direction.value
+    stop_dist = abs(float(sig.entry) - float(sig.stop))
+    band_half = max(stop_dist, 0.0001)  # at least 1 pip wide for valid Coordinate
+    return Coordinate(
+        agent_id=agent_id,
+        symbol=symbol,
+        price_lo=float(sig.entry) - band_half,
+        price_hi=float(sig.entry) + band_half,
+        time_start=as_of,
+        time_end=as_of + timedelta(hours=float(target_hold_hours)),
+        vol_band=(0.5, 2.0),
+        regime_predicate="D1_trend_against",
+        expected_strength=float(sig.conviction),
+        direction_bias=direction,
+        rationale={
+            "entry": float(sig.entry),
+            "stop": float(sig.stop),
+            "take_profit": float(sig.take_profit),
+            "signal_reason": sig.reason,
+            "home_tf": home_tf,
+        },
+    )
+
+
+# Backwards-compatible alias for v0.2 callers (tests, roster loaders).
+# The legacy class name `IsagiYoichi` is retained so existing test fixtures
+# (e.g. `tests/test_determinism.py`) keep working without modification.
+IsagiYoichi = A1IsagiV1
