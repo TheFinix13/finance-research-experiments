@@ -9,7 +9,7 @@ run (or retrospective registration) for that experiment.
 
 Parquet cache: `../multi-pair-trading-agent/data/parquet/` (single canonical copy).
 
-Last updated: **2026-06-16**
+Last updated: **2026-06-24**
 
 ---
 
@@ -22,10 +22,12 @@ Last updated: **2026-06-16**
 | H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E002, E004 |
 | H4 | 2025-01-01 → 2026-06-09 | sealed | E005 |
 | H4 | 2026-01-01 → present | live | (agent demo — not a lab split) |
-| H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E007 |
-| H1 | 2022-01-01 → 2024-12-31 | confirm | E006, E007 |
-| M15 | 2015-01-01 → 2021-12-31 | screen | E001, E006 |
-| M15 | 2022-01-01 → 2024-12-31 | confirm | E006 |
+| H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E007, **E010 (reserved, pre-reg)** |
+| H1 | 2022-01-01 → 2024-12-31 | confirm | E006, E007, **E010 (reserved, pre-reg)** |
+| H1 | 2025-01-01 → 2026-06-09 | **sealed (reserved)** | **E010 (Stage 4; not yet consumed)** |
+| M15 | 2015-01-01 → 2021-12-31 | screen | E001, E006, **E010 (reserved, pre-reg)** |
+| M15 | 2022-01-01 → 2024-12-31 | confirm | E006, **E010 (reserved, pre-reg)** |
+| M15 | 2025-01-01 → 2026-06-09 | **sealed (reserved)** | **E010 (Stage 4; not yet consumed)** |
 | D1 | 2015-01-01 → 2025-12-31 | screen | E001, E002, E004 |
 | M5 | 2015-01-01 → 2021-12-31 | screen | E001 |
 
@@ -40,9 +42,10 @@ EURUSD M30 (if cached), any TF on pairs below with `pristine` H1/M15.
 |---|---|---|---|
 | H4 | 2015-01-01 → 2024-12-31 | sealed | E005, E006 (replication) |
 | H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 |
-| H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006 |
-| H1 | 2022+ | pristine | — |
-| M15 | most | pristine | E006 only on screen-style replication |
+| H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, **E010 (Stage 3, reserved)** |
+| H1 | 2022+ | pristine | — (cache audit per E007 §3.8: GBPUSD H1 not available past 2021) |
+| M15 | 2015-01-01 → 2021-12-31 | screen | E006 (screen-style replication), **E010 (Stage 3, reserved)** |
+| M15 | 2022+ | pristine | — (subject to cache audit) |
 
 Agent **live deployment** started 2026-06; lab should prefer USDCAD H1/M15
 or new pairs before re-mining GBPUSD H4 2015-2024 for unrelated hypotheses.
@@ -55,11 +58,13 @@ or new pairs before re-mining GBPUSD H4 2015-2024 for unrelated hypotheses.
 |---|---|---|---|
 | H4 | 2015-01-01 → 2024-12-31 | sealed | E005 |
 | H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 |
-| H1 | all | pristine | — |
-| M15 | all | pristine | — |
+| H1 | all | pristine — **not cached** (E007 §3.8 audit; E010 §0 Stage-0 check confirms) | — |
+| M15 | all | pristine — **not cached** (E007 §3.8; E010 §0 Stage-0 check confirms) | — |
 
-**Best fresh real estate:** USDCAD H1, M15, M5; USDCAD H4 post-2025 sealed
-look when enough bars accumulate.
+**Best fresh real estate:** USDCAD H1, M15, M5 (once cached); USDCAD H4
+post-2025 sealed look when enough bars accumulate. Caching USDCAD H1/M15
+is a prerequisite for any cross-pair extension of E010 (currently
+flagged as out-of-scope for the active pre-registration).
 
 ---
 
