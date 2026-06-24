@@ -14,3 +14,9 @@ __pycache__/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# M001 sim artefacts (regenerated from training data; not tracked in git)
+programs/M001_multi_agent_ensemble/sim/regime/model_v1.pkl
+programs/M001_multi_agent_ensemble/sim/regime/model_v1.pkl.manifest.json
+programs/M001_multi_agent_ensemble/sim/output/
+
