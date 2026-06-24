@@ -1,0 +1,155 @@
+# sim/roster/mvp_phi41.yaml -- the 8-agent Φ4.1 expanded MVP roster.
+#
+# This roster is the Φ4 -> Φ4.1 expansion that responds directly to the
+# Φ4 FAIL diagnostic (`reviews/phi4_squad_v1.md`). The Φ4 squad had only
+# TWO tradable strikers (Isagi + Barou), which structurally starves
+# Nagi's chemical-reaction predicate: F11/F13 requires >= 2 distinct
+# peers with conviction >= NAGI_V1_CONFIDENCE_FLOOR (0.70), >= 2 shared
+# tags, overlapping price band, and matching direction bias.
+#
+# Φ4.1 adds four new v1 strikers without touching the Φ4 four. The Φ4
+# `mvp_phi4.yaml` is preserved verbatim for backwards-compatible reruns.
+#
+# `info_tier` starts as "TBD" for every agent (including the new ones)
+# until ΔInfo (F17) is measured on this run. Switching from "TBD" -> 2
+# or 3 is a manifest amendment per `09-experiment-architecture.md` §6.
+
+manifest_version: 1
+manifest_label: mvp_phi41_v1
+ledger:
+  mode: full
+allocator: tqs_hrp_v1   # placeholder; actual HRP lives in sim/allocator/* (Φ5+)
+seed: 42
+
+agents:
+  # ---------------------- carryover from Φ4 ------------------------
+  - agent_id: isagi_yoichi
+    module: programs.M001_multi_agent_ensemble.sim.agents.a01_isagi
+    class: A1IsagiV1
+    canon_role:
+      canon_player: "Yoichi Isagi"
+      weapon: "metavision"
+      ego: 0.60
+      target_hold_hours: 24.0
+      narrative_voice: "metavision read of the field's future state"
+    home_tf: H4
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+    role_in_phi41: "carryover -- baseline striker (production zone_d1_against)"
+
+  - agent_id: nagi_seishiro
+    module: programs.M001_multi_agent_ensemble.sim.agents.a06_nagi
+    class: A6NagiV1
+    canon_role:
+      canon_player: "Seishiro Nagi"
+      weapon: "perfect trap (multi-signal AND)"
+      ego: 0.45
+      target_hold_hours: 24.0
+      narrative_voice: "confluence-only; will not fire without multi-signal alignment"
+    home_tf: H4
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+    role_in_phi41: "carryover -- THE TEST. Nagi must fire > 0 confluence thoughts in Φ4.1."
+
+  - agent_id: barou_shoei
+    module: programs.M001_multi_agent_ensemble.sim.agents.a07_barou
+    class: A7BarouV1
+    canon_role:
+      canon_player: "Shoei Barou"
+      weapon: "lone-wolf dominant finishing"
+      ego: 1.00
+      target_hold_hours: 32.0
+      narrative_voice: "King -- refuses to participate in chemical reactions"
+    home_tf: H4
+    symbols: ["USDCAD"]
+    info_tier: TBD
+    role_in_phi41: "carryover -- USDCAD-only baseline-zone striker"
+
+  - agent_id: kunigami_rensuke
+    module: programs.M001_multi_agent_ensemble.sim.agents.a10_kunigami
+    class: A10KunigamiV1
+    canon_role:
+      canon_player: "Rensuke Kunigami"
+      weapon: "recovery / discipline (no shooting drive)"
+      ego: 0.00
+      target_hold_hours: 0.0
+      narrative_voice: "anti-tilt; dampens after losses"
+    home_tf: H4
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+    role_in_phi41: "carryover -- risk auxiliary (no trades)"
+
+  # ---------------------- new in Φ4.1 ------------------------------
+  - agent_id: bachira_meguru
+    module: programs.M001_multi_agent_ensemble.sim.agents.a02_bachira
+    class: A2BachiraV1
+    canon_role:
+      canon_player: "Meguru Bachira"
+      weapon: "monstrous_dribble_rebel_baseline_zone"
+      ego: 0.85
+      target_hold_hours: 24.0
+      narrative_voice: "rebel_dribble_pattern_geometry"
+    home_tf: H4
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+    role_in_phi41: |
+      Predicate fuel #1 -- shares EURUSD/GBPUSD/USDCAD with Isagi.
+      Same production zone primitive, NO D1 gate. +0.10 rebel lift on
+      recent-opposite-swing -> 0.75 conviction (>= Nagi floor).
+
+  - agent_id: itoshi_rin
+    module: programs.M001_multi_agent_ensemble.sim.agents.a03_rin
+    class: A3RinV1
+    canon_role:
+      canon_player: "Rin Itoshi"
+      weapon: "precision_zone_d1_against_strict_rr"
+      ego: 0.95
+      target_hold_hours: 24.0
+      narrative_voice: "calculated_precision_min_rr_min_stop"
+    home_tf: H4
+    symbols: ["EURUSD"]
+    info_tier: TBD
+    role_in_phi41: |
+      Predicate fuel #2 -- same zone_d1_against as Isagi but with
+      strict R:R >= 2.5 + >= 20-pip stop filter. +0.15 precision lift
+      on qualifying setups -> 0.80 conviction (>= Nagi floor).
+      Shares tags with Isagi by construction.
+
+  - agent_id: chigiri_hyoma
+    module: programs.M001_multi_agent_ensemble.sim.agents.a04_chigiri
+    class: A4ChigiriV1
+    canon_role:
+      canon_player: "Hyoma Chigiri"
+      weapon: "atr_breakout_continuation_v1"
+      ego: 0.55
+      target_hold_hours: 18.0
+      narrative_voice: "speed_breakout_continuation"
+    home_tf: H4
+    symbols: ["EURUSD", "GBPUSD"]
+    info_tier: TBD
+    role_in_phi41: |
+      Predicate fuel #3 -- NEW primitive (not the zone cell). 20-bar
+      range break + vol expansion gate. Base 0.70 conviction (== Nagi
+      floor) with magnitude boost up to 0.95. Diversity: independent
+      of the zone family. May or may not align directionally with the
+      zone strikers -- that asymmetry IS the diversity test.
+
+  - agent_id: reo_mikage
+    module: programs.M001_multi_agent_ensemble.sim.agents.a05_reo
+    class: A5ReoV1
+    canon_role:
+      canon_player: "Reo Mikage"
+      weapon: "chameleon_per_tick_mirror_v1"
+      ego: 0.30
+      target_hold_hours: 0.0
+      narrative_voice: "adaptive_mirror_pass_master"
+    home_tf: H4
+    symbols: ["EURUSD", "GBPUSD", "USDCAD"]
+    info_tier: TBD
+    role_in_phi41: |
+      Predicate-starvation FALSIFIER. Never trades. Mirrors the
+      highest-conviction peer on the same symbol per tick. +0.10 lift
+      closes the production-cell-to-Nagi-floor gap deterministically.
+      If even ONE peer fires at conviction >= 0.60, Reo provides a
+      second Nagi-qualifying peer with shared tags + matching dir.
+      Tier-2 by design (his weapon IS reading the ledger).
