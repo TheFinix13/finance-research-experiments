@@ -1,9 +1,13 @@
 # 02 — Literature Survey Plan
 
-**Status:** `DRAFT v0.3` — 2026-06-24. v0.3 adds the carry and FinRL
-references behind the Sae composite (F16) and adds F15 + F16 to the
-formula table. v0.2 added §1.6 (PBT / self-play / diversity-driven
-MARL) and F11–F14 to support the doctrine in
+**Status:** `DRAFT v0.4` — 2026-06-24. v0.4 corrects two citation slips
+caught during Φ1 lit-survey close: §4 bullet 1 now attributes PBO to
+the full four-author paper (Bailey, Borwein, López de Prado & Zhu,
+2015, JCF) instead of the solo-LdP misattribution; §1.3 adds an
+arXiv/JMLR date qualifier for the Switch Transformer. v0.3 added the
+carry and FinRL references behind the Sae composite (F16) and added
+F15 + F16 to the formula table. v0.2 added §1.6 (PBT / self-play /
+diversity-driven MARL) and F11–F14 to support the doctrine in
 `06-blue-lock-doctrine.md`.
 
 Goal: a defensible, source-cited foundation for every architectural
@@ -69,8 +73,8 @@ How to route inputs to specialists depending on context.
 - **Shazeer et al. (2017)** — *Outrageously Large Neural Networks: The
   Sparsely-Gated Mixture-of-Experts Layer.* Modern revival;
   load-balancing tricks. Lessons even if we don't use neural gates.
-- **Fedus, Zoph & Shazeer (2022)** — *Switch Transformers.* MoE
-  scaling; routing collapse failure mode is important to understand.
+- **Fedus, Zoph & Shazeer (2022)** — *Switch Transformers* (arXiv:2101.03961, 2021; JMLR 23(120), 2022).
+  MoE scaling; routing collapse failure mode is important to understand.
 
 What we extract:
 - The gating-network pattern: a small model takes context (regime
@@ -314,8 +318,15 @@ agents; those that don't will be archived.
 Anything we build will be over-fit to the sealed window unless we
 explicitly control for it.
 
-- **López de Prado (2014)** — *The Probability of Backtest Overfitting.*
-  The PBO formula. Will be applied to roster-selection at gate C5.
+- **Bailey, Borwein, López de Prado & Zhu (2015)** — *The Probability
+  of Backtest Overfitting,* *Journal of Computational Finance* 20(4),
+  pp. 39–69. The PBO formula via Combinatorially Symmetric Cross-
+  Validation (CSCV). Will be applied to roster-selection at gate C5.
+    - Companion: **Bailey, Borwein, López de Prado & Zhu (2014)** —
+      *Pseudo-Mathematics and Financial Charlatanism: The Effects of
+      Backtest Overfitting on Out-of-Sample Performance,* *Notices of
+      the AMS* 61(5), pp. 458–471. Same four authors; popular-math
+      framing of the same selection-bias problem.
 - **Harvey, Liu, Zhu (2016)** — *… and the Cross-Section of Expected
   Returns.* Multiple-testing in finance. Reinforces conservative
   significance bars.

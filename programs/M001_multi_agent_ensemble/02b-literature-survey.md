@@ -1,6 +1,12 @@
 # 02b — Literature Survey
 
-**Status:** `DRAFT v0.1` — 2026-06-24. Φ1 output of M001. Source-cites
+**Status:** `DRAFT v0.2` — 2026-06-24. v0.2 closes the six `[VERIFY]`
+pagination items raised in v0.1 (`Roncalli2013`, `Vince1990`,
+`MacLeanThorpZiemba2010`, `Hasbrouck2007`, `Lyons2001`, `Cong2021`) —
+three are locked against confirmed external sources; three are now
+marked with honest "edition-dependent" qualifiers. v0.2 also marks the
+two plan-vs-02b inconsistencies in §10.3 as resolved by
+`02-literature-survey-plan.md` v0.4. Φ1 output of M001. Source-cites
 every formula F1–F18 declared in `04-quant-foundations.md` and every
 architectural pattern named in `02-literature-survey-plan.md` and
 `06-blue-lock-doctrine.md` §1.
@@ -494,10 +500,15 @@ imports start at Maillard 2010.
   near-zero-variance asset can dominate the allocation. Mitigation:
   M001's HRP layer ([4.5]) handles correlated agents by clustering
   before ERC fires.
-- **Page-level pointer:** §3.2 (~pp. 60–75) for general ERC and
-  cyclic-coordinate-descent solver; §3.4 (~pp. 80–88) for shrinkage-
-  combined ERC. Exact pagination varies by printing — [VERIFY] page
-  numbers above against the specific edition cited.
+- **Page-level pointer:** Ch. 2 ("Risk Budgeting Approach"), §2.3
+  ("ERC portfolio"), p. 119 — definition of the ERC portfolio; §2.3.3
+  ("Optimality of the ERC portfolio"), p. 123 — uniqueness /
+  existence proof. Pages verified against the 2013 Chapman & Hall /
+  CRC first printing (410 pp.) via the author's published TOC
+  (`thierry-roncalli.com/RiskParityBook.html`). The shrinkage-then-
+  ERC pipeline used by F15 is referenced across Ch. 2 and the
+  technical appendices; the *bridge* itself (Ledoit-Wolf → ERC) is
+  M001-original — see F15 in `04-quant-foundations.md`.
 - **Relevance grade:** A.
 
 ### [4.5] López de Prado (2016) — "Building Diversified Portfolios that Outperform Out of Sample"
@@ -643,18 +654,27 @@ caps at ⅓-Kelly, not full Kelly.
 - **Failure mode the paper exposes:** Optimal-f estimated on a single
   historical equity curve is hopelessly overfit — Vince's own §5
   walks through it. Practitioner consensus is ⅓-optimal-f at most.
-- **Page-level pointer:** Ch. 4–5 (~pp. 80–130, optimal-f derivation).
-  [VERIFY] exact pagination against the 1990 first edition; reprinted
-  editions repaginate.
+- **Page-level pointer:** Ch. 4 "Optimal Fixed Fractional Trading" —
+  the canonical optimal-f derivation (chapter title verified against
+  the Wiley 1990 first-edition listing, ISBN 978-0-471-52756-5,
+  288 pp.). Exact within-chapter pages not directly checked against a
+  physical copy — chapter pages approximate; the *content* (optimal-f
+  via TWR maximisation) is corroborated by the 1992 companion volume
+  *The Mathematics of Money Management* (Wiley) which expands the
+  same material.
 - **Relevance grade:** C.
 
 ### [5.4] MacLean, Thorp & Ziemba (2010) — *The Kelly Capital Growth Investment Criterion: Theory and Practice*
 
 - **Venue:** World Scientific Handbook in Financial Economics, Vol. 3,
-  World Scientific Publishing, 2010. ISBN 978-981-4293-49-5.
-  ~870 pp. edited volume.
-- **Citation key:** `MacLeanThorpZiemba2010` — `[VERIFY]` page
-  citations below against the edited-volume reprint pagination.
+  World Scientific Publishing, 2011 (published 10 February 2011 per
+  the publisher; the 2010 copyright on early printings caused the
+  `2010` suffix in our citation key, which is retained for stability
+  across cross-references). 884 pp. edited volume.
+- **Citation key:** `MacLeanThorpZiemba2010` (key suffix is the
+  copyright year; publication date is 10 February 2011 per World
+  Scientific). Chapter-level page citations below are approximate —
+  edition-dependent.
 - **Summary.** Edited volume that consolidates 50 years of theory
   + practice around the Kelly criterion. Includes the original Kelly
   and Thorp papers, Latané's 1959 independent derivation, Markowitz's
@@ -666,9 +686,13 @@ caps at ⅓-Kelly, not full Kelly.
   "even ½-Kelly suffers 25 %+ drawdowns" in equity-only backtests.
   This is the empirical justification for M001's hard 1 %-of-equity
   per-trade cap that overrides Kelly downward.
-- **Page-level pointer:** Editor introduction, pp. 1–22; Thorp 1969
-  reprint, pp. 79–96 [VERIFY pagination]; empirical drawdown chapter
-  by Ziemba, pp. 415–445 [VERIFY].
+- **Page-level pointer:** Editor introduction (Part I — Early Ideas
+  and Contributions); Thorp 1969 reprint and Ziemba's empirical
+  drawdown chapter (Part IV — Critics and Assessing the Good and Bad
+  Properties of Kelly). Within-volume pages are approximate —
+  edition-dependent across the 2011 hardback and the 2012 paperback
+  reprint. The originals (Kelly 1956, Thorp 1969) are independently
+  verified at their own venues — see [5.1] and [5.2].
 - **Relevance grade:** B.
 
 ---
@@ -1071,24 +1095,33 @@ lineage cites.
 ### [8.2] Hasbrouck (2007) — *Empirical Market Microstructure*
 
 - **Venue:** Oxford University Press, 2007. ISBN 978-0-19-530164-9.
-  ~320 pp. textbook.
+  ix + 198 pp. textbook. (Pagination verified against the OUP /
+  Library of Congress catalog record and the publisher's published
+  TOC.)
 - **Citation key:** `Hasbrouck2007`
-- **Summary.** Standard graduate textbook on market microstructure.
-  Covers order-flow imbalance estimation, lambda estimation, spread
-  decomposition (Roll, Glosten-Harris, Madhavan-Richardson-Roomans),
-  high-frequency volatility estimators.
+- **Summary.** Standard graduate textbook on equity-market
+  microstructure. Covers order-flow imbalance and PIN estimation,
+  Kyle-style strategic trade models (lambda), spread decomposition
+  (Roll, Glosten-Harris, Madhavan-Richardson-Roomans), and high-
+  frequency volatility estimators. The book treats centralised
+  equity markets as the canonical setting — FX-specific
+  microstructure is *not* a chapter; see Lyons (2001) [9.4] for that.
 - **Borrowed formula:** Operational definition of order-flow imbalance
   used as a feature in Φ4+ regime classifiers. v0 M001 does not have
   order-book data; this is a forward-looking reference for when
   microstructure features become available.
-- **Failure mode the paper exposes:** Ch. 6 (~pp. 155–180) — FX is
-  *decentralised*, so order-flow imbalance is dealer-specific and
-  hard to estimate without consolidated tape. Mitigation: M001 v0
-  uses transaction-count proxies per F7's "Failure mode" note in
-  `04-quant-foundations.md`.
-- **Page-level pointer:** Ch. 5 (lambda estimation, ~pp. 130–150);
-  Ch. 6 (FX-specific microstructure, ~pp. 155–180). [VERIFY] page
-  ranges against the 2007 first edition.
+- **Failure mode the paper exposes:** The textbook's centralised-tape
+  assumption is what *fails* in FX — order-flow imbalance is
+  dealer-specific and hard to estimate without consolidated tape.
+  Mitigation: M001 v0 uses transaction-count proxies per F7's
+  "Failure mode" note in `04-quant-foundations.md`; FX-specific
+  treatment is delegated to Lyons (2001) [9.4].
+- **Page-level pointer:** Ch. 6 "Order Flow and the Probability of
+  Informed Trading (PIN)" (starts p. 65); Ch. 7 "Strategic Trade
+  Models" (starts p. 70) — the Kyle / lambda chapter; Ch. 9
+  "Multivariate Linear Microstructure Models" (starts p. 90) for the
+  Hasbrouck VAR construction. Chapter starts verified against the
+  OUP catalog; within-chapter section pages not separately checked.
 - **Relevance grade:** C.
 
 ### [8.3] Easley, López de Prado & O'Hara (2012) — "Flow Toxicity and Liquidity in a High-Frequency World"
@@ -1220,8 +1253,9 @@ M001 itself (Yang 2020, AlphaPortfolio, FinRL).
 
 ### [9.4] Lyons (2001) — *The Microstructure Approach to Exchange Rates*
 
-- **Venue:** MIT Press, 2001. ISBN 978-0-262-12243-2. ~360 pp.
-  textbook.
+- **Venue:** MIT Press, 2001. ISBN 0-262-12243-X. 333 pp. textbook.
+  (Pagination and chapter list verified against the MIT Press direct
+  TOC and the author's Berkeley faculty page.)
 - **Citation key:** `Lyons2001`
 - **Summary.** Foundational FX-microstructure textbook. Order flow
   has *persistent* explanatory power for exchange-rate returns even
@@ -1231,13 +1265,19 @@ M001 itself (Yang 2020, AlphaPortfolio, FinRL).
   in the Φ4+ microstructure agent (M001's A8 / A9 in `05-agent-
   roster-v0.md` reference Lyons' framework, even though v0 does not
   have order-book data).
-- **Failure mode the paper exposes:** Ch. 8 (~pp. 200–230) — order-
-  flow data is dealer-specific and consolidated tape does not exist
-  in FX. Mitigation: v0 M001 uses transaction-count proxies; Φ5+ may
-  ingest demo broker's L2 if and when it becomes reliable.
-- **Page-level pointer:** Ch. 2–3 (~pp. 30–80, order-flow / return
-  link); Ch. 8 (~pp. 200–230, data-availability discussion).
-  [VERIFY] pagination against the 2001 first edition.
+- **Failure mode the paper exposes:** Ch. 3 §3.3 "Transparency of
+  Order Flow" — order-flow data is dealer-specific and consolidated
+  tape does not exist in FX. Mitigation: v0 M001 uses transaction-
+  count proxies; Φ5+ may ingest demo broker's L2 if and when it
+  becomes reliable.
+- **Page-level pointer:** Ch. 2 "The Economics of Order Flow
+  Information" — §2.2 "Empirical Evidence that Order Flow is
+  Informative" is the canonical statement of the order-flow / return
+  link; Ch. 5 "Empirical Frameworks" — §5.3 "Findings: Informative
+  Order Flow and Imperfect Risk Sharing" extends it. Chapter
+  structure verified against the MIT Press TOC; within-chapter pages
+  approximate — exact pagination not separately checked against the
+  2001 first edition.
 - **Relevance grade:** C.
 
 ### [9.5] Yang, Liu, Zhong & Walid (2020) — "Deep Reinforcement Learning for Automated Stock Trading: An Ensemble Strategy"
@@ -1315,10 +1355,18 @@ M001 itself (Yang 2020, AlphaPortfolio, FinRL).
 
 ### [9.8] Cong, Tang, Wang & Zhang (2021) — "AlphaPortfolio: Direct Construction Through Deep Reinforcement Learning and Interpretable AI"
 
-- **Venue:** SSRN Working Paper 3554486, August 2021 (Stanford
-  Digital Repository fy908xd8332; SITE Conference 2021). `[VERIFY]`
-  formal journal publication status — most-recent available version
-  is the SSRN/Stanford working paper.
+- **Venue:** SSRN Working Paper 3554486, posted 20 April 2020, last
+  revised 2 March 2022, 76 pp. (Stanford Digital Repository
+  fy908xd8332; SITE Conference 2021). **As of 2026 the paper has no
+  peer-reviewed journal publication** — verified via the SSRN entry
+  and the NBER record. A re-titled, three-author successor
+  (Cong, Tang & Wang, dropping the fourth author Zhang) is now
+  available as **NBER Working Paper 35195 (2026)**
+  "AlphaPortfolio: Goal-Oriented Investment Management Through Deep
+  Reinforcement Learning" — distinct paper, not a journal publication
+  of the SSRN version. M001 cites the original SSRN version because
+  that is what the architectural pattern (multi-sequence attention,
+  CAAN, direct-Sharpe optimisation) was published in.
 - **Citation key:** `Cong2021`
 - **Summary.** RL framework that *directly* optimises a portfolio
   objective (Sharpe ratio) end-to-end, without first estimating
@@ -1336,8 +1384,11 @@ M001 itself (Yang 2020, AlphaPortfolio, FinRL).
   treats AlphaPortfolio as proof-of-concept for end-to-end RL
   *direction*, not as a numerical benchmark.
 - **Page-level pointer:** §2–3 of the SSRN PDF (architecture); §4
-  (US-equities backtest). `[VERIFY]` exact page numbers against
-  whichever working-paper version we settle on for the M001 review.
+  (US-equities backtest). M001 reviews against the
+  20 April 2020 / 2 March 2022 SSRN revision (76 pp.); exact within-
+  section pages depend on the SSRN-PDF version snapshot — record the
+  SSRN revision date alongside any page citation that lands in a
+  M001 deliverable.
 - **Relevance grade:** C.
 
 ---
@@ -1416,57 +1467,100 @@ This is the audit trail. Every F-number is either sourced, internal
 (named honestly), or partly-internal (with explicit listing of which
 piece is which).
 
-### 10.2 References marked `[VERIFY]` — to chase before Φ2 close
+### 10.2 References previously marked `[VERIFY]` — Φ1-close status
 
-The following entries have one specific element we could not fully
-verify in the Φ1 timebox. None of them affects an A-grade load-
-bearing claim (the formula citation is firm in each case; only the
-page-number or working-paper-vs-published metadata is uncertain).
+The six entries flagged `[VERIFY]` in v0.1 were chased in v0.2.
+None of them affected an A-grade load-bearing claim (the formula
+citation is firm in each case; only the page-number or working-
+paper-vs-published metadata was uncertain). Status as of v0.2:
 
-- `Roncalli2013` — book-chapter pagination across printings. The
-  formula citations are firm; the page ranges quoted should be
-  reconciled against the specific physical edition before Φ2 lit-
-  review sign-off.
-- `Vince1990` — first-edition pagination not directly checked;
-  reprints repaginate. Formula content (optimal-f) verified.
-- `MacLeanThorpZiemba2010` — chapter-level page citations in the
-  edited volume reprint are approximate. The originals (Kelly 1956,
-  Thorp 1969) are independently verified at their own venues.
-- `Hasbrouck2007` — chapter-level page ranges quoted as
-  approximate; not yet checked against the 2007 first edition.
-- `Lyons2001` — same caveat as `Hasbrouck2007`.
-- `Cong2021` (`AlphaPortfolio`) — only the SSRN working paper +
-  Stanford Digital Repository entry confirmed; whether the paper
-  has a final peer-reviewed journal publication is not verified.
-  The conceptual citation is firm regardless.
+- `Roncalli2013` — **resolved**. ERC location locked to Ch. 2
+  ("Risk Budgeting Approach"), §2.3 p. 119 (definition) and §2.3.3
+  p. 123 (optimality), verified against the author's published TOC
+  (`thierry-roncalli.com/RiskParityBook.html`) for the 2013 Chapman
+  & Hall / CRC first printing (410 pp.). The previous v0.1 citation
+  of "§3.2 / §3.4" was a section-number slip and has been corrected.
+- `Vince1990` — **partly resolved**. Book and chapter title locked
+  ("Optimal Fixed Fractional Trading" is Ch. 4 of the Wiley 1990
+  first edition, 288 pp., ISBN 978-0-471-52756-5, verified against
+  the Wiley catalog). Exact within-chapter pages not directly
+  checked against a physical copy — chapter pages remain
+  approximate.
+- `MacLeanThorpZiemba2010` — **partly resolved**. Publication
+  metadata locked: World Scientific Handbook in Financial Economics
+  Vol. 3, published 10 February 2011, 884 pp. (the "2010" in the
+  citation key reflects the early-printing copyright date and is
+  retained for stability across cross-references — see §10.3 for the
+  date-vs-key discussion). Within-volume page citations for the
+  Thorp 1969 reprint and the Ziemba drawdown chapter remain
+  approximate — edition-dependent across the 2011 hardback and the
+  2012 paperback reprint.
+- `Hasbrouck2007` — **resolved**. Full chapter list and starting
+  pages locked against the OUP / Library of Congress catalog record
+  (ix + 198 pp., not the ~320 pp. estimated in v0.1). Previous v0.1
+  citation of "Ch. 6 (FX-specific microstructure)" was wrong —
+  Ch. 6 is "Order Flow and the Probability of Informed Trading
+  (PIN)" and the book is equity-focused, not FX. Updated to point
+  to Ch. 6, Ch. 7 (Strategic Trade Models, the Kyle chapter), and
+  Ch. 9 (Multivariate Linear Microstructure Models).
+- `Lyons2001` — **partly resolved**. Full chapter list and total
+  page count (333 pp., MIT Press 2001, ISBN 0-262-12243-X) locked
+  against the MIT Press direct TOC and author's Berkeley faculty
+  page. Previous v0.1 citation of "Ch. 8 (data-availability
+  discussion)" was wrong — Ch. 8 is "Microstructure and Central
+  Bank Intervention"; the data-availability discussion lives in
+  Ch. 3 §3.3 "Transparency of Order Flow" and the order-flow /
+  return link is in Ch. 2 §2.2. Updated. Within-chapter exact
+  pages still approximate.
+- `Cong2021` (`AlphaPortfolio`) — **resolved**. SSRN Working Paper
+  3554486 confirmed as posted 20 April 2020, last revised 2 March
+  2022, 76 pp. **As of 2026 the paper has no peer-reviewed journal
+  publication.** A re-titled, three-author successor by the same
+  lead authors (Cong, Tang & Wang, without Zhang) is now NBER
+  Working Paper 35195 (2026) "Goal-Oriented Investment Management
+  Through Deep Reinforcement Learning" — a distinct paper, not a
+  journal publication of the SSRN version. M001 keeps the SSRN
+  citation as the source of the architectural pattern.
 
-None of the above affects the F-number cross-reference table in
-§10. They are open items in the literature-review backlog and will
-be closed before Φ2 sign-off per `02-literature-survey-plan.md`
-§7.
+The three "partly resolved" entries (`Vince1990`,
+`MacLeanThorpZiemba2010`, `Lyons2001`) carry "chapter pages
+approximate — edition-dependent" qualifiers in the entries
+themselves; the formula and chapter-content claims are firm.
 
 ### 10.3 Conflicts found between the plan §1.x lineages and the actual literature
 
-Two minor conflicts to note for future amendments to `02-literature-
-survey-plan.md`:
+Two minor conflicts were noted in v0.1; both are now **resolved in
+`02-literature-survey-plan.md` v0.4 (2026-06-24)**. They are kept on
+record here for audit-trail continuity:
 
-1. **PBO authorship.** `02-literature-survey-plan.md` §4 attributes
-   PBO to *"López de Prado (2014) — The Probability of Backtest
-   Overfitting"*. The actual paper is **Bailey, Borwein, López de
-   Prado & Zhu (2015)**, *Journal of Computational Finance* 20(4),
-   pp. 39–69 — a four-author paper, not solo-LdP. There is a 2014
-   *Notices of the AMS* companion piece (`Bailey2014b`) by the same
-   four authors. Both are cited above. **Recommendation:** update
-   `02-literature-survey-plan.md` §4 bullet 1 to list all four authors
-   and the JCF venue.
-2. **Switch Transformer date.** `02-literature-survey-plan.md` §1.3
-   cites *"Fedus, Zoph & Shazeer (2022) — Switch Transformers"*. The
+1. **PBO authorship — resolved in plan v0.4.** v0.1 of this survey
+   flagged that `02-literature-survey-plan.md` §4 attributed PBO to
+   *"López de Prado (2014) — The Probability of Backtest Overfitting"*
+   when the actual paper is **Bailey, Borwein, López de Prado & Zhu
+   (2015)**, *Journal of Computational Finance* 20(4), pp. 39–69 —
+   a four-author paper, not solo-LdP. The 2014 *Notices of the AMS*
+   companion (`Bailey2014b`) is by the same four authors. Plan v0.4
+   §4 bullet 1 now lists all four authors and the JCF venue, with the
+   *Notices* companion as a sub-bullet.
+2. **Switch Transformer date — clarified in plan v0.4.** v0.1 noted
+   that `02-literature-survey-plan.md` §1.3 cited *"Fedus, Zoph &
+   Shazeer (2022) — Switch Transformers"* without flagging that the
    paper first appeared as arXiv:2101.03961 in January 2021 and was
-   published in JMLR Vol. 23, No. 120 in 2022. The 2022 citation is
-   correct for the journal version. Not a conflict, just worth
-   noting in the audit trail that the working-paper date is 2021.
+   published in JMLR Vol. 23, No. 120 in 2022. Plan v0.4 §1.3 now
+   carries the parenthetical "(arXiv:2101.03961, 2021; JMLR 23(120),
+   2022)" so both dates are explicit.
 
-Beyond these two, no formula attributed in §1–§5 of the plan
+One further inconsistency noted during the v0.2 close pass — **not
+yet resolved in the plan, flagged for follow-up:**
+
+3. **AlphaPortfolio first author.** `02-literature-survey-plan.md`
+   §1.5 cites the paper as *"Wang et al. (2021) — AlphaPortfolio"*.
+   The actual first author is **Lin William Cong** (Cornell). This
+   survey's [9.8] is correct (`Cong, Tang, Wang & Zhang (2021)`); the
+   plan §1.5 wording needs to be aligned in a future plan revision.
+   Not load-bearing for any F-number.
+
+Beyond these three, no formula attributed in §1–§5 of the plan
 contradicts the literature we surveyed. F11 / F12 / F13 / F15 / F17
 were already named in the plan and in the foundations doc as
 INTERNAL or partly-internal compositions; this survey confirms that
