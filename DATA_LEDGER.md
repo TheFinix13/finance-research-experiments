@@ -8,6 +8,8 @@ run (or retrospective registration) for that experiment.
 `excluded` (tested, rejected for deployment) · `live` (production monitor)
 
 Parquet cache: `../multi-pair-trading-agent/data/parquet/` (single canonical copy).
+Live broker fills cache (Φ3): `~/Documents/TradingAgentLogs/{SYMBOL}/`
+(VM-only; absent on the Mac research host as of 2026-06-24).
 
 Last updated: **2026-06-24**
 
@@ -19,6 +21,7 @@ Last updated: **2026-06-24**
 |---|---|---|---|
 | H4 | 2015-01-01 → 2021-12-31 | screen | E001, E002, E003, E004, E006, E007 |
 | H4 | 2022-01-01 → 2024-12-31 | confirm | E003, E004, E006, E007 |
+| H4 | 2024-01-01 → 2024-12-31 | **observation** | M001 Φ3-prep regime weak-label validation (`sim/regime/validate_real.py`; 1617 bars; not an experiment, no claim, see `sim/regime/README.md`) |
 | H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E002, E004 |
 | H4 | 2025-01-01 → 2026-06-09 | sealed | E005 |
 | H4 | 2026-01-01 → present | live | (agent demo — not a lab split) |
@@ -88,3 +91,26 @@ the hypothesis is orthogonal (different outcome, different event definition)
 and the protocol documents the prior uses above.
 
 When in doubt, pick a **pristine** row from this table.
+
+---
+
+## M001 friction calibration manifest
+
+The friction model (`programs/M001_multi_agent_ensemble/sim/core/friction.py`)
+is calibrated against **June 2026 VM broker fills** on Exness demo
+(1:1000, $100 equity profile) per `09-experiment-architecture.md` §1.8.
+
+| Field | Value |
+|---|---|
+| Source path | `~/Documents/TradingAgentLogs/{EURUSD,GBPUSD,USDCAD}/` |
+| Source schema | `{SYMBOL}_YYYY-MM-DD.log` (text, bracketed events) + `near_misses/events.jsonl` + `losses/events.jsonl` + `ladders/events.jsonl` |
+| Expected window | 2026-06-17 → ongoing (live deployment) |
+| Artefact path (when calibrated) | `programs/M001_multi_agent_ensemble/sim/core/friction_calibration_2026-06.json` |
+| Status (2026-06-24, Mac host) | **deferred** — only `~/Documents/TradingAgentLogs/summaries/summary_2026-06-17_to_2026-06-23.txt` exists locally (no symbol dirs, no fills yet). Machinery in place; calibration runs on the VM in Φ3. |
+| n_fills calibrated | 0 (deferred) |
+| Friction defaults in force | `k=0.05`, `latency_ms=250`, `partial_fill_prob=0.20`, `reject_prob=0.01` (see `friction.py` `DEFAULT_*`) |
+
+Calibration commit policy: bump only via a commit that re-runs
+`calibrate_against_fills(symbol, ...)` and `write_calibration_file(...)`
+on the VM; prior values stay in git history (`09` §6).
+

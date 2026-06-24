@@ -1,4 +1,4 @@
-# AI Context — finance research experiments (updated 2026-06-24, evening)
+# AI Context — finance research experiments (updated 2026-06-24, late evening)
 
 Read this first in a fresh chat. This repo is the **central research workshop**.
 Production execution lives in `multi-pair-trading-agent`; lab experiments never
@@ -37,9 +37,21 @@ Parquet cache: `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
   hand-labelled real-data validation deferred), TQS+ΔInfo+regime-KPI
   scoring, 4-agent MVP roster YAML + 10-agent canon YAML, agent stubs for
   A1/A6/A7/A10, Streamlit v0 dashboard (six panels render with placeholder
-  data on `127.0.0.1:8501`). **113 tests passing** (70 pre-existing + 43
-  new). Friction calibration deferred (June 2026 broker fills live in
-  production repo).
+  data on `127.0.0.1:8501`).
+- **Φ3-prep (2026-06-24 late):** two Φ3 entry blockers closed.
+  *Friction:* full calibration machinery wired in `sim/core/friction.py`
+  (text-log parser, JSONL vault reader, ATR-aware k estimator,
+  `load_calibration()` JSON loader) plus `test_friction_calibration.py`
+  (12 unit tests + 1 skip for absent real data). No fills on this Mac
+  host — only `~/Documents/TradingAgentLogs/summaries/` weekly text —
+  so `friction_calibration_2026-06.json` runs on the VM in Φ3; defaults
+  stay conservative. *Regime:* `sim/regime/validate_real.py` runs the
+  trained classifier on real EURUSD H4 2024 vs heuristic weak labels
+  (priority `news>vol_spike>trending>chop`); first run macro
+  agreement F1 = **0.496** (per-class trending 0.92, chop 0.96,
+  vol_spike 0.10, news 0.00 / support=0 because FF feed is current-week
+  only). 30 disagreements saved to `sim/regime/disagreements_for_review.csv`
+  for hand-labelling. **125 tests passing + 1 skipped** (70 lab + 55 sim).
 - Branch: **`multi-agent-ensemble`** only for M001; structure docs on same branch.
 
 ### Planned
@@ -57,20 +69,24 @@ Parquet cache: `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
 | Methodology | `docs/methodology/*.md` |
 | Audits | `audits/README.md`, `audits/2026-06-24_E001-E007_audit.md` |
 | M001 doctrine | `programs/M001_multi_agent_ensemble/00`–`09` + `README.md` |
-| M001 Φ2.5 sim | `programs/M001_multi_agent_ensemble/sim/{core,regime,scoring,roster,agents,dashboard,tests}/` + `sim/README.md` |
+| M001 Φ2.5 sim | `programs/M001_multi_agent_ensemble/sim/{core,regime,scoring,roster,agents,dashboard,tests}/` + `sim/README.md` + `sim/regime/README.md` (Φ3-prep) |
+| M001 Φ3-prep artefacts | `sim/regime/validate_real.py`, `sim/regime/validation_2024_eurusd_h4.json`, `sim/regime/disagreements_for_review.csv`, `sim/tests/test_friction_calibration.py` |
 | E006/E007 code | `conflab/`, `scripts/run_stage1.py`, `scripts/test_b/` |
 | Outputs | `output/` (legacy paths; reorganise deferred — needs git mv + MANIFEST sync) |
 
-Tests: **113** passing (70 pre-existing lab + 43 new sim).
+Tests: **125** passing + **1 skipped** (70 pre-existing lab + 55 sim).
 `PYTHONPATH=../multi-pair-trading-agent:. ../multi-pair-trading-agent/.venv/bin/python -m pytest -q`
 
 ## 3) Next immediate goal
 
 **M001 Φ3:** wire production `zone_d1_against` cell into `IsagiYoichi.intend`
 via cross-repo PYTHONPATH; replace synthetic regime-trainer bars with real
-parquet feeds; add hand-labelled validation set (≥ 200 bars) for the G4
-F1≥0.75 gate; wire HRP allocator + chemical-reaction layer (F11/F13) into
-the aggregator; calibrate friction against June 2026 VM broker fills.
+parquet feeds; **hand-label the 30 disagreement bars in
+`sim/regime/disagreements_for_review.csv`** and extend to ≥ 200 bars for
+the G4 F1≥0.75 gate; wire HRP allocator + chemical-reaction layer
+(F11/F13) into the aggregator; **on the VM, run
+`calibrate_against_fills(symbol, ...)` for each of EURUSD/GBPUSD/USDCAD
+and bump friction defaults via a single calibration commit**.
 **E010:** finalise locked params in PROTOCOL before Stage 1.
 
 Parked: `output/` reorganisation; E009 cross-family; agent-side path

@@ -30,8 +30,11 @@ PYTHONPATH=../multi-pair-trading-agent:. \
   -m pytest programs/M001_multi_agent_ensemble/sim/tests/ -q
 ```
 
-Expected: 43 tests pass. The full repo suite (including `tests/`) reports
-113 passing (70 pre-existing lab + 43 sim).
+Expected: 55 tests pass + 1 skipped (the skipped one is the real-data
+friction-calibration bounds test, which lights up automatically once
+`sim/core/friction_calibration_2026-06.json` is present). The full
+repo suite reports 125 passing + 1 skipped (70 pre-existing lab + 55
+sim + the skip).
 
 ### 2. Train the regime classifier (synthetic data smoke test)
 
@@ -76,10 +79,11 @@ disk so the surface is exercisable before the first sim run lands.
 
 Per `09-experiment-architecture.md` §1.5 the G4 exit criteria are:
 
-| Criterion | Status (Phi2.5 scaffold) |
+| Criterion | Status (Phi2.5 scaffold + Phi3-prep 2026-06-24) |
 |---|---|
 | Replay fidelity: simulator median pips/trade per rolling OOS window reproduces E004 `zone_d1_against / H4 / all` baseline **±5 %** per window (reference +11.34 pips/trade) | **deferred** — requires Phi3 cross-repo import of the production `zone_d1_against` cell + parquet bar feed |
-| Regime classifier: macro-regime labels achieve holdout F1 >= 0.75 vs hand-labelled validation set (>= 200 bars) | **scaffold passes on synthetic** (F1 ~ 0.999); real hand-labelled validation set is a Phi3 deliverable |
+| Regime classifier: macro-regime labels achieve holdout F1 >= 0.75 vs hand-labelled validation set (>= 200 bars) | **research debt acknowledged**: synthetic F1=0.999 is circular (trains and scores against the same rule); real-data weak-label agreement F1=**0.496** on EURUSD H4 2024 (vs the heuristic rules; `vol_spike`/`news` drag the macro). 30 disagreements saved to `sim/regime/disagreements_for_review.csv` for human labelling — see `sim/regime/README.md` for the interpretation guide |
+| Friction model calibrated against June 2026 VM broker fills (09 §1.8) | **machinery in place, data deferred**: text-log parser, JSONL vault reader, ATR-aware k estimator, and `load_calibration()` JSON loader all wired in `sim/core/friction.py`. No real fills on this Mac host (only `~/Documents/TradingAgentLogs/summaries/` weekly text); calibration runs on the VM in Phi3 and writes `sim/core/friction_calibration_2026-06.json`. Defaults remain conservative. |
 | Dashboard: Streamlit v0 renders all six panels in `08-dashboard-spec.md` §2 against synthetic + one real replay run without exception | **scaffold renders all six with placeholder data**; first-run-against-real-replay validates in Phi3 |
 
 Phi2.5 deliverables that land in this folder:
@@ -106,13 +110,17 @@ Per architecture §10 and 09 §2:
    via cross-repo import (PYTHONPATH=../multi-pair-trading-agent:.).
 2. Replace synthetic bars in the regime trainer with real parquet
    feeds from `multi-pair-trading-agent`'s data cache.
-3. Add a hand-labelled validation set (>= 200 bars) for the G4
+3. Hand-label the 30 disagreement bars seeded in
+   `sim/regime/disagreements_for_review.csv` (Φ3-prep deliverable
+   2026-06-24) and extend to ≥ 200 hand-labelled bars for the G4
    regime F1 gate.
 4. Wire HRP allocator (F3 + F18) + chemical-reaction layer (F11 + F13)
    into the aggregator (currently a Phi2.5 stub).
 5. Run the first replay fidelity check vs E004's +11.34 pips/trade
-   baseline; tune friction calibration constants against the June 2026
-   VM broker fills (production repo log path; see Calibration below).
+   baseline; then on the VM run
+   `calibrate_against_fills(symbol, log_root=...)` for each of
+   EURUSD/GBPUSD/USDCAD, persist via `write_calibration_file(...)`,
+   and bump the friction defaults via a single calibration commit.
 
 ## Determinism contract
 
@@ -132,24 +140,46 @@ identity across re-runs.
 
 The friction model (`sim/core/friction.py`) targets the **June 2026
 VM broker fills** on the Exness demo account (1:1000, $100 equity
-profile) per 09 §1.8. The fills CSV is **not in this repo** — it
-lives in the production repo at:
+profile) per 09 §1.8. The fills are not in this repo — they live in
+the production repo's per-symbol log tree on the deployment VM:
 
 ```
-~/Documents/TradingAgentLogs/<june_2026>/*.csv
+~/Documents/TradingAgentLogs/{EURUSD,GBPUSD,USDCAD}/
+  {SYMBOL}_YYYY-MM-DD.log          # text log, bracketed events
+  near_misses/events.jsonl         # one JSON event per line
+  losses/events.jsonl              # one JSON event per line
+  ladders/events.jsonl             # one JSON event per line
 ```
 
-`sim/core/friction.py` carries a `TODO: calibrate against {fills_path}`
-marker on the calibration block. The `calibrate_against_fills` stub
-raises `NotImplementedError` with the expected import path. Calibration
-is **deferred to Phi3** when the cross-repo data pipe is wired.
+`sim/core/friction.py` now ships the **calibration machinery**:
+
+| Function | Role |
+|---|---|
+| `parse_text_log(path)` | regex-pair `[SIGNAL]` → `[TRADE OPENED]` on `(symbol, timeframe, alpha, direction)`; count `[ORDER REJECTED]` lines |
+| `iter_vault_jsonl(path)` | tolerant JSONL reader for `near_misses` / `losses` / `ladders` |
+| `calibrate_against_fills(symbol, log_root=None, atr_by_record=None)` | empirical distributions: median/p95 spread, median/p95 latency, partial-fill rate, rejection rate, ATR-aware slippage coefficient `k`. Returns a `CalibrationResult` with `n_orders == 0` when the log tree is absent on this host (the current Mac case) so callers fall back to defaults without raising. |
+| `write_calibration_file(results, path=None)` | serialise per-symbol calibrations to `sim/core/friction_calibration_2026-06.json` (the canonical artefact) |
+| `load_calibration(path=None)` | read the JSON and return `{symbol: FrictionConfig}` |
+| `config_for_symbol(symbol, calibration_path=None)` | convenience wrapper used by the engine on a per-symbol basis; returns conservative defaults when no calibration is present |
+
+**Current state on this Mac host (2026-06-24):**
+`~/Documents/TradingAgentLogs/` only contains
+`summaries/summary_2026-06-17_to_2026-06-23.txt`. There are no
+per-symbol log directories yet (no live deployment trades in the
+window). `friction_calibration_2026-06.json` is therefore **not yet
+written**; the simulator falls back to the conservative
+`FrictionConfig()` defaults documented in `09` §1.8. Calibration
+runs on the VM in Φ3 and writes the JSON.
 
 Calibration commit policy (research-standards §5):
 
 1. Replay >= 20 demo orders through the simulator + production fills.
-2. Sweep `k ∈ {0.02, 0.03, ..., 0.10}` and
-   `reject_prob ∈ {0.005, 0.01, 0.02}` to minimise median |Δprice|.
-3. Freeze calibrated values in a new `sim/friction.yaml`.
+2. Estimate empirical distributions per symbol via
+   `calibrate_against_fills(symbol, log_root=...)`; pass
+   `atr_by_record` once the parquet-join utility is wired so the
+   `k` regression has ATR-at-signal data.
+3. Persist the result with `write_calibration_file(...)` →
+   `sim/core/friction_calibration_2026-06.json`.
 4. Bump only via a calibration commit; the prior value stays in
    git history.
 
