@@ -15,8 +15,10 @@ sim/
   regime/       four-class classifier (trending / chop / vol_spike / news) + train/eval
                 + Streamlit `label_disagreements.py` (Φ3-prep human-data-loop)
   scoring/      F12 TQS · F17 ΔInfo · F18 regime-conditional KPIs
-  roster/       mvp_phi4.yaml (4-agent Φ4 v1) + full_canon.yaml (10-agent target)
-  agents/       Phi2.5 stubs: a01_isagi, a06_nagi, a07_barou, a10_kunigami, placeholder
+  roster/       mvp_phi4.yaml (4-agent Φ4 v1) + mvp_phi41.yaml (8-agent
+                Φ4.1 expansion) + full_canon.yaml (10-agent target)
+  agents/       Φ4 v1: a01_isagi, a06_nagi, a07_barou, a10_kunigami;
+                Φ4.1 v1 expansion: a02_bachira, a03_rin, a04_chigiri, a05_reo
   dashboard/    Streamlit v0 (six panels per `08-dashboard-spec.md`)
   tests/        determinism, ledger look-ahead, friction, sentinel, seed
 ../scripts/     VM-side CLIs run on the Windows deployment box
@@ -38,11 +40,11 @@ PYTHONPATH=../multi-pair-trading-agent:. \
   -m pytest programs/M001_multi_agent_ensemble/sim/tests/ -q
 ```
 
-Expected: **125 tests pass + 3 skipped** (the skipped ones are the
+Expected: **210 tests pass + 4 skipped** (the skipped ones are the
 real-data friction-calibration bounds test, the slow Phi3 gate
-real-data integration, and the slow Phi4 squad gate real-data
-integration). The full repo suite reports **195 passing** (70
-pre-existing lab + 125 sim + 3 slow skips).
+real-data integration, the slow Phi4 squad gate real-data
+integration, and the slow Phi4.1 expanded-squad real-data
+integration).
 
 ### 2. Train the regime classifier (synthetic data smoke test)
 
@@ -223,6 +225,92 @@ The harness implements the Phi4 contract from `09 §1.5` + doctrine §3.8:
    (`RedactedLedger(self_only)`) arms; bootstrap CI per
    `sim/scoring/delta_info.py`.
 
+## Running Φ4.1 gate (8-agent expanded squad)
+
+Φ4.1 is the predicate-starvation-fix expansion of Φ4. The Φ4 squad
+gate **FAILed at 0.98x** with Nagi firing **0** confluence thoughts
+because the F11/F13 chemical-reaction predicate needs ≥ 2 distinct
+peers with conviction ≥ 0.70 + shared tags + overlapping coordinate
+bands — structurally unreachable with only Isagi (base conviction
+0.65) and Barou trading. Φ4.1 expands the roster to 8 strikers and
+re-asks the gate question.
+
+The verdict thresholds (PASS/PARTIAL/FAIL/PROVISIONAL) and locked
+statistic (median OOS-window mean TQS) are **identical to Φ4** —
+this is an apples-to-apples comparison with one variable changed
+(the roster).
+
+Roster: `sim/roster/mvp_phi41.yaml` (8 agents = 4 Φ4 carryovers +
+4 new strikers). `mvp_phi4.yaml` is preserved verbatim for
+backwards-compatible reruns.
+
+```bash
+PYTHONPATH=../multi-pair-trading-agent:. \
+  M001_PRODUCTION_REPO=../multi-pair-trading-agent \
+  ../multi-pair-trading-agent/.venv/bin/python \
+  -m programs.M001_multi_agent_ensemble.sim.scoring.run_phi41_gate \
+  --verbose
+```
+
+Default window: EURUSD + GBPUSD + USDCAD H4 2015-01-01 → 2025-12-31
+(GBPUSD added vs Φ4 because Bachira + Chigiri trade it; without it
+they're silenced). Walk-forward 4 yr IS / 1 yr OOS (7 windows).
+
+Outputs written to `programs/M001_multi_agent_ensemble/reviews/`:
+
+* `phi41_squad_v1.md` — verdict, per-agent KPIs, walk-forward
+  table, F17 ΔInfo for 6 candidates, **predicate-starvation
+  falsifier headline** with Φ4 → Φ4.1 Nagi confluence count delta,
+  auto-diagnosis (YES/NO answer to "did predicate starvation get
+  fixed?"), honest caveats.
+* `phi41_squad_v1_addendum.md` — hand-written interpretation. Φ5
+  recommendations (aggregator + risk allocator, NOT more strikers).
+* `phi41_isagi_rejection_analysis.md` — cross-striker rejection
+  buckets. The 87.5% same-direction share in the 2026-06-24 run is
+  the fingerprint of crowd-out.
+* `phi41_squad_v1_trades.jsonl` — every closed trade with TQS components.
+* `phi41_squad_v1_proposals_all.jsonl` — every proposal (accepted +
+  rejected) for replay debugging.
+* `phi41_squad_v1_rejected_proposals.jsonl` — rejected proposals only,
+  structured for the rejection-analysis harness.
+
+CLI flags:
+
+* `--start YYYY-MM-DD`, `--end YYYY-MM-DD` — narrow the window.
+* `--out-dir PATH` — override the default reviews directory.
+* `--delta-info-windows N` — how many of the 7 OOS windows to use for
+  F17 (default 3). F17 isolated arms now run for 6 candidates (Nagi,
+  Barou, Bachira, Rin, Chigiri, Reo), so each window adds ~6 × per-
+  window cost.
+
+The Φ4.1 harness reuses Φ4's `_drive_squad_replay`, aggregator, and
+isolated-arm driver verbatim — only squad construction, symbol set,
+F17 candidate registry, telemetry counters, and the diagnosis block
+differ.
+
+**2026-06-24 verdict: FAIL @ 0.92x. Nagi confluence count 0 → 34302
+— predicate starvation confirmed fixed; new failure mode is
+structural crowd-out at the aggregator.** See `phi41_squad_v1.md`
++ `phi41_squad_v1_addendum.md` for the full diagnosis.
+
+### Why Φ4.1 hardened the FullLedger
+
+Φ4.1 has 8 agents × 3 symbols × 53k bars where ~5 active agents call
+`ledger.read(symbol=...)` per tick. The legacy O(N) per-call read +
+O(N) per-append dedup compounded to O(N²) aggregate cost, which
+prevented the squad gate from completing within the interactive
+compute budget. The Φ4.1 ledger optimisation adds:
+
+* `_JsonlBackend._seen_ids` — O(1) dedup set keyed by thought_id.
+* `_JsonlBackend._by_symbol` — per-symbol bucket index.
+* `FullLedger.read(..., symbol=X)` fast path using `iter_by_symbol(X)`.
+
+**Semantics preserved verbatim** — guards, insertion order,
+look-ahead filtering, on-disk JSONL files all byte-identical to
+the pre-optimisation backend. Tested via the existing 186-test
+sim suite (including `test_ledger_lookahead`, `test_a05_reo_wrap`,
+`test_a06_nagi_wrap` which all exercise the ledger heavily).
+
 ## Phi3 build order (next phase)
 
 Per architecture §10 and 09 §2:
@@ -239,18 +327,32 @@ Per architecture §10 and 09 §2:
    Barou's median is negative -7.28 pips, dilutes Isagi's median).
    Honest diagnostic in `reviews/phi4_squad_v1.md`. Rejection
    analysis in `reviews/phi4_isagi_rejection_analysis.md`.
-4. [ ] Replace synthetic bars in the regime trainer with real parquet
+4. [x] Φ4.1 gate (8-agent expanded squad) — **FAIL @ 0.92× Isagi-alone
+   TQS** on EURUSD + GBPUSD + USDCAD H4 2015–2025. New agents A2
+   Bachira / A3 Rin / A4 Chigiri / A5 Reo shipped. **Nagi confluence
+   count moved from 0 (Φ4) to 34302 (Φ4.1) — predicate-starvation
+   hypothesis decisively confirmed**, but the squad still loses
+   because of a new failure mode: Bachira/Rin's +0.10/+0.15
+   conviction lifts crowd Isagi and Barou out of the aggregator
+   entirely (both made 0 trades; the squad ledger is 76% Bachira).
+   Diagnostic in `reviews/phi41_squad_v1.md`; hand-written Φ5
+   roadmap (aggregator + risk allocator, NOT more strikers) in
+   `reviews/phi41_squad_v1_addendum.md`.
+5. [ ] Replace synthetic bars in the regime trainer with real parquet
    feeds from `multi-pair-trading-agent`'s data cache.
-5. [ ] Hand-label the 30 disagreement bars seeded in
+6. [ ] Hand-label the 30 disagreement bars seeded in
    `sim/regime/disagreements_for_review.csv` via the Streamlit tool
    at [`sim/regime/label_disagreements.py`](regime/label_disagreements.py)
    (Φ3-prep deliverable 2026-06-24) and extend to ≥ 200 hand-labelled
    bars for the G4 regime F1 gate.
-6. [ ] Wire HRP allocator (F3 + F18) + chemical-reaction layer
+7. [ ] Wire HRP allocator (F3 + F18) + chemical-reaction layer
    (F11 + F13) into the aggregator (currently a Φ2.5 stub). **HRP
-   is the empirical remedy for the Phi4 FAIL diagnosis #2 above
-   (Barou's right-tail-skewed contribution dilutes Isagi's median).**
-7. [ ] On the VM, run [`scripts/vm_calibrate_friction.py`](../scripts/vm_calibrate_friction.py)
+   is the empirical remedy for BOTH Φ4 FAIL diagnosis #2 (Barou's
+   right-tail-skewed contribution dilutes Isagi's median) AND Φ4.1's
+   structural-crowd-out failure mode (per-agent risk budgeting +
+   TQS-conditional conviction floor + same-direction merge instead
+   of highest-conviction-wins).**
+8. [ ] On the VM, run [`scripts/vm_calibrate_friction.py`](../scripts/vm_calibrate_friction.py)
    to calibrate friction against the live broker fills for
    EURUSD/GBPUSD/USDCAD, then commit the resulting
    `sim/core/friction_calibration_2026-06.json` via a single
