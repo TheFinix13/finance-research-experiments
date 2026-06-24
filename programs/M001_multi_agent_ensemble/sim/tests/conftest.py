@@ -12,6 +12,14 @@ REPO_ROOT = THIS.parents[4]
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+
+def pytest_configure(config):
+    """Register custom marks used inside sim/tests/."""
+    config.addinivalue_line(
+        "markers",
+        "slow: marks tests that take >5s or need real data; skipped by default",
+    )
+
 from programs.M001_multi_agent_ensemble.sim.core.types import (  # noqa: E402
     MarketState,
 )
