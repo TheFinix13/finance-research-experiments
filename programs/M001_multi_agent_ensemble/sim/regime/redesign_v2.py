@@ -47,6 +47,12 @@ VOL_SPIKE_SIGMA_MULTIPLIER: float = 3.0
 #: data.
 VOL_SPIKE_MIN_OBS: int = 60
 
+# v2b extras (PROTOCOL Amendment A, 2026-06-24). v2b adds an ADX(14)
+# filter to v2: a bar can only be `vol_spike` if it is ALSO not in a
+# strong trend. This mirrors the weak rule's `adx14 < 25` clause.
+VOL_SPIKE_ADX_PERIOD: int = 14
+VOL_SPIKE_ADX_MAX: float = 25.0
+
 # News retirement marker — kept as a constant so callers can branch on
 # it explicitly rather than encoding "news is retired" in a magic value.
 NEWS_RETIRED_FROM_OHLCV: bool = True
@@ -142,6 +148,60 @@ def detect_vol_spike(
 
 
 # ---------------------------------------------------------------------------
+# `vol_spike` v2b — v2 + ADX(14) < 25 filter (PROTOCOL Amendment A)
+# ---------------------------------------------------------------------------
+
+def detect_vol_spike_v2b(
+    df: pd.DataFrame,
+    *,
+    window: int = VOL_SPIKE_WINDOW,
+    sigma_multiplier: float = VOL_SPIKE_SIGMA_MULTIPLIER,
+    min_obs: int = VOL_SPIKE_MIN_OBS,
+    adx_period: int = VOL_SPIKE_ADX_PERIOD,
+    adx_max: float = VOL_SPIKE_ADX_MAX,
+) -> pd.Series:
+    """v2 with an ADX(14) < 25 trend-suppression filter (Amendment A).
+
+    Combines the strict-causal 1-bar 3-σ outlier test from `detect_
+    vol_spike` with the weak rule's `adx14 < 25` trend filter from
+    `validate_real.py:weak_label_row`. A bar `t` is `vol_spike` iff:
+
+    1. ``|log_return_t| > sigma_multiplier × σ_{t-1}`` (same as v2), AND
+    2. ``ADX(adx_period) at bar t < adx_max``.
+
+    Rationale: the weak rule deliberately excludes "high vol *during a
+    strong trend*" — those bars are classified as `trending`, not
+    `vol_spike`. v2's silence on ADX caused 8 of its 31 EURUSD-2024
+    fires to land in trends the weak rule already labelled `trending`.
+    v2b restores that exclusion to make the candidate match the weak
+    rule's *structure* without copying its 20-bar rolling-σ statistic.
+
+    Returns a bool series aligned to ``df.index``. NaN ADX values
+    (warmup window) cleanly evaluate to False under the `<` test.
+    """
+    if "close" not in df.columns:
+        raise KeyError("dataframe must contain a 'close' column")
+    if "high" not in df.columns or "low" not in df.columns:
+        raise KeyError(
+            "dataframe must contain 'high' and 'low' columns for ADX"
+        )
+    # Reuse v2's spike detector for the σ test.
+    spike = detect_vol_spike(
+        df, window=window, sigma_multiplier=sigma_multiplier, min_obs=min_obs,
+    )
+    # ADX from the lab's pure-pandas indicators — matches what
+    # `classifier.py:extract_features` uses so v2b stays consistent
+    # with the rest of the regime pipeline.
+    from conflab.indicators import adx as _adx  # local import; lab dep
+    adx_series = _adx(df, period=adx_period)["adx"]
+    not_trending = adx_series < adx_max
+    not_trending = not_trending.fillna(False).astype(bool)
+    out = (spike & not_trending).astype(bool)
+    out.name = "vol_spike_v2b"
+    return out
+
+
+# ---------------------------------------------------------------------------
 # `news` v2 — formally retired from OHLCV-only detection (PROTOCOL §1.2)
 # ---------------------------------------------------------------------------
 
@@ -179,6 +239,8 @@ class DetectorConfig:
     vol_spike_window: int = VOL_SPIKE_WINDOW
     vol_spike_sigma_multiplier: float = VOL_SPIKE_SIGMA_MULTIPLIER
     vol_spike_min_obs: int = VOL_SPIKE_MIN_OBS
+    vol_spike_adx_period: int = VOL_SPIKE_ADX_PERIOD
+    vol_spike_adx_max: float = VOL_SPIKE_ADX_MAX
 
 
 def detect_all(
@@ -186,13 +248,13 @@ def detect_all(
     *,
     config: DetectorConfig | None = None,
 ) -> pd.DataFrame:
-    """Run every v2 detector and return a per-bar bool matrix.
+    """Run every v2 / v2b detector and return a per-bar bool matrix.
 
-    Columns: ``vol_spike_v2``, ``news_v2`` (always False). Index is
-    ``df.index``. Used by the verdict harness and the unit tests.
-    Does NOT compute `trending` / `chop` — those classes weren't
-    broken in `validation_2024_eurusd_h4.json` and this redesign
-    leaves them alone.
+    Columns: ``vol_spike_v2``, ``vol_spike_v2b``, ``news_v2`` (always
+    False). Index is ``df.index``. Used by the verdict harness and
+    the unit tests. Does NOT compute `trending` / `chop` — those
+    classes weren't broken in `validation_2024_eurusd_h4.json` and
+    this redesign leaves them alone.
     """
     cfg = config or DetectorConfig()
     return pd.DataFrame(
@@ -202,6 +264,14 @@ def detect_all(
                 window=cfg.vol_spike_window,
                 sigma_multiplier=cfg.vol_spike_sigma_multiplier,
                 min_obs=cfg.vol_spike_min_obs,
+            ),
+            "vol_spike_v2b": detect_vol_spike_v2b(
+                df,
+                window=cfg.vol_spike_window,
+                sigma_multiplier=cfg.vol_spike_sigma_multiplier,
+                min_obs=cfg.vol_spike_min_obs,
+                adx_period=cfg.vol_spike_adx_period,
+                adx_max=cfg.vol_spike_adx_max,
             ),
             "news_v2": detect_news_ohlcv(df),
         },

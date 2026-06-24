@@ -1,0 +1,343 @@
+{
+  "manifest": {
+    "_note": "Per-class precision / recall / F1 are scoped to bars where the weak labeller did NOT abstain (UNKNOWN_LABEL scope). Weak-label F1 is NOT ground-truth F1 \u2014 see PROTOCOL \u00a75 weak-label-ceiling acknowledgement.",
+    "detector_config": {
+      "vol_spike_adx_max": 25.0,
+      "vol_spike_adx_period": 14,
+      "vol_spike_min_obs": 60,
+      "vol_spike_sigma_multiplier": 3.0,
+      "vol_spike_window": 90
+    },
+    "generated_at_utc": "2026-06-24T22:27:31.682267+00:00",
+    "protocol": "programs/M001_multi_agent_ensemble/reviews/regime_redesign_2026-06-24_PROTOCOL.md",
+    "weak_label_source": "programs/M001_multi_agent_ensemble/sim/regime/validate_real.py::weak_label_dataframe"
+  },
+  "slices": [
+    {
+      "counts": {
+        "n_pred_news_new": 0,
+        "n_pred_vol_spike_legacy": 208,
+        "n_pred_vol_spike_v2": 31,
+        "n_pred_vol_spike_v2b": 22,
+        "n_scored_bars": 772,
+        "n_total_bars": 1617,
+        "n_weak_news": 0,
+        "n_weak_vol_spike": 23
+      },
+      "name": "EURUSD_H4_2024",
+      "news_calendar_available": false,
+      "parquet": "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/data/parquet/EURUSD_H4.parquet",
+      "per_class_legacy": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.10169491525423728,
+          "label": "vol_spike",
+          "n_predicted": 95,
+          "n_true_positive": 6,
+          "precision": 0.06315789473684211,
+          "recall": 0.2608695652173913,
+          "support": 23
+        }
+      },
+      "per_class_v2": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.1764705882352941,
+          "label": "vol_spike",
+          "n_predicted": 11,
+          "n_true_positive": 3,
+          "precision": 0.2727272727272727,
+          "recall": 0.13043478260869565,
+          "support": 23
+        }
+      },
+      "per_class_v2b": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.23076923076923078,
+          "label": "vol_spike",
+          "n_predicted": 3,
+          "n_true_positive": 3,
+          "precision": 1.0,
+          "recall": 0.13043478260869565,
+          "support": 23
+        }
+      },
+      "role": "primary",
+      "window": [
+        "2024-01-01",
+        "2025-01-01"
+      ]
+    },
+    {
+      "counts": {
+        "n_pred_news_new": 0,
+        "n_pred_vol_spike_legacy": 193,
+        "n_pred_vol_spike_v2": 32,
+        "n_pred_vol_spike_v2b": 18,
+        "n_scored_bars": 597,
+        "n_total_bars": 1609,
+        "n_weak_news": 0,
+        "n_weak_vol_spike": 21
+      },
+      "name": "EURUSD_H4_2023",
+      "news_calendar_available": false,
+      "parquet": "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/data/parquet/EURUSD_H4.parquet",
+      "per_class_legacy": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.061224489795918366,
+          "label": "vol_spike",
+          "n_predicted": 77,
+          "n_true_positive": 3,
+          "precision": 0.03896103896103896,
+          "recall": 0.14285714285714285,
+          "support": 21
+        }
+      },
+      "per_class_v2": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.1111111111111111,
+          "label": "vol_spike",
+          "n_predicted": 15,
+          "n_true_positive": 2,
+          "precision": 0.13333333333333333,
+          "recall": 0.09523809523809523,
+          "support": 21
+        }
+      },
+      "per_class_v2b": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.17391304347826084,
+          "label": "vol_spike",
+          "n_predicted": 2,
+          "n_true_positive": 2,
+          "precision": 1.0,
+          "recall": 0.09523809523809523,
+          "support": 21
+        }
+      },
+      "role": "cross_period",
+      "window": [
+        "2023-01-01",
+        "2024-01-01"
+      ]
+    },
+    {
+      "counts": {
+        "n_pred_news_new": 0,
+        "n_pred_vol_spike_legacy": 185,
+        "n_pred_vol_spike_v2": 29,
+        "n_pred_vol_spike_v2b": 21,
+        "n_scored_bars": 777,
+        "n_total_bars": 1616,
+        "n_weak_news": 0,
+        "n_weak_vol_spike": 71
+      },
+      "name": "GBPUSD_H4_2024",
+      "news_calendar_available": false,
+      "parquet": "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/data/parquet/GBPUSD_H4.parquet",
+      "per_class_legacy": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.2181818181818182,
+          "label": "vol_spike",
+          "n_predicted": 94,
+          "n_true_positive": 18,
+          "precision": 0.19148936170212766,
+          "recall": 0.2535211267605634,
+          "support": 71
+        }
+      },
+      "per_class_v2": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.12195121951219513,
+          "label": "vol_spike",
+          "n_predicted": 11,
+          "n_true_positive": 5,
+          "precision": 0.45454545454545453,
+          "recall": 0.07042253521126761,
+          "support": 71
+        }
+      },
+      "per_class_v2b": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.13157894736842107,
+          "label": "vol_spike",
+          "n_predicted": 5,
+          "n_true_positive": 5,
+          "precision": 1.0,
+          "recall": 0.07042253521126761,
+          "support": 71
+        }
+      },
+      "role": "cross_symbol",
+      "window": [
+        "2024-01-01",
+        "2025-01-01"
+      ]
+    },
+    {
+      "counts": {
+        "n_pred_news_new": 0,
+        "n_pred_vol_spike_legacy": 215,
+        "n_pred_vol_spike_v2": 29,
+        "n_pred_vol_spike_v2b": 16,
+        "n_scored_bars": 781,
+        "n_total_bars": 1616,
+        "n_weak_news": 0,
+        "n_weak_vol_spike": 53
+      },
+      "name": "USDCAD_H4_2024",
+      "news_calendar_available": false,
+      "parquet": "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/data/parquet/USDCAD_H4.parquet",
+      "per_class_legacy": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.10909090909090909,
+          "label": "vol_spike",
+          "n_predicted": 112,
+          "n_true_positive": 9,
+          "precision": 0.08035714285714286,
+          "recall": 0.16981132075471697,
+          "support": 53
+        }
+      },
+      "per_class_v2": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.14084507042253522,
+          "label": "vol_spike",
+          "n_predicted": 18,
+          "n_true_positive": 5,
+          "precision": 0.2777777777777778,
+          "recall": 0.09433962264150944,
+          "support": 53
+        }
+      },
+      "per_class_v2b": {
+        "news": {
+          "f1": 0.0,
+          "label": "news",
+          "n_predicted": 0,
+          "n_true_positive": 0,
+          "precision": 0.0,
+          "recall": 0.0,
+          "support": 0
+        },
+        "vol_spike": {
+          "f1": 0.1724137931034483,
+          "label": "vol_spike",
+          "n_predicted": 5,
+          "n_true_positive": 5,
+          "precision": 1.0,
+          "recall": 0.09433962264150944,
+          "support": 53
+        }
+      },
+      "role": "cross_symbol",
+      "window": [
+        "2024-01-01",
+        "2025-01-01"
+      ]
+    }
+  ],
+  "thresholds": {
+    "FAIL_UPPER": 0.3,
+    "PARTIAL_LOWER": 0.3,
+    "PARTIAL_UPPER": 0.5,
+    "PASS": 0.5
+  }
+}

@@ -277,3 +277,68 @@ determinism contract.
   (snapshot before this redesign).
 * Hand-labelling escalation path: `sim/regime/label_disagreements.py`
   (Streamlit tool, owned by the user; not touched by this work).
+
+---
+
+## Amendment A — vol_spike v2b candidate (2026-06-24, post-v2 evaluation)
+
+**Status:** `AMENDMENT` — added after v2 evaluation produced per-class
+F1 = 0.18 on EURUSD H4 2024 primary (FAIL by §4 thresholds). Triggers
+the "one additional honest iteration" clause of §4's RETIRE rule
+(`F1 < 0.30 even after one additional honest iteration`) and the §6
+PARTIAL fallback ("Downgrade to PARTIAL; ship with explicit caveat").
+
+**What this amendment does NOT do.** It does not move any pre-registered
+threshold (PASS / PARTIAL / FAIL / RETIRE bands in §4 are unchanged).
+It does not retroactively redefine v2 (v2's F1 = 0.18 stands as
+reported). It does not add a third or fourth candidate — §4's "one
+additional honest iteration" is the cap; if v2b also fails, the verdict
+is RETIRE.
+
+**Why a second candidate.** The post-v2 diagnostic in the verdict
+report (`reviews/regime_redesign_2026-06-24.md` §3.3) reveals a single
+structural reason v2 disagreed with the weak rule:
+
+> v2 fires on 31 EURUSD-2024 bars whose ADX(14) distribution is
+> [10.5, 43.7]; the weak rule's 23 bars are all ADX(14) < 25 by
+> construction. The weak rule's `adx14 < 25` filter is doing real work
+> — it deliberately excludes "high vol *during a strong trend*" (which
+> the weak rule classifies as `trending`, not `vol_spike`). v2 ignored
+> that filter on the §1.1 rationale "spikes also occur in trends",
+> which is true conceptually but in conflict with the weak labels
+> v2 is being scored against.
+
+This is a falsifiable hypothesis: re-running v2 with the ADX filter
+added should bring it closer to the weak rule on the trend-suppression
+axis, and the F1 should rise. If the F1 still fails to clear PARTIAL,
+the disagreement is **not** the ADX filter — it is the
+single-bar-vs-rolling-window mismatch — and the right verdict is RETIRE
+for OHLCV-only detection.
+
+**v2b candidate definition (locked before re-evaluation).**
+
+> A bar `t` is labelled `vol_spike` iff
+> `|log_return_t| > 3.0 × σ(log_return, window=90, ddof=1)` over bars
+> `[t-90, t-1]` **AND** `ADX(14) < 25` at bar `t`.
+
+Both clauses are causal (ADX(14) at bar `t` is computed from bars
+`[t-14, t]` using close — the standard pandas idiom). Locked thresholds:
+
+* `window = 90` (same as v2)
+* `sigma_multiplier = 3.0` (same as v2)
+* `min_obs = 60` (same as v2)
+* `adx_period = 14` (matches `classifier.py:extract_features`)
+* `adx_max = 25.0` (matches the weak rule's threshold in
+  `validate_real.py:weak_label_row`)
+
+**Falsifiability.** Same §6 falsifiability table applies. If v2b F1
+< 0.30 on the EURUSD-H4-2024 primary window, the verdict for
+`vol_spike` is RETIRE (the §4 "one additional honest iteration" budget
+is then exhausted).
+
+**No third iteration.** This is the last candidate. The cross-statistic
+sensitivity (different volatility measure: TR vs return-σ; different
+lookback: 250 vs 90; different percentile vs σ-multiplier scaling) is
+explicitly NOT explored under this protocol. If v2b also fails, that
+exploration belongs in a *future* redesign cycle (post-hand-labelling),
+not in this commit.
