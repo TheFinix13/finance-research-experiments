@@ -51,7 +51,23 @@ Parquet cache: `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
   agreement F1 = **0.496** (per-class trending 0.92, chop 0.96,
   vol_spike 0.10, news 0.00 / support=0 because FF feed is current-week
   only). 30 disagreements saved to `sim/regime/disagreements_for_review.csv`
-  for hand-labelling. **125 tests passing + 1 skipped** (70 lab + 55 sim).
+  for hand-labelling.
+- **Φ3 v1 (2026-06-24 late) — A1 Isagi v1 wrapper PASS:**
+  `sim/agents/a01_isagi.py` wraps production
+  `agent.alphas.concepts.zone_alpha.SupplyDemandAlpha` at locked E004
+  params (`htf_align=D1`, `htf_align_mode=against`, `htf_lookback=10`,
+  `htf_min_move_pips=60`, `target_rr=1.5`) via the cross-repo import
+  contract (`sim/_cross_repo.py` — `M001_PRODUCTION_REPO` env var).
+  Φ3→Φ4 gate harness in `sim/scoring/run_isagi_phi3_gate.py` ran
+  EURUSD H4 2015-2025 (17 723 bars, 856 trades, 7 windows): **verdict
+  `PASS`** — median OOS-window mean **+11.04 pips/trade** vs Sae
+  **+11.34** (drift **−2.7 %**, within ±5 %); **7/7 OOS windows
+  positive**; mean TQS 0.317. Report:
+  `programs/M001_multi_agent_ensemble/reviews/phi3_gate_isagi_v1.md`
+  + per-trade JSONL ledger. Tier-3 `RedactedLedger` produces
+  byte-identical proposals to `FullLedger` (proven in
+  `tests/test_a01_isagi_wrap.py`). **137 tests passing + 3 skipped**
+  (70 lab + 67 sim; +12 new Φ3 tests).
 - Branch: **`multi-agent-ensemble`** only for M001; structure docs on same branch.
 
 ### Planned
@@ -71,19 +87,20 @@ Parquet cache: `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
 | M001 doctrine | `programs/M001_multi_agent_ensemble/00`–`09` + `README.md` |
 | M001 Φ2.5 sim | `programs/M001_multi_agent_ensemble/sim/{core,regime,scoring,roster,agents,dashboard,tests}/` + `sim/README.md` + `sim/regime/README.md` (Φ3-prep) |
 | M001 Φ3-prep artefacts | `sim/regime/validate_real.py`, `sim/regime/validation_2024_eurusd_h4.json`, `sim/regime/disagreements_for_review.csv`, `sim/tests/test_friction_calibration.py` |
+| M001 Φ3 v1 artefacts | `sim/_cross_repo.py`, `sim/agents/a01_isagi.py` (A1IsagiV1 wrapper), `sim/scoring/run_isagi_phi3_gate.py`, `sim/tests/test_a01_isagi_wrap.py`, `sim/tests/test_phi3_gate.py`, `programs/M001_multi_agent_ensemble/reviews/phi3_gate_isagi_v1.md` (+ `*_trades.jsonl`) |
 | E006/E007 code | `conflab/`, `scripts/run_stage1.py`, `scripts/test_b/` |
 | Outputs | `output/` (legacy paths; reorganise deferred — needs git mv + MANIFEST sync) |
 
-Tests: **125** passing + **1 skipped** (70 pre-existing lab + 55 sim).
-`PYTHONPATH=../multi-pair-trading-agent:. ../multi-pair-trading-agent/.venv/bin/python -m pytest -q`
+Tests: **137** passing + **3 skipped** (70 pre-existing lab + 67 sim).
+`PYTHONPATH=../multi-pair-trading-agent:. M001_PRODUCTION_REPO=../multi-pair-trading-agent ../multi-pair-trading-agent/.venv/bin/python -m pytest -q`
 
 ## 3) Next immediate goal
 
-**M001 Φ3:** wire production `zone_d1_against` cell into `IsagiYoichi.intend`
-via cross-repo PYTHONPATH; replace synthetic regime-trainer bars with real
+**M001 Φ3 (remaining):** wrapper is done (A1 Isagi v1 PASS, see above).
+Remaining Φ3 → Φ4 work: replace synthetic regime-trainer bars with real
 parquet feeds; **hand-label the 30 disagreement bars in
 `sim/regime/disagreements_for_review.csv`** and extend to ≥ 200 bars for
-the G4 F1≥0.75 gate; wire HRP allocator + chemical-reaction layer
+the G4 F1 ≥ 0.75 gate; wire HRP allocator + chemical-reaction layer
 (F11/F13) into the aggregator; **on the VM, run
 `calibrate_against_fills(symbol, ...)` for each of EURUSD/GBPUSD/USDCAD
 and bump friction defaults via a single calibration commit**.
