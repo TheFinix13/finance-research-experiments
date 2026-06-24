@@ -1,15 +1,15 @@
 {
   "counts": {
-    "n_disagreements_sampled": 30,
-    "n_disagreements_total": 106,
+    "n_disagreements_sampled": 23,
+    "n_disagreements_total": 23,
     "n_scored_bars": 772,
     "n_total_bars": 1617,
     "n_unknown_weak_label": 845,
     "predicted_class_counts": {
-      "chop": 83,
+      "chop": 87,
       "news": 0,
-      "trending": 594,
-      "vol_spike": 95
+      "trending": 685,
+      "vol_spike": 0
     },
     "weak_label_class_counts": {
       "chop": 79,
@@ -25,7 +25,7 @@
   },
   "manifest": {
     "_note": "Weak-label agreement F1 is NOT ground-truth F1. The heuristic and the classifier disagree on a real label is the trigger to escalate to hand-labelling; see sim/regime/README.md for the interpretation guide.",
-    "generated_at_utc": "2026-06-24T17:56:05.897610+00:00",
+    "generated_at_utc": "2026-06-24T22:30:52.291750+00:00",
     "model_path": "/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/sim/regime/model_v1.pkl",
     "news_calendar_available": false,
     "parquet_path": "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/data/parquet/EURUSD_H4.parquet",
@@ -40,24 +40,24 @@
     "window_substitution": null
   },
   "metrics": {
-    "agreement_f1_macro": 0.4963859885416418,
+    "agreement_f1_macro": 0.4851842795536389,
     "confusion_matrix_rows_weak_cols_pred": [
       [
-        582,
+        670,
         0,
-        88,
+        0,
         0
       ],
       [
         0,
-        78,
-        1,
+        79,
+        0,
         0
       ],
       [
-        12,
-        5,
-        6,
+        15,
+        8,
+        0,
         0
       ],
       [
@@ -75,9 +75,9 @@
     ],
     "per_class": {
       "chop": {
-        "f1": 0.9629629629629629,
-        "precision": 0.9397590361445783,
-        "recall": 0.9873417721518988,
+        "f1": 0.9518072289156626,
+        "precision": 0.9080459770114943,
+        "recall": 1.0,
         "support": 79
       },
       "news": {
@@ -87,15 +87,15 @@
         "support": 0
       },
       "trending": {
-        "f1": 0.9208860759493671,
-        "precision": 0.9797979797979798,
-        "recall": 0.8686567164179104,
+        "f1": 0.988929889298893,
+        "precision": 0.9781021897810219,
+        "recall": 1.0,
         "support": 670
       },
       "vol_spike": {
-        "f1": 0.1016949152542373,
-        "precision": 0.06315789473684211,
-        "recall": 0.2608695652173913,
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
         "support": 23
       }
     }

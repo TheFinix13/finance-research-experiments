@@ -17,6 +17,35 @@ holdout F1 >= 0.75.
 The artefact is a small `RegimeClassifier` wrapping a sklearn
 RandomForest. Both fit and predict are deterministic via the seed
 plumbed through from `sim.core.seed`.
+
+Regime-redesign retirement (2026-06-24, see
+`reviews/regime_redesign_2026-06-24.md`):
+
+* `vol_spike` — **RETIRED** from this OHLCV-only labeller. The
+  weak-label F1 of the legacy rule (`atr20_percentile > 0.90`) was
+  0.10, and the redesign attempts (v2 1-bar 3σ and v2b 3σ+ADX<25)
+  could only reach F1 ≈ 0.23 on EURUSD H4 2024 — below the
+  pre-registered PARTIAL floor of 0.30. Per
+  `regime_redesign_2026-06-24_PROTOCOL.md` §4 RETIRE rule, the
+  vol_spike branch is removed from `label_rule_based`. Consumers
+  needing high-precision vol_spike tagging should call
+  `sim.regime.redesign_v2.detect_vol_spike_v2b` directly — it is a
+  *precision-1.00 / recall-0.10* tagger, not a regime classifier
+  output.
+* `news` — **RETIRED** from OHLCV-only emission. The price signature
+  of a high-impact news event is indistinguishable from a non-news
+  vol spike on OHLC bars alone, and the historical FF calendar feed
+  is not available on this host (the `calendar_event_proximity`
+  feature is 0 everywhere). Consumers needing news tagging should
+  use `sim.regime.validate_real.load_news_calendar` once a
+  historical calendar archive is piped (a Φ5 data-engineering
+  deliverable).
+
+The `REGIMES` tuple remains 4-class so downstream consumers
+(`sim/scoring/regime_kpis.py`, dashboard, doctrine docs) do not
+break. Retired classes simply never appear in OHLCV-derived labels;
+the corresponding columns in F18 KPI tables stay empty until the
+exogenous taggers fire.
 """
 from __future__ import annotations
 
@@ -93,16 +122,20 @@ def extract_features(
 # ---------------------------------------------------------------------------
 
 def label_rule_based(row: pd.Series) -> RegimeLabel:
-    """Deterministic rule-based labeller per F18 priority.
+    """Deterministic rule-based labeller — `vol_spike`/`news` RETIRED.
 
-    `news > vol_spike > trending > chop`.
+    Original F18 priority was `news > vol_spike > trending > chop`.
+    After the 2026-06-24 regime-redesign retirement (module docstring
+    above; `reviews/regime_redesign_2026-06-24.md`), only the
+    trending/chop arms remain. Bars that the old rule would have
+    labelled `vol_spike` (`atr20_percentile > 0.90`, F1=0.10 vs weak)
+    or `news` (`calendar_event_proximity > 0.5`, structurally
+    OHLCV-undetectable) now fall through to trending/chop based on
+    ADX.
+
+    Priority: `trending` (ADX > 25 or ADX in 20-25 ambiguity band)
+    over `chop` (ADX < 20).
     """
-    cal = float(row.get("calendar_event_proximity", 0.0))
-    if cal > 0.5:
-        return "news"
-    atr_pct = float(row.get("atr20_percentile", 0.5))
-    if atr_pct > 0.90:
-        return "vol_spike"
     adx_val = float(row.get("adx14", 0.0))
     if not np.isfinite(adx_val):
         return "chop"
@@ -117,7 +150,15 @@ def label_rule_based(row: pd.Series) -> RegimeLabel:
 def label_dataframe(
     df: pd.DataFrame, *, calendar_proximity: pd.Series | None = None
 ) -> pd.Series:
-    """Apply `label_rule_based` row-wise on a feature DataFrame."""
+    """Apply `label_rule_based` row-wise on a feature DataFrame.
+
+    `calendar_proximity` is preserved as a function argument for
+    backward compatibility — it is no longer consulted by
+    `label_rule_based` after the news retirement (see module
+    docstring). Callers wiring an exogenous calendar adapter should
+    use `sim.regime.validate_real.load_news_calendar` and join the
+    news tag downstream of this rule's trending/chop output.
+    """
     feats = extract_features(df, calendar_proximity=calendar_proximity)
     return feats.apply(label_rule_based, axis=1).astype("string")
 
