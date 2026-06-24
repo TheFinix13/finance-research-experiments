@@ -1,17 +1,25 @@
 # 07 — Research Standards
 
-**Status:** `DRAFT v0.2` — 2026-06-24. v0.2 appends §10 (this
-revision's amendments) consolidating decisions taken after the
-E001–E007 audit: E010 stays as a parallel pre-registered lab
-experiment, M001 agent promotion stays internal to `programs/M001_*/`
-(not the E0XX registry), E008 is skipped, and the verdict registry
-is hybrid (internal four-tier vocabulary + Blue Lock dashboard
-translation). Critically: the placeholder tier definitions in v0.1
-§7.2 / §7.3 (which described Tier 2 as "own + one cluster of peers"
-and Tier 3 as "audit-only") are **superseded** by the empirical
+**Status:** `DRAFT v0.3` — 2026-06-24. v0.3 adds **§10.6** — the
+agent evolution arcs principle and its regression-test contract —
+binding the v0.3 doctrine landing (`06-blue-lock-doctrine.md`
+§3.11) to standards-grade evaluation: any `vN → vN+1` claim
+requires both a regression test (vN+1 reproduces vN on inputs vN
+handled) and a forward test (vN+1 resolves the named defeat),
+plus a row in `reviews/evolution_ledger.md`. Missing either test
+is a code-review failure. The §10 cross-reference table is
+renumbered §10.7. v0.2 (below) appended §10.1–§10.5 consolidating
+decisions taken after the E001–E007 audit: E010 stays as a
+parallel pre-registered lab experiment, M001 agent promotion
+stays internal to `programs/M001_*/` (not the E0XX registry),
+E008 is skipped, and the verdict registry is hybrid (internal
+four-tier vocabulary + Blue Lock dashboard translation).
+Critically: the placeholder tier definitions in v0.1 §7.2 / §7.3
+(which described Tier 2 as "own + one cluster of peers" and
+Tier 3 as "audit-only") are **superseded** by the empirical
 ΔInfo-decided model in `06-blue-lock-doctrine.md` §3.9 / F17 of
-`04-quant-foundations.md`. §1–§9 are unchanged below to preserve the
-v0.1 evidence record; §10 lands the v0.2 deltas.
+`04-quant-foundations.md`. §1–§9 are unchanged below to preserve
+the v0.1 evidence record; §10 lands the v0.2 + v0.3 deltas.
 
 This doc is the methodological floor that every experiment under
 `programs/M001_multi_agent_ensemble/` stands on. Eight sections —
@@ -628,12 +636,70 @@ the program understood tiers before the metric existed; the v0.2
 model is the binding one. F17 in `04-quant-foundations.md` is the
 metric that decides the assignment.
 
-### §10.6 Cross-reference (v0.2 deltas)
+### §10.6 Agent evolution arcs principle (v0.3 doctrine landing)
 
-| v0.2 amendment | Closes | Realised in |
+`06-blue-lock-doctrine.md` §3.11 lands the **Agent Evolution Arcs**
+principle: each striker is a versioned identity (`vN`, `vN+1`, …)
+whose transitions are *earned* by a defeat / phase / inspiration
+trigger, never asserted. This subsection formalises how that
+principle binds research-standards-grade evaluation.
+
+**The regression-test contract is non-negotiable.** Any `vN → vN+1`
+ships with both:
+
+- A **regression test** (`sim/tests/test_<agent_id>_v2_regression.py`)
+  that vN+1 reproduces vN's behaviour on the inputs vN handled
+  correctly. Byte identity is the default; documented permitted
+  divergences are allowed only when stated in the evolution
+  hypothesis (`06-doctrine` §3.11.2 step 2).
+- A **forward test** (`sim/tests/test_<agent_id>_v2_resolves_<defeat_id>.py`)
+  that vN+1 resolves the defeat trigger on the same evaluation
+  window where vN failed. The test asserts the named failure no
+  longer fires (or fires with measurably reduced frequency, with
+  the threshold pre-declared).
+
+Missing either test is a code-review failure under §5.1 (same
+status as calling `np.random.rand()` without a seeded generator).
+The retention rule in §3 binds: vN's module and roster registration
+remain on disk for at least one full phase gate after vN+1 lands;
+the decision to retire vN is journalled in
+`reviews/evolution_ledger.md` (Tier-1 per `06-doctrine` §3.9), not
+applied silently.
+
+**PBT (Φ5+) is not a substitute for §3.11.2.** A PBT sweep that
+perturbs a hyperparameter and produces a TQS lift is a *retune*
+of vN, not an evolution to vN+1. The version bump requires a new
+code surface, the defeat documentation, and both tests above. PBT
+is the *mechanism* that exposes defeat triggers; the doctrine is
+the *contract* that turns them into evolutions.
+
+**Acceptance flow for any `vN → vN+1` claim:**
+
+1. Defeat note exists at `reviews/<agent_id>_vN_defeat.md` with a
+   reproducible failure-mode citation (trade IDs / regime-bucket
+   TQS row / F17 ΔInfo window).
+2. Evolution hypothesis stated **before** vN+1 implementation
+   begins; reviewer signs off on it inside the defeat note.
+3. New module at `sim/agents/aXX_<name>_v2.py`; vN module
+   untouched.
+4. Both tests (regression + forward) green in CI on the sealed
+   panel.
+5. Row appended to `reviews/evolution_ledger.md` with the seven
+   fields specified in `06-doctrine` §3.11.4.
+6. Co-existence window declared (which phase gate retires vN, or
+   "both kept as regime-conditional siblings").
+
+A `vN+1` module on disk **without** the matching ledger row and
+both tests is research debt — vN remains the canonical agent for
+gate-evaluation purposes until the row lands.
+
+### §10.7 Cross-reference (v0.2 + v0.3 deltas)
+
+| Amendment | Closes | Realised in |
 |---|---|---|
 | §10.1 E010 stays parallel | audit §6, Q1 | `06-doctrine` §3.3 cite; `05-roster` §3.6 (A6 Nagi spec) |
 | §10.2 promotion internal | audit §6, Q5 | This doc §10.2; agent reviews live in `programs/M001_*/reviews/` |
 | §10.3 E008 skipped | audit §6, Q6 | This doc §10.3; per-agent C1 absorbs the risk |
 | §10.4 verdict hybrid | audit §6, Q7 | This doc §10.4; mapping enforced in `08-dashboard-spec.md` §3 |
 | §10.5 tier definitions superseded | research debt §7.2 / §7.3 (this doc, v0.1) | `06-doctrine` §3.9; F17 in `04-quant-foundations.md` |
+| §10.6 agent evolution arcs | `06-doctrine` §3.11 (v0.3 landing) | This doc §10.6; `reviews/evolution_ledger.md`; per-agent fields in `05-agent-roster-v0.md` |

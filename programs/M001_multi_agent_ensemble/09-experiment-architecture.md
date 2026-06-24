@@ -103,7 +103,12 @@ protocol; agents depend on the protocol, not on filesystem layout.
 
 **Trade Quality Score (F12)** is the sole objective for roster selection,
 allocator sweeps, Population-Based Training (Φ5+), and adversarial gates
-(C6).
+(C6). PBT is the *mechanism*; the **canon framing for what PBT
+operationalises** is `06-blue-lock-doctrine.md` §3.11 (Agent Evolution
+Arcs). PBT does not invent vN+1 — it surfaces the *defeat triggers*
+that earn vN+1 per the §3.11.2 contract. The roster transitions live in
+`programs/M001_multi_agent_ensemble/reviews/evolution_ledger.md`, not
+in the PBT sweep logs.
 
 | Metric | Reported | Scored |
 |---|---|---|
@@ -138,6 +143,18 @@ on the **sealed 2026 H1 panel** unless a row specifies otherwise.
 MVP roster** (§1.10) while the 10-agent infrastructure is completed.
 G5's "10 agents implemented" is an infrastructure gate; the MVP ensemble
 is the first fusion experiment shipped.
+
+**PBT / evolution note (G5 / G6 / G7).** Φ5 introduces Population-Based
+Training over hyperparameters. PBT *is the mechanism* that lets the
+roster evolve; the *contract* for any actual `vN → vN+1` transition
+is `06-blue-lock-doctrine.md` §3.11 (Agent Evolution Arcs). A PBT
+sweep that perturbs a hyperparameter is **not** an evolution under
+§3.11.1 — it is a hyperparameter tweak. A new code surface
+(`aXX_<name>_v2.py`) with a documented defeat trigger, regression
+test, and forward test (§3.11.2) is what earns the `v2` label.
+G5/G6/G7 evaluations may run with both `vN` and `vN+1` registered in
+`sim/roster/`; the F17 A/B is the empirical decision-maker. The
+evolution audit trail lives at `reviews/evolution_ledger.md`.
 
 **Failure handling.** Missing any criterion holds the program at the
 current Φ. Partial credit is recorded in `reviews/` but does not advance
@@ -324,6 +341,7 @@ After G6 (Φ5→Φ6) clears on replay:
 | Statistical hygiene | `07-research-standards.md` |
 | Panel layout + verdict translation | `08-dashboard-spec.md` |
 | Agent specs + 10-agent canon | `05-agent-roster-v0.md` |
+| Agent evolution arcs (vN → vN+1 contract) | `06-blue-lock-doctrine.md` §3.11 + `reviews/evolution_ledger.md` |
 | E004 baseline numbers | `docs/findings/2026-06-09_walk_forward_validation.md` |
 | Pre-M001 lab close | git tag `lab-phase-1-closed` |
 
