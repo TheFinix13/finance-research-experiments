@@ -388,3 +388,4 @@ All of the above land at Φ4 or Φ6+ per §5.
 | §5 data plane | Standards §8 + architecture §11 — the dashboard is bound to the same JSONL → SQLite → WebSocket trajectory |
 | §6 auth | Standards §3 push policy (local-only is the safe default); revisited at Φ6 |
 | §7 skeleton | Architecture §10 (build order) — dashboard panels land in order matching the build order of the agents they render |
+| Falsification map | `09-experiment-architecture.md` §1.9 — each panel must answer a disconfirming question |

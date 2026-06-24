@@ -275,15 +275,20 @@ squad is allowed to play" stops being true.
 
 ## Phases (intended cadence)
 
-| # | Phase | Deliverables | Gate before next phase |
+Numeric exit criteria for every gate are **binding** in
+[`09-experiment-architecture.md`](09-experiment-architecture.md) §1.5
+(G1–G7). The table below is the cadence summary; where this table and
+§1.5 disagree, §1.5 wins.
+
+| # | Phase | Deliverables | Gate before next phase (see `09` §1.5) |
 |---|---|---|---|
 | Φ0 | Charter + archive + literature plan | `00`–`02` docs in this folder | User review |
-| Φ1 | Literature pass + foundations | `04-quant-foundations.md` filled, ≥ 10 papers / chapters consumed, formulas extracted | Foundations doc reviewed |
-| Φ2 | Architecture v0 + roster v0 | `03`, `05`. End state: 5 specialist agent specs written, fusion API drafted | Architecture review |
-| Φ2.5 | Infrastructure + standards | `07-research-standards.md`, multi-agent simulator scaffold (`sim/`), data manifest for M1/M5/M15/H1/H4/D1 on EUR/GBP/USDCAD, MLflow experiment tracker stood up, null-baseline suite scaffolded | Standards doc reviewed; tracker live; data manifest verifiable |
-| Φ3 | Offline prototype | `sim/` runs each agent in isolation against sealed data; allocator + aggregator combine; metrics emit. **MVP scope: 5 components only — A1 Isagi, A4 Chigiri, A10 Kunigami, Sentinel, Sae.** A2/A3/A5/A6/A7/A8/A9 deferred to Φ4+. | Prototype produces a backtest |
-| Φ4 | Roster selection + fusion sweep | Multiple ensembles tested. PBO control. Φ4 sweep compares **TQS-weighted (F12) vs Sharpe-weighted (F10) vs equal-weight** allocators. Selected ensemble passes C1–C6 | Promotion gate |
-| Φ5 | Shadow live | Parallel-run shadow tickets. No capital. Daily eval. | 3-month shadow review |
-| Φ6 | Capital promotion | Real demo capital allocated. Production router updated. | n/a |
+| Φ1 | Literature pass + foundations | `04-quant-foundations.md` filled, ≥ 10 papers / chapters consumed, formulas extracted | **G1** → Φ2 |
+| Φ2 | Architecture v0 + roster v0 | `03`, `05`. End state: 5 specialist agent specs written, fusion API drafted | **G2** → Φ2.5 |
+| Φ2.5 | Infrastructure + standards | `07-research-standards.md`, multi-agent simulator scaffold (`sim/`), data manifest for M1/M5/M15/H1/H4/D1 on EUR/GBP/USDCAD, MLflow experiment tracker stood up, null-baseline suite scaffolded | **G3** → Φ3 |
+| Φ3 | Offline prototype | `sim/` runs each agent in isolation against sealed data; allocator + aggregator combine; metrics emit. **MVP scope: 5 components only — A1 Isagi, A4 Chigiri, A10 Kunigami, Sentinel, Sae.** A2/A3/A5/A6/A7/A8/A9 deferred to Φ4+. | **G4** → Φ4 (replay ±5 % vs E004; regime F1 ≥ 0.75; six dashboard panels) |
+| Φ4 | Roster selection + fusion sweep | Multiple ensembles tested. PBO control. Φ4 v1 uses **4-agent MVP** (Isagi, Nagi, Barou, Kunigami — `09` §2, `05` §1.1). Sweep compares **TQS-weighted (F12) vs Sharpe-weighted (F10) vs equal-weight** allocators. | **G5** → Φ5 (Isagi v1 clears C1; 10 agents built; ≥ 6 TQS>0 in ≥ 1 regime; tiers frozen) |
+| Φ5 | Shadow live | Parallel-run shadow tickets. No capital. Daily eval. | **G6** → Φ6 (squad TQS ≥ 1.1× Sae; zero Sentinel violations) |
+| Φ6 | Capital promotion | Real demo capital allocated. Production router updated. | **G7** → live demo (12-week TQS ≥ Kaiser; coverage ≥ 0.6) |
 
 We are at start of Φ0.
