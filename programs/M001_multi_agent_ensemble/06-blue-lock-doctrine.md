@@ -1,9 +1,16 @@
 # 06 — Blue Lock Doctrine
 
-**Status:** `DRAFT v0.2` — 2026-06-24. v0.2 (this revision, second
-pass) formalises the **Thought Ledger** as a first-class object
-(§3.8), the **three-tier access model** decided empirically by ΔInfo
-(§3.9), and the **canon-role vs information-tier** orthogonality
+**Status:** `DRAFT v0.3` — 2026-06-24. v0.3 adds **§3.11 — Agent
+Evolution Arcs**, the canon-inspired contract that every striker is a
+*versioned identity* (vN, vN+1, …) whose evolution is *earned* by a
+documented defeat trigger or phase gate, never asserted. §3.11.2 is
+the regression / forward-test contract for any vN → vN+1; §3.11.3
+seeds per-agent evolution sketches (initial, refined as defeats
+accumulate); §3.11.4 points at the new `reviews/evolution_ledger.md`
+audit trail. The v0.2 revisions stand below.
+v0.2 (second pass) formalises the **Thought Ledger** as a first-class
+object (§3.8), the **three-tier access model** decided empirically by
+ΔInfo (§3.9), and the **canon-role vs information-tier** orthogonality
 (§3.10); splits the striker base class into an **`observe` / `intend`
 pair** (§4.1); appends **Sentinel hard rules R1–R5** for the $100 /
 1:1000 account (§4.3); and cites E006 Stage-2 exploratory evidence
@@ -512,6 +519,228 @@ signal contains marginal information no one else carries.
 
 The doctrine governs *what an agent is*; the tier governs *what the
 agent is allowed to read* in the ensemble's collective deliberation.
+
+### 3.11 Agent evolution arcs
+
+The third orthogonal layer. §3.10 separated *identity* (canon role,
+fixed at Φ0) from *permission* (information tier, ΔInfo-decided).
+§3.11 separates both of those from **version** — the implementation
+generation `vN` of the agent's weapon. Identity is fixed; permission
+is empirical; **version is earned**.
+
+This is the operational translation of the Blue Lock "evolution"
+mechanic. Characters in the manga do not grow by accumulating tweaks
+between matches. They evolve by facing a *specific limit*, naming the
+defeat, and returning with a *specific new capability* that resolves
+it. Barou faces defeat to evolve. Chigiri learns to run again only
+after losing his first race. Bachira releases the monster only when
+teaming fails him. Isagi's metavision sharpens only when his current
+read misses the goal. The arc is the unit of growth; tweaks are not.
+
+#### 3.11.1 The principle
+
+Each striker is a versioned identity, not a static implementation. A
+transition `vN → vN+1` of any agent is **triggered by one of**:
+
+- **Defeat trigger.** A measurable failure mode in vN's evaluation:
+  a loss streak, a ΔInfo collapse, a regime mis-prediction, persistent
+  rejection by other strikers in the Ledger, a TQS regression in a
+  specific regime bucket. The defeat is identifiable in the per-trade
+  journal, not in the modeller's intuition.
+- **Phase trigger.** Reaching a phase gate that mandates expansion
+  (e.g., crossing Φ4 → Φ5 may require Isagi v1 → v2 because the new
+  fusion sweep needs primitives v1 cannot express). Phase triggers
+  are pre-declared; they are not "I felt like evolving now."
+- **Inspiration trigger.** Another striker's reasoning in the Thought
+  Ledger reveals a possibility that the agent's vN architecture
+  *cannot express*. The inspiration is a structural absence, not a
+  parameter tweak. (If vN could express the new behaviour by changing
+  a hyperparameter, the answer is to retune vN, not to ship vN+1.)
+
+vN+1 is not "vN with more parameters." It is a *named architectural
+generation* with a documented defeat behind it. The retention rule in
+`07-research-standards.md` §3 applies: vN is not deleted when vN+1
+ships — both are preserved so the ablation has a clean A/B.
+
+#### 3.11.2 The contract for any vN → vN+1
+
+Six binding deliverables before vN+1 is allowed to enter a phase-gate
+evaluation. Missing any one of them means the evolution has not
+happened — vN is still the canonical agent.
+
+1. **Defeat documented.** A note in `reviews/<agent_id>_vN_defeat.md`
+   citing the failure mode by trade IDs, ΔInfo windows, or
+   regime-bucket TQS rows. "vN underperformed" is not documentation;
+   "vN's `zone_d1_against` detector missed 73 % of 2024 vol-expansion
+   setups, audit §2.4 row 4" is.
+2. **Evolution hypothesis stated explicitly.** A one-paragraph
+   declaration: *what new capability vN+1 adds*; *what failure it
+   should resolve*; *what it must NOT regress*. Stated **before**
+   vN+1 is implemented (no post-hoc retconning).
+3. **New code surface, cleanly named.** `sim/agents/aXX_<name>_v2.py`
+   sits next to `sim/agents/aXX_<name>_v1.py` (or wherever vN lives).
+   No in-place mutation of vN's module. The diff is *additive* at the
+   file-system level.
+4. **Regression test that vN+1 reproduces vN behaviour** on the inputs
+   vN handled correctly. The regression suite lives at
+   `sim/tests/test_<agent_id>_v2_regression.py` and asserts byte
+   identity (or documented permitted divergence) on a frozen panel of
+   trades vN took. No silent regressions are allowed to slip through
+   as "v2 improvements."
+5. **Forward test that vN+1 resolves the defeat trigger** on the same
+   evaluation window where vN failed. The forward test lives at
+   `sim/tests/test_<agent_id>_v2_resolves_<defeat_id>.py` and asserts
+   the named failure no longer fires (or fires with measurably reduced
+   frequency, with the threshold pre-declared in step 2).
+6. **Both versions co-exist** in `sim/roster/`. The ablation can swap
+   `aXX_<name>_v1` and `aXX_<name>_v2` via config (per
+   `09-experiment-architecture.md` §1.10). **This is how F17 ΔInfo
+   gets a clean A/B for the evolution itself** — the same agent
+   identity at two versions, on the same sealed panel, with all
+   other roster members fixed.
+
+**Coexistence period.** vN and vN+1 run side-by-side for **at least
+one full phase gate** before vN is retired. Retirement requires a
+written decision in the evolution ledger (§3.11.4), not a silent
+deletion. Per `07-research-standards.md` §3, nothing is deleted from
+git history anyway — but the *roster* keeps vN as an option until
+the gate's worth of evidence says vN+1 dominates across all regime
+buckets vN owned.
+
+#### 3.11.3 Per-agent evolution sketches (initial, refined as defeats accumulate)
+
+These sketches are **starters**, not contracts. Each entry below
+records the *expected* first defeat trigger and the *initial*
+hypothesis for vN+1 — informed by canon and by the E001–E007
+empirical priors in `audits/2026-06-24_E001-E007_audit.md` §4.3.
+Real defeats land in `reviews/evolution_ledger.md` as they happen;
+that file, not this section, is the binding record. The sketches
+exist to make the principle concrete and to give each agent's spec
+a starting point.
+
+- **A1 Isagi v1 → v2 — metavision sharpens.** *Defeat (expected):*
+  Isagi v1 misses setups outside the `zone_d1_against` vocabulary —
+  specifically the IRL/ERL liquidity sweeps and FVG fills that the
+  canon "metavision evolved form" can read. *v2 hypothesis:* expand
+  the primitive vocabulary via `conflab/detectors_liquidity.py`
+  (`equal_highs_pool`, `equal_lows_pool`, `liquidity_sweep_high`,
+  `liquidity_sweep_low`) and FVG/OB detectors; coordinate-emission
+  cadence moves from H4 to H1. *Inspiration:* Isagi's metavision
+  evolving through the Wild Card and U-20 arcs from raw spatial
+  perception into full order-flow reading.
+- **A2 Bachira v1 → v2 — releasing the monster.** *Defeat (expected):*
+  pattern detectors in isolation do not fire (the E001/E006 prior
+  killed standalone candlestick / ICT vocabulary; audit §2.1, §2.6).
+  *v2 hypothesis:* Bachira's patterns trigger **only when no other
+  striker has a clean read** on the same symbol — he dribbles when
+  the field is closed. The monster's weapon is solo improvisation,
+  not co-operation. Reading the ledger for *peer silence* becomes
+  part of his trigger. *Inspiration:* Bachira embracing his monster
+  instead of teaming with Isagi.
+- **A3 Rin v1 → v2 — cold clinical reset.** *Defeat (expected):* Fib
+  and harmonic tags fire too often in chop — single-Fib tags did not
+  confirm in the E006 2022–2024 split or replicate on GBPUSD (audit
+  §2.6). *v2 hypothesis:* gate firing on the F18 regime classifier
+  — Rin only emits when regime ∈ {trending, vol_spike} and never in
+  chop. Frequency drops; precision rises. *Inspiration:* Rin's
+  "trial" arc where he chooses one weapon and refuses to compromise it.
+- **A4 Chigiri v1 → v2 — learning to run again.** *Defeat (expected):*
+  breakouts on impulse-origin retest are dead — E007 found 0/12 cells
+  alive on the retest layer (audit §2.7). *v2 hypothesis:* Chigiri
+  takes only the **continuation** of confirmed breakouts, never the
+  retest. After his first false-start loss in the live ledger he
+  reframes his weapon — speed deployed *forward* on confirmation,
+  never *backward* on a retrace. *Inspiration:* Chigiri overcoming
+  the trauma of his speed and choosing to run as his weapon, not
+  away from it.
+- **A5 Reo v1 → v2 — chemistry, not mimicry.** *Defeat (expected):*
+  mimicking a single trailing leader (Isagi) reproduces Isagi's edge
+  with extra cost — Reo adds friction without adding marginal ΔInfo
+  on F17. *v2 hypothesis:* Reo copies a **weighted mixture** of
+  multiple strikers — partner chemistry, not solo deference. The
+  weights are an HRP of the top-K trailing-TQS agents, with K ≥ 2
+  enforced architecturally. *Inspiration:* Reo's pivot from "best
+  supporting actor" to genuine partner — chemistry with Isagi, not
+  worship of Isagi.
+- **A6 Nagi v1 → v2 — boredom into mastery.** *Defeat (expected):*
+  confluence-only firing rate is too low — Nagi emits perhaps once
+  per fortnight per pair under the v1 ≥ 3-striker overlap rule, and
+  the sample size never clears C1. *v2 hypothesis:* Nagi tolerates
+  lower-conviction confluences (2-striker overlap, lower aggregate
+  conviction floor) when the regime is favourable per F18.
+  Mastery looks like effortlessness — the same trap, less waiting.
+  *Inspiration:* Nagi's transition from genius-lazy bystander to
+  deliberately decisive striker.
+- **A7 Barou v1 → v2 — devour mechanic awakens.** *Defeat (expected):*
+  USDCAD baseline `zone` alone is a small edge (audit §2.5 — +4.63
+  pips/trade vs EURUSD's +11.34); the King is not yet eating.
+  *v2 hypothesis:* full devour — when Isagi shows high conviction on
+  USDCAD that Barou *disagrees* with, Barou takes the opposite side
+  at scaled size. The devour bonus δ in §3.4 becomes measurable per
+  F15, not a guessed 0.25. *Inspiration:* Barou taking other players'
+  light for himself — the King consumes the team's reads.
+- **A8 Yukimiya v1 → v2 — sharper hands.** *Defeat (expected):*
+  execution-timing improvements are small without friction context —
+  v1 refines fills in isolation and the gains do not survive the
+  simulator's calibrated friction (§1.8 in `09-experiment-architecture.md`).
+  *v2 hypothesis:* Yukimiya uses the E007 friction-quartile cutoffs
+  (`conflab/friction.py`, Q1/Q2 = −1.1916, Q2/Q3 = −0.2472,
+  Q3/Q4 = +0.9864 per audit §4.1) to **filter low-quality entries
+  before commit** — refusing fills below the bottom-friction-quartile
+  threshold. *Inspiration:* Yukimiya's growth from supporting forward
+  to clinical finisher.
+- **A9 Aoshi v1 → v2 — calendar-aware vol.** *Defeat (expected):*
+  vol-event detection without news context produces false positives
+  at non-news vol spikes (random liquidity holes mis-classified as
+  FOMC-style events). *v2 hypothesis:* Aoshi reads the production
+  forex calendar (`agent/news/calendar.py` in `multi-pair-trading-agent`)
+  via PYTHONPATH-only consumption per `sim/README.md`; vol-events
+  without news context become **observation-only** thoughts, never
+  proposals. *Inspiration:* Aoshi as captain — situational awareness
+  over raw signal.
+- **A10 Kunigami v1 → v2 — gentle giant.** *Defeat (expected):*
+  loss-streak dampener fires *after* damage is done — three losses
+  before the half-size kicks in. *v2 hypothesis:* Kunigami also reads
+  **forward-looking ledger confidence aggregates** (a low aggregate
+  conviction across the squad with high pairwise correlation) and
+  dampens *pre-emptively*, before the third loss lands. Anti-tilt
+  becomes anticipatory. *Inspiration:* Kunigami's strength being
+  protective, not punitive — he steps in before the damage, not after.
+
+Each sketch above is provisional. The actual defeat triggers will be
+the ones the ledger records — perhaps a different failure surfaces
+first for some agent, perhaps an inspiration trigger fires before a
+defeat trigger does, perhaps a phase gate forces an evolution the
+sketch did not anticipate. Future-you should treat this section as
+*priors*, not *commitments*, and update the evolution ledger from
+evidence rather than from this list.
+
+#### 3.11.4 The evolution ledger
+
+The audit trail for the doctrine. Every actual `vN → vN+1` event
+lands in `programs/M001_multi_agent_ensemble/reviews/evolution_ledger.md`
+as a dated row, with:
+
+- Date and program phase at the time of evolution
+- Agent ID and version transition (`isagi_yoichi v1 → v2`)
+- Defeat trigger (one line) + evidence link (`reviews/<file>.md` or
+  trade-ID range)
+- Evolution hypothesis (one line, copied from `reviews/<agent_id>_vN_defeat.md`)
+- Co-existence window declared (which phase gate retires vN, if any)
+- Eventual outcome (filled in after the co-existence window closes:
+  v2 supersedes v1, v2 abandoned and v1 retained, or both kept as
+  regime-conditional siblings)
+
+The ledger is the *proof that evolutions are earned, not asserted*.
+A vN+1 module on disk without a matching ledger row is treated as
+research debt — vN remains canonical until the row lands.
+
+The ledger file is also Tier-1 read-only (per §3.9): it is part of
+the human dashboard and the post-hoc evaluation harness, never read
+by an agent at decision time. The architectural separation between
+*how an agent decides today* and *how the agent's identity is allowed
+to change tomorrow* is intentional: agents do not get to vote on
+their own evolution.
 
 ---
 
