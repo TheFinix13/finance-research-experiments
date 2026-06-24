@@ -1,6 +1,13 @@
 # 07 — Research Standards
 
-**Status:** `DRAFT v0.3` — 2026-06-24. v0.3 adds **§10.6** — the
+**Status:** `DRAFT v0.4` — 2026-06-24. v0.4 adds **§11** — the
+verdict-comparator discipline rule and its single-source-of-truth
+registry, binding the post-Φ3 / post-Φ4 observation that each gate
+had been decided on a *different* aggregating statistic without a
+pre-registered rule. §11 names `docs/methodology/gate_verdict_
+registry.md` as the canonical registry of locked-per-gate statistics
+and forbids post-hoc statistic swaps with the same severity as
+post-hoc protocol amendments (§5). v0.3 added **§10.6** — the
 agent evolution arcs principle and its regression-test contract —
 binding the v0.3 doctrine landing (`06-blue-lock-doctrine.md`
 §3.11) to standards-grade evaluation: any `vN → vN+1` claim
@@ -19,7 +26,8 @@ Critically: the placeholder tier definitions in v0.1 §7.2 / §7.3
 Tier 3 as "audit-only") are **superseded** by the empirical
 ΔInfo-decided model in `06-blue-lock-doctrine.md` §3.9 / F17 of
 `04-quant-foundations.md`. §1–§9 are unchanged below to preserve
-the v0.1 evidence record; §10 lands the v0.2 + v0.3 deltas.
+the v0.1 evidence record; §10 lands the v0.2 + v0.3 deltas; §11
+lands the v0.4 verdict-comparator discipline rule.
 
 This doc is the methodological floor that every experiment under
 `programs/M001_multi_agent_ensemble/` stands on. Eight sections —
@@ -703,3 +711,86 @@ gate-evaluation purposes until the row lands.
 | §10.4 verdict hybrid | audit §6, Q7 | This doc §10.4; mapping enforced in `08-dashboard-spec.md` §3 |
 | §10.5 tier definitions superseded | research debt §7.2 / §7.3 (this doc, v0.1) | `06-doctrine` §3.9; F17 in `04-quant-foundations.md` |
 | §10.6 agent evolution arcs | `06-doctrine` §3.11 (v0.3 landing) | This doc §10.6; `reviews/evolution_ledger.md`; per-agent fields in `05-agent-roster-v0.md` |
+
+---
+
+## §11. Verdict comparator discipline (v0.4 amendment, 2026-06-24)
+
+Two M001 phase-gate evaluations have landed so far — Φ3 (A1 Isagi v1
+wrapper PASS, `reviews/phi3_gate_isagi_v1.md`) and Φ4 (4-agent MVP
+squad FAIL, `reviews/phi4_squad_v1.md`) — and each was decided on a
+*different* aggregating statistic without a pre-registered rule. Φ3
+used **median across OOS windows of per-window mean per-trade pips**;
+Φ4 used **median across OOS windows of per-window mean TQS (F12)**.
+Both choices were defensible in isolation. The risk was that the choice
+happened *inside* the evaluation worker, not before it — the textbook
+post-hoc-statistic risk, in which a future worker could pick the
+metric that flatters the result and the verdict would still look
+clean. This section makes the rule against that risk explicit, and
+points at the single source of truth that operationalises it.
+
+**The rule.** Every new phase-gate proposal must register its
+locked aggregating statistic, comparator, and PARTIAL / PASS thresholds
+in `docs/methodology/gate_verdict_registry.md` **before** the evaluation
+under that gate is run. A statistic chosen *after* a gate evaluation
+has begun is disallowed for that evaluation, regardless of how
+reasonable the choice would have been in isolation. This is the
+direct analogue of the pre-registered protocol rule for experiments
+(§5 of this doc + `PROTOCOL_DISCIPLINE.md` §1): a research program
+cannot fairly grade its own evaluation if it gets to pick the grading
+function after seeing the score.
+
+**The registry.** `docs/methodology/gate_verdict_registry.md` v0.1
+(2026-06-24) is the single source of truth for which statistic decides
+which gate. It carries one row per phase gate (G1–G7 from
+`09-experiment-architecture.md` §1.5, plus the charter C1 promotion
+gate), each row pinning a single locked statistic, a comparator
+(Sae frozen / Sae composite F16 / Isagi-alone / Kaiser personalised /
+checklist), and PARTIAL + PASS thresholds. Cross-statistic numbers
+may be journalled next to a verdict as diagnostic cross-checks, but
+they cannot decide the verdict — the locked statistic does. The Φ3 /
+Φ4 addenda
+(`programs/M001_multi_agent_ensemble/reviews/phi3_gate_isagi_v1_
+addendum.md`, `programs/M001_multi_agent_ensemble/reviews/phi4_squad_
+v1_addendum.md`) are the worked examples; both re-checks confirm the
+original verdicts under the locked rule and publish the
+cross-statistic diagnostic table that the original reports did not.
+
+**Amendment discipline.** Changing a row in the registry — to a
+different locked statistic, comparator, or threshold — follows the
+same procedure as changing a frozen protocol (§5 of this doc): an
+amendment subsection at the bottom of the registry with date and
+rationale, a dedicated commit before any re-evaluation runs, and
+preservation of the prior row in git history rather than a silent
+edit. Any sealed verdict that was decided under the superseded row
+must be re-evaluated as a new addendum next to its original review
+doc; the original review is never modified. This mirrors `07-research-
+standards.md` §3 retention rule — nothing is deleted from history,
+including past gate-comparator decisions.
+
+**What the rule does and does not protect against.** The discipline
+protects against post-hoc *statistic* swapping (decide first, score
+second). It does not protect against the deeper problem of picking
+the *wrong* statistic at registration time — that is a research-design
+question that the program answers per gate, with the rationale
+captured in the registry row's "Rationale" column. The Φ4 addendum's
+cross-statistic table is the empirical defence against bad locked
+choices: it publishes how sensitive a verdict is to the choice of
+aggregator, so the next gate proposal can be argued from evidence
+rather than habit. The registry's job is to make the choice
+*visible* and *singular*; choosing well is still the program's job.
+
+**Cross-reference.** This section binds:
+
+- `docs/methodology/gate_verdict_registry.md` (v0.1+) — the registry.
+- `programs/M001_multi_agent_ensemble/reviews/phi3_gate_isagi_v1_
+  addendum.md` — Φ3 re-check under the locked rule (PASS holds).
+- `programs/M001_multi_agent_ensemble/reviews/phi4_squad_v1_
+  addendum.md` — Φ4 re-check under the locked rule (FAIL holds; FAIL
+  is robust across every TQS-family aggregator).
+- `09-experiment-architecture.md` §1.4 (TQS-only optimisation) — the
+  reason cumulative-pips-family statistics are forbidden as locked.
+- `09-experiment-architecture.md` §1.5 (phase-gate exit criteria) —
+  the source-of-truth for gate row contents; where this rule and §1.5
+  disagree on a threshold, §1.5 wins and the registry is updated by
+  amendment.
