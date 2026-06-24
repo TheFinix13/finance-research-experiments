@@ -20,10 +20,17 @@ classifier.py             RandomForest wrapper + rule-based fallback (F18)
 train.py                  Trainer; synthetic-OHLC smoke mode by default
 eval.py                   Holdout eval against the G4 gate
 validate_real.py          Φ3-prep weak-label validation (this README)
+label_disagreements.py    Streamlit tool — hand-label the 30 disagreements
 model_v1.pkl              Trained artefact (seed 42, synthetic source)
 model_v1.pkl.manifest.json
 validation_2024_eurusd_h4.json
 disagreements_for_review.csv
+labeled_disagreements.csv               (written by label_disagreements.py;
+                                         append-only audit log of human verdicts)
+regime_validation_human_2024_eurusd_h4.json
+                                        (written by label_disagreements.py;
+                                         same schema as validation_2024_eurusd_h4.json
+                                         plus labeled_by / labeled_at fields)
 ```
 
 ## Why the Φ2.5 synthetic F1 ≈ 0.999 is not the G4 gate
@@ -119,9 +126,22 @@ Interpretation:
 
 Recommended next moves (in priority order):
 
-1. **Hand-label the 30 sampled disagreements.** Each is a real bar
+1. **Hand-label the 30 sampled disagreements** via the Streamlit tool
+   at `sim/regime/label_disagreements.py`. Each anchor is a real bar
    with 50 bars of preceding OHLC context in
-   `disagreements_for_review.csv`; chart, decide, score.
+   `disagreements_for_review.csv`; the app charts each one, surfaces
+   the two automated labels side-by-side, accepts a human verdict +
+   optional note, and writes an audit-friendly
+   `labeled_disagreements.csv` + a final
+   `regime_validation_human_2024_eurusd_h4.json` that matches the
+   machine-validation JSON schema. Takes ~15 minutes for 30 anchors.
+   Run with:
+
+   ```bash
+   PYTHONPATH=../multi-pair-trading-agent:. \
+     ../multi-pair-trading-agent/.venv/bin/streamlit run \
+     programs/M001_multi_agent_ensemble/sim/regime/label_disagreements.py
+   ```
 2. **Train a Φ3 classifier on real 2015–2023 EURUSD H4 bars** with
    the weak labels as the *initial* target, then iterate with
    hand-labelled corrections.
