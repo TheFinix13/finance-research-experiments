@@ -1,127 +1,106 @@
-# AI Context — finance research experiments (updated 2026-06-24, post-Φ4 squad gate)
+# AI Context — finance research experiments (updated 2026-06-30, post-Φ4.1 + round-2 doctrine resolutions)
 
-Read this first in a fresh chat. This repo is the **central research workshop**.
-Production execution lives in `multi-pair-trading-agent`; lab experiments never
-auto-change live params.
-
-**Index:** `EXPERIMENTS.md` · **Rules:** `PROTOCOL_DISCIPLINE.md` ·
-**M001 program:** `programs/M001_multi_agent_ensemble/` (branch `multi-agent-ensemble`)
-
+Research workshop for the M001 multi-agent ensemble. Production execution lives in
+`multi-pair-trading-agent`; lab experiments never auto-change live params.
 Parquet cache: `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
+Index: `EXPERIMENTS.md` · Rules: `PROTOCOL_DISCIPLINE.md` · M001 program:
+`programs/M001_multi_agent_ensemble/` (branch `multi-agent-ensemble`).
 
 ## 1) What is built and working
 
-### Lab Phase 1 (E001–E007) — closed
+**Lab Phase 1 (E001–E007) — closed.** Tag `lab-phase-1-closed`. E004 walk-forward
+7/7 OOS (median +11.34 pips/trade) deployed. E005 cross-pair (GBPUSD / USDCAD
+replicate). E006 5/284 alive. E007 0/12 alive. Audit:
+`audits/2026-06-24_E001-E007_audit.md`.
 
-- Tag **`lab-phase-1-closed`** marks pre-M001 lab state (do not recreate).
-- **E004** walk-forward: 7/7 OOS, median +11.34 pips/trade → deployed cell.
-  Promoted: `docs/findings/2026-06-09_walk_forward_validation.md`.
-- **E005** cross-pair: GBPUSD/USDCAD replicate; AUD/NZD excluded.
-  Promoted: `docs/findings/2026-06-10_cross_pair_replication.md`.
-- **E006** price-action: 5/284 alive; hour-matched controls (v2.1).
-  Exploratory `equal_highs_pool` → `docs/findings/2026-06-12_equal_highs_pool_context.md`.
-- **E007** impulse bounce: 0/12 alive; clean negative at Stage 1.
-- Methodology promoted: `docs/methodology/` (hour_matched_controls,
-  verdict_registry, exploratory_stage2, amendments).
-- Audit: `audits/2026-06-24_E001-E007_audit.md`.
+**M001 — Φ3 PASS · Φ4 FAIL · Φ4.1 FAIL · doctrine v0.4 / roster v0.7.**
 
-### M001 multi-agent ensemble (Φ3 wrapper PASS, Φ4 squad gate FAIL)
+- **Φ3 v1 — A1 Isagi v1 wrapper PASS:** +11.04 pips/trade vs Sae +11.34
+  (Δ −2.7 %, inside ±5 %); 7/7 OOS positive. `reviews/phi3_gate_isagi_v1.md`.
+- **Φ4 v1 — 4-agent squad FAIL @ 0.98× Isagi-alone TQS.** Nagi 0 confluence
+  thoughts (predicate-starved on MVP). `reviews/phi4_squad_v1.md`.
+- **Φ4.1 v1 — 8-agent expanded squad FAIL @ 0.92×** (squad TQS 0.2922,
+  Isagi 0.3175). Predicate starvation **confirmed + fixed** (Nagi 0 → 34,302
+  confluence-firing thoughts; TQS 0.349 highest in squad). New failure mode:
+  **structural crowding-out** — Isagi 0 trades, Barou 0 trades, slot-
+  cannibalised by Bachira's `+0.10` rebel-lift. Per-agent: Bachira 2,840
+  trades / TQS 0.308; Rin 244 / 0.277; Chigiri 536 / 0.229; Reo 0 by design /
+  28,469 mirror Thoughts; Kunigami 0 / 25,877 warning Thoughts (R5 not wired).
+  `reviews/phi41_squad_v1{,_addendum,_crossstat_addendum}.md`.
+- **Isagi v1→v2 arc FAIL** (2026-06-24). v1 canonical; v2 archived.
+  `reviews/isagi_v2_arc.md`.
+- **Regime redesign:** `vol_spike` + `news` RETIRED on structural grounds;
+  live-classes-only macro F1 = 0.971. `reviews/regime_redesign_2026-06-24.md`.
+- **Methodology lock:** `docs/methodology/gate_verdict_registry.md` v0.1 binds
+  per-gate locked statistic; `07-research-standards.md` v0.4 §11.
+- **v2 backlog round-1 (2026-06-25):** Nagi RETIRED · Barou REDESIGN-hybrid-A+B
+  (user decision 2026-06-30: closed-loss replay USDCAD + symbol expansion to
+  EURUSD/GBPUSD/USDCAD) · Kunigami DEFERRED pending Sentinel R1–R5.
+  `reviews/v2_arc_backlog_resolution_2026-06-25.md`.
+- **v2 backlog round-2 (2026-06-30):** Bachira REFINE-to-peer-silence · Rin
+  REFINE-regime+peer-disagreement · Chigiri REFINE-multi-TF-ADX+ATR-percentile ·
+  Reo ADVANCE-coupled-to-Φ5-multi-position.
+  `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md`.
 
-- **Doctrine v0.3 + Φ2.5 scaffold landed** (pre-Φ3 commits): deterministic
-  kernel, four-impl ledger (Full/Redacted/Frozen/Synthetic), regime
-  classifier (synthetic F1≈0.999; real-data macro F1=0.496 vs heuristic
-  weak labels, 30 disagreements pending hand-label), TQS+ΔInfo+regime-KPI
-  scoring, 4-agent MVP roster YAML + 10-agent canon YAML, Streamlit v0
-  dashboard (six panels). Friction calibration machinery wired; defaults
-  conservative (VM run pending). Details in
-  `programs/M001_multi_agent_ensemble/sim/README.md`.
-- **Φ3 v1 (2026-06-24) — A1 Isagi v1 wrapper PASS:** wraps production
-  `SupplyDemandAlpha` at locked E004 params via cross-repo import
-  (`sim/_cross_repo.py`). EURUSD H4 2015-2025: **verdict `PASS`** —
-  median OOS-window mean **+11.04 pips/trade** vs Sae +11.34 (drift
-  −2.7%); **7/7 OOS windows positive**; mean TQS 0.317. Report:
-  `reviews/phi3_gate_isagi_v1.md`.
-- **Φ4 v1 (2026-06-24) — 4-agent squad gate FAIL @ 0.98x Isagi-alone TQS.**
-  Three new strikers shipped: A6 Nagi v1 (confluence-only, F11
-  independent-OR lift), A7 Barou v1 (USDCAD baseline-zone + devour
-  mechanic +0.10 lift), A10 Kunigami v1 (anti-tilt observer). Engine
-  refactored to explicit two-phase tick order (observe-all then
-  intend-all) with deterministic lexicographic agent ordering. Harness
-  `sim/scoring/run_phi4_squad_gate.py` ran 2015–2025 EURUSD + USDCAD H4
-  (124 045 thoughts, 8 421 proposals, 2 006 trades). **Verdict `FAIL`**:
-  squad median OOS TQS **0.311** vs Isagi-alone **0.317** = **0.98x**.
-  Per-agent: Isagi 856 trades / +6.28 mean pips; Barou 1150 trades /
-  +9.79 mean / −7.28 median; Nagi 0 trades / 0 confluence thoughts
-  (predicate-starved, NOT one-bar-lag); Kunigami 0 trades / 0 warnings.
-  Reports: `reviews/phi4_squad_v1.md` (verdict + Diagnosis +
-  honest caveats) + `reviews/phi4_isagi_rejection_analysis.md`
-  (2994 Isagi rejections bucketed: same=1579, opposite=351, silent=1064,
-  elsewhere=0). **195 tests passing + 3 skipped** (70 lab + 125 sim;
-  +41 new Phi4 tests).
-- Branch: **`multi-agent-ensemble`** only for M001.
+**Architectural insight (Φ4.1 + Isagi v2 converged):** the **single-position-
+per-symbol queue with conviction-only ranking** is the binding constraint —
+not roster size, not the F11 predicate. Φ5 lever is the aggregator.
 
-### Planned
+**Pre-registered, awaiting implementation:** Φ5 aggregator selection
+(`experiments/phi5_aggregator/PROTOCOL.md` + `HRP_NOTES.md`); news calendar
+wiring (`specs/news_calendar_wiring{,_DECISION_TREE}.md`); Sentinel R1–R5
+(Φ4.2 mini-sprint, un-blocks Kunigami v2 + Φ5 Arm 4); E010 Stage-2b
+`equal_highs_pool` (`experiments/E010_equal_highs_pool_stage2b/PROTOCOL.md`).
 
-- **E010** Stage-2b `equal_highs_pool` — skeleton pre-reg at
-  `experiments/E010_equal_highs_pool_stage2b/PROTOCOL.md`; parallel with M001.
-- E008 skipped per M001 standards §10.3; E009 cross-family parked.
+Tests: **358 sim passing** + 3 slow skips.
 
 ## 2) Key file paths
 
 | Area | Files |
 |---|---|
 | Registry | `EXPERIMENTS.md`, `DATA_LEDGER.md`, `PROTOCOL_DISCIPLINE.md` |
-| Findings | `docs/findings/2026-06-09_*.md`, `2026-06-10_*.md`, `2026-06-12_*.md` |
-| Methodology | `docs/methodology/*.md` |
-| Audits | `audits/README.md`, `audits/2026-06-24_E001-E007_audit.md` |
-| M001 doctrine | `programs/M001_multi_agent_ensemble/00`–`09` + `README.md` |
-| M001 Φ2.5 sim | `programs/M001_multi_agent_ensemble/sim/{core,regime,scoring,roster,agents,dashboard,tests}/` + `sim/README.md` + `sim/regime/README.md` (Φ3-prep) |
-| M001 Φ3-prep artefacts | `sim/regime/validate_real.py`, `sim/regime/validation_2024_eurusd_h4.json`, `sim/regime/disagreements_for_review.csv`, `sim/tests/test_friction_calibration.py` |
-| M001 Φ3 v1 artefacts | `sim/_cross_repo.py`, `sim/agents/a01_isagi.py` (A1IsagiV1 wrapper), `sim/scoring/run_isagi_phi3_gate.py`, `sim/tests/test_a01_isagi_wrap.py`, `sim/tests/test_phi3_gate.py`, `programs/M001_multi_agent_ensemble/reviews/phi3_gate_isagi_v1.md` (+ `*_trades.jsonl`) |
-| M001 Φ4 v1 artefacts | `sim/agents/a06_nagi.py` (A6NagiV1 confluence), `sim/agents/a07_barou.py` (A7BarouV1 USDCAD baseline-zone + devour), `sim/agents/a10_kunigami.py` (A10KunigamiV1 anti-tilt), `sim/scoring/run_phi4_squad_gate.py` (squad gate + F17 isolated arms + rejection analysis), `sim/tests/test_a06_nagi_wrap.py`, `sim/tests/test_a07_barou_wrap.py`, `sim/tests/test_a10_kunigami_wrap.py`, `sim/tests/test_phi4_engine.py`, `sim/tests/test_phi4_gate.py`, `programs/M001_multi_agent_ensemble/reviews/phi4_squad_v1.md` (+ `*_trades.jsonl`, `*_proposals_all.jsonl`, `*_rejected_proposals.jsonl`), `reviews/phi4_isagi_rejection_analysis.md` |
-| E006/E007 code | `conflab/`, `scripts/run_stage1.py`, `scripts/test_b/` |
-| Outputs | `output/` (legacy paths; reorganise deferred — needs git mv + MANIFEST sync) |
+| Methodology | `docs/methodology/*.md` (incl. `gate_verdict_registry.md` v0.1) |
+| Audits | `audits/2026-06-24_E001-E007_audit.md` |
+| M001 doctrine | `programs/M001_multi_agent_ensemble/00`–`09` + `README.md` (v0.4 / v0.7) |
+| M001 sim | `programs/M001_multi_agent_ensemble/sim/{core,regime,scoring,roster,agents,dashboard,tests}/` |
+| M001 agents | `sim/agents/a0{1..7,10}_*.py` (Isagi v1 + v2 archived; Bachira/Rin/Chigiri/Reo/Nagi/Barou/Kunigami v1) |
+| M001 harnesses | `sim/scoring/run_isagi_phi3_gate.py` + `run_phi{4,41}_squad_gate.py` |
+| M001 reviews | `reviews/phi{3,4,41}_*.md` + `isagi_v2_arc.md` + `evolution_ledger.md` |
+| M001 v2 backlog | `reviews/v2_arc_backlog_resolution_2026-06-25.md` (round-1) + `_round2_2026-06-30.md` (round-2) |
+| M001 pre-registered | `experiments/phi5_aggregator/{PROTOCOL,HRP_NOTES}.md` + `specs/news_calendar_wiring{,_DECISION_TREE}.md` |
+| E006 / E007 code | `conflab/`, `scripts/run_stage1.py`, `scripts/test_b/` |
 
-Tests: **195** passing + **3 skipped** (70 pre-existing lab + 125 sim).
 `PYTHONPATH=../multi-pair-trading-agent:. M001_PRODUCTION_REPO=../multi-pair-trading-agent ../multi-pair-trading-agent/.venv/bin/python -m pytest -q`
 
 ## 3) Next immediate goal
 
-**M001 Φ4 v1 SHIPPED with `FAIL` verdict (0.98x Isagi-alone TQS) —
-reported honestly per user constraint, no silent retuning.**
+Multi-phase 2026-06-30 implementation sprint (kickoff doc + four prep docs are
+canonical state).
 
-The FAIL is information, not a problem to hide. Three concrete failure
-modes are documented in `reviews/phi4_squad_v1.md` Diagnosis section:
-(1) **Nagi predicate-starved** — 2-distinct-peer floor unreachable on
-EURUSD (Isagi-only) and structurally rare on USDCAD (Isagi + Barou
-rarely overlap on coordinate price bands because they target different
-setups). The fix is NOT to relax F11; it's to expand the squad. (2)
-**Barou median-dilutes** — mean +9.79 pips but median −7.28 pips on
-1150 USDCAD trades; pooling that median-negative stream with Isagi's
-median-positive stream drags the squad TQS down. HRP allocation is the
-empirical remedy (Φ5 deliverable). (3) **Concurrency + highest-
-conviction-wins rule triple Isagi's rejection count** (2994 vs Phi3's
-1064); 52.7% of those rejections had the squad going same-direction
-anyway, so they were redundant not missed.
+1. **Φ4.2 — Sentinel R1–R5 wiring.** Module `sim/core/sentinel/` (R1 min-lot,
+   R2 discrete sizing, R3 pass bias, R4 concentration cap, R5 loss-streak
+   50 %-risk-scale dampener). Wired into Φ4.1 harness + Φ5 successor harness.
+   Φ5 PROTOCOL §6 stop rule #3 retired via §11 amendment (Arm 4 ungated).
+   Un-blocks Kunigami v2 pre-condition #1.
+2. **News calendar wiring (D).** Dukascopy primary + multi-source fallback
+   (FF + DailyFX + MyFXBook + FRED). 2007-2026 backfill. Parametrised per-
+   agent pre/post windows. Script + manifest committed; data commit deferred
+   to milestone. 8 unit tests + 1 integration test per spec §7.
+3. **Φ5 aggregator selection (B).** Arms 1–5 (HRP / TQS-floor / same-direction
+   merge / multi-position / combined). Arm 1 first; 2/3/4 parallel; 5 last.
+   Run all via `run_phi5_aggregator_gate.py`. Verdict report + cross-stat
+   robustness table.
+4. **v2 agent implementations** — Barou hybrid A+B; Bachira / Rin / Chigiri
+   refines; Reo HRP + second-position (mechanic 2 Φ5-gated). Sequenced AFTER
+   Φ5 verdict; some may be obviated by aggregator-side fixes.
 
-**Next steps (in priority order):**
-1. **Φ4.1: Expand the squad** so Nagi's predicate is reachable. Add at
-   least one more H4-trading agent (A4 Chigiri H4-adapted, or A3 Rin)
-   so EURUSD has ≥ 2 high-conviction tradable strikers per tick.
-2. **Φ4.1: Wire Sentinel R5 dampener** to read Kunigami's warning
-   Thoughts (currently emitted but unconsumed by the harness).
-3. **Φ5 prep:** stop equal-weight risk budgeting; wire HRP allocator
-   so right-tail-skewed agents (Barou) get sized DOWN automatically.
-4. **Φ3 carryovers:** replace synthetic regime bars with real parquet,
-   hand-label 30 disagreement bars in
-   `sim/regime/disagreements_for_review.csv` and extend to ≥ 200 for
-   the G4 F1 ≥ 0.75 gate. On the VM, run
-   `calibrate_against_fills(symbol, ...)` for EURUSD/GBPUSD/USDCAD.
-5. **E010:** finalise locked params in PROTOCOL before Stage 1.
+**Pending user-only ops (not delegatable):** hand-label ~30 regime
+disagreements via `sim/regime/label_disagreements.py` Streamlit; VM-side
+friction calibration via `scripts/vm_calibrate_friction.py`.
 
-Parked (do NOT start without discussion): Isagi v2 expansion (separate
-phase per user direction); chemical-reaction beauty bonus in F12
-(deferred to Φ4.1 once Nagi actually fires); `output/` reorganisation;
-E009 cross-family.
+**Parked (do NOT start without discussion):** A8 Yukimiya / A9 Aoshi v1 builds
+(no Φ4.1 telemetry; round-3 after build); E009 cross-family; `output/`
+reorganisation.
 
-Honesty rules: `PROTOCOL_DISCIPLINE.md`. M001 gates: `09` §1.5.
+Honesty rules: `PROTOCOL_DISCIPLINE.md`. M001 gates: `09` §1.5. Verdict-
+comparator discipline: `07-research-standards.md` §11.
