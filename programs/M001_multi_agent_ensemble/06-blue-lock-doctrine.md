@@ -641,40 +641,81 @@ a starting point.
   cadence moves from H4 to H1. *Inspiration:* Isagi's metavision
   evolving through the Wild Card and U-20 arcs from raw spatial
   perception into full order-flow reading.
-- **A2 Bachira v1 → v2 — releasing the monster.** *Defeat (expected):*
-  pattern detectors in isolation do not fire (the E001/E006 prior
-  killed standalone candlestick / ICT vocabulary; audit §2.1, §2.6).
-  *v2 hypothesis:* Bachira's patterns trigger **only when no other
-  striker has a clean read** on the same symbol — he dribbles when
-  the field is closed. The monster's weapon is solo improvisation,
-  not co-operation. Reading the ledger for *peer silence* becomes
-  part of his trigger. *Inspiration:* Bachira embracing his monster
-  instead of teaming with Isagi.
-- **A3 Rin v1 → v2 — cold clinical reset.** *Defeat (expected):* Fib
-  and harmonic tags fire too often in chop — single-Fib tags did not
-  confirm in the E006 2022–2024 split or replicate on GBPUSD (audit
-  §2.6). *v2 hypothesis:* gate firing on the F18 regime classifier
-  — Rin only emits when regime ∈ {trending, vol_spike} and never in
-  chop. Frequency drops; precision rises. *Inspiration:* Rin's
-  "trial" arc where he chooses one weapon and refuses to compromise it.
-- **A4 Chigiri v1 → v2 — learning to run again.** *Defeat (expected):*
-  breakouts on impulse-origin retest are dead — E007 found 0/12 cells
-  alive on the retest layer (audit §2.7). *v2 hypothesis:* Chigiri
-  takes only the **continuation** of confirmed breakouts, never the
-  retest. After his first false-start loss in the live ledger he
-  reframes his weapon — speed deployed *forward* on confirmation,
-  never *backward* on a retrace. *Inspiration:* Chigiri overcoming
-  the trauma of his speed and choosing to run as his weapon, not
-  away from it.
-- **A5 Reo v1 → v2 — chemistry, not mimicry.** *Defeat (expected):*
-  mimicking a single trailing leader (Isagi) reproduces Isagi's edge
-  with extra cost — Reo adds friction without adding marginal ΔInfo
-  on F17. *v2 hypothesis:* Reo copies a **weighted mixture** of
-  multiple strikers — partner chemistry, not solo deference. The
-  weights are an HRP of the top-K trailing-TQS agents, with K ≥ 2
-  enforced architecturally. *Inspiration:* Reo's pivot from "best
-  supporting actor" to genuine partner — chemistry with Isagi, not
-  worship of Isagi.
+- **A2 Bachira v1 → v2 — narrowed rebel-lift (peer-silence /
+  peer-disagreement-conditional).** *Defeat (Φ4.1):* v1 rebel-lift
+  fired 46,584 times unconditionally, slot-cannibalising Isagi
+  (0 trades) and Barou (0 trades) across all three Φ4.1 symbols
+  and producing 76 % of squad trades (2,840 / 3,714). The v0.3
+  sketch's spirit ("peer-silence") was correct but v1 implements
+  the opposite (peer-saturation). *v2 hypothesis:* the rebel-lift
+  from 0.65 to 0.75 fires only when (a) no Isagi/Barou prior-tick
+  Thought at conviction ≥ 0.70 exists on the same symbol OR (b)
+  at least one peer (Isagi/Barou/Rin) has a prior-tick Thought
+  at conviction ≥ 0.65 going the OPPOSITE direction on the same
+  symbol. Otherwise Bachira's base baseline-zone Thought stays at
+  0.65. *Defeat trigger:* Bachira v2 per-OOS-window trade count
+  drops below 200 OR Bachira's mean TQS regresses below 0.25
+  (Φ4.1 was 0.308) across ≥ 4 of 7 rolling OOS windows. Resolution
+  detail: `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md`
+  §1.
+- **A3 Rin v1 → v2 — regime-gated and peer-disagreement-gated
+  precision lift.** *Defeat (Φ4.1):* v1 precision-lift fired
+  3,094 times; Rin opened 244 trades at mean +9.95 / median
+  −28.26 pips (fat-right-tail; 35.7 % win rate). The v0.3 sketch
+  proposed regime-gating to `{trending, vol_spike}` but the
+  2026-06-24 regime redesign RETIRED `vol_spike` + `news` on
+  structural grounds — live-classes are `{trending, chop}` only.
+  *v2 hypothesis:* the precision-lift fires only when (a)
+  classifier label = `trending` AND (b) v1's R:R ≥ 2.5 + stop-
+  distance ≥ 20 pips filter passes (retained) AND (c) at least
+  one peer (Chigiri or Bachira) has a prior-tick Thought at
+  conviction ≥ 0.65 going the OPPOSITE direction on the same
+  bar. Otherwise Rin's base zone_d1_against Thought stays at
+  0.65 (no lift). *Defeat trigger:* Rin v2 mean TQS regresses
+  below 0.25 OR win rate falls below 30 % across ≥ 4 of 7
+  rolling OOS windows. Resolution detail:
+  `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md` §2.
+- **A4 Chigiri v1 → v2 — multi-TF ADX alignment + top-decile σ
+  floor.** *Defeat (Φ4.1):* v1 breakout-firing produced 3,615
+  Thoughts → 536 trades at +6.62 mean / −26.67 median pips, win
+  39.9 %, TQS 0.229 (lowest among trading agents). The v0.3
+  sketch ("continuation-only, never retest") is already in v1
+  — the active defeat is whipsaw losses on early-stage σ
+  expansions. *v2 hypothesis:* continuation requires (a) M15
+  close beyond 20-bar high/low (v1, retained) AND (b) M15-ADX
+  × H1-ADX × H4-ADX all rising on the same bar (replaces v1's
+  H1-ADX-only) AND (c) realised σ_M15 over trailing 10 bars in
+  the top-decile of trailing 80-bar distribution (replaces v1's
+  > 1.2× median ≈ top-quartile). Three conjunctive guards
+  filter out false starts that drove the Φ4.1 median-negative
+  profile. *Defeat trigger:* win rate stays below 40 % AND mean
+  TQS regresses below 0.20 across ≥ 4 of 7 rolling OOS windows.
+  Resolution detail: `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md`
+  §3.
+- **A5 Reo v1 → v2 — chemistry, not mimicry (HRP mixture) +
+  second-position proposer (Φ5-coupled).** *Defeat (Φ4.1):* v1
+  ships the mirror-Thought emitter without `intend()` — the
+  structural Tier-2 falsifier; 28,469 mirror Thoughts emitted,
+  0 trades. Falsifier worked but Reo never participates in
+  capital allocation. *v2 hypothesis — stacked mechanics:*
+  **(1)** HRP-weighted mixture of top-K (≥ 2) trailing-TQS
+  agents — Reo computes HRP weights over the trailing-K-week
+  TQS series for OTHER strikers; the mixture defines whose
+  coordinate(s) Reo mirrors. **(2)** Second-position proposer
+  under Φ5 multi-position policy (Arm 4 / K = 2) — Reo's mirror
+  Thought becomes a Proposal for the second-best leader's
+  coordinate at HRP-derived size when the first-best leader's
+  slot is contested. Both slots respect Φ5 PROTOCOL §3 Arm 4's
+  `total_risk_cap_per_symbol = 1.0%`. *Φ5 dependency:* mechanic
+  2 is gated on Φ5 Arm 4 landing (multi-position policy); if Arm
+  4 is deferred, mechanic 2 defers with it and Reo remains
+  mirror-only. Mechanic 1 stands independently of Φ5. *Defeat
+  trigger:* mechanic 1 retires if F17 ΔInfo ≤ 0 with 95 % CI
+  lower bound ≤ 0 (Reo cut from roster); mechanic 2 retires if
+  second-position trades' per-window mean TQS is ≥ 0.05 below
+  first-position leader's mean TQS across ≥ 4 of 7 rolling OOS
+  windows. Resolution detail:
+  `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md` §4.
 - **A6 Nagi v1 — canonical (Φ4.1-validated); v2 sketch retired.**
   Empirical: Φ4.1 telemetry shows the v1 confluence floor (2-distinct
   peers × shared tags × overlapping coordinate × matching direction)

@@ -39,6 +39,10 @@ their own evolution.
 | 2026-06-25 | Φ4.1 post-mortem (no co-existence; sketch-level update) | A6 Nagi (`nagi_seishiro`) | v1 → v2 sketch retired | **Empirical (no defeat):** Φ4.1 telemetry shows v1 confluence floor is correct. With peer fuel Nagi fired 34,302 confluence-firing Thoughts → 94 trades at mean **TQS 0.349** (HIGHEST per-agent TQS in 8-agent squad). Relaxing floor would make Nagi less canonical, not more. | v2 sketch retired; new defeat trigger forward-looking (TQS regression across regime buckets, see `reviews/v2_arc_backlog_resolution_2026-06-25.md` §1.3). | n/a (no v2 module ever shipped) | **DROP** — v1 canonical, v2 sketch retired. See `reviews/v2_arc_backlog_resolution_2026-06-25.md` §1. |
 | 2026-06-25 (Barou row amended 2026-06-30) | Φ4.1 post-mortem (no co-existence; redesign-level update) | A7 Barou (`barou_shoei`) | v1 → v2 sketch redesigned (hybrid A + B) | **Defeat:** live-ledger devour fired 0 times in 11 yrs × 2 runs (Φ4 + Φ4.1). Root cause #1: live disagreement between Isagi (USDCAD zone × D1-against) and Barou (USDCAD baseline zone, no D1 gate) is architecturally rare — they target different setups on the only shared symbol. Root cause #2 (Φ4.1): Barou opened 0 trades on the expanded roster — slot-cannibalised by Bachira's `+0.10` rebel-lift. | **Stacked mechanic A + B (user decision C-Q1 = both, 2026-06-30):** **(A)** devour reads Isagi's **closed losing trades** from the public ledger (Tier-1 post-fact); when an Isagi loss lands in Barou's coordinate space (USDCAD, last 24 H4 bars, within 1 ATR of a baseline-zone touch Barou would have proposed), Barou's NEXT-bar proposal conviction gets `+0.10` (cap 1.0). **(B)** Symbol whitelist `("USDCAD",)` → `("USDCAD", "EURUSD", "GBPUSD")` running baseline-zone (no D1 gate); USDCAD remains canonical specialty per E005 §2.5; devour lift remains USDCAD-only. **Honest-disagreement note:** prep worker recommended A alone in §2.4; user overrode to A + B. The forward-test conjunction (≥ 100 USDCAD devour-fire events AND ≥ 50 EURUSD/GBPUSD trades) is the falsifier — either half failing retires that half while the surviving half continues. See `reviews/v2_arc_backlog_resolution_2026-06-25.md` §2 + 2026-06-30 amendment. | Pending v2 implementation (Φ5 or later sprint). Co-existence window declared at implementation time. | **REDESIGN (hybrid A+B)** — pending v2 implementation. See `reviews/v2_arc_backlog_resolution_2026-06-25.md` §2 + 2026-06-30 amendment. |
 | 2026-06-25 | Φ4.1 post-mortem (no co-existence; deferral) | A10 Kunigami (`kunigami_rensuke`) | v1 → v2 deferred | **Pre-condition not met:** Sentinel R1–R5 not yet wired into squad-gate harness. Φ4.1 emitted 25,877 Kunigami warning Thoughts but R5 dampener never consumed them. "Pre-emptive dampening" undefined against a Sentinel that does not consume warnings. | Retain v2 hypothesis (forward-looking ledger confidence aggregates). Un-deferring requires (1) R1–R5 wired (Φ4.2), (2) ≥ 100 OOS-window Sentinel-fire observations across `{trend, range, vol-expansion event}` regime buckets, (3) v1 baseline frequency-of-fire established in `reviews/kunigami_v1_sentinel_baseline.md`. | n/a until pre-conditions land. | **DEFER** — v2 deferred-pending-Sentinel-Φ4.2. See `reviews/v2_arc_backlog_resolution_2026-06-25.md` §3. |
+| 2026-06-30 | Φ4.1 post-mortem (round-2; no co-existence; refinement-level update) | A2 Bachira (`bachira_meguru`) | v1 → v2 sketch refined | **Defeat (Φ4.1):** v1 rebel-lift fired 46,584 times unconditionally; slot-cannibalised Isagi + Barou (0 trades each); produced 76 % of squad's 3,714 trades. v0.3 sketch's peer-silence spirit was correct; v1 inverts to peer-saturation. | Narrow rebel-lift to peer-silence OR peer-disagreement gated trigger; base conviction 0.65 elsewhere. | Pending v2 implementation (Φ5 aggregator work may obviate via HRP downweighting; revisit ordering after Φ5 verdict). | **REFINE-to-peer-silence** — pending v2 implementation. See `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md` §1. |
+| 2026-06-30 | Φ4.1 post-mortem (round-2; no co-existence; refinement-level update) | A3 Rin (`itoshi_rin`) | v1 → v2 sketch refined | **Defeat (Φ4.1):** v1 precision-lift fired 3,094 times; 244 trades at +9.95 mean / −28.26 median (right-tail-concentrated). v0.3 regime-gate targeted retired classes (vol_spike, news). | Regime-gate to live-classes `trending` only; retain v1 R:R + stop-distance filter; add peer-disagreement requirement (Chigiri/Bachira opposite-direction prior-tick Thought at conviction ≥ 0.65). | Pending v2 implementation. | **REFINE-regime+peer-disagreement** — pending v2 implementation. See `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md` §2. |
+| 2026-06-30 | Φ4.1 post-mortem (round-2; no co-existence; refinement-level update) | A4 Chigiri (`chigiri_hyoma`) | v1 → v2 sketch refined | **Defeat (Φ4.1):** v1 breakout-firing produced 3,615 Thoughts → 536 trades at +6.62 mean / −26.67 median, TQS 0.229, win 39.9 % (lowest among trading agents). v0.3 sketch already in v1; active defeat is whipsaw losses on early-stage σ expansions. | Multi-TF ADX alignment (M15 × H1 × H4 all rising) + top-decile σ floor (replaces v1's top-quartile). Three conjunctive guards. | Pending v2 implementation. | **REFINE-multi-TF-ADX+ATR-percentile** — pending v2 implementation. See `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md` §3. |
+| 2026-06-30 | Φ4.1 post-mortem (round-2; no co-existence; advancement-level update) | A5 Reo (`reo_mikage`) | v1 → v2 sketch advanced (HRP + Φ5-second-position) | **Empirical (no defeat):** v1 ships structural Tier-2 falsifier; 28,469 mirror Thoughts emitted, 0 trades. Falsifier worked. Φ4.1 FAIL diagnosis pinned the binding constraint at the single-position queue — Reo is the natural occupant of the second slot under Φ5 multi-position policy. | Stacked mechanic 1 (HRP-weighted mixture of top-K ≥ 2 trailing-TQS agents, from v0.3) + mechanic 2 (second-position proposer when first leader's slot is contested under Φ5 Arm 4 / K = 2). Mechanic 2 gated on Φ5 Arm 4 landing. | Pending v2 implementation; mechanic 2 deferred until Φ5 Arm 4 ships. | **ADVANCE-coupled-to-Φ5-multi-position** — pending v2 implementation. See `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md` §4. |
 
 ## Standing notes
 
@@ -69,13 +73,22 @@ their own evolution.
   Sentinel wiring + ≥ 100 OOS-window Sentinel-fire observations
   + v1 baseline frequency-of-fire established (ledger row 2026-06-25).
 - **A2 Bachira, A3 Rin, A4 Chigiri, A5 Reo** are now **v1 implemented
-  (Φ4.1 squad gate)** — Bachira 2840 trades (TQS 0.308, dominates
-  slot allocation via `+0.10` rebel-lift), Rin 244 trades (TQS 0.277,
-  precision-lift), Chigiri 536 trades (TQS 0.229, breakout primitive),
-  Reo 0 trades by design (28,469 mirror Thoughts emitted). Their
-  Φ4.1-telemetry-informed v2 sketch revisions are pending a round-2
-  resolution doc per `reviews/v2_arc_backlog_resolution_2026-06-25.md`
-  §6 Q5 (user decision 2026-06-30: revise all four).
+  (Φ4.1 squad gate)** and have round-2 v2 sketch resolutions
+  (ledger rows 2026-06-30) per `reviews/v2_arc_backlog_resolution_
+  round2_2026-06-30.md`:
+  - **A2 Bachira REFINE-to-peer-silence** — narrow rebel-lift
+    trigger from unconditional to peer-silence OR peer-disagreement.
+  - **A3 Rin REFINE-regime+peer-disagreement** — regime-gate to
+    `trending` (live-classes-only); add peer-disagreement
+    requirement.
+  - **A4 Chigiri REFINE-multi-TF-ADX+ATR-percentile** — three
+    conjunctive guards (M15×H1×H4 ADX rising, top-decile σ,
+    20-bar high/low).
+  - **A5 Reo ADVANCE-coupled-to-Φ5-multi-position** — HRP mixture
+    (mechanic 1) + second-position proposer under Φ5 Arm 4
+    (mechanic 2, Φ5-gated).
+  Implementation pending; Bachira v2 may be obviated by Φ5 HRP
+  downweighting; Reo v2 mechanic 2 depends on Φ5 Arm 4 shipping.
 - **A8 Yukimiya, A9 Aoshi** remain **not yet implemented**; their
   evolution sketches in `06-blue-lock-doctrine.md` §3.11.3 are
   *future-state* priors with no Φ4.1 empirical revision required
