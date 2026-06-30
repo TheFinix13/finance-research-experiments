@@ -1,13 +1,26 @@
 # 06 — Blue Lock Doctrine
 
-**Status:** `DRAFT v0.3` — 2026-06-24. v0.3 adds **§3.11 — Agent
-Evolution Arcs**, the canon-inspired contract that every striker is a
-*versioned identity* (vN, vN+1, …) whose evolution is *earned* by a
-documented defeat trigger or phase gate, never asserted. §3.11.2 is
-the regression / forward-test contract for any vN → vN+1; §3.11.3
-seeds per-agent evolution sketches (initial, refined as defeats
-accumulate); §3.11.4 points at the new `reviews/evolution_ledger.md`
-audit trail. The v0.2 revisions stand below.
+**Status:** `DRAFT v0.4` — 2026-06-25 (Barou row amended 2026-06-30).
+v0.4 records the **first three §3.11 sketch resolutions** post-Φ4.1: A6
+Nagi v2 sketch DROPPED (v1 floor empirically correct — confluence-firing
+thoughts 0 → 34,302 between Φ4 and Φ4.1, mean TQS 0.349 highest in the
+8-agent squad); A7 Barou v2 sketch REDESIGNED to a hybrid mechanic A
+(closed-loss replay) + mechanic B (symbol-whitelist expansion to
+EURUSD/GBPUSD/USDCAD), per `reviews/v2_arc_backlog_resolution_2026-06-25.md`
+§2 + 2026-06-30 amendment (user resolved C-Q1 = both A and B); A10
+Kunigami v2 sketch DEFERRED pending Sentinel R1–R5 wiring (Φ4.2
+deliverable; Kunigami emitted 25,877 warning Thoughts at Φ4.1 but R5
+is not wired so 0 were consumed). Resolution detail:
+`reviews/v2_arc_backlog_resolution_2026-06-25.md`. v0.3 stands below.
+
+v0.3 (2026-06-24) adds **§3.11 — Agent Evolution Arcs**, the
+canon-inspired contract that every striker is a *versioned identity*
+(vN, vN+1, …) whose evolution is *earned* by a documented defeat
+trigger or phase gate, never asserted. §3.11.2 is the regression /
+forward-test contract for any vN → vN+1; §3.11.3 seeds per-agent
+evolution sketches (initial, refined as defeats accumulate); §3.11.4
+points at the new `reviews/evolution_ledger.md` audit trail. The v0.2
+revisions stand below.
 v0.2 (second pass) formalises the **Thought Ledger** as a first-class
 object (§3.8), the **three-tier access model** decided empirically by
 ΔInfo (§3.9), and the **canon-role vs information-tier** orthogonality
@@ -662,23 +675,57 @@ a starting point.
   enforced architecturally. *Inspiration:* Reo's pivot from "best
   supporting actor" to genuine partner — chemistry with Isagi, not
   worship of Isagi.
-- **A6 Nagi v1 → v2 — boredom into mastery.** *Defeat (expected):*
-  confluence-only firing rate is too low — Nagi emits perhaps once
-  per fortnight per pair under the v1 ≥ 3-striker overlap rule, and
-  the sample size never clears C1. *v2 hypothesis:* Nagi tolerates
-  lower-conviction confluences (2-striker overlap, lower aggregate
-  conviction floor) when the regime is favourable per F18.
-  Mastery looks like effortlessness — the same trap, less waiting.
-  *Inspiration:* Nagi's transition from genius-lazy bystander to
-  deliberately decisive striker.
-- **A7 Barou v1 → v2 — devour mechanic awakens.** *Defeat (expected):*
-  USDCAD baseline `zone` alone is a small edge (audit §2.5 — +4.63
-  pips/trade vs EURUSD's +11.34); the King is not yet eating.
-  *v2 hypothesis:* full devour — when Isagi shows high conviction on
-  USDCAD that Barou *disagrees* with, Barou takes the opposite side
-  at scaled size. The devour bonus δ in §3.4 becomes measurable per
-  F15, not a guessed 0.25. *Inspiration:* Barou taking other players'
-  light for himself — the King consumes the team's reads.
+- **A6 Nagi v1 — canonical (Φ4.1-validated); v2 sketch retired.**
+  Empirical: Φ4.1 telemetry shows the v1 confluence floor (2-distinct
+  peers × shared tags × overlapping coordinate × matching direction)
+  is **correct as-shipped**. With peer fuel (Bachira rebel-lift,
+  Rin precision-lift, Reo mirror Thoughts) Nagi fired 34,302
+  confluence-firing Thoughts → 645 proposals → 94 trades at mean
+  **TQS 0.349 (highest per-agent TQS in the 8-agent squad)**.
+  Relaxing the floor would make Nagi less canonical, not more.
+  *Defeat trigger (replaces "fires too rarely"):* Nagi's per-OOS-
+  window mean TQS regresses below the median of all other proposing
+  strikers in ≥ 2 of 3 regime buckets (trend / range / vol-expansion
+  event) across ≥ 4 of 7 rolling OOS windows on the locked walk-
+  forward panel. *v2 status:* deferred indefinitely until that
+  regression appears in the squad-gate harness. The sketch is
+  retired in `reviews/v2_arc_backlog_resolution_2026-06-25.md`
+  §1; the v1 module is canonical.
+- **A7 Barou v1 → v2 — devour replays Isagi's losses (Tier-1
+  asynchronous, mechanic A) + symbol-whitelist expansion to
+  EURUSD/GBPUSD/USDCAD baseline-zone (mechanic B). HYBRID A+B per
+  user decision 2026-06-30.** *Defeat:* the v1 live-ledger devour
+  mechanic fired 0 times in 11 years across Φ4 + Φ4.1 (2 of 2 runs).
+  Root cause #1 (Φ4): live disagreement between Isagi (USDCAD
+  zone × D1-against) and Barou (USDCAD baseline zone, no D1 gate) is
+  architecturally rare — they target different setups on the only
+  shared symbol. Root cause #2 (Φ4.1): Barou opened **0 trades** on
+  the expanded roster — fully slot-cannibalised by Bachira's `+0.10`
+  rebel-lift on every USDCAD signal tick (`phi41_squad_v1.md` engine
+  telemetry + addendum §1). *v2 hypothesis — stacked A + B:*
+  **(A)** devour reads Isagi's **closed losing trades** (Tier-1
+  post-fact data) from the public ledger; when a closed Isagi loss
+  lands in Barou's coordinate space (USDCAD, last 24 H4 bars, inside
+  or within 1 ATR of a baseline-zone touch Barou would have
+  proposed), Barou's NEXT-bar proposal conviction gets a `+0.10`
+  lift (cap 1.0). Closed trades are Tier-1 public per §3.9 row 1;
+  the thought-reading layer stays asynchronous and Tier-3-compatible.
+  **(B)** Barou's symbol whitelist expands from `("USDCAD",)` to
+  `("USDCAD", "EURUSD", "GBPUSD")` running baseline-zone (no D1
+  gate). USDCAD remains canonical specialty per E005 audit §2.5
+  (inverse asymmetry on baseline vs D1-against); EURUSD + GBPUSD are
+  added explicitly to contest Bachira's slot dominance and surface
+  live-disagreement opportunities where mechanic A can also fire.
+  The devour lift remains USDCAD-only — EURUSD/GBPUSD slice runs raw
+  baseline-zone without the lift. *Lookback:* 24 H4 bars (locked for
+  v2; tunable in Φ5). *Defeat trigger replacement (conjunction):*
+  live-ledger devour 0-fires retired; v2 defeat trigger is "Barou v2
+  produces (i) ≥ 100 devour-fire events on the 11-yr USDCAD H4 panel
+  AND (ii) ≥ 50 trades opened on EURUSD or GBPUSD combined". Either
+  half of the conjunction failing retires that half (mechanic A or
+  mechanic B) while the surviving half continues as a narrower v2.
+  Resolution detail: `reviews/v2_arc_backlog_resolution_2026-06-25.md`
+  §2 + 2026-06-30 amendment.
 - **A8 Yukimiya v1 → v2 — sharper hands.** *Defeat (expected):*
   execution-timing improvements are small without friction context —
   v1 refines fills in isolation and the gains do not survive the
@@ -698,14 +745,23 @@ a starting point.
   without news context become **observation-only** thoughts, never
   proposals. *Inspiration:* Aoshi as captain — situational awareness
   over raw signal.
-- **A10 Kunigami v1 → v2 — gentle giant.** *Defeat (expected):*
-  loss-streak dampener fires *after* damage is done — three losses
-  before the half-size kicks in. *v2 hypothesis:* Kunigami also reads
-  **forward-looking ledger confidence aggregates** (a low aggregate
-  conviction across the squad with high pairwise correlation) and
-  dampens *pre-emptively*, before the third loss lands. Anti-tilt
-  becomes anticipatory. *Inspiration:* Kunigami's strength being
-  protective, not punitive — he steps in before the damage, not after.
+- **A10 Kunigami v1 → v2 — gentle giant (`status: deferred-pending-
+  Sentinel-Φ4.2`).** *Defeat (expected, retained):* loss-streak
+  dampener fires post-fact — three losses before the half-size
+  kicks in. *v2 hypothesis (retained):* read forward-looking ledger
+  confidence aggregates (low aggregate conviction × high pairwise
+  correlation) and dampen **pre-emptively**, before the third loss
+  lands. *Deferred pending:* Sentinel R1–R5 are not yet wired into
+  the squad-gate harness; Kunigami v1 emitted 25,877 warning
+  Thoughts at Φ4.1 but none reached R5's 50 %-risk-scale dampener.
+  "Pre-emptive" cannot be defined against a Sentinel that does not
+  consume warnings. *Pre-condition for un-deferring:* (1) R1–R5
+  wired (Φ4.2 deliverable per `ai_context.md`); (2) ≥ 100 OOS-
+  window Sentinel-fire observations across `{trend, range,
+  vol-expansion event}` regime buckets; (3) v1 baseline frequency-
+  of-fire established in `reviews/kunigami_v1_sentinel_baseline.md`.
+  Resolution detail: `reviews/v2_arc_backlog_resolution_2026-06-25.md`
+  §3.
 
 Each sketch above is provisional. The actual defeat triggers will be
 the ones the ledger records — perhaps a different failure surfaces

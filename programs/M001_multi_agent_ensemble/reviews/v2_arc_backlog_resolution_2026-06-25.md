@@ -677,3 +677,74 @@ four sketches need their own resolution doc (e.g.
   `.cursor/rules/ai-context-routine.mdc`
 - AI context: `ai_context.md` ("Next steps" #1–#5 for Φ4.1 + Φ4.2
   ordering)
+
+---
+
+## Amendment 2026-06-30 — C-Q1 user decision: Barou v2 = hybrid A + B
+
+**Date:** 2026-06-30
+**Trigger:** Open-question Q1 (§6) user decision.
+**Resolution:** **Both Mechanic A AND Mechanic B adopted.** Barou v2 is
+the **stacked** mechanic, not a choice between A and B.
+
+| Mechanic | Description | Status (post-amendment) |
+|---|---|---|
+| **A — ex-post Isagi-miss replay** | Reads Isagi's closed losing trades (Tier-1 post-fact); +0.10 conviction lift when an Isagi loss lands in Barou's coordinate space (24 H4-bar lookback, within 1 ATR of a baseline-zone touch Barou would have proposed). USDCAD-only. | **Active** (was the prep-worker's recommendation in §2.4) |
+| **B — symbol whitelist expansion** | Barou whitelist `("USDCAD",)` → `("USDCAD", "EURUSD", "GBPUSD")` running baseline-zone (no D1 gate). USDCAD remains canonical specialty per E005 §2.5; EURUSD/GBPUSD added to contest the Φ4.1 slot-cannibalisation kill-path. | **Active** (was the prep-worker's not-recommended choice in §2.4) |
+
+**Rationale (user, paraphrased):** "do both A and B" — contest Bachira's
+slot dominance (the Φ4.1 finding) alongside the asynchronous closed-loss
+replay rather than choose between them. The two mechanics address two
+**independent** kill-paths of Barou v1:
+
+1. **Mechanic A** addresses the structural rarity of live Isagi-Barou
+   disagreement on USDCAD (the Φ4 kill-path: 0 devour lifts in
+   1,150 trades).
+2. **Mechanic B** addresses Barou's **0 trades on the Φ4.1 expanded
+   roster** (the slot-cannibalisation kill-path — see
+   `phi41_squad_v1.md` engine-telemetry + addendum §1).
+
+**Implementation impact (delta over §2.3 / §2.5 / §2.6 / §2.8).**
+
+- §2.5 doctrine bullet **replaced with hybrid text** (shipped in the
+  same commit as this amendment); pre-amendment §2.5 text retained
+  above for the audit trail.
+- §2.6 roster Evolution-arc cell **replaced with hybrid text** (same
+  commit); pre-amendment cell text retained above.
+- §2.8 implementation-hint extensions:
+  - `sim/agents/a07_barou_v2.py` symbol whitelist `("USDCAD",
+    "EURUSD", "GBPUSD")` (was `("USDCAD",)`).
+  - `_maybe_apply_devour()` still reads the closed-loss ledger as in
+    §2.8; the lift is symbol-aware (only fires on USDCAD where the
+    Isagi-loss replay is meaningful — EURUSD/GBPUSD slice runs raw
+    baseline-zone without the devour lift).
+  - **Regression test (extended).** `sim/tests/test_a07_barou_v2_
+    regression.py` must reproduce the 1,150 Φ4 USDCAD trades exactly
+    when (i) the closed-loss ledger is empty AND (ii) EURUSD/GBPUSD
+    slot allocation is mocked to defer to Bachira (matches Φ4.1
+    behaviour where Barou had 0 trades on those symbols anyway).
+  - **Forward test (conjunction).** Barou v2 on the 11-year EURUSD
+    + GBPUSD + USDCAD H4 panel must produce (i) ≥ 100 devour-fire
+    events on USDCAD AND (ii) ≥ 50 trades opened on EURUSD or
+    GBPUSD combined. Either threshold missing → v2 defeat; the
+    failing half retires while the surviving half continues as a
+    narrower v2.
+- §2.4 recommendation table **superseded**. Mechanic B's concerns
+  (Bachira collision, USDCAD canon dilution, E005 asymmetry
+  contradiction) are acknowledged but explicitly accepted by the
+  user as the cost of testing both mechanics simultaneously. The
+  hybrid is itself testable via the conjunction defeat trigger
+  above: if EURUSD/GBPUSD slice underperforms USDCAD slice in v2,
+  mechanic B retires while mechanic A continues.
+
+**Honest-disagreement note.** The prep-worker's §2.4 recommendation was
+**Mechanic A alone**, citing Bachira-collision and canon-dilution
+concerns. The user override is recorded here for the audit trail
+per `07-research-standards.md` §11. The forward-test conjunction is
+the falsifier — if mechanic B contributes nothing on the
+EURUSD/GBPUSD slice, the conjunction trips and B retires while A
+remains canonical.
+
+**Doctrine and roster diffs** carrying the hybrid text are shipped in
+the same commit as this amendment (`06-blue-lock-doctrine.md`
+§3.11.3 A7 bullet + `05-agent-roster-v0.md` §3.7 Evolution-arc row).
