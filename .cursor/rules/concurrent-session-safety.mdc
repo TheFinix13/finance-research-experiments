@@ -1,0 +1,36 @@
+---
+description: Guard against concurrent Cursor sessions clobbering shared state files (ai_context.md, EXPERIMENTS.md, evolution_ledger.md) in this repo
+alwaysApply: true
+---
+
+# Concurrent-session safety
+
+Canonical protocol: `/Users/the1finix/Documents/GitHub/brain-box/agents/concurrent-session-safety.md`.
+
+This repo hosts both the six-study E0xx research lane and the M001
+multi-agent-ensemble program, which have run as **separate concurrent
+Cursor sessions on the same working tree** (confirmed 2026-07-01: an
+E011-E016 sweep session and an M001 v1/v2-reframe session both edited
+`ai_context.md` and `EXPERIMENTS.md` in the same window). Git does not
+protect you here: no branch divergence, just a race on one working tree,
+and `git commit` can silently discard the other session's edits.
+
+Before editing or committing any of `ai_context.md`, `EXPERIMENTS.md`,
+`DATA_LEDGER.md`, or `programs/M001_multi_agent_ensemble/.../evolution_ledger.md`:
+
+1. Re-read the file fresh immediately before editing — don't trust an
+   earlier-session copy.
+2. Prefer additive edits (new table row / new section) over rewriting an
+   existing section.
+3. Never `git add -A` / `git add .` — stage explicit paths only, and
+   never sweep up files you don't recognize as your own session's work
+   (e.g. another program's in-flight report template).
+4. Before committing, run `git diff --cached <file>` and confirm every
+   line is yours; unrecognized content means another session is active
+   — stop and reconcile by hand, don't overwrite.
+5. Commit in small units rather than one end-of-session batch.
+6. Check `git log --oneline -5` at session start — a same-day commit
+   from a program you're not touching is a signal another session may
+   be live right now.
+
+See also: `/Users/the1finix/Documents/GitHub/brain-box/.cursor/rules/concurrent-session-safety.mdc`
