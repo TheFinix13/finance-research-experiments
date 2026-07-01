@@ -147,6 +147,8 @@ class A3RinV1(BaseStriker):
             canon_role=canon_role or RIN_V1_CANON_ROLE,
             home_tf=home_tf,
             symbols=list(symbols) if symbols is not None else list(RIN_V1_SYMBOLS),
+            playstyle="analytical_precision",
+            tier=2,
         )
         ensure_production_repo_on_path()
         from agent.alphas.concepts.zone_alpha import SupplyDemandAlpha  # noqa: E402
@@ -280,13 +282,15 @@ class A3RinV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        **_kwargs: object,
     ) -> AgentProposal | None:
+        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg. Rin's v1
+        # decisioning is fully local to its own precision gate; peer
+        # thoughts are consumed via the ledger already.
         if market.timeframe != self.home_tf:
             return None
         if market.symbol not in self.symbols:
             return None
-        # Rin only proposes when the precision gate qualified -- so the
-        # observed Thought must carry the lift tag.
         if "rin_precision_lift_applied" not in my_recent_thought.tags:
             return None
         prep = self._prepared.get(market.symbol)

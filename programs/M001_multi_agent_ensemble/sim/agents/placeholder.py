@@ -62,6 +62,7 @@ class PlaceholderAgent(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        **_kwargs: object,
     ) -> AgentProposal | None:
         # Phi2.5: stubs never intend. Phi3+ overrides this.
         return None

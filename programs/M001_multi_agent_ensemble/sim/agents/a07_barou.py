@@ -142,6 +142,8 @@ class A7BarouV1(BaseStriker):
             canon_role=canon_role or BAROU_V1_CANON_ROLE,
             home_tf=home_tf,
             symbols=list(symbols) if symbols is not None else list(BAROU_V1_SYMBOLS),
+            playstyle="solo_king",
+            tier=2,
         )
         ensure_production_repo_on_path()
         from agent.alphas.concepts.zone_alpha import SupplyDemandAlpha  # noqa: E402
@@ -276,7 +278,12 @@ class A7BarouV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        **_kwargs: object,
     ) -> AgentProposal | None:
+        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg. Barou's solo-king
+        # devour path already consults the ledger via ``observe`` -- workspace
+        # is redundant for v1 mechanic; will consume peer thoughts in the
+        # v1-hybrid mechanic-A iteration (Isagi-miss replay pending G7).
         if market.timeframe != self.home_tf:
             return None
         if market.symbol not in self.symbols:

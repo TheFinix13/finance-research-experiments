@@ -140,6 +140,8 @@ class A1IsagiV1(BaseStriker):
             canon_role=canon_role or ISAGI_V1_CANON_ROLE,
             home_tf=home_tf,
             symbols=list(symbols) if symbols is not None else list(ISAGI_V1_SYMBOLS),
+            playstyle="conservative_metavision",
+            tier=1,
         )
         ensure_production_repo_on_path()  # raises ProductionRepoMissing if absent
         from agent.alphas.concepts.zone_alpha import SupplyDemandAlpha  # noqa: E402
@@ -294,7 +296,11 @@ class A1IsagiV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        **_kwargs: object,
     ) -> AgentProposal | None:
+        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg passed by the engine.
+        # Isagi v1 doesn't consume peer thoughts -- it's the tier-1
+        # anchor; peers react to Isagi, not the other way around.
         if market.timeframe != self.home_tf:
             return None
         prep = self._prepared.get(market.symbol)

@@ -283,3 +283,28 @@ If the user wants different values, amend this protocol BEFORE tomorrow's run (p
 **Empirical justification.** Structural constraint of Python's import system; no scientific implication. The alternative — renaming `sim/core/aggregator.py` — would have counted as a modification to preserved code, which the "DO NOT MODIFY" §7 directive forbids.
 
 **Follow-up.** None. If a future amendment adds a factory (`make_aggregator(arm: str)`), it will live at `sim/core/aggregator_arms/__init__.py::make_aggregator` rather than the originally-planned `sim/core/aggregator/__init__.py::make_aggregator`.
+
+---
+
+## Amendment §11.3 — fixed-lot retired to unknown-playstyle default (2026-07-01, v1/v2 reframe)
+
+**Filed:** 2026-07-01 (v1/v2 reframe session, same-day as doctrine v0.4 → v0.5 and roster v0.7 → v0.8).
+**Procedure:** `07-research-standards.md` §11 — parameter-status change (not a threshold change).
+
+**What changes.** The Φ5 PROTOCOL originally treated `FIXED_LOT = 0.10` as a global sizing rule set by the harness. Post-2026-07-01, `FIXED_LOT` is the **`"unknown"`-playstyle default** on `sim/core/lot_intent.py::default_lot_intent`; live v1 agents obtain their lot from `agent.lot_intent(conviction, sl_pips, equity, regime_fit)` which dispatches on `self.playstyle` (doctrine 06 v0.5 §4.1a). The five arms retain their arm-specific mechanics; the only change is that the *input* lot to the aggregator now varies with agent conviction, SL, and regime_fit rather than being a constant.
+
+**What did NOT change.**
+
+- Arm 1 HRP: still weighted-lot mixture over top-K conviction-ranked proposals.
+- Arm 2 TQS floor: still conviction-quantile-conditional post-observation filter.
+- Arms 3 / 4 / 5: mechanics unchanged; only the per-proposal `lot` input now varies.
+- Locked statistic (median-of-window-mean squad TQS) unchanged.
+- Decision rule (Δ ≥ 0.020 vs Arm 0 with bootstrap CI lower bound > 0) unchanged.
+- Sentinel R1 (min-lot floor 0.01) still applies at intent-evaluation time; any playstyle-dispatched lot < 0.01 gets clamped by Sentinel R1, and any lot > R6's per-symbol cap gets blocked by Sentinel R6 before order placement.
+
+**Empirical justification.** User directive during Phase-6 completion: sizing IS part of the "beautiful goal" (quality of setup + TP + SL + smoothness + speed). A constant lot means agents have no size cognition. Retaining `FIXED_LOT` as a global default would have made criterion #5 of the newly-registered G7 v1-checkpoint gate structurally unpassable — any properly-implemented v1 agent MUST have per-trade lot variation (CV ≥ 0.10 across the OOS panel).
+
+**Downstream effect on Φ5 arm re-sim.** Arm 1 HRP's post-hoc verdict (+0.0019 Δ, essentially null in the fixed-lot harness) was flagged in the partial verdict as requiring variable-lot re-sim. With F19 wired, Arm 1's mechanism has actual dispersion to work with and the re-sim (Phase 6e) will produce a non-null Δ if HRP has any real effect. This is an **honest re-evaluation** under §11 discipline, not a retune: the arm mechanic is unchanged; only the input distribution changed.
+
+**Follow-up.** Phase 6e Φ5 re-sim now depends on G7 v1-checkpoint gate landing first (so the 8 agents have proven v1 status). Ordering: G7 batch → Φ5 arm re-sim.
+

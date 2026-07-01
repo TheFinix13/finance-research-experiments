@@ -416,7 +416,11 @@ class A1IsagiV2(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        **_kwargs: object,
     ) -> AgentProposal | None:
+        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg. Isagi v2 is
+        # ARCHIVED (Phi4-evolution-arc FAIL 2026-06-24); kept only for
+        # ledger replay parity.
         if market.timeframe != self.home_tf:
             return None
         prep = self._prepared.get(market.symbol)

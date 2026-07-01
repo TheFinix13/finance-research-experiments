@@ -145,6 +145,8 @@ class A10KunigamiV1(BaseStriker):
             canon_role=canon_role or KUNIGAMI_V1_CANON_ROLE,
             home_tf=home_tf,
             symbols=list(symbols) if symbols is not None else list(KUNIGAMI_V1_SYMBOLS),
+            playstyle="defensive",
+            tier=2,
         )
         # Bounded deque so memory is O(1) regardless of run length.
         self._recent_trades: deque[ClosedTradeRecord] = deque(
@@ -259,9 +261,11 @@ class A10KunigamiV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        **_kwargs: object,
     ) -> AgentProposal | None:
         # Kunigami NEVER opens trades. Roster section 3.10 + doctrine
         # section 4.2 -- "auxiliary risk role; no shooting drive".
+        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg.
         return None
 
     # ------------------------------------------------------------------

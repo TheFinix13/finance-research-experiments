@@ -63,6 +63,9 @@ from programs.M001_multi_agent_ensemble.sim._cross_repo import (
     ensure_production_repo_on_path,
 )
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
+from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
+    WorkspaceSnapshot,
+)
 from programs.M001_multi_agent_ensemble.sim.core.striker import BaseStriker
 from programs.M001_multi_agent_ensemble.sim.core.types import (
     SCHEMA_VERSION,
@@ -73,6 +76,21 @@ from programs.M001_multi_agent_ensemble.sim.core.types import (
     MarketState,
     Thought,
 )
+
+# F21 peer-confluence chemistry (doctrine section 4.1a). Bachira reads
+# Isagi's Thoughts at tick T-1 on the same symbol; if Isagi's most-recent
+# Thought carries a real fired zone signal (non-null coordinate) with
+# matching direction, Bachira's rebel lift stacks an additional +0.05
+# conviction. Flagship "Isagi -> Bachira TF chemistry" example --
+# Isagi identifies zone confluence, Bachira on the same TF confirms
+# with extra weight.
+#
+# Isagi v1 emits ``expected_action`` in ``{"long_on_H4_close",
+# "short_on_H4_close"}`` ONLY when a real zone signal fires (waiting
+# Thoughts emit ``"wait"``). Bachira's own signal ``direction`` is
+# ``"long"``/``"short"``; the peer-match is a string-prefix check.
+BACHIRA_PEER_CONFLUENCE_LIFT = 0.05
+BACHIRA_PEER_PARTNER_ID = "isagi_yoichi"
 
 log = logging.getLogger(__name__)
 
@@ -141,6 +159,8 @@ class A2BachiraV1(BaseStriker):
             canon_role=canon_role or BACHIRA_V1_CANON_ROLE,
             home_tf=home_tf,
             symbols=list(symbols) if symbols is not None else list(BACHIRA_V1_SYMBOLS),
+            playstyle="rebel_tight",
+            tier=2,
         )
         ensure_production_repo_on_path()
         from agent.alphas.concepts.zone_alpha import SupplyDemandAlpha  # noqa: E402
@@ -263,6 +283,8 @@ class A2BachiraV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        *,
+        workspace: WorkspaceSnapshot | None = None,
     ) -> AgentProposal | None:
         if market.timeframe != self.home_tf:
             return None
@@ -279,9 +301,20 @@ class A2BachiraV1(BaseStriker):
             return None
 
         direction = sig.direction.value
-        # Use the conviction from the observed Thought so the rebel lift
-        # carries through to the Proposal layer too.
-        conviction = float(my_recent_thought.confidence_in_thought)
+        # Base conviction from the observed Thought (already carries the
+        # rebel lift). The F21 peer-confluence-with-Isagi bonus stacks
+        # on top of it for the flagship "Isagi -> Bachira TF chemistry"
+        # pattern -- Isagi identifies zone touch, Bachira confirms with
+        # extra weight.
+        base_conviction = float(my_recent_thought.confidence_in_thought)
+        peer_confluence = self._detect_isagi_peer_confluence(
+            workspace=workspace,
+            symbol=market.symbol,
+            direction=direction,
+        )
+        peer_lift = BACHIRA_PEER_CONFLUENCE_LIFT if peer_confluence else 0.0
+        conviction = min(1.0, base_conviction + peer_lift)
+
         ladder = [LadderRung(price=float(sig.take_profit), fraction=1.0)]
         horizon = market.as_of + timedelta(
             hours=float(self.canon_role.target_hold_hours),
@@ -298,7 +331,9 @@ class A2BachiraV1(BaseStriker):
             ),
             "base_conviction": float(sig.conviction),
             "final_conviction": conviction,
-            "doctrine_ref": "06-blue-lock-doctrine.md sec 3.1 (rebel/dribble)",
+            "peer_confluence_isagi": bool(peer_confluence),
+            "peer_confluence_lift": peer_lift,
+            "doctrine_ref": "06-blue-lock-doctrine.md sec 3.1 + 4.1a (F21)",
             "empirical_prior": (
                 "E001/E006: standalone patterns killed -- Bachira's "
                 "edge must come from pattern x HTF combination"
@@ -319,6 +354,33 @@ class A2BachiraV1(BaseStriker):
             valid_until=horizon,
             rationale=rationale,
         )
+
+    # ------------------------------------------------------------------
+    # F21 -- peer-confluence chemistry with Isagi
+    # ------------------------------------------------------------------
+
+    def _detect_isagi_peer_confluence(
+        self,
+        *,
+        workspace: WorkspaceSnapshot | None,
+        symbol: str,
+        direction: str,
+    ) -> bool:
+        """Return True when Isagi's most-recent Thought on this symbol
+        carries a fired zone signal (non-null coordinate) with matching
+        directional bias.
+
+        The workspace snapshot already filters same-tick reads (doctrine
+        3.8 look-ahead guard). If Isagi is waiting (coordinate is None)
+        or on a different symbol, or directions disagree, no confluence.
+        """
+        if workspace is None:
+            return False
+        latest = workspace.latest_by_agent(symbol=symbol)  # type: ignore[arg-type]
+        peer = latest.get(BACHIRA_PEER_PARTNER_ID)
+        if peer is None or peer.coordinate is None:
+            return False
+        return str(peer.coordinate.direction_bias) == direction
 
     # ------------------------------------------------------------------
     # Rebel-lift predicate

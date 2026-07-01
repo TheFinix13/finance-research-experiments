@@ -184,6 +184,8 @@ class A4ChigiriV1(BaseStriker):
             canon_role=canon_role or CHIGIRI_V1_CANON_ROLE,
             home_tf=home_tf,
             symbols=list(symbols) if symbols is not None else list(CHIGIRI_V1_SYMBOLS),
+            playstyle="speed_momentum",
+            tier=2,
         )
         self._prepared: dict[str, _PreparedSeries] = {}
 
@@ -285,7 +287,11 @@ class A4ChigiriV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        **_kwargs: object,
     ) -> AgentProposal | None:
+        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg. Chigiri v1
+        # focuses on ATR-driven momentum breakouts local to its own
+        # observation; peer thoughts do not enter v1 decisioning.
         if market.timeframe != self.home_tf:
             return None
         if market.symbol not in self.symbols:

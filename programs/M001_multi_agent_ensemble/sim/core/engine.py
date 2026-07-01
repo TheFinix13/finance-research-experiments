@@ -25,6 +25,7 @@ import yaml
 
 from .aggregator import aggregate
 from .ledger import FullLedger, ThoughtLedger
+from .reasoning_workspace import ReasoningWorkspace
 from .sentinel import SentinelContext, evaluate
 from .striker import BaseStriker
 from .types import AgentProposal, MarketState, OrderIntent, Thought
@@ -123,20 +124,34 @@ def run_replay(
     out = ReplayOutput()
     bars = list(bars)
 
+    # F21 reasoning workspace -- shared blackboard populated during Phase 1
+    # and snapshot-frozen at the tick barrier before Phase 2. Persistent
+    # across ticks so agents can see peer Thoughts from prior ticks (the
+    # snapshot's look-ahead guard filters same-tick Thoughts).
+    workspace = ReasoningWorkspace()
+
     for bar in bars:
         eligible = sorted(
             [a for a in agents if bar.symbol in a.symbols],
             key=lambda a: a.agent_id,
         )
 
-        # Phase 1 -- everyone observes; writes land in the ledger but
-        # are not visible to peers until next tick (guard rule).
+        # Phase 1 -- everyone observes; writes land in the ledger AND the
+        # workspace but are not visible to peers until next tick (guard rule).
         my_thought: dict[str, Thought] = {}
         for agent in eligible:
             t = agent.observe(bar, ledger)
             ledger.append(t)
+            workspace.publish(t)
             out.thoughts.append(t)
             my_thought[agent.agent_id] = t
+
+        # Snapshot the workspace at the tick barrier -- same view for
+        # every agent in Phase 2, filters out same-tick Thoughts.
+        ws_snapshot = workspace.snapshot(
+            as_of=bar.as_of,
+            current_tick=int(bar.tick_id),
+        )
 
         # Phase 2 -- everyone intends; reads only tick_id < T.
         proposals_this_tick: list[AgentProposal] = []
@@ -144,7 +159,7 @@ def run_replay(
             if not _is_home_tf_close(bar, agent):
                 continue
             t = my_thought[agent.agent_id]
-            p = agent.intend(bar, t)
+            p = agent.intend(bar, t, workspace=ws_snapshot)
             if p is not None:
                 proposals_this_tick.append(p)
                 out.proposals.append(p)

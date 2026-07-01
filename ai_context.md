@@ -1,138 +1,182 @@
-# AI Context — finance research experiments (updated 2026-07-01, post-Φ5 partial verdict)
+# AI Context — finance research experiments (updated 2026-07-01, post-v1-v2-reframe)
 
-Research workshop for the M001 multi-agent ensemble. Production execution lives in
-`multi-pair-trading-agent`; lab experiments never auto-change live params.
-Parquet cache: `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
+Research workshop for the M001 multi-agent ensemble AND for the six single-
+alpha studies gating live-agent improvements (E011-E016). Production
+execution lives in `multi-pair-trading-agent`; lab experiments never
+auto-change live params. Parquet cache:
+`PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
 Index: `EXPERIMENTS.md` · Rules: `PROTOCOL_DISCIPLINE.md` · M001 program:
 `programs/M001_multi_agent_ensemble/` (branch `multi-agent-ensemble`).
 
+## 2026-07-01 v1/v2 reframe — closed same day
+
+User directive during Phase 6 completion: "each agent should operate on
+equal versionings. isagi, rin, backira, kunigami should all have complete
+version 1s that are all efficient in one way or the other or in their
+playstyles before movign to creating a version 2." **v1 = squad-tested
+checkpoint** (not initial implementation); **v2 = architectural upgrade
+that trumps v1**. This retroactively reclassified 6 prior "v2" labels as
+"v1 mechanic iterations" and introduced **G7 v1-checkpoint gate** as a
+squad-level pre-condition on ANY v2 authorisation. Session shipped:
+
+- **Doctrine v0.5 + roster v0.8:** preamble + §3.11.5 versioning
+  discipline + §4.1a F19/F20/F21 primitives.
+- **G7 pre-registered protocol** at
+  `programs/M001_multi_agent_ensemble/experiments/G7_v1_checkpoint_gate/PROTOCOL.md`.
+- **6 evolution-ledger RELABEL-2026-07-01 rows** (Barou / Bachira / Rin /
+  Chigiri / Reo / Kunigami).
+- **F19 `lot_intent` + F20 `risk_intent` + F21 `read_workspace`** as
+  first-class BaseStriker primitives with playstyle dispatch. Fixed-lot
+  = 0.1 is now the "unknown-playstyle default", not a global rule.
+- **All 8 v1 agents wired** with playstyle + tier (Isagi tier-1
+  conservative_metavision, Bachira rebel_tight, Rin analytical_precision,
+  Chigiri speed_momentum, Reo copier_hrp, Nagi confluence_only, Barou
+  solo_king, Kunigami defensive).
+- **Engine threads F21 workspace snapshot** into `intend()` per tick;
+  Bachira consumes Isagi peer confluence (+0.05 lift). All other agents
+  absorb the kwarg via `**_kwargs` (silent, but participating in
+  workspace publish).
+- **G7 harness scaffold** at
+  `sim/scoring/run_g7_v1_checkpoint_gate.py`: C1/C5/C6 computed live,
+  C2/C3/C4 stubbed PENDING full 7-window batch run + workspace-threaded
+  driver.
+- **Sentinel Phi4.1 physical rerun** (`--sentinel-blocks --tag physical`)
+  landed 5,236 trades / 28,830 proposals / 336,707 thoughts (vs audit
+  0.2922 TQS locked). Side-by-side report pending full-run completion.
+
+**Statistical honesty flags:** no verdict retuning; all reclassifications
+appended to `evolution_ledger.md` as new rows (never edits); G7 pre-reg
+requires §11 amendment before any threshold change; 396 sim tests
+passing + 4 slow skips.
+
+## 2026-07-01 research-pipeline sweep (E011-E016) — closed
+
+| ID | Verdict | Registry |
+|---|---|---|
+| E011 small-stop subset expectancy | `stopped_at_stage_1` | Kills E012 |
+| E012 pending-limit entry | `cancelled_dep_failed` | -- |
+| E013 safety-layer contribution | `combined_alive` Δ+0.80 Sharpe; `wick_alive` Δ+0.75; BE `not_alive`; PLG `plg_expensive` | `experiments/E013_.../REPORT.md` |
+| E014 quality-score entry gate | `parked_low_yield` (12 % vol) | Kills E015 + E016 |
+| E015 / E016 | `cancelled_dep_failed` | -- |
+
+**Follow-up backlog:** PLG cooldown / streak-halt tuning (E017 pre-reg
+required). Do NOT tweak `PostLossGuard` constants without a fresh
+protocol.
+
 ## 1) What is built and working
 
-**Lab Phase 1 (E001–E007) — closed.** Tag `lab-phase-1-closed`. E004 walk-forward
-7/7 OOS (median +11.34 pips/trade) deployed. E005 cross-pair (GBPUSD / USDCAD
-replicate). E006 5/284 alive. E007 0/12 alive. Audit:
+**Lab Phase 1 (E001–E007) — closed.** Tag `lab-phase-1-closed`. E004
+walk-forward 7/7 OOS (median +11.34 pips/trade) deployed. Audit:
 `audits/2026-06-24_E001-E007_audit.md`.
 
-**M001 — Φ3 PASS · Φ4 FAIL · Φ4.1 FAIL · doctrine v0.4 / roster v0.7.**
+**M001 — Φ3 PASS · Φ4 FAIL · Φ4.1 FAIL · doctrine v0.5 / roster v0.8.**
 
 - **Φ3 v1 — A1 Isagi v1 wrapper PASS:** +11.04 pips/trade vs Sae +11.34
-  (Δ −2.7 %, inside ±5 %); 7/7 OOS positive. `reviews/phi3_gate_isagi_v1.md`.
-- **Φ4 v1 — 4-agent squad FAIL @ 0.98× Isagi-alone TQS.** Nagi 0 confluence
-  thoughts (predicate-starved on MVP). `reviews/phi4_squad_v1.md`.
-- **Φ4.1 v1 — 8-agent expanded squad FAIL @ 0.92×** (squad TQS 0.2922,
-  Isagi 0.3175). Predicate starvation **confirmed + fixed** (Nagi 0 → 34,302
-  confluence-firing thoughts; TQS 0.349 highest in squad). New failure mode:
-  **structural crowding-out** — Isagi 0 trades, Barou 0 trades, slot-
-  cannibalised by Bachira's `+0.10` rebel-lift. Per-agent: Bachira 2,840
-  trades / TQS 0.308; Rin 244 / 0.277; Chigiri 536 / 0.229; Reo 0 by design /
-  28,469 mirror Thoughts; Kunigami 0 / 25,877 warning Thoughts (R5 not wired).
-  `reviews/phi41_squad_v1{,_addendum,_crossstat_addendum}.md`.
+  (Δ −2.7 %, ±5 % band); 7/7 OOS positive.
+- **Φ4 v1 — 4-agent squad FAIL @ 0.98× Isagi-alone TQS.**
+- **Φ4.1 v1 — 8-agent squad FAIL @ 0.92×** (squad TQS 0.2922, Isagi 0.3175).
+  Predicate starvation CONFIRMED + FIXED (Nagi 0 → 34,302 confluence-
+  firing thoughts). Structural crowding-out uncovered — Isagi 0 trades,
+  Barou 0 trades. `reviews/phi41_squad_v1{,_addendum,_crossstat_addendum}.md`.
 - **Isagi v1→v2 arc FAIL** (2026-06-24). v1 canonical; v2 archived.
-  `reviews/isagi_v2_arc.md`.
-- **Regime redesign:** `vol_spike` + `news` RETIRED on structural grounds;
-  live-classes-only macro F1 = 0.971. `reviews/regime_redesign_2026-06-24.md`.
-- **Methodology lock:** `docs/methodology/gate_verdict_registry.md` v0.1 binds
-  per-gate locked statistic; `07-research-standards.md` v0.4 §11.
-- **v2 backlog round-1 (2026-06-25):** Nagi RETIRED · Barou REDESIGN-hybrid-A+B
-  (user decision 2026-06-30: closed-loss replay USDCAD + symbol expansion to
-  EURUSD/GBPUSD/USDCAD) · Kunigami DEFERRED pending Sentinel R1–R5.
-  `reviews/v2_arc_backlog_resolution_2026-06-25.md`.
-- **v2 backlog round-2 (2026-06-30):** Bachira REFINE-to-peer-silence · Rin
-  REFINE-regime+peer-disagreement · Chigiri REFINE-multi-TF-ADX+ATR-percentile ·
-  Reo ADVANCE-coupled-to-Φ5-multi-position.
-  `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md`.
-- **Φ4.2 Sentinel R1–R6 wired (2026-06-30):** R1 min-lot floor · R2 discrete
-  sizing · R3 pass bias · R4 concentration cap · R5 loss-streak dampener ·
-  **R6 per-symbol total-risk cap (new)**. Audit-only in Φ4.1 replay
-  (`sentinel_blocks=False`), physical enforcement in Φ5 harness. Un-blocks
-  Kunigami v2 (WIRED, no longer DEFERRED) + Φ5 Arm 4. PROTOCOL §6 stop
-  rule #3 retired via §11.1 amendment.
-- **Φ5 aggregator gate — PARTIAL VERDICT (2026-07-01):** post-hoc harness
-  computed Arms 0/1/2 from Φ4.1 artefacts; Arms 3/4/5 REQUIRES_RESIM.
-  - Arm 0 control: **0.2922** median WM TQS (matches locked Φ4.1 exactly).
-  - Arm 1 HRP: **0.2941** (+0.0019 Δ, 0.93× Isagi-alone) — essentially null.
-  - Arm 2 TQS floor: **0.3109** (+0.0187 Δ, 0.98× Isagi-alone) — meaningful
-    lift, misses PROTOCOL §4 Δ ≥ 0.020 threshold by 0.0013.
-  - Arms 3 (merge) / 4 (multi-position) / 5 (combined) require full
-    re-simulation (`_drive_squad_replay` plumbed to arm aggregators) —
-    post-hoc replay cannot recompute modified SL/TP or admit previously-
-    rejected proposals without price paths.
-  - PROTOCOL §11.2 amendment: package path
-    `sim/core/aggregator/` → `sim/core/aggregator_arms/` (Python cannot
-    coexist with existing `aggregator.py` stub).
-  - Report: `reviews/phi5_aggregator_gate.md`; per-arm JSON:
-    `reviews/phi5_aggregator_{arm0..5}_result.json`.
+- **Regime redesign:** `vol_spike` + `news` RETIRED; live-classes-only
+  macro F1 = 0.971.
+- **Methodology lock:** `docs/methodology/gate_verdict_registry.md` v0.1;
+  `07-research-standards.md` v0.4 §11.
+- **Φ4.2 Sentinel R1–R6 wired** (audit-only in Φ4.1 replay; physical in
+  Φ5 harness). Un-blocks Kunigami v2-mechanic + Φ5 Arm 4.
+- **Φ5 aggregator PARTIAL VERDICT (2026-07-01):**
+  - Arm 0 control 0.2922 (matches Φ4.1 exactly).
+  - Arm 1 HRP 0.2941 (Δ+0.0019) — null post-hoc; needs variable lot sizes.
+  - Arm 2 TQS floor 0.3109 (Δ+0.0187) — meaningful lift, misses
+    Δ ≥ 0.020 by 0.0013.
+  - Arms 3/4/5 REQUIRES_RESIM.
+- **v1/v2 reframe (2026-07-01):** doctrine v0.5, roster v0.8, G7 gate
+  pre-registered. F19/F20/F21 primitives on BaseStriker + all 8 agents.
+  Engine threads workspace. Bachira consumes Isagi peer confluence.
 
-**Architectural insight (Φ4.1 + Isagi v2 + Φ5 Arm 2 converged):** the
-**single-position-per-symbol queue with conviction-only ranking** is the
-binding constraint. The Φ5 partial verdict shows the aggregator lever
-works: filtering low-conviction proposals (Arm 2) lifts squad TQS by
-+0.0187 without touching the roster. Full re-sim (Phase 6e) needed to
-test whether same-direction merge + multi-position stack Arm 2's gains.
+**Architectural insight (Φ4.1 + Isagi v2 + Φ5 Arm 2 + v1/v2 reframe
+converged):** the single-position-per-symbol queue with conviction-only
+ranking is one lever; agent-side chemistry (F19/F20/F21) is the other.
+The v1/v2 reframe formalises the mandate: prove squad chemistry via G7
+before authorising any single-agent v2 arc.
 
-**Pre-registered, awaiting implementation:** Phase 6e Φ5 re-sim path
-(Arms 3/4/5); news calendar wiring
-(`specs/news_calendar_wiring{,_DECISION_TREE}.md`); E010 Stage-2b
-`equal_highs_pool` (`experiments/E010_equal_highs_pool_stage2b/PROTOCOL.md`).
-
-Tests: **332 sim passing** + 4 slow skips (added 41 new: 17 HRP +
-18 arms-2/3/4 + 6 Arm 5).
+Tests: **396 sim passing** + 4 slow skips (this session added 21 F21 +
+48 F19/F20 + 34 wiring + 10 Bachira chemistry + 21 G7 criteria = 134
+new tests).
 
 ## 2) Key file paths
 
 | Area | Files |
 |---|---|
 | Registry | `EXPERIMENTS.md`, `DATA_LEDGER.md`, `PROTOCOL_DISCIPLINE.md` |
-| Methodology | `docs/methodology/*.md` (incl. `gate_verdict_registry.md` v0.1) |
-| Audits | `audits/2026-06-24_E001-E007_audit.md` |
-| M001 doctrine | `programs/M001_multi_agent_ensemble/00`–`09` + `README.md` (v0.4 / v0.7) |
+| Methodology | `docs/methodology/*.md` |
+| M001 doctrine | `programs/M001_multi_agent_ensemble/00`–`09` (v0.5) + `README.md` |
+| M001 roster | `05-agent-roster-v0.md` (v0.8, includes §1.0 v1 checkpoint status) |
 | M001 sim | `programs/M001_multi_agent_ensemble/sim/{core,regime,scoring,roster,agents,dashboard,tests}/` |
-| M001 agents | `sim/agents/a0{1..7,10}_*.py` (Isagi v1 + v2 archived; Bachira/Rin/Chigiri/Reo/Nagi/Barou/Kunigami v1) |
-| M001 harnesses | `sim/scoring/run_isagi_phi3_gate.py` + `run_phi{4,41}_squad_gate.py` + `run_phi5_aggregator_gate.py` |
-| M001 aggregator arms | `sim/core/aggregator_arms/{__init__,hrp,tqs_floor,same_direction_merge,multi_position,combined}.py` |
+| M001 core primitives | `sim/core/{lot_intent,risk_intent,reasoning_workspace}.py` (F19/F20/F21) |
+| M001 agents | `sim/agents/a0{1..7,10}_*.py` (playstyle + tier wired) |
+| M001 harnesses | `sim/scoring/run_isagi_phi3_gate.py` · `run_phi{4,41}_squad_gate.py` · `run_phi5_aggregator_gate.py` · `run_g7_v1_checkpoint_gate.py` (new) |
+| M001 aggregator arms | `sim/core/aggregator_arms/*.py` |
 | M001 Sentinel | `sim/core/sentinel.py` (R1-R6) + `sim/tests/test_sentinel_wired.py` |
 | M001 reviews | `reviews/phi{3,4,41,5}_*.md` + `isagi_v2_arc.md` + `evolution_ledger.md` |
-| M001 v2 backlog | `reviews/v2_arc_backlog_resolution_2026-06-25.md` (round-1) + `_round2_2026-06-30.md` (round-2) |
-| M001 pre-registered | `experiments/phi5_aggregator/{PROTOCOL,HRP_NOTES}.md` + `specs/news_calendar_wiring{,_DECISION_TREE}.md` |
-| E006 / E007 code | `conflab/`, `scripts/run_stage1.py`, `scripts/test_b/` |
+| M001 G7 pre-reg | `experiments/G7_v1_checkpoint_gate/PROTOCOL.md` |
+| M001 v2 backlog | `reviews/v2_arc_backlog_resolution_{2026-06-25,round2_2026-06-30}.md` (both now "v1 mechanic iterations pending G7" per §3.11.5) |
+| News calendar (DEFERRED beyond G7) | `data/news_calendar/README.md` + `specs/news_calendar_wiring{,_DECISION_TREE}.md` |
+| E011-E016 protocols + reports | `experiments/E01[1-6]_.../PROTOCOL.md` + `E01{1,3,4}_.../REPORT.md` |
 
 `PYTHONPATH=../multi-pair-trading-agent:. M001_PRODUCTION_REPO=../multi-pair-trading-agent ../multi-pair-trading-agent/.venv/bin/python -m pytest -q`
 
 ## 3) Next immediate goal
 
-Session 2026-06-30 → 2026-07-01 delivered Phase 4 (Sentinel R1-R6) +
-Phase 6a-d (Φ5 Arms 1-5 code + tests + partial verdict via post-hoc
-harness). Session's honest findings:
+**Phase 6 v1/v2 reframe — DELIVERED this session.** All 8 phases (A–H)
+of the 2026-07-01 plan shipped. Squad now has F19/F20/F21 primitives
+wired end-to-end; G7 harness scaffolded with C1/C5/C6 live + C2/C3/C4
+stubbed. Bachira-Isagi flagship chemistry landed with 10 contract tests.
+Doctrine v0.5, roster v0.8, evolution ledger updated with 6 RELABEL rows.
 
-- **Arm 2 (TQS floor) is the strongest post-hoc-computable arm**: +0.0187
-  TQS delta on 3372 filtered trades (dropped 342 low-conviction). Misses
-  pre-registered PROTOCOL §4 Δ ≥ 0.020 threshold by 0.0013 — bootstrap CI
-  test not run in Session 1 (part of Phase 6e).
-- **Arm 1 (HRP) is essentially null** post-hoc (+0.0019 Δ). Real HRP
-  effect requires variable lot sizing in the sim, which the fixed-lot
-  harness does not currently support.
+**Next immediate goal — G7 full-panel batch run (opex, deferred to a
+dedicated compute session):**
 
-**Phase 6e (next session): Full re-sim path.** Plumb the 5 arm aggregators
-into `_drive_squad_replay` as an injectable strategy. Run 5×7 grid.
-Compute bootstrap 95 % CI per PROTOCOL §4. Ship final verdict.
+1. **G7 batch run (highest priority for next session).** Run
+   `run_g7_v1_checkpoint_gate.py` on the full 7-window Φ4.1 panel plus
+   8 leave-one-out squads for criterion 2. PROTOCOL §8 stop rule #2
+   allows up to 32 hours wall-clock; ship partial verdict on timeout
+   per §11.2. Requires wiring the F21 workspace into
+   `_drive_squad_replay` (currently only `run_replay` in
+   `sim/core/engine.py` threads workspace) OR swapping G7 harness to
+   use `run_replay` on the interleaved bar stream.
+2. **Phi4.1 physical rerun completion + side-by-side report** (in
+   flight at 15:17 -- squad run done 5,236 trades; F17 isolated arms
+   in progress). When it completes, emit
+   `reviews/phi41_squad_v1_physical_vs_audit.md` with the ratio and
+   diagnostic.
+3. **Phase 6e Φ5 re-sim path** (Arms 3/4/5 full re-sim). Plumb the 5
+   arm aggregators into `_drive_squad_replay`. Runs after G7 batch.
 
-**Deferred (unblocked but not urgent):**
+**Backlog (needs pre-reg before touching any parameter):**
 
-1. **News calendar wiring.** Dukascopy primary + multi-source fallback
-   (FF + DailyFX + MyFXBook + FRED). 2007-2026 backfill. Parametrised per-
-   agent pre/post windows. Script + manifest committed; data commit
-   deferred to milestone. 8 unit tests + 1 integration test per spec §7.
-2. **v2 agent implementations** — Barou hybrid A+B; Bachira / Rin / Chigiri
-   refines; Reo HRP + second-position (mechanic 2 Φ5-gated). Sequenced
-   AFTER Φ5 full verdict; some may be obviated by aggregator-side fixes.
+1. **PLG cooldown / streak-halt tuning** (E017 pre-reg required).
+2. **E014 wider-grid amendment** (θ ∈ {20, 30, 40, 50}). Blocked by
+   §Amendments discipline in `E014_.../PROTOCOL.md`.
+
+**Deferred beyond G7 (was WIP but reprioritised 2026-07-01):**
+
+1. **News calendar wiring.** Multi-source fallback + 2007-2026 backfill.
+   README at `data/news_calendar/README.md` marked
+   `DEFERRED-BEYOND-G7`.
+2. **v2 agent implementations** (Barou hybrid, Bachira/Rin/Chigiri/Reo
+   refinements). Reclassified as v1 mechanic iterations per §3.11.5;
+   no v2 arc authorised until G7 PASS.
 
 **Pending user-only ops (not delegatable):** hand-label ~30 regime
-disagreements via `sim/regime/label_disagreements.py` Streamlit; VM-side
-friction calibration via `scripts/vm_calibrate_friction.py`.
+disagreements via `sim/regime/label_disagreements.py`; VM-side friction
+calibration via `scripts/vm_calibrate_friction.py`.
 
-**Parked (do NOT start without discussion):** A8 Yukimiya / A9 Aoshi v1 builds
-(no Φ4.1 telemetry; round-3 after build); E009 cross-family; `output/`
-reorganisation.
+**Parked (do NOT start without discussion):** A8 Yukimiya / A9 Aoshi
+v1 builds (no telemetry; round-3 after G7); E009 cross-family;
+`output/` reorganisation.
 
 Honesty rules: `PROTOCOL_DISCIPLINE.md`. M001 gates: `09` §1.5. Verdict-
-comparator discipline: `07-research-standards.md` §11.
+comparator discipline: `07-research-standards.md` §11. v1/v2 discipline:
+`06-blue-lock-doctrine.md` §3.11.5.

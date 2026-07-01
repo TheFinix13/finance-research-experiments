@@ -237,6 +237,8 @@ class A6NagiV1(BaseStriker):
             canon_role=canon_role or NAGI_V1_CANON_ROLE,
             home_tf=home_tf,
             symbols=list(symbols) if symbols is not None else list(NAGI_V1_SYMBOLS),
+            playstyle="confluence_only",
+            tier=2,
         )
 
     # ------------------------------------------------------------------
@@ -269,7 +271,11 @@ class A6NagiV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        **_kwargs: object,
     ) -> AgentProposal | None:
+        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg. Nagi's
+        # confluence predicate is already fed by ledger reads via
+        # ``observe``; workspace snapshot is redundant for v1.
         if market.timeframe != self.home_tf:
             return None
         if my_recent_thought.coordinate is None:

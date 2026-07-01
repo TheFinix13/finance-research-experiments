@@ -89,8 +89,9 @@ class _RecordingStriker(BaseStriker):
             ttl_ticks=4, references=[],
         )
 
-    def intend(self, market, my_recent_thought):
-        # Build a deterministic proposal so the aggregator path exercises.
+    def intend(self, market, my_recent_thought, **_kwargs):
+        # ``_kwargs`` absorbs the F21 ``workspace`` snapshot the engine
+        # supplies; this test stub doesn't consume peer thoughts.
         peers = []  # we DO NOT call ledger.read here so this stub
                     # purposefully avoids same-tick reads; the engine's
                     # phase split + the ledger guard are tested directly.
@@ -141,7 +142,7 @@ class _LedgerReadAtIntendStriker(BaseStriker):
             ttl_ticks=1, references=[],
         )
 
-    def intend(self, market, my_recent_thought):
+    def intend(self, market, my_recent_thought, **_kwargs):
         peers = market  # placeholder so linter doesn't complain
         # Re-read the ledger from inside intend(). All peers at the same
         # tick must be filtered out by `_apply_guards`.

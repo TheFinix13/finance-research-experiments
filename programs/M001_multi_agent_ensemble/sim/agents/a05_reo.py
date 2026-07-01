@@ -138,6 +138,8 @@ class A5ReoV1(BaseStriker):
             canon_role=canon_role or REO_V1_CANON_ROLE,
             home_tf=home_tf,
             symbols=list(symbols) if symbols is not None else list(REO_V1_SYMBOLS),
+            playstyle="copier_hrp",
+            tier=2,
         )
 
     # ------------------------------------------------------------------
@@ -169,11 +171,13 @@ class A5ReoV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        **_kwargs: object,
     ) -> AgentProposal | None:
         # Reo v1 never proposes. Roster section 3.5 + the Φ4.1 design
         # note: Reo's value is to feed Nagi's chemical-reaction
         # predicate without contributing trades. Lifts the predicate
         # frequency without contesting the squad's risk budget.
+        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg.
         return None
 
     # ------------------------------------------------------------------

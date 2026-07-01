@@ -579,8 +579,27 @@ def run_phi41_gate(
     out_dir: Path | str | None = None,
     delta_info_windows: int = DEFAULT_DELTA_INFO_WINDOWS,
     write_jsonl: bool = True,
+    sentinel_blocks: bool = False,
+    tag: str = "audit",
 ) -> SquadGateReport:
-    """Run the Φ4.1 expanded-squad gate end-to-end."""
+    """Run the Φ4.1 expanded-squad gate end-to-end.
+
+    Parameters
+    ----------
+    sentinel_blocks : bool, default False
+        When False (the sealed Φ4.1-audit run), Sentinel R1-R6 are
+        journalled but do not veto trades. When True (Φ4.1-physical
+        rerun added 2026-07-01), Sentinel decisions physically block
+        trades so R1/R5/R6 shape the trade set. Locked verdicts should
+        always be produced with ``sentinel_blocks=False`` to preserve
+        the pre-Sentinel Φ4.1 comparison baseline; the physical rerun
+        is a side-by-side diagnostic per user 2026-07-01 decision.
+    tag : str, default "audit"
+        Used to disambiguate output filenames when both variants run
+        (e.g. ``phi41_squad_v1_audit_trades.jsonl`` vs
+        ``phi41_squad_v1_physical_trades.jsonl``). Locked verdicts
+        under sealed name ``phi41_squad_v1_*`` remain the audit run.
+    """
     ensure_production_repo_on_path()
     log.info(
         "Loading Φ4.1 bars %s -> %s on %s H4",
@@ -622,10 +641,11 @@ def run_phi41_gate(
         kunigami=kunigami,
         bars_by_symbol=bars_by_symbol,
         ledger=ledger,
+        sentinel_blocks=sentinel_blocks,
     )
     log.info(
-        "Φ4.1 squad run done -- %d thoughts, %d proposals, %d trades",
-        len(out.thoughts), len(out.proposals_all), len(out.trades),
+        "Φ4.1 squad run done (tag=%s, sentinel_blocks=%s) -- %d thoughts, %d proposals, %d trades",
+        tag, sentinel_blocks, len(out.thoughts), len(out.proposals_all), len(out.trades),
     )
 
     # Per-agent stats.
@@ -768,8 +788,16 @@ def run_phi41_gate(
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    # Filename prefix -- the sealed audit-only run keeps the historical
+    # `phi41_squad_v1` prefix; other tags (e.g. "physical") get a suffix
+    # inserted so the audit artefacts are never accidentally overwritten.
+    if tag == "audit":
+        prefix = "phi41_squad_v1"
+    else:
+        prefix = f"phi41_squad_v1_{tag}"
+
     # Persist artefacts.
-    (out_dir / "phi41_squad_v1.md").write_text(
+    (out_dir / f"{prefix}.md").write_text(
         render_phi41_report(
             report,
             nagi_confluence_count_phi4=0,
@@ -780,10 +808,10 @@ def run_phi41_gate(
         ),
         encoding="utf-8",
     )
-    log.info("Wrote Φ4.1 gate report to %s", out_dir / "phi41_squad_v1.md")
+    log.info("Wrote Φ4.1 gate report to %s", out_dir / f"{prefix}.md")
 
     if write_jsonl:
-        with (out_dir / "phi41_squad_v1_trades.jsonl").open("w", encoding="utf-8") as fh:
+        with (out_dir / f"{prefix}_trades.jsonl").open("w", encoding="utf-8") as fh:
             for t in out.trades:
                 fh.write(json.dumps({
                     "agent_id": t.agent_id,
@@ -799,13 +827,20 @@ def run_phi41_gate(
                     "r_multiple": t.r_multiple,
                     "tqs": t.tqs_components,
                 }, sort_keys=True) + "\n")
-        with (out_dir / "phi41_squad_v1_rejected_proposals.jsonl").open("w", encoding="utf-8") as fh:
+        with (out_dir / f"{prefix}_rejected_proposals.jsonl").open("w", encoding="utf-8") as fh:
             for row in out.proposals_rejected:
                 fh.write(json.dumps(row, sort_keys=True) + "\n")
-        with (out_dir / "phi41_squad_v1_proposals_all.jsonl").open("w", encoding="utf-8") as fh:
+        with (out_dir / f"{prefix}_proposals_all.jsonl").open("w", encoding="utf-8") as fh:
             for p in out.proposals_all:
                 fh.write(json.dumps(p.to_jsonable(), sort_keys=True) + "\n")
-        log.info("Wrote Φ4.1 trades + proposals JSONL")
+        with (out_dir / f"{prefix}_sentinel_log.jsonl").open("w", encoding="utf-8") as fh:
+            for row in out.sentinel_log:
+                fh.write(json.dumps(row, sort_keys=True, default=str) + "\n")
+        log.info(
+            "Wrote Φ4.1 trades + proposals + sentinel JSONL (prefix=%s, "
+            "sentinel_blocks=%s, %d sentinel events)",
+            prefix, sentinel_blocks, len(out.sentinel_log),
+        )
 
     # Rejection analysis -- companion report.
     proposals_by_tick: dict[int, list[AgentProposal]] = {}
@@ -824,7 +859,11 @@ def run_phi41_gate(
         proposals_by_tick=proposals_by_tick,
         full_start=full_start, full_end=full_end,
     )
-    (out_dir / "phi41_isagi_rejection_analysis.md").write_text(
+    rej_filename = (
+        "phi41_isagi_rejection_analysis.md" if tag == "audit"
+        else f"phi41_isagi_rejection_analysis_{tag}.md"
+    )
+    (out_dir / rej_filename).write_text(
         rej_md, encoding="utf-8",
     )
     log.info(
@@ -920,6 +959,27 @@ def main(argv: Optional[list[str]] = None) -> int:
         default=DEFAULT_DELTA_INFO_WINDOWS,
         help="How many of the 7 OOS windows to use for F17 (default 3).",
     )
+    parser.add_argument(
+        "--sentinel-blocks", action="store_true",
+        help=(
+            "If set, Sentinel R1-R6 physically veto violating trades. "
+            "Default (audit-only) preserves the sealed Phi4.1 verdict "
+            "at TQS 0.2922. The physical rerun is a side-by-side "
+            "diagnostic added 2026-07-01 per user Phase-6 decision -- "
+            "it quantifies how much of the Phi4.1 FAIL was risk-"
+            "uncontrolled behaviour vs structural crowding-out."
+        ),
+    )
+    parser.add_argument(
+        "--tag", default=None,
+        help=(
+            "Filename tag disambiguator. Default: 'audit' when "
+            "--sentinel-blocks is unset, 'physical' when it is set. "
+            "Output prefix becomes phi41_squad_v1_<tag>_* unless tag "
+            "== 'audit' (which keeps the sealed phi41_squad_v1_* "
+            "prefix for historical continuity)."
+        ),
+    )
     parser.add_argument("--verbose", action="store_true")
     args = parser.parse_args(argv)
 
@@ -929,10 +989,13 @@ def main(argv: Optional[list[str]] = None) -> int:
     )
     start = args.start if isinstance(args.start, datetime) else _parse_date(args.start)
     end = args.end if isinstance(args.end, datetime) else _parse_date(args.end)
+    resolved_tag = args.tag or ("physical" if args.sentinel_blocks else "audit")
     report = run_phi41_gate(
         full_start=start, full_end=end,
         out_dir=args.out_dir,
         delta_info_windows=int(args.delta_info_windows),
+        sentinel_blocks=bool(args.sentinel_blocks),
+        tag=resolved_tag,
     )
     print(
         f"Φ4.1 squad gate verdict: {report.verdict} "
