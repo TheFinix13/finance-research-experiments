@@ -257,3 +257,29 @@ If the user wants different values, amend this protocol BEFORE tomorrow's run (p
 **Registered follow-up.** Once Φ5 verdict lands, if any arm shows Sentinel R6 blocking a material fraction of Arm 4 proposals (>10 %), file a §11.2 amendment to reconsider the 1 % per-symbol cap. Do NOT retune silently — that is exactly the post-hoc discipline `07-research-standards.md` §11 forbids.
 
 **Cross-reference.** Sentinel wiring + integration tests in `sim/core/sentinel.py`, `sim/tests/test_sentinel_wired.py`, `sim/scoring/run_phi4_squad_gate.py::_drive_squad_replay`. Kunigami v2 status transition (DEFERRED → v2-wired) in `reviews/evolution_ledger.md` + `05-agent-roster-v0.md` §3.10 + `06-blue-lock-doctrine.md` §3.11 A10.
+
+---
+
+## Amendment §11.2 — arm package path (`aggregator/` → `aggregator_arms/`, 2026-06-30)
+
+**Filed:** 2026-06-30 (same session as §11.1).
+**Procedure:** `07-research-standards.md` §11 — file-footprint plan change. Locked parameters, decision rule, statistic, arm mechanics all unchanged.
+
+**What changes.** §7 file footprint plan originally listed the arm-specific code at `sim/core/aggregator/*.py` inside a NEW package `sim/core/aggregator/`. Python's module system prevents `sim/core/aggregator.py` (the preserved Phi2.5 stub — "DO NOT MODIFY" per §7) and a sibling `sim/core/aggregator/` package from coexisting in the same directory.
+
+**New path.** `sim/core/aggregator_arms/` (package). Mapping:
+
+| §7 planned path | Actual path (post-amendment) |
+|---|---|
+| `sim/core/aggregator/__init__.py` | `sim/core/aggregator_arms/__init__.py` |
+| `sim/core/aggregator/hrp.py` | `sim/core/aggregator_arms/hrp.py` |
+| `sim/core/aggregator/tqs_floor.py` | `sim/core/aggregator_arms/tqs_floor.py` |
+| `sim/core/aggregator/same_direction_merge.py` | `sim/core/aggregator_arms/same_direction_merge.py` |
+| `sim/core/aggregator/multi_position.py` | `sim/core/aggregator_arms/multi_position.py` |
+| `sim/core/aggregator/combined.py` | `sim/core/aggregator_arms/combined.py` |
+
+**What did NOT change.** Test filenames (`sim/tests/test_aggregator_arms_*.py`) also renamed to match. `sim/core/aggregator.py` (Phi2.5 stub) preserved unchanged. All locked parameters, all arm mechanics, all sentinel semantics unchanged.
+
+**Empirical justification.** Structural constraint of Python's import system; no scientific implication. The alternative — renaming `sim/core/aggregator.py` — would have counted as a modification to preserved code, which the "DO NOT MODIFY" §7 directive forbids.
+
+**Follow-up.** None. If a future amendment adds a factory (`make_aggregator(arm: str)`), it will live at `sim/core/aggregator_arms/__init__.py::make_aggregator` rather than the originally-planned `sim/core/aggregator/__init__.py::make_aggregator`.
