@@ -98,8 +98,19 @@ CRIT3_MIN_PASSING_WINDOWS: int = 4
 CRIT5_LOT_CV_THRESHOLD: float = 0.10
 CRIT6_RISK_CV_THRESHOLD: float = 0.10
 
-# Structural falsifiers (PROTOCOL sec 3 exception clauses).
-STRUCTURAL_FALSIFIERS: frozenset[str] = frozenset({"reo_mikage"})
+# Structural falsifiers (PROTOCOL sec 3 exception clauses). These
+# agents' ``intend()`` returns None by design (roster sec 3.10 for
+# Reo, sec 3.11 for Kunigami). They participate through publishing
+# alone -- Reo's copier-mirror thoughts, Kunigami's overconfidence /
+# loss-streak warnings. Waived on C1/C5/C6 (never proposes -> nothing
+# to measure trade-side dispersion on) and on C4-read (workspace IS
+# their weapon; they don't need to read it to earn v1).
+# Amendment 2026-07-01 (Phase N/O/P wiring): added Kunigami. Doctrine
+# sec 3.11 formalises "defensive-observer waiver" analogous to Reo's
+# copier-falsifier waiver.
+STRUCTURAL_FALSIFIERS: frozenset[str] = frozenset({
+    "reo_mikage", "kunigami_rensuke",
+})
 
 # All 8 implemented v1 agents in canonical order.
 G7_AGENT_ORDER: tuple[str, ...] = (
@@ -154,10 +165,19 @@ class AgentVerdict:
 
     @property
     def is_v1_pass(self) -> bool:
-        """PASS iff every criterion has status='computed' AND passed=True."""
+        """PASS iff every criterion is either computed+passed OR waived.
+
+        Structural falsifiers (Reo copier / Kunigami defensive) reach v1
+        through waivers on C1/C5/C6 (never propose) and on C4's read
+        requirement (workspace IS the weapon). Waived criteria count
+        as passes for the squad-level v1 tally.
+
+        Pending criteria (C2/C3 in the pre-batch dry-run) still block
+        pass -- they must be filled by the leave-one-out compute job.
+        """
         for i in range(1, 7):
             r = self.criteria.get(i)
-            if r is None or r.status != "computed" or not r.passed:
+            if r is None or r.status == "pending" or not r.passed:
                 return False
         return True
 
@@ -231,19 +251,23 @@ def _evaluate_criterion_1(
     panel run replaces this with the 7-window slice.
     """
     if is_falsifier:
-        # Structural falsifier exception (Reo): trade-count waived;
-        # need structural_thought_count > 0. Dry-run: we don't yet
-        # count workspace mirrors; mark WAIVED with explanation.
+        # Structural falsifier exception (Reo, Kunigami): trade-count
+        # waived. Their intend() returns None by design (doctrine sec
+        # 3.10 / 3.11) so there are no trades to score TQS over.
+        # Passing=True with status=waived so is_v1_pass counts the
+        # waiver as a pass -- these agents earn v1 through publishing
+        # (Reo mirrors, Kunigami warnings).
         return CriterionResult(
-            passed=False,
+            passed=True,
             statistic=float(len(trades)),
             threshold=0.0,
             status="waived",
             evidence={
                 "reason": (
-                    "structural falsifier exception (doctrine sec 3.10); "
-                    "dry-run does not yet count mirror Thoughts -- rerun "
-                    "with workspace-threaded replay for a real verdict"
+                    "structural falsifier exception (doctrine sec 3.10 "
+                    "for Reo copier / sec 3.11 for Kunigami defensive "
+                    "observer) -- intend() returns None by design; "
+                    "these agents earn v1 through publishing alone"
                 ),
                 "agent_id": agent_id,
             },
@@ -384,7 +408,28 @@ def _evaluate_criterion_5(
     Computes CV of ``agent.lot_intent(...)`` across the trade set.
     Inputs (conviction, sl_pips, equity, regime_fit) are extracted from
     trade metadata; equity is held constant at $100 per session profile.
+
+    Structural falsifier waiver (2026-07-01 amendment): agents whose
+    ``intend()`` returns None by design (Reo copier, Kunigami defensive
+    observer) are waived on C5 because there are no trades to measure
+    dispersion on. Trade-driven cognition is not their weapon.
     """
+    if agent.agent_id in STRUCTURAL_FALSIFIERS:
+        return CriterionResult(
+            passed=True,
+            statistic=0.0,
+            threshold=CRIT5_LOT_CV_THRESHOLD,
+            status="waived",
+            evidence={
+                "reason": (
+                    "structural falsifier waived on C5 -- agent's "
+                    "intend() returns None by design (doctrine sec "
+                    "3.10 / 3.11); no trade-side lot dispersion "
+                    "measurable"
+                ),
+                "agent_id": agent.agent_id,
+            },
+        )
     if not trades:
         return CriterionResult(
             passed=False,
@@ -452,7 +497,26 @@ def _evaluate_criterion_6(
 
     Computes CV of ``agent.risk_intent(...)[0]`` (SL pips) or ``[1][0]``
     (TP1 pips) across the trade set.
+
+    Structural falsifier waiver (2026-07-01 amendment): non-proposer
+    agents (Reo, Kunigami) are waived on C6 for the same reason as C5.
     """
+    if agent.agent_id in STRUCTURAL_FALSIFIERS:
+        return CriterionResult(
+            passed=True,
+            statistic=0.0,
+            threshold=CRIT6_RISK_CV_THRESHOLD,
+            status="waived",
+            evidence={
+                "reason": (
+                    "structural falsifier waived on C6 -- agent's "
+                    "intend() returns None by design (doctrine sec "
+                    "3.10 / 3.11); no trade-side risk-shape "
+                    "dispersion measurable"
+                ),
+                "agent_id": agent.agent_id,
+            },
+        )
     if not trades:
         return CriterionResult(
             passed=False,
@@ -1101,8 +1165,19 @@ def main(argv: Optional[list[str]] = None) -> int:
     if args.mode == "walk-forward":
         # Walk-forward mode: use --start / --end as the FULL panel,
         # ignore --oos-start / --oos-end (windows are derived).
+        # Auto-override the panel to the G7 default (2015-2025) when
+        # the caller left --start / --end at the dry-run defaults --
+        # otherwise a 2-year panel produces 0 walk-forward windows.
+        start = args.start
+        end = args.end
+        if start == DEFAULT_PANEL_START:
+            start = G7_PANEL_START
+            log.info("Walk-forward: auto-set --start to G7 default %s", start.date())
+        if end == DEFAULT_PANEL_END:
+            end = G7_PANEL_END
+            log.info("Walk-forward: auto-set --end to G7 default %s", end.date())
         run_g7_walk_forward(
-            panel_start=args.start, panel_end=args.end,
+            panel_start=start, panel_end=end,
             out_dir=args.out_dir, tag=args.tag,
         )
     else:

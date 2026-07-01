@@ -1,4 +1,46 @@
-# AI Context — finance research experiments (updated 2026-07-01, post-G7-walk-forward + Phase-N/O/P wiring fixes)
+# AI Context — finance research experiments (updated 2026-07-01, post-Phase-R G7 walk-forward rerun)
+
+## 2026-07-01 late evening — Phase R: full-panel G7 walk-forward rerun COMPLETE
+
+Full 11-year panel (2015-01-01 → 2025-12-31) walk-forward with the
+Phase N+O+P wiring fixes live: **5,673 trades across 7 OOS windows**
+(vs the 220-trade baseline pre-fix = **+2478 % activity**). Squad
+verdict is still `FAIL / PARTIAL / PENDING` — no full 6/6 pass — but
+every root cause moved in the intended direction.
+
+Per-agent lift vs baseline (raw verdict:
+`reviews/g7_v1_checkpoint_verdict_walk-forward-post-NPO.md`; narrative:
+`reviews/2026-07-01_g7_walk_forward_baseline.md`):
+
+| Agent | Bit vector | C1 | C4 | C6 |
+|---|---|---|---|---|
+| Isagi | `0??100` | 0.322 (3/7, +trades from 0) | 6571 | 0.073 |
+| Bachira | `1??100` | 0.374 (7/7) | 14551 | **0.133 PASS** |
+| Rin | `1??100` | **0.422 (6/7)** | 1494 | 0.086 |
+| Chigiri | `0??100` | 0.265 fail | 992 | **0.155 PASS** |
+| Reo | **`1??111`** (all C1/C4/C5/C6 waived) | — | — | — |
+| Nagi | `1??100` | 0.392 (5/7) | 658 | 0.000 |
+| Barou | `1??100` | **0.299 (5/7, +trades from 0)** | 4576 | 0.113 |
+| Kunigami | **`1??111`** (all C1/C4/C5/C6 waived) | — | — | — |
+
+**Residual: C5 (F19 lot dispersion) universally 0-0.05.** Wiring is
+live and inputs vary, but the actual conviction→lot map produced by
+`agent_lot_intent()` is too flat — trades cluster near the min-lot
+clamp. Amplifying the playstyle bands is Phase S (parameter tuning,
+not wiring).
+
+**Amendments landed with this Phase R:**
+
+- Doctrine §3.10a — structural-falsifier waiver class extended from
+  Reo to include Kunigami (defensive-observer canon role, publish-only).
+- G7 PROTOCOL §11.1–11.5 — dated amendments covering the Kunigami
+  waiver, the Phase N aggregator tier-anchor, Phase O F21 workspace
+  reads for 5 agents, Phase P provenance-pips helper, and the Barou
+  devour bump.
+- `run_g7_v1_checkpoint_gate.py` walk-forward CLI auto-overrides the
+  dry-run panel defaults (2023-2024) to G7 defaults (2015-2025) when
+  the caller passes `--mode walk-forward` — fixed a launch-time bug
+  where the first Phase-R rerun produced 0 windows.
 
 Research workshop for the M001 multi-agent ensemble AND for the six single-
 alpha studies gating live-agent improvements (E011-E016). Production

@@ -559,6 +559,37 @@ Two orthogonal layers:
 | **Canon role** (weapon, ego, preferred coordinate type, narrative voice, target hold) | A priori, from Blue Lock canon | Fixed at Φ0 |
 | **Information tier** (reads ledger? Y/N, scope of reads) | Empirically, from ΔInfo measurement | Reviewed each phase gate |
 
+### 3.10a Structural-falsifier waiver class (2026-07-01 amendment)
+
+Some canon roles are *observers* rather than *proposers*. Their
+`intend()` returns None by design; their contribution is the
+publish-side of the workspace (mirror Thoughts, warning Thoughts, HRP
+weight-vectors) rather than an executed trade. Evaluating them on
+trade-driven criteria (C1 TQS, C5 lot dispersion, C6 risk-shape
+dispersion) is a category error: there are no trades to score.
+
+Two agents currently qualify:
+
+- **A5 Reo (copier_hrp).** Publishes a mirror Thought every tick
+  carrying an HRP-weighted mixture of top-K peer intents. His weapon
+  is the *reasoning-workspace signal*, not the trade.
+- **A10 Kunigami (defensive observer).** Publishes a warning Thought
+  every tick with the current anti-tilt state (loss-streak count,
+  overconfidence flag). His weapon is the *risk-state broadcast*, not
+  the trade.
+
+Both are waived on C1/C5/C6 (never proposes → nothing to measure) and
+on C4's read requirement (workspace *is* their weapon; they don't need
+to read it). They must still satisfy C4's publish requirement
+(`publish_count > 0` in ≥ 5 of 7 OOS windows) — publishing IS their
+v1 evidence.
+
+Waived criteria count as passes for the squad-level v1 tally in
+`is_v1_pass`. Any *new* agent claiming a structural-falsifier waiver
+must be added to this list explicitly, with a canon-role justification
+recorded in `05-agent-roster-v0.md` and a matching row in the
+evolution ledger.
+
 A Tier-3 Bachira still has Bachira's improvisational identity in
 narrative + tags + weapon — he just doesn't read peers' thoughts
 during decision. Both Bachira-isolated and Bachira-informed are

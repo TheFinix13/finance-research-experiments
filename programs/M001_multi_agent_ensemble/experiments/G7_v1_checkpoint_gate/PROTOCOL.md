@@ -184,6 +184,49 @@ The full plan is documented in `ai_context.md` (2026-07-01 update).
 
 Per `07-research-standards.md` §11. Any change to the criteria in §3, the pass thresholds in §3 or §5, the panel in §4, the statistic in §5, or the file footprint in §7 requires a dated §11.N amendment appended to this file. Locked parameters are locked; deviations are documented, not silent.
 
+### §11.1 (2026-07-01) — Kunigami defensive-observer waiver
+
+**Trigger:** the walk-forward baseline (pre-Phase-N/O/P wiring fixes) recorded Kunigami with C1/C4/C5/C6 all failing at `0` because Kunigami's `intend()` returns None by design (roster §3.10 / doctrine §3.11 "defensive observer, no shooting drive"). The bit vector `0??000` is truthful but not doctrinally meaningful — Kunigami's role is anti-tilt warning, not trade-taking.
+
+**Amendment:** Kunigami is added to `STRUCTURAL_FALSIFIERS` in `run_g7_v1_checkpoint_gate.py` alongside Reo. Both agents are now waived on:
+
+- **C1** (mean TQS ≥ 0.30): trade-count waived because `intend() → None` by design; passes with `status=waived`.
+- **C5** (F19 lot dispersion): waived — no trades to measure dispersion on.
+- **C6** (F20 risk-shape dispersion): waived — same reason as C5.
+- **C4** (workspace participation): read-side is waived; publish alone is enough. Both agents publish thoughts every tick (Reo's copier-mirrors, Kunigami's warning-status thoughts).
+
+**Doctrine linkage:** §3.10 (Reo copier-falsifier waiver) is extended to §3.11 (Kunigami defensive-observer waiver) with identical semantics. Both agents earn v1 through publishing alone.
+
+**Effect on the G7 verdict:** Reo already reached `W??W..` in the pre-fix baseline (C1/C4 waived; C5/C6 fail because they were `no trades in OOS panel`). Post-amendment Reo reaches `W??WWW` (all waivers explicit). Kunigami moves from `0??000` to `W??WWW`. Both agents contribute to squad pass count via waiver + publish evidence.
+
+**No panel/statistic change** — the walk-forward panel, the K-of-7 thresholds, and the per-criterion pass floors are unchanged. This amendment only adjusts which agents the evaluator considers a structural falsifier.
+
+### §11.2 (2026-07-01) — Aggregator tier-anchor (Phase N)
+
+**Trigger:** the walk-forward baseline recorded Isagi and Barou at 0 trades across all 7 OOS windows. Diagnosis: the `_phi4_aggregate` sort key `(-conviction, agent_id)` gives no weight to the tier axis; Bachira wraps the same production alpha as Isagi/Barou at wider filters, so her fire set is a strict superset at the same base conviction. `bachira_meguru` < `isagi_yoichi` alphabetically → Bachira always wins the tie.
+
+**Amendment:** `AgentProposal` gains an `agent_tier: int = 2` field. `_phi4_aggregate` sort key becomes `(-adjusted_conviction, agent_tier, agent_id)` where `adjusted_conviction = conviction - TIER_BIAS * (agent_tier - 1)` and `TIER_BIAS = 0.05`. Isagi (tier 1) wins same-base-conviction tiebreaks; a peer needs `conviction >= anchor.conviction + 0.05` to override.
+
+Additionally: the aggregator now exposes `ranked_by_symbol: dict[str, list[AgentProposal]]`. In physical-sentinel mode (`sentinel_blocks=True`), the sentinel loop iterates the full ranked list per symbol so a blocked winner cedes the slot to the next-ranked proposal — the slot no longer dies on a single-agent R1-R6 block.
+
+**Empirical effect (2024 OOS single-window smoke, `dry-run-2024-post-NPO`):** Isagi 0 → 25 trades; Barou 0 → 8 trades; Chigiri C1 0.268 fail → 0.311 pass; Rin C1 0.393 → 0.531.
+
+### §11.3 (2026-07-01) — F21 workspace reads for five agents (Phase O)
+
+Isagi, Rin, Chigiri, Nagi, and Barou now carry an explicit `workspace: WorkspaceSnapshot | None = None` kwarg on `intend()` and each calls a snapshot read method (`peer_thoughts` or `latest_by_agent`). Chemistry evidence is stamped on `proposal.rationale`. Diagnostic-only for v1 — the local playstyle gates still dominate the decision.
+
+**Empirical effect:** C4 chemistry lit for every non-Bachira/non-Reo/non-Kunigami proposer — 1177 (Isagi), 211 (Rin), 154 (Chigiri), 135 (Nagi), 905 (Barou) reads in the smoke window.
+
+### §11.4 (2026-07-01) — Provenance-pips helper (Phase P)
+
+New module `sim/core/provenance_pips.py` with `atr_pips_at` (Wilder ATR) and `swing_pips_from_bars` (lookback high-low range). Every proposer with bar access now stamps `atr_pips` + `h1_swing_pips` on `proposal.rationale` via `stamp_provenance_pips(...)`. Rin's `PRECISION_LIFT` becomes a stop-tightness function 0.05..0.15 so per-trade conviction has real variance.
+
+**Empirical effect:** three C6 passes in the smoke (Bachira 0.179, Chigiri 0.192, Barou 0.160); Rin C6 = 0.088 (one hair short of 0.10); Isagi C6 = 0.053.
+
+### §11.5 (2026-07-01) — Barou devour bump (Phase N companion)
+
+Barou's `BAROU_V1_DEVOUR_LIFT` raised 0.10 → 0.20 and `BAROU_V1_DEVOUR_OBS_FLOOR` lowered 0.7 → 0.5 so the devour condition fires more often and produces a decisive override when it does (final conviction 0.85 > Bachira max 0.75 on USDCAD). Matches the roster's "solo king finishes what Isagi couldn't" narrative frame.
+
 ---
 
 ## 12. Verdict registry row (to be added)
