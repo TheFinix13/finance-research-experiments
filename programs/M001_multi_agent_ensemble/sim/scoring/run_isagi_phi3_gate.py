@@ -114,6 +114,13 @@ class TradeRecord:
     source_sl_pips: float | None = None
     source_atr_pips: float | None = None
     source_h1_swing_pips: float | None = None
+    # Phase U (2026-07-01, added for shadow ledger correlation) --
+    # the tick_id at which the winning proposal fired. Lets us pair
+    # executed TradeRecord with its shadow counterpart on the same
+    # tick_id + agent_id so `aggregate_shadow_by_agent` can compute
+    # the shadow-vs-executed Pearson correlation (systematic-bias
+    # check). Optional so pre-existing constructors keep working.
+    source_tick_id: int | None = None
 
 
 @dataclass

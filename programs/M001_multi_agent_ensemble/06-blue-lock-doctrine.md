@@ -1187,6 +1187,110 @@ still apply *after* the agent's cognition:
 The agent's cognition is *not* a Sentinel override; it is the *first
 line* of risk decision. The Sentinel is the last line.
 
+### 4.1b Phase U — Shadow ledger (diagnostic-only, 2026-07-01 amendment)
+
+The `TradeRecord` stream captures who WON the aggregator on each
+tick — a striker-record view. But that stream cannot distinguish an
+agent whose alpha is bad (retire) from an agent whose alpha is fine
+but whose slot is crowded by a peer with a stronger signal
+(evolve). The shadow ledger closes that gap without touching the
+v1 checkpoint criteria.
+
+**Blue-Lock canon frame.** In the 2nd and 3rd selection matches,
+scouts credit players who *read* plays that ended in goals, even
+when they weren't the striker who scored. Bachira's misdirection
+setting up Isagi at the 3rd selection, Nikki's read of Sae's
+backspin at U20 — the read is a measurable skill separate from the
+finish. Rin and Isagi in the U-20 vs Blue-Lock arc explicitly
+devour each other: Rin's precision forced Isagi to sharpen
+metavision, Isagi's Neo-Egoist reads pushed Rin toward one-touch
+play. They *need* each other's presence to evolve. The shadow
+ledger is the scouting record that lets us see that evolution
+happening even when only one of them holds the striker slot on a
+given tick.
+
+**Primitive.** For every proposal produced by any agent on any
+tick — accepted or rejected — the sim optionally emits one
+`ShadowTradeRecord` (`sim/scoring/shadow_ledger.py`). The record is
+produced by re-running the proposal through the same
+`_open_trade_from_proposal` + `_check_exit` engine as executed
+trades, on the same symbol's bar stream, in isolation from the
+per-symbol single-position rule and the R6 total-risk cap. Each
+record carries an attribution provenance triple:
+
+- `is_shadow: True` — always, for records in the shadow stream.
+- `proposal_tick_id` — the tick the proposal fired on; used to join
+  back to `TradeRecord.source_tick_id` for the executed twin.
+- `rejection_reason` — the aggregator's routing verdict:
+  `"accepted_by_aggregator"` when the proposal also became a real
+  trade, `"aggregator_lower_conviction"` when it lost the
+  tie-break, or a Sentinel `sentinel_*_block` string when the R-rule
+  vetoed it.
+
+**Alpha-attribution signal.** Per-agent, split shadow-TQS into two
+subsets:
+
+- **shadow-TQS-when-accepted** — score for proposals that also
+  executed. Equals executed-TQS by construction (same fill/exit
+  simulation), so this subset is the *calibration proof* of the
+  shadow simulator, not a new signal. If the two disagree, the
+  shadow simulator has a bug and every downstream inference on
+  rejected proposals is untrustworthy.
+- **shadow-TQS-when-rejected** — score for proposals the
+  aggregator sidelined. THIS is the alpha attribution signal.
+
+The delta `mean(rejected) − mean(accepted)` for the same agent
+tells us whether their crowding-out is a design feature or a
+routing bug:
+
+| Delta sign | Interpretation | Implication for the agent |
+|---|---|---|
+| Strongly negative (≤ −0.10) | Aggregator picks winners; rejected proposals are genuinely worse than accepted. | Crowding-out is a design feature. The mechanic is fine; the routing is correct. |
+| ~ 0 | Aggregator's tie-break is random with respect to trade quality. | Alpha is real but routed away. Evolve the mechanic toward a peer-disagreement or regime-specialist role that fires *when the peer's signal is absent*, not on the same signal. |
+| Strongly positive (≥ +0.10) | Aggregator picks the wrong winners; rejected proposals were the better trades. | Routing bug. Fix the tier bias / conviction lift / regime_fit weighting in the aggregator itself before touching the agent. |
+
+**Diagnostic-only for v1.** Shadow-TQS never moves an agent's
+§3.11.5 6-bit `bachira/isagi/rin/…` vector. All six criteria remain
+scored on **executed** trades. Shadow-TQS is emitted as an
+appendix on every G7 verdict (`shadow_by_agent` JSON block +
+"Phase U — Shadow ledger" markdown section). Any use of shadow-TQS
+for a promotion decision (Φ5 Arm 4 K=2 multi-position lift,
+Reo's HRP mixture inputs when peers have zero executed trades)
+must be declared as its own doctrine amendment.
+
+**Systematic bias.** Shadow trades face no inter-symbol R6 cap, no
+R4 concentration cap, no per-symbol single-position rule. Raw
+shadow-TQS is therefore biased upward relative to executed-TQS by
+a constant (both the accepted and rejected subsets suffer the same
+upward bias, so the DELTA is unbiased). The raw mean shadow-TQS
+column in the verdict markdown is context, not the signal — the
+signal is always the accepted-vs-rejected delta for the same agent.
+
+**Research-grade per-trade quality metrics.** In addition to the
+TQS composition inherited from `sim/scoring/tqs.py`
+(`R^0.7 × efficiency × time_score × cleanliness × beauty_bonus`),
+each `ShadowTradeRecord` carries three explicit metrics drawn from
+the quant literature:
+
+- `entry_efficiency = 1 - MAE / (MAE + initial_risk)` — Kaufman
+  and Sweeney entry-quality proxy. In [0, 1]. 1.0 = never went
+  against the position; 0.0 = trade immediately underwater by more
+  than the initial risk.
+- `exit_efficiency = pnl / max(MFE, 1)` — Kaufman exit-quality
+  proxy. In (−∞, 1]. 1.0 = captured the peak; 0.0 = closed at
+  breakeven despite favourable excursion; negative = closed at loss
+  despite favourable excursion (nursed a bad exit).
+- `friction_ratio = |commission| / max(|pnl|, 1)` — Almgren-Chriss
+  implementation-shortfall proxy (retail forex has no material
+  market impact, so we approximate as commission-over-pnl). Small
+  (< 0.05) means costs are negligible; large (> 0.20) means the
+  trade barely covered its own costs.
+
+These three complement the existing TQS composition; they are
+per-trade values, aggregated to per-agent means on the shadow
+aggregate. Reproducibility is captured via the per-window CV of
+shadow-TQS across the walk-forward panel.
+
 ### 4.2 The Sentinel (Q-doc-5 resolution)
 
 A non-character architectural role. Blue Lock has no canonical

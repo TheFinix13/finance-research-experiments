@@ -756,10 +756,13 @@ def run_g7_dry_run(
         bars_by_symbol=bars_by_symbol, ledger=ledger,
         sentinel_blocks=True,
         use_workspace=True,     # F21 threading for G7 C4
+        use_shadow_ledger=True,  # Phase U -- diagnostic-only counterfactuals
     )
     log.info(
-        "G7 dry-run replay complete: %d thoughts, %d proposals, %d trades",
+        "G7 dry-run replay complete: %d thoughts, %d proposals, %d trades, "
+        "%d shadow_trades",
         len(out.thoughts), len(out.proposals_all), len(out.trades),
+        len(out.shadow_trades),
     )
 
     # Slice trades to the OOS window (dry-run uses only OOS for criteria).
@@ -804,12 +807,22 @@ def run_g7_dry_run(
         "(PROTOCOL sec 8 stop rule #2 -- ~ 32h batch)"
     )
 
+    # Phase U shadow-ledger (dry-run has one OOS window).
+    shadow_by_agent_json = _build_shadow_by_agent(
+        out.shadow_trades,
+        executed_trades=oos_trades,
+        window_bounds=[(0, oos_start, oos_end)],
+    )
+
     # Emit artefacts.
     if out_dir is not None:
         odir = Path(out_dir)
         odir.mkdir(parents=True, exist_ok=True)
         md_path = odir / f"g7_v1_checkpoint_verdict_{tag}.md"
-        md_path.write_text(render_g7_report(report), encoding="utf-8")
+        md_body = render_g7_report(report)
+        if shadow_by_agent_json:
+            md_body += "\n\n" + _render_shadow_section(shadow_by_agent_json)
+        md_path.write_text(md_body, encoding="utf-8")
         log.info("Wrote %s", md_path)
         for aid, v in report.per_agent.items():
             json_path = odir / f"g7_v1_checkpoint_{aid}_{tag}.json"
@@ -818,8 +831,16 @@ def run_g7_dry_run(
                 encoding="utf-8",
             )
         summary_path = odir / f"g7_v1_checkpoint_report_{tag}.json"
+        json_payload = report.to_jsonable()
+        if shadow_by_agent_json:
+            json_payload["shadow_by_agent"] = shadow_by_agent_json
+            json_payload["shadow_note"] = (
+                "Phase U shadow ledger. DIAGNOSTIC ONLY -- never moves the "
+                "v1 bit vector. See G7 PROTOCOL §11.7 and doctrine §4.1a "
+                "Phase U amendment."
+            )
         summary_path.write_text(
-            json.dumps(report.to_jsonable(), indent=2, default=str),
+            json.dumps(json_payload, indent=2, default=str),
             encoding="utf-8",
         )
         log.info("Wrote %s", summary_path)
@@ -1027,10 +1048,13 @@ def run_g7_walk_forward(
         bars_by_symbol=bars_by_symbol, ledger=ledger,
         sentinel_blocks=True,
         use_workspace=True,
+        use_shadow_ledger=True,  # Phase U -- diagnostic-only counterfactuals
     )
     log.info(
-        "G7 walk-forward replay complete: %d thoughts, %d proposals, %d trades",
+        "G7 walk-forward replay complete: %d thoughts, %d proposals, "
+        "%d trades, %d shadow_trades",
         len(out.thoughts), len(out.proposals_all), len(out.trades),
+        len(out.shadow_trades),
     )
 
     # Crash-proof: dump replay output to disk IMMEDIATELY, before any
@@ -1120,20 +1144,179 @@ def run_g7_walk_forward(
         f"squads (C2/C3) NOT run in this pass -- separate compute job"
     )
 
+    # Phase U shadow-ledger aggregation (diagnostic-only).
+    shadow_by_agent_json = _build_shadow_by_agent(
+        out.shadow_trades,
+        executed_trades=out.trades,
+        window_bounds=[
+            (w.idx, w.oos_start, w.oos_end) for w in windows
+        ],
+    )
+
     # Emit reports.
     if out_dir is not None:
         odir = Path(out_dir)
         odir.mkdir(parents=True, exist_ok=True)
         md_path = odir / f"g7_v1_checkpoint_verdict_{tag}.md"
-        md_path.write_text(render_g7_report(report), encoding="utf-8")
+        md_body = render_g7_report(report)
+        if shadow_by_agent_json:
+            md_body += "\n\n" + _render_shadow_section(shadow_by_agent_json)
+        md_path.write_text(md_body, encoding="utf-8")
         log.info("Wrote %s", md_path)
         summary_path = odir / f"g7_v1_checkpoint_report_{tag}.json"
+        json_payload = report.to_jsonable()
+        if shadow_by_agent_json:
+            json_payload["shadow_by_agent"] = shadow_by_agent_json
+            json_payload["shadow_note"] = (
+                "Phase U shadow ledger. DIAGNOSTIC ONLY -- never moves the "
+                "v1 bit vector. See G7 PROTOCOL §11.7 and doctrine §4.1a "
+                "Phase U amendment."
+            )
         summary_path.write_text(
-            json.dumps(report.to_jsonable(), indent=2, default=str),
+            json.dumps(json_payload, indent=2, default=str),
             encoding="utf-8",
         )
         log.info("Wrote %s", summary_path)
     return report
+
+
+def _build_shadow_by_agent(
+    shadow_trades: list,
+    *,
+    executed_trades: list,
+    window_bounds: list[tuple[int, datetime, datetime]],
+) -> dict[str, dict]:
+    """Aggregate shadow trades into per-agent scouting summaries.
+
+    Extracted helper so dry-run and walk-forward emission share the same
+    Phase U shadow-ledger pipeline. Returns ``{}`` when no shadow trades
+    were produced (e.g. driver run with `use_shadow_ledger=False` or a
+    zero-proposal window).
+    """
+    if not shadow_trades:
+        return {}
+    try:
+        from programs.M001_multi_agent_ensemble.sim.scoring.shadow_ledger import (  # noqa: E501
+            aggregate_shadow_by_agent as _agg_shadow,
+        )
+    except Exception as exc:  # noqa: BLE001
+        log.warning("Phase U shadow import failed (%s)", exc)
+        return {}
+
+    try:
+        window_of_tick: dict[int, int] = {}
+        for w_idx, oos_start, oos_end in window_bounds:
+            for t in executed_trades:
+                if oos_start <= t.entry_time < oos_end:
+                    tid = int(getattr(t, "source_tick_id", 0) or 0)
+                    if tid:
+                        window_of_tick[tid] = int(w_idx)
+            for sh in shadow_trades:
+                if oos_start <= sh.entry_time < oos_end:
+                    window_of_tick[int(sh.proposal_tick_id)] = int(w_idx)
+        executed_by_agent_tick: dict[tuple[str, int], float] = {}
+        for t in executed_trades:
+            tick = int(getattr(t, "source_tick_id", 0) or 0)
+            if tick > 0:
+                tqs_val = float((t.tqs_components or {}).get("tqs", 0.0))
+                executed_by_agent_tick[(t.agent_id, tick)] = tqs_val
+        aggs = _agg_shadow(
+            shadow_trades,
+            executed_by_agent_tick=executed_by_agent_tick,
+            window_of_tick=window_of_tick,
+        )
+        log.info(
+            "Phase U shadow ledger: %d shadow trades across %d agents",
+            len(shadow_trades), len(aggs),
+        )
+        return {aid: agg.to_jsonable() for aid, agg in aggs.items()}
+    except Exception as exc:  # noqa: BLE001
+        log.warning(
+            "Phase U shadow aggregation failed (%s); verdict still valid "
+            "without shadow columns",
+            exc,
+        )
+        return {}
+
+
+def _render_shadow_section(shadow_by_agent: dict[str, dict]) -> str:
+    """Markdown section for Phase U shadow ledger -- diagnostic only."""
+    lines: list[str] = []
+    lines.append("## Phase U -- Shadow ledger (DIAGNOSTIC ONLY)")
+    lines.append("")
+    lines.append(
+        "Per-agent counterfactual scouting record. Each row is what the "
+        "agent's proposals would have produced if run in isolation on "
+        "their symbol -- **not** what actually executed. Shadow-TQS is "
+        "systematically over-optimistic (no inter-symbol R6 competition, "
+        "no aggregator tie-break, no per-symbol single-position rule), so "
+        "the alpha-attribution signal is the **accepted-vs-rejected TQS "
+        "delta** for the same agent, not the raw shadow-TQS value. See "
+        "G7 PROTOCOL §11.7 amendment."
+    )
+    lines.append("")
+    lines.append(
+        "| Agent | N shadow | Wins | Shadow-TQS | Shadow R | Win rate | "
+        "Window CV | TQS accepted | TQS rejected | Delta (rej-acc) |"
+    )
+    lines.append(
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|"
+    )
+    order = [
+        "isagi_yoichi", "bachira_meguru", "itoshi_rin", "chigiri_hyoma",
+        "reo_mikage", "nagi_seishiro", "barou_shoei", "kunigami_rensuke",
+    ]
+    for aid in order:
+        if aid not in shadow_by_agent:
+            continue
+        row = shadow_by_agent[aid]
+        acc = row.get("mean_shadow_tqs_when_accepted")
+        rej = row.get("mean_shadow_tqs_when_rejected")
+        acc_s = "n/a" if acc is None else f"{acc:.3f}"
+        rej_s = "n/a" if rej is None else f"{rej:.3f}"
+        if acc is not None and rej is not None:
+            delta_s = f"{rej - acc:+.3f}"
+        else:
+            delta_s = "n/a"
+        lines.append(
+            f"| `{aid}` | {row['n_shadow_trades']:d} | "
+            f"{row['n_shadow_wins']:d} | "
+            f"{row['mean_shadow_tqs']:.3f} | "
+            f"{row['mean_shadow_r_multiple']:+.3f} | "
+            f"{row['win_rate']:.3f} | "
+            f"{row['per_window_cv_tqs']:.3f} | "
+            f"{acc_s} | {rej_s} | {delta_s} |"
+        )
+    lines.append("")
+    lines.append(
+        "**Reading this table.** For each agent, the ``Delta (rej-acc)`` "
+        "column is the routing-quality signal:"
+    )
+    lines.append("")
+    lines.append(
+        "- **Delta strongly negative** (e.g. -0.10 or worse) -> the "
+        "aggregator is picking real winners and rejecting real losers. "
+        "The agent's crowding-out is a design feature, not a bug."
+    )
+    lines.append(
+        "- **Delta ~ 0** -> the aggregator's tie-break is picking at "
+        "random with respect to trade quality. The agent's alpha is real "
+        "but routed away; consider Phase T-style peer-disagreement or "
+        "regime-specialist role."
+    )
+    lines.append(
+        "- **Delta strongly positive** -> the aggregator is picking the "
+        "wrong winners. Rejected proposals were actually the better "
+        "trades. This would be a routing bug, not a design decision."
+    )
+    lines.append("")
+    lines.append(
+        "**Reproducibility check.** Window CV > 0.30 flags an agent "
+        "whose shadow alpha only shows up in specific windows -- "
+        "regime-conditional, not stable."
+    )
+    lines.append("")
+    return "\n".join(lines)
 
 
 def main(argv: Optional[list[str]] = None) -> int:

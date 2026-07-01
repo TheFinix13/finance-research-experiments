@@ -303,6 +303,91 @@ now includes the `regime_fit_from_atr` mapping as its
 "per-bar-regime input" and the "no kelly on the sandbox scale"
 rationale for the two playstyle changes.
 
+### §11.7 (2026-07-01 evening) — Phase U: Shadow ledger (diagnostic only)
+
+**Trigger:** the Phase S walk-forward rerun revealed that
+`itoshi_rin` regressed to **0 trades / 7 windows** because Isagi's
+new metavision peer-alignment lift consistently wins the aggregator
+tie-break on the shared `SupplyDemandAlpha` signal. That C1 = 0
+would ordinarily fail Rin on the v1 bit vector, but the executed
+ledger alone can't tell us whether Rin's alpha is bad (retire) or
+her routing is bad (evolve). The user's directive: measure the
+hypotheticals — every proposal, accepted or rejected, run through
+the fill/exit engine in isolation, so we score the *scouting* skill
+independently of the *striker* slot. Blue-Lock canon: agents who
+READ plays that end in goals get credit even when someone else
+scored, exactly like the 2nd/3rd selection scouting reports.
+
+**Amendment (Phase U wiring):**
+- **`sim/scoring/shadow_ledger.py`** — new module.
+  `shadow_evaluate_proposal(...)` re-runs any proposal through
+  `_open_trade_from_proposal` + `_check_exit` on
+  `symbol_bars[i_open+1..i_open+30]`, producing a
+  `ShadowTradeRecord` that mirrors `TradeRecord` field-for-field
+  plus attribution provenance (`is_shadow`, `rejection_reason`,
+  `proposal_tick_id`) and three research-grade quality metrics
+  from the quant literature: `entry_efficiency` (Kaufman/Sweeney,
+  `1 - MAE / (MAE + initial_risk)`), `exit_efficiency`
+  (`pnl / max(MFE, 1)`), `friction_ratio`
+  (Almgren-Chriss proxy, `|commission| / max(|pnl|, 1)`).
+- **`_drive_squad_replay`** gains an opt-in `use_shadow_ledger=True`
+  flag. When on, every accepted **and** rejected proposal produces
+  one `ShadowTradeRecord` in `out.shadow_trades`. Default is OFF
+  to preserve Φ4/Φ4.1 sealed-verdict replay fidelity.
+- **`aggregate_shadow_by_agent(...)`** produces per-agent scouting
+  aggregates split into two subsets: shadow-TQS **when accepted**
+  (calibration baseline; equals executed-TQS by construction) and
+  shadow-TQS **when rejected** (the actual alpha attribution
+  signal). The **delta (rejected − accepted)** is the routing-
+  quality signal:
+    - **strongly negative** (≤ −0.10) → aggregator picked winners;
+      crowding-out is a design feature.
+    - **~ 0** → aggregator's tie-break is random with respect to
+      trade quality; agent's alpha is real but routed away; a
+      Phase T-style peer-disagreement or regime-specialist role
+      is warranted.
+    - **strongly positive** (≥ +0.10) → aggregator picked wrong
+      winners; rejected proposals were better; a routing bug.
+- **`ShadowAggregate`** also reports per-window CV (reproducibility)
+  and per-symbol shadow-TQS spread (symbol-robustness). Full JSON
+  schema in `shadow_ledger.py`.
+
+**Diagnostic-only guarantee.** For v1, the shadow ledger CANNOT move
+any agent's 6-bit `bachira/isagi/rin/…` vector. Every criterion
+C1..C6 remains scored on **executed** trades. Shadow-TQS is emitted
+as an appendix (`shadow_by_agent` block in the JSON verdict +
+"Phase U — Shadow ledger" markdown section). Any use of shadow-TQS
+for promotion (e.g. Φ5 Arm 4 K=2 multi-position lifting) must be
+declared as a follow-up amendment (§11.X).
+
+**Systematic bias note.** Shadow trades never face inter-symbol R6
+total-risk cap, R4 concentration cap, or per-symbol single-position
+rule; they're isolated. This is a known upward bias in raw
+shadow-TQS. The bias is corrected implicitly by comparing
+**accepted vs rejected** for the same agent (both subsets suffer
+the same upward bias), which is why the delta is the actual signal
+and the raw mean shadow-TQS is context only.
+
+**Doctrine linkage:** §4.1a amended in parallel to declare
+Phase U diagnostic-only and to reference the Blue-Lock canon frame
+for "scouting record vs striker record".
+
+**Empirical seed (from 2024 OOS dry-run,
+tag `phase-u-smoke2`):**
+
+| Agent | N shadow | TQS acc | TQS rej | Δ (rej-acc) | Reading |
+|---|---:|---:|---:|---:|---|
+| Isagi | 1177 | 0.324 | 0.249 | −0.075 | aggregator picks winners |
+| Bachira | 2772 | 0.330 | 0.327 | −0.003 | tie-break random for her |
+| Rin | 211 | n/a | 0.254 | n/a | 0 accepted -- crowded out |
+| Chigiri | 154 | 0.188 | 0.253 | +0.065 | rejected > accepted (routing bug) |
+| Nagi | 135 | 0.282 | n/a | n/a | 0 rejected (all his fire) |
+| Barou | 905 | 0.288 | 0.315 | +0.027 | mild routing bug |
+
+The Rin `n/a` and Chigiri positive delta are the two Phase-T-relevant
+signals; the full 7-window walk-forward rerun will register the
+locked numbers.
+
 ---
 
 ## 12. Verdict registry row (to be added)

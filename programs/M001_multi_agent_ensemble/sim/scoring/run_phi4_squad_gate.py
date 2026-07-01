@@ -135,6 +135,9 @@ from programs.M001_multi_agent_ensemble.sim.scoring.run_isagi_phi3_gate import (
     _update_excursion,
     _window_starts,
 )
+from programs.M001_multi_agent_ensemble.sim.scoring.shadow_ledger import (
+    shadow_evaluate_proposal,
+)
 from programs.M001_multi_agent_ensemble.sim.scoring.tqs import compute_tqs
 
 log = logging.getLogger(__name__)
@@ -351,6 +354,15 @@ class SquadRunOutput:
     # G7 C4 correctly fails for agents that never read the workspace.
     workspace_publish_counts: dict[str, int] = field(default_factory=dict)
     workspace_read_counts: dict[str, int] = field(default_factory=dict)
+    # Phase U shadow ledger (2026-07-01) -- one ShadowTradeRecord per
+    # PROPOSAL (accepted + rejected), evaluated as if it were the only
+    # trade on its symbol. Empty in default `use_shadow_ledger=False`
+    # mode. Populated when the driver runs with `use_shadow_ledger=True`
+    # so G7 reporting can compute per-agent shadow-TQS bit vectors and
+    # the shadow-vs-executed Pearson correlation. Kept as `list[Any]`
+    # here to avoid an import cycle into shadow_ledger.py at module top;
+    # the actual element type is `ShadowTradeRecord`.
+    shadow_trades: list[Any] = field(default_factory=list)
 
 
 class _AgentScopedSnapshot:
@@ -424,6 +436,7 @@ def _drive_squad_replay(
     warmup_bars: int = WARMUP_BARS,
     sentinel_blocks: bool = False,
     use_workspace: bool = False,
+    use_shadow_ledger: bool = False,
 ) -> SquadRunOutput:
     """End-to-end Phi4 squad replay driver.
 
@@ -448,6 +461,16 @@ def _drive_squad_replay(
     baseline reproduction: sealed verdicts must always run with the
     workspace OFF, otherwise Bachira's peer-confluence lift shifts the
     trade set. G7 harness passes ``use_workspace=True``.
+
+    Phase U shadow ledger (2026-07-01, added for G7 alpha attribution).
+    Pass ``use_shadow_ledger=True`` to run every proposal (accepted +
+    rejected) through the production fill/exit engine in isolation on
+    its symbol. Produces one ``ShadowTradeRecord`` per proposal in
+    ``out.shadow_trades``, enabling per-agent shadow-TQS aggregates
+    and shadow-vs-executed correlation checks. Diagnostic-only for v1
+    (never moves the v1 bit vector); see doctrine §4.1a Phase U
+    amendment and G7 PROTOCOL §11.7. Default OFF preserves Phi4/4.1
+    reproduction fidelity.
     """
     out = SquadRunOutput()
     global_bars = _interleave_bars(bars_by_symbol)
@@ -645,6 +668,35 @@ def _drive_squad_replay(
         out.proposals_accepted.extend(outcome.accepted)
         out.proposals_rejected.extend(outcome.rejected)
 
+        # Phase U shadow ledger: evaluate every proposal as if it were
+        # the only trade on its symbol. All proposals in this tick share
+        # `symbol == gb.symbol` (agents only propose on their eligible
+        # symbols and we're inside a per-bar per-symbol loop), so we can
+        # reuse the outer-loop `i_sym` as the entry index -- the shadow
+        # opens on `symbol_bars[i_sym + 1]`, same as executed trades.
+        if use_shadow_ledger:
+            accepted_ids = {id(p) for p in outcome.accepted}
+            for p in proposals_this_tick:
+                if id(p) in accepted_ids:
+                    reason = "accepted_by_aggregator"
+                else:
+                    reason = "aggregator_lower_conviction"
+                target_hh = 24.0
+                for a in eligible:
+                    if a.agent_id == p.agent_id:
+                        target_hh = float(a.canon_role.target_hold_hours)
+                        break
+                shadow_rec = shadow_evaluate_proposal(
+                    p,
+                    sorted_bars_by_symbol[symbol],
+                    i_sym,
+                    cfg,
+                    target_hold_hours=target_hh,
+                    rejection_reason=reason,
+                )
+                if shadow_rec is not None:
+                    out.shadow_trades.append(shadow_rec)
+
         # Sentinel wiring (Phi4.2 + Phase N slot-fallback, 2026-07-01).
         # In audit-only mode (sentinel_blocks=False) we evaluate the
         # single per-symbol winner and never open anything the sentinel
@@ -827,6 +879,7 @@ def _annotate_trade_record(
         source_h1_swing_pips=getattr(
             prod_trade, "_source_h1_swing_pips", None,
         ),
+        source_tick_id=getattr(prod_trade, "_source_tick_id", None),
     )
 
 

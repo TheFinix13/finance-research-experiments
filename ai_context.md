@@ -1,4 +1,72 @@
-# AI Context — finance research experiments (updated 2026-07-01, post-Phase-S G7 walk-forward rerun)
+# AI Context — finance research experiments (updated 2026-07-01, post-Phase-U shadow ledger + heartbeat monitor v2.1 fix)
+
+## 2026-07-01 night — Phase U: Shadow ledger + Blue-Lock scouting attribution
+
+Phase U ships the "scouting record" that lets us reason about
+Rin/Isagi crowding-out honestly. Every proposal (accepted or
+rejected) is now optionally re-run through the fill/exit engine in
+isolation, producing a `ShadowTradeRecord` in
+`sim/scoring/shadow_ledger.py`. Aggregated per-agent, the ledger
+reports **shadow-TQS-when-accepted** vs **shadow-TQS-when-rejected**
+plus their delta — that delta is the routing-quality signal.
+
+**Reading the delta:**
+- Delta ≤ −0.10 → aggregator picks winners; crowding-out is a
+  design feature.
+- Delta ~ 0 → routing is random with respect to trade quality;
+  agent's alpha is real but sidelined; Phase T-style evolution
+  warranted.
+- Delta ≥ +0.10 → routing bug; rejected proposals were the better
+  trades.
+
+**Blue-Lock canon frame** is now doctrine §4.1b: scouts credit
+players who READ plays that ended in goals, not just those who
+scored. Rin doesn't retire — she and Isagi evolve off each other,
+canon.
+
+**2024 OOS dry-run seed data:**
+
+| Agent | N shadow | TQS acc | TQS rej | Δ | Reading |
+|---|---:|---:|---:|---:|---|
+| Isagi | 1177 | 0.324 | 0.249 | −0.075 | aggregator picks winners |
+| Bachira | 2772 | 0.330 | 0.327 | −0.003 | tie-break random for her |
+| Rin | 211 | n/a | 0.254 | n/a | 0 accepted -- crowded out |
+| Chigiri | 154 | 0.188 | 0.253 | **+0.065** | rejected > accepted (routing bug) |
+| Nagi | 135 | 0.282 | n/a | n/a | all his fire (0 rejected) |
+| Barou | 905 | 0.288 | 0.315 | +0.027 | mild routing bug |
+
+**Also per-trade research-grade quality metrics** (Kaufman-Sweeney
+entry_efficiency, exit_efficiency, Almgren-Chriss friction_ratio)
+are stamped on every ShadowTradeRecord and aggregated to per-agent
+means alongside TQS. Full walk-forward rerun with Phase U wiring is
+the next compute job.
+
+**Amendments landed:**
+- Doctrine `06-blue-lock-doctrine.md` §4.1b — Phase U shadow
+  ledger, alpha-attribution signals, diagnostic-only guarantee,
+  research-grade quality metrics, Blue-Lock canon frame.
+- G7 PROTOCOL §11.7 — Phase U wiring + accepted-vs-rejected delta
+  interpretation + systematic-bias notes.
+- `sim/scoring/shadow_ledger.py` — new module (30 unit tests pass).
+- `sim/scoring/run_phi4_squad_gate.py` — `use_shadow_ledger` flag on
+  `_drive_squad_replay`, `SquadRunOutput.shadow_trades` field.
+- `sim/scoring/run_g7_v1_checkpoint_gate.py` — shadow aggregation +
+  markdown/JSON emission in both dry-run and walk-forward modes.
+- `sim/scoring/run_isagi_phi3_gate.py` — `TradeRecord.source_tick_id`
+  added for shadow<->executed pairing.
+
+**Also this session:** `brain-box/meta/tools/monitor_compute_jobs.py`
+v2.1 resilience fix. Root-caused the silent monitor death that let
+Phase R + Phase S walk-forward runs proceed with only `session_start`
+in the JSONL. Cause: `_ps_sample` caught only
+`CalledProcessError`; sandboxed `ps` failures raise `OSError` which
+killed the monitor silently. Fix: broaden exception surface, add
+`os.kill(pid, 0)` aliveness fallback, wrap main loop in
+try/except, ignore degraded samples in STALLED classifier. Full
+history entry in `agents/heartbeat-monitor.md`. Committed as
+`brain-box@91e8ced`.
+
+Sim suite: 528 passed / 4 skipped (+30 Phase U shadow ledger tests).
 
 ## 2026-07-01 night — Phase S: F19 variance amplification + Isagi breakthrough
 
