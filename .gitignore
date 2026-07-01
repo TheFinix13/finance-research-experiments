@@ -20,3 +20,7 @@ programs/M001_multi_agent_ensemble/sim/regime/model_v1.pkl
 programs/M001_multi_agent_ensemble/sim/regime/model_v1.pkl.manifest.json
 programs/M001_multi_agent_ensemble/sim/output/
 
+# Compute-job heartbeat files (per-machine, regenerated each session)
+programs/M001_multi_agent_ensemble/reviews/compute_heartbeat.log
+programs/M001_multi_agent_ensemble/reviews/compute_heartbeat.jsonl
+

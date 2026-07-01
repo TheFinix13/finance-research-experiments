@@ -581,6 +581,7 @@ def run_phi41_gate(
     write_jsonl: bool = True,
     sentinel_blocks: bool = False,
     tag: str = "audit",
+    parallel_arms: int = 1,
 ) -> SquadGateReport:
     """Run the Φ4.1 expanded-squad gate end-to-end.
 
@@ -691,27 +692,73 @@ def run_phi41_gate(
     # produces 0 trades -- documented as a structural Tier-2 marker.
     delta_results: dict[str, DeltaInfoResult] = {}
     sampled_windows = _sample_windows(windows, n=delta_info_windows)
-    for candidate_id, candidate_class in F17_CANDIDATES:
-        informed = [
-            t.tqs_components["tqs"]
-            for t in out.trades if t.agent_id == candidate_id
-        ]
-        isolated_tqs: list[float] = []
-        for w in sampled_windows:
+
+    # F17 isolated arms are pairwise-independent -- each rebuilds its
+    # own squad + ledger. Parallelise across processes (2026-07-01)
+    # when the user asks for it. Default parallel_arms=1 preserves
+    # deterministic serial execution for sealed reproductions.
+    arm_specs: list[tuple[str, Any, Any]] = [
+        (candidate_id, candidate_class, w)
+        for candidate_id, candidate_class in F17_CANDIDATES
+        for w in sampled_windows
+    ]
+    log.info(
+        "F17 dispatch: %d arms across %d candidates x %d windows "
+        "(parallel_arms=%d)",
+        len(arm_specs), len(F17_CANDIDATES), len(sampled_windows),
+        parallel_arms,
+    )
+
+    arm_results_by_candidate: dict[str, list[float]] = {
+        cid: [] for cid, _ in F17_CANDIDATES
+    }
+    if parallel_arms > 1:
+        from concurrent.futures import ProcessPoolExecutor, as_completed
+        with ProcessPoolExecutor(max_workers=parallel_arms) as pool:
+            futures = {
+                pool.submit(
+                    _run_phi41_isolated_window,
+                    candidate_id=cid,
+                    candidate_class=cclass,
+                    bars_by_symbol=bars_by_symbol,
+                    is_start=w.is_start, is_end=w.is_end,
+                    oos_start=w.oos_start, oos_end=w.oos_end,
+                ): (cid, w)
+                for cid, cclass, w in arm_specs
+            }
+            for fut in as_completed(futures):
+                cid, w = futures[fut]
+                iso_trades = fut.result()
+                arm_results_by_candidate[cid].extend(
+                    t.tqs_components["tqs"] for t in iso_trades
+                )
+                log.info(
+                    "F17 isolated arm DONE (parallel): %s on %d-%d "
+                    "(%d trades)",
+                    cid, w.is_start.year, w.oos_end.year, len(iso_trades),
+                )
+    else:
+        for cid, cclass, w in arm_specs:
             log.info(
                 "F17 isolated arm: %s on %d-%d",
-                candidate_id, w.is_start.year, w.oos_end.year,
+                cid, w.is_start.year, w.oos_end.year,
             )
             iso_trades = _run_phi41_isolated_window(
-                candidate_id=candidate_id,
-                candidate_class=candidate_class,
+                candidate_id=cid, candidate_class=cclass,
                 bars_by_symbol=bars_by_symbol,
                 is_start=w.is_start, is_end=w.is_end,
                 oos_start=w.oos_start, oos_end=w.oos_end,
             )
-            isolated_tqs.extend(
+            arm_results_by_candidate[cid].extend(
                 t.tqs_components["tqs"] for t in iso_trades
             )
+
+    for candidate_id, _ in F17_CANDIDATES:
+        informed = [
+            t.tqs_components["tqs"]
+            for t in out.trades if t.agent_id == candidate_id
+        ]
+        isolated_tqs = arm_results_by_candidate[candidate_id]
         di = delta_info(
             candidate_id,
             informed,
@@ -960,6 +1007,17 @@ def main(argv: Optional[list[str]] = None) -> int:
         help="How many of the 7 OOS windows to use for F17 (default 3).",
     )
     parser.add_argument(
+        "--parallel-arms", type=int, default=1,
+        help=(
+            "Number of F17 isolated arms to run concurrently via "
+            "ProcessPoolExecutor. Default 1 (serial, deterministic, "
+            "matches sealed audit reruns). Recommended: 4-6 on an "
+            "8-core Mac -- each arm is CPU-bound single-thread. Not "
+            "used for the initial squad replay pass (which shares "
+            "mutable ledger state)."
+        ),
+    )
+    parser.add_argument(
         "--sentinel-blocks", action="store_true",
         help=(
             "If set, Sentinel R1-R6 physically veto violating trades. "
@@ -996,6 +1054,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         delta_info_windows=int(args.delta_info_windows),
         sentinel_blocks=bool(args.sentinel_blocks),
         tag=resolved_tag,
+        parallel_arms=int(args.parallel_arms),
     )
     print(
         f"Φ4.1 squad gate verdict: {report.verdict} "

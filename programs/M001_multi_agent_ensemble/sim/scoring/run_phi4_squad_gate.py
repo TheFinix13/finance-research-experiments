@@ -78,6 +78,7 @@ import json
 import logging
 import statistics
 import sys
+import time
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
@@ -448,7 +449,39 @@ def _drive_squad_replay(
         sym: len(bars) for sym, bars in bars_by_symbol.items()
     }
 
-    for gb in global_bars:
+    # Progress logging (2026-07-01) -- long replays go silent for
+    # 30-60 min otherwise, making it impossible to tell a stuck run
+    # from a slow one. Log every ~5 pct of the way through OR every
+    # 10 min of wall-clock (whichever is sooner).
+    total_bars = len(global_bars)
+    progress_interval_bars = max(1, total_bars // 20)      # 5 pct
+    progress_interval_seconds = 600                        # 10 min
+    _replay_start_ts = time.time()
+    _last_progress_ts = _replay_start_ts
+    log.info(
+        "Squad replay starting: %d global bars across %d symbols "
+        "(sentinel_blocks=%s, use_workspace=%s)",
+        total_bars, len(bars_by_symbol), sentinel_blocks, use_workspace,
+    )
+
+    for i_gb, gb in enumerate(global_bars):
+        if (
+            i_gb > 0
+            and (
+                i_gb % progress_interval_bars == 0
+                or (time.time() - _last_progress_ts) >= progress_interval_seconds
+            )
+        ):
+            _elapsed = time.time() - _replay_start_ts
+            _pct = 100.0 * i_gb / total_bars
+            _eta_s = _elapsed * (total_bars - i_gb) / max(i_gb, 1)
+            log.info(
+                "Squad replay progress: %d/%d bars (%.1f%%), "
+                "elapsed=%.1f s, eta=%.1f s, trades=%d, proposals_all=%d",
+                i_gb, total_bars, _pct, _elapsed, _eta_s,
+                len(out.trades), len(out.proposals_all),
+            )
+            _last_progress_ts = time.time()
         symbol = gb.symbol
         i_sym = gb.bar_index_in_symbol
         bar = gb.bar
@@ -686,6 +719,16 @@ def _drive_squad_replay(
         out.workspace_publish_counts = dict(workspace_publish_counts)
         out.workspace_read_counts = dict(workspace_read_counts)
 
+    _replay_elapsed = time.time() - _replay_start_ts
+    log.info(
+        "Squad replay complete: %d bars in %.1f s (%.0f bars/s), "
+        "trades=%d, proposals_all=%d, sentinel_blocks=%s, use_workspace=%s",
+        total_bars, _replay_elapsed,
+        total_bars / max(_replay_elapsed, 1e-6),
+        len(out.trades), len(out.proposals_all),
+        sentinel_blocks, use_workspace,
+    )
+
     return out
 
 
@@ -921,7 +964,39 @@ def _drive_squad_replay_with_isolated_candidate(
         sym: len(bars) for sym, bars in bars_by_symbol.items()
     }
 
-    for gb in global_bars:
+    # Progress logging (2026-07-01) -- see _drive_squad_replay for
+    # rationale. Isolated-arm replays are the biggest single time sink
+    # in Phi4.1 physical rerun (one arm per candidate agent).
+    total_bars = len(global_bars)
+    progress_interval_bars = max(1, total_bars // 10)      # 10 pct
+    progress_interval_seconds = 600                        # 10 min
+    _isolated_start_ts = time.time()
+    _isolated_last_progress = _isolated_start_ts
+    log.info(
+        "Isolated-arm replay starting [%s]: %d global bars",
+        candidate_id, total_bars,
+    )
+
+    for i_gb, gb in enumerate(global_bars):
+        if (
+            i_gb > 0
+            and (
+                i_gb % progress_interval_bars == 0
+                or (time.time() - _isolated_last_progress)
+                >= progress_interval_seconds
+            )
+        ):
+            _elapsed = time.time() - _isolated_start_ts
+            _pct = 100.0 * i_gb / total_bars
+            _eta_s = _elapsed * (total_bars - i_gb) / max(i_gb, 1)
+            log.info(
+                "Isolated-arm [%s] progress: %d/%d bars (%.1f%%), "
+                "elapsed=%.1f s, eta=%.1f s, trades=%d",
+                candidate_id, i_gb, total_bars, _pct, _elapsed, _eta_s,
+                len(out.trades),
+            )
+            _isolated_last_progress = time.time()
+
         symbol = gb.symbol
         i_sym = gb.bar_index_in_symbol
         bar = gb.bar
@@ -991,6 +1066,12 @@ def _drive_squad_replay_with_isolated_candidate(
             except Exception as exc:  # noqa: BLE001
                 log.warning("isolated arm open failed: %s", exc)
 
+    _isolated_elapsed = time.time() - _isolated_start_ts
+    log.info(
+        "Isolated-arm [%s] complete: %d bars in %.1f s (%.0f bars/s), trades=%d",
+        candidate_id, total_bars, _isolated_elapsed,
+        total_bars / max(_isolated_elapsed, 1e-6), len(out.trades),
+    )
     return out
 
 
