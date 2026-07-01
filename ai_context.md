@@ -40,9 +40,20 @@ squad-level pre-condition on ANY v2 authorisation. Session shipped:
   `sim/scoring/run_g7_v1_checkpoint_gate.py`: C1/C5/C6 computed live,
   C2/C3/C4 stubbed PENDING full 7-window batch run + workspace-threaded
   driver.
-- **Sentinel Phi4.1 physical rerun** (`--sentinel-blocks --tag physical`)
-  landed 5,236 trades / 28,830 proposals / 336,707 thoughts (vs audit
-  0.2922 TQS locked). Side-by-side report pending full-run completion.
+- **Sentinel Phi4.1 physical rerun COMPLETED (2026-07-01T16:54 UTC+1)**
+  (`--sentinel-blocks --tag physical`, 2h 3min runtime): **squad TQS
+  0.358 vs Isagi-alone 0.317, ratio 1.13x = PASS** (audit-mode was
+  0.2922 TQS = 0.92x FAIL). Δ = +0.066 TQS (+22.6 % relative) AND
+  +1,522 trades (+41 %) -- Sentinel enforcement flips the sealed FAIL
+  to a PASS both by adding trades AND raising per-trade quality.
+  Per-agent Δ: Bachira 0.308→0.389, Rin 0.277→0.399, Nagi 0.349→0.439,
+  Chigiri 0.229→0.253 (fewer trades but higher quality). Isagi + Barou
+  + Reo + Kunigami stay at 0 trades in both modes -- structural
+  crowding-out is confirmed Sentinel-independent. Side-by-side report
+  landed at `reviews/phi41_sentinel_sidebyside.md`. **Sealed audit
+  verdict at 0.2922 TQS remains LOCKED** per §11 verdict-comparator
+  discipline; physical run is a diagnostic overlay. Follow-up: parse
+  the 15,350-event sentinel_log JSONL into per-rule R1/R3/R5/R6 counts.
 - **Phase M news calendar scaffolding LANDED (2026-07-01 pm):** user
   authorised parallel scaffolding while G7 walk-forward compute job
   runs. Three new modules under `sim/regime/`
