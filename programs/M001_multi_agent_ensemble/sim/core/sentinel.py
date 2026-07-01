@@ -38,6 +38,8 @@ CONCENTRATION_CAP = 0.40              # R4 hard backstop above HRP cap
 LOSS_STREAK_TRIGGER = 3               # R5 trigger length
 LOSS_STREAK_DAMPENER = 0.5            # R5 risk-scale
 LOSS_STREAK_DURATION_HOURS = 24       # R5 dampener duration
+SANDBOX_PER_SYMBOL_RISK_FRAC = 0.01   # R6 per-symbol total-risk cap
+                                       # (Phi5 Arm 4 multi-position ceiling)
 
 
 @dataclass(frozen=True)
@@ -45,7 +47,7 @@ class SentinelDecision:
     """Outcome of a single Sentinel evaluation."""
 
     allowed: bool
-    rule: Literal["R1", "R2", "R3", "R4", "R5", "EXT", "OK"]
+    rule: Literal["R1", "R2", "R3", "R4", "R5", "R6", "EXT", "OK"]
     reason: str
     payload: dict
 
@@ -233,6 +235,53 @@ def check_r5_loss_streak(
 
 
 # ---------------------------------------------------------------------------
+# R6 — Per-symbol total-risk cap (Phi5 Arm 4 multi-position ceiling)
+# ---------------------------------------------------------------------------
+
+def check_r6_per_symbol_risk_cap(
+    symbol: str,
+    current_symbol_risk_dollars: float,
+    additional_risk_dollars: float,
+    *,
+    equity: float,
+    cap_frac: float = SANDBOX_PER_SYMBOL_RISK_FRAC,
+) -> SentinelDecision:
+    """R6: refuse if opening this order would push total per-symbol risk above cap.
+
+    Distinct from R1 (per-trade risk floor) and R4 (per-agent concentration).
+    R6 is the ceiling used by Phi5 Arm 4 multi-position: even if two distinct
+    agents each pass R1 individually on the same symbol, their combined risk
+    cannot exceed ``cap_frac * equity``. Default cap 1% mirrors the sandbox
+    single-position budget so Arm 4 splits, not doubles, the per-symbol risk.
+    """
+    combined = float(current_symbol_risk_dollars) + float(additional_risk_dollars)
+    cap_dollars = float(cap_frac) * float(equity)
+    if combined > cap_dollars:
+        return SentinelDecision(
+            allowed=False,
+            rule="R6",
+            reason=(
+                f"symbol {symbol} combined risk ${combined:.2f} > cap "
+                f"${cap_dollars:.2f} (={cap_frac*100:.2f}% of equity)"
+            ),
+            payload={
+                "symbol": symbol,
+                "current_symbol_risk_dollars": float(current_symbol_risk_dollars),
+                "additional_risk_dollars": float(additional_risk_dollars),
+                "combined_risk_dollars": float(combined),
+                "cap_dollars": float(cap_dollars),
+                "cap_frac": float(cap_frac),
+            },
+        )
+    return SentinelDecision(
+        allowed=True, rule="OK", reason="R6 ok", payload={
+            "symbol": symbol,
+            "combined_risk_dollars": float(combined),
+        },
+    )
+
+
+# ---------------------------------------------------------------------------
 # External-shock triggers (doctrine section 4.2)
 # ---------------------------------------------------------------------------
 
@@ -292,7 +341,14 @@ def check_external_shocks(state: ExternalShockState) -> SentinelDecision:
 
 @dataclass
 class SentinelContext:
-    """Per-tick state passed to `evaluate`."""
+    """Per-tick state passed to `evaluate`.
+
+    `kunigami_loss_streak_active` is the Sentinel's R5 input: when Kunigami
+    (or any other loss-streak signal source) says the squad is on a
+    high-conviction losing streak, the Sentinel dampens risk 24 h.
+    `open_symbol_risk_dollars` and `additional_risk_dollars` are the
+    R6 (per-symbol total-risk cap) inputs used by Phi5 Arm 4.
+    """
 
     equity: float
     pip_value_per_min_lot: float
@@ -300,6 +356,30 @@ class SentinelContext:
     proposals_today_by_agent: dict[str, int] | None = None
     intended_weights_by_agent: dict[str, float] | None = None
     external: ExternalShockState | None = None
+    kunigami_loss_streak_active: bool = False
+    open_symbol_risk_dollars: dict[str, float] | None = None
+    additional_risk_dollars: float | None = None
+
+
+def evaluate_proposal(
+    proposal: AgentProposal,
+    context: SentinelContext,
+) -> SentinelDecision:
+    """Convenience wrapper: evaluate a proposal without an OrderIntent.
+
+    Harness callers use this when sizing has not yet been decided --
+    Sentinel only needs the proposal's entry + stop + agent_id + symbol
+    to run R1/R3/R4/R5/R6. Delegates to :func:`evaluate` with a minimal
+    intent shim.
+    """
+
+    class _IntentShim:
+        pass
+
+    shim = _IntentShim()
+    shim.entry = float(proposal.entry)      # type: ignore[attr-defined]
+    shim.stop = float(proposal.stop)        # type: ignore[attr-defined]
+    return evaluate(proposal, shim, context)  # type: ignore[arg-type]
 
 
 def evaluate(
@@ -307,16 +387,12 @@ def evaluate(
     intent: OrderIntent,
     context: SentinelContext,
 ) -> SentinelDecision:
-    """Run the full R1-R5 + external sequence on one OrderIntent.
+    """Run the full R1-R6 + external sequence on one OrderIntent.
 
-    First failure wins (R-rules are precedence-ordered: R1, R2-allowed,
-    R3, R4, R5, EXT).
+    First failure wins (R-rules are precedence-ordered: R1, R3, R4, R5, R6,
+    EXT). R2 is an in-line size adjustment applied separately by the caller
+    when Sentinel is in physical-enforcement mode.
     """
-    # R1 — translate stop distance to pips. The kernel passes the SL
-    # distance in *price units*; we approximate pips by dividing by 1e-4
-    # for typical FX symbols. Real conversion lives in the agent /
-    # symbol metadata; for the scaffold this approximation is fine
-    # because R1 only cares about *relative* magnitudes.
     sl_distance_pips = abs(intent.entry - intent.stop) * 1e4
 
     r1 = check_r1_min_lot_risk_floor(
@@ -327,19 +403,14 @@ def evaluate(
     if not r1.allowed:
         return r1
 
-    # R3 — over-firing.
     if context.proposals_today_by_agent is not None:
         r3 = check_r3_pass_bias(
             proposal.agent_id,
             context.proposals_today_by_agent.get(proposal.agent_id, 0),
         )
-        # R3 never blocks but is journalled when triggered.
         if r3.rule == "R3":
-            # Return the R3 flag so the journaller can log it. The kernel
-            # treats this as a soft warning, not a block.
             return r3
 
-    # R4 — concentration cap.
     if context.intended_weights_by_agent is not None:
         r4 = check_r4_concentration(
             proposal.agent_id,
@@ -348,7 +419,26 @@ def evaluate(
         if not r4.allowed:
             return r4
 
-    # External shocks last (cheap; same evaluation surface).
+    if context.kunigami_loss_streak_active or context.consecutive_losses >= LOSS_STREAK_TRIGGER:
+        _, r5 = check_r5_loss_streak(
+            max(context.consecutive_losses, LOSS_STREAK_TRIGGER),
+        )
+        if r5.rule == "R5":
+            return r5
+
+    if (
+        context.open_symbol_risk_dollars is not None
+        and context.additional_risk_dollars is not None
+    ):
+        r6 = check_r6_per_symbol_risk_cap(
+            proposal.symbol,
+            context.open_symbol_risk_dollars.get(proposal.symbol, 0.0),
+            context.additional_risk_dollars,
+            equity=context.equity,
+        )
+        if not r6.allowed:
+            return r6
+
     if context.external is not None:
         ext = check_external_shocks(context.external)
         if not ext.allowed:

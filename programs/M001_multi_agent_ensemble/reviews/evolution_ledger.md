@@ -43,6 +43,8 @@ their own evolution.
 | 2026-06-30 | Φ4.1 post-mortem (round-2; no co-existence; refinement-level update) | A3 Rin (`itoshi_rin`) | v1 → v2 sketch refined | **Defeat (Φ4.1):** v1 precision-lift fired 3,094 times; 244 trades at +9.95 mean / −28.26 median (right-tail-concentrated). v0.3 regime-gate targeted retired classes (vol_spike, news). | Regime-gate to live-classes `trending` only; retain v1 R:R + stop-distance filter; add peer-disagreement requirement (Chigiri/Bachira opposite-direction prior-tick Thought at conviction ≥ 0.65). | Pending v2 implementation. | **REFINE-regime+peer-disagreement** — pending v2 implementation. See `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md` §2. |
 | 2026-06-30 | Φ4.1 post-mortem (round-2; no co-existence; refinement-level update) | A4 Chigiri (`chigiri_hyoma`) | v1 → v2 sketch refined | **Defeat (Φ4.1):** v1 breakout-firing produced 3,615 Thoughts → 536 trades at +6.62 mean / −26.67 median, TQS 0.229, win 39.9 % (lowest among trading agents). v0.3 sketch already in v1; active defeat is whipsaw losses on early-stage σ expansions. | Multi-TF ADX alignment (M15 × H1 × H4 all rising) + top-decile σ floor (replaces v1's top-quartile). Three conjunctive guards. | Pending v2 implementation. | **REFINE-multi-TF-ADX+ATR-percentile** — pending v2 implementation. See `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md` §3. |
 | 2026-06-30 | Φ4.1 post-mortem (round-2; no co-existence; advancement-level update) | A5 Reo (`reo_mikage`) | v1 → v2 sketch advanced (HRP + Φ5-second-position) | **Empirical (no defeat):** v1 ships structural Tier-2 falsifier; 28,469 mirror Thoughts emitted, 0 trades. Falsifier worked. Φ4.1 FAIL diagnosis pinned the binding constraint at the single-position queue — Reo is the natural occupant of the second slot under Φ5 multi-position policy. | Stacked mechanic 1 (HRP-weighted mixture of top-K ≥ 2 trailing-TQS agents, from v0.3) + mechanic 2 (second-position proposer when first leader's slot is contested under Φ5 Arm 4 / K = 2). Mechanic 2 gated on Φ5 Arm 4 landing. | Pending v2 implementation; mechanic 2 deferred until Φ5 Arm 4 ships. | **ADVANCE-coupled-to-Φ5-multi-position** — pending v2 implementation. See `reviews/v2_arc_backlog_resolution_round2_2026-06-30.md` §4. |
+| 2026-06-30 | Φ4.2 mini-sprint (infrastructure, no agent version change) | Sentinel (`sim/core/sentinel.py`) | R1–R5 + new R6 wired into harness | **Pre-condition unblocker:** Sentinel R1–R5 unit-tested but not wired into `run_phi4_squad_gate.py::_drive_squad_replay`; Kunigami's 25,877 Φ4.1 warning Thoughts had 0 R5 consumers. User decision Q-AGG-1 (2026-06-30) — no deferrals: wire the harness now. | Extend `SentinelContext` with `kunigami_loss_streak_active`, `consecutive_losses`, `open_symbol_risk_dollars`, `additional_risk_dollars`. Add R6 (per-symbol total-risk cap, 1 % equity default) for Φ5 Arm 4 multi-position. Add `evaluate_proposal(proposal, context)` helper so callers don't need to synthesize an `OrderIntent`. Wire into `_drive_squad_replay(..., sentinel_blocks=False)` — audit-only for Φ4 / Φ4.1 replay fidelity; physically blocking in Φ5 via `sentinel_blocks=True`. New tests `sim/tests/test_sentinel_wired.py` (11 tests, all passing). PROTOCOL §11.1 amendment retires §6 stop rule #3. | n/a (infrastructure change; no vN roster row). | **WIRED** — 291 sim tests passing (was 280 pre-Phase-4, +11 Sentinel wiring tests). See `experiments/phi5_aggregator/PROTOCOL.md` §11.1 amendment. |
+| 2026-06-30 | Φ4.2 mini-sprint (v2 status transition, no new agent code) | A10 Kunigami (`kunigami_rensuke`) | v2 DEFERRED → WIRED | **Pre-condition met:** Sentinel R1–R6 wired 2026-06-30 (ledger row above). Kunigami's `warning_active_at(as_of)` accessor is now polled by `SentinelContext.kunigami_loss_streak_active` in `_drive_squad_replay`. | v2 mechanic = Sentinel consumer wiring (not new agent code). Kunigami v1's two predicates (loss-streak, overconfidence) unchanged; the un-blocked path is R5's 50 %-risk-scale dampener consuming Kunigami's 24-h warning window. Audit-only in Φ4 / Φ4.1 (preserves sealed verdicts), physically blocking in Φ5. | v2 is the consumer wiring, not a new module — no separate co-existence window. v3 revisit gated on ≥ 100 R5 activations across `{trending, chop}` regimes in Φ5 aggregator gate. | **WIRED** — Sentinel R5 consumer online. See doctrine §3.11.3 A10 + roster §3.10. |
 
 ## Standing notes
 
@@ -67,11 +69,14 @@ their own evolution.
   amended 2026-06-30). Implementation pending. The hybrid stacks
   closed-loss replay (mechanic A) and symbol-whitelist expansion to
   EURUSD/GBPUSD/USDCAD baseline-zone (mechanic B).
-- **A10 Kunigami** v1 is implemented; **25,877 warning Thoughts**
-  emitted at Φ4.1 but **0 consumed** by Sentinel R5 (R1–R5 not yet
-  wired into the squad-gate harness). v2 **DEFERRED** pending Φ4.2
-  Sentinel wiring + ≥ 100 OOS-window Sentinel-fire observations
-  + v1 baseline frequency-of-fire established (ledger row 2026-06-25).
+- **A10 Kunigami** v1 code + v2 **WIRED 2026-06-30** (Φ4.2 mini-sprint
+  ledger row). Sentinel R5 now polls `warning_active_at(as_of)` on every
+  accepted proposal via `SentinelContext.kunigami_loss_streak_active`;
+  audit-only in Φ4 / Φ4.1 replay (sealed verdicts preserved), physically
+  blocking in Φ5 via `sentinel_blocks=True`. Kunigami's 25,877 Φ4.1
+  warning Thoughts are now the R5 audit stream on any re-run.
+  v3 revisit gated on ≥ 100 R5 activations observed in Φ5 aggregator
+  gate across `{trending, chop}` regimes.
 - **A2 Bachira, A3 Rin, A4 Chigiri, A5 Reo** are now **v1 implemented
   (Φ4.1 squad gate)** and have round-2 v2 sketch resolutions
   (ledger rows 2026-06-30) per `reviews/v2_arc_backlog_resolution_
@@ -93,3 +98,12 @@ their own evolution.
   evolution sketches in `06-blue-lock-doctrine.md` §3.11.3 are
   *future-state* priors with no Φ4.1 empirical revision required
   (no telemetry yet).
+- **Sentinel R1–R6 infrastructure** wired into `_drive_squad_replay`
+  on 2026-06-30 (Φ4.2 mini-sprint). Unit tests: `sim/tests/test_sentinel.py`
+  (16, unchanged); integration tests: `sim/tests/test_sentinel_wired.py`
+  (11 new). New R6 = per-symbol total-risk cap (1 % equity default),
+  built specifically for Φ5 Arm 4 multi-position. Sentinel is audit-only
+  in the Φ4 / Φ4.1 harnesses (preserves sealed verdicts) and physically
+  blocking in the Φ5 harness via `sentinel_blocks=True`. See
+  `experiments/phi5_aggregator/PROTOCOL.md` §11.1 amendment retiring
+  the previous §6 stop rule #3 (Sentinel-blocker deferral of Arm 4).

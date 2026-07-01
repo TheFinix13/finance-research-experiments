@@ -1,6 +1,7 @@
 # 06 — Blue Lock Doctrine
 
-**Status:** `DRAFT v0.4` — 2026-06-25 (Barou row amended 2026-06-30).
+**Status:** `DRAFT v0.4.1` — 2026-06-25 (Barou row amended 2026-06-30;
+A10 Kunigami row un-deferred 2026-06-30 post Sentinel R1–R6 wiring).
 v0.4 records the **first three §3.11 sketch resolutions** post-Φ4.1: A6
 Nagi v2 sketch DROPPED (v1 floor empirically correct — confluence-firing
 thoughts 0 → 34,302 between Φ4 and Φ4.1, mean TQS 0.349 highest in the
@@ -8,10 +9,14 @@ thoughts 0 → 34,302 between Φ4 and Φ4.1, mean TQS 0.349 highest in the
 (closed-loss replay) + mechanic B (symbol-whitelist expansion to
 EURUSD/GBPUSD/USDCAD), per `reviews/v2_arc_backlog_resolution_2026-06-25.md`
 §2 + 2026-06-30 amendment (user resolved C-Q1 = both A and B); A10
-Kunigami v2 sketch DEFERRED pending Sentinel R1–R5 wiring (Φ4.2
-deliverable; Kunigami emitted 25,877 warning Thoughts at Φ4.1 but R5
-is not wired so 0 were consumed). Resolution detail:
-`reviews/v2_arc_backlog_resolution_2026-06-25.md`. v0.3 stands below.
+Kunigami v2 sketch WIRED 2026-06-30 via Sentinel R1–R6 mini-sprint
+(Kunigami's 25,877 warning Thoughts at Φ4.1 previously had 0 R5
+consumers; the Φ4.2 wiring adds `SentinelContext.kunigami_loss_streak_
+active` + `evaluate_proposal` helper + `R6` per-symbol total-risk cap
+for Φ5 Arm 4; audit-only in Φ4 / Φ4.1 replays, physically blocking
+via `sentinel_blocks=True` in the Φ5 harness). Resolution detail:
+`reviews/v2_arc_backlog_resolution_2026-06-25.md` + `experiments/
+phi5_aggregator/PROTOCOL.md` §11.1 amendment. v0.3 stands below.
 
 v0.3 (2026-06-24) adds **§3.11 — Agent Evolution Arcs**, the
 canon-inspired contract that every striker is a *versioned identity*
@@ -786,21 +791,31 @@ a starting point.
   without news context become **observation-only** thoughts, never
   proposals. *Inspiration:* Aoshi as captain — situational awareness
   over raw signal.
-- **A10 Kunigami v1 → v2 — gentle giant (`status: deferred-pending-
-  Sentinel-Φ4.2`).** *Defeat (expected, retained):* loss-streak
-  dampener fires post-fact — three losses before the half-size
-  kicks in. *v2 hypothesis (retained):* read forward-looking ledger
-  confidence aggregates (low aggregate conviction × high pairwise
-  correlation) and dampen **pre-emptively**, before the third loss
-  lands. *Deferred pending:* Sentinel R1–R5 are not yet wired into
-  the squad-gate harness; Kunigami v1 emitted 25,877 warning
-  Thoughts at Φ4.1 but none reached R5's 50 %-risk-scale dampener.
-  "Pre-emptive" cannot be defined against a Sentinel that does not
-  consume warnings. *Pre-condition for un-deferring:* (1) R1–R5
-  wired (Φ4.2 deliverable per `ai_context.md`); (2) ≥ 100 OOS-
-  window Sentinel-fire observations across `{trend, range,
-  vol-expansion event}` regime buckets; (3) v1 baseline frequency-
-  of-fire established in `reviews/kunigami_v1_sentinel_baseline.md`.
+- **A10 Kunigami v1 → v2 — gentle giant (`status: v2-wired 2026-06-
+  30, Sentinel R5 consumer online`).** *Defeat (expected, retained):*
+  loss-streak dampener fires post-fact — three losses before the
+  half-size kicks in. *v2 mechanic (WIRED 2026-06-30 as part of
+  Φ4.2 mini-sprint):* Sentinel R5 now polls
+  `A10KunigamiV1.warning_active_at(as_of)` on every accepted
+  proposal via `SentinelContext.kunigami_loss_streak_active`. When
+  Kunigami's rolling 5-trade loss-streak window fires (`3+ losses
+  out of last 5 at conviction ≥ 0.70`), R5 activates for the next
+  24 h and journals to `sentinel_log` (audit-only in Φ4 / Φ4.1
+  replays; physically blocking in the Φ5 harness via
+  `sentinel_blocks=True`). Kunigami v1's 25,877 warning Thoughts
+  at Φ4.1 (previously 0 consumed) are now the Sentinel's authoritative
+  R5 input. *v2 hypothesis (retained for future v3):* read forward-
+  looking ledger confidence aggregates (low aggregate conviction ×
+  high pairwise correlation) and dampen **pre-emptively**, before
+  the third loss lands. *Pre-condition for v3 revisit:* (1) ≥ 100
+  OOS-window Sentinel-fire observations across `{trending, chop}`
+  regime buckets (post-`vol_spike`+`news` retirement 2026-06-24);
+  (2) v1-wired baseline frequency-of-fire established in the Φ5
+  aggregator gate report. Wiring detail: `sim/core/sentinel.py`
+  (R6 + `evaluate_proposal` helper + extended `SentinelContext`),
+  `sim/scoring/run_phi4_squad_gate.py::_drive_squad_replay`,
+  `sim/tests/test_sentinel_wired.py`, and
+  `experiments/phi5_aggregator/PROTOCOL.md` §11.1 amendment.
   Resolution detail: `reviews/v2_arc_backlog_resolution_2026-06-25.md`
   §3.
 

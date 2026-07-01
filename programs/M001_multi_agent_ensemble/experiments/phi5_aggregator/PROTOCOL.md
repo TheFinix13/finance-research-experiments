@@ -232,3 +232,28 @@ If the user wants different values, amend this protocol BEFORE tomorrow's run (p
 - `programs/M001_multi_agent_ensemble/reviews/phi41_squad_v1.md` + addendum — Φ4.1 control baseline
 - `programs/M001_multi_agent_ensemble/reviews/isagi_v2_arc.md` — queue-collision diagnostic
 - `programs/M001_multi_agent_ensemble/experiments/phi5_aggregator/HRP_NOTES.md` — port notes for Arm 1
+
+---
+
+## Amendment §11.1 — retire §6 stop rule #3 (Sentinel R1-R6 wired, 2026-06-30)
+
+**Filed:** 2026-06-30 (this session).
+**Procedure:** `07-research-standards.md` §11 verdict-comparator discipline — this is a stop-rule change, not a locked-statistic change, but the same amendment discipline applies (dated subsection at the bottom of the frozen protocol, dedicated commit, no silent edit of §6).
+
+**What changes.** §6 stop rule #3 originally read:
+
+> "**Sentinel R1-R5 wiring blocker:** if Arm 4 (multi-position) requires Sentinel R1-R5 to be wired (it does — total-risk cap is a Sentinel R-rule), Arm 4 is GATED on Φ4.2 Sentinel implementation. If Sentinel is not wired by the time this experiment runs, Arm 4 is skipped and the report records 'Arm 4 deferred pending Sentinel'."
+
+**Retired.** Sentinel R1-R5 (agent-level) + a new **R6 per-symbol total-risk cap** (Φ5 Arm 4-specific) are wired into the squad-gate harness as of commit `<phase-4-commit-sha>` (2026-06-30). Wiring surface: `sim/scoring/run_phi4_squad_gate.py::_drive_squad_replay(..., sentinel_blocks=False)` — audit-only in the Φ4 / Φ4.1 replay path so the sealed verdicts are unchanged, and physical enforcement in the Φ5 harness via `sentinel_blocks=True`.
+
+**New §6 stop rule #3 (in effect):**
+
+> "**Sentinel enforcement mode.** All Φ5 aggregator arms run with `sentinel_blocks=True`. R1 (min-lot risk floor) and R6 (per-symbol total-risk cap) physically block violating proposals. R3 (over-firing) and R5 (loss-streak dampener) journal to `sentinel_log` but do not block in this experiment — R5's 0.5× risk-scale semantic is out of scope until aggregator-side sizing lands. R2 (discrete sizing) is a no-op in the fixed-lot sim. R4 (agent-level concentration cap) is active only when Arm 1 or Arm 5 supplies `intended_weights_by_agent` (i.e. HRP is on)."
+
+**What did NOT change.** §6 stop rules #1 (25% drawdown → arm FAIL) and #2 (12-hour compute time-box) are unchanged. §4 locked decision rule, §5 experimental design, §3 treatment arm mechanics — all unchanged. §7 file footprint plan gains one new addition (`sim/core/sentinel.py` extended with R6 and `evaluate_proposal` helper; not creating a new aggregator file).
+
+**Empirical justification for retirement.** User decision 2026-06-30 (Q-AGG-1): "no deferrals. implement everything you need to one by one and proceed with writing them accordingly once completed with fully functional works." Interpretation: wire Sentinel R1-R5 as a Φ4.2 mini-sprint before Φ5 starts, per this amendment. This also un-blocks Kunigami v2 (his `warning_active_at` accessor is now consumed by Sentinel's R5 path).
+
+**Registered follow-up.** Once Φ5 verdict lands, if any arm shows Sentinel R6 blocking a material fraction of Arm 4 proposals (>10 %), file a §11.2 amendment to reconsider the 1 % per-symbol cap. Do NOT retune silently — that is exactly the post-hoc discipline `07-research-standards.md` §11 forbids.
+
+**Cross-reference.** Sentinel wiring + integration tests in `sim/core/sentinel.py`, `sim/tests/test_sentinel_wired.py`, `sim/scoring/run_phi4_squad_gate.py::_drive_squad_replay`. Kunigami v2 status transition (DEFERRED → v2-wired) in `reviews/evolution_ledger.md` + `05-agent-roster-v0.md` §3.10 + `06-blue-lock-doctrine.md` §3.11 A10.

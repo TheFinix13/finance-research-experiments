@@ -122,6 +122,7 @@ from programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate import (
     _sample_windows,
     _summarise,
     render_rejection_analysis,
+    summarise_sentinel_log,
 )
 
 log = logging.getLogger(__name__)
@@ -748,7 +749,7 @@ def run_phi41_gate(
         verdict_reason=reason,
         windows=windows,
         delta_info_results=delta_results,
-        sentinel_trigger_counts={},
+        sentinel_trigger_counts=summarise_sentinel_log(out.sentinel_log),
         nagi_fired_count=int(nagi_fired),
         devour_fired_count=int(devour_fired),
         kunigami_warning_count=int(kuni_warned),

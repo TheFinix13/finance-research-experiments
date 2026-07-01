@@ -98,6 +98,13 @@ from programs.M001_multi_agent_ensemble.sim.core.ledger import (
     RedactedLedger,
     ThoughtLedger,
 )
+from programs.M001_multi_agent_ensemble.sim.core.sentinel import (
+    MIN_LOT,
+    SANDBOX_PER_TRADE_RISK_FRAC,
+    SentinelContext,
+    SentinelDecision,
+    evaluate_proposal as sentinel_evaluate_proposal,
+)
 from programs.M001_multi_agent_ensemble.sim.core.types import (
     AgentProposal,
     MarketState,
@@ -142,6 +149,60 @@ SQUAD_PARTIAL_RATIO = 1.00                 # 1.00 .. 1.10 = PARTIAL
 # < 1.00 = FAIL
 
 DEFAULT_DELTA_INFO_WINDOWS = 3             # of 7 OOS; user spec compute floor
+
+# Sandbox account profile locked at $100 / 1:1000 demo per M001 charter.
+# Sentinel R1 evaluates min-lot risk against this equity; other R-rules
+# also inherit these defaults unless overridden by the caller.
+SANDBOX_EQUITY_DOLLARS = 100.0
+# pip_value_per_lot = 10.0 in agent/config.py (broker constant, TF-invariant).
+# min-lot pip value = pip_value_per_lot * MIN_LOT = 10.0 * 0.01 = 0.10.
+SANDBOX_PIP_VALUE_PER_MIN_LOT = 0.10
+
+
+# ---------------------------------------------------------------------------
+# Sentinel journal helpers
+# ---------------------------------------------------------------------------
+
+def _sentinel_log_entry(
+    *,
+    tick_id: int,
+    proposal: AgentProposal,
+    decision: SentinelDecision,
+    kunigami_active: bool,
+) -> dict[str, Any]:
+    """Build a journal row for `out.sentinel_log`."""
+    return {
+        "tick_id": int(tick_id),
+        "timestamp": proposal.timestamp.isoformat(),
+        "agent_id": proposal.agent_id,
+        "symbol": proposal.symbol,
+        "direction": proposal.direction,
+        "rule": decision.rule,
+        "allowed": bool(decision.allowed),
+        "reason": decision.reason,
+        "kunigami_loss_streak_active": bool(kunigami_active),
+        "payload": dict(decision.payload),
+    }
+
+
+def summarise_sentinel_log(sentinel_log: list[dict]) -> dict[str, int]:
+    """Aggregate a sentinel_log list into per-rule trigger counts.
+
+    Includes both blocked and audit-only rules. `OK` decisions are counted
+    separately as `ok` so the total equals the number of proposals
+    Sentinel evaluated.
+    """
+    counts: dict[str, int] = {}
+    for row in sentinel_log:
+        key = row.get("rule", "unknown")
+        if not row.get("allowed", True):
+            key = f"{key}_block"
+        elif key != "OK":
+            key = f"{key}_audit"
+        else:
+            key = "ok"
+        counts[key] = counts.get(key, 0) + 1
+    return counts
 
 
 # ---------------------------------------------------------------------------
@@ -256,12 +317,22 @@ def _drive_squad_replay(
     bars_by_symbol: dict[str, list],
     ledger: ThoughtLedger,
     warmup_bars: int = WARMUP_BARS,
+    sentinel_blocks: bool = False,
 ) -> SquadRunOutput:
     """End-to-end Phi4 squad replay driver.
 
     Walks the interleaved bar stream once. Two-phase tick order
     (observe-all then intend-all). Per-symbol single open trade. All
     closed trades pushed into Kunigami for the loss-streak signal.
+
+    Sentinel wiring (Phi4.2 mini-sprint, 2026-06-30). Every accepted
+    proposal is evaluated against Sentinel R1/R3/R5 and journalled to
+    ``out.sentinel_log``. In the default ``sentinel_blocks=False`` mode
+    the wiring is AUDIT-ONLY -- Sentinel decisions are recorded but do
+    not veto trades, which preserves Phi4 + Phi4.1 replay fidelity for
+    the sealed verdicts. Phi5 harnesses (Arms 1-5) pass
+    ``sentinel_blocks=True`` so R1/R5 physically block violating trades
+    and R6 (per-symbol total-risk cap) gates Arm 4 multi-position.
     """
     out = SquadRunOutput()
     global_bars = _interleave_bars(bars_by_symbol)
@@ -271,6 +342,11 @@ def _drive_squad_replay(
     # Open trades keyed by symbol (per-symbol single-position rule).
     open_trades: dict[str, Any] = {}
     cfg = isagi._cfg                       # cfg shared across wrappers
+
+    # Sentinel state (R3/R5 need per-agent counters).
+    per_agent_consecutive_losses: dict[str, int] = {}
+    per_agent_proposals_today: dict[str, int] = {}
+    current_day: Any = None
 
     # Symbol -> sorted timestamps + bar list for next-bar lookup.
     sorted_bars_by_symbol: dict[str, list] = {
@@ -290,6 +366,12 @@ def _drive_squad_replay(
         symbol = gb.symbol
         i_sym = gb.bar_index_in_symbol
         bar = gb.bar
+        # Day-rollover: reset R3 proposals-today counter at the first bar
+        # of each new UTC day. Deterministic on `bar.time.date()`.
+        bar_day = bar.time.date() if bar.time is not None else current_day
+        if current_day is None or bar_day != current_day:
+            current_day = bar_day
+            per_agent_proposals_today.clear()
         market = _bar_to_market_state(bar, tick_id=gb.tick_id)
         market = MarketState(
             tick_id=market.tick_id,
@@ -329,6 +411,15 @@ def _drive_squad_replay(
                         getattr(ot, "_source_conviction", 0.0)
                     ),
                 ))
+                # Per-agent consecutive-loss counter feeds Sentinel R5
+                # directly (independent of Kunigami's window-based warning).
+                _aid = tr_with_agent.agent_id
+                if tr_with_agent.pnl_pips <= 0:
+                    per_agent_consecutive_losses[_aid] = (
+                        per_agent_consecutive_losses.get(_aid, 0) + 1
+                    )
+                else:
+                    per_agent_consecutive_losses[_aid] = 0
                 open_trades.pop(symbol, None)
 
         # Determine eligible agents on this bar.
@@ -365,6 +456,10 @@ def _drive_squad_replay(
                 continue
             proposals_this_tick.append(p)
             out.proposals_all.append(p)
+            # R3 pass-bias counter (per-agent, per-UTC-day).
+            per_agent_proposals_today[p.agent_id] = (
+                per_agent_proposals_today.get(p.agent_id, 0) + 1
+            )
 
         if not proposals_this_tick:
             continue
@@ -375,9 +470,47 @@ def _drive_squad_replay(
         out.proposals_accepted.extend(outcome.accepted)
         out.proposals_rejected.extend(outcome.rejected)
 
+        # Sentinel wiring (Phi4.2). Every accepted proposal is evaluated;
+        # blocks are enforced only when the caller opted in via
+        # `sentinel_blocks=True`. The audit-only path preserves Phi4 /
+        # Phi4.1 replay fidelity (sealed verdicts unchanged).
+        kuni_active = bool(kunigami.warning_active_at(bar.time))
         for proposal in outcome.accepted:
             if proposal.symbol != symbol:
                 # The aggregator is per-symbol; safety guard.
+                continue
+            sentinel_ctx = SentinelContext(
+                equity=SANDBOX_EQUITY_DOLLARS,
+                pip_value_per_min_lot=SANDBOX_PIP_VALUE_PER_MIN_LOT,
+                consecutive_losses=per_agent_consecutive_losses.get(
+                    proposal.agent_id, 0,
+                ),
+                proposals_today_by_agent=dict(per_agent_proposals_today),
+                kunigami_loss_streak_active=kuni_active,
+            )
+            decision = sentinel_evaluate_proposal(proposal, sentinel_ctx)
+            out.sentinel_log.append(_sentinel_log_entry(
+                tick_id=gb.tick_id,
+                proposal=proposal,
+                decision=decision,
+                kunigami_active=kuni_active,
+            ))
+            if sentinel_blocks and not decision.allowed:
+                # Physical enforcement path (Phi5 harness). Record the
+                # veto in the rejected-proposals journal.
+                out.proposals_rejected.append({
+                    "tick_id": int(gb.tick_id),
+                    "symbol": symbol,
+                    "winner_agent_id": proposal.agent_id,
+                    "winner_conviction": float(proposal.conviction),
+                    "loser_agent_id": proposal.agent_id,
+                    "loser_conviction": float(proposal.conviction),
+                    "loser_direction": proposal.direction,
+                    "winner_direction": proposal.direction,
+                    "rejection_reason": f"sentinel_{decision.rule}_block",
+                    "sentinel_reason": decision.reason,
+                    "timestamp": proposal.timestamp.isoformat(),
+                })
                 continue
             if symbol in open_trades:
                 # Per-symbol single-position rule: log winner as
@@ -928,17 +1061,19 @@ def render_squad_report(report: SquadGateReport) -> str:
     )
     lines.append("")
     if report.sentinel_trigger_counts:
-        lines.append("Sentinel trigger counts:")
+        lines.append(
+            "Sentinel R1-R6 audit counts (wired 2026-06-30, Phi4.2 "
+            "mini-sprint; audit-only in Phi4 / Phi4.1 harnesses, "
+            "physical enforcement in Phi5+ via `sentinel_blocks=True`):"
+        )
         for k in sorted(report.sentinel_trigger_counts):
             lines.append(
                 f"  - {k}: {report.sentinel_trigger_counts[k]}"
             )
     else:
         lines.append(
-            "Sentinel R1-R5 not wired in v1 -- the rules live in "
-            "`sim/core/sentinel.py` and are exercised in unit tests; "
-            "live wiring to the squad gate harness is a Phi4.1 "
-            "deliverable."
+            "Sentinel R1-R6 audit block: no proposals evaluated "
+            "(harness ran with zero accepted proposals)."
         )
     lines.append("")
     # Auto-generated diagnostic notes when the gate fails -- the
@@ -1338,7 +1473,10 @@ def run_squad_gate(
         if "kunigami_loss_streak_warning" in t.tags
         or "kunigami_overconfidence_warning" in t.tags
     )
-    sentinel_counts: dict[str, int] = {}    # Phi4.1 wiring -- empty for now
+    # Sentinel counts wired 2026-06-30 (Phi4.2 mini-sprint). Audit-only in
+    # the Phi4 harness -- decisions journalled to out.sentinel_log but do
+    # not block trades. Phi5 harnesses pass sentinel_blocks=True.
+    sentinel_counts: dict[str, int] = summarise_sentinel_log(out.sentinel_log)
 
     verdict, reason = "PENDING", ""
     report = SquadGateReport(
