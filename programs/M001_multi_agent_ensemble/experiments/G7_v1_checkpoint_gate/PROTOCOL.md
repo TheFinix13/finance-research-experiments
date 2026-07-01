@@ -388,6 +388,51 @@ The Rin `n/a` and Chigiri positive delta are the two Phase-T-relevant
 signals; the full 7-window walk-forward rerun will register the
 locked numbers.
 
+### §11.8 (2026-07-01 evening) — Phase T-evolve: Rin v1.1 peer-yield-and-lift
+
+**Trigger:** Phase S walk-forward showed Rin regressing to 0 trades
+across all 7 OOS windows. Phase U shadow-ledger 2024 dry-run
+confirmed she fires 211 shadow proposals with mean shadow-TQS
+0.254 but 0 accepted (crowded out by Isagi's metavision lift).
+Retirement was rejected by the user: Rin and Isagi evolve off each
+other in canon; the fix is to give Rin a mechanic that scores where
+Isagi can't, not to replace her.
+
+**Amendment (Phase T-evolve wiring):**
+- **`sim/agents/a03_rin.py`** — Rin v1.1 `intend()` now reads peer
+  thoughts from the F21 workspace snapshot. Computes
+  `peer_agree_count` and `peer_disagree_count` relative to her
+  proposed direction (mirroring the exact math Isagi's
+  `isagi_metavision_lift` uses). If Isagi's metavision would fire
+  (`peer_agree>=1 & peer_disagree==0`), Rin **yields** (returns
+  None from `intend()`). Otherwise Rin applies an additional
+  `RIN_V1_LONE_READ_LIFT = +0.10` on top of the precision lift,
+  reaching final conviction 0.90 (0.65 base + 0.15 precision +
+  0.10 lone-read) — enough to decisively beat Isagi's base 0.65
+  on ticks where his metavision doesn't fire.
+- **Rationale trail** gains 6 new fields (`peer_agree_count`,
+  `peer_disagree_count`, `peer_seen_count`,
+  `isagi_would_lift_metavision`, `lone_read_lift_applied`,
+  `lone_read_lift`) for post-hoc attribution.
+- **Doctrine §4.1c** written in parallel with the mechanic spec +
+  the delta-sign acceptance test.
+
+**Empirical acceptance test (measured on walk-forward-post-TU):**
+Rin's Phase-U shadow ledger delta = `mean_shadow_tqs_when_rejected
+- mean_shadow_tqs_when_accepted` must be:
+- **≤ −0.05** → routing improvement is real; Phase T-evolve
+  clears; commit and update roster to `v1.1 confirmed`.
+- **~ 0** → routing improved but shadow alpha didn't; Rin's v1
+  status remains `PENDING_MECHANIC_ITER_3`; consider v1.2
+  regime-specialist or symbol-expansion iteration.
+- **> +0.05** → yield rule dropped her best trades; **REVERT** to
+  v1.0 (precision-only). Amendment rolled back with a
+  §11.X postmortem.
+
+**Pre-Phase-T-evolve baseline (locked, from walk-forward-post-U):**
+to be recorded once that job lands. Phase T-evolve numbers
+(walk-forward-post-TU) will be scored against this baseline.
+
 ---
 
 ## 12. Verdict registry row (to be added)

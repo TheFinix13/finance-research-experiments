@@ -106,6 +106,27 @@ RIN_V1_PRECISION_DECAY_PIPS: float = 40.0  # stop_pips beyond floor before lift 
 RIN_V1_CONV_CAP: float = 1.0
 RIN_V1_PIP_SIZE: float = 0.0001        # USD-quoted majors
 
+# Phase T-evolve (Rin v1.1, 2026-07-01 evening) -- peer-yield-and-lift.
+# Blue-Lock canon: Rin evolves by scoring goals Isagi *can't*, not by
+# out-precising Isagi on the same shot. Doctrine amendment §11.8.
+#
+# Mechanic:
+#   - Compute Isagi's metavision confluence from peer thoughts on the
+#     same symbol (same math as `isagi_metavision_lift`).
+#   - If Isagi has metavision support (>=1 peer agrees, 0 disagree) ->
+#     Rin YIELDS (`intend()` returns None). She recognises the shot
+#     belongs to Isagi's line and steps off it.
+#   - Otherwise (peers disagree, or all quiet) -> Rin applies an
+#     additional `RIN_V1_LONE_READ_LIFT` bonus on top of her precision
+#     lift, giving her final conviction 0.90 (0.65 base + 0.15 precision
+#     + 0.10 lone-read). She now decisively wins the aggregator on the
+#     ticks Isagi runs on base conviction only.
+#
+# This is the peer-disagreement / regime-specialist evolution the user
+# requested. Rin no longer competes with Isagi on the same signal; she
+# specialises in the anti-metavision regime.
+RIN_V1_LONE_READ_LIFT: float = 0.10
+
 
 def _rin_precision_lift(stop_pips: float) -> float:
     """Phase P (2026-07-01) -- variable precision lift as a function of
@@ -355,9 +376,14 @@ class A3RinV1(BaseStriker):
         stop_pips = (
             abs(float(sig.entry) - float(sig.stop)) / RIN_V1_PIP_SIZE
         )
-        # F21 workspace read -- alignment with the tier-1 anchor.
+
+        # F21 workspace read -- alignment with the tier-1 anchor plus
+        # Phase T-evolve peer-metavision scan.
         isagi_frame_aligned: bool | None = None
         isagi_frame_direction: str | None = None
+        peer_agree = 0
+        peer_disagree = 0
+        peer_seen = 0
         if workspace is not None:
             latest_by_agent = workspace.latest_by_agent(symbol=market.symbol)
             isagi_t = latest_by_agent.get("isagi_yoichi")
@@ -365,6 +391,53 @@ class A3RinV1(BaseStriker):
                 isagi_frame_direction = str(isagi_t.coordinate.direction_bias)
                 if isagi_frame_direction in ("long", "short"):
                     isagi_frame_aligned = (isagi_frame_direction == direction)
+            # Compute the same metavision confluence Isagi will see when
+            # HE runs `intend()` later this tick -- both agents read the
+            # same snapshot, so Rin can predict whether Isagi's
+            # metavision lift will apply. Rin scans peers OTHER than
+            # herself.
+            peer_thoughts = workspace.peer_thoughts(agent_id=self.agent_id)
+            for peer_t in peer_thoughts:
+                if peer_t.symbol != market.symbol:
+                    continue
+                if peer_t.coordinate is None:
+                    continue
+                peer_dir = str(peer_t.coordinate.direction_bias)
+                if peer_dir not in ("long", "short"):
+                    continue
+                peer_seen += 1
+                if peer_dir == direction:
+                    peer_agree += 1
+                else:
+                    peer_disagree += 1
+
+        # Phase T-evolve yield rule: Isagi's metavision fires when peers
+        # agree with him. If peers agree with Rin's direction AND none
+        # disagree, Isagi (who runs `intend()` on the same snapshot)
+        # will also see peer_agree>=1 & peer_disagree==0 and lift his
+        # own conviction by 0.05..0.10. On the aggregator tie-break
+        # Isagi wins (tier-1 anchor bias). Rin therefore steps off the
+        # shot -- she recognises it belongs to Isagi's line.
+        isagi_would_lift = (peer_agree >= 1 and peer_disagree == 0)
+        if isagi_would_lift:
+            log.debug(
+                "[rin v1.1] yield to isagi metavision @ tick=%d %s (%s): "
+                "peer_agree=%d peer_disagree=%d peer_seen=%d",
+                market.tick_id, market.symbol, direction,
+                peer_agree, peer_disagree, peer_seen,
+            )
+            return None
+
+        # Phase T-evolve lone-read lift: peers disagree or are quiet,
+        # so Isagi's metavision will NOT fire. Rin recognises this is
+        # a shot only her precision reads and lifts her conviction by
+        # `RIN_V1_LONE_READ_LIFT` on top of the precision lift already
+        # in `my_recent_thought.confidence_in_thought`. Cap at 1.0.
+        lone_read_active = True
+        final_conviction = min(
+            RIN_V1_CONV_CAP, conviction + RIN_V1_LONE_READ_LIFT,
+        )
+
         rationale: dict[str, Any] = {
             "wrapped": "agent.alphas.concepts.zone_alpha.SupplyDemandAlpha",
             "params": dict(RIN_V1_PARAMS),
@@ -377,10 +450,20 @@ class A3RinV1(BaseStriker):
             "bar_index": int(i),
             "precision_lift_applied": True,
             "base_conviction": float(sig.conviction),
-            "final_conviction": conviction,
+            "precision_conviction": float(conviction),
+            "lone_read_lift_applied": lone_read_active,
+            "lone_read_lift": float(RIN_V1_LONE_READ_LIFT),
+            "final_conviction": float(final_conviction),
+            "peer_agree_count": int(peer_agree),
+            "peer_disagree_count": int(peer_disagree),
+            "peer_seen_count": int(peer_seen),
             "isagi_frame_direction": isagi_frame_direction,
             "isagi_frame_aligned": isagi_frame_aligned,
-            "doctrine_ref": "06-blue-lock-doctrine.md sec 3.1 (precision)",
+            "isagi_would_lift_metavision": bool(isagi_would_lift),
+            "doctrine_ref": (
+                "06-blue-lock-doctrine.md sec 3.1 (precision) + "
+                "sec 4.1c Phase T-evolve (peer-yield-and-lift)"
+            ),
             "empirical_prior": (
                 "E006 Fib tags +0.12..+0.15 ATR EURUSD only, not OOS-stable; "
                 "Rin v1 stays on zone primitive with precision filter"
@@ -397,7 +480,7 @@ class A3RinV1(BaseStriker):
             entry=float(sig.entry),
             stop=float(sig.stop),
             ladder=ladder,
-            conviction=float(conviction),
+            conviction=float(final_conviction),
             regime_fit=regime_fit_from_atr(prep.bars, i),
             valid_until=horizon,
             rationale=rationale,

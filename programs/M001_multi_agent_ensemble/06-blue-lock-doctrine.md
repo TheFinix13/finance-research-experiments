@@ -1291,6 +1291,96 @@ per-trade values, aggregated to per-agent means on the shadow
 aggregate. Reproducibility is captured via the per-window CV of
 shadow-TQS across the walk-forward panel.
 
+### 4.1c Phase T-evolve — Rin peer-yield-and-lift (2026-07-01 amendment)
+
+**Trigger.** Phase S walk-forward rerun showed Rin regressing to 0
+trades across all 7 OOS windows: her `analytical_precision`
+playstyle is a *strict subset filter* on the same
+`SupplyDemandAlpha` source Isagi wraps, and Isagi's Phase-S
+metavision lift plus tier-1 aggregator bias consistently wins the
+tie-break on every shared tick. Phase U's dry-run seed confirmed:
+Rin fires 211 shadow proposals with mean shadow-TQS 0.254, zero of
+which execute (`n_shadow_accepted=0`, `n_shadow_rejected=211`).
+
+**Canonical framing.** In the Blue-Lock canon, Rin and Isagi
+devour each other by evolving into *different* modes on the same
+pitch. Isagi's Neo-Egoist metavision is a *confluence-driven*
+weapon — it fires HARDER when peers align. Rin's precision
+geometry is a *solitude-driven* weapon — it should fire HARDER
+when peers are absent or contradictory. The retire-and-replace
+reading of Phase S was rejected by the user: Rin doesn't retire;
+she finds *something new in herself* to score more goals than
+Isagi. Peer-yield-and-lift is that "something new".
+
+**Mechanic (Rin v1.1).** In `intend()`:
+
+1. Read peer thoughts on the same symbol from the F21 workspace
+   snapshot. Compute `peer_agree_count` (peers whose
+   `direction_bias` matches Rin's proposed direction) and
+   `peer_disagree_count` (peers whose direction opposes hers),
+   restricted to peers with a non-None `Coordinate`.
+2. Compute `isagi_would_lift_metavision = (peer_agree_count >= 1
+   and peer_disagree_count == 0)`. This mirrors the exact
+   trigger condition of `isagi_metavision_lift` (§4.1 F19).
+3. **Yield rule.** If `isagi_would_lift_metavision` is True, Rin
+   returns `None` from `intend()`. She cedes the shot to Isagi
+   because his metavision lift + tier-1 bias will win the
+   aggregator on any tick where peers are aligned.
+4. **Lone-read lift rule.** Otherwise (peers disagree, or all
+   quiet), Rin adds `RIN_V1_LONE_READ_LIFT = +0.10` to her
+   precision-lifted conviction (capped at 1.0). Her total
+   conviction reaches 0.65 base + 0.15 precision + 0.10
+   lone-read = 0.90, decisively winning against Isagi's base
+   0.65 on ticks where his metavision doesn't fire.
+
+**Rationale trail.** The proposal's `rationale` gains six new
+fields for post-hoc attribution:
+
+- `peer_agree_count` / `peer_disagree_count` / `peer_seen_count`
+- `isagi_would_lift_metavision` (bool)
+- `lone_read_lift_applied` (bool)
+- `lone_read_lift` (float, always `RIN_V1_LONE_READ_LIFT`)
+
+Plus the pre-existing `isagi_frame_direction` and
+`isagi_frame_aligned` are retained for backward compatibility
+with G7 C4 audit logs.
+
+**Statistical honesty.** This is a mechanic change after the
+Phase S regression was observed — exactly the kind of post-hoc
+tuning §07-research-standards forbids on the panel. Two guards
+apply:
+
+1. The change is **dated 2026-07-01 evening** and lands in a
+   separate commit from the observation that motivated it.
+2. Both the **pre-Phase-T** (Rin v1.0, precision filter only) and
+   **post-Phase-T** (Rin v1.1, peer-yield-and-lift) walk-forward
+   verdicts are archived side-by-side in
+   `reviews/g7_v1_checkpoint_verdict_walk-forward-post-U.md` and
+   `reviews/g7_v1_checkpoint_verdict_walk-forward-post-TU.md`.
+   The narrative report at
+   `reviews/2026-07-01_g7_walk_forward_baseline.md` must show
+   both numbers with the delta highlighted.
+
+If Phase T-evolve doesn't produce a positive delta (Rin still 0
+trades, or worse: crowds Isagi's low-metavision setups without
+improving own shadow-TQS), the mechanic reverts and Rin's v1 status
+is reported as `PENDING_MECHANIC_ITER_3`. No promotion to Rin v2
+is authorised until she scores under this mechanic.
+
+**Interaction with §4.1b Phase U shadow ledger.** Rin's Phase U
+scouting report will now contain **both** paired and unpaired
+shadow trades (previously all unpaired). The
+`mean_shadow_tqs_when_accepted` vs `mean_shadow_tqs_when_rejected`
+delta becomes the acceptance test for Phase T-evolve:
+
+- Delta < −0.10 on Rin → Phase T-evolve is a routing win (Rin's
+  accepted trades are meaningfully better than her rejected ones,
+  proving the peer-yield decision is discriminating).
+- Delta ~ 0 → Phase T-evolve gave her routing but not alpha; her
+  underlying signal is still just Isagi's subset. Consider a
+  further v1.2 evolution (regime-specialist or symbol expansion).
+- Delta > 0 → the yield rule is dropping her best trades. Revert.
+
 ### 4.2 The Sentinel (Q-doc-5 resolution)
 
 A non-character architectural role. Blue Lock has no canonical

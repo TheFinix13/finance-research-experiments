@@ -279,7 +279,17 @@ def test_rin_intend_skipped_when_precision_filter_rejects():
 def test_rin_intend_emits_proposal_on_qualifying_signal():
     """Full path: precision gate passes -> intend emits a Proposal with
     the lifted conviction carried through.
+
+    Under Phase T-evolve (2026-07-01 evening) Rin's `intend()` now
+    applies an additional lone-read lift when no aligned peer thought
+    is present. This test passes `workspace=None`, which maps to
+    peer_agree=0 -> Rin is the lone reader and lifts by
+    `RIN_V1_LONE_READ_LIFT`.
     """
+    from programs.M001_multi_agent_ensemble.sim.agents.a03_rin import (
+        RIN_V1_CONV_CAP, RIN_V1_LONE_READ_LIFT,
+    )
+
     bars = _build_synthetic_eurusd_bars(800)
     rin = _make_rin()
     rin.prepare("EURUSD", bars)
@@ -296,10 +306,177 @@ def test_rin_intend_emits_proposal_on_qualifying_signal():
         assert p is not None
         assert p.symbol == "EURUSD"
         assert p.direction in ("long", "short")
-        assert p.conviction == pytest.approx(t.confidence_in_thought)
+        # Phase T-evolve: conviction = precision + lone_read (clipped).
+        expected = min(
+            RIN_V1_CONV_CAP,
+            t.confidence_in_thought + RIN_V1_LONE_READ_LIFT,
+        )
+        assert p.conviction == pytest.approx(expected)
         assert p.rationale["precision_lift_applied"] is True
+        assert p.rationale["lone_read_lift_applied"] is True
+        assert p.rationale["peer_agree_count"] == 0
         assert p.rationale["wrapped"].endswith("SupplyDemandAlpha")
         assert p.rationale["htf_align"] == "D1"
         assert p.rationale["htf_align_mode"] == "against"
         return
     pytest.skip("synthetic series produced no qualifying Rin precision signals")
+
+
+# ---------------------------------------------------------------------------
+# Phase T-evolve peer-yield-and-lift tests (Rin v1.1, 2026-07-01 evening)
+# ---------------------------------------------------------------------------
+
+class TestRinPhaseTEvolve:
+    """Rin v1.1 peer-yield-and-lift semantics.
+
+    - When Isagi (or any peer) publishes an aligned Thought on the
+      same symbol, Rin YIELDS -- `intend()` returns None so Isagi's
+      metavision lift wins the aggregator tie-break.
+    - When peers disagree with Rin's direction (or no peers wrote),
+      Rin applies `RIN_V1_LONE_READ_LIFT` on top of the precision
+      lift, decisively winning the tie-break Isagi can't lift into.
+    - Rationale carries the peer_agree/peer_disagree counts + the
+      `isagi_would_lift_metavision` boolean for post-hoc attribution.
+    """
+
+    def _make_snapshot_with_peer(
+        self, tick_id: int, symbol: str, peer_dir: str,
+        peer_id: str = "isagi_yoichi",
+    ):
+        """Build a WorkspaceSnapshot where a named peer published an
+        aligned/disagreeing Thought on `symbol` at tick_id-1.
+        """
+        from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
+            ReasoningWorkspace,
+        )
+        from programs.M001_multi_agent_ensemble.sim.core.types import (
+            SCHEMA_VERSION, Coordinate, Thought,
+        )
+        base = datetime(2020, 5, 1, tzinfo=timezone.utc)
+        ws = ReasoningWorkspace()
+        peer_t = Thought(
+            schema_version=SCHEMA_VERSION,
+            agent_id=peer_id,
+            tick_id=max(tick_id - 1, 0),
+            timestamp=base,
+            symbol=symbol,
+            narrative="peer_thought",
+            tags=["peer_test"],
+            confidence_in_thought=0.7,
+            expected_action="long_on_H4_close",
+            coordinate=Coordinate(
+                agent_id=peer_id,
+                symbol=symbol,
+                price_lo=1.09, price_hi=1.10,
+                time_start=base, time_end=base + timedelta(hours=24),
+                vol_band=(0.5, 1.0),
+                regime_predicate="test",
+                expected_strength=0.7,
+                direction_bias=peer_dir,
+            ),
+            decision_horizon=base,
+            ttl_ticks=6,
+            references=[],
+        )
+        ws.publish(peer_t)
+        return ws.snapshot(
+            as_of=base + timedelta(hours=4),
+            current_tick=tick_id,
+        )
+
+    def test_rin_yields_when_peer_agrees(self):
+        """When Isagi (peer) publishes an aligned Thought on the same
+        symbol, Rin's `intend()` returns None -> she cedes the shot.
+        """
+        bars = _build_synthetic_eurusd_bars(800)
+        rin = _make_rin()
+        rin.prepare("EURUSD", bars)
+        for i in range(200, len(bars) - 1):
+            sig = rin.inner_signal_at("EURUSD", i)
+            if sig is None:
+                continue
+            market = _bar_to_market(bars[i], i, symbol="EURUSD")
+            t = rin.observe(market, FullLedger())
+            if "rin_precision_lift_applied" not in t.tags:
+                continue
+            snap = self._make_snapshot_with_peer(
+                tick_id=market.tick_id,
+                symbol="EURUSD",
+                peer_dir=sig.direction.value,   # aligned with Rin's dir
+            )
+            p = rin.intend(market, t, workspace=snap)
+            assert p is None, (
+                "Rin should yield to Isagi's metavision when peers align"
+            )
+            return
+        pytest.skip("synthetic series produced no qualifying Rin signals")
+
+    def test_rin_fires_hard_when_peer_disagrees(self):
+        """When a peer disagrees with Rin's direction, Isagi's
+        metavision won't fire, so Rin lone-read-lifts to 0.90.
+        """
+        from programs.M001_multi_agent_ensemble.sim.agents.a03_rin import (
+            RIN_V1_CONV_CAP, RIN_V1_LONE_READ_LIFT,
+        )
+        bars = _build_synthetic_eurusd_bars(800)
+        rin = _make_rin()
+        rin.prepare("EURUSD", bars)
+        for i in range(200, len(bars) - 1):
+            sig = rin.inner_signal_at("EURUSD", i)
+            if sig is None:
+                continue
+            market = _bar_to_market(bars[i], i, symbol="EURUSD")
+            t = rin.observe(market, FullLedger())
+            if "rin_precision_lift_applied" not in t.tags:
+                continue
+            opposite_dir = (
+                "short" if sig.direction.value == "long" else "long"
+            )
+            snap = self._make_snapshot_with_peer(
+                tick_id=market.tick_id,
+                symbol="EURUSD",
+                peer_dir=opposite_dir,
+            )
+            p = rin.intend(market, t, workspace=snap)
+            assert p is not None
+            expected = min(
+                RIN_V1_CONV_CAP,
+                t.confidence_in_thought + RIN_V1_LONE_READ_LIFT,
+            )
+            assert p.conviction == pytest.approx(expected)
+            assert p.rationale["lone_read_lift_applied"] is True
+            assert p.rationale["peer_disagree_count"] == 1
+            assert p.rationale["peer_agree_count"] == 0
+            assert p.rationale["isagi_would_lift_metavision"] is False
+            return
+        pytest.skip("synthetic series produced no qualifying Rin signals")
+
+    def test_rin_fires_when_no_workspace(self):
+        """Backwards compat: with `workspace=None`, Rin still fires
+        (peer counts default to zero -> she is the lone reader).
+        """
+        from programs.M001_multi_agent_ensemble.sim.agents.a03_rin import (
+            RIN_V1_LONE_READ_LIFT,
+        )
+        bars = _build_synthetic_eurusd_bars(800)
+        rin = _make_rin()
+        rin.prepare("EURUSD", bars)
+        for i in range(200, len(bars) - 1):
+            sig = rin.inner_signal_at("EURUSD", i)
+            if sig is None:
+                continue
+            market = _bar_to_market(bars[i], i, symbol="EURUSD")
+            t = rin.observe(market, FullLedger())
+            if "rin_precision_lift_applied" not in t.tags:
+                continue
+            p = rin.intend(market, t, workspace=None)
+            assert p is not None
+            assert p.rationale["lone_read_lift_applied"] is True
+            assert p.rationale["peer_seen_count"] == 0
+            assert (
+                p.conviction >=
+                t.confidence_in_thought + RIN_V1_LONE_READ_LIFT - 1e-6
+                or p.conviction == 1.0
+            )
+            return
+        pytest.skip("synthetic series produced no qualifying Rin signals")
