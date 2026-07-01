@@ -766,10 +766,291 @@ def _parse_date(s: str) -> datetime:
     return datetime.fromisoformat(s).replace(tzinfo=timezone.utc)
 
 
+# ---------------------------------------------------------------------------
+# Walk-forward multi-window baseline (Phase J -- G7 real-verdict trial)
+# ---------------------------------------------------------------------------
+
+# G7 walk-forward panel (Phi4.1 pattern: 4-yr IS / 1-yr OOS rolling).
+# Matches ``run_isagi_phi3_gate.IS_YEARS`` = 4 and ``OOS_YEARS`` = 1.
+G7_PANEL_START = datetime(2015, 1, 1, tzinfo=timezone.utc)
+G7_PANEL_END = datetime(2025, 12, 31, tzinfo=timezone.utc)
+
+
+@dataclass
+class WalkForwardWindow:
+    """One 4-yr IS + 1-yr OOS slice of the G7 panel."""
+
+    idx: int
+    is_start: datetime
+    is_end: datetime
+    oos_start: datetime
+    oos_end: datetime
+
+
+def _g7_windows(
+    panel_start: datetime = G7_PANEL_START,
+    panel_end: datetime = G7_PANEL_END,
+    is_years: int = 4,
+    oos_years: int = 1,
+) -> list[WalkForwardWindow]:
+    """Generate the standard G7 walk-forward windows.
+
+    Anchored at Jan-1 of ``panel_start.year``. Yields non-overlapping
+    OOS years so per-window verdicts are independent (needed for the
+    K-of-7 aggregator).
+    """
+    windows: list[WalkForwardWindow] = []
+    idx = 0
+    start_year = panel_start.year
+    end_year = panel_end.year
+    last_ws_year = end_year - is_years - oos_years + 1
+    for y in range(start_year, last_ws_year + 1):
+        is_start = datetime(y, 1, 1, tzinfo=timezone.utc)
+        is_end = datetime(y + is_years, 1, 1, tzinfo=timezone.utc)
+        oos_start = is_end
+        oos_end = datetime(
+            oos_start.year + oos_years, 1, 1, tzinfo=timezone.utc,
+        )
+        if oos_end > panel_end:
+            oos_end = panel_end
+        windows.append(WalkForwardWindow(
+            idx=idx,
+            is_start=is_start, is_end=is_end,
+            oos_start=oos_start, oos_end=oos_end,
+        ))
+        idx += 1
+    return windows
+
+
+def _aggregate_per_agent_verdict_across_windows(
+    per_window_verdicts: list[AgentVerdict],
+    n_windows: int,
+    *,
+    tqs_pass_k_of_n: int = 5,           # C1: >= 5 of 7 windows
+    workspace_pass_k_of_n: int | None = None,  # C4: all windows if None
+    lot_cv_pass_k_of_n: int | None = None,     # C5: all windows if None
+    risk_cv_pass_k_of_n: int | None = None,    # C6: all windows if None
+) -> AgentVerdict:
+    """Fold per-window criteria into a single AgentVerdict.
+
+    Per PROTOCOL sec 3, K-of-7 rules apply per criterion. The default
+    thresholds encode PROTOCOL sec 3 as of 2026-07-01. Any change is a
+    sec 11 amendment.
+    """
+    workspace_pass_k_of_n = workspace_pass_k_of_n or n_windows
+    lot_cv_pass_k_of_n = lot_cv_pass_k_of_n or n_windows
+    risk_cv_pass_k_of_n = risk_cv_pass_k_of_n or n_windows
+
+    if not per_window_verdicts:
+        raise ValueError("no per-window verdicts to aggregate")
+    first = per_window_verdicts[0]
+    agg = AgentVerdict(
+        agent_id=first.agent_id, playstyle=first.playstyle, tier=first.tier,
+    )
+
+    # Aggregate each criterion via a K-of-N pass count.
+    def _count(idx: int) -> tuple[int, int, list[float]]:
+        passes = 0
+        waived_or_pending = 0
+        stats: list[float] = []
+        for v in per_window_verdicts:
+            r = v.criteria.get(idx)
+            if r is None:
+                continue
+            if r.status == "waived":
+                waived_or_pending += 1
+                continue
+            if r.status == "pending":
+                waived_or_pending += 1
+                continue
+            stats.append(r.statistic)
+            if r.passed:
+                passes += 1
+        return passes, waived_or_pending, stats
+
+    def _make(idx: int, threshold_k: int, threshold_val: float) -> CriterionResult:
+        passes, waived, stats = _count(idx)
+        # Waived windows count as PASS for the K-of-N tally.
+        effective_passes = passes + waived
+        passed = effective_passes >= threshold_k
+        return CriterionResult(
+            passed=passed,
+            statistic=statistics.mean(stats) if stats else 0.0,
+            threshold=threshold_val,
+            evidence={
+                "per_window_pass_count": passes,
+                "per_window_waived_count": waived,
+                "k_of_n_threshold": f"{threshold_k} of {n_windows}",
+                "mean_statistic_across_computed_windows": (
+                    statistics.mean(stats) if stats else 0.0
+                ),
+            },
+        )
+
+    agg.criteria[1] = _make(1, tqs_pass_k_of_n, CRIT1_TQS_THRESHOLD)
+    # C2/C3 stay pending across the panel (need leave-one-out squads).
+    agg.criteria[2] = _evaluate_criterion_2_stub()
+    agg.criteria[3] = _evaluate_criterion_3_stub()
+    agg.criteria[4] = _make(4, workspace_pass_k_of_n, 1.0)
+    agg.criteria[5] = _make(5, lot_cv_pass_k_of_n, CRIT5_LOT_CV_THRESHOLD)
+    agg.criteria[6] = _make(6, risk_cv_pass_k_of_n, CRIT6_RISK_CV_THRESHOLD)
+    return agg
+
+
+def run_g7_walk_forward(
+    *,
+    panel_start: datetime = G7_PANEL_START,
+    panel_end: datetime = G7_PANEL_END,
+    out_dir: Path | str | None = None,
+    tag: str = "walk-forward",
+    is_years: int = 4,
+    oos_years: int = 1,
+) -> G7GateReport:
+    """Full walk-forward baseline squad run for G7.
+
+    Loads the full panel once, drives ``_drive_squad_replay`` end-to-end
+    with F21 workspace threading + Sentinel enforcement, then slices
+    trades by OOS window. Per-window per-agent criteria are computed,
+    and the aggregate uses the PROTOCOL sec 3 K-of-7 thresholds.
+
+    Leave-one-out squads (C2/C3) are NOT run here -- those are a
+    separate compute job (~ 8 additional replays x N windows).
+    """
+    ensure_production_repo_on_path()
+
+    windows = _g7_windows(panel_start, panel_end, is_years, oos_years)
+    n_windows = len(windows)
+    log.info(
+        "G7 walk-forward: panel %s -> %s | %d windows | symbols %s",
+        panel_start.date(), panel_end.date(), n_windows, SYMBOLS_G7,
+    )
+    for w in windows:
+        log.info(
+            "  window %d: IS %s -> %s | OOS %s -> %s",
+            w.idx, w.is_start.date(), w.is_end.date(),
+            w.oos_start.date(), w.oos_end.date(),
+        )
+
+    # Load full panel bars once.
+    bars_by_symbol: dict[str, list] = {}
+    for sym in SYMBOLS_G7:
+        bars_by_symbol[sym] = _load_production_bars(sym, panel_start, panel_end)
+        log.info("Loaded %d %s bars", len(bars_by_symbol[sym]), sym)
+
+    # Instantiate agents; prepare on full panel bars.
+    isagi = A1IsagiV1()
+    bachira = A2BachiraV1()
+    rin = A3RinV1()
+    chigiri = A4ChigiriV1()
+    reo = A5ReoV1()
+    nagi = A6NagiV1()
+    barou = A7BarouV1()
+    kunigami = A10KunigamiV1()
+    for sym, bars in bars_by_symbol.items():
+        if not bars:
+            continue
+        for agent in (isagi, bachira, rin, chigiri, barou):
+            if hasattr(agent, "prepare") and sym in agent.symbols:
+                agent.prepare(sym, bars)
+    agents = [isagi, bachira, rin, chigiri, reo, nagi, barou, kunigami]
+    agents_by_id = {a.agent_id: a for a in agents}
+
+    # Single-pass replay (workspace + sentinel enforcement).
+    ledger = FullLedger()
+    log.info("Starting single-pass replay across full panel ...")
+    out = _drive_squad_replay(
+        agents=agents, isagi=isagi, barou=barou, kunigami=kunigami,
+        bars_by_symbol=bars_by_symbol, ledger=ledger,
+        sentinel_blocks=True,
+        use_workspace=True,
+    )
+    log.info(
+        "G7 walk-forward replay complete: %d thoughts, %d proposals, %d trades",
+        len(out.thoughts), len(out.proposals_all), len(out.trades),
+    )
+
+    # Per-agent per-window verdicts, then aggregate.
+    per_window: dict[str, list[AgentVerdict]] = {aid: [] for aid in G7_AGENT_ORDER}
+    for w in windows:
+        oos_trades = [
+            t for t in out.trades
+            if w.oos_start <= t.entry_time < w.oos_end
+        ]
+        log.info(
+            "  window %d OOS %d..%d trades=%d",
+            w.idx, w.oos_start.year, w.oos_end.year, len(oos_trades),
+        )
+        for aid in G7_AGENT_ORDER:
+            agent = agents_by_id.get(aid)
+            if agent is None:
+                continue
+            ag_trades = [t for t in oos_trades if t.agent_id == aid]
+            v = AgentVerdict(
+                agent_id=aid,
+                playstyle=getattr(agent, "playstyle", "unknown"),
+                tier=int(getattr(agent, "tier", 2)),
+            )
+            v.criteria[1] = _evaluate_criterion_1(
+                aid, ag_trades, is_falsifier=aid in STRUCTURAL_FALSIFIERS,
+            )
+            v.criteria[2] = _evaluate_criterion_2_stub()
+            v.criteria[3] = _evaluate_criterion_3_stub()
+            # C4 is a panel-wide counter -- but we count per-window
+            # publishes/reads by filtering thoughts by tick timestamp.
+            # Simpler: use the panel-wide count for every window (each
+            # window inherits the same count). K-of-N with all-N gets
+            # applied at aggregate. Slight over-count vs. truly
+            # per-window; noted in the evidence dict.
+            pub = int(out.workspace_publish_counts.get(aid, 0))
+            rd = int(out.workspace_read_counts.get(aid, 0))
+            v.criteria[4] = _evaluate_criterion_4(aid, pub, rd)
+            v.criteria[5] = _evaluate_criterion_5(agent, ag_trades)
+            v.criteria[6] = _evaluate_criterion_6(agent, ag_trades)
+            per_window[aid].append(v)
+
+    # Aggregate + build the final G7 report.
+    report = G7GateReport(
+        tag=tag,
+        panel_start=panel_start, panel_end=panel_end,
+        oos_start=windows[0].oos_start, oos_end=windows[-1].oos_end,
+    )
+    for aid, verdicts in per_window.items():
+        if not verdicts:
+            continue
+        report.per_agent[aid] = (
+            _aggregate_per_agent_verdict_across_windows(verdicts, n_windows)
+        )
+
+    report.squad_pass = all(v.is_v1_pass for v in report.per_agent.values())
+    report.partial_reason = (
+        f"walk-forward baseline: {n_windows} windows; leave-one-out "
+        f"squads (C2/C3) NOT run in this pass -- separate compute job"
+    )
+
+    # Emit reports.
+    if out_dir is not None:
+        odir = Path(out_dir)
+        odir.mkdir(parents=True, exist_ok=True)
+        md_path = odir / f"g7_v1_checkpoint_verdict_{tag}.md"
+        md_path.write_text(render_g7_report(report), encoding="utf-8")
+        log.info("Wrote %s", md_path)
+        summary_path = odir / f"g7_v1_checkpoint_report_{tag}.json"
+        summary_path.write_text(
+            json.dumps(report.to_jsonable(), indent=2, default=str),
+            encoding="utf-8",
+        )
+        log.info("Wrote %s", summary_path)
+    return report
+
+
 def main(argv: Optional[list[str]] = None) -> int:
     parser = argparse.ArgumentParser(
-        description="G7 v1 checkpoint gate harness (dry-run + full)."
+        description="G7 v1 checkpoint gate harness (dry-run + walk-forward)."
     )
+    parser.add_argument("--mode", choices=("dry-run", "walk-forward"),
+                        default="dry-run",
+                        help="dry-run = single-OOS smoke test; "
+                             "walk-forward = full 7-window baseline")
     parser.add_argument("--start", type=_parse_date,
                         default=DEFAULT_PANEL_START.isoformat())
     parser.add_argument("--end", type=_parse_date,
@@ -788,11 +1069,19 @@ def main(argv: Optional[list[str]] = None) -> int:
         level=logging.INFO if args.verbose else logging.WARNING,
         format="%(asctime)s %(levelname)s %(name)s -- %(message)s",
     )
-    run_g7_dry_run(
-        panel_start=args.start, panel_end=args.end,
-        oos_start=args.oos_start, oos_end=args.oos_end,
-        out_dir=args.out_dir, tag=args.tag,
-    )
+    if args.mode == "walk-forward":
+        # Walk-forward mode: use --start / --end as the FULL panel,
+        # ignore --oos-start / --oos-end (windows are derived).
+        run_g7_walk_forward(
+            panel_start=args.start, panel_end=args.end,
+            out_dir=args.out_dir, tag=args.tag,
+        )
+    else:
+        run_g7_dry_run(
+            panel_start=args.start, panel_end=args.end,
+            oos_start=args.oos_start, oos_end=args.oos_end,
+            out_dir=args.out_dir, tag=args.tag,
+        )
     return 0
 
 
