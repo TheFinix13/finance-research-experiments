@@ -63,6 +63,9 @@ from programs.M001_multi_agent_ensemble.sim._cross_repo import (
     ensure_production_repo_on_path,
 )
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
+from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    stamp_provenance_pips,
+)
 from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
     WorkspaceSnapshot,
 )
@@ -339,6 +342,7 @@ class A2BachiraV1(BaseStriker):
                 "edge must come from pattern x HTF combination"
             ),
         }
+        stamp_provenance_pips(rationale, bars=prep.bars, i=i)
         return AgentProposal(
             agent_id=self.agent_id,
             tick_id=market.tick_id,
@@ -353,6 +357,7 @@ class A2BachiraV1(BaseStriker):
             regime_fit=0.5,  # Φ4.1 placeholder; regime classifier wires later
             valid_until=horizon,
             rationale=rationale,
+            agent_tier=int(self.tier),
         )
 
     # ------------------------------------------------------------------

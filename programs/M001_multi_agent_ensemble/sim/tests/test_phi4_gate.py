@@ -40,6 +40,7 @@ def _proposal(
     direction: str = "long",
     conviction: float = 0.7,
     tick_id: int = 0,
+    agent_tier: int = 2,
 ) -> AgentProposal:
     base = datetime(2024, 1, 1, tzinfo=timezone.utc)
     return AgentProposal(
@@ -52,6 +53,7 @@ def _proposal(
         conviction=conviction, regime_fit=0.5,
         valid_until=base + timedelta(hours=24),
         rationale={"stub": True},
+        agent_tier=agent_tier,
     )
 
 
@@ -85,13 +87,65 @@ def test_aggregator_deterministic_tiebreak_on_conviction():
     from programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate import (
         _phi4_aggregate,
     )
-    # Two proposals at IDENTICAL conviction -> tiebreaker is
-    # lexicographic on `agent_id` ascending.
+    # Two peer-tier proposals at IDENTICAL conviction -> tiebreaker is
+    # (agent_tier asc, agent_id asc). Both tier 2 here, so falls back to
+    # lex on agent_id.
     a = _proposal(agent_id="zz_late", conviction=0.80)
     b = _proposal(agent_id="aa_early", conviction=0.80)
     out = _phi4_aggregate([a, b], tick_id=0)
     assert len(out.accepted) == 1
     assert out.accepted[0].agent_id == "aa_early"  # lex tie-break
+
+
+def test_aggregator_tier_anchor_wins_same_base_conviction():
+    """Phase N (2026-07-01) -- Tier-1 anchor (Isagi) wins tiebreak over
+    tier-2 peer at same base conviction, even when the peer sorts
+    alphabetically before Isagi. The peer must exceed anchor conviction
+    by TIER_BIAS to override.
+    """
+    from programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate import (
+        _phi4_aggregate, TIER_BIAS,
+    )
+    isagi = _proposal(agent_id="isagi_yoichi", conviction=0.65, agent_tier=1)
+    bachira = _proposal(agent_id="bachira_meguru", conviction=0.65, agent_tier=2)
+    out = _phi4_aggregate([bachira, isagi], tick_id=0)
+    # Isagi wins tiebreak despite bachira_* sorting alphabetically first.
+    assert out.accepted[0].agent_id == "isagi_yoichi"
+    # Bachira at (anchor + TIER_BIAS - epsilon) still loses.
+    bachira_just_below = _proposal(
+        agent_id="bachira_meguru",
+        conviction=0.65 + TIER_BIAS - 0.001, agent_tier=2,
+    )
+    out = _phi4_aggregate([bachira_just_below, isagi], tick_id=0)
+    assert out.accepted[0].agent_id == "isagi_yoichi"
+    # Bachira at (anchor + TIER_BIAS + epsilon) overrides.
+    bachira_just_above = _proposal(
+        agent_id="bachira_meguru",
+        conviction=0.65 + TIER_BIAS + 0.001, agent_tier=2,
+    )
+    out = _phi4_aggregate([bachira_just_above, isagi], tick_id=0)
+    assert out.accepted[0].agent_id == "bachira_meguru"
+
+
+def test_aggregator_ranked_by_symbol_supports_slot_fallback():
+    """Phase N -- aggregator exposes the full per-symbol ranked list so
+    the sentinel loop in _drive_squad_replay can cede a blocked winner's
+    slot to the next-ranked proposal.
+    """
+    from programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate import (
+        _phi4_aggregate,
+    )
+    isagi = _proposal(agent_id="isagi_yoichi", conviction=0.75, agent_tier=1)
+    bachira = _proposal(agent_id="bachira_meguru", conviction=0.72, agent_tier=2)
+    # Rin needs to exceed anchor + TIER_BIAS to override -> conviction 0.85.
+    rin = _proposal(agent_id="itoshi_rin", conviction=0.85, agent_tier=2)
+    out = _phi4_aggregate([bachira, isagi, rin], tick_id=0)
+    ranked = out.ranked_by_symbol["EURUSD"]
+    assert len(ranked) == 3
+    # Rin adj=0.80 > isagi adj=0.75 > bachira adj=0.67 -> Rin overrides anchor.
+    assert ranked[0].agent_id == "itoshi_rin"
+    assert ranked[1].agent_id == "isagi_yoichi"
+    assert ranked[2].agent_id == "bachira_meguru"
 
 
 def test_aggregator_returns_empty_on_no_proposals():

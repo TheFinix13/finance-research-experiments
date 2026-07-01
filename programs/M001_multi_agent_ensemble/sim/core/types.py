@@ -153,6 +153,14 @@ class AgentProposal:
     regime_fit: float
     valid_until: datetime
     rationale: dict[str, Any] = field(default_factory=dict)
+    # F19/F20 doctrine 3.9: information tier of the striker who
+    # produced this proposal. 1 = anchor (Isagi), 2 = peer, 3 = aux.
+    # The Phi4 aggregator applies a small tier-1 conviction bias so the
+    # anchor wins same-conviction tiebreaks (doctrine 4.1a v1 checkpoint
+    # -- see M001 amendment 2026-07-01 "aggregator tier-anchor").
+    # Backwards-compatible default = 2 so pre-tier-aware proposal
+    # constructors still validate.
+    agent_tier: int = 2
 
     def __post_init__(self) -> None:
         if self.direction not in ("long", "short", "flat"):
@@ -161,6 +169,8 @@ class AgentProposal:
             raise ValueError(f"conviction out of bounds: {self.conviction}")
         if not (0.0 <= self.regime_fit <= 1.0):
             raise ValueError(f"regime_fit out of bounds: {self.regime_fit}")
+        if self.agent_tier not in (1, 2, 3):
+            raise ValueError(f"agent_tier must be 1/2/3, got {self.agent_tier}")
         if self.direction in ("long", "short"):
             total = sum(r.fraction for r in self.ladder)
             if abs(total - 1.0) > 1e-6:
@@ -188,6 +198,7 @@ class AgentProposal:
             "regime_fit": float(self.regime_fit),
             "valid_until": _iso(self.valid_until),
             "rationale": self.rationale,
+            "agent_tier": int(self.agent_tier),
         }
 
 

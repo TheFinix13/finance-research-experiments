@@ -1,0 +1,76 @@
+{
+  "agent_id": "bachira_meguru",
+  "playstyle": "rebel_tight",
+  "tier": 2,
+  "bit_vector": "1??101",
+  "is_v1_pass": false,
+  "criteria": {
+    "1": {
+      "passed": true,
+      "statistic": 0.3390163446214147,
+      "threshold": 0.3,
+      "status": "computed",
+      "evidence": {
+        "n_trades": 399,
+        "mean_tqs": 0.3390163446214147,
+        "median_tqs": 0.0,
+        "note_dry_run": "single-window dry-run; PROTOCOL sec 3 requires mean_tqs >= 0.30 AND per-window mean >= 0.20 in >= 5/7 windows; full-panel run pending"
+      }
+    },
+    "2": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.0,
+      "status": "pending",
+      "evidence": {
+        "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+      }
+    },
+    "3": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.5,
+      "status": "pending",
+      "evidence": {
+        "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+      }
+    },
+    "4": {
+      "passed": true,
+      "statistic": 2772.0,
+      "threshold": 1.0,
+      "status": "computed",
+      "evidence": {
+        "publish_count": 9660,
+        "read_count": 2772,
+        "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+      }
+    },
+    "5": {
+      "passed": false,
+      "statistic": 0.047262729537858386,
+      "threshold": 0.1,
+      "status": "computed",
+      "evidence": {
+        "n_trades": 399,
+        "mean_lot": 0.05914786967418546,
+        "min_lot": 0.05,
+        "max_lot": 0.06,
+        "cv": 0.047262729537858386
+      }
+    },
+    "6": {
+      "passed": true,
+      "statistic": 0.1787752734721596,
+      "threshold": 0.1,
+      "status": "computed",
+      "evidence": {
+        "n_trades": 399,
+        "sl_cv": 0.1787752734721596,
+        "tp1_cv": 0.17877527347215957,
+        "mean_sl": 20.118288578589326,
+        "mean_tp1": 60.35486573576798
+      }
+    }
+  }
+}

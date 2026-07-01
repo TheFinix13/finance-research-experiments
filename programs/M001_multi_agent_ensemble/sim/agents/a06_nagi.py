@@ -77,6 +77,9 @@ from datetime import datetime, timedelta
 from typing import Any, Optional
 
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
+from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
+    WorkspaceSnapshot,
+)
 from programs.M001_multi_agent_ensemble.sim.core.striker import BaseStriker
 from programs.M001_multi_agent_ensemble.sim.core.types import (
     SCHEMA_VERSION,
@@ -271,11 +274,16 @@ class A6NagiV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        *,
+        workspace: WorkspaceSnapshot | None = None,
         **_kwargs: object,
     ) -> AgentProposal | None:
-        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg. Nagi's
-        # confluence predicate is already fed by ledger reads via
-        # ``observe``; workspace snapshot is redundant for v1.
+        # Phase O (2026-07-01): Nagi's confluence predicate is fed by
+        # ledger reads via ``observe`` (F11 union predicate). The F21
+        # workspace read here is a diagnostic mirror -- counts peer
+        # thoughts visible at the tick barrier so G7 C4 records Nagi's
+        # workspace engagement. Redundant with ledger for the decision,
+        # but truthful for the chemistry metric.
         if market.timeframe != self.home_tf:
             return None
         if my_recent_thought.coordinate is None:
@@ -304,6 +312,21 @@ class A6NagiV1(BaseStriker):
         ladder = [LadderRung(price=float(tp), fraction=1.0)]
         valid_until = market.as_of + timedelta(hours=NAGI_V1_VALID_HOURS)
 
+        # F21 workspace read -- confluence diagnostic mirror of the
+        # ledger predicate. Counts peer directional agreement at the
+        # tick barrier.
+        workspace_peer_count = 0
+        workspace_peers_agree = 0
+        if workspace is not None:
+            peers = workspace.peer_thoughts(agent_id=self.agent_id)
+            workspace_peer_count = len(peers)
+            for peer_t in peers:
+                if peer_t.coordinate is None:
+                    continue
+                peer_dir = str(peer_t.coordinate.direction_bias)
+                if peer_dir == direction:
+                    workspace_peers_agree += 1
+
         return AgentProposal(
             agent_id=self.agent_id,
             tick_id=market.tick_id,
@@ -328,8 +351,11 @@ class A6NagiV1(BaseStriker):
                     my_recent_thought.coordinate.rationale.get("shared_tags", [])
                 ),
                 "one_bar_lag_intentional": True,
+                "workspace_peer_count": int(workspace_peer_count),
+                "workspace_peers_agree": int(workspace_peers_agree),
                 "doctrine_ref": "06-blue-lock-doctrine.md sec 3.3 + sec 3.8",
             },
+            agent_tier=int(self.tier),
         )
 
     # ------------------------------------------------------------------

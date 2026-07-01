@@ -62,6 +62,12 @@ from programs.M001_multi_agent_ensemble.sim._cross_repo import (
     ensure_production_repo_on_path,
 )
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
+from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    stamp_provenance_pips,
+)
+from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
+    WorkspaceSnapshot,
+)
 from programs.M001_multi_agent_ensemble.sim.core.striker import BaseStriker
 from programs.M001_multi_agent_ensemble.sim.core.types import (
     SCHEMA_VERSION,
@@ -87,9 +93,17 @@ BAROU_V1_PARAMS: dict[str, Any] = {
 
 BAROU_V1_SYMBOLS: tuple[str, ...] = ("USDCAD",)
 
-BAROU_V1_DEVOUR_LIFT: float = 0.10           # +0.10 to conviction
-BAROU_V1_DEVOUR_OBS_FLOOR: float = 0.7       # Isagi conviction threshold
+BAROU_V1_DEVOUR_LIFT: float = 0.20           # +0.20 to conviction
+BAROU_V1_DEVOUR_OBS_FLOOR: float = 0.5       # Isagi conviction threshold
 BAROU_V1_CONV_CAP: float = 1.0
+# 2026-07-01 Phase N bump: devour lift raised 0.10 -> 0.20 and the
+# Isagi-disagreement floor lowered 0.7 -> 0.5 after the G7 walk-forward
+# baseline confirmed Barou = 0 trades across all 7 windows (crowded out
+# on USDCAD by Bachira). The stronger lift now gives Barou a decisive
+# override when the devour condition fires (final conviction 0.85 >
+# Bachira max 0.75), matching the "solo king finishes what Isagi
+# couldn't" story-beat. See reviews/g7_v1_checkpoint_verdict_walk-
+# forward-baseline.md.
 
 BAROU_V1_CANON_ROLE = CanonRole(
     canon_player="barou_shoei",
@@ -278,12 +292,15 @@ class A7BarouV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        *,
+        workspace: WorkspaceSnapshot | None = None,
         **_kwargs: object,
     ) -> AgentProposal | None:
-        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg. Barou's solo-king
-        # devour path already consults the ledger via ``observe`` -- workspace
-        # is redundant for v1 mechanic; will consume peer thoughts in the
-        # v1-hybrid mechanic-A iteration (Isagi-miss replay pending G7).
+        # Phase O (2026-07-01): Barou's devour lift is computed in
+        # ``observe`` via the ledger (F19/F20 aware). The F21 workspace
+        # read here confirms Isagi's latest USDCAD direction at the tick
+        # barrier for provenance -- feeds "workspace_isagi_direction"
+        # into rationale so G7 C4 records Barou's workspace engagement.
         if market.timeframe != self.home_tf:
             return None
         if market.symbol not in self.symbols:
@@ -306,6 +323,18 @@ class A7BarouV1(BaseStriker):
         horizon = market.as_of + timedelta(
             hours=float(self.canon_role.target_hold_hours),
         )
+        # F21 workspace read -- confirm Isagi's live USDCAD direction.
+        workspace_isagi_direction: str | None = None
+        workspace_isagi_disagrees: bool | None = None
+        if workspace is not None:
+            latest_by_agent = workspace.latest_by_agent(symbol=market.symbol)
+            isagi_t = latest_by_agent.get(BAROU_ISAGI_AGENT_ID)
+            if isagi_t is not None and isagi_t.coordinate is not None:
+                workspace_isagi_direction = str(isagi_t.coordinate.direction_bias)
+                if workspace_isagi_direction in ("long", "short"):
+                    workspace_isagi_disagrees = (
+                        workspace_isagi_direction != direction
+                    )
         meta = getattr(sig, "meta", {}) or {}
         rationale: dict[str, Any] = {
             "wrapped": "agent.alphas.concepts.zone_alpha.SupplyDemandAlpha",
@@ -318,9 +347,12 @@ class A7BarouV1(BaseStriker):
             ),
             "base_conviction": float(sig.conviction),
             "final_conviction": conviction,
+            "workspace_isagi_direction": workspace_isagi_direction,
+            "workspace_isagi_disagrees": workspace_isagi_disagrees,
             "doctrine_ref": "06-blue-lock-doctrine.md sec 3.4 (devour)",
             "empirical_prior": "E005 USDCAD baseline-zone +4.63 pips/trade",
         }
+        stamp_provenance_pips(rationale, bars=prep.bars, i=i)
         return AgentProposal(
             agent_id=self.agent_id,
             tick_id=market.tick_id,
@@ -335,6 +367,7 @@ class A7BarouV1(BaseStriker):
             regime_fit=0.5,  # Phi4 placeholder; regime classifier wires later
             valid_until=horizon,
             rationale=rationale,
+            agent_tier=int(self.tier),
         )
 
     # ------------------------------------------------------------------

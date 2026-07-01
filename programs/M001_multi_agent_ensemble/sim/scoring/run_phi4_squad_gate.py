@@ -248,10 +248,27 @@ def _interleave_bars(bars_by_symbol: dict[str, list]) -> list[_GlobalBar]:
 # Aggregator + rejection logger (Phi4 squad rule)
 # ---------------------------------------------------------------------------
 
+# Aggregator tier-anchor bias (doctrine 4.1a v1 checkpoint,
+# amendment 2026-07-01). Tier-1 strikers get their adjusted conviction
+# lifted by TIER_BIAS relative to tier-2 peers, so the anchor wins
+# same-base-conviction tiebreaks. A peer needs conviction >= (anchor + TIER_BIAS)
+# to override -- meaningful override, not accidental.
+TIER_BIAS: float = 0.05
+
+
+def _tier_adjusted_conviction(proposal: AgentProposal) -> float:
+    """Return the aggregator-visible conviction after tier-anchor bias."""
+    return float(proposal.conviction) - TIER_BIAS * (int(proposal.agent_tier) - 1)
+
+
 @dataclass
 class _AggregationOutcome:
     accepted: list[AgentProposal]
     rejected: list[dict[str, Any]]
+    # Full per-symbol ranked list (winner first). Sentinel slot-fallback
+    # uses this to try runner-ups when the winner is physically blocked
+    # by R1-R6, so the slot doesn't die on a single-agent block.
+    ranked_by_symbol: dict[str, list[AgentProposal]] = field(default_factory=dict)
 
 
 def _phi4_aggregate(
@@ -265,20 +282,33 @@ def _phi4_aggregate(
     `rejected_proposals.jsonl` can be analysed downstream (the
     cross-striker rejection-analysis harness).
 
+    Sort key is ``(-tier_adjusted_conviction, agent_tier, agent_id)``.
+    Tier-1 anchor wins ties over tier-2 peers (doctrine 4.1a); a peer
+    needs ``conviction >= anchor.conviction + TIER_BIAS`` to override.
+
     Note: this overrides `sim/core/aggregator.py` same-direction-union
     behaviour for the Phi4 squad evaluation. The original aggregator
     is preserved for the Phi3 wrapper validation and for the dashboard.
     """
     if not proposals:
-        return _AggregationOutcome(accepted=[], rejected=[])
+        return _AggregationOutcome(
+            accepted=[], rejected=[], ranked_by_symbol={},
+        )
     by_sym: dict[str, list[AgentProposal]] = {}
     for p in proposals:
         by_sym.setdefault(p.symbol, []).append(p)
     accepted: list[AgentProposal] = []
     rejected: list[dict[str, Any]] = []
+    ranked_by_symbol: dict[str, list[AgentProposal]] = {}
     for sym, plist in by_sym.items():
-        # Deterministic sort -- conviction desc, then agent_id asc.
-        plist.sort(key=lambda p: (-p.conviction, p.agent_id))
+        plist.sort(
+            key=lambda p: (
+                -_tier_adjusted_conviction(p),
+                int(p.agent_tier),
+                p.agent_id,
+            ),
+        )
+        ranked_by_symbol[sym] = list(plist)
         winner = plist[0]
         accepted.append(winner)
         for loser in plist[1:]:
@@ -287,14 +317,19 @@ def _phi4_aggregate(
                 "symbol": sym,
                 "winner_agent_id": winner.agent_id,
                 "winner_conviction": float(winner.conviction),
+                "winner_tier": int(winner.agent_tier),
                 "loser_agent_id": loser.agent_id,
                 "loser_conviction": float(loser.conviction),
+                "loser_tier": int(loser.agent_tier),
                 "loser_direction": loser.direction,
                 "winner_direction": winner.direction,
                 "rejection_reason": "lower_conviction_same_symbol",
                 "timestamp": loser.timestamp.isoformat(),
             })
-    return _AggregationOutcome(accepted=accepted, rejected=rejected)
+    return _AggregationOutcome(
+        accepted=accepted, rejected=rejected,
+        ranked_by_symbol=ranked_by_symbol,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -610,14 +645,25 @@ def _drive_squad_replay(
         out.proposals_accepted.extend(outcome.accepted)
         out.proposals_rejected.extend(outcome.rejected)
 
-        # Sentinel wiring (Phi4.2). Every accepted proposal is evaluated;
-        # blocks are enforced only when the caller opted in via
-        # `sentinel_blocks=True`. The audit-only path preserves Phi4 /
-        # Phi4.1 replay fidelity (sealed verdicts unchanged).
+        # Sentinel wiring (Phi4.2 + Phase N slot-fallback, 2026-07-01).
+        # In audit-only mode (sentinel_blocks=False) we evaluate the
+        # single per-symbol winner and never open anything the sentinel
+        # would veto -- preserves Phi4/Phi4.1 replay fidelity.
+        # In physical mode (sentinel_blocks=True) we iterate the FULL
+        # ranked list for the symbol, so a sentinel-blocked winner
+        # cedes the slot to the next-ranked proposal instead of the
+        # slot dying. Bounded by the aggregator's own ordering; the
+        # per-symbol single-position guard still applies once anything
+        # opens.
         kuni_active = bool(kunigami.warning_active_at(bar.time))
-        for proposal in outcome.accepted:
+        if sentinel_blocks:
+            symbol_candidates = outcome.ranked_by_symbol.get(symbol, [])
+        else:
+            symbol_candidates = [
+                p for p in outcome.accepted if p.symbol == symbol
+            ]
+        for rank_idx, proposal in enumerate(symbol_candidates):
             if proposal.symbol != symbol:
-                # The aggregator is per-symbol; safety guard.
                 continue
             sentinel_ctx = SentinelContext(
                 equity=SANDBOX_EQUITY_DOLLARS,
@@ -636,8 +682,9 @@ def _drive_squad_replay(
                 kunigami_active=kuni_active,
             ))
             if sentinel_blocks and not decision.allowed:
-                # Physical enforcement path (Phi5 harness). Record the
-                # veto in the rejected-proposals journal.
+                # Physical enforcement path: record the veto and cede
+                # the slot to the next-ranked proposal (Phase N
+                # fallback). If no next-ranked exists, slot dies.
                 out.proposals_rejected.append({
                     "tick_id": int(gb.tick_id),
                     "symbol": symbol,
@@ -649,6 +696,7 @@ def _drive_squad_replay(
                     "winner_direction": proposal.direction,
                     "rejection_reason": f"sentinel_{decision.rule}_block",
                     "sentinel_reason": decision.reason,
+                    "rank_at_block": int(rank_idx),
                     "timestamp": proposal.timestamp.isoformat(),
                 })
                 continue
@@ -685,6 +733,8 @@ def _drive_squad_replay(
                 trade._source_tick_id = int(gb.tick_id)      # type: ignore[attr-defined]
                 trade._source_proposal_rationale = dict(proposal.rationale)  # type: ignore[attr-defined]
                 open_trades[symbol] = trade
+                # Slot filled -- runner-ups for this symbol are moot.
+                break
             except Exception as exc:  # noqa: BLE001
                 log.warning(
                     "Failed to open trade from proposal at tick=%d (%s/%s): %s",

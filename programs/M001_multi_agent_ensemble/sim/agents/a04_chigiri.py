@@ -70,6 +70,12 @@ from datetime import datetime, timedelta
 from typing import Any, Optional
 
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
+from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    stamp_provenance_pips,
+)
+from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
+    WorkspaceSnapshot,
+)
 from programs.M001_multi_agent_ensemble.sim.core.striker import BaseStriker
 from programs.M001_multi_agent_ensemble.sim.core.types import (
     SCHEMA_VERSION,
@@ -287,11 +293,15 @@ class A4ChigiriV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        *,
+        workspace: WorkspaceSnapshot | None = None,
         **_kwargs: object,
     ) -> AgentProposal | None:
-        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg. Chigiri v1
-        # focuses on ATR-driven momentum breakouts local to its own
-        # observation; peer thoughts do not enter v1 decisioning.
+        # Phase O (2026-07-01): Chigiri reads Isagi's latest thought via
+        # the F21 workspace to log momentum-confluence: does the anchor's
+        # zone frame agree with Chigiri's ATR-breakout direction?
+        # Diagnostic-only for v1 (the breakout gate is local); chemistry
+        # evidence flows into rationale for G7 C4.
         if market.timeframe != self.home_tf:
             return None
         if market.symbol not in self.symbols:
@@ -322,6 +332,16 @@ class A4ChigiriV1(BaseStriker):
         horizon = market.as_of + timedelta(
             hours=float(self.canon_role.target_hold_hours),
         )
+        # F21 workspace read -- Isagi momentum confluence.
+        isagi_momentum_agree: bool | None = None
+        isagi_frame_direction: str | None = None
+        if workspace is not None:
+            latest_by_agent = workspace.latest_by_agent(symbol=market.symbol)
+            isagi_t = latest_by_agent.get("isagi_yoichi")
+            if isagi_t is not None and isagi_t.coordinate is not None:
+                isagi_frame_direction = str(isagi_t.coordinate.direction_bias)
+                if isagi_frame_direction in ("long", "short"):
+                    isagi_momentum_agree = (isagi_frame_direction == direction)
         proposal_rationale: dict[str, Any] = {
             "wrapped": "internal:atr_breakout_continuation_v1",
             "breakout_lookback": CHIGIRI_V1_BREAKOUT_LOOKBACK,
@@ -333,12 +353,15 @@ class A4ChigiriV1(BaseStriker):
             "bar_index": int(i),
             "base_conviction": CHIGIRI_V1_BASE_CONVICTION,
             "final_conviction": float(my_recent_thought.confidence_in_thought),
+            "isagi_frame_direction": isagi_frame_direction,
+            "isagi_momentum_agree": isagi_momentum_agree,
             "doctrine_ref": "06-blue-lock-doctrine.md sec 3.1 (speed)",
             "empirical_prior": (
                 "E007 0/12 alive on impulse-origin RETEST; Chigiri v1 "
                 "fires on CONTINUATION, not retest"
             ),
         }
+        stamp_provenance_pips(proposal_rationale, bars=prep.bars, i=i)
         return AgentProposal(
             agent_id=self.agent_id,
             tick_id=market.tick_id,
@@ -353,6 +376,7 @@ class A4ChigiriV1(BaseStriker):
             regime_fit=0.5,
             valid_until=horizon,
             rationale=proposal_rationale,
+            agent_tier=int(self.tier),
         )
 
     # ------------------------------------------------------------------

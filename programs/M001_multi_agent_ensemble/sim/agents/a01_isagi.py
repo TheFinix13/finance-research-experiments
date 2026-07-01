@@ -58,6 +58,12 @@ from programs.M001_multi_agent_ensemble.sim._cross_repo import (
     ensure_production_repo_on_path,
 )
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
+from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    stamp_provenance_pips,
+)
+from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
+    WorkspaceSnapshot,
+)
 from programs.M001_multi_agent_ensemble.sim.core.striker import BaseStriker
 from programs.M001_multi_agent_ensemble.sim.core.types import (
     SCHEMA_VERSION,
@@ -296,11 +302,16 @@ class A1IsagiV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        *,
+        workspace: WorkspaceSnapshot | None = None,
         **_kwargs: object,
     ) -> AgentProposal | None:
-        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg passed by the engine.
-        # Isagi v1 doesn't consume peer thoughts -- it's the tier-1
-        # anchor; peers react to Isagi, not the other way around.
+        # Phase O (2026-07-01): Isagi's metavision reads all peer thoughts
+        # via the F21 workspace. Even though he is the tier-1 anchor and
+        # the aggregator gives him tie-break priority (Phase N), the
+        # doctrine is "Isagi sees the WHOLE field" -- he consumes peer
+        # thoughts diagnostically (logged in rationale) even when his
+        # decision does not depend on them for v1.
         if market.timeframe != self.home_tf:
             return None
         prep = self._prepared.get(market.symbol)
@@ -326,6 +337,22 @@ class A1IsagiV1(BaseStriker):
             hours=float(self.canon_role.target_hold_hours),
         )
 
+        # F21 workspace read -- metavision peer scan.
+        peer_view_count = 0
+        peer_directions_agree = 0
+        peer_directions_disagree = 0
+        if workspace is not None:
+            peers = workspace.peer_thoughts(agent_id=self.agent_id)
+            peer_view_count = len(peers)
+            for peer_t in peers:
+                if peer_t.coordinate is None:
+                    continue
+                peer_dir = str(peer_t.coordinate.direction_bias)
+                if peer_dir == sig.direction.value:
+                    peer_directions_agree += 1
+                elif peer_dir in ("long", "short"):
+                    peer_directions_disagree += 1
+
         meta = getattr(sig, "meta", {}) or {}
         rationale: dict[str, Any] = {
             "wrapped": "agent.alphas.concepts.zone_alpha.SupplyDemandAlpha",
@@ -337,7 +364,13 @@ class A1IsagiV1(BaseStriker):
             "htf_lookback": meta.get("htf_lookback"),
             "htf_min_move_pips": meta.get("htf_min_move_pips"),
             "bar_index": int(i),
+            "metavision_peer_view_count": int(peer_view_count),
+            "metavision_peers_agree": int(peer_directions_agree),
+            "metavision_peers_disagree": int(peer_directions_disagree),
         }
+        # F20 provenance: real per-bar ATR + swing range so G7 C6
+        # dispersion is measured on live inputs, not fallback constants.
+        stamp_provenance_pips(rationale, bars=prep.bars, i=i)
         return AgentProposal(
             agent_id=self.agent_id,
             tick_id=market.tick_id,
@@ -352,6 +385,7 @@ class A1IsagiV1(BaseStriker):
             regime_fit=0.5,  # Phi3 placeholder; regime classifier consumer wires this later.
             valid_until=horizon,
             rationale=rationale,
+            agent_tier=int(self.tier),
         )
 
 

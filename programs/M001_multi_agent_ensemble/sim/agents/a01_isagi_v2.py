@@ -229,6 +229,8 @@ class A1IsagiV2(BaseStriker):
             canon_role=canon_role or ISAGI_V2_CANON_ROLE,
             home_tf=home_tf,
             symbols=list(symbols) if symbols is not None else list(ISAGI_V1_SYMBOLS),
+            playstyle="conservative_metavision",
+            tier=1,
         )
         ensure_production_repo_on_path()
         from agent.alphas.concepts.zone_alpha import SupplyDemandAlpha  # noqa: E402
@@ -604,6 +606,7 @@ class A1IsagiV2(BaseStriker):
             regime_fit=0.5,
             valid_until=horizon,
             rationale=rationale,
+            agent_tier=int(self.tier),
         )
 
     def _proposal_from_sweep(
@@ -655,6 +658,7 @@ class A1IsagiV2(BaseStriker):
             regime_fit=0.5,
             valid_until=horizon,
             rationale=rationale,
+            agent_tier=int(self.tier),
         )
 
     # ------------------------------------------------------------------

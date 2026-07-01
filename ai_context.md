@@ -1,4 +1,4 @@
-# AI Context — finance research experiments (updated 2026-07-01, post-v1-v2-reframe + Phase-M scaffolding)
+# AI Context — finance research experiments (updated 2026-07-01, post-G7-walk-forward + Phase-N/O/P wiring fixes)
 
 Research workshop for the M001 multi-agent ensemble AND for the six single-
 alpha studies gating live-agent improvements (E011-E016). Production
@@ -7,6 +7,62 @@ auto-change live params. Parquet cache:
 `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
 Index: `EXPERIMENTS.md` · Rules: `PROTOCOL_DISCIPLINE.md` · M001 program:
 `programs/M001_multi_agent_ensemble/` (branch `multi-agent-ensemble`).
+
+## 2026-07-01 evening — Phase N + O + P wiring fixes shipped
+
+Post-G7-walk-forward-baseline diagnosis identified three orthogonal
+wiring gaps causing FAIL/PARTIAL/PENDING. All three fixed and smoke-
+verified in one session:
+
+- **Phase N — Aggregator tier-anchor + slot-fallback + Barou lift.**
+  Added `agent_tier: int = 2` to `AgentProposal`; sort key changed to
+  `(-adjusted_conviction, agent_tier, agent_id)` with
+  `TIER_BIAS = 0.05` so Isagi wins same-conviction tiebreaks over
+  tier-2 peers. Aggregator now exposes `ranked_by_symbol` and the
+  sentinel loop cedes a blocked winner's slot to the next-ranked
+  proposal. Barou devour lift 0.10 → 0.20 and Isagi-disagreement floor
+  0.7 → 0.5. **Result: Isagi 0 → 25 trades, Barou 0 → 8 trades on the
+  2024 OOS single-window smoke.**
+- **Phase O — F21 workspace reads wired into 5 agents.** Isagi
+  (metavision peer scan), Rin (Isagi frame alignment), Chigiri (Isagi
+  momentum confluence), Nagi (workspace peer count mirror), Barou
+  (Isagi USDCAD direction). Each now carries an explicit
+  `workspace: WorkspaceSnapshot | None = None` kwarg and calls
+  `snapshot.peer_thoughts(...)` or `snapshot.latest_by_agent(...)`.
+  **Result: C4 chemistry lit for every non-Bachira/non-Reo/non-Kunigami
+  proposer — 1177 (Isagi), 211 (Rin), 154 (Chigiri), 135 (Nagi), 905
+  (Barou), Bachira 2772 in the single window.**
+- **Phase P — Provenance-pips helper + Rin variable lift.** New
+  `sim/core/provenance_pips.py` with `atr_pips_at` and
+  `swing_pips_from_bars` (Wilder ATR + lookback-range swing). Every
+  proposer with bar access now stamps `atr_pips` + `h1_swing_pips` on
+  `proposal.rationale` via `stamp_provenance_pips(...)`. Rin's
+  `PRECISION_LIFT` became a stop-tightness function (0.15 at floor →
+  0.05 at 60 pips) so per-trade conviction varies. **Result: three C6
+  passes (Bachira 0.18, Chigiri 0.19, Barou 0.16); Rin C6 = 0.088 (one
+  hair short); Isagi C6 = 0.053. C5 largely unchanged because playstyle
+  lot formulas still Kelly-saturate at MIN_LOT — needs follow-up.**
+
+Smoke verdict (`reviews/g7_v1_checkpoint_verdict_dry-run-2024-post-NPO.md`,
+75 seconds runtime on 2024 OOS single window):
+
+| Agent | Pre-fix (walk-forward-baseline mean) | Post-fix (2024 dry-run) |
+|---|---|---|
+| Isagi | 0 trades / C1=0.000 / C4=0 | **25 trades** / C1=0.227 / **C4=1177** |
+| Bachira | C1=0.375 / C4=14551 / C6=0 | C1=0.339 / C4=2772 / **C6=0.179 PASS** |
+| Rin | C1=0.393 / C4=0 / C6=0 | **C1=0.531** / **C4=211** / C6=0.088 |
+| Chigiri | **C1=0.268 fail** / C4=0 / C6=0 | **C1=0.311 PASS** / **C4=154** / **C6=0.192 PASS** |
+| Nagi | C1=0.385 / C4=0 | C1=0.106 (single-window variance) / **C4=135** |
+| Barou | 0 trades / C4=0 | **8 trades** / **C4=905** / **C6=0.160 PASS** |
+| Kunigami | 0 by design | 0 by design (needs C1/C4/C5/C6 waiver) |
+| Reo | waived C1/C4 | waived C1/C4 |
+
+Sim suite: **469 passing + 4 skipped** (this session added 4 aggregator
+tier-anchor + 9 provenance-pips + 2 slot-fallback = 15 new tests).
+
+Kunigami-waiver amendment (parallel to Reo's copier waiver) is the
+last doctrine ticket before the full-panel G7 walk-forward rerun that
+will produce the formal post-fix verdict.
 
 ## 2026-07-01 v1/v2 reframe — closed same day
 

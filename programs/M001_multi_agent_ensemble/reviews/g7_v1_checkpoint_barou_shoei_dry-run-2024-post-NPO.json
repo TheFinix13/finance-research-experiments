@@ -1,0 +1,76 @@
+{
+  "agent_id": "barou_shoei",
+  "playstyle": "solo_king",
+  "tier": 2,
+  "bit_vector": "0??101",
+  "is_v1_pass": false,
+  "criteria": {
+    "1": {
+      "passed": false,
+      "statistic": 0.23216883445252762,
+      "threshold": 0.3,
+      "status": "computed",
+      "evidence": {
+        "n_trades": 8,
+        "mean_tqs": 0.23216883445252762,
+        "median_tqs": 0.0,
+        "note_dry_run": "single-window dry-run; PROTOCOL sec 3 requires mean_tqs >= 0.30 AND per-window mean >= 0.20 in >= 5/7 windows; full-panel run pending"
+      }
+    },
+    "2": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.0,
+      "status": "pending",
+      "evidence": {
+        "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+      }
+    },
+    "3": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.5,
+      "status": "pending",
+      "evidence": {
+        "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+      }
+    },
+    "4": {
+      "passed": true,
+      "statistic": 905.0,
+      "threshold": 1.0,
+      "status": "computed",
+      "evidence": {
+        "publish_count": 3220,
+        "read_count": 905,
+        "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+      }
+    },
+    "5": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.1,
+      "status": "computed",
+      "evidence": {
+        "n_trades": 8,
+        "mean_lot": 0.13,
+        "min_lot": 0.13,
+        "max_lot": 0.13,
+        "cv": 0.0
+      }
+    },
+    "6": {
+      "passed": true,
+      "statistic": 0.16009964857053907,
+      "threshold": 0.1,
+      "status": "computed",
+      "evidence": {
+        "n_trades": 8,
+        "sl_cv": 0.16009964857053907,
+        "tp1_cv": 0.16009964857053907,
+        "mean_sl": 33.125,
+        "mean_tp1": 49.6875
+      }
+    }
+  }
+}

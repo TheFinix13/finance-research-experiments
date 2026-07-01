@@ -65,6 +65,12 @@ from programs.M001_multi_agent_ensemble.sim._cross_repo import (
     ensure_production_repo_on_path,
 )
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
+from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    stamp_provenance_pips,
+)
+from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
+    WorkspaceSnapshot,
+)
 from programs.M001_multi_agent_ensemble.sim.core.striker import BaseStriker
 from programs.M001_multi_agent_ensemble.sim.core.types import (
     SCHEMA_VERSION,
@@ -93,9 +99,35 @@ RIN_V1_PARAMS: dict[str, Any] = {
 
 RIN_V1_SYMBOLS: tuple[str, ...] = ("EURUSD",)
 RIN_V1_MIN_STOP_PIPS: float = 20.0     # structural cleanliness floor
-RIN_V1_PRECISION_LIFT: float = 0.15    # +0.15 to base conviction
+RIN_V1_PRECISION_LIFT: float = 0.15    # +0.15 max lift to base conviction
+RIN_V1_PRECISION_LIFT_MIN: float = 0.05  # taper floor for wider stops
+RIN_V1_PRECISION_DECAY_PIPS: float = 40.0  # stop_pips beyond floor before lift decays fully
 RIN_V1_CONV_CAP: float = 1.0
 RIN_V1_PIP_SIZE: float = 0.0001        # USD-quoted majors
+
+
+def _rin_precision_lift(stop_pips: float) -> float:
+    """Phase P (2026-07-01) -- variable precision lift as a function of
+    stop tightness.
+
+    stop_pips == RIN_V1_MIN_STOP_PIPS (perfect precision at the floor)
+        -> lift = RIN_V1_PRECISION_LIFT (0.15)
+    stop_pips == RIN_V1_MIN_STOP_PIPS + RIN_V1_PRECISION_DECAY_PIPS
+        -> lift = RIN_V1_PRECISION_LIFT_MIN (0.05)
+    Beyond that -> stays at the floor (Rin still fires but with
+    minimally lifted conviction).
+
+    This gives Rin's per-trade conviction real variance (0.70 -> 0.80)
+    so G7 C5 dispersion is measurable instead of saturating at Kelly's
+    MIN_LOT clamp.
+    """
+    if stop_pips <= RIN_V1_MIN_STOP_PIPS:
+        return RIN_V1_PRECISION_LIFT
+    delta = stop_pips - RIN_V1_MIN_STOP_PIPS
+    if delta >= RIN_V1_PRECISION_DECAY_PIPS:
+        return RIN_V1_PRECISION_LIFT_MIN
+    span = RIN_V1_PRECISION_LIFT - RIN_V1_PRECISION_LIFT_MIN
+    return RIN_V1_PRECISION_LIFT - span * (delta / RIN_V1_PRECISION_DECAY_PIPS)
 
 RIN_V1_CANON_ROLE = CanonRole(
     canon_player="itoshi_rin",
@@ -233,8 +265,12 @@ class A3RinV1(BaseStriker):
                 base_conv=base_conv,
             )
 
+        # Phase P (2026-07-01): variable precision lift as a function of
+        # stop tightness -- gives per-trade conviction real variance so
+        # G7 C5 dispersion is measurable, not Kelly-saturated at MIN_LOT.
+        precision_lift = _rin_precision_lift(stop_pips)
         final_conv = min(
-            RIN_V1_CONV_CAP, base_conv + RIN_V1_PRECISION_LIFT,
+            RIN_V1_CONV_CAP, base_conv + precision_lift,
         )
         meta = getattr(sig, "meta", {}) or {}
         meta_tags = _meta_to_tags(meta)
@@ -260,7 +296,7 @@ class A3RinV1(BaseStriker):
             f"precision-zone {direction} fade against D1 bias; "
             f"entry={sig.entry:.5f} stop={sig.stop:.5f} "
             f"(stop_pips={stop_pips:.1f}); base_conv {base_conv:.2f} "
-            f"+ precision {RIN_V1_PRECISION_LIFT:.2f} = {final_conv:.2f}."
+            f"+ precision {precision_lift:.2f} = {final_conv:.2f}."
         )
         return Thought(
             schema_version=SCHEMA_VERSION,
@@ -282,11 +318,16 @@ class A3RinV1(BaseStriker):
         self,
         market: MarketState,
         my_recent_thought: Thought,
+        *,
+        workspace: WorkspaceSnapshot | None = None,
         **_kwargs: object,
     ) -> AgentProposal | None:
-        # ``_kwargs`` absorbs the F21 ``workspace`` kwarg. Rin's v1
-        # decisioning is fully local to its own precision gate; peer
-        # thoughts are consumed via the ledger already.
+        # Phase O (2026-07-01): Rin reads Isagi's latest thought via
+        # the F21 workspace to log whether her precision-fire aligns with
+        # or contradicts the anchor's D1-against frame. Diagnostic-only
+        # for v1; the decision itself is still gated by Rin's local
+        # precision floor (stop_pips >= 20). Chemistry evidence flows
+        # into the rationale for G7 C4.
         if market.timeframe != self.home_tf:
             return None
         if market.symbol not in self.symbols:
@@ -313,6 +354,16 @@ class A3RinV1(BaseStriker):
         stop_pips = (
             abs(float(sig.entry) - float(sig.stop)) / RIN_V1_PIP_SIZE
         )
+        # F21 workspace read -- alignment with the tier-1 anchor.
+        isagi_frame_aligned: bool | None = None
+        isagi_frame_direction: str | None = None
+        if workspace is not None:
+            latest_by_agent = workspace.latest_by_agent(symbol=market.symbol)
+            isagi_t = latest_by_agent.get("isagi_yoichi")
+            if isagi_t is not None and isagi_t.coordinate is not None:
+                isagi_frame_direction = str(isagi_t.coordinate.direction_bias)
+                if isagi_frame_direction in ("long", "short"):
+                    isagi_frame_aligned = (isagi_frame_direction == direction)
         rationale: dict[str, Any] = {
             "wrapped": "agent.alphas.concepts.zone_alpha.SupplyDemandAlpha",
             "params": dict(RIN_V1_PARAMS),
@@ -326,12 +377,15 @@ class A3RinV1(BaseStriker):
             "precision_lift_applied": True,
             "base_conviction": float(sig.conviction),
             "final_conviction": conviction,
+            "isagi_frame_direction": isagi_frame_direction,
+            "isagi_frame_aligned": isagi_frame_aligned,
             "doctrine_ref": "06-blue-lock-doctrine.md sec 3.1 (precision)",
             "empirical_prior": (
                 "E006 Fib tags +0.12..+0.15 ATR EURUSD only, not OOS-stable; "
                 "Rin v1 stays on zone primitive with precision filter"
             ),
         }
+        stamp_provenance_pips(rationale, bars=prep.bars, i=i)
         return AgentProposal(
             agent_id=self.agent_id,
             tick_id=market.tick_id,
@@ -346,6 +400,7 @@ class A3RinV1(BaseStriker):
             regime_fit=0.5,
             valid_until=horizon,
             rationale=rationale,
+            agent_tier=int(self.tier),
         )
 
     # ------------------------------------------------------------------
