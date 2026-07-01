@@ -887,7 +887,7 @@ def _aggregate_per_agent_verdict_across_windows(
             },
         )
 
-    agg.criteria[1] = _make(1, tqs_pass_k_of_n, CRIT1_TQS_THRESHOLD)
+    agg.criteria[1] = _make(1, tqs_pass_k_of_n, CRIT1_MEAN_TQS_THRESHOLD)
     # C2/C3 stay pending across the panel (need leave-one-out squads).
     agg.criteria[2] = _evaluate_criterion_2_stub()
     agg.criteria[3] = _evaluate_criterion_3_stub()
@@ -968,6 +968,35 @@ def run_g7_walk_forward(
         "G7 walk-forward replay complete: %d thoughts, %d proposals, %d trades",
         len(out.thoughts), len(out.proposals_all), len(out.trades),
     )
+
+    # Crash-proof: dump replay output to disk IMMEDIATELY, before any
+    # verdict-aggregation code runs. A NameError in the aggregator (as
+    # happened once already, 2026-07-01 16:47 UTC) otherwise costs 40
+    # min of replay work. This dump is cheap (~1 sec for 5k trades) and
+    # gives a next-session worker an "--from-replay-cache" recovery path.
+    if out_dir is not None:
+        try:
+            cache_dir = Path(out_dir) / f"g7_replay_cache_{tag}"
+            cache_dir.mkdir(parents=True, exist_ok=True)
+            trades_cache = cache_dir / "trades.jsonl"
+            from dataclasses import asdict as _asdict
+            with trades_cache.open("w", encoding="utf-8") as fh:
+                for t in out.trades:
+                    fh.write(json.dumps(_asdict(t), default=str) + "\n")
+            workspace_cache = cache_dir / "workspace_counts.json"
+            workspace_cache.write_text(json.dumps({
+                "publish": dict(out.workspace_publish_counts),
+                "read": dict(out.workspace_read_counts),
+                "n_thoughts": len(out.thoughts),
+                "n_proposals": len(out.proposals_all),
+            }, indent=2), encoding="utf-8")
+            log.info(
+                "G7 replay cache written: %s (%d trades) + %s",
+                trades_cache, len(out.trades), workspace_cache,
+            )
+        except Exception as exc:  # noqa: BLE001
+            # Never let cache-write failure kill the run; just warn.
+            log.warning("G7 replay cache write failed: %s", exc)
 
     # Per-agent per-window verdicts, then aggregate.
     per_window: dict[str, list[AgentVerdict]] = {aid: [] for aid in G7_AGENT_ORDER}
