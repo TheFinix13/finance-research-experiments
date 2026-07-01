@@ -1,4 +1,4 @@
-# AI Context — finance research experiments (updated 2026-07-01, post-v1-v2-reframe)
+# AI Context — finance research experiments (updated 2026-07-01, post-v1-v2-reframe + Phase-M scaffolding)
 
 Research workshop for the M001 multi-agent ensemble AND for the six single-
 alpha studies gating live-agent improvements (E011-E016). Production
@@ -43,11 +43,25 @@ squad-level pre-condition on ANY v2 authorisation. Session shipped:
 - **Sentinel Phi4.1 physical rerun** (`--sentinel-blocks --tag physical`)
   landed 5,236 trades / 28,830 proposals / 336,707 thoughts (vs audit
   0.2922 TQS locked). Side-by-side report pending full-run completion.
+- **Phase M news calendar scaffolding LANDED (2026-07-01 pm):** user
+  authorised parallel scaffolding while G7 walk-forward compute job
+  runs. Three new modules under `sim/regime/`
+  (`news_calendar.py` -- Φ5 schema + adapter,
+  `news_calendar_sources.py` -- DK/FF/FRED/TE fallback stubs,
+  `news_windowing.py` -- per-agent TF windowing helper).
+  `validate_real.load_news_calendar` rewritten as a 5-line proxy to
+  the new adapter (spec §5.2). 3 committed parquet fixtures under
+  `sim/tests/fixtures/news_calendar/` (dk_2024_sample 20 rows +
+  ff_2024_sample 5 rows + dk_2024_USD 32 real events from BLS/Fed
+  release schedules). 49 tests green. Live-HTTP fetch scripts
+  (backfill/update/audit) deferred to next session -- adapter is
+  usable today with any archive that follows the parquet layout.
 
 **Statistical honesty flags:** no verdict retuning; all reclassifications
 appended to `evolution_ledger.md` as new rows (never edits); G7 pre-reg
-requires §11 amendment before any threshold change; 396 sim tests
-passing + 4 slow skips.
+requires §11 amendment before any threshold change; 458 sim tests
+passing + 4 slow skips (this session added 62 tests over the earlier
+396 baseline: 49 news calendar + windowing + 13 workspace threading).
 
 ## 2026-07-01 research-pipeline sweep (E011-E016) — closed
 
@@ -55,7 +69,7 @@ passing + 4 slow skips.
 |---|---|---|
 | E011 small-stop subset expectancy | `stopped_at_stage_1` | Kills E012 |
 | E012 pending-limit entry | `cancelled_dep_failed` | -- |
-| E013 safety-layer contribution | `combined_alive` Δ+0.80 Sharpe; `wick_alive` Δ+0.75; BE `not_alive`; PLG `plg_expensive` | `experiments/E013_.../REPORT.md` |
+| E013 safety-layer contribution | `combined_alive` Δ+0.80 Sharpe; `wick_alive` Δ+0.75; BE `not_alive`; PLG `plg_earns_keep` (protocol's own label for "PLG is expensive") | `experiments/E013_.../REPORT.md` |
 | E014 quality-score entry gate | `parked_low_yield` (12 % vol) | Kills E015 + E016 |
 | E015 / E016 | `cancelled_dep_failed` | -- |
 
@@ -101,9 +115,9 @@ ranking is one lever; agent-side chemistry (F19/F20/F21) is the other.
 The v1/v2 reframe formalises the mandate: prove squad chemistry via G7
 before authorising any single-agent v2 arc.
 
-Tests: **396 sim passing** + 4 slow skips (this session added 21 F21 +
-48 F19/F20 + 34 wiring + 10 Bachira chemistry + 21 G7 criteria = 134
-new tests).
+Tests: **458 sim passing** + 4 slow skips (this session added 21 F21 +
+48 F19/F20 + 34 wiring + 10 Bachira chemistry + 21 G7 criteria + 13
+workspace threading + 49 news calendar / windowing = 196 new tests).
 
 ## 2) Key file paths
 
@@ -115,6 +129,7 @@ new tests).
 | M001 roster | `05-agent-roster-v0.md` (v0.8, includes §1.0 v1 checkpoint status) |
 | M001 sim | `programs/M001_multi_agent_ensemble/sim/{core,regime,scoring,roster,agents,dashboard,tests}/` |
 | M001 core primitives | `sim/core/{lot_intent,risk_intent,reasoning_workspace}.py` (F19/F20/F21) |
+| M001 news calendar | `sim/regime/{news_calendar,news_calendar_sources,news_windowing}.py` + `sim/tests/fixtures/news_calendar/*.parquet` (Phase M scaffolding) |
 | M001 agents | `sim/agents/a0{1..7,10}_*.py` (playstyle + tier wired) |
 | M001 harnesses | `sim/scoring/run_isagi_phi3_gate.py` · `run_phi{4,41}_squad_gate.py` · `run_phi5_aggregator_gate.py` · `run_g7_v1_checkpoint_gate.py` (new) |
 | M001 aggregator arms | `sim/core/aggregator_arms/*.py` |

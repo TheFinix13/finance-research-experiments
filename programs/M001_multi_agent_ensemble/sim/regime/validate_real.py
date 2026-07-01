@@ -298,50 +298,32 @@ def load_news_calendar(
     cache_path: Path | None = None,
     window_bars: int = 2,
 ) -> pd.Series | None:
-    """Return a 0/1 series flagging bars within ±`window_bars` of a HI USD/EUR
-    event. Falls back to `None` when no calendar is loadable (the common
-    case on this Mac host since the FF feed is current-week only).
+    """Backward-compat proxy for the historical current-week-only path.
 
-    Implementation note: deliberately tolerant. If the production
-    package isn't importable, or the cache file is missing, or the
-    cache is empty for the validation window, we return `None` and the
-    weak-label rule simply abstains for `news`.
+    2026-07-01 Phase M rewire: this function now delegates to
+    :func:`sim.regime.news_calendar.load_news_calendar` (Φ5 historical
+    archive adapter) per spec §5.2. ``cache_path`` is silently
+    forwarded as ``archive_root``. Legacy signature (``index``,
+    ``cache_path``, ``window_bars``) is preserved; the new
+    keyword-only arguments carry the pre-redesign filter defaults
+    (USD + EUR, high-impact only, Dukascopy primary).
+
+    Kept as a thin proxy so the weak-label rule in ``label_by_features``
+    (§ ~line 90) can continue calling ``load_news_calendar`` with the
+    original signature. Any new caller SHOULD depend on
+    ``sim.regime.news_calendar.load_news_calendar`` directly.
     """
-    try:
-        from agent.news.calendar import load_calendar, filter_events  # type: ignore
-    except ImportError:
-        return None
-    try:
-        if cache_path is not None:
-            events = load_calendar(cache_path)
-        else:
-            events = load_calendar()
-    except Exception:
-        return None
-    if not events:
-        return None
-    events_in_window = filter_events(
-        events,
-        currencies={"USD", "EUR"},
-        impact_levels={"High"},
-        after=index.min().to_pydatetime(),
-        before=index.max().to_pydatetime(),
+    from programs.M001_multi_agent_ensemble.sim.regime.news_calendar import (
+        load_news_calendar as _load_v2,
     )
-    if not events_in_window:
-        return None
-    flags = pd.Series(0.0, index=index, dtype=float)
-    bar_seconds = int((index[1] - index[0]).total_seconds()) if len(index) > 1 else 14400
-    delta_seconds = window_bars * bar_seconds
-    for ev in events_in_window:
-        if ev.time_utc is None:
-            continue
-        ts = pd.Timestamp(ev.time_utc).tz_convert("UTC")
-        mask = (
-            (index >= ts - pd.Timedelta(seconds=delta_seconds))
-            & (index <= ts + pd.Timedelta(seconds=delta_seconds))
-        )
-        flags.loc[mask] = 1.0
-    return flags
+    return _load_v2(
+        index,
+        archive_root=cache_path,
+        window_bars=window_bars,
+        currencies=("USD", "EUR"),
+        importance_min=3,
+        sources=("DK",),
+    )
 
 
 # ---------------------------------------------------------------------------

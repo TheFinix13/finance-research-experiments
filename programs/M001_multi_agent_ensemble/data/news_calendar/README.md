@@ -1,16 +1,41 @@
 # News calendar archive — local cache
 
-**Status (2026-07-01):** `DEFERRED-BEYOND-G7`. This skeleton (README +
-`.gitignore`) was scaffolded 2026-07-01 as the first sub-task of the
-news-calendar wiring workstream (Phase 5/7 of the 2026-06-30 sprint plan).
-Later the same day the user re-scoped priorities: the v1/v2 reframe
-per `06-blue-lock-doctrine.md` v0.5 §3.11.5 makes squad-chemistry
-(F19/F20/F21 + G7 v1-checkpoint gate) the current blocker, not news
-regime tagging. This folder therefore stays as **intent documentation
-only** — no fetch scripts, no data — until G7 clears. Once the squad is
-at v1, the fetch harness described below lands as `Phase X` in a
-subsequent session. Preserved rather than deleted per
-`07-research-standards.md` §3 (nothing is deleted from history).
+**Status (2026-07-01, second bump):** `SCAFFOLDING-LANDED`. Phase M
+adapter code shipped in this session: three new modules under
+`sim/regime/` (`news_calendar.py`, `news_calendar_sources.py`,
+`news_windowing.py`) plus 49 tests plus 3 committed parquet fixtures
+under `sim/tests/fixtures/news_calendar/`. Live-HTTP fetch scripts
+(`backfill_news_calendar.py`, `update_news_calendar.py`,
+`audit_news_calendar.py`) are the next block of work (post-G7 or
+next session). **The data folder itself stays intent-only** —
+`.gitignore` keeps parquet dumps out of git; only the manifest +
+scripts land. See "How to opt in from an agent" below for the
+current-usable surface.
+
+**Earlier status (2026-07-01, first bump):** `DEFERRED-BEYOND-G7`.
+Historical context: after the v1/v2 reframe (`06-blue-lock-doctrine.md`
+v0.5 §3.11.5) shifted priorities to squad chemistry (F19/F20/F21 +
+G7), news wiring was deferred. Same day, user reprioritised
+scaffolding to run in parallel with the G7 walk-forward compute job.
+
+## How to opt in from an agent (2026-07-01)
+
+```python
+from programs.M001_multi_agent_ensemble.sim.regime.news_windowing import (
+    tag_bars_for_agent,
+)
+
+# One-liner at the F18-KPI join site:
+news_mask = tag_bars_for_agent(bars.index, agent, symbol_pair="EURUSD")
+```
+
+The windowing helper reads `agent.home_tf` and auto-selects
+intraday-minutes vs bar-count windowing per spec §5.4. No changes to
+`intend()` are needed to opt in.
+
+Adapter still returns `None` when the archive is empty (Phase M
+non-goal was heavy backfill); callers gracefully abstain in that
+case, which is the same posture as pre-scaffolding.
 
 **Format:** Parquet (snappy compression), partitioned by year and currency.
 

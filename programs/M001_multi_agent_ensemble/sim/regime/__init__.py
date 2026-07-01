@@ -16,3 +16,13 @@ from .classifier import (  # noqa: F401
     RegimeLabel,
     extract_features,
 )
+
+# Phase M -- news calendar adapter (2026-07-01).
+# The ``news_calendar`` submodule owns the Φ5 historical adapter; the
+# ``news_windowing`` submodule owns the per-agent TF window helper.
+# Both are re-exported here so callers can do
+# ``from programs.M001_multi_agent_ensemble.sim import regime`` and
+# reach ``regime.news_calendar.load_news_events``.
+from . import news_calendar  # noqa: F401
+from . import news_calendar_sources  # noqa: F401
+from . import news_windowing  # noqa: F401
