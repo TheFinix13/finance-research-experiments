@@ -1,4 +1,34 @@
-# AI Context — finance research experiments (updated 2026-07-01, post-Phase-U shadow ledger + heartbeat monitor v2.1 fix)
+# AI Context — finance research experiments (updated 2026-07-01, post-Phase-T-evolve Rin v1.1 + Phase U shadow ledger + heartbeat monitor v2.1 fix)
+
+## 2026-07-01 night — Phase T-evolve: Rin v1.1 peer-yield-and-lift
+
+**Not a retirement — a mechanic evolution.** In canon, Rin and
+Isagi evolve off each other; retiring Rin was rejected by the user.
+Instead Rin gains a peer-yield-and-lift mechanic that lets her
+score where Isagi *can't*:
+
+- **Yield rule.** In `intend()`, if Rin sees `peer_agree_count >= 1
+  and peer_disagree_count == 0` on the same symbol, Isagi's
+  metavision lift will fire → Rin returns None. She cedes.
+- **Lone-read lift.** Otherwise (peers disagree or all quiet),
+  Rin adds `RIN_V1_LONE_READ_LIFT = +0.10` on top of her precision
+  lift. Total conviction reaches 0.90; decisively beats Isagi's
+  base 0.65 on ticks where his metavision doesn't fire.
+
+Committed as `9fac80b`. Sim suite 503 passed / 4 skipped (+3
+Phase T-evolve tests).
+
+**Amendments landed:**
+- Doctrine §4.1c — Phase T-evolve mechanic + delta-sign acceptance
+  test (Rin's Phase U shadow delta must be ≤ −0.05 for v1.1 to
+  clear).
+- G7 PROTOCOL §11.8 — wiring + revert protocol.
+- Roster: Rin row updated to `v1.1 implemented`.
+
+**Compute in flight:** walk-forward-post-U (Phase U wiring, Rin
+still v1.0 because the Python process imported at start-up) is
+running. When done, walk-forward-post-TU (Rin v1.1) is launched.
+Two-column side-by-side is required per §07-research-standards.
 
 ## 2026-07-01 night — Phase U: Shadow ledger + Blue-Lock scouting attribution
 
