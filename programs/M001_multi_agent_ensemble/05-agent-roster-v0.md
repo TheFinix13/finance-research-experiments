@@ -1,5 +1,17 @@
 # 05 — Agent Roster v0 (Blue Lock cast)
 
+**Status:** `DRAFT v0.8` — 2026-07-01 (v1/v2 versioning discipline
+clarification landed per `06-blue-lock-doctrine.md` v0.5 §3.11.5;
+new **Version status** column added to §1 table replacing the
+inconsistent inline v1/v2 markers; per §3.11.5 only A1 Isagi has
+reached the v1 checkpoint (Φ3 PASS analog) — all seven other
+implemented agents are `pre-v1 (mechanic in flight)` pending the G7
+v1-checkpoint gate; three new v1 primitives — F19 `lot_intent`, F20
+`risk_intent`, F21 `read_workspace` — are v1 requirements per
+doctrine §4.1a and must be implemented on every agent before G7 fires;
+per-agent playstyle mapping table in doctrine §4.1a is the canonical
+source for each agent's F19/F20 defaults). v0.7.1 stands below.
+
 **Status:** `DRAFT v0.7.1` — 2026-06-25 (Barou row amended 2026-06-30;
 A10 Kunigami row un-deferred 2026-06-30 post Sentinel R1–R6 wiring).
 v0.7 marks the **Φ4.1 expanded-squad gate landing + first three
@@ -113,6 +125,39 @@ First, the **ego column**. Each ego value is justified two-line:
 - A10 Kunigami `0.00` — a control agent, not a forecaster. No shooting drive at all; pure dampening role.
 
 Second, **A7 Barou is intentionally outside the fusion layer.** He is the experimental control agent that tests "what if we just let one specialised striker run end-to-end without participating in confluence?" His PnL is the apples-to-apples baseline that any fusion mechanism must beat.
+
+### §1.0 v1 checkpoint status (per doctrine §3.11.5, added 2026-07-01)
+
+The doctrine's operational v1 definition (§3.11.5) requires: (1)
+per-agent positive results, (2) positive-sum chemistry contribution,
+(3) non-cannibalising slot behaviour, (4) F21 workspace participation,
+(5) F19 owned lot cognition, (6) F20 owned risk cognition. This
+table replaces the ambiguous v1/v2 markers scattered in the §1 cast
+table's `Status` column with a single per-agent checkpoint state.
+
+| Agent | Version status (§3.11.5) | Playstyle (§4.1a) | Blockers before G7 |
+|---|---|---|---|
+| **A1 Isagi** | `v1-checkpoint (Φ3 PASS)` — the only agent past the v1 gate to date. v1→v2 arc FAILED 2026-06-24; v2 archived. | Conservative-metavision | F19/F20/F21 defaults still need agent-side implementation (currently harness-default fixed-lot) |
+| **A2 Bachira** | `pre-v1 (mechanic-iter-1 in flight)` — v1 mechanic pending peer-silence gate on rebel-lift; §3.11.5 criterion #3 (non-cannibalising slot behaviour) currently FAILS (46,584 rebel-lift fires in Φ4.1 forced Isagi + Barou to 0 trades) | Rebel-tight | Peer-silence gate + F19/F20/F21 |
+| **A3 Rin** | `pre-v1 (mechanic-iter-1 in flight)` — v1 mechanic pending regime-gate to `trending` + peer-disagreement requirement | Analytical-precision | Regime + peer-disagreement gate + F19/F20/F21 |
+| **A4 Chigiri** | `pre-v1 (mechanic-iter-1 in flight)` — v1 mechanic pending three conjunctive guards (M15×H1×H4 ADX rising, top-decile σ, 20-bar high/low) | Speed-momentum | Three conjunctive guards + F19/F20/F21 |
+| **A5 Reo** | `pre-v1 (mechanic-iter-1 in flight)` — v1 mechanic 1 (HRP mixture) pending; mechanic 2 (Φ5-second-position) deferred to post-G7 | Copier-HRP | HRP mixture + F19/F20/F21 |
+| **A6 Nagi** | `pre-v1 (canonical-mechanic-validated)` — highest per-agent TQS in Φ4.1 (0.349), but §3.11.5 criterion #4 (workspace participation) requires F21 read implementation before G7 | Confluence-only | F19/F20/F21 (mechanic itself validated) |
+| **A7 Barou** | `pre-v1 (mechanic-iter-1 in flight)` — v1 mechanic pending hybrid A + B (closed-loss replay + symbol whitelist expansion) | Solo-king | Hybrid A+B + F19/F20/F21 |
+| **A8 Yukimiya** | `not-yet-implemented` | (canon: friction-quartile-filtered execution refinement) | full v1 build + F19/F20/F21 |
+| **A9 Aoshi** | `not-yet-implemented` | (canon: calendar-aware vol events) | full v1 build + F19/F20/F21 |
+| **A10 Kunigami** | `pre-v1 (canonical-mechanic-validated)` — Sentinel R5-wiring via `warning_active_at` is a v1 primitive (not v2 per §3.11.5 reclassification); mechanic itself validated | Defensive | F19/F20/F21 |
+
+**Squad-level v1-checkpoint gate (G7).** All eight implemented agents
+must clear §3.11.5 as a squad, not individually — no agent moves to
+v2 candidacy while the squad's chemistry is broken. The formal G7
+pre-registration lives at `experiments/G7_v1_checkpoint_gate/PROTOCOL.md`.
+
+**Rows in the §1 table above marked with "v1 implemented"** refer to
+the *pre-2026-07-01 labelling convention* and should be read as
+`pre-v1 (mechanic-iter-N in flight)` under §3.11.5. The §1 table is
+retained un-edited for historical continuity; §1.0 is the authoritative
+version-status source going forward.
 
 ### §1.1 MVP Φ4 roster (four agents — v1 fusion experiment)
 

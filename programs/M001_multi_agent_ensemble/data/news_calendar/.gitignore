@@ -1,0 +1,19 @@
+# Do not commit the raw archive data (TOS-safe posture, D-Q4).
+# Commit ONLY: this .gitignore, README.md, and each source's _manifest.json.
+
+# Per-year per-currency partitions (all sources).
+DK/*/
+FF/*/
+FRED/*/
+TE/*/
+
+# Optional derived caches.
+_unified.parquet
+_dedup_audit.parquet
+_holidays.parquet
+
+# Allow manifests through the ignore.
+!DK/_manifest.json
+!FF/_manifest.json
+!FRED/_manifest.json
+!TE/_manifest.json

@@ -1,5 +1,43 @@
 # 06 — Blue Lock Doctrine
 
+**Status:** `DRAFT v0.5` — 2026-07-01 (v1/v2 versioning discipline
+clarified per user 2026-07-01 decision on Phase 6 completion; §3.11.5
+lands the operational definition of a v1 checkpoint; G7 v1-checkpoint
+gate introduced at `experiments/G7_v1_checkpoint_gate/PROTOCOL.md`;
+three new v1 primitives — F19 `lot_intent`, F20 `risk_intent`, F21
+reasoning workspace — added in §4.1a. These are per-agent capabilities
+that belong in v1, not v2 capability additions).
+
+**The 2026-07-01 v1/v2 reframe (§3.11.5).** User's operational definition:
+- **v1** = a checkpoint state where the agent has demonstrated
+  undeniable positive results in its own testing AND functions
+  productively alongside its teammates in the squad. It is not "the
+  code the agent was born with" — it is "the code that cleared the
+  v1 checkpoint gate (G7)".
+- **v2** = a named architectural addition that empirically trumps a
+  proven v1 by pre-declared margins (per §3.11.2 contract).
+
+Under this reframe, six of the previously-labeled "v1 → v2"
+resolutions from 2026-06-25 / 2026-06-30 (Barou hybrid A+B, Bachira
+REFINE-to-peer-silence, Rin REFINE-regime+peer-disagreement, Chigiri
+REFINE-multi-TF-ADX+ATR-percentile, Reo ADVANCE-coupled-to-Φ5-multi-
+position, Kunigami R5-wired) are — under the reframe — **v1 mechanic
+iterations pending G7**, not v2 evolutions. The v2 label is reserved
+for post-G7 capability additions that empirically trump a proven v1.
+Only Isagi (A1) has passed a v1-analog gate to date (Φ3 PASS,
+`reviews/phi3_gate_isagi_v1.md`); Isagi's v1→v2 arc (2026-06-24) is
+the *only* true v2 attempt to date, and it FAILED.
+
+**The chemical-reaction mandate.** The reframe elevates the doctrine's
+chemical-reaction concept from a §3.3 confluence-detection feature to
+a first-class architectural primitive (F21 — reasoning workspace) that
+every agent's v1 must demonstrate: agents must be able to *read* each
+other's forward-looking Thoughts before deciding their own trade, and
+the v1-checkpoint gate G7 tests the squad's collective chemistry, not
+just per-agent solo TQS.
+
+v0.4.1 (below) stands as the pre-reframe record.
+
 **Status:** `DRAFT v0.4.1` — 2026-06-25 (Barou row amended 2026-06-30;
 A10 Kunigami row un-deferred 2026-06-30 post Sentinel R1–R6 wiring).
 v0.4 records the **first three §3.11 sketch resolutions** post-Φ4.1: A6
@@ -136,6 +174,10 @@ or in `04-quant-foundations.md`.
 | Thought | One agent's per-tick narrative + tags + optional coordinate | `Thought` dataclass | §3.8 |
 | Canon role | Fixed identity layer (weapon, ego, narrative voice) | `CanonRole` dataclass | §3.10 |
 | Information tier | Empirical read-permission layer (ΔInfo-decided) | Tier ∈ {1, 2, 3} | §3.9, F17 |
+| Agent lot-size intent | Per-agent conviction-driven position sizing | `lot_intent()` method | §4.1a, F19 |
+| Agent risk-shape intent | Per-agent playstyle-driven SL/TP cognition | `risk_intent()` method | §4.1a, F20 |
+| Reasoning workspace | Per-tick shared blackboard for peer Thought reads | `ReasoningWorkspace` dataclass | §4.1a, F21 |
+| v1 checkpoint | Squad-level chemistry + per-agent adequacy gate | G7 gate | §3.11.5 |
 | Opponent (Kaiser/Loki) | Human discretionary trades | adversarial benchmark | §5, F14 |
 | Pitch | Demo account ($100, 1:1000) | environment | §6 |
 | Goal | Closed profitable trade scored by TQS | event | §3.5 |
@@ -827,6 +869,93 @@ sketch did not anticipate. Future-you should treat this section as
 *priors*, not *commitments*, and update the evolution ledger from
 evidence rather than from this list.
 
+#### 3.11.5 Versioning discipline (2026-07-01 clarification)
+
+The §3.11.1–§3.11.4 framework describes *what a vN → vN+1 transition
+costs*. This subsection defines *what qualifies as v1 in the first
+place* — a piece of scaffolding that was implicit in v0.1–v0.4 and
+made ambiguous by the 2026-06-25 and 2026-06-30 backlog resolutions.
+
+**v1 checkpoint definition.** An agent is at v1 when **all of** these
+hold on the locked walk-forward panel (checked by G7 gate):
+
+1. **Undeniable per-agent positive result.** Mean TQS ≥ 0.30 and
+   per-window mean TQS ≥ 0.20 in at least 5 of 7 rolling OOS windows
+   *or* an explicit "structural falsifier" role that the doctrine
+   has declared valid (e.g. Reo as Tier-2 falsifier per §3.10, whose
+   0-trade design was intentional).
+2. **Positive-sum chemistry contribution.** With the agent in the
+   squad, at least one *other* agent's mean TQS or trade count
+   strictly improves vs the same squad minus this agent (bootstrap
+   CI lower bound > 0 at α = 0.05).
+3. **Non-cannibalising slot behaviour.** The agent does not reduce
+   any single peer's trade count by more than 50 % in ≥ 4 of 7
+   rolling OOS windows via slot cannibalisation on shared symbols.
+   (Bachira v1's rebel-lift firing 46,584 times and pushing Isagi +
+   Barou to 0 trades in Φ4.1 is the falsifier for this criterion —
+   it is why Bachira is *not* at v1 despite positive solo TQS.)
+4. **Reasoning-workspace participation (F21).** The agent both
+   *publishes* to and *reads from* the shared reasoning workspace
+   (§4.1a). An agent that only publishes is a specialist-in-silo;
+   the doctrine requires chemistry-capable v1s.
+5. **Owned lot-size cognition (F19).** The agent implements a
+   non-trivial `lot_intent(conviction, sl_pips, equity, regime_fit)
+   → lot_size` — not the fixed-lot default. Sizing is part of the
+   "beautiful goal" equation (TP + SL + smoothness + speed + size),
+   not a global constant.
+6. **Owned risk-shape cognition (F20).** The agent implements a
+   non-trivial `risk_intent(conviction, atr_pips, h1_swing_pips) →
+   (sl_pips, tp_ladder)` — not the default 40-pip stop. Different
+   playstyles produce different SL/TP shapes.
+
+**v2 definition (unchanged from §3.11.1).** A named architectural
+addition that empirically trumps a proven v1 on the same panel by
+pre-declared margins.
+
+**Squad chemistry mandate.** The v1 checkpoint is a squad-level gate
+(G7), not a per-agent gate. All 8 implemented v1s (A1 Isagi, A2
+Bachira, A3 Rin, A4 Chigiri, A5 Reo, A6 Nagi, A7 Barou, A10 Kunigami)
+must clear G7 as a group before any agent is authorised for a v2 arc.
+This operationalises the "cogs in a wheel" framing — no single agent
+gets to evolve past v1 while the squad is broken. See
+`experiments/G7_v1_checkpoint_gate/PROTOCOL.md` for the formal
+statistic, panel, and pass criterion.
+
+**Reclassification of the 2026-06-25 / 2026-06-30 backlog resolutions.**
+The six resolutions listed in §3.11.3 that were labelled "v1 → v2"
+are — under §3.11.5 — reclassified as **v1 mechanic iterations
+pending G7**:
+
+| Agent | Previously labelled | Reclassified as |
+|---|---|---|
+| A2 Bachira | v2 REFINE-to-peer-silence | v1 mechanic-iteration-1 (peer-silence gate on rebel-lift) |
+| A3 Rin | v2 REFINE-regime+peer-disagreement | v1 mechanic-iteration-1 (regime-gate to `trending` + peer-disagreement) |
+| A4 Chigiri | v2 REFINE-multi-TF-ADX+ATR-percentile | v1 mechanic-iteration-1 (three conjunctive guards) |
+| A5 Reo | v2 ADVANCE-coupled-to-Φ5-multi-position | v1 mechanic-iteration-1 (HRP mixture); mechanic 2 (second-position) deferred to post-G7 |
+| A7 Barou | v2 REDESIGN-hybrid-A+B | v1 mechanic-iteration-1 (hybrid A + B) |
+| A10 Kunigami | v2 WIRED (Sentinel R5 consumer) | v1 primitive (`warning_active_at` is a v1 feature; Sentinel R5 consumption is Sentinel-side plumbing, not agent evolution) |
+
+The v2 label survives on:
+
+- A1 Isagi v2 (archived) — the only true v2 attempt to date, FAILED
+  per `reviews/isagi_v2_arc.md`. Retained on disk per §3.11.2 step 3.
+
+**Retroactive ledger discipline.** The evolution ledger rows for the
+six reclassifications above receive companion **RELABEL-2026-07-01**
+rows citing this subsection as the authoritative source of the
+reclassification. The original v2-labelled rows are *not deleted* per
+`07-research-standards.md` §3 — they remain in the ledger as
+historical prior-art with an "amended by RELABEL-2026-07-01"
+annotation.
+
+**Why this reframe now.** Session 2026-07-01 Phase 6d partial verdict
+showed Arm 2 (TQS-conditional conviction floor) lifting squad TQS by
++0.0187 without any v2 arc — the aggregator lever works. The user's
+2026-07-01 decision was: *don't stack v2 evolutions on top of a broken
+v1 squad; make the squad's v1s work like cogs in a wheel first*. F19,
+F20, F21 are the primitives the doctrine was missing to make that
+possible.
+
 #### 3.11.4 The evolution ledger
 
 The audit trail for the doctrine. Every actual `vN → vN+1` event
@@ -928,6 +1057,104 @@ as the seeded first agent — its v0.1 `emit_proposal` becomes
 H1 close with tags `["zone_d1_against", "h4_close", ...]` and
 `coordinate = None` on most ticks. See `05-agent-roster-v0.md` for
 full character roster.
+
+### 4.1a v1 chemistry primitives (F19 / F20 / F21) — added 2026-07-01
+
+The §3.11.5 v1 checkpoint definition requires per-agent lot cognition
+(F19), per-agent risk-shape cognition (F20), and squad-shared
+reasoning-workspace participation (F21). These extend the
+`BlueLockStriker` protocol above with three new methods; they are v1
+primitives, not v2 capability additions. Prior to the 2026-07-01
+reframe, `FIXED_LOT = 0.1` and a global `40-pip default stop` were
+implicit in the sim harness, and cross-agent chemistry lived only in
+the §3.3 Aggregator confluence-detection layer. §4.1a moves all three
+into the agent's own decision surface.
+
+```python
+class BlueLockStriker(Protocol):  # extends §4.1 above
+    ...
+
+    def lot_intent(
+        self,
+        conviction: float,
+        sl_pips: float,
+        equity: float,
+        regime_fit: float,
+    ) -> float:
+        """F19 -- agent-owned position sizing. Returns lot size (lots).
+        Sentinel R1 (min-lot floor) and R6 (per-symbol total-risk cap)
+        apply as backstops after the agent's decision. Default returns
+        FIXED_LOT (0.1); agents override with playstyle logic."""
+
+    def risk_intent(
+        self,
+        conviction: float,
+        atr_pips: float,
+        h1_swing_pips: float,
+    ) -> tuple[float, list[float]]:
+        """F20 -- agent-owned SL/TP shape. Returns (sl_pips, tp_ladder).
+        Default: (40.0, [80.0]) -- 1:2 R:R with single TP. Agents
+        override with playstyle logic (Isagi wide-stop zone-fade shape,
+        Bachira tight-stop pattern shape, etc.)."""
+
+    def read_workspace(
+        self,
+        workspace: ReasoningWorkspace,
+        as_of: datetime,
+    ) -> list[Thought]:
+        """F21 -- read peers' Thoughts published at prior ticks.
+        Backwards-only reads (§3.8 references guard). Default returns
+        all peer Thoughts published before `as_of` in the same tick
+        group. Agents override with agent-specific filters (Isagi
+        reads confluence hints, Bachira reads timeframe-adaptation
+        signals, Reo reads all-of-them for HRP mixture)."""
+```
+
+The `ReasoningWorkspace` dataclass is a per-tick immutable snapshot
+of the Thought Ledger that every agent gets read access to before
+its `intend()` runs. It closes the "chemical reaction" loop from
+§3.3 — reactions no longer require the Aggregator to detect
+confluence *after* proposals are submitted; agents can *anticipate*
+confluence during their own decisioning by reading peers' prior-tick
+Thoughts.
+
+**Playstyle mapping for the 8 v1 agents.** Each agent's F19 / F20
+defaults are set by playstyle (extended from §1 canon-feel egos):
+
+| Agent | Playstyle | Lot-intent shape | Risk-intent shape |
+|---|---|---|---|
+| A1 Isagi | Conservative-metavision | Lot ∝ confluence-adjusted conviction; downshift when isolated | Wide-stop-tight-TP zone-fade shape (SL ≈ 40 pips, TP1 ≈ 60 pips) |
+| A2 Bachira | Rebel-tight | Small lot when peer-silence gate active; standard otherwise | Tight-stop-wide-TP pattern shape (SL ≈ 20 pips, TP1 ≈ 60 pips) |
+| A3 Rin | Analytical-precision | Larger lot on peer-disagreement, else standard | Structural-SL + Fibonacci-ratio TP ladder (SL ≈ 25 pips, TP ladder [50, 100, 150] pips) |
+| A4 Chigiri | Speed-momentum | Larger lot on multi-TF ADX confluence, else standard | Tight-trailing-stop shape (SL ≈ 30 pips, TP1 ≈ 90 pips, trailed) |
+| A5 Reo | Copier-HRP | HRP-weighted mixture of top-K peer lot intents | HRP-weighted mixture of top-K peer risk intents |
+| A6 Nagi | Confluence-only | Larger lot on 2+ peer overlap, else refuses | Structural-cleanliness-driven SL/TP (SL ≈ 30 pips, TP1 ≈ 90 pips) |
+| A7 Barou | Solo-king | Standard lot on all trades; single-symbol devour lift | Tight-stop-wide-TP baseline-zone shape (SL ≈ 30 pips, TP ladder [50, 100]) |
+| A10 Kunigami | Defensive | 0.5× lot when own `warning_active_at` fires, else standard | Standard 40-pip SL; warning fires → refuse the trade |
+
+Defaults live in `sim/agents/aXX_<name>.py::lot_intent` and
+`::risk_intent` implementations. Playstyle values are v1 features and
+must not be tuned to the panel post-hoc (per `07-research-standards.md`
+§3). Agents A8 Yukimiya and A9 Aoshi remain not-yet-implemented; when
+they land, they receive their own F19/F20/F21 defaults per their
+canon playstyles.
+
+**Interaction with §4.3 Sentinel rules.** F19 produces a *desired* lot
+size, and F20 produces a *desired* SL/TP shape. The Sentinel R-rules
+still apply *after* the agent's cognition:
+
+- R1 blocks the trade if the F20-produced SL implies risk > 5 % of
+  equity at F19's lot size.
+- R2 rounds F19's fractional lot down to the min-lot multiple.
+- R4 caps any single agent's *actual* risk share at 40 % of the tick's
+  budget (F19 producing an unusually large lot on high conviction is
+  fine; four agents each producing a large lot on the same symbol is
+  what R4 catches).
+- R6 caps the *combined* per-symbol risk across all admitted positions
+  at 1 % of equity (built for Φ5 Arm 4 multi-position).
+
+The agent's cognition is *not* a Sentinel override; it is the *first
+line* of risk decision. The Sentinel is the last line.
 
 ### 4.2 The Sentinel (Q-doc-5 resolution)
 
