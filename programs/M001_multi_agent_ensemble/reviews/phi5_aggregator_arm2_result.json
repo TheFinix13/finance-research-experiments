@@ -1,0 +1,18 @@
+{
+  "arm_id": "arm2",
+  "arm_name": "TQS-conditional conviction floor (P=0.40, min_n=200)",
+  "n_trades": 3372,
+  "median_window_mean_tqs": 0.3108612364375497,
+  "mean_window_mean_tqs": 0.30818327349927827,
+  "pooled_per_trade_mean_tqs": 0.30298182350265374,
+  "pooled_per_trade_mean_pips": 10.4718955491221,
+  "ratio_vs_isagi": 0.9790905084647235,
+  "ratio_vs_control": 1.0638646010867545,
+  "delta_vs_control": 0.01866123643754969,
+  "verdict": "PARTIAL",
+  "caveats": [
+    "Dropped 342 trades below per-agent P40 conviction (walk-forward, no lookahead).",
+    "5 trades had no matched proposal (conviction=None) -- retained as free-pass to avoid biasing against the arm."
+  ],
+  "per_agent_hrp_weights_by_window": null
+}

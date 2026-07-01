@@ -1,0 +1,139 @@
+{
+  "arm_id": "arm1",
+  "arm_name": "HRP (Ledoit-Wolf tangency, TQS covariance)",
+  "n_trades": 3714,
+  "median_window_mean_tqs": 0.29408226747665983,
+  "mean_window_mean_tqs": 0.2514064549023418,
+  "pooled_per_trade_mean_tqs": 0.294116205428557,
+  "pooled_per_trade_mean_pips": 9.494878876057832,
+  "ratio_vs_isagi": 0.9262433621312121,
+  "ratio_vs_control": 1.0064417093657079,
+  "delta_vs_control": 0.0018822674766598158,
+  "verdict": "PARTIAL",
+  "caveats": [
+    "Post-hoc re-weighting only -- production HRP scales lot size, which alters pnl_pips. In the fixed-lot sim harness this effect is folded into the WEIGHTED-mean TQS statistic, which is the closest post-hoc analogue.",
+    "First window has empty prior history -> HRP falls back to equal-weight-on-positive-mean (documented in HRP fallback)."
+  ],
+  "per_agent_hrp_weights_by_window": {
+    "bachira_meguru": [
+      {
+        "oos_start": "2019-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2020-01-01T00:00:00+00:00",
+        "weight": 0.5
+      },
+      {
+        "oos_start": "2021-01-01T00:00:00+00:00",
+        "weight": 0.5000000000000001
+      },
+      {
+        "oos_start": "2022-01-01T00:00:00+00:00",
+        "weight": 0.5
+      },
+      {
+        "oos_start": "2023-01-01T00:00:00+00:00",
+        "weight": 0.5
+      },
+      {
+        "oos_start": "2024-01-01T00:00:00+00:00",
+        "weight": 0.5
+      },
+      {
+        "oos_start": "2025-01-01T00:00:00+00:00",
+        "weight": 0.5
+      }
+    ],
+    "chigiri_hyoma": [
+      {
+        "oos_start": "2019-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2020-01-01T00:00:00+00:00",
+        "weight": 0.5
+      },
+      {
+        "oos_start": "2021-01-01T00:00:00+00:00",
+        "weight": 0.5
+      },
+      {
+        "oos_start": "2022-01-01T00:00:00+00:00",
+        "weight": 0.5
+      },
+      {
+        "oos_start": "2023-01-01T00:00:00+00:00",
+        "weight": 0.43990197683385757
+      },
+      {
+        "oos_start": "2024-01-01T00:00:00+00:00",
+        "weight": 0.40356512375409637
+      },
+      {
+        "oos_start": "2025-01-01T00:00:00+00:00",
+        "weight": 0.4265045401889433
+      }
+    ],
+    "itoshi_rin": [
+      {
+        "oos_start": "2019-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2020-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2021-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2022-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2023-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2024-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2025-01-01T00:00:00+00:00",
+        "weight": 0.0
+      }
+    ],
+    "nagi_seishiro": [
+      {
+        "oos_start": "2019-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2020-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2021-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2022-01-01T00:00:00+00:00",
+        "weight": 0.0
+      },
+      {
+        "oos_start": "2023-01-01T00:00:00+00:00",
+        "weight": 0.060098023166142385
+      },
+      {
+        "oos_start": "2024-01-01T00:00:00+00:00",
+        "weight": 0.09643487624590362
+      },
+      {
+        "oos_start": "2025-01-01T00:00:00+00:00",
+        "weight": 0.0734954598110566
+      }
+    ]
+  }
+}

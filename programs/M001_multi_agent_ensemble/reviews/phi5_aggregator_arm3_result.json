@@ -1,0 +1,17 @@
+{
+  "arm_id": "arm3",
+  "arm_name": "Same-direction merge (tightest SL, median TP)",
+  "n_trades": 0,
+  "median_window_mean_tqs": NaN,
+  "mean_window_mean_tqs": NaN,
+  "pooled_per_trade_mean_tqs": NaN,
+  "pooled_per_trade_mean_pips": NaN,
+  "ratio_vs_isagi": NaN,
+  "ratio_vs_control": NaN,
+  "delta_vs_control": NaN,
+  "verdict": "REQUIRES_RESIM",
+  "caveats": [
+    "Merging changes SL (tightest) and TP (median-of-ladder-target). Trade outcomes with the modified SL/TP cannot be recomputed post-hoc without the H4 price paths and the production fill model. Requires a full re-simulation via `_drive_squad_replay` with the aggregator plumbed to `apply_same_direction_merge`."
+  ],
+  "per_agent_hrp_weights_by_window": null
+}
