@@ -173,10 +173,18 @@ class TestPlaystyleLotIntent:
 
     def test_cv_across_playstyles_and_convictions_meets_v1_criterion(self):
         """§3.11.5 criterion #5: for each playstyle, lot CV across
-        varied inputs is >= 0.10."""
+        varied inputs is >= 0.10.
+
+        Phase S (2026-07-01) added ``analytical_precision`` +
+        ``confluence_only`` to this coverage after the kelly
+        saturation fix.
+        """
         convictions = [0.30, 0.45, 0.60, 0.75, 0.90]
-        for ps in ["conservative_metavision", "rebel_tight",
-                   "speed_momentum", "solo_king", "defensive"]:
+        for ps in [
+            "conservative_metavision", "rebel_tight",
+            "analytical_precision", "speed_momentum",
+            "confluence_only", "solo_king", "defensive",
+        ]:
             lots = [
                 playstyle_lot_intent(c, 40.0, 100.0, 0.5, playstyle=ps)
                 for c in convictions

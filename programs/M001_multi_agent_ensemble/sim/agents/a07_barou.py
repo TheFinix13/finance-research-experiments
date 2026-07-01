@@ -63,6 +63,7 @@ from programs.M001_multi_agent_ensemble.sim._cross_repo import (
 )
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
 from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    regime_fit_from_atr,
     stamp_provenance_pips,
 )
 from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
@@ -364,7 +365,7 @@ class A7BarouV1(BaseStriker):
             stop=float(sig.stop),
             ladder=ladder,
             conviction=float(conviction),
-            regime_fit=0.5,  # Phi4 placeholder; regime classifier wires later
+            regime_fit=regime_fit_from_atr(prep.bars, i),
             valid_until=horizon,
             rationale=rationale,
             agent_tier=int(self.tier),

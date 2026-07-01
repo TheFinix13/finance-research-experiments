@@ -243,3 +243,66 @@ The v1 checkpoint is no longer "no agent passes because the wiring is broken." I
 **Rin remains the number-one clean pass on C1** (0.422 with 6/7 windows). Bachira remains the workhorse (0.374 with 7/7). Barou now enters the top-half of the roster (0.299 with 5/7). Isagi and Chigiri remain on the knife's edge. Nagi holds his 0.392 (5/7). Reo + Kunigami earn v1 through publish-side evidence and canonical waivers.
 
 The C2/C3 leave-one-out compute job is still pending. That's a 32-hour wall-clock spend and shipping the C2/C3 bits is the next binding constraint on any full v1 sign-off. The wiring is ready; the compute isn't done.
+
+---
+
+## Post-NPOS walk-forward rerun (Phase S — F19 variance amplification)
+
+**Date:** 2026-07-01 (same-day rerun, immediately after Phase R)
+**Panel:** 2015-01-01 → 2025-12-31, same 7 OOS windows
+**Raw verdict file:** `programs/M001_multi_agent_ensemble/reviews/g7_v1_checkpoint_verdict_walk-forward-post-NPOS.md`
+**Trades:** 5,761 total across 7 windows (+88 vs Phase R's 5,673)
+**Squad verdict:** still FAIL / PARTIAL / PENDING — but the shape of the residual moved: Isagi flipped to C1 PASS 7/7, and the C5 barrier finally cracked (Chigiri 0.096, Bachira 0.087, Isagi 0.076 — all one hair below 0.10).
+
+### Per-agent lift vs Phase R
+
+| Agent | Phase R C1 | Phase S C1 | Δ | Phase R C5 | Phase S C5 | Phase R C6 | Phase S C6 |
+|---|---|---|---|---|---|---|---|
+| **Isagi** | 0.322 (3/7) | **0.357 (7/7 PASS)** | **+huge** | 0.000 | **0.076** | 0.073 | 0.068 |
+| **Bachira** | 0.374 (7/7) | 0.385 (7/7) | +3% | 0.035 | 0.087 | 0.133 | 0.136 |
+| **Rin** | 0.422 (6/7) | **0.000 (0/7)** | **-crash** | 0.000 | 0.000 | 0.086 | 0.000 |
+| **Chigiri** | 0.265 fail | 0.270 fail (3/7) | flat | 0.044 | 0.096 | 0.155 | 0.157 |
+| **Reo** | `1??111` waived | `1??111` waived | — | — | — | — | — |
+| **Nagi** | 0.392 (5/7) | 0.386 (5/7) | flat | 0.050 | 0.000 | 0.000 | 0.000 |
+| **Barou** | 0.299 (5/7) | 0.299 (5/7) | flat | 0.000 | 0.049 | 0.113 | 0.117 |
+| **Kunigami** | `1??111` waived | `1??111` waived | — | — | — | — | — |
+
+### The Isagi breakthrough
+
+**Isagi's C1 flipped from 3/7 windows to 7/7 windows** with a mean TQS jump from 0.322 to 0.357. This is his first clean C1 pass in the entire program. The mechanism:
+
+- Metavision peer lift +0.05/+0.10 on 1/2+ peer confluence turned his flat 0.65 base conviction into a range of 0.60..0.75 that actually correlates with setup quality.
+- `regime_fit_from_atr` mapping meant windier tape (higher ATR14) properly amplified his lot on those setups.
+- Together these two changes flipped Isagi from "loses every tiebreak with a constant 0.65 conviction" into "wins the setup where his metavision + regime alignment agree with a peer."
+
+C5 rose from 0.000 to 0.076 (still below 0.10 but no longer structurally-zero); C6 dropped slightly from 0.073 to 0.068 (within noise).
+
+### The Rin regression — expected, but worth naming
+
+**Rin lost every trade** in Phase S. She went from 6/7 windows C1 PASS at TQS 0.422 to 0/7 with mean TQS 0.000 — while her workspace read count stayed unchanged at 1,494 (she's still participating, still reading, just not opening trades).
+
+Root cause: Rin's proposal set is a strict subset of Isagi's. Both wrap `SupplyDemandAlpha`, both fire on zone-touch-plus-D1-counter. Rin's precision floor (stop_pips ≥ 20) is a filter ON TOP of Isagi's — every Rin-fire is also an Isagi-fire.
+
+Pre-Phase-S the aggregator resolved as:
+- Isagi @ base 0.65, adjusted 0.65 (tier 1, no penalty)
+- Rin @ base 0.65 + precision +0.10 = 0.75, adjusted 0.70 (tier 2 penalty)
+- Rin wins (0.70 > 0.65).
+
+Post-Phase-S with metavision lift:
+- Isagi @ 0.65 + metavision +0.10 = 0.75, adjusted 0.75
+- Rin @ 0.75, adjusted 0.70
+- Isagi wins (0.75 > 0.70).
+
+This is the mirror image of the pre-Phase-N crowding-out we solved for Isagi/Barou: now it's Rin who is structurally cannibalised. The wiring is correct; the design assumption "one signal cell can host two agents differing only in filter-tightness" is broken.
+
+**Fix (Phase T candidate):** Rin needs a mechanic that fires when Isagi DOESN'T, not a stricter filter on top of the same signal. Options: Rin as the peer-disagreement trader (fires when workspace shows Isagi + Bachira disagree, per the doctrine narrative), or Rin as a different-symbol specialist. Neither is a small change; both are architectural. Rin's current v1 mechanic is retired in Phase T.
+
+### What Phase S actually proved
+
+1. F19 lot dispersion IS a soluble problem — the four dispersion-passing agents in the table above (Bachira 0.087, Chigiri 0.096, Isagi 0.076, Barou 0.049) all trended up from zero. Chigiri and Bachira sit at 0.09-0.10, so a slightly wider `regime_fit_gain` on their playstyles would push them across.
+2. Isagi CAN pass C1 when his mechanic gets teeth. The metavision-lift is his actual weapon — before Phase S he was a flat proposer, not a metavision agent.
+3. The aggregator tier-anchor works as designed. It's supposed to let the tier-1 anchor win ties. When Isagi's mechanic activates, ties break in his favour. That's the point — but it also exposes design overlap between agents that share the same source cell.
+
+Squad verdict remains FAIL/PARTIAL/PENDING. C2/C3 still pending on the leave-one-out compute job. Rin needs a Phase T architectural retire-and-replace before any v1 sign-off.
+
+**Roster reading:** Isagi has actually pulled his weight — 7/7 C1 pass, tier-1-anchor-winning-tiebreaks, chemistry lit. He's no longer the 0-trade victim; he's the striker whose evolution now forces the roster to answer "if Isagi's metavision is on, what does Rin do?" — the same question Blue Lock the manga eventually forces about every top-order striker.

@@ -118,3 +118,96 @@ def stamp_provenance_pips(
     rationale["h1_swing_pips"] = swing_pips_from_bars(
         bars, i, lookback=swing_lookback, pip_size=pip_size,
     )
+
+
+# ---------------------------------------------------------------------------
+# Phase S (2026-07-01) -- regime_fit proxy from per-bar ATR
+# ---------------------------------------------------------------------------
+
+# Reference ATR (in pips) at which regime_fit centers on 0.5. Below this
+# value the tape is quiet (regime_fit tilts low); above it the tape is
+# active (regime_fit tilts high). Empirically the H4 EURUSD/GBPUSD/USDCAD
+# panel 2015-2025 sits at mean ATR14 ~= 28-32 pips, so 30 is the honest
+# center. Callers can override via ``mean_atr`` for exotic instruments.
+DEFAULT_MEAN_ATR_PIPS: float = 30.0
+
+
+def regime_fit_from_atr(
+    bars: list[Any],
+    i: int,
+    *,
+    mean_atr: float = DEFAULT_MEAN_ATR_PIPS,
+    period: int = 14,
+    pip_size: float = DEFAULT_PIP_SIZE_MAJOR,
+    lo_bound: float = 0.2,
+    hi_bound: float = 0.8,
+) -> float:
+    """Map current-bar ATR to a per-bar regime_fit in [``lo_bound``, ``hi_bound``].
+
+    Doctrine 06 sec 4.1a (Phase S, 2026-07-01 amendment): every proposer
+    with bar access should replace the ``regime_fit=0.5`` placeholder
+    with a per-bar value derived from the same bar context the proposal
+    uses. This makes ``playstyle_lot_intent`` see real variance and
+    unbreaks the F19 lot-dispersion signal that Phase P Kelly-saturated
+    the sandbox at MIN_LOT.
+
+    Map:
+
+        r_raw = 0.5 * ATR / mean_atr
+        regime_fit = clip(r_raw, lo_bound, hi_bound)
+
+    At ATR = 30 pips (panel mean): regime_fit = 0.5 (neutral).
+    At ATR = 15 pips (quiet tape): regime_fit = 0.25 (below neutral).
+    At ATR = 60 pips (active tape): regime_fit = 1.0 -> clipped to 0.8.
+
+    Returns 0.5 (neutral) when ATR is unavailable (short bar history) so
+    the caller can drop this in place of the constant without adding a
+    null check.
+    """
+    atr = atr_pips_at(bars, i, period=period, pip_size=pip_size)
+    if atr is None or mean_atr <= 0:
+        # Truly-unavailable ATR (short bar history) -> neutral so the
+        # caller can drop this in place of the 0.5 placeholder without
+        # a null-check. An ATR of exactly zero is a legitimate "dead
+        # tape" reading and falls through to the clipped-low path.
+        return 0.5
+    raw = 0.5 * (float(atr) / float(mean_atr))
+    if raw < lo_bound:
+        return lo_bound
+    if raw > hi_bound:
+        return hi_bound
+    return float(raw)
+
+
+def isagi_metavision_lift(
+    peer_directions_agree: int,
+    peer_directions_disagree: int,
+    *,
+    agree_double_lift: float = 0.10,
+    agree_single_lift: float = 0.05,
+    disagree_penalty: float = 0.05,
+) -> float:
+    """Metavision peer-alignment conviction lift (Phase S).
+
+    Doctrine 06 sec 3.11.3 (Isagi arc): "metavision sees the whole
+    field" -- when 2+ other strikers already published thoughts in the
+    same direction Isagi is about to enter, conviction lifts. Peer
+    disagreement dampens.
+
+    - ``peer_directions_agree >= 2`` -> ``+agree_double_lift`` (default +0.10).
+    - ``peer_directions_agree == 1`` and no disagreement -> ``+agree_single_lift`` (default +0.05).
+    - ``peer_directions_disagree > peer_directions_agree`` -> ``-disagree_penalty`` (default -0.05).
+    - otherwise neutral (0.0).
+
+    Returns a signed float to add to ``sig.conviction``. Callers should
+    clip the final conviction to [0, 1].
+    """
+    ag = int(peer_directions_agree)
+    dis = int(peer_directions_disagree)
+    if ag >= 2:
+        return float(agree_double_lift)
+    if ag >= 1 and dis == 0:
+        return float(agree_single_lift)
+    if dis > ag:
+        return -float(disagree_penalty)
+    return 0.0

@@ -1,4 +1,53 @@
-# AI Context — finance research experiments (updated 2026-07-01, post-Phase-R G7 walk-forward rerun)
+# AI Context — finance research experiments (updated 2026-07-01, post-Phase-S G7 walk-forward rerun)
+
+## 2026-07-01 night — Phase S: F19 variance amplification + Isagi breakthrough
+
+Second full-panel walk-forward rerun of the day, with F19 variance
+fixes on top of Phase N/O/P: 5,761 trades across 7 windows.
+Verdict `walk-forward-post-NPOS`:
+`programs/M001_multi_agent_ensemble/reviews/g7_v1_checkpoint_verdict_walk-forward-post-NPOS.md`.
+
+**Isagi flipped to C1 PASS 7/7 windows** (mean TQS 0.357 vs 0.322 in
+Phase R, first clean C1 pass ever for Isagi). Mechanism: metavision
+peer-alignment lift (+0.05 for 1 peer confluence, +0.10 for 2+) turns
+his flat `sig.conviction = 0.65` into a range 0.60..0.75 that actually
+tracks setup quality, and `regime_fit_from_atr` gives him per-bar
+regime variance.
+
+**C5 barrier finally cracking** — Chigiri 0.096, Bachira 0.087, Isagi
+0.076, Barou 0.049 (all up from 0 or near-zero in Phase R). Three are
+one hair below the 0.10 threshold; a small `regime_fit_gain` widening
+in their playstyles would push them across.
+
+**Rin regressed to 0 trades.** Not a bug -- structural crowding-out
+mirroring what Isagi/Barou suffered pre-Phase-N. Rin's proposal set
+is a strict subset of Isagi's (both wrap `SupplyDemandAlpha`, Rin
+adds a stop-tightness filter on top). Post-Phase-S Isagi's metavision
+lift beats Rin's precision lift at the aggregator (tier tiebreak).
+Rin needs a Phase T mechanic that fires when Isagi DOESN'T, not a
+tighter filter on top of the same signal. Candidate: peer-
+disagreement trader.
+
+Amendments this session:
+- Doctrine `06-blue-lock-doctrine.md` §3.10a — structural-falsifier
+  waiver class extended from Reo to include Kunigami.
+- G7 PROTOCOL §11.1-11.6 — dated amendments for Kunigami waiver +
+  Phase N aggregator + Phase O F21 reads + Phase P provenance-pips +
+  Barou devour + Phase S F19 variance.
+- `sim/core/provenance_pips.py` — added `regime_fit_from_atr` +
+  `isagi_metavision_lift` helpers, 5 new tests.
+- `sim/core/lot_intent.py` — `analytical_precision` and
+  `confluence_only` playstyles switched off `kelly_lot_intent` (which
+  saturated at MIN_LOT floor on the $100 sandbox) onto
+  `conviction_scaled_lot_intent` at playstyle-tuned parameters.
+- `sim/agents/a01_isagi.py` — metavision lift wired, regime_fit
+  dynamic, final_conviction reported in rationale.
+- 5 agents (Isagi/Bachira/Rin/Chigiri/Barou) now compute
+  `regime_fit = regime_fit_from_atr(prep.bars, i)` instead of the
+  0.5 placeholder.
+
+Sim suite: 479 passed / 4 skipped (+10 tests this Phase S: 5
+regime_fit_from_atr + 5 isagi_metavision_lift).
 
 ## 2026-07-01 late evening — Phase R: full-panel G7 walk-forward rerun COMPLETE
 

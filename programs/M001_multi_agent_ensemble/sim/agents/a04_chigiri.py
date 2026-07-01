@@ -71,6 +71,7 @@ from typing import Any, Optional
 
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
 from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    regime_fit_from_atr,
     stamp_provenance_pips,
 )
 from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
@@ -373,7 +374,7 @@ class A4ChigiriV1(BaseStriker):
             stop=float(stop),
             ladder=ladder,
             conviction=float(my_recent_thought.confidence_in_thought),
-            regime_fit=0.5,
+            regime_fit=regime_fit_from_atr(prep.bars, i),
             valid_until=horizon,
             rationale=proposal_rationale,
             agent_tier=int(self.tier),

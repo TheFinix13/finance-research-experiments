@@ -59,6 +59,8 @@ from programs.M001_multi_agent_ensemble.sim._cross_repo import (
 )
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
 from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    isagi_metavision_lift,
+    regime_fit_from_atr,
     stamp_provenance_pips,
 )
 from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
@@ -353,6 +355,24 @@ class A1IsagiV1(BaseStriker):
                 elif peer_dir in ("long", "short"):
                     peer_directions_disagree += 1
 
+        # Phase S (2026-07-01, doctrine amendment "F19 variance"):
+        # Isagi's metavision now produces variable conviction based on
+        # peer alignment. The base 0.65 from SupplyDemandAlpha is a
+        # weapon-agnostic zone conviction; the metavision lift is the
+        # tier-1 anchor's real signal.
+        metavision_lift = isagi_metavision_lift(
+            peer_directions_agree=peer_directions_agree,
+            peer_directions_disagree=peer_directions_disagree,
+        )
+        final_conviction = max(
+            0.0, min(1.0, float(sig.conviction) + metavision_lift),
+        )
+        # Phase S: regime_fit is now a per-bar function of ATR, not the
+        # constant 0.5 placeholder. Playstyle_lot_intent sees real
+        # variance -> C5 dispersion emerges from real inputs, not
+        # sub-tick noise.
+        regime_fit_dyn = regime_fit_from_atr(prep.bars, i)
+
         meta = getattr(sig, "meta", {}) or {}
         rationale: dict[str, Any] = {
             "wrapped": "agent.alphas.concepts.zone_alpha.SupplyDemandAlpha",
@@ -367,6 +387,10 @@ class A1IsagiV1(BaseStriker):
             "metavision_peer_view_count": int(peer_view_count),
             "metavision_peers_agree": int(peer_directions_agree),
             "metavision_peers_disagree": int(peer_directions_disagree),
+            "metavision_conviction_lift": float(metavision_lift),
+            "base_conviction": float(sig.conviction),
+            "final_conviction": float(final_conviction),
+            "regime_fit_source": "atr_pips",
         }
         # F20 provenance: real per-bar ATR + swing range so G7 C6
         # dispersion is measured on live inputs, not fallback constants.
@@ -381,8 +405,8 @@ class A1IsagiV1(BaseStriker):
             entry=float(sig.entry),
             stop=float(sig.stop),
             ladder=ladder,
-            conviction=float(sig.conviction),
-            regime_fit=0.5,  # Phi3 placeholder; regime classifier consumer wires this later.
+            conviction=final_conviction,
+            regime_fit=regime_fit_dyn,
             valid_until=horizon,
             rationale=rationale,
             agent_tier=int(self.tier),

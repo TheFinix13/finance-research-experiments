@@ -227,6 +227,82 @@ New module `sim/core/provenance_pips.py` with `atr_pips_at` (Wilder ATR) and `sw
 
 Barou's `BAROU_V1_DEVOUR_LIFT` raised 0.10 → 0.20 and `BAROU_V1_DEVOUR_OBS_FLOOR` lowered 0.7 → 0.5 so the devour condition fires more often and produces a decisive override when it does (final conviction 0.85 > Bachira max 0.75 on USDCAD). Matches the roster's "solo king finishes what Isagi couldn't" narrative frame.
 
+### §11.6 (2026-07-01) — Phase S: F19 variance amplification
+
+**Trigger:** the Phase R walk-forward rerun (Phase N+O+P wiring live)
+recorded C5 = 0 for four of six trade-taking agents (Isagi, Rin,
+Barou; Nagi at 0.05; Bachira at 0.035; Chigiri at 0.044). Every root
+cause moved in the intended direction but no agent cleared the C5
+threshold. Diagnosis on the raw verdict + a targeted lot_intent trace
+identified three structural gaps:
+
+1. `SupplyDemandAlpha` (Isagi/Bachira/Rin/Barou base source) hardcodes
+   `conviction = 0.65`. Every proposal Isagi ever generates has the
+   same base conviction — his metavision playstyle never expresses
+   itself in the lot output.
+2. `regime_fit = 0.5` is a placeholder set on every proposal in the
+   panel. `playstyle_lot_intent` sees zero variance on that dimension.
+3. `kelly_lot_intent` at `kelly_fraction_cap = 0.025` on a $100 demo
+   sandbox produces `dollar_risk = $2.50`. Divided by a typical
+   20-40 pip SL and $0.10/pip pip value → 0.6–1.2 min-lot multiples →
+   every trade rounds to `MIN_LOT = 0.01`. Rin and Nagi were
+   Kelly-saturated at the FLOOR (not the cap) — every trade lot was
+   identical.
+
+**Amendment (Phase S wiring):**
+
+- **`regime_fit_from_atr(bars, i)`** helper added to
+  `sim/core/provenance_pips.py`. Maps current-bar ATR14 to
+  `clip(0.5 * atr / mean_atr, 0.2, 0.8)`. Every proposer with bar
+  access now sets `proposal.regime_fit = regime_fit_from_atr(prep.bars, i)`
+  instead of the `0.5` placeholder — Isagi, Bachira, Rin, Chigiri,
+  Barou all wired in this pass. Nagi keeps `NAGI_V1_REGIME_FIT`
+  because his proposal borrows the leader's `entry/stop`; a leader-
+  regime-fit borrow is a Phase T follow-up.
+
+- **`isagi_metavision_lift(peers_agree, peers_disagree)`** helper
+  added. Returns +0.10 for 2+ peer agree, +0.05 for 1 peer agree with
+  no disagreement, -0.05 for majority disagreement, else 0.0. Isagi's
+  `intend()` computes `final_conviction = clip(sig.conviction +
+  metavision_lift, 0.0, 1.0)` — his metavision reads DO shift his
+  proposal conviction now, not just log a diagnostic bit.
+
+- **Playstyle `analytical_precision` (Rin)** switched from
+  `kelly_lot_intent(kelly_fraction_cap=0.025, payoff_ratio=2.0)` to
+  `conviction_scaled_lot_intent(base_lot=0.05, conviction_pivot=0.60,
+  conviction_gain=3.0, max_lot_ceiling=0.15, regime_fit_gain=0.6)`.
+  Same precision-floor semantic (small base, aggressive lift on
+  above-pivot conviction), but the map is expressed in
+  conviction-scaled lots that don't saturate against MIN_LOT on the
+  $100 sandbox.
+
+- **Playstyle `confluence_only` (Nagi)** switched from kelly to
+  `conviction_scaled_lot_intent(base_lot=0.08, conviction_pivot=0.70,
+  conviction_gain=3.5, max_lot_ceiling=0.20, regime_fit_gain=0.5)`.
+  Higher pivot because Nagi's `combined_conviction = 1 - Π(1 - c_i)`
+  already ranges 0.70..0.95; the steep gain of 3.5 makes that range
+  produce lot spreads of 0.06..0.13 — real F19 dispersion.
+
+**Empirical baseline (from Phase R verdict, before this amendment):**
+
+| Agent | C5 | mean_lot |
+|---|---|---|
+| Isagi | 0.000 | 0.10 constant |
+| Rin | 0.000 | 0.01 constant (kelly-saturated at MIN_LOT floor) |
+| Nagi | 0.050 | 0.01 constant (same) |
+| Barou | 0.000 | 0.11 near-constant |
+| Bachira | 0.035 | 0.10 modal |
+| Chigiri | 0.044 | 0.11 modal |
+
+**Empirical effect (Phase S walk-forward rerun, tag
+`walk-forward-post-NPOS`):** to be recorded once the compute job
+lands.
+
+**Doctrine linkage:** §4.1a amended in parallel — the F19 primitive
+now includes the `regime_fit_from_atr` mapping as its
+"per-bar-regime input" and the "no kelly on the sandbox scale"
+rationale for the two playstyle changes.
+
 ---
 
 ## 12. Verdict registry row (to be added)

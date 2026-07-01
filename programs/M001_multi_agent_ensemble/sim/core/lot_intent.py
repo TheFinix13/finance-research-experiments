@@ -228,9 +228,20 @@ def playstyle_lot_intent(
     if playstyle == "analytical_precision":
         # Rin: larger lot on peer-disagreement (callers pass conviction
         # elevated by the gate).
-        return kelly_lot_intent(
+        #
+        # Phase S (2026-07-01, doctrine §4.1a amendment "F19 sandbox
+        # unsaturation"): kelly_lot_intent saturates against MIN_LOT on
+        # the $100 sandbox (kelly cap 0.025 -> $2.50 dollar risk;
+        # divided by typical 20-40 pip SL -> lot_multiples < 1 ->
+        # every trade clamps to MIN_LOT = 0.01 -> CV = 0). Rin now
+        # sizes with conviction_scaled_lot_intent at tight parameters
+        # so the analytical-precision playstyle actually produces
+        # F19 dispersion. Same "precision floor" story, just expressed
+        # in conviction-scaled lots instead of kelly-fraction risk.
+        return conviction_scaled_lot_intent(
             conviction, sl_pips, equity, regime_fit,
-            kelly_fraction_cap=0.025, payoff_ratio=2.0,
+            base_lot=0.05, conviction_pivot=0.60, conviction_gain=3.0,
+            max_lot_ceiling=0.15, regime_fit_gain=0.6,
         )
     if playstyle == "speed_momentum":
         # Chigiri: larger lot on multi-TF ADX confluence.
@@ -253,9 +264,18 @@ def playstyle_lot_intent(
         # handled by returning 0.0 in the agent class before this fn
         # is called; when called here, the conviction is already
         # confluence-lifted.
-        return kelly_lot_intent(
+        #
+        # Phase S (2026-07-01, doctrine §4.1a amendment): kelly path
+        # saturated at MIN_LOT on the $100 sandbox (same math as Rin
+        # above). Nagi now sizes with conviction_scaled at a wider
+        # gain than Rin because his combined_conviction (F11 union
+        # predicate `1 - prod(1 - c_i)`) already ranges 0.7..0.95 -- a
+        # steep conviction_gain of 3.5 turns that into a real lot
+        # spread from 0.06 to 0.13.
+        return conviction_scaled_lot_intent(
             conviction, sl_pips, equity, regime_fit,
-            kelly_fraction_cap=0.025, payoff_ratio=1.5,
+            base_lot=0.08, conviction_pivot=0.70, conviction_gain=3.5,
+            max_lot_ceiling=0.20, regime_fit_gain=0.5,
         )
     if playstyle == "solo_king":
         # Barou: standard lot on all trades; single-symbol devour lift.
