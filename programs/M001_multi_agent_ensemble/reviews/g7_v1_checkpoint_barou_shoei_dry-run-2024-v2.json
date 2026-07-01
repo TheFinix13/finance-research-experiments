@@ -1,0 +1,66 @@
+{
+  "agent_id": "barou_shoei",
+  "playstyle": "solo_king",
+  "tier": 2,
+  "bit_vector": "0??000",
+  "is_v1_pass": false,
+  "criteria": {
+    "1": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.3,
+      "status": "computed",
+      "evidence": {
+        "reason": "no trades in OOS panel",
+        "n_trades": 0
+      }
+    },
+    "2": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.0,
+      "status": "pending",
+      "evidence": {
+        "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+      }
+    },
+    "3": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.5,
+      "status": "pending",
+      "evidence": {
+        "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+      }
+    },
+    "4": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 1.0,
+      "status": "computed",
+      "evidence": {
+        "publish_count": 3220,
+        "read_count": 0,
+        "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+      }
+    },
+    "5": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.1,
+      "status": "computed",
+      "evidence": {
+        "reason": "no trades in OOS panel"
+      }
+    },
+    "6": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.1,
+      "status": "computed",
+      "evidence": {
+        "reason": "no trades in OOS panel"
+      }
+    }
+  }
+}

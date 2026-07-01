@@ -310,6 +310,9 @@ def _evaluate_criterion_3_stub() -> CriterionResult:
 
 
 def _evaluate_criterion_4_stub() -> CriterionResult:
+    """Retained for backwards compatibility with pre-2026-07-01 dry-runs
+    that did not pass workspace counts. Callers with real counts should
+    use ``_evaluate_criterion_4`` instead."""
     return CriterionResult(
         passed=False,
         statistic=0.0,
@@ -317,11 +320,56 @@ def _evaluate_criterion_4_stub() -> CriterionResult:
         status="pending",
         evidence={
             "reason": (
-                "F21 workspace participation requires _drive_squad_replay "
-                "to publish + snapshot + pass workspace kwarg to "
-                "agent.intend(); the Phi4/4.1 driver does not yet do "
-                "this. G7 full-run harness must thread workspace or "
-                "swap to sim.core.engine.run_replay"
+                "F21 workspace participation requires the driver to run "
+                "with use_workspace=True; caller did not provide "
+                "workspace counts"
+            ),
+        },
+    )
+
+
+def _evaluate_criterion_4(
+    agent_id: str,
+    publish_count: int,
+    read_count: int,
+) -> CriterionResult:
+    """C4 -- Reasoning-workspace participation (F21).
+
+    PROTOCOL sec 3 threshold: both publish + read counts > 0 in all 7
+    rolling OOS windows. Dry-run scope: single OOS window, so we check
+    the strictly-positive threshold on the single window (a proper
+    7-window verdict aggregates across windows).
+
+    Reo (structural falsifier) is exempted from the read requirement
+    but must still publish -- the workspace IS Reo's weapon.
+    """
+    passed = publish_count > 0 and read_count > 0
+    # Reo waiver: read requirement is waived; publish alone is enough.
+    if agent_id in STRUCTURAL_FALSIFIERS and publish_count > 0:
+        return CriterionResult(
+            passed=True,
+            statistic=float(publish_count),
+            threshold=1.0,
+            status="waived",
+            evidence={
+                "reason": (
+                    "structural falsifier -- publish alone suffices "
+                    "(doctrine sec 3.10 exception)"
+                ),
+                "publish_count": int(publish_count),
+                "read_count": int(read_count),
+            },
+        )
+    return CriterionResult(
+        passed=passed,
+        statistic=float(min(publish_count, read_count)),
+        threshold=1.0,
+        evidence={
+            "publish_count": int(publish_count),
+            "read_count": int(read_count),
+            "note": (
+                "single-window dry-run; PROTOCOL sec 3 requires both > 0 "
+                "in >= 7/7 windows for full-panel verdict"
             ),
         },
     )
@@ -347,9 +395,14 @@ def _evaluate_criterion_5(
     lot_outputs: list[float] = []
     equity = 100.0  # doctrine-locked $100 demo profile.
     for tr in trades:
-        conviction = _safe_get(tr, "conviction", 0.5)
-        sl_pips = _safe_get(tr, "sl_pips", 40.0)
-        regime_fit = _safe_get(tr, "regime_fit", 0.5)
+        # Prefer the source_* fields captured on the trade at open
+        # time (real per-proposal metadata). Fall back to defaults so
+        # legacy TradeRecord instances still evaluate.
+        conviction = _first_defined(tr, ["source_conviction", "conviction"], 0.5)
+        sl_pips = _first_defined(tr, ["source_sl_pips", "sl_pips"], 40.0)
+        regime_fit = _first_defined(
+            tr, ["source_regime_fit", "regime_fit"], 0.5,
+        )
         try:
             lot = agent.lot_intent(
                 conviction=float(conviction),
@@ -410,9 +463,13 @@ def _evaluate_criterion_6(
     sl_outputs: list[float] = []
     tp1_outputs: list[float] = []
     for tr in trades:
-        conviction = _safe_get(tr, "conviction", 0.5)
-        atr_pips = _safe_get(tr, "atr_pips", 30.0)
-        h1_swing = _safe_get(tr, "h1_swing_pips", 60.0)
+        conviction = _first_defined(tr, ["source_conviction", "conviction"], 0.5)
+        atr_pips = _first_defined(
+            tr, ["source_atr_pips", "atr_pips"], 30.0,
+        )
+        h1_swing = _first_defined(
+            tr, ["source_h1_swing_pips", "h1_swing_pips"], 60.0,
+        )
         try:
             sl, ladder = agent.risk_intent(
                 conviction=float(conviction),
@@ -475,6 +532,27 @@ def _safe_get(obj: Any, name: str, default: float) -> float:
         return float(v)
     except (TypeError, ValueError):
         return default
+
+
+def _first_defined(
+    obj: Any, names: list[str], default: float,
+) -> float:
+    """Return the first numeric attribute in ``names`` that is set.
+
+    Used to fall back from the F19/F20 provenance fields (source_*) to
+    older-style raw fields (conviction, sl_pips) to the numeric default
+    when everything is missing. Preserves the "measure the primitives
+    with REAL inputs" mandate for G7 C5/C6.
+    """
+    for name in names:
+        v = getattr(obj, name, None)
+        if v is None:
+            continue
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            continue
+    return default
 
 
 # ---------------------------------------------------------------------------
@@ -613,6 +691,7 @@ def run_g7_dry_run(
         agents=agents, isagi=isagi, barou=barou, kunigami=kunigami,
         bars_by_symbol=bars_by_symbol, ledger=ledger,
         sentinel_blocks=True,
+        use_workspace=True,     # F21 threading for G7 C4
     )
     log.info(
         "G7 dry-run replay complete: %d thoughts, %d proposals, %d trades",
@@ -647,15 +726,18 @@ def run_g7_dry_run(
         )
         verdict.criteria[2] = _evaluate_criterion_2_stub()
         verdict.criteria[3] = _evaluate_criterion_3_stub()
-        verdict.criteria[4] = _evaluate_criterion_4_stub()
+        # C4 uses live counts now that _drive_squad_replay threads F21.
+        pub = int(out.workspace_publish_counts.get(aid, 0))
+        rd = int(out.workspace_read_counts.get(aid, 0))
+        verdict.criteria[4] = _evaluate_criterion_4(aid, pub, rd)
         verdict.criteria[5] = _evaluate_criterion_5(agent, ag_trades)
         verdict.criteria[6] = _evaluate_criterion_6(agent, ag_trades)
         report.per_agent[aid] = verdict
 
     report.squad_pass = all(v.is_v1_pass for v in report.per_agent.values())
     report.partial_reason = (
-        "dry-run: criteria 2/3/4 are stubs pending full batch run + "
-        "workspace-threaded replay"
+        "dry-run: criteria 2/3 are stubs pending 8 leave-one-out squads "
+        "(PROTOCOL sec 8 stop rule #2 -- ~ 32h batch)"
     )
 
     # Emit artefacts.

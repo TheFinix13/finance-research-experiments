@@ -1,0 +1,587 @@
+{
+  "tag": "dry-run-2024-v2",
+  "panel": {
+    "start": "2023-01-01T00:00:00+00:00",
+    "end": "2024-12-31T00:00:00+00:00",
+    "oos_start": "2024-01-01T00:00:00+00:00",
+    "oos_end": "2024-12-31T00:00:00+00:00",
+    "symbols": [
+      "EURUSD",
+      "GBPUSD",
+      "USDCAD"
+    ]
+  },
+  "squad_pass": false,
+  "stop_rule_triggered": null,
+  "partial_reason": "dry-run: criteria 2/3 are stubs pending 8 leave-one-out squads (PROTOCOL sec 8 stop rule #2 -- ~ 32h batch)",
+  "per_agent": {
+    "isagi_yoichi": {
+      "agent_id": "isagi_yoichi",
+      "playstyle": "conservative_metavision",
+      "tier": 1,
+      "bit_vector": "0??000",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel",
+            "n_trades": 0
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "pending",
+          "evidence": {
+            "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+          }
+        },
+        "3": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.5,
+          "status": "pending",
+          "evidence": {
+            "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+          }
+        },
+        "4": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 9660,
+            "read_count": 0,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel"
+          }
+        },
+        "6": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel"
+          }
+        }
+      }
+    },
+    "bachira_meguru": {
+      "agent_id": "bachira_meguru",
+      "playstyle": "rebel_tight",
+      "tier": 2,
+      "bit_vector": "1??100",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": true,
+          "statistic": 0.3335423027568123,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 398,
+            "mean_tqs": 0.3335423027568123,
+            "median_tqs": 0.0,
+            "note_dry_run": "single-window dry-run; PROTOCOL sec 3 requires mean_tqs >= 0.30 AND per-window mean >= 0.20 in >= 5/7 windows; full-panel run pending"
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "pending",
+          "evidence": {
+            "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+          }
+        },
+        "3": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.5,
+          "status": "pending",
+          "evidence": {
+            "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+          }
+        },
+        "4": {
+          "passed": true,
+          "statistic": 2772.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 9660,
+            "read_count": 2772,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": false,
+          "statistic": 0.054401345290814924,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 398,
+            "mean_lot": 0.05884422110552764,
+            "min_lot": 0.05,
+            "max_lot": 0.06,
+            "cv": 0.054401345290814924
+          }
+        },
+        "6": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 398,
+            "sl_cv": 0.0,
+            "tp1_cv": 0.0,
+            "mean_sl": 24.0,
+            "mean_tp1": 72.0
+          }
+        }
+      }
+    },
+    "itoshi_rin": {
+      "agent_id": "itoshi_rin",
+      "playstyle": "analytical_precision",
+      "tier": 2,
+      "bit_vector": "1??000",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": true,
+          "statistic": 0.35384997511338206,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 18,
+            "mean_tqs": 0.35384997511338206,
+            "median_tqs": 2.1429307611093003e-08,
+            "note_dry_run": "single-window dry-run; PROTOCOL sec 3 requires mean_tqs >= 0.30 AND per-window mean >= 0.20 in >= 5/7 windows; full-panel run pending"
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "pending",
+          "evidence": {
+            "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+          }
+        },
+        "3": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.5,
+          "status": "pending",
+          "evidence": {
+            "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+          }
+        },
+        "4": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 3221,
+            "read_count": 0,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 18,
+            "mean_lot": 0.01,
+            "min_lot": 0.01,
+            "max_lot": 0.01,
+            "cv": 0.0
+          }
+        },
+        "6": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 18,
+            "sl_cv": 0.0,
+            "tp1_cv": 0.0,
+            "mean_sl": 18.0,
+            "mean_tp1": 36.0
+          }
+        }
+      }
+    },
+    "chigiri_hyoma": {
+      "agent_id": "chigiri_hyoma",
+      "playstyle": "speed_momentum",
+      "tier": 2,
+      "bit_vector": "1??000",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": true,
+          "statistic": 0.3098668876843801,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 44,
+            "mean_tqs": 0.3098668876843801,
+            "median_tqs": 0.0,
+            "note_dry_run": "single-window dry-run; PROTOCOL sec 3 requires mean_tqs >= 0.30 AND per-window mean >= 0.20 in >= 5/7 windows; full-panel run pending"
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "pending",
+          "evidence": {
+            "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+          }
+        },
+        "3": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.5,
+          "status": "pending",
+          "evidence": {
+            "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+          }
+        },
+        "4": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 6440,
+            "read_count": 0,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": false,
+          "statistic": 0.04718435166846631,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 44,
+            "mean_lot": 0.155,
+            "min_lot": 0.15,
+            "max_lot": 0.18,
+            "cv": 0.04718435166846631
+          }
+        },
+        "6": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 44,
+            "sl_cv": 0.0,
+            "tp1_cv": 0.0,
+            "mean_sl": 36.0,
+            "mean_tp1": 108.0
+          }
+        }
+      }
+    },
+    "reo_mikage": {
+      "agent_id": "reo_mikage",
+      "playstyle": "copier_hrp",
+      "tier": 2,
+      "bit_vector": "W??W00",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "waived",
+          "evidence": {
+            "reason": "structural falsifier exception (doctrine sec 3.10); dry-run does not yet count mirror Thoughts -- rerun with workspace-threaded replay for a real verdict",
+            "agent_id": "reo_mikage"
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "pending",
+          "evidence": {
+            "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+          }
+        },
+        "3": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.5,
+          "status": "pending",
+          "evidence": {
+            "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+          }
+        },
+        "4": {
+          "passed": true,
+          "statistic": 9660.0,
+          "threshold": 1.0,
+          "status": "waived",
+          "evidence": {
+            "reason": "structural falsifier -- publish alone suffices (doctrine sec 3.10 exception)",
+            "publish_count": 9660,
+            "read_count": 0
+          }
+        },
+        "5": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel"
+          }
+        },
+        "6": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel"
+          }
+        }
+      }
+    },
+    "nagi_seishiro": {
+      "agent_id": "nagi_seishiro",
+      "playstyle": "confluence_only",
+      "tier": 2,
+      "bit_vector": "0??000",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": false,
+          "statistic": 0.10564040931399239,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 14,
+            "mean_tqs": 0.10564040931399239,
+            "median_tqs": 0.0,
+            "note_dry_run": "single-window dry-run; PROTOCOL sec 3 requires mean_tqs >= 0.30 AND per-window mean >= 0.20 in >= 5/7 windows; full-panel run pending"
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "pending",
+          "evidence": {
+            "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+          }
+        },
+        "3": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.5,
+          "status": "pending",
+          "evidence": {
+            "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+          }
+        },
+        "4": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 9660,
+            "read_count": 0,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 14,
+            "mean_lot": 0.01,
+            "min_lot": 0.01,
+            "max_lot": 0.01,
+            "cv": 0.0
+          }
+        },
+        "6": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 14,
+            "sl_cv": 0.0,
+            "tp1_cv": 0.0,
+            "mean_sl": 39.0,
+            "mean_tp1": 58.5
+          }
+        }
+      }
+    },
+    "barou_shoei": {
+      "agent_id": "barou_shoei",
+      "playstyle": "solo_king",
+      "tier": 2,
+      "bit_vector": "0??000",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel",
+            "n_trades": 0
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "pending",
+          "evidence": {
+            "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+          }
+        },
+        "3": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.5,
+          "status": "pending",
+          "evidence": {
+            "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+          }
+        },
+        "4": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 3220,
+            "read_count": 0,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel"
+          }
+        },
+        "6": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel"
+          }
+        }
+      }
+    },
+    "kunigami_rensuke": {
+      "agent_id": "kunigami_rensuke",
+      "playstyle": "defensive",
+      "tier": 2,
+      "bit_vector": "0??000",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel",
+            "n_trades": 0
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "pending",
+          "evidence": {
+            "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+          }
+        },
+        "3": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.5,
+          "status": "pending",
+          "evidence": {
+            "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+          }
+        },
+        "4": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 9660,
+            "read_count": 0,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel"
+          }
+        },
+        "6": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "reason": "no trades in OOS panel"
+          }
+        }
+      }
+    }
+  }
+}

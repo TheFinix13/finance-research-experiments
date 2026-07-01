@@ -98,6 +98,10 @@ from programs.M001_multi_agent_ensemble.sim.core.ledger import (
     RedactedLedger,
     ThoughtLedger,
 )
+from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
+    ReasoningWorkspace,
+    WorkspaceSnapshot,
+)
 from programs.M001_multi_agent_ensemble.sim.core.sentinel import (
     MIN_LOT,
     SANDBOX_PER_TRADE_RISK_FRAC,
@@ -306,6 +310,71 @@ class SquadRunOutput:
     proposals_rejected: list[dict] = field(default_factory=list)
     trades: list[TradeRecord] = field(default_factory=list)
     sentinel_log: list[dict] = field(default_factory=list)
+    # F21 workspace participation counters (populated when the driver
+    # runs with `use_workspace=True`). Zeros in the audit-only path so
+    # G7 C4 correctly fails for agents that never read the workspace.
+    workspace_publish_counts: dict[str, int] = field(default_factory=dict)
+    workspace_read_counts: dict[str, int] = field(default_factory=dict)
+
+
+class _AgentScopedSnapshot:
+    """Read-tracking wrapper around a ``WorkspaceSnapshot``.
+
+    Duck-types the read surface of ``WorkspaceSnapshot`` (``read_for``,
+    ``peer_thoughts``, ``latest_by_agent``) so agents that accept
+    ``workspace: WorkspaceSnapshot | None`` receive an instance that
+    transparently records the read event under the driver-supplied
+    ``agent_id``. Used by ``_drive_squad_replay`` when
+    ``use_workspace=True`` so G7 criterion 4 (workspace participation)
+    can be computed truthfully.
+
+    Note: not a subclass of ``WorkspaceSnapshot`` -- duck-typing lets
+    us avoid touching the frozen dataclass and keeps the wrapper local
+    to the driver.
+    """
+
+    __slots__ = ("_snap", "_agent_id", "_read_counts")
+
+    def __init__(
+        self,
+        snap: WorkspaceSnapshot,
+        agent_id: str,
+        read_counts: dict[str, int],
+    ) -> None:
+        self._snap = snap
+        self._agent_id = agent_id
+        self._read_counts = read_counts
+
+    def _record(self) -> None:
+        self._read_counts[self._agent_id] = (
+            self._read_counts.get(self._agent_id, 0) + 1
+        )
+
+    def read_for(self, **kwargs: Any) -> tuple[Thought, ...]:
+        self._record()
+        return self._snap.read_for(**kwargs)
+
+    def peer_thoughts(self, **kwargs: Any) -> tuple[Thought, ...]:
+        self._record()
+        return self._snap.peer_thoughts(**kwargs)
+
+    def latest_by_agent(self, **kwargs: Any) -> dict[str, Thought]:
+        self._record()
+        return self._snap.latest_by_agent(**kwargs)
+
+    # Expose the plain snapshot attributes so agents that inspect
+    # ``.thoughts`` / ``.as_of`` / ``.current_tick`` still work.
+    @property
+    def thoughts(self) -> tuple[Thought, ...]:      # pragma: no cover -- passthrough
+        return self._snap.thoughts
+
+    @property
+    def as_of(self) -> datetime:                     # pragma: no cover
+        return self._snap.as_of
+
+    @property
+    def current_tick(self) -> int:                   # pragma: no cover
+        return self._snap.current_tick
 
 
 def _drive_squad_replay(
@@ -318,6 +387,7 @@ def _drive_squad_replay(
     ledger: ThoughtLedger,
     warmup_bars: int = WARMUP_BARS,
     sentinel_blocks: bool = False,
+    use_workspace: bool = False,
 ) -> SquadRunOutput:
     """End-to-end Phi4 squad replay driver.
 
@@ -333,6 +403,15 @@ def _drive_squad_replay(
     the sealed verdicts. Phi5 harnesses (Arms 1-5) pass
     ``sentinel_blocks=True`` so R1/R5 physically block violating trades
     and R6 (per-symbol total-risk cap) gates Arm 4 multi-position.
+
+    F21 workspace threading (2026-07-01, added for G7 gate criterion 4).
+    Pass ``use_workspace=True`` to enable per-tick publish + snapshot
+    plumbing; each intending agent receives an ``_AgentScopedSnapshot``
+    that records read events into ``out.workspace_read_counts``. The
+    audit-only default (``use_workspace=False``) preserves Phi4/4.1
+    baseline reproduction: sealed verdicts must always run with the
+    workspace OFF, otherwise Bachira's peer-confluence lift shifts the
+    trade set. G7 harness passes ``use_workspace=True``.
     """
     out = SquadRunOutput()
     global_bars = _interleave_bars(bars_by_symbol)
@@ -347,6 +426,13 @@ def _drive_squad_replay(
     per_agent_consecutive_losses: dict[str, int] = {}
     per_agent_proposals_today: dict[str, int] = {}
     current_day: Any = None
+
+    # F21 workspace state (only wired when use_workspace=True).
+    workspace: ReasoningWorkspace | None = (
+        ReasoningWorkspace() if use_workspace else None
+    )
+    workspace_publish_counts: dict[str, int] = {}
+    workspace_read_counts: dict[str, int] = {}
 
     # Symbol -> sorted timestamps + bar list for next-bar lookup.
     sorted_bars_by_symbol: dict[str, list] = {
@@ -435,6 +521,11 @@ def _drive_squad_replay(
             ledger.append(t)
             out.thoughts.append(t)
             my_thought[agent.agent_id] = t
+            if workspace is not None:
+                if workspace.publish(t):
+                    workspace_publish_counts[agent.agent_id] = (
+                        workspace_publish_counts.get(agent.agent_id, 0) + 1
+                    )
 
         # Skip warmup (per-symbol) -- production wrapper needs
         # warmup_bars zones/swings to be cooked.
@@ -445,13 +536,29 @@ def _drive_squad_replay(
             # to open a trade; skip intend phase to mirror Phi3.
             continue
 
+        # Snapshot the workspace at the tick barrier (Phase 1 -> Phase 2).
+        # The snapshot's look-ahead guards filter out this tick's own
+        # writes, so every agent sees only Thoughts from tick_id < gb.tick_id.
+        base_snapshot: WorkspaceSnapshot | None = None
+        if workspace is not None:
+            base_snapshot = workspace.snapshot(
+                as_of=bar.time,
+                current_tick=int(gb.tick_id),
+            )
+
         # ---- Phase 2: intend ------------------------------------------
         proposals_this_tick: list[AgentProposal] = []
         for agent in eligible:
             if market.timeframe != agent.home_tf:
                 continue
             t = my_thought[agent.agent_id]
-            p = agent.intend(market, t)
+            if base_snapshot is not None:
+                scoped = _AgentScopedSnapshot(
+                    base_snapshot, agent.agent_id, workspace_read_counts,
+                )
+                p = agent.intend(market, t, workspace=scoped)
+            else:
+                p = agent.intend(market, t)
             if p is None:
                 continue
             proposals_this_tick.append(p)
@@ -534,6 +641,14 @@ def _drive_squad_replay(
                 trade = _open_trade_from_proposal(proposal, next_bar, cfg)
                 trade._source_agent_id = proposal.agent_id   # type: ignore[attr-defined]
                 trade._source_conviction = float(proposal.conviction)  # type: ignore[attr-defined]
+                trade._source_regime_fit = float(proposal.regime_fit)  # type: ignore[attr-defined]
+                trade._source_sl_pips = abs(proposal.entry - proposal.stop) * 10000.0  # type: ignore[attr-defined]
+                # atr_pips + h1_swing_pips are best-effort: only some
+                # agents publish them via proposal.rationale; fall back
+                # to None so C6 default (30.0/60.0) still applies.
+                _rat = proposal.rationale or {}
+                trade._source_atr_pips = _rat.get("atr_pips")  # type: ignore[attr-defined]
+                trade._source_h1_swing_pips = _rat.get("h1_swing_pips")  # type: ignore[attr-defined]
                 trade._source_tick_id = int(gb.tick_id)      # type: ignore[attr-defined]
                 trade._source_proposal_rationale = dict(proposal.rationale)  # type: ignore[attr-defined]
                 open_trades[symbol] = trade
@@ -565,6 +680,12 @@ def _drive_squad_replay(
             )
             open_trades.pop(symbol, None)
 
+    # F21 workspace participation counters flushed once at end (avoids
+    # per-tick dict copy).
+    if workspace is not None:
+        out.workspace_publish_counts = dict(workspace_publish_counts)
+        out.workspace_read_counts = dict(workspace_read_counts)
+
     return out
 
 
@@ -581,7 +702,13 @@ def _agent_target_hold_hours(prod_trade, agents) -> float:
 def _annotate_trade_record(
     tr: TradeRecord, prod_trade, tick_id: int, symbol: str,
 ) -> TradeRecord:
-    """Override the generic Phi3 TradeRecord with squad provenance."""
+    """Override the generic Phi3 TradeRecord with squad provenance.
+
+    Populates F19/F20 source-* fields from the prod_trade attributes
+    attached at open time so the G7 C5/C6 evaluators can call
+    ``agent.lot_intent`` / ``risk_intent`` with the ACTUAL per-trade
+    conviction + regime_fit + sl_pips (not the default 0.5/0.5/40).
+    """
     aid = getattr(prod_trade, "_source_agent_id", "isagi_yoichi")
     return TradeRecord(
         agent_id=aid,
@@ -600,6 +727,13 @@ def _annotate_trade_record(
         bars_held=tr.bars_held,
         r_multiple=tr.r_multiple,
         tqs_components=tr.tqs_components,
+        source_conviction=getattr(prod_trade, "_source_conviction", None),
+        source_regime_fit=getattr(prod_trade, "_source_regime_fit", None),
+        source_sl_pips=getattr(prod_trade, "_source_sl_pips", None),
+        source_atr_pips=getattr(prod_trade, "_source_atr_pips", None),
+        source_h1_swing_pips=getattr(
+            prod_trade, "_source_h1_swing_pips", None,
+        ),
     )
 
 

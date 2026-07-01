@@ -105,6 +105,15 @@ class TradeRecord:
     bars_held: int
     r_multiple: float
     tqs_components: dict
+    # F19/F20 provenance (2026-07-01, added for G7 C5/C6 evaluators).
+    # Optional so pre-existing TradeRecord constructors keep working;
+    # populated by _annotate_trade_record when the driver captures the
+    # source proposal metadata on the prod-trade object.
+    source_conviction: float | None = None
+    source_regime_fit: float | None = None
+    source_sl_pips: float | None = None
+    source_atr_pips: float | None = None
+    source_h1_swing_pips: float | None = None
 
 
 @dataclass

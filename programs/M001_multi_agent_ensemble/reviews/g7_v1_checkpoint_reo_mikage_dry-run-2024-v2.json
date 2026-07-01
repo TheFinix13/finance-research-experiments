@@ -1,0 +1,66 @@
+{
+  "agent_id": "reo_mikage",
+  "playstyle": "copier_hrp",
+  "tier": 2,
+  "bit_vector": "W??W00",
+  "is_v1_pass": false,
+  "criteria": {
+    "1": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.0,
+      "status": "waived",
+      "evidence": {
+        "reason": "structural falsifier exception (doctrine sec 3.10); dry-run does not yet count mirror Thoughts -- rerun with workspace-threaded replay for a real verdict",
+        "agent_id": "reo_mikage"
+      }
+    },
+    "2": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.0,
+      "status": "pending",
+      "evidence": {
+        "reason": "leave-one-out chemistry requires 8 additional replays with each agent removed; deferred to batch run (PROTOCOL sec 8 stop rule #2 wall-clock ~ 32 hours)"
+      }
+    },
+    "3": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.5,
+      "status": "pending",
+      "evidence": {
+        "reason": "non-cannibalising slot behaviour requires per-peer leave-one-out trade-count deltas; shares the batch run with criterion 2"
+      }
+    },
+    "4": {
+      "passed": true,
+      "statistic": 9660.0,
+      "threshold": 1.0,
+      "status": "waived",
+      "evidence": {
+        "reason": "structural falsifier -- publish alone suffices (doctrine sec 3.10 exception)",
+        "publish_count": 9660,
+        "read_count": 0
+      }
+    },
+    "5": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.1,
+      "status": "computed",
+      "evidence": {
+        "reason": "no trades in OOS panel"
+      }
+    },
+    "6": {
+      "passed": false,
+      "statistic": 0.0,
+      "threshold": 0.1,
+      "status": "computed",
+      "evidence": {
+        "reason": "no trades in OOS panel"
+      }
+    }
+  }
+}
