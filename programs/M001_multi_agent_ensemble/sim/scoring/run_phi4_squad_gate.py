@@ -635,11 +635,16 @@ def _drive_squad_replay(
             continue
 
         # Snapshot the workspace at the tick barrier (Phase 1 -> Phase 2).
-        # The snapshot's look-ahead guards filter out this tick's own
-        # writes, so every agent sees only Thoughts from tick_id < gb.tick_id.
+        # F22b: use ``snapshot_at_barrier`` so agents see peer Thoughts
+        # published on THIS tick too. Every eligible agent has already
+        # committed their observe() output for tick T by the barrier;
+        # reading them in Phase 2 is not look-ahead (doctrine sec 3.8
+        # clarification, F22b amendment). This is what unlocks Rin's
+        # Phase T-evolve peer-scan reading Isagi's tick-T metavision
+        # instead of stale tick-T-1.
         base_snapshot: WorkspaceSnapshot | None = None
         if workspace is not None:
-            base_snapshot = workspace.snapshot(
+            base_snapshot = workspace.snapshot_at_barrier(
                 as_of=bar.time,
                 current_tick=int(gb.tick_id),
             )

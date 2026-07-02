@@ -1381,6 +1381,72 @@ delta becomes the acceptance test for Phase T-evolve:
   further v1.2 evolution (regime-specialist or symbol expansion).
 - Delta > 0 → the yield rule is dropping her best trades. Revert.
 
+### 4.1d F22 — workspace richness upgrade (2026-07-02 amendment)
+
+Three cracks in the F21 workspace were named and closed together as
+F22 (a/b/c). Every fix ships with a unit test AND a walk-forward
+acceptance run.
+
+**Gap 1 — Thought richness.** Pre-F22a, an agent's read was smuggled
+through `narrative: str` + `tags: list[str]`. Peers could only string-
+match the tag bag to guess signal family; Rin's Phase T-evolve had to
+yield on direction alone.
+
+Fix (F22a): new `ThoughtRead` frozen dataclass on
+`Thought.read: ThoughtRead | None`. Fields: `signal_family`,
+`direction_bias`, `regime_read`, `expected_stop_pips`, `expected_r`,
+`driving_evidence`. Canon `SignalFamily` literal covers every roster
+agent (metavision / pattern_rebel / precision / breakout /
+adaptive_copy / confluence / solo_king / risk_watch / unknown).
+`WorkspaceSnapshot.read_for(signal_family=...)` and
+`peer_thoughts(signal_family=...)` add a first-class filter, skipping
+`read=None` Thoughts. All 8 agents' `observe()` main-signal path
+populates `read`; abstention paths keep `read=None` so the filter
+correctly excludes them.
+
+**Gap 2 — Same-tick intent visibility (tick-barrier clarification).**
+Doctrine sec 3.8 forbids **look-ahead** reads, not same-tick reads
+**at the tick barrier**. Pre-F22b the workspace snapshot rule was
+strict `tick_id < current_tick`, so every peer Thought published in
+Phase 1 (observe) was invisible in Phase 2 (intend). Rin's Phase
+T-evolve was reading Isagi's tick T-1 metavision, a systematic
+1-tick lag.
+
+Fix (F22b): new `ReasoningWorkspace.snapshot_at_barrier()` method
+with rule `tick_id <= current_tick`. Same `timestamp <= as_of`,
+`decision_horizon <= as_of`, and future-tick refusal (`tick_id >
+current_tick`) guards. Between Phase 1 and Phase 2, every peer
+publish for tick T has been committed; reading them in Phase 2 is
+committed information, not look-ahead. `_drive_squad_replay` swaps
+from `snapshot()` to `snapshot_at_barrier()`. Legacy `snapshot()`
+stays for callers that need strict backwards-only (mid-tick ledger
+replay, etc.).
+
+**Gap 3 — Interpretation record.** Pre-F22c, `intend()` returned
+`AgentProposal | None`. `None` conflated (a) silent no-signal,
+(b) inferred yield deferring to a peer, and (c) hard-filter
+rejection. Rin's Phase T-evolve yields carried real inferences that
+had no audit trail.
+
+Fix (F22c): new `YieldReason` frozen dataclass +
+`IntentDecision = AgentProposal | YieldReason | None`. Widened
+`BlueLockStriker.intend` protocol return type. Rin's Phase T-evolve
+yield now emits `YieldReason(reason="isagi_would_lift_metavision",
+peer_ids_read=(...), evidence={...})`. Driver appends every
+`YieldReason` to `SquadRunOutput.yields`. Legacy `None` returns are
+unchanged and remain "silent".
+
+**Empirical acceptance test.** F22 end-to-end validation lives in
+`test_workspace_richness_e2e.py` -- runs a 100-bar synthetic panel
+and asserts inference accuracy ≥ 90% (of Rin's metavision-yield
+events on tick T, on how many did Isagi's proposal actually carry
+`metavision_lift_applied=True`?).
+
+Then walk-forward-post-F22 (7-window OOS) confirms at scale. Rin's
+walk-forward-post-TU delta was -0.146 with the STALE-workspace read;
+walk-forward-post-F22 measures how much of that was mechanic vs.
+workspace-tick-lag.
+
 ### 4.2 The Sentinel (Q-doc-5 resolution)
 
 A non-character architectural role. Blue Lock has no canonical

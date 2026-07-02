@@ -100,22 +100,70 @@ class ReasoningWorkspace:
         as_of: datetime,
         current_tick: int,
     ) -> "WorkspaceSnapshot":
-        """Immutable projection of all backwards-visible Thoughts.
+        """Strict backwards-only projection.
 
         Applies the doctrine section 3.8 look-ahead guards:
 
-        - `t.timestamp <= as_of` (no future Thoughts)
-        - `t.tick_id < current_tick` (no same-tick reads)
-        - `t.decision_horizon <= as_of` (writer's own look-ahead guard)
+        - ``t.timestamp <= as_of`` (no future Thoughts)
+        - ``t.tick_id < current_tick`` (no same-tick reads)
+        - ``t.decision_horizon <= as_of`` (writer's own look-ahead guard)
+
+        Preferred when the caller reads BEFORE the tick barrier has been
+        crossed, e.g. inside a mid-tick replay of the Thought Ledger.
+        For the standard observe -> tick-barrier -> intend cycle used by
+        ``_drive_squad_replay``, prefer :meth:`snapshot_at_barrier` --
+        it exposes same-tick peer publishes that are already committed
+        at the barrier and therefore not look-ahead.
 
         The returned snapshot is a frozen dataclass; mutating it is
         impossible. The caller applies tier + symbol + tag filters via
-        `snapshot.read_for(...)`.
+        ``snapshot.read_for(...)``.
         """
         visible = tuple(
             t for t in self.thoughts
             if t.timestamp <= as_of
             and t.tick_id < current_tick
+            and t.decision_horizon <= as_of
+        )
+        return WorkspaceSnapshot(
+            thoughts=visible,
+            as_of=as_of,
+            current_tick=current_tick,
+        )
+
+    def snapshot_at_barrier(
+        self,
+        *,
+        as_of: datetime,
+        current_tick: int,
+    ) -> "WorkspaceSnapshot":
+        """F22b -- tick-barrier snapshot; includes this tick's already-
+        published Thoughts.
+
+        Doctrine sec 3.8 forbids look-ahead reads, not same-tick reads
+        AT the tick barrier. Between Phase 1 (all eligible agents run
+        ``observe()`` and publish) and Phase 2 (all eligible agents run
+        ``intend()`` reading peers), every peer Thought for tick T has
+        already been committed and no more publishes are allowed until
+        tick T+1. Reading those Thoughts in Phase 2 is NOT look-ahead:
+        they are committed information.
+
+        Filter rule:
+
+        - ``t.timestamp <= as_of``
+        - ``t.tick_id <= current_tick``   (<= instead of <)
+        - ``t.decision_horizon <= as_of`` (writer still cannot embed
+          look-ahead into what they publish)
+
+        Used by ``_drive_squad_replay`` (F22b landing) so Rin's Phase
+        T-evolve peer-scan sees Isagi's tick-T metavision read instead
+        of the stale tick-T-1 one. See doctrine sec 3.8 clarification
+        + F22b amendment.
+        """
+        visible = tuple(
+            t for t in self.thoughts
+            if t.timestamp <= as_of
+            and t.tick_id <= current_tick
             and t.decision_horizon <= as_of
         )
         return WorkspaceSnapshot(
