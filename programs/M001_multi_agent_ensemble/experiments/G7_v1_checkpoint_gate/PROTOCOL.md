@@ -433,6 +433,90 @@ Rin's Phase-U shadow ledger delta = `mean_shadow_tqs_when_rejected
 to be recorded once that job lands. Phase T-evolve numbers
 (walk-forward-post-TU) will be scored against this baseline.
 
+### §11.9 (2026-07-02) — Phase V design draft: Chigiri regime-specialist + Barou solo-king
+
+**Status:** DESIGN DRAFT ONLY. Pre-registered pending
+walk-forward-post-F22 verdict which will re-measure the deltas
+below. If post-F22 keeps Chigiri delta ≥ +0.03 and/or Barou delta
+≥ +0.01, Phase V lands as follows; otherwise the design is amended
+or dropped.
+
+**Trigger (measured on walk-forward-post-TU):** Two agents show
+positive `Delta (rej-acc)` in the Phase U shadow ledger, meaning
+the aggregator is dropping their better trades and accepting their
+weaker ones -- the opposite of Rin's negative delta which signaled
+correct routing:
+
+| Agent    | tqs_acc | tqs_rej | Δ (rej-acc) | Reading |
+|----------|---------|---------|-------------|---------|
+| Chigiri  | 0.242   | 0.285   | +0.044      | Small routing sub-optimality |
+| Barou    | 0.302   | 0.317   | +0.015      | Persistent 90% rejection rate; the rejected 10% is fractionally better than the accepted 10% |
+
+Post-TU F22 impact expected to be MODEST -- F22b (barrier snapshot)
+lets Chigiri and Barou see Isagi's same-tick metavision Thought,
+which may cause them to yield differently, but they don't have a
+Phase T-evolve-style yield rule (yet). Their deltas should stay
+positive but may shift by ~0.01.
+
+**Phase V-a — Chigiri regime-specialist (proposed).**
+
+*Canon frame.* Chigiri is a speed-and-momentum striker; his edge
+is highest when the market is ALREADY in vol-expansion. On chop or
+mean-reversion regimes, his breakout signals stall out -- exactly
+the ticks where the aggregator rejects him in favour of Isagi's
+zone-fade.
+
+*Mechanic.* Introduce a regime-conditional tier-1-equivalent bias
+for Chigiri when the F22a-populated `ThoughtRead.regime_read ==
+"vol_expansion"` AND ATR on the entry bar exceeds a threshold
+`CHIGIRI_V1_REGIME_ATR_PCT` (e.g. > 75th percentile of trailing
+14-bar ATR). Concretely, in `run_phi4_squad_gate` aggregator,
+before the tier-1 anchor bias applies, check:
+
+    if proposal.agent_id == "chigiri_hyoma" and _chigiri_regime_bonus(...):
+        # tier-1-equivalent conviction lift
+        effective_conviction += CHIGIRI_V1_REGIME_LIFT   # e.g. +0.05
+
+This is a NARROW carve-out: only Chigiri, only on vol-expansion
+regime bars, only when his F22a read confirms `vol_expansion`.
+Analogous to Phase T-evolve's peer-yield-and-lift for Rin.
+
+*Acceptance test (walk-forward-post-VA):* Chigiri's Phase-U delta
+moves from `+0.044` to `≤ +0.02`, meaning the routing improves.
+Aggregate squad TQS must not regress by more than 0.005.
+
+**Phase V-b — Barou solo-king clarification (proposed).**
+
+*Canon frame.* Barou is the "counter-liquidity" solo-king: he's
+sharp when he devours (his F22a `regime_read == "devour_active"`
+tag fires when his direction opposes Isagi's active position).
+Non-devour proposals are baseline-zone at his standard tier-2
+conviction and rightly compete with Bachira; the aggregator's
+current 90% rejection is CORRECT for those. The 10% that IS
+accepted is roughly random within the tier-2 tie-break, hence the
++0.015 delta.
+
+*Mechanic.* When Barou's `regime_read == "devour_active"`, apply
+the same tier-1-equivalent conviction lift as Chigiri's Phase V-a
+(`BAROU_V1_DEVOUR_LIFT_ROUTING`, e.g. +0.05). Non-devour proposals
+stay at baseline conviction and continue to be rightly filtered.
+
+*Acceptance test (walk-forward-post-VB):* Barou's Phase-U delta
+on the `devour_active` subset moves from ~+0.015 to `≤ 0.0`.
+Non-devour subset delta unchanged. Aggregate squad TQS must not
+regress by more than 0.005.
+
+**Order:** Phase V-a first (Chigiri; higher delta = higher signal).
+Phase V-b only if V-a lands cleanly, otherwise the interaction
+between two simultaneous tier-1-equivalent lifts confounds the
+attribution.
+
+**Statistical honesty guards.** Same as Phase T-evolve: revert if
+delta moves the wrong way, log postmortem in §11.X. No hyper-
+parameter tuning after the walk-forward is scored. Any parameter
+change (`CHIGIRI_V1_REGIME_ATR_PCT`, `..._LIFT`) requires a fresh
+walk-forward + full amendment.
+
 ---
 
 ## 12. Verdict registry row (to be added)
