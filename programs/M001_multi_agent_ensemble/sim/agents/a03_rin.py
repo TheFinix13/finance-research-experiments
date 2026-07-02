@@ -81,9 +81,11 @@ from programs.M001_multi_agent_ensemble.sim.core.types import (
     CanonRole,
     Coordinate,
     LadderRung,
+    IntentDecision,
     MarketState,
     Thought,
     ThoughtRead,
+    YieldReason,
 )
 
 log = logging.getLogger(__name__)
@@ -361,7 +363,7 @@ class A3RinV1(BaseStriker):
         *,
         workspace: WorkspaceSnapshot | None = None,
         **_kwargs: object,
-    ) -> AgentProposal | None:
+    ) -> IntentDecision:
         # Phase O (2026-07-01): Rin reads Isagi's latest thought via
         # the F21 workspace to log whether her precision-fire aligns with
         # or contradicts the anchor's D1-against frame. Diagnostic-only
@@ -402,6 +404,7 @@ class A3RinV1(BaseStriker):
         peer_agree = 0
         peer_disagree = 0
         peer_seen = 0
+        peer_ids_agree: list[str] = []
         if workspace is not None:
             latest_by_agent = workspace.latest_by_agent(symbol=market.symbol)
             isagi_t = latest_by_agent.get("isagi_yoichi")
@@ -426,6 +429,7 @@ class A3RinV1(BaseStriker):
                 peer_seen += 1
                 if peer_dir == direction:
                     peer_agree += 1
+                    peer_ids_agree.append(peer_t.agent_id)
                 else:
                     peer_disagree += 1
 
@@ -444,7 +448,29 @@ class A3RinV1(BaseStriker):
                 market.tick_id, market.symbol, direction,
                 peer_agree, peer_disagree, peer_seen,
             )
-            return None
+            # F22c: emit a structured yield record so post-hoc audits can
+            # score "did Rin's inference match reality?" on this tick.
+            return YieldReason(
+                agent_id=self.agent_id,
+                tick_id=int(market.tick_id),
+                symbol=market.symbol,
+                reason="isagi_would_lift_metavision",
+                peer_ids_read=tuple(peer_ids_agree),
+                evidence={
+                    "direction": direction,
+                    "peer_agree_count": int(peer_agree),
+                    "peer_disagree_count": int(peer_disagree),
+                    "peer_seen_count": int(peer_seen),
+                    "isagi_frame_direction": isagi_frame_direction,
+                    "isagi_frame_aligned": isagi_frame_aligned,
+                    "signal_reason": sig.reason,
+                    "stop_pips": float(stop_pips),
+                    "would_have_final_conviction": float(min(
+                        RIN_V1_CONV_CAP, conviction + RIN_V1_LONE_READ_LIFT,
+                    )),
+                },
+                doctrine_ref="06-blue-lock-doctrine.md sec 4.1c + F22c",
+            )
 
         # Phase T-evolve lone-read lift: peers disagree or are quiet,
         # so Isagi's metavision will NOT fire. Rin recognises this is

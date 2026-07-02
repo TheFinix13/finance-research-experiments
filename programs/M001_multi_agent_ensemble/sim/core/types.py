@@ -195,6 +195,57 @@ class Thought:
 
 
 @dataclass(frozen=True)
+class YieldReason:
+    """F22c -- audit-trail record for a striker who *looked* and chose not to fire.
+
+    Pre-F22c, ``BaseStriker.intend()`` returned ``AgentProposal | None``.
+    ``None`` conflated three distinct outcomes:
+
+    1. "I had nothing to say" -- no signal, no read, no inference.
+    2. "I saw a peer's setup and deferred to them" -- e.g. Rin's Phase
+       T-evolve yield to Isagi's would-fire metavision.
+    3. "I had a signal but a hard filter rejected it" -- e.g. Rin's
+       stop-pips floor.
+
+    Only case (1) is honestly "silent". Cases (2) and (3) are
+    *inferences* the agent made that need to be auditable so we can
+    score whether her yield actually paired with a peer's fire (case
+    2) or with a valid rejection (case 3).
+
+    ``YieldReason`` is the structured record for cases (2) and (3).
+    The driver appends it to ``SquadRunOutput.yields`` (F22c wiring).
+    Post-hoc audits can then answer:
+
+        "of the N ticks where Rin yielded with reason=
+         'isagi_would_lift_metavision', on how many did Isagi
+         actually fire a metavision-lifted proposal?"
+
+    This is the direct audit the F22 end-to-end test scores.
+
+    Doctrine ref: 06 sec 3.8 (Thought Ledger) + F22c amendment.
+    """
+
+    agent_id: str
+    tick_id: int
+    symbol: Symbol
+    reason: str                  # e.g. "isagi_would_lift_metavision" / "stop_pips_below_floor"
+    peer_ids_read: tuple[str, ...] = ()
+    evidence: dict[str, Any] = field(default_factory=dict)
+    doctrine_ref: str = ""
+
+    def to_jsonable(self) -> dict[str, Any]:
+        return {
+            "agent_id": self.agent_id,
+            "tick_id": int(self.tick_id),
+            "symbol": self.symbol,
+            "reason": self.reason,
+            "peer_ids_read": list(self.peer_ids_read),
+            "evidence": dict(self.evidence),
+            "doctrine_ref": self.doctrine_ref,
+        }
+
+
+@dataclass(frozen=True)
 class LadderRung:
     """One partial-exit rung on a proposal's ladder."""
 
@@ -350,3 +401,17 @@ class CanonRole:
     ego: float
     target_hold_hours: float
     narrative_voice: str
+
+
+# F22c: agent `intend()` return type. Three-valued union so callers can
+# distinguish silent-no-signal from inferred-yield-with-reason from fire.
+#
+# - ``AgentProposal``: "I fire."
+# - ``YieldReason``: "I looked, I inferred, I chose not to fire." (audit-trail
+#   record captured in ``SquadRunOutput.yields``).
+# - ``None``: "I had nothing to say." (no signal, no read, no inference.)
+#
+# Legacy agents that return bare ``None`` continue to work -- they simply
+# never produce yield-records. Only agents whose deferral carries actual
+# inference content (Rin's Phase T-evolve) should emit ``YieldReason``.
+IntentDecision = AgentProposal | YieldReason | None

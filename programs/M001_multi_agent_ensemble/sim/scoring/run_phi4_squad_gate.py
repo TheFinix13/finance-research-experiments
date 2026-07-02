@@ -114,6 +114,7 @@ from programs.M001_multi_agent_ensemble.sim.core.types import (
     AgentProposal,
     MarketState,
     Thought,
+    YieldReason,
 )
 from programs.M001_multi_agent_ensemble.sim.scoring.delta_info import (
     DeltaInfoResult,
@@ -363,6 +364,12 @@ class SquadRunOutput:
     # here to avoid an import cycle into shadow_ledger.py at module top;
     # the actual element type is `ShadowTradeRecord`.
     shadow_trades: list[Any] = field(default_factory=list)
+    # F22c interpretation records: `YieldReason` events emitted by agents
+    # whose `intend()` chose to yield with an inference (Rin Phase T-evolve
+    # yielding to Isagi's would-fire metavision is the canonical case).
+    # Silent Nones (no signal) do NOT land here. Post-hoc audits use these
+    # to score whether an inference matched reality on the same tick.
+    yields: list[YieldReason] = field(default_factory=list)
 
 
 class _AgentScopedSnapshot:
@@ -647,11 +654,19 @@ def _drive_squad_replay(
                 scoped = _AgentScopedSnapshot(
                     base_snapshot, agent.agent_id, workspace_read_counts,
                 )
-                p = agent.intend(market, t, workspace=scoped)
+                decision = agent.intend(market, t, workspace=scoped)
             else:
-                p = agent.intend(market, t)
-            if p is None:
+                decision = agent.intend(market, t)
+            # F22c: three-valued IntentDecision.
+            # - AgentProposal -> fire.
+            # - YieldReason   -> inference-recorded yield; audit trail.
+            # - None          -> silent no-signal.
+            if isinstance(decision, YieldReason):
+                out.yields.append(decision)
                 continue
+            if decision is None:
+                continue
+            p = decision
             proposals_this_tick.append(p)
             out.proposals_all.append(p)
             # R3 pass-bias counter (per-agent, per-UTC-day).

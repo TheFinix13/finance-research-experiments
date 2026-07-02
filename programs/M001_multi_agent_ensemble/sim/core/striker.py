@@ -40,7 +40,14 @@ from .risk_intent import (
     playstyle_risk_intent,
 )
 from .seed import seed, seed_for
-from .types import AgentProposal, CanonRole, MarketState, Symbol, Thought
+from .types import (
+    AgentProposal,
+    CanonRole,
+    IntentDecision,
+    MarketState,
+    Symbol,
+    Thought,
+)
 
 
 class BlueLockStriker(Protocol):
@@ -76,8 +83,21 @@ class BlueLockStriker(Protocol):
         my_recent_thought: Thought,
         *,
         workspace: WorkspaceSnapshot | None = None,
-    ) -> AgentProposal | None:
-        """Called only at ``home_tf`` close. May return a Proposal or None.
+    ) -> IntentDecision:
+        """Called only at ``home_tf`` close. May return a Proposal,
+        a ``YieldReason``, or ``None``.
+
+        F22c (2026-07-02) widens the return type from
+        ``AgentProposal | None`` to the three-valued
+        :class:`~.types.IntentDecision` union:
+
+        * ``AgentProposal`` -- "I fire."
+        * ``YieldReason``  -- "I looked, I inferred, I chose not to
+          fire." Emitted when a peer-scan or hard filter blocked the
+          shot with an inference worth auditing. The driver appends
+          these to ``SquadRunOutput.yields``.
+        * ``None``         -- "I had nothing to say." No signal, no
+          inference. Legacy paths and abstentions.
 
         ``workspace`` is the F21 reasoning-workspace snapshot at the tick
         barrier -- carries every peer Thought visible under the doctrine
@@ -195,7 +215,7 @@ class BaseStriker(ABC):
         self,
         market: MarketState,
         my_recent_thought: Thought,
-    ) -> AgentProposal | None:
+    ) -> IntentDecision:
         raise NotImplementedError
 
     # ------------------------------------------------------------------

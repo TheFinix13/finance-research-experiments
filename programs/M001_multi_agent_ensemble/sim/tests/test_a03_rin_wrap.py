@@ -386,8 +386,12 @@ class TestRinPhaseTEvolve:
 
     def test_rin_yields_when_peer_agrees(self):
         """When Isagi (peer) publishes an aligned Thought on the same
-        symbol, Rin's `intend()` returns None -> she cedes the shot.
+        symbol, Rin's ``intend()`` returns a ``YieldReason`` -- she cedes
+        the shot AND leaves an audit trail (F22c).
         """
+        from programs.M001_multi_agent_ensemble.sim.core.types import (
+            YieldReason,
+        )
         bars = _build_synthetic_eurusd_bars(800)
         rin = _make_rin()
         rin.prepare("EURUSD", bars)
@@ -404,10 +408,21 @@ class TestRinPhaseTEvolve:
                 symbol="EURUSD",
                 peer_dir=sig.direction.value,   # aligned with Rin's dir
             )
-            p = rin.intend(market, t, workspace=snap)
-            assert p is None, (
-                "Rin should yield to Isagi's metavision when peers align"
+            decision = rin.intend(market, t, workspace=snap)
+            assert isinstance(decision, YieldReason), (
+                "Rin should yield to Isagi's metavision when peers align "
+                f"-- got {type(decision).__name__} instead"
             )
+            # F22c audit-record contract.
+            assert decision.reason == "isagi_would_lift_metavision"
+            assert decision.agent_id == rin.agent_id
+            assert decision.tick_id == market.tick_id
+            assert decision.symbol == "EURUSD"
+            assert "isagi_yoichi" in decision.peer_ids_read
+            assert decision.evidence["peer_agree_count"] >= 1
+            assert decision.evidence["peer_disagree_count"] == 0
+            assert decision.evidence["direction"] == sig.direction.value
+            assert "sec 4.1c" in decision.doctrine_ref
             return
         pytest.skip("synthetic series produced no qualifying Rin signals")
 
