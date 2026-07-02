@@ -1,4 +1,25 @@
-# AI Context — finance research experiments (updated 2026-07-01, post-Phase-T-evolve Rin v1.1 + Phase U shadow ledger + heartbeat monitor v2.1 fix)
+# AI Context — finance research experiments (updated 2026-07-02, Phase T-evolve CONFIRMED + Phase U shadow ledger + heartbeat monitor v2.1)
+
+## 2026-07-02 — Phase T-evolve walk-forward result: PASS
+
+Rin v1.1 walk-forward-post-TU delta = **−0.146** vs. the ≤ −0.05
+threshold in doctrine §4.1c. Roster locked to `v1.1 confirmed`.
+
+**Two-column verdict:**
+
+| Agent   | v1.0 acc/rej | v1.0 delta | v1.1 acc/rej | v1.1 delta |
+|---------|--------------|------------|--------------|------------|
+| Rin     | 0 / 1494     | n/a        | 966 / 528    | **−0.146** ✓ |
+| Isagi   | 6024 / 547   | −0.049     | 5075 / 1496  | +0.005 |
+| Chigiri | 827 / 165    | +0.021     | 810 / 182    | +0.044 |
+| Barou   | 454 / 4122   | +0.015     | 454 / 4122   | +0.015 |
+
+Rin now has higher accepted TQS (0.337) than Isagi (0.300). Total
+squad trades 5,761 → 5,604 (net −157). Canon: Neo-Egoist Rin acts on
+her own reads without waiting for peer confluence.
+
+Baseline locked as `74fca72`. walk-forward-post-TU verdict lands
+in the next commit alongside roster + ai_context updates.
 
 ## 2026-07-01 night — Phase T-evolve: Rin v1.1 peer-yield-and-lift
 
