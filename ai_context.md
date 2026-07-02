@@ -46,12 +46,32 @@ Full sim suite: 551 passed, 4 skipped. Zero regressions across F22.
 Doctrine 06 sec 4.1d amendment landed with all three fixes documented
 together.
 
-**Compute in flight:** walk-forward-post-F22 (7-window OOS) running
-in the background to score the workspace-richness upgrade at scale.
-Rin's walk-forward-post-TU delta was -0.146 with stale-workspace
-reads; post-F22 measures how much of that was mechanic vs. tick-lag.
-Verdict + roster/ai_context refresh + Phase V design will land after
-the walk-forward completes.
+**walk-forward-post-F22 verdict (2026-07-02 13:43): F22 is pure
+observability.** Same 5,604 total trades, same per-window counts
+(441/419/505/539/453/358/360), identical Isagi + Rin + Barou +
+Nagi splits, 9-trade reshuffle at the Bachira/Chigiri R6 boundary.
+Rin's Phase T-evolve delta stays at -0.146 (unchanged from post-TU)
+-- proving her yield rule is robust to the 1-tick peer-read lag.
+The workspace-richness upgrade delivered exactly what its design
+promised: richer AUDIT surface, zero behavior drift.
+
+**Post-F22 delta table (locked baseline for Phase V):**
+
+| Agent   | tqs_acc | tqs_rej | Δ (rej-acc) |
+|---------|---------|---------|-------------|
+| Isagi   | 0.300   | 0.305   | +0.005      |
+| Bachira | 0.320   | 0.307   | −0.013      |
+| Rin     | 0.337   | 0.191   | **−0.146**  |
+| Chigiri | 0.241   | 0.290   | **+0.049** (worsened by +0.005) |
+| Nagi    | 0.300   | n/a     | n/a         |
+| Barou   | 0.302   | 0.317   | **+0.015** (unchanged) |
+
+**Next up: Phase V.** Chigiri's positive delta widened slightly at
++0.049 (was +0.044); Barou's stable at +0.015. Phase V design
+pre-registered in G7 PROTOCOL §11.9 -- regime-conditional tier-1-
+equivalent conviction bias for both agents on their canonical
+regime hit (Chigiri vol_expansion, Barou devour_active). Chigiri
+first, Barou second.
 
 ## 2026-07-02 — Phase T-evolve walk-forward result: PASS
 
