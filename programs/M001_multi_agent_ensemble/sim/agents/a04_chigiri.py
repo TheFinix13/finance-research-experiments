@@ -86,6 +86,7 @@ from programs.M001_multi_agent_ensemble.sim.core.types import (
     LadderRung,
     MarketState,
     Thought,
+    ThoughtRead,
 )
 
 log = logging.getLogger(__name__)
@@ -288,6 +289,19 @@ class A4ChigiriV1(BaseStriker):
             decision_horizon=market.as_of,
             ttl_ticks=6,
             references=[],
+            read=ThoughtRead(
+                signal_family="breakout",
+                direction_bias=direction,  # type: ignore[arg-type]
+                regime_read="vol_expansion",
+                expected_stop_pips=None,   # ATR-scaled, no fixed stop pre-intend
+                expected_r=None,
+                driving_evidence=(
+                    "chigiri_speed_breakout",
+                    "breakout_continuation",
+                    "momentum",
+                    f"broken_level:{sig['broken_level']:.5f}",
+                ),
+            ),
         )
 
     def intend(

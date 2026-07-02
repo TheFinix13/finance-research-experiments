@@ -66,8 +66,10 @@ from programs.M001_multi_agent_ensemble.sim._cross_repo import (
 )
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
 from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    expected_r_from_prices,
     regime_fit_from_atr,
     stamp_provenance_pips,
+    stop_pips_from_prices,
 )
 from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
     WorkspaceSnapshot,
@@ -81,6 +83,7 @@ from programs.M001_multi_agent_ensemble.sim.core.types import (
     LadderRung,
     MarketState,
     Thought,
+    ThoughtRead,
 )
 
 log = logging.getLogger(__name__)
@@ -320,6 +323,7 @@ class A3RinV1(BaseStriker):
             f"(stop_pips={stop_pips:.1f}); base_conv {base_conv:.2f} "
             f"+ precision {precision_lift:.2f} = {final_conv:.2f}."
         )
+        r_expected = expected_r_from_prices(sig.entry, sig.stop, sig.take_profit)
         return Thought(
             schema_version=SCHEMA_VERSION,
             agent_id=self.agent_id,
@@ -334,6 +338,20 @@ class A3RinV1(BaseStriker):
             decision_horizon=market.as_of,
             ttl_ticks=6,
             references=[],
+            read=ThoughtRead(
+                signal_family="precision",
+                direction_bias=direction,  # type: ignore[arg-type]
+                regime_read=str(meta.get("htf_bias") or "unknown"),
+                expected_stop_pips=float(stop_pips),
+                expected_r=r_expected,
+                driving_evidence=(
+                    "rin_precision",
+                    "rin_precision_lift_applied",
+                    "zone_d1_against",
+                    "htf_against",
+                    f"signal_reason:{sig.reason}",
+                ),
+            ),
         )
 
     def intend(

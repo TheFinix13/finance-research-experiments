@@ -31,6 +31,40 @@ from typing import Any
 # Standard pip size for the majors we currently trade. Callers should
 # pass their own pip_size for exotic instruments.
 DEFAULT_PIP_SIZE_MAJOR: float = 1e-4
+DEFAULT_PIP_SIZE_JPY: float = 1e-2
+
+
+def pip_size_for(symbol: str) -> float:
+    """Pip size for a symbol.
+
+    Majors (EURUSD, GBPUSD, USDCAD, ...) use 1e-4. JPY quote pairs use
+    1e-2. New exotics that don't fit these two rules should route
+    through a per-symbol table amendment.
+    """
+    return DEFAULT_PIP_SIZE_JPY if symbol.upper().endswith("JPY") else DEFAULT_PIP_SIZE_MAJOR
+
+
+def stop_pips_from_prices(symbol: str, entry: float, stop: float) -> float | None:
+    """F22a helper -- distance from entry to SL in pips, symbol-aware."""
+    if entry is None or stop is None:
+        return None
+    return abs(float(entry) - float(stop)) / pip_size_for(symbol)
+
+
+def expected_r_from_prices(
+    entry: float, stop: float, take_profit: float,
+) -> float | None:
+    """F22a helper -- reward:risk ratio from entry, stop and take-profit.
+
+    Returns ``None`` if the risk leg is degenerate (SL at entry).
+    """
+    if entry is None or stop is None or take_profit is None:
+        return None
+    risk = abs(float(entry) - float(stop))
+    if risk <= 0.0:
+        return None
+    reward = abs(float(take_profit) - float(entry))
+    return reward / risk
 
 
 def atr_pips_at(

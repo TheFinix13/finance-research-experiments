@@ -87,6 +87,7 @@ from programs.M001_multi_agent_ensemble.sim.core.types import (
     Coordinate,
     MarketState,
     Thought,
+    ThoughtRead,
 )
 
 
@@ -250,6 +251,9 @@ class A5ReoV1(BaseStriker):
             f"x{1.0 - REO_V1_TIME_SHORTEN_FRAC:.2f}; mirror conv "
             f"{final_conv:.2f}."
         )
+        # Reo copies the leader's direction; carry the leader's `read`
+        # forward if it has one, otherwise synthesise from the coordinate.
+        leader_read = leader.read
         return Thought(
             schema_version=SCHEMA_VERSION,
             agent_id=self.agent_id,
@@ -264,6 +268,27 @@ class A5ReoV1(BaseStriker):
             decision_horizon=market.as_of,
             ttl_ticks=REO_V1_TTL_TICKS,
             references=[leader.thought_id],
+            read=ThoughtRead(
+                signal_family="adaptive_copy",
+                direction_bias=lc.direction_bias,  # type: ignore[arg-type]
+                regime_read=(
+                    leader_read.regime_read
+                    if leader_read is not None else "mirror"
+                ),
+                expected_stop_pips=(
+                    leader_read.expected_stop_pips
+                    if leader_read is not None else None
+                ),
+                expected_r=(
+                    leader_read.expected_r
+                    if leader_read is not None else None
+                ),
+                driving_evidence=(
+                    "reo_mirror",
+                    f"mirroring:{leader.agent_id}",
+                    *(leader_read.driving_evidence if leader_read is not None else ()),
+                ),
+            ),
         )
 
     def _observation_only(

@@ -72,6 +72,7 @@ from programs.M001_multi_agent_ensemble.sim.core.types import (
     CanonRole,
     MarketState,
     Thought,
+    ThoughtRead,
 )
 
 
@@ -255,6 +256,18 @@ class A10KunigamiV1(BaseStriker):
             decision_horizon=market.as_of,
             ttl_ticks=KUNIGAMI_V1_TTL_TICKS,
             references=[],
+            read=ThoughtRead(
+                signal_family="risk_watch",
+                direction_bias="flat",     # Kunigami never proposes a direction
+                regime_read=(
+                    "tilt_warning" if warnings else "clean"
+                ),
+                expected_stop_pips=None,
+                expected_r=None,
+                driving_evidence=tuple(warnings) if warnings else (
+                    "kunigami_observation_clean",
+                ),
+            ),
         )
 
     def intend(

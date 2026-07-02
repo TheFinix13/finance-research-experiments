@@ -89,6 +89,7 @@ from programs.M001_multi_agent_ensemble.sim.core.types import (
     LadderRung,
     MarketState,
     Thought,
+    ThoughtRead,
 )
 
 # ---------------------------------------------------------------------------
@@ -443,6 +444,7 @@ class A6NagiV1(BaseStriker):
             f"leader:{leader.agent_id}",
             f"peer:{other.agent_id}",
         })
+        leader_read = leader.read
         return Thought(
             schema_version=SCHEMA_VERSION,
             agent_id=self.agent_id,
@@ -461,6 +463,29 @@ class A6NagiV1(BaseStriker):
             decision_horizon=market.as_of,
             ttl_ticks=NAGI_V1_TTL_TICKS,
             references=[leader.thought_id, other.thought_id],
+            read=ThoughtRead(
+                signal_family="confluence",
+                direction_bias=coord.direction_bias,  # type: ignore[arg-type]
+                regime_read=(
+                    leader_read.regime_read
+                    if leader_read is not None else "chemical_reaction"
+                ),
+                expected_stop_pips=(
+                    leader_read.expected_stop_pips
+                    if leader_read is not None else None
+                ),
+                expected_r=(
+                    leader_read.expected_r
+                    if leader_read is not None else None
+                ),
+                driving_evidence=(
+                    "nagi_confluence",
+                    "f11_chemical_reaction",
+                    f"leader:{leader.agent_id}",
+                    f"peer:{other.agent_id}",
+                    *tuple(sorted(pair.shared_tags))[:3],
+                ),
+            ),
         )
 
 

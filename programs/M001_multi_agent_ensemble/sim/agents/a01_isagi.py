@@ -59,9 +59,11 @@ from programs.M001_multi_agent_ensemble.sim._cross_repo import (
 )
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
 from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    expected_r_from_prices,
     isagi_metavision_lift,
     regime_fit_from_atr,
     stamp_provenance_pips,
+    stop_pips_from_prices,
 )
 from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
     WorkspaceSnapshot,
@@ -75,6 +77,7 @@ from programs.M001_multi_agent_ensemble.sim.core.types import (
     LadderRung,
     MarketState,
     Thought,
+    ThoughtRead,
 )
 
 log = logging.getLogger(__name__)
@@ -280,6 +283,10 @@ class A1IsagiV1(BaseStriker):
             target_hold_hours=self.canon_role.target_hold_hours,
         )
         direction = sig.direction.value  # "long" | "short"
+        stop_pips = stop_pips_from_prices(market.symbol, sig.entry, sig.stop)
+        r_expected = expected_r_from_prices(sig.entry, sig.stop, sig.take_profit)
+        sig_meta = getattr(sig, "meta", {}) or {}
+        regime_read = str(sig_meta.get("htf_bias") or "unknown")
         return Thought(
             schema_version=SCHEMA_VERSION,
             agent_id=self.agent_id,
@@ -298,6 +305,18 @@ class A1IsagiV1(BaseStriker):
             decision_horizon=market.as_of,
             ttl_ticks=6,  # zone is fresh until next ~6 H4 bars (~1 trading day)
             references=[],
+            read=ThoughtRead(
+                signal_family="metavision",
+                direction_bias=direction,  # type: ignore[arg-type]
+                regime_read=regime_read,
+                expected_stop_pips=stop_pips,
+                expected_r=r_expected,
+                driving_evidence=(
+                    "zone_d1_against",
+                    "htf_against",
+                    f"signal_reason:{sig.reason}",
+                ),
+            ),
         )
 
     def intend(

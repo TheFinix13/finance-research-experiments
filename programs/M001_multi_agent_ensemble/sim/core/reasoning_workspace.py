@@ -145,13 +145,19 @@ class WorkspaceSnapshot:
         tier: Tier = 2,
         symbol: Symbol | None = None,
         tag: str | None = None,
+        signal_family: str | None = None,
     ) -> tuple[Thought, ...]:
         """Return Thoughts visible to `agent_id` under `tier`.
 
         Tier-1 and Tier-2 see the full backwards-only slice; Tier-3
         sees only their own past Thoughts (agent_id match). Optional
-        `symbol` filter matches `t.symbol == symbol`; optional `tag`
-        filter matches `tag in t.tags`.
+        filters:
+        - ``symbol``: matches ``t.symbol == symbol``.
+        - ``tag``: matches ``tag in t.tags`` (legacy string bag).
+        - ``signal_family`` (F22a): matches
+          ``t.read is not None and t.read.signal_family == signal_family``.
+          Structured filter -- prefer this over ``tag`` for canon signal
+          families (see ``types.SignalFamily``).
 
         Result is a tuple sorted by (tick_id, timestamp) ascending --
         oldest first, so agents can walk the chronology.
@@ -165,6 +171,11 @@ class WorkspaceSnapshot:
             filtered = tuple(t for t in filtered if t.symbol == symbol)
         if tag is not None:
             filtered = tuple(t for t in filtered if tag in t.tags)
+        if signal_family is not None:
+            filtered = tuple(
+                t for t in filtered
+                if t.read is not None and t.read.signal_family == signal_family
+            )
 
         return tuple(sorted(filtered, key=lambda t: (t.tick_id, t.timestamp)))
 
@@ -174,18 +185,26 @@ class WorkspaceSnapshot:
         agent_id: str,
         symbol: Symbol | None = None,
         tag: str | None = None,
+        signal_family: str | None = None,
     ) -> tuple[Thought, ...]:
         """Read-my-peers convenience -- Tier-2 view minus own Thoughts.
 
         Used by F19/F20 default implementations that want to see what
         OTHER agents said (for confluence-lift, peer-silence gates,
-        etc.) without also seeing their own prior Thoughts.
+        etc.) without also seeing their own prior Thoughts. F22a adds
+        the ``signal_family`` structured filter for peer-scan use cases
+        like Rin's Phase T-evolve metavision detection.
         """
         peers = tuple(t for t in self.thoughts if t.agent_id != agent_id)
         if symbol is not None:
             peers = tuple(t for t in peers if t.symbol == symbol)
         if tag is not None:
             peers = tuple(t for t in peers if tag in t.tags)
+        if signal_family is not None:
+            peers = tuple(
+                t for t in peers
+                if t.read is not None and t.read.signal_family == signal_family
+            )
         return tuple(sorted(peers, key=lambda t: (t.tick_id, t.timestamp)))
 
     def latest_by_agent(

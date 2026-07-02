@@ -64,8 +64,10 @@ from programs.M001_multi_agent_ensemble.sim._cross_repo import (
 )
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
 from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    expected_r_from_prices,
     regime_fit_from_atr,
     stamp_provenance_pips,
+    stop_pips_from_prices,
 )
 from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
     WorkspaceSnapshot,
@@ -79,6 +81,7 @@ from programs.M001_multi_agent_ensemble.sim.core.types import (
     LadderRung,
     MarketState,
     Thought,
+    ThoughtRead,
 )
 
 # F21 peer-confluence chemistry (doctrine section 4.1a). Bachira reads
@@ -267,6 +270,8 @@ class A2BachiraV1(BaseStriker):
                 else " (no rebel lift; clean direction in recent swing)"
             )
         )
+        stop_pips = stop_pips_from_prices(market.symbol, sig.entry, sig.stop)
+        r_expected = expected_r_from_prices(sig.entry, sig.stop, sig.take_profit)
         return Thought(
             schema_version=SCHEMA_VERSION,
             agent_id=self.agent_id,
@@ -281,6 +286,18 @@ class A2BachiraV1(BaseStriker):
             decision_horizon=market.as_of,
             ttl_ticks=6,
             references=[],
+            read=ThoughtRead(
+                signal_family="pattern_rebel",
+                direction_bias=direction,  # type: ignore[arg-type]
+                regime_read="rebel_lift" if rebel_fired else "baseline_zone",
+                expected_stop_pips=stop_pips,
+                expected_r=r_expected,
+                driving_evidence=(
+                    "bachira_rebel_baseline_zone",
+                    f"signal_reason:{sig.reason}",
+                    *(("bachira_rebel_lift_applied",) if rebel_fired else ()),
+                ),
+            ),
         )
 
     def intend(

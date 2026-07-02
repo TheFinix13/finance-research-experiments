@@ -62,12 +62,78 @@ class Coordinate:
         }
 
 
+# F22a canonical signal families. Each agent claims exactly one; the
+# workspace's signal_family filter uses this taxonomy to answer "which
+# thoughts on this tick belong to reading X?" instead of string-matching
+# tag bags. New agents that don't fit any of these should add a new
+# literal with a doctrine amendment.
+SignalFamily = Literal[
+    "metavision",         # A1 Isagi -- liquidity + market-structure fusion
+    "pattern_rebel",      # A2 Bachira -- pattern-geometry rebel-lift
+    "precision",          # A3 Rin -- fib/harmonic precision + Neo-Egoist lone read
+    "breakout",           # A4 Chigiri -- range-break + ATR vol-expansion
+    "adaptive_copy",      # A5 Reo -- adaptive copier
+    "confluence",         # A6 Nagi -- multi-signal AND gate
+    "solo_king",          # A7 Barou -- counter-liquidity solo kingship
+    "risk_watch",         # A10 Kunigami -- defensive tilt/streak/overconfidence watch
+    "unknown",             # sentinel for observe() paths that fired without a read
+]
+
+
+@dataclass(frozen=True)
+class ThoughtRead:
+    """F22a -- structured semantic content of a Thought.
+
+    Pre-F22a, agents smuggled their read through the free-text
+    ``Thought.narrative`` + a bag of ``tags``. Peer inspection had to
+    string-match tag prefixes to guess the signal family. That was
+    brittle and blocked Rin's Phase T-evolve from distinguishing
+    "Isagi's metavision" from "Isagi's supply_demand" on the same
+    direction.
+
+    ``ThoughtRead`` promotes the core semantic content to a typed
+    record so ``WorkspaceSnapshot.read_for(signal_family=...)`` can
+    answer richer questions cleanly.
+
+    Doctrine ref: 06 section 4.1a (workspace primitive) + F22a
+    amendment (this file).
+    """
+
+    signal_family: SignalFamily
+    direction_bias: Direction
+    regime_read: str = "unknown"
+    expected_stop_pips: float | None = None
+    expected_r: float | None = None
+    driving_evidence: tuple[str, ...] = ()
+
+    def to_jsonable(self) -> dict[str, Any]:
+        return {
+            "signal_family": self.signal_family,
+            "direction_bias": self.direction_bias,
+            "regime_read": self.regime_read,
+            "expected_stop_pips": (
+                float(self.expected_stop_pips)
+                if self.expected_stop_pips is not None
+                else None
+            ),
+            "expected_r": (
+                float(self.expected_r) if self.expected_r is not None else None
+            ),
+            "driving_evidence": list(self.driving_evidence),
+        }
+
+
 @dataclass(frozen=True)
 class Thought:
     """One agent's per-tick narrative + optional coordinate.
 
     Doctrine section 3.8. Look-ahead guarded by `decision_horizon`;
     `references` must point strictly backwards in time.
+
+    F22a (2026-07-02) adds an optional structured ``read`` field
+    carrying the signal-family + direction + regime read + expected
+    R/stop. Legacy consumers can ignore it; workspace snapshots use
+    ``read.signal_family`` as a first-class filter.
     """
 
     schema_version: int
@@ -84,6 +150,9 @@ class Thought:
     ttl_ticks: int
     references: list[str]
     thought_id: str = ""
+    # F22a: structured read. None on unprepared / no-signal Thought paths;
+    # populated on the main signal path in every 8-agent observe().
+    read: ThoughtRead | None = None
 
     def __post_init__(self) -> None:
         if not (0.0 <= self.confidence_in_thought <= 1.0):
@@ -118,6 +187,7 @@ class Thought:
             "decision_horizon": _iso(self.decision_horizon),
             "ttl_ticks": int(self.ttl_ticks),
             "references": list(self.references),
+            "read": self.read.to_jsonable() if self.read is not None else None,
         }
 
     def to_json(self) -> str:
