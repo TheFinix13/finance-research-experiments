@@ -1,4 +1,57 @@
-# AI Context — finance research experiments (updated 2026-07-02, Phase T-evolve CONFIRMED + Phase U shadow ledger + heartbeat monitor v2.1)
+# AI Context — finance research experiments (updated 2026-07-02, F22 workspace-richness upgrade + Phase T-evolve CONFIRMED + Phase U shadow ledger + heartbeat monitor v2.1)
+
+## 2026-07-02 afternoon — F22 workspace-richness upgrade (three commits)
+
+Three named gaps in the F21 reasoning workspace closed together as F22
+(a/b/c). Each commit ships a fix + unit tests; the trio is validated
+by an end-to-end synthetic-panel replay proving inference accuracy.
+
+**F22a (73f67fc) — Thought richness.** New ``ThoughtRead`` frozen
+dataclass on ``Thought.read``: signal_family, direction_bias,
+regime_read, expected_stop_pips, expected_r, driving_evidence.
+Canonical ``SignalFamily`` literal covers every roster agent
+(metavision / pattern_rebel / precision / breakout / adaptive_copy /
+confluence / solo_king / risk_watch / unknown). All 8 agents' observe()
+main-path populates read; abstentions keep read=None so the workspace
+filter excludes them. WorkspaceSnapshot gained ``signal_family=...``
+first-class filter on read_for and peer_thoughts. Pip helpers
+consolidated in provenance_pips.py.
+
+**F22c (0d3c78f) — Interpretation record.** New ``YieldReason`` frozen
+dataclass + ``IntentDecision = AgentProposal | YieldReason | None``
+widened union. BlueLockStriker.intend protocol updated. Rin's Phase
+T-evolve yield now emits YieldReason(reason=
+"isagi_would_lift_metavision", peer_ids_read=(...), evidence={...})
+with full audit-trail payload. Driver appends every YieldReason to
+SquadRunOutput.yields; silent legacy Nones remain silent.
+
+**F22b (aeb5770) — Tick-barrier snapshot.** Doctrine sec 3.8 forbids
+look-ahead reads, not same-tick reads at the barrier. New
+``ReasoningWorkspace.snapshot_at_barrier`` with rule tick_id <=
+current_tick (was <). Future ticks still refused. Driver swapped in
+``_drive_squad_replay``. Rin's Phase T-evolve now reads Isagi's
+tick-T metavision instead of stale tick-T-1.
+
+**F22 E2E proof (aeb5770).** 2-agent (Isagi + Rin) synthetic-panel
+replay scores three empirical guarantees:
+- G1 (F22a semantic): 100% of signal-path Thoughts have structured read.
+- G2 (F22b same-tick): 4/4 metavision-yields paired with a same-tick
+  same-direction Isagi Thought.
+- G3 (F22c inference accuracy): 4/4 = 100.0% -- Rin's metavision-yield
+  inference matched Isagi's actual proposal direction on every scorable
+  tick.
+
+Full sim suite: 551 passed, 4 skipped. Zero regressions across F22.
+
+Doctrine 06 sec 4.1d amendment landed with all three fixes documented
+together.
+
+**Compute in flight:** walk-forward-post-F22 (7-window OOS) running
+in the background to score the workspace-richness upgrade at scale.
+Rin's walk-forward-post-TU delta was -0.146 with stale-workspace
+reads; post-F22 measures how much of that was mechanic vs. tick-lag.
+Verdict + roster/ai_context refresh + Phase V design will land after
+the walk-forward completes.
 
 ## 2026-07-02 — Phase T-evolve walk-forward result: PASS
 
