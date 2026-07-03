@@ -1,14 +1,61 @@
 # News calendar archive — local cache
 
-**Status (2026-07-03, Phase 6a):** `DUKASCOPY-FETCHER-LANDED`. Real
-HTTP fetcher for the D-Q1 primary source (Dukascopy freeserv JSON)
-shipped in `sim/regime/dukascopy_fetch.py` (44 tests, all CI-clean
-via injected fake transport). Adapter wire updated:
-`DukascopyAdapter()` with no `fetcher=` now delegates to the real
-fetcher. The backfill CLI (`scripts/backfill_news_calendar.py`) +
-manifest writer + FF/FRED live fetchers remain to land in Phase 6b.
-Once the CLI lands, running the full 2007-2026 backfill is a
-compute-session job (~1 hour wall-clock per spec §4.1).
+**Status (2026-07-03 03:55 UTC, Phase 6c):** `HALTED-DK-ENDPOINT-DEPRECATED`.
+Attempted the 2007-2026 backfill run against Dukascopy freeserv and
+discovered the endpoint has been retired for anonymous consumption:
+
+- Default agent UA → **HTTP 403 Forbidden**.
+- Browser UA → **HTTP 204 No Content** (accepted request, empty body,
+  `Content-Type: text/html`) for every URL variant probed (v1
+  `events/get_events`, v2 `events/get_calendar_events`, v3 no-jsonp,
+  v4 `events/calendar`, v5 `countries=` instead of `currencies=`, v6
+  bare path). Consistent 204/text-html across all variants indicates
+  the endpoint is a soft-blocked shell, not a query-shape mismatch.
+- The live DK calendar page now iframes
+  `https://widgets.dukascopy.com/en/economic-calendar` — a modern
+  code-split Angular SPA whose calendar API is loaded via lazy
+  chunks not addressable by static grep. The old `freeserv.dukascopy.com/2.0/
+  index.php?path=events/get_events` D-Q1 endpoint referenced in
+  `specs/news_calendar_wiring.md` §1.4 is deprecated.
+
+**Phase 6c is halted pending Phase 6a-v2** — a rewrite of the D-Q1
+fetcher against the current DK widget stack (needs headless browser
+network trace or public-source rediscovery). Cleanup: no artifacts
+were written to `data/news_calendar/`; the archive is unchanged.
+
+Progress this session that STILL LANDS:
+
+- Phase 6a fetcher SSL fix (certifi-backed context) — real fix for
+  the macOS-framework-Python CA-bundle mismatch, unrelated to the
+  endpoint deprecation, keeps the fetcher useful the moment a v2
+  endpoint is identified.
+- Phase 6b writer + manifest + CLI (`scripts/backfill_news_calendar.py`)
+  work correctly against any conforming fetcher; test suite still
+  green (75 news-calendar tests + 44 dukascopy-fetch tests).
+
+## Phase 6c relaunch prerequisites
+
+Before re-attempting the backfill:
+
+1. Identify a working current-generation D-Q1 endpoint (options:
+   headless-browser reverse of widgets.dukascopy.com; switch primary
+   to a different free source like `nfs.faireconomy.media`; or accept
+   TE as paid primary).
+2. Update `dukascopy_fetch.build_dukascopy_url` (or replace the module
+   entirely) against the new endpoint, keeping the same normalised
+   row schema so downstream code (`news_calendar.py`,
+   `news_windowing.py`) is unaffected.
+3. Re-verify with a 1-month single-currency live probe before
+   committing to the full 2007-2026 backfill.
+
+## Prior status (2026-07-03, Phase 6a)
+
+`DUKASCOPY-FETCHER-LANDED`. Real HTTP fetcher for the D-Q1 primary
+source (Dukascopy freeserv JSON) shipped in `sim/regime/dukascopy_fetch.py`
+(44 tests, all CI-clean via injected fake transport). Adapter wire
+updated: `DukascopyAdapter()` with no `fetcher=` now delegates to the
+real fetcher. Endpoint since discovered deprecated at Phase 6c
+attempt (see above).
 
 **Prior status (2026-07-01, second bump):** `SCAFFOLDING-LANDED`.
 Phase M adapter code (`news_calendar.py`,

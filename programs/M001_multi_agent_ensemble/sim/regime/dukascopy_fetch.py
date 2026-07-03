@@ -29,6 +29,7 @@ import io
 import json
 import logging
 import re
+import ssl
 import time
 import urllib.error
 import urllib.parse
@@ -38,6 +39,39 @@ from datetime import datetime, timedelta, timezone
 from typing import Any, Callable, Iterable, Iterator, Protocol
 
 log = logging.getLogger(__name__)
+
+
+# Lazy-built SSL context using certifi's CA bundle. macOS ships a
+# framework Python whose stdlib urllib does NOT trust system keychain
+# roots by default -- freeserv.dukascopy.com's cert (Let's Encrypt /
+# DigiCert intermediates) then fails verification with
+# ``[SSL: CERTIFICATE_VERIFY_FAILED] unable to get local issuer
+# certificate``. Falling back to certifi's bundle (installed via urllib3
+# / requests transitively) fixes this without disabling verification.
+# Users on Linux (where the stdlib finds `/etc/ssl/certs`) still get
+# the certifi-backed context; both paths validate.
+_SSL_CONTEXT: ssl.SSLContext | None = None
+
+
+def _get_ssl_context() -> ssl.SSLContext:
+    global _SSL_CONTEXT
+    if _SSL_CONTEXT is not None:
+        return _SSL_CONTEXT
+    try:
+        import certifi
+
+        _SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        # certifi unavailable -- fall back to system default. Under
+        # Linux this usually works; on macOS framework Pythons it will
+        # fail loudly and the user needs to `pip install certifi` or
+        # run the Python.app `Install Certificates.command`.
+        log.warning(
+            "certifi not installed; falling back to system CA bundle. "
+            "macOS framework Python may fail SSL verification."
+        )
+        _SSL_CONTEXT = ssl.create_default_context()
+    return _SSL_CONTEXT
 
 
 # ---------------------------------------------------------------------------
@@ -111,9 +145,18 @@ def _default_urllib_transport(
     headers: dict[str, str],
     timeout: float,
 ) -> bytes:
-    """Standard-library urllib backend. No third-party dependency."""
+    """Standard-library urllib backend, with certifi CA bundle.
+
+    Passes an explicit SSL context built from ``certifi.where()`` so
+    macOS framework Pythons (which do NOT trust the system keychain by
+    default) can verify freeserv.dukascopy.com's certificate. See
+    ``_get_ssl_context()`` for the fallback if certifi is missing.
+    """
     req = urllib.request.Request(url, headers=headers)
-    with urllib.request.urlopen(req, timeout=timeout) as resp:  # noqa: S310
+    ctx = _get_ssl_context()
+    with urllib.request.urlopen(  # noqa: S310
+        req, timeout=timeout, context=ctx,
+    ) as resp:
         raw = resp.read()
         enc = resp.headers.get("Content-Encoding", "") or ""
         if enc.lower() == "gzip":
