@@ -1,4 +1,62 @@
-# AI Context — finance research experiments (updated 2026-07-03, Phase V NULL RESULT reverted + F22 workspace-richness upgrade + Phase T-evolve CONFIRMED + Phase U shadow ledger + heartbeat monitor v2.1)
+# AI Context — finance research experiments (updated 2026-07-03, Phase 6a Dukascopy fetcher + Phase V NULL RESULT reverted + F22 workspace-richness upgrade + Phase T-evolve CONFIRMED + Phase U shadow ledger + heartbeat monitor v2.1)
+
+## 2026-07-03 — Phase 6a: Dukascopy freeserv HTTP fetcher LANDED
+
+News-calendar Phase 6 was un-deferred after the Phase V null result
+freed the sequence. Phase 6a ships the D-Q1 primary source live-HTTP
+fetcher (spec §1.4) with all 44 tests CI-clean via injected fake
+transport (D-Q8 preserved).
+
+**New module `sim/regime/dukascopy_fetch.py`.** Real fetcher for
+`https://freeserv.dukascopy.com/2.0/index.php?path=events/get_events`
+with:
+- URL builder (epoch-ms UTC, group=news, currencies csv, importance
+  normalised).
+- JSONP unwrap (accepts `cb({...})`, `cb({...});`, or bare JSON).
+- Event normaliser mapping DK importance strings + numeric IDs +
+  epoch-ms/ISO timestamps to Phase M canonical row schema.
+- `iter_chunks` per-day chunker + rate limiter (500 ms polite gap,
+  injectable time source for tests).
+- Exponential-backoff retry on 5xx / 408 / 425 / 429, single-shot on
+  other 4xx per Dukascopy's TOS-neighbourly behaviour.
+- `DukascopyFetchStats` telemetry dataclass consumed by the manifest
+  writer (Phase 6b).
+
+**Adapter wire.** `DukascopyAdapter()` with no `fetcher=` now
+delegates to `default_dukascopy_fetcher` (lazy-imported so the
+urllib pull-in doesn't fire unless the adapter is used with
+defaults). Injected `fetcher=` still takes precedence -- test
+fixtures unchanged, CI still 100% network-free.
+
+**Tests: 44 new** (`test_dukascopy_fetch.py`) covering:
+- URL builder shape + validation edge cases (naive dt, end < start,
+  bad importance, empty currencies).
+- JSONP unwrap shapes (standard wrap, trailing semicolon, whitespace,
+  callback drift, plain JSON fallback, bare list, empty/malformed
+  bodies).
+- Event normaliser (full row, case-insensitive importance, numeric
+  importance, unrecognised importance dropped with warning, missing
+  required fields, ISO timestamp, all-day null timestamp, stringy
+  actual with unit extraction).
+- Chunk iterator (1-day, multi-day, truncated last chunk, invalid
+  chunk_days).
+- Rate limiter (no-sleep first call, sleep for the deficit,
+  no-sleep when gap already large).
+- End-to-end `fetch_events` (single chunk, multi-chunk accumulation,
+  bare-list payload, 5xx-then-success retry, retry exhaustion,
+  4xx not retried, 429 retried, malformed body, dropped
+  unrecognised importance).
+- `DukascopyAdapter` default-fetcher delegation + injected-fetcher
+  precedence.
+- `default_dukascopy_fetcher` wrapper argument forwarding.
+
+Sim suite: 609 passed / 4 skipped (+44 Phase 6a tests, +1 updated
+existing test).
+
+**What's next (Phase 6b):** `scripts/backfill_news_calendar.py` CLI
+composing DK fetcher → parquet writer → manifest with SHA256. Then
+Phase 6c is the compute-session job actually running the ~1-hour
+2007-2026 backfill against live Dukascopy.
 
 ## 2026-07-02 evening → 2026-07-03 — Phase V-a + V-b NULL RESULT, reverted
 
@@ -560,11 +618,12 @@ Doctrine v0.5, roster v0.8, evolution ledger updated with 6 RELABEL rows.
 
 **Next immediate goal — sequenced from Phase V null result (2026-07-03):**
 
-1. **Phase 6 news calendar wiring (independent, next up).** Dukascopy
-   DK backfill 2007→2026 + adapter live-swap. No compute contention;
-   safe to run in the same session as any other job. Scaffolding is
-   done (see 2026-07-01 Phase M entry above); this is the live-HTTP
-   fetch step.
+1. **Phase 6b news calendar backfill CLI (in flight -- Phase 6a
+   fetcher landed 2026-07-03).** Write
+   `scripts/backfill_news_calendar.py` composing the DK fetcher +
+   parquet writer + `_manifest.json` builder. Then Phase 6c is the
+   compute-session job actually running the ~1-hour 2007-2026
+   backfill against live Dukascopy.
 2. **Phase 3 C2/C3 leave-one-out compute job (~32h wall-clock).** 8
    additional squad replays with each agent removed. Result decides
    whether Chigiri/Barou need a Phase V-iterate at all (Option D

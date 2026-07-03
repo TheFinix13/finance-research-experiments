@@ -305,14 +305,29 @@ class TestIntegration2024USD:
 
 class TestFallbackChain:
 
-    def test_dukascopy_stub_raises_without_fetcher(self):
+    def test_dukascopy_default_delegates_to_real_fetcher(self):
+        """Phase 6a (2026-07-03): the DK adapter no longer stubs.
+        Constructing ``DukascopyAdapter()`` with no ``fetcher=`` now
+        delegates to ``dukascopy_fetch.default_dukascopy_fetcher``
+        (which fires real HTTP). We patch that entry point to keep the
+        CI path network-free.
+        """
+        from programs.M001_multi_agent_ensemble.sim.regime import (
+            dukascopy_fetch,
+        )
+        from unittest.mock import patch
         adapter = DukascopyAdapter()
-        with pytest.raises(NotImplementedError, match="Dukascopy"):
-            adapter.fetch(
+        with patch.object(
+            dukascopy_fetch, "default_dukascopy_fetcher",
+            return_value=[{"phase_6a": True}],
+        ) as m:
+            out = adapter.fetch(
                 dt.datetime(2024, 1, 1, tzinfo=UTC),
                 dt.datetime(2024, 1, 2, tzinfo=UTC),
                 currencies=("USD",),
             )
+        m.assert_called_once()
+        assert out == [{"phase_6a": True}]
 
     def test_dukascopy_accepts_injected_fetcher(self):
         calls = []

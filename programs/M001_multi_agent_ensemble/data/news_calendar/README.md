@@ -1,22 +1,29 @@
 # News calendar archive — local cache
 
-**Status (2026-07-01, second bump):** `SCAFFOLDING-LANDED`. Phase M
-adapter code shipped in this session: three new modules under
-`sim/regime/` (`news_calendar.py`, `news_calendar_sources.py`,
-`news_windowing.py`) plus 49 tests plus 3 committed parquet fixtures
-under `sim/tests/fixtures/news_calendar/`. Live-HTTP fetch scripts
-(`backfill_news_calendar.py`, `update_news_calendar.py`,
-`audit_news_calendar.py`) are the next block of work (post-G7 or
-next session). **The data folder itself stays intent-only** —
+**Status (2026-07-03, Phase 6a):** `DUKASCOPY-FETCHER-LANDED`. Real
+HTTP fetcher for the D-Q1 primary source (Dukascopy freeserv JSON)
+shipped in `sim/regime/dukascopy_fetch.py` (44 tests, all CI-clean
+via injected fake transport). Adapter wire updated:
+`DukascopyAdapter()` with no `fetcher=` now delegates to the real
+fetcher. The backfill CLI (`scripts/backfill_news_calendar.py`) +
+manifest writer + FF/FRED live fetchers remain to land in Phase 6b.
+Once the CLI lands, running the full 2007-2026 backfill is a
+compute-session job (~1 hour wall-clock per spec §4.1).
+
+**Prior status (2026-07-01, second bump):** `SCAFFOLDING-LANDED`.
+Phase M adapter code (`news_calendar.py`,
+`news_calendar_sources.py`, `news_windowing.py`) + 49 tests + 3
+parquet fixtures. Data folder still stays intent-only —
 `.gitignore` keeps parquet dumps out of git; only the manifest +
-scripts land. See "How to opt in from an agent" below for the
-current-usable surface.
+scripts land.
 
 **Earlier status (2026-07-01, first bump):** `DEFERRED-BEYOND-G7`.
 Historical context: after the v1/v2 reframe (`06-blue-lock-doctrine.md`
 v0.5 §3.11.5) shifted priorities to squad chemistry (F19/F20/F21 +
 G7), news wiring was deferred. Same day, user reprioritised
 scaffolding to run in parallel with the G7 walk-forward compute job.
+Un-deferred 2026-07-03 after Phase V null-result freed the sequence
+(see `ai_context.md` and G7 PROTOCOL §11.9-postmortem).
 
 ## How to opt in from an agent (2026-07-01)
 

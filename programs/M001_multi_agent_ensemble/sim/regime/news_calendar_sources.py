@@ -66,13 +66,14 @@ class SourceAdapter(Protocol):
 class DukascopyAdapter:
     """Dukascopy freeserv JSON events (D-Q1 primary, D-Q3 free-tier).
 
-    Live endpoint format (post-G7 wiring, per spec §1.4):
+    Live endpoint format (per spec §1.4, wired 2026-07-03 Phase 6a):
         https://freeserv.dukascopy.com/2.0/index.php?path=events/get_events
         &jsonp=<cb>&start=<epoch_ms>&end=<epoch_ms>&group=news
         &currencies=<CUR>&importance=<any|low|medium|high>
 
-    Phase M stub: raises NotImplementedError unless a ``fetcher`` is
-    injected on construction. Tests inject a deterministic stub.
+    Default behaviour: ``fetcher`` defaults to
+    ``dukascopy_fetch.default_dukascopy_fetcher`` which fires real HTTP.
+    Tests inject a fake ``fetcher=`` to keep CI network-free (per D-Q8).
     """
     source_id: str = "DK"
     fetcher: Callable[..., list] | None = None
@@ -84,12 +85,17 @@ class DukascopyAdapter:
         currencies: Iterable[str],
     ) -> list:
         if self.fetcher is None:
-            raise NotImplementedError(
-                "DukascopyAdapter.fetch has no real fetcher wired in Phase "
-                "M; inject fetcher= for tests, or wait for the post-G7 "
-                "live HTTP landing in scripts/backfill_news_calendar.py"
+            # Lazy import to keep pandas/urllib pull-in off the import
+            # path unless the adapter is actually used with defaults.
+            from programs.M001_multi_agent_ensemble.sim.regime import (
+                dukascopy_fetch,
             )
-        return list(self.fetcher(
+            fetcher_fn: Callable[..., list] = (
+                dukascopy_fetch.default_dukascopy_fetcher
+            )
+        else:
+            fetcher_fn = self.fetcher
+        return list(fetcher_fn(
             start=start, end=end, currencies=tuple(currencies),
         ))
 
