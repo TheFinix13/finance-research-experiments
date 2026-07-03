@@ -532,3 +532,258 @@ class TestPhaseVB_BarouSoloKingSpecialist:
             "Phase V-b null result: rationale must NOT contain tier "
             "override keys under the reverted mechanic"
         )
+
+
+# ---------------------------------------------------------------------------
+# Phase W-barou v1.1 (2026-07-03): H1 lone-conviction claim
+# ---------------------------------------------------------------------------
+
+class TestPhaseW_BarouLoneConvictionClaim:
+    """H1: Barou's ``intend()`` adds `BAROU_V1_1_LONE_CONVICTION_LIFT`
+    to conviction when Bachira did NOT publish a same-symbol
+    same-direction Thought at the tick barrier. When Bachira DID publish
+    same-direction, H1 skips and the existing devour path decides
+    conviction unchanged.
+
+    See ``experiments/phase_w_barou/PROTOCOL.md`` sec 3 for the
+    decision table.
+    """
+
+    def _fire_index_and_signal(self, barou, bars):
+        for i in range(200, len(bars) - 1):
+            sig = barou.inner_signal_at("USDCAD", i)
+            if sig is not None:
+                return i, sig
+        return None, None
+
+    def _make_workspace_snapshot(
+        self, *, tick_id, as_of, peer_thoughts,
+    ):
+        from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
+            WorkspaceSnapshot,
+        )
+        return WorkspaceSnapshot(
+            thoughts=tuple(peer_thoughts),
+            as_of=as_of,
+            current_tick=tick_id,
+        )
+
+    def _make_bachira_thought(
+        self, *, tick_id, as_of, direction, symbol="USDCAD",
+    ):
+        coord = Coordinate(
+            agent_id="bachira_meguru", symbol=symbol,
+            price_lo=1.29, price_hi=1.31,
+            time_start=as_of - timedelta(hours=4),
+            time_end=as_of + timedelta(hours=20),
+            vol_band=(0.5, 2.0),
+            regime_predicate="test_regime",
+            expected_strength=0.70, direction_bias=direction,
+            rationale={"entry": 1.30, "stop": 1.29, "take_profit": 1.32},
+        )
+        return Thought(
+            schema_version=SCHEMA_VERSION,
+            agent_id="bachira_meguru",
+            tick_id=tick_id, timestamp=as_of, symbol=symbol,
+            narrative=f"[bachira test] {direction}",
+            tags=["bachira_test"], confidence_in_thought=0.70,
+            expected_action=f"{direction}_on_H4_close_USDCAD",
+            coordinate=coord,
+            decision_horizon=as_of,
+            ttl_ticks=6, references=[],
+        )
+
+    def test_h1_fires_when_no_bachira_read(self):
+        """workspace snapshot has NO Bachira thought at all -> H1 fires
+        (genuine solo read). Conviction bumped by LONE_CONVICTION_LIFT.
+        """
+        from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+            BAROU_V1_1_LONE_CONVICTION_LIFT,
+        )
+        bars = _build_synthetic_usdcad_bars(600)
+        barou = _make_barou()
+        barou.prepare("USDCAD", bars)
+        fire_idx, sig = self._fire_index_and_signal(barou, bars)
+        if fire_idx is None:
+            pytest.skip("synthetic series produced no Barou signal")
+        fire_bar = bars[fire_idx]
+        market = _bar_to_market(fire_bar, fire_idx)
+        # Ledger empty, no devour. Workspace snapshot has NO bachira.
+        t = barou.observe(market, FullLedger())
+        base_conv = float(t.confidence_in_thought)
+        ws = self._make_workspace_snapshot(
+            tick_id=fire_idx, as_of=fire_bar.time, peer_thoughts=[],
+        )
+        p = barou.intend(market, t, workspace=ws)
+        assert p is not None
+        r = p.rationale
+        assert r["barou_lone_conviction_claim"] is True
+        assert r["barou_lone_conviction_lift_applied"] == pytest.approx(
+            BAROU_V1_1_LONE_CONVICTION_LIFT, abs=1e-9,
+        )
+        assert r["barou_v1_1_bachira_read_present"] is False
+        assert r["_yield_reason"] == "peer_did_not_read_this_setup"
+        # Final conviction must be raised by the lift (capped at CAP).
+        expected_conv = min(1.0, base_conv + BAROU_V1_1_LONE_CONVICTION_LIFT)
+        assert p.conviction == pytest.approx(expected_conv, abs=1e-9)
+
+    def test_h1_fires_when_bachira_read_is_opposite_direction(self):
+        """Bachira reads OPPOSITE direction -> Barou's read is a
+        counter-conviction opportunity, treated as lone-conviction.
+        """
+        from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+            BAROU_V1_1_LONE_CONVICTION_LIFT,
+        )
+        bars = _build_synthetic_usdcad_bars(600)
+        barou = _make_barou()
+        barou.prepare("USDCAD", bars)
+        fire_idx, sig = self._fire_index_and_signal(barou, bars)
+        if fire_idx is None:
+            pytest.skip("synthetic series produced no Barou signal")
+        fire_bar = bars[fire_idx]
+        market = _bar_to_market(fire_bar, fire_idx)
+        t = barou.observe(market, FullLedger())
+        base_conv = float(t.confidence_in_thought)
+        barou_dir = sig.direction.value
+        bachira_dir = "short" if barou_dir == "long" else "long"
+        ws = self._make_workspace_snapshot(
+            tick_id=fire_idx, as_of=fire_bar.time,
+            peer_thoughts=[self._make_bachira_thought(
+                tick_id=fire_idx, as_of=fire_bar.time,
+                direction=bachira_dir,
+            )],
+        )
+        p = barou.intend(market, t, workspace=ws)
+        assert p is not None
+        r = p.rationale
+        assert r["barou_lone_conviction_claim"] is True
+        assert r["barou_lone_conviction_lift_applied"] == pytest.approx(
+            BAROU_V1_1_LONE_CONVICTION_LIFT, abs=1e-9,
+        )
+        assert r["barou_v1_1_bachira_read_present"] is True
+        assert r["barou_v1_1_bachira_same_direction"] is False
+        assert r["_yield_reason"] == "peer_did_not_read_this_setup"
+        expected_conv = min(1.0, base_conv + BAROU_V1_1_LONE_CONVICTION_LIFT)
+        assert p.conviction == pytest.approx(expected_conv, abs=1e-9)
+
+    def test_h1_skips_when_bachira_read_is_same_direction(self):
+        """Bachira reads SAME direction -> H1 skips (existing devour
+        path handles it). Conviction unchanged from observe()'s output.
+        """
+        bars = _build_synthetic_usdcad_bars(600)
+        barou = _make_barou()
+        barou.prepare("USDCAD", bars)
+        fire_idx, sig = self._fire_index_and_signal(barou, bars)
+        if fire_idx is None:
+            pytest.skip("synthetic series produced no Barou signal")
+        fire_bar = bars[fire_idx]
+        market = _bar_to_market(fire_bar, fire_idx)
+        t = barou.observe(market, FullLedger())
+        base_conv = float(t.confidence_in_thought)
+        barou_dir = sig.direction.value
+        # Bachira matches Barou's direction -- H1 must skip.
+        ws = self._make_workspace_snapshot(
+            tick_id=fire_idx, as_of=fire_bar.time,
+            peer_thoughts=[self._make_bachira_thought(
+                tick_id=fire_idx, as_of=fire_bar.time,
+                direction=barou_dir,
+            )],
+        )
+        p = barou.intend(market, t, workspace=ws)
+        assert p is not None
+        r = p.rationale
+        assert r["barou_lone_conviction_claim"] is False
+        assert r["barou_lone_conviction_lift_applied"] == 0.0
+        assert r["barou_v1_1_bachira_read_present"] is True
+        assert r["barou_v1_1_bachira_same_direction"] is True
+        assert r["_yield_reason"] == "peer_claimed_slot_no_lift"
+        assert p.conviction == pytest.approx(base_conv, abs=1e-9)
+
+    def test_h1_default_when_workspace_unavailable(self):
+        """No workspace snapshot passed -> yield_reason=workspace_unavailable
+        and no lift applied. Preserves backward-compat with contexts
+        that don't wire F21.
+        """
+        bars = _build_synthetic_usdcad_bars(600)
+        barou = _make_barou()
+        barou.prepare("USDCAD", bars)
+        fire_idx, _ = self._fire_index_and_signal(barou, bars)
+        if fire_idx is None:
+            pytest.skip("synthetic series produced no Barou signal")
+        fire_bar = bars[fire_idx]
+        market = _bar_to_market(fire_bar, fire_idx)
+        t = barou.observe(market, FullLedger())
+        p = barou.intend(market, t, workspace=None)
+        assert p is not None
+        r = p.rationale
+        assert r["barou_lone_conviction_claim"] is False
+        assert r["barou_lone_conviction_lift_applied"] == 0.0
+        assert r["barou_workspace_snapshot_ok"] is False
+        assert r["_yield_reason"] == "workspace_unavailable"
+
+    def test_h1_stacks_on_devour_when_both_fire(self):
+        """H1 and existing devour mechanic are ORTHOGONAL -- when both
+        fire, the conviction lift stacks (capped at 1.0). Interaction
+        is explicitly documented in PROTOCOL sec 3.
+        """
+        from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+            BAROU_V1_1_LONE_CONVICTION_LIFT, BAROU_V1_DEVOUR_LIFT,
+        )
+        bars = _build_synthetic_usdcad_bars(600)
+        barou = _make_barou()
+        barou.prepare("USDCAD", bars)
+        fire_idx, sig = self._fire_index_and_signal(barou, bars)
+        if fire_idx is None:
+            pytest.skip("synthetic series produced no Barou signal")
+        fire_bar = bars[fire_idx]
+        fire_direction = sig.direction.value
+        # Isagi disagrees at high conviction (devour will fire).
+        isagi_direction = "short" if fire_direction == "long" else "long"
+        isagi_coord = Coordinate(
+            agent_id="isagi_yoichi", symbol="USDCAD",
+            price_lo=float(fire_bar.close) - 0.0010,
+            price_hi=float(fire_bar.close) + 0.0010,
+            time_start=fire_bar.time - timedelta(hours=4),
+            time_end=fire_bar.time + timedelta(hours=20),
+            vol_band=(0.5, 2.0),
+            regime_predicate="D1_trend_against",
+            expected_strength=0.85, direction_bias=isagi_direction,
+            rationale={
+                "entry": float(fire_bar.close),
+                "stop": float(fire_bar.close) - 0.0010,
+                "take_profit": float(fire_bar.close) + 0.0015,
+            },
+        )
+        isagi_thought = Thought(
+            schema_version=SCHEMA_VERSION,
+            agent_id="isagi_yoichi", tick_id=fire_idx - 1,
+            timestamp=bars[fire_idx - 1].time, symbol="USDCAD",
+            narrative="prior isagi", tags=["zone_d1_against"],
+            confidence_in_thought=0.85,
+            expected_action=f"{isagi_direction}_on_H4_close",
+            coordinate=isagi_coord,
+            decision_horizon=bars[fire_idx - 1].time,
+            ttl_ticks=6, references=[],
+        )
+        ledger = FullLedger()
+        ledger.append(isagi_thought)
+        market = _bar_to_market(fire_bar, fire_idx)
+        # Workspace has NO bachira -> H1 fires. Ledger has isagi
+        # disagreeing -> devour fires (in observe()).
+        t = barou.observe(market, ledger)
+        assert "barou_devour_applied" in t.tags
+        base_conv_after_devour = float(t.confidence_in_thought)
+        ws = self._make_workspace_snapshot(
+            tick_id=fire_idx, as_of=fire_bar.time, peer_thoughts=[],
+        )
+        p = barou.intend(market, t, workspace=ws)
+        assert p is not None
+        r = p.rationale
+        assert r["devour_applied"] is True
+        assert r["barou_lone_conviction_claim"] is True
+        # Final conviction = base_after_devour + H1 lift, capped at 1.0.
+        expected_conv = min(
+            1.0,
+            base_conv_after_devour + BAROU_V1_1_LONE_CONVICTION_LIFT,
+        )
+        assert p.conviction == pytest.approx(expected_conv, abs=1e-9)

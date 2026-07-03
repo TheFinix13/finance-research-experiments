@@ -109,6 +109,20 @@ BAROU_V1_CONV_CAP: float = 1.0
 # couldn't" story-beat. See reviews/g7_v1_checkpoint_verdict_walk-
 # forward-baseline.md.
 
+# ---------------------------------------------------------------------------
+# Phase W-barou v1.1 (2026-07-03) -- lone-conviction claim mechanic.
+# See ``experiments/phase_w_barou/PROTOCOL.md`` H1.
+# ---------------------------------------------------------------------------
+BAROU_V1_1_LONE_CONVICTION_LIFT: float = 0.10  # mirrors Rin's LONE_READ_LIFT
+BAROU_V1_1_CONV_CAP: float = BAROU_V1_CONV_CAP  # explicit alias for readability
+BAROU_BACHIRA_AGENT_ID: str = "bachira_meguru"  # who we read for H1 gate
+
+# H1 fires when Bachira did NOT publish a same-direction thought on
+# Barou's symbol at the tick barrier -- i.e. Barou's read is genuinely
+# solo (or a counter-conviction opportunity vs Bachira's opposite read).
+# When Bachira DID publish same-direction, H1 skips -- existing devour
+# mechanic still applies. See PROTOCOL sec 3 for the decision table.
+
 BAROU_V1_CANON_ROLE = CanonRole(
     canon_player="barou_shoei",
     weapon="lone_wolf_baseline_zone_usdcad",
@@ -346,9 +360,19 @@ class A7BarouV1(BaseStriker):
         horizon = market.as_of + timedelta(
             hours=float(self.canon_role.target_hold_hours),
         )
-        # F21 workspace read -- confirm Isagi's live USDCAD direction.
+        # F21 workspace read -- confirm Isagi's live USDCAD direction
+        # AND read Bachira's same-symbol thought for Phase W-barou H1.
         workspace_isagi_direction: str | None = None
         workspace_isagi_disagrees: bool | None = None
+        # Phase W-barou v1.1 (2026-07-03): H1 lone-conviction claim.
+        # See experiments/phase_w_barou/PROTOCOL.md sec 3.
+        bachira_read_present: bool = False
+        bachira_same_direction: bool = False
+        bachira_direction: str | None = None
+        lone_conviction_active: bool = False
+        lone_conviction_lift_applied: float = 0.0
+        yield_reason: str = "workspace_unavailable"
+        workspace_snapshot_ok: bool = workspace is not None
         if workspace is not None:
             latest_by_agent = workspace.latest_by_agent(symbol=market.symbol)
             isagi_t = latest_by_agent.get(BAROU_ISAGI_AGENT_ID)
@@ -358,6 +382,39 @@ class A7BarouV1(BaseStriker):
                     workspace_isagi_disagrees = (
                         workspace_isagi_direction != direction
                     )
+            # H1 gate: read Bachira's latest same-symbol thought.
+            bachira_t = latest_by_agent.get(BAROU_BACHIRA_AGENT_ID)
+            if bachira_t is not None and bachira_t.coordinate is not None:
+                bachira_direction = str(bachira_t.coordinate.direction_bias)
+                if bachira_direction in ("long", "short"):
+                    bachira_read_present = True
+                    bachira_same_direction = (bachira_direction == direction)
+            # H1 decision table:
+            #   bachira_read_present=False        -> H1 fires (genuine solo)
+            #   bachira_same_direction=False      -> H1 fires (counter-conviction)
+            #   bachira_same_direction=True       -> H1 skips (default devour path)
+            if not bachira_read_present:
+                lone_conviction_active = True
+                yield_reason = "peer_did_not_read_this_setup"
+            elif not bachira_same_direction:
+                lone_conviction_active = True
+                yield_reason = "peer_did_not_read_this_setup"
+            else:
+                yield_reason = "peer_claimed_slot_no_lift"
+            if lone_conviction_active:
+                lone_conviction_lift_applied = BAROU_V1_1_LONE_CONVICTION_LIFT
+                conviction = min(
+                    BAROU_V1_1_CONV_CAP,
+                    conviction + BAROU_V1_1_LONE_CONVICTION_LIFT,
+                )
+                log.debug(
+                    "[barou v1.1] H1 lone-conviction claim @ tick=%d %s "
+                    "(%s): bachira_read=%s bachira_dir=%s conviction "
+                    "+%.2f -> %.2f",
+                    market.tick_id, market.symbol, direction,
+                    bachira_read_present, bachira_direction,
+                    BAROU_V1_1_LONE_CONVICTION_LIFT, conviction,
+                )
         meta = getattr(sig, "meta", {}) or {}
         devour_applied = "barou_devour_applied" in my_recent_thought.tags
         rationale: dict[str, Any] = {
@@ -378,9 +435,23 @@ class A7BarouV1(BaseStriker):
             # because Isagi's conviction gap absorbs the TIER_BIAS margin.
             # See G7 PROTOCOL sec 11.9-postmortem 2026-07-02.
             "barou_solo_king_specialist": bool(devour_applied),
+            # Phase W-barou v1.1 (2026-07-03): H1 lone-conviction claim.
+            # See experiments/phase_w_barou/PROTOCOL.md sec 4.
+            "barou_lone_conviction_claim": bool(lone_conviction_active),
+            "barou_lone_conviction_lift_applied": float(
+                lone_conviction_lift_applied
+            ),
+            "barou_v1_1_bachira_read_present": bool(bachira_read_present),
+            "barou_v1_1_bachira_same_direction": bool(
+                bachira_same_direction
+            ),
+            "barou_v1_1_bachira_direction": bachira_direction,
+            "barou_workspace_snapshot_ok": bool(workspace_snapshot_ok),
+            "_yield_reason": yield_reason,
             "doctrine_ref": (
                 "06-blue-lock-doctrine.md sec 3.4 (devour) + G7 PROTOCOL "
-                "sec 11.9 Phase V-b null result (2026-07-02)"
+                "sec 11.9 Phase V-b null result (2026-07-02) + Phase "
+                "W-barou v1.1 PROTOCOL (2026-07-03)"
             ),
             "empirical_prior": "E005 USDCAD baseline-zone +4.63 pips/trade",
         }
