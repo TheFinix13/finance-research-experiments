@@ -1,4 +1,170 @@
-# AI Context — finance research experiments (updated 2026-07-03 04:07 UTC, Phase 3 C2/C3 running + Phase 5 shadow-HRP input builder landed + Phase V-iterate pre-reg template + Phase 6c HALTED + heartbeat-monitor rule tightened to alwaysApply=true)
+# AI Context — finance research experiments (updated 2026-07-03 09:55 UTC, Phase 3 C2/C3 LANDED + Role Registry v1 LANDED + Phase W-barou v1.1 NULL RESULT + Kunigami retirement pending user sign-off + Phi5 Arm 3/4 escalation pending)
+
+## 2026-07-03 morning — Phase 3 verdict + Role Registry v1 + Phase W-barou v1.1 NULL
+
+Five commits (`314cca4`, `3c1ce7d`, `d81bd46`, `a9706e5`) landed in this
+session, plus two hotfix commits (`21f8522`, `884985e`) for the C2/C3
+aggregator.
+
+**Verdict summary:**
+
+| Deliverable | Status | Commit | Numbers |
+|---|:---:|---|---|
+| Phase 3 C2/C3 verdict on-disk | ✅ | `314cca4` | 8/8 replays; Bachira C3 fail (84.1% cannibalisation on Barou) |
+| Role Registry v1 (C7/C8/C9 + role labels + retention) | ✅ | `3c1ce7d` | Nagi = finisher retained; Kunigami = retirement candidate (only one) |
+| Kunigami retirement decision doc | ✅ | `d81bd46` | Options A/B/C, recommend A. Awaits user sign-off. |
+| Phase W-barou v1.1 code + tests | ✅ | `d81bd46` | H1 lands, H2 deferred to Phi5 Arm 4 |
+| walk-forward-post-W verdict | ✅ **NULL** | `a9706e5` | byte-identical to post-V; §11.11 postmortem |
+
+Full sim test suite: **726 pass / 4 skipped** at commit `a9706e5`.
+
+Phase 3 C2/C3 compute completed (all 8 replays, ~16h wall-clock vs
+~32h estimate). Two aggregator hotfixes shipped: TQS schema
+(`21f8522`) + strongest-lift picker (`884985e`). Final verdict on
+disk committed `314cca4`.
+
+### Role Registry v1 (`3c1ce7d`) — companion test to G7 v1
+
+`experiments/G7_role_registry_v1/PROTOCOL.md` pre-registered new
+criteria C7 (incoming chemistry), C8 (workspace-signal impact via
+v1 proxy), C9 (trade-volume floor), plus role labels and retention
+rule. Post-V verdict (`reviews/g7_role_registry_verdict_post-V.md`):
+
+- **Nagi** → `finisher, workspace_catalyst` — RETAINED. 3 peers
+  lift him (Bachira +0.1979, Rin +0.0886, Reo +0.0719 TQS). Blue-
+  Lock star-finisher intuition validated on real data.
+- **Kunigami** → `retirement_candidate` — NOT RETAINED. C8
+  workspace_impact = 0.0 exactly (no peer moves when Kunigami is
+  removed). Only agent flagged for retirement.
+- **Barou** → `workspace_catalyst` — RETAINED on single thin axis
+  (C8=151.3 eps). Motivates Phase W-barou to broaden his footprint.
+- **Bachira** → `chemistry_catalyst, workspace_catalyst` but NOT
+  RETAINED under strict retention rule (C3 fail via 84.1% Barou
+  cannibalisation). Aggregator-level issue, not agent-level —
+  addressable via Phi5 Arm 3/4.
+
+C8 v1 uses peer-delta magnitude proxy because true F22c
+`interpreted_signal_family` citation counts are NOT persisted in
+post-V artifacts (see PROTOCOL §12 amendment note). Cleanly
+separates Reo (245 eps, real gatekeeper) from Kunigami (0.0 eps,
+dead-weight publisher). Kunigami decision doc drafted
+(`DECISION_kunigami.md`) laying out Options A retire /
+B re-evolve / C wait for C8 v2 — recommends A pending sign-off.
+
+Also fixed two data-availability bugs in `compute_c7` /
+`compute_c8_proxy` discovered during test authoring (missing lo1
+caches were being treated as "peer stats went to zero", producing
+false positives). Both functions now skip peers with no lo1 cache
+and mark the entire agent as unmeasurable if their own lo1 cache
+is missing. 15 new tests locked in the behaviour.
+
+### Phase W-barou v1.1 (`d81bd46`) — H1 lone-conviction claim
+
+Blue-Lock evolution for Barou (Rin Phase T-evolve precedent).
+`experiments/phase_w_barou/PROTOCOL.md` pre-registers H1 (LANDED)
++ H2 (DEFERRED to v1.2 pending Phi5 Arm 4 multi-position support).
+
+H1 mechanic in `sim/agents/a07_barou.py`:
+
+- Read Bachira's latest same-symbol thought via `latest_by_agent`.
+- If Bachira DIDN'T publish, or published OPPOSITE direction →
+  Barou's read is genuinely solo, apply
+  `BAROU_V1_1_LONE_CONVICTION_LIFT = 0.10` (mirrors Rin's
+  LONE_READ_LIFT exactly).
+- If Bachira SAME direction → H1 skips, existing devour path
+  handles it unchanged. Guarantees post-W vs post-V isolates
+  H1 contribution.
+- H1 stacks orthogonally on devour lift (both fire → both applied,
+  capped at 1.0).
+
+Locked acceptance test (§5): LAND if `n_trades ≥ 250 AND
+mean_tqs ≥ 0.34 AND bachira_barou_cannibalisation ≤ 0.60`.
+REVERT if `n_trades < 100 OR mean_tqs < 0.30`. AMBIGUOUS → no
+auto-land.
+
+5 new tests locked H1 behaviour (fires when no bachira, fires when
+opposite, skips when same-dir, defaults when workspace unavailable,
+stacks with devour). Full sim suite: **726 pass, 4 skipped**.
+
+### Phase W-barou v1.1 verdict — NULL RESULT (`a9706e5`)
+
+walk-forward-post-W completed 2026-07-03 09:47 UTC (53 min wall-clock,
+heartbeat healthy throughout — recovered from an initial nohup&
+launch that silently died; re-launched via Shell backgrounding to
+success).
+
+Trade-level outcomes are BYTE-IDENTICAL to post-V. Every per-agent
+n_trades and mean_TQS matches to four decimal places:
+
+    isagi     1923/0.3568 (V) → 1923/0.3568 (W) : delta 0/+0.0000
+    bachira   2542/0.4026        2542/0.4026     : delta 0/+0.0000
+    rin        421/0.3940         421/0.3940     : delta 0/+0.0000
+    chigiri    430/0.2585         430/0.2585     : delta 0/+0.0000
+    nagi       135/0.4313         135/0.4313     : delta 0/+0.0000
+    barou      153/0.3469         153/0.3469     : delta 0/+0.0000
+    squad     5604/-              5604/-         : delta 0/+0.0000
+
+Same 336707 thoughts, 28842 proposals, byte-identical workspace_counts.
+
+Per PROTOCOL §5 thresholds → AMBIGUOUS zone (barou n_trades 153 above
+REVERT floor of 100 but below LAND floor of 250; mean_tqs 0.347 above
+both floors but LAND requires ALL three including cannibalisation).
+
+Root cause (same as Phase V-b sec 11.9-postmortem): H1 fires ONLY on
+ticks where Bachira did NOT compete. Those are the ticks where Barou
+was ALREADY winning R6 as sole proposer -- +0.10 conviction changes
+nothing. Ticks where Barou is BLOCKED (Bachira same-direction same-
+slot) fall through H1's SKIP branch, leaving devour to handle them,
+which post-V already showed doesn't work.
+
+Formal root cause: **aggregator single-slot mutex, not agent
+conviction.** Cannot be fixed at the agent level.
+
+Resolution:
+* Leave H1 code in place as DIAGNOSTIC-ONLY. Rationale fields
+  (barou_lone_conviction_claim, barou_v1_1_bachira_read_present,
+  barou_v1_1_bachira_same_direction, _yield_reason) feed Phi5 Arm
+  3/4 pre-registration.
+* Do NOT ship Phase W-barou-v1.2 at agent-conviction level.
+* Escalate to Phi5 Arm 3 (same-direction merge) as primary
+  intervention, Arm 4 (multi-position) as fallback.
+
+G7 v1 PROTOCOL amended with sec 11.10 (Role Registry v1 landing) and
+sec 11.11 (Phase W-barou null result).
+
+### What is next (blocked)
+
+**Kunigami retirement decision** -- awaits user sign-off on
+`experiments/G7_role_registry_v1/DECISION_kunigami.md` (Options A
+retire [recommended] / B re-evolve / C wait for C8 v2). Recommended
+action: Option A + amendment sec 11.12 + regenerate walk-forward-post-
+kunigami-retirement (baseline for Phi5 Arm 3/4 re-sim).
+
+**Phi5 Arm 3/4/5 walk-forward** -- BLOCKED on engineering work:
+1. Aggregator wiring in _drive_squad_replay to accept an aggregator
+   parameter (currently hard-wired to Phi4.1).
+2. Fresh walk-forward-post-V-with-proposals output (current cache
+   only saves trades.jsonl, not proposals.jsonl -- Phi5 Arms 1/2
+   post-hoc gates need the wider proposal universe).
+3. Pre-registration amendment locking Phi5 arm order-of-run against
+   the post-V + post-W numbers (must be locked BEFORE new numbers
+   are known).
+
+This is next-session work; the Phi5 arm modules themselves are
+already implemented (`sim/core/aggregator_arms/{hrp,tqs_floor,
+same_direction_merge,multi_position,combined}.py`) but not yet
+wired into a fresh walk-forward driver.
+
+**True F22c citation counts (C8 v2)** -- needs intents.jsonl
+persistence in run_phi4_squad_gate.py + re-run walk-forward-post-V.
+See Role Registry v1 PROTOCOL sec 12 amendment note. Only critical
+if Kunigami retirement is questioned on the v1 proxy.
+
+**Phase 7 player scouting reports** -- still blocked on Phi5 verdict.
+
+---
+
+## Earlier: 2026-07-03 04:07 UTC (superseded — kept for lineage)
 
 ## 2026-07-03 evening — Phase 6c halt + Phase 5 scaffold + Phase V-iterate template
 
