@@ -28,3 +28,7 @@ programs/M001_multi_agent_ensemble/reviews/logs/
 # G7 replay caches (large binary intermediate results; regenerated on rerun)
 programs/M001_multi_agent_ensemble/reviews/g7_replay_cache_*/
 
+
+# Phase 3 leave-one-out replay caches (large, reproducible from run_g7_leave_one_out.py)
+programs/M001_multi_agent_ensemble/reviews/g7_leave_one_out_post-V/lo1_*/trades.jsonl
+programs/M001_multi_agent_ensemble/reviews/g7_leave_one_out_post-V/lo1_*/shadow_trades.jsonl

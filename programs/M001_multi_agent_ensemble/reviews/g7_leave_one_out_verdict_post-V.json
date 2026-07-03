@@ -1,0 +1,400 @@
+{
+  "tag": "post-V",
+  "generated_at_utc": "2026-07-03T07:14:38.565667+00:00",
+  "baseline_stats": {
+    "bachira_meguru": {
+      "n_trades": 2542.0,
+      "mean_tqs": 0.4025636630479434
+    },
+    "nagi_seishiro": {
+      "n_trades": 135.0,
+      "mean_tqs": 0.43131216726030147
+    },
+    "isagi_yoichi": {
+      "n_trades": 1923.0,
+      "mean_tqs": 0.3567900750956134
+    },
+    "itoshi_rin": {
+      "n_trades": 421.0,
+      "mean_tqs": 0.3940189215743256
+    },
+    "barou_shoei": {
+      "n_trades": 153.0,
+      "mean_tqs": 0.3469227504345721
+    },
+    "chigiri_hyoma": {
+      "n_trades": 430.0,
+      "mean_tqs": 0.2584870214393914
+    }
+  },
+  "per_excluded_stats": {
+    "isagi_yoichi": {
+      "bachira_meguru": {
+        "n_trades": 4365.0,
+        "mean_tqs": 0.38927949752254254
+      },
+      "nagi_seishiro": {
+        "n_trades": 136.0,
+        "mean_tqs": 0.4295971947027502
+      },
+      "itoshi_rin": {
+        "n_trades": 420.0,
+        "mean_tqs": 0.3914924634732341
+      },
+      "chigiri_hyoma": {
+        "n_trades": 473.0,
+        "mean_tqs": 0.25087139646580514
+      }
+    },
+    "bachira_meguru": {
+      "itoshi_rin": {
+        "n_trades": 478.0,
+        "mean_tqs": 0.41822218952328644
+      },
+      "isagi_yoichi": {
+        "n_trades": 2040.0,
+        "mean_tqs": 0.3535142418486378
+      },
+      "barou_shoei": {
+        "n_trades": 961.0,
+        "mean_tqs": 0.4049751161255052
+      },
+      "chigiri_hyoma": {
+        "n_trades": 462.0,
+        "mean_tqs": 0.25770464569109264
+      },
+      "nagi_seishiro": {
+        "n_trades": 41.0,
+        "mean_tqs": 0.23341115110385102
+      }
+    },
+    "itoshi_rin": {
+      "bachira_meguru": {
+        "n_trades": 2629.0,
+        "mean_tqs": 0.4001361839530843
+      },
+      "isagi_yoichi": {
+        "n_trades": 2434.0,
+        "mean_tqs": 0.35677864408619775
+      },
+      "barou_shoei": {
+        "n_trades": 153.0,
+        "mean_tqs": 0.3469227504345721
+      },
+      "chigiri_hyoma": {
+        "n_trades": 448.0,
+        "mean_tqs": 0.2654042392102906
+      },
+      "nagi_seishiro": {
+        "n_trades": 52.0,
+        "mean_tqs": 0.3427192077800577
+      }
+    },
+    "chigiri_hyoma": {
+      "bachira_meguru": {
+        "n_trades": 2647.0,
+        "mean_tqs": 0.4011966383494086
+      },
+      "nagi_seishiro": {
+        "n_trades": 130.0,
+        "mean_tqs": 0.4423230653849054
+      },
+      "isagi_yoichi": {
+        "n_trades": 1976.0,
+        "mean_tqs": 0.35809435064357503
+      },
+      "itoshi_rin": {
+        "n_trades": 440.0,
+        "mean_tqs": 0.40276198025364307
+      },
+      "barou_shoei": {
+        "n_trades": 153.0,
+        "mean_tqs": 0.3469227504345721
+      }
+    },
+    "reo_mikage": {
+      "bachira_meguru": {
+        "n_trades": 2528.0,
+        "mean_tqs": 0.4016887685982263
+      },
+      "nagi_seishiro": {
+        "n_trades": 270.0,
+        "mean_tqs": 0.3593802610069074
+      },
+      "isagi_yoichi": {
+        "n_trades": 1906.0,
+        "mean_tqs": 0.35653613508041254
+      },
+      "itoshi_rin": {
+        "n_trades": 376.0,
+        "mean_tqs": 0.37978567625057424
+      },
+      "barou_shoei": {
+        "n_trades": 154.0,
+        "mean_tqs": 0.3454626682899723
+      },
+      "chigiri_hyoma": {
+        "n_trades": 415.0,
+        "mean_tqs": 0.2619363328763211
+      }
+    },
+    "nagi_seishiro": {
+      "bachira_meguru": {
+        "n_trades": 2569.0,
+        "mean_tqs": 0.4016720778275161
+      },
+      "isagi_yoichi": {
+        "n_trades": 1935.0,
+        "mean_tqs": 0.3564941017280023
+      },
+      "itoshi_rin": {
+        "n_trades": 437.0,
+        "mean_tqs": 0.4020685083427959
+      },
+      "barou_shoei": {
+        "n_trades": 154.0,
+        "mean_tqs": 0.3454626682899723
+      },
+      "chigiri_hyoma": {
+        "n_trades": 437.0,
+        "mean_tqs": 0.2618127844602318
+      }
+    },
+    "barou_shoei": {
+      "bachira_meguru": {
+        "n_trades": 2652.0,
+        "mean_tqs": 0.40011523367191615
+      },
+      "nagi_seishiro": {
+        "n_trades": 137.0,
+        "mean_tqs": 0.43783356982655186
+      },
+      "isagi_yoichi": {
+        "n_trades": 1960.0,
+        "mean_tqs": 0.3542821458488875
+      },
+      "itoshi_rin": {
+        "n_trades": 421.0,
+        "mean_tqs": 0.3940189215743256
+      },
+      "chigiri_hyoma": {
+        "n_trades": 430.0,
+        "mean_tqs": 0.2584870214393914
+      }
+    },
+    "kunigami_rensuke": {
+      "bachira_meguru": {
+        "n_trades": 2542.0,
+        "mean_tqs": 0.4025636630479434
+      },
+      "nagi_seishiro": {
+        "n_trades": 135.0,
+        "mean_tqs": 0.43131216726030147
+      },
+      "isagi_yoichi": {
+        "n_trades": 1923.0,
+        "mean_tqs": 0.3567900750956134
+      },
+      "itoshi_rin": {
+        "n_trades": 421.0,
+        "mean_tqs": 0.3940189215743256
+      },
+      "barou_shoei": {
+        "n_trades": 153.0,
+        "mean_tqs": 0.3469227504345721
+      },
+      "chigiri_hyoma": {
+        "n_trades": 430.0,
+        "mean_tqs": 0.2584870214393914
+      }
+    }
+  },
+  "c2_c3": {
+    "isagi_yoichi": {
+      "excluded_agent_id": "isagi_yoichi",
+      "per_peer_delta_trades": {
+        "bachira_meguru": -1823.0,
+        "nagi_seishiro": -1.0,
+        "itoshi_rin": 1.0,
+        "chigiri_hyoma": -43.0
+      },
+      "per_peer_delta_tqs": {
+        "bachira_meguru": 0.013284165525400848,
+        "nagi_seishiro": 0.0017149725575512642,
+        "itoshi_rin": 0.0025264581010915332,
+        "chigiri_hyoma": 0.007615624973586255
+      },
+      "c2_pass": true,
+      "c2_reason": "peer 'bachira_meguru' lifted by presence: delta_tqs=+0.0133 delta_trades=-1823.0 (strongest on tqs, 2.7x epsilon)",
+      "c3_worst_reduction_ratio": 0.41764032073310425,
+      "c3_worst_peer": "bachira_meguru",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.418 on 'bachira_meguru'; below threshold 0.5"
+    },
+    "bachira_meguru": {
+      "excluded_agent_id": "bachira_meguru",
+      "per_peer_delta_trades": {
+        "itoshi_rin": -57.0,
+        "isagi_yoichi": -117.0,
+        "barou_shoei": -808.0,
+        "chigiri_hyoma": -32.0,
+        "nagi_seishiro": 94.0
+      },
+      "per_peer_delta_tqs": {
+        "itoshi_rin": -0.024203267948960827,
+        "isagi_yoichi": 0.0032758332469756124,
+        "barou_shoei": -0.05805236569093308,
+        "chigiri_hyoma": 0.0007823757482987581,
+        "nagi_seishiro": 0.19790101615645045
+      },
+      "c2_pass": true,
+      "c2_reason": "peer 'nagi_seishiro' lifted by presence: delta_tqs=+0.1979 delta_trades=+94.0 (strongest on trades, 94.0x epsilon)",
+      "c3_worst_reduction_ratio": 0.8407908428720083,
+      "c3_worst_peer": "barou_shoei",
+      "c3_pass": false,
+      "c3_reason": "CANNIBALISATION: peer 'barou_shoei' traded 84.1% more when 'bachira_meguru' was absent"
+    },
+    "itoshi_rin": {
+      "excluded_agent_id": "itoshi_rin",
+      "per_peer_delta_trades": {
+        "bachira_meguru": -87.0,
+        "isagi_yoichi": -511.0,
+        "barou_shoei": 0.0,
+        "chigiri_hyoma": -18.0,
+        "nagi_seishiro": 83.0
+      },
+      "per_peer_delta_tqs": {
+        "bachira_meguru": 0.002427479094859075,
+        "isagi_yoichi": 1.1431009415641125e-05,
+        "barou_shoei": 0.0,
+        "chigiri_hyoma": -0.006917217770899209,
+        "nagi_seishiro": 0.08859295948024376
+      },
+      "c2_pass": true,
+      "c2_reason": "peer 'nagi_seishiro' lifted by presence: delta_tqs=+0.0886 delta_trades=+83.0 (strongest on trades, 83.0x epsilon)",
+      "c3_worst_reduction_ratio": 0.20994248151191455,
+      "c3_worst_peer": "isagi_yoichi",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.210 on 'isagi_yoichi'; below threshold 0.5"
+    },
+    "chigiri_hyoma": {
+      "excluded_agent_id": "chigiri_hyoma",
+      "per_peer_delta_trades": {
+        "bachira_meguru": -105.0,
+        "nagi_seishiro": 5.0,
+        "isagi_yoichi": -53.0,
+        "itoshi_rin": -19.0,
+        "barou_shoei": 0.0
+      },
+      "per_peer_delta_tqs": {
+        "bachira_meguru": 0.00136702469853478,
+        "nagi_seishiro": -0.01101089812460393,
+        "isagi_yoichi": -0.001304275547961642,
+        "itoshi_rin": -0.008743058679317461,
+        "barou_shoei": 0.0
+      },
+      "c2_pass": true,
+      "c2_reason": "peer 'nagi_seishiro' lifted by presence: delta_tqs=-0.0110 delta_trades=+5.0 (strongest on trades, 5.0x epsilon)",
+      "c3_worst_reduction_ratio": 0.04318181818181818,
+      "c3_worst_peer": "itoshi_rin",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.043 on 'itoshi_rin'; below threshold 0.5"
+    },
+    "reo_mikage": {
+      "excluded_agent_id": "reo_mikage",
+      "per_peer_delta_trades": {
+        "bachira_meguru": 14.0,
+        "nagi_seishiro": -135.0,
+        "isagi_yoichi": 17.0,
+        "itoshi_rin": 45.0,
+        "barou_shoei": -1.0,
+        "chigiri_hyoma": 15.0
+      },
+      "per_peer_delta_tqs": {
+        "bachira_meguru": 0.0008748944497171118,
+        "nagi_seishiro": 0.07193190625339407,
+        "isagi_yoichi": 0.00025394001520084863,
+        "itoshi_rin": 0.014233245323751365,
+        "barou_shoei": 0.0014600821445998058,
+        "chigiri_hyoma": -0.003449311436929725
+      },
+      "c2_pass": true,
+      "c2_reason": "peer 'itoshi_rin' lifted by presence: delta_tqs=+0.0142 delta_trades=+45.0 (strongest on trades, 45.0x epsilon)",
+      "c3_worst_reduction_ratio": 0.5,
+      "c3_worst_peer": "nagi_seishiro",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.500 on 'nagi_seishiro'; below threshold 0.5"
+    },
+    "nagi_seishiro": {
+      "excluded_agent_id": "nagi_seishiro",
+      "per_peer_delta_trades": {
+        "bachira_meguru": -27.0,
+        "isagi_yoichi": -12.0,
+        "itoshi_rin": -16.0,
+        "barou_shoei": -1.0,
+        "chigiri_hyoma": -7.0
+      },
+      "per_peer_delta_tqs": {
+        "bachira_meguru": 0.0008915852204272601,
+        "isagi_yoichi": 0.00029597336761111315,
+        "itoshi_rin": -0.008049586768470285,
+        "barou_shoei": 0.0014600821445998058,
+        "chigiri_hyoma": -0.003325763020840422
+      },
+      "c2_pass": false,
+      "c2_reason": "no peer lifted by more than epsilon (tqs>0.005, trades>1.0); best lift on 'barou_shoei' at 0.292 epsilon-units",
+      "c3_worst_reduction_ratio": 0.036613272311212815,
+      "c3_worst_peer": "itoshi_rin",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.037 on 'itoshi_rin'; below threshold 0.5"
+    },
+    "barou_shoei": {
+      "excluded_agent_id": "barou_shoei",
+      "per_peer_delta_trades": {
+        "bachira_meguru": -110.0,
+        "nagi_seishiro": -2.0,
+        "isagi_yoichi": -37.0,
+        "itoshi_rin": 0.0,
+        "chigiri_hyoma": 0.0
+      },
+      "per_peer_delta_tqs": {
+        "bachira_meguru": 0.002448429376027239,
+        "nagi_seishiro": -0.006521402566250389,
+        "isagi_yoichi": 0.002507929246725882,
+        "itoshi_rin": 0.0,
+        "chigiri_hyoma": 0.0
+      },
+      "c2_pass": false,
+      "c2_reason": "no peer lifted by more than epsilon (tqs>0.005, trades>1.0); best lift on 'isagi_yoichi' at 0.502 epsilon-units",
+      "c3_worst_reduction_ratio": 0.04147812971342383,
+      "c3_worst_peer": "bachira_meguru",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.041 on 'bachira_meguru'; below threshold 0.5"
+    },
+    "kunigami_rensuke": {
+      "excluded_agent_id": "kunigami_rensuke",
+      "per_peer_delta_trades": {
+        "bachira_meguru": 0.0,
+        "nagi_seishiro": 0.0,
+        "isagi_yoichi": 0.0,
+        "itoshi_rin": 0.0,
+        "barou_shoei": 0.0,
+        "chigiri_hyoma": 0.0
+      },
+      "per_peer_delta_tqs": {
+        "bachira_meguru": 0.0,
+        "nagi_seishiro": 0.0,
+        "isagi_yoichi": 0.0,
+        "itoshi_rin": 0.0,
+        "barou_shoei": 0.0,
+        "chigiri_hyoma": 0.0
+      },
+      "c2_pass": false,
+      "c2_reason": "no peer lifted by more than epsilon (tqs>0.005, trades>1.0); best lift on None at 0.000 epsilon-units",
+      "c3_worst_reduction_ratio": 0.0,
+      "c3_worst_peer": null,
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.000 on None; below threshold 0.5"
+    }
+  }
+}
