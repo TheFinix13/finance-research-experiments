@@ -1,4 +1,111 @@
-# AI Context — finance research experiments (updated 2026-07-03, Phase 3 C2/C3 leave-one-out RUNNING + Phase 6b backfill CLI landed + Phase 6a Dukascopy fetcher + Phase V NULL RESULT reverted + F22 workspace-richness upgrade + Phase T-evolve CONFIRMED + Phase U shadow ledger + heartbeat monitor v2.1)
+# AI Context — finance research experiments (updated 2026-07-03 04:07 UTC, Phase 3 C2/C3 running + Phase 5 shadow-HRP input builder landed + Phase V-iterate pre-reg template + Phase 6c HALTED + heartbeat-monitor rule tightened to alwaysApply=true)
+
+## 2026-07-03 evening — Phase 6c halt + Phase 5 scaffold + Phase V-iterate template
+
+Session-fill work while Phase 3 C2/C3 compute grinds in background
+(pid 27370, replay 1/8 at 95% at write time). Four atomic commits
+land things that DO NOT depend on the C2/C3 verdict; things that do
+are held on disk. Heartbeat monitor rule tightened to
+`alwaysApply=true` across all three linked repos.
+
+### 6c HALTED (`bf461ad`) — DK freeserv endpoint deprecated
+
+Attempted the 2007-2026 backfill against
+`https://freeserv.dukascopy.com/2.0/index.php?path=events/get_events`
+and discovered the endpoint has been retired for anonymous
+consumption. All six URL variants probed (v1 get_calendar_events,
+v2 get_events, v3 no-jsonp, v4 events/calendar, v5 countries=,
+v6 bare) return 403 (default UA) or 204 with `text/html`
+Content-Type (browser UA). The live DK calendar page now iframes
+`https://widgets.dukascopy.com/en/economic-calendar` — a modern
+Angular SPA whose calendar API is served via lazy chunks not
+addressable by static grep.
+
+`STOP_NOTICE.md` documents the six-variant probe table, relaunch
+prerequisites (headless-browser reverse of the widget, or switch
+primary to FF / TE), and the do-NOT list. Zero artifacts written
+to `data/news_calendar/DK/`. Phase 6c is `HALTED-DK-ENDPOINT-
+DEPRECATED` pending Phase 6a-v2 (fresh fetcher against a working
+endpoint).
+
+**Silver lining that DID land:** the endpoint discovery only became
+possible after fixing an SSL cert-verify failure that was blocking
+every request. macOS framework Python doesn't trust system keychain
+roots; certifi-backed context added to
+`sim/regime/dukascopy_fetch.py::_default_urllib_transport`. Real
+fix, keeps the fetcher useful the moment a v2 endpoint is chosen.
+44 dukascopy-fetch tests remain green.
+
+### Phase 5 shadow-HRP input builder (`bafd01b`) — 35 new tests
+
+Ships the input-transformation side of the Phi5 Arm 1 re-sim under
+Amendment §11.3 (arm mechanic unchanged, only input distribution).
+Compute-side re-sim (Phase 6e) still waits on Phase 3 per §11.3
+follow-up ordering.
+
+New module `sim/core/aggregator_arms/hrp_shadow_inputs.py`:
+
+- `WindowBoundary` + `ShadowHrpMetric` (tqs / pnl_pips / r_multiple).
+- `_entry_to_datetime`: coerces `ShadowTradeRecord.entry_time`
+  (typed Any) to native datetime; accepts datetime / pandas
+  Timestamp / ISO string; silent-drops malformed.
+- `bucket_shadow_by_agent_window`: linear-scan bucketing (windows
+  O(10) for M001 panels).
+- `per_agent_window_means_from_shadow`: dict[agent -> chronological
+  list[float]], empty windows SKIPPED (not zero-filled) since
+  `compute_hrp_weights` right-aligns.
+- `per_agent_shadow_trade_counts`: totals ALL shadow trades per
+  agent regardless of rejection_reason.
+- `compute_hrp_weights_from_shadow`: thin composition. All HRP
+  tuning kwargs (min_trades_per_agent, shrinkage, weight_cap,
+  jitter, max_condition_number) pass through verbatim so Phi5
+  protocol §3.2 locked parameters stay frozen.
+
+Statistical-honesty guard: module docstring calls out the known
+upward bias in shadow returns (no R6 concentration cap, no R4
+correlation cap per `shadow_ledger.py`). Bias correction is
+caller-side, not implicit.
+
+35 new tests: entry-time coercion (6), metric extraction (5),
+bucketing (6), window-means (6), trade counts (3), composition
+kwarg propagation (8), wire-not-mechanic equivalence (1). Full sim
+suite: **701 pass / 4 skip** (was 666, +35).
+
+### Phase V-iterate pre-reg TEMPLATE (`fc91571`)
+
+Locks the design frame BEFORE Phase 3 numbers exist so no
+retro-fitting is possible. `experiments/phase_v_iterate/PROTOCOL.md`
+enumerates all four candidate mechanics from G7 §11.9-postmortem:
+
+| Arm | Mechanic | C2/C3-gated precondition |
+|-----|----------|--------------------------|
+| A | Per-tick conviction +0.10 lift | C2 pass with Δ ≥ 0.020 |
+| B | Symbol-conditional slot reservation | C2 pass + 2 peers ≥ 0.40 red |
+| C | Peer-YIELD (Rin analogue) | C2 pass + 0-1 peers ≥ 0.20 |
+| D | Concede (no code change) | C2 fail |
+
+Each arm has full mechanic spec (implementation surface, guard,
+risk). §11 amendment discipline preserved — no in-place threshold
+retuning; a picked-arm FAIL requires a NEW pre-registration.
+Numbers table has explicit TBD cells for C2/C3 fill-in. Status
+`template-pending-c2c3` promotes to `pre-registered` only when
+Phase 3 lands and exactly ONE arm is selected.
+
+### Heartbeat monitor rule → alwaysApply=true (`957df49` + `2982e74` + brain-box `6625324`)
+
+User directive 2026-07-03: standard rule across every workspace.
+Flipped `alwaysApply: false` → `true` and added a non-negotiable
+preamble. Default is "wire the monitor"; skipping requires an
+inline written justification. Two operational details encoded:
+
+- Follow the pipe/shell chain to get the actual interpreter PID
+  (not the wrapping `zsh -c … | tee`).
+- After launch, wait one sample interval (~30-60s) and read the
+  log tail before ending the turn — a broken monitor wire that
+  produces no samples is the same failure mode as no monitor.
+
+Mirrored to both workspace repos (`finance-research-experiments`,
+`multi-pair-trading-agent`) and the brain-box canonical rule.
 
 ## 2026-07-03 — Phase 3: C2/C3 leave-one-out compute LAUNCHED (running)
 
@@ -683,27 +790,32 @@ wired end-to-end; G7 harness scaffolded with C1/C5/C6 live + C2/C3/C4
 stubbed. Bachira-Isagi flagship chemistry landed with 10 contract tests.
 Doctrine v0.5, roster v0.8, evolution ledger updated with 6 RELABEL rows.
 
-**Next immediate goal — sequenced from Phase 3 launch (2026-07-03):**
+**Next immediate goal — sequenced from Phase 3 running (2026-07-03 04:07 UTC):**
 
-1. **Phase 3 C2/C3 leave-one-out compute (RUNNING, ETA ~08:00 UTC).**
-   Job PID 27370 launched 03:31 UTC, 8 sequential replays, heartbeat
-   monitor v2.1 active with 60 s sampling. When done: aggregate on
-   disk → `reviews/g7_c2_c3_verdict_post-V.{md,json}` → amend G7
-   verdict registry rows for post-V + post-F22 → commit atomically.
-   Result decides whether Chigiri/Barou need a Phase V-iterate at all
-   (Option D from postmortem: concede if leave-one-out shows their
-   absence doesn't hurt squad TQS).
-2. **Phase 6c: run the 2007-2026 Dukascopy backfill (~1 h compute
-   session, needs full-network).** Phase 6a fetcher + 6b CLI +
-   writer + manifest all landed. Blocks on user go-ahead (network
-   permission) — the CLI is dry-run tested but not yet blessed for
-   live-hit.
-3. **Phase 5 Φ5 HRP re-sim with F19 variable-lot inputs + shadow-
-   ledger covariance matrix.** Blocked on stable per-agent shadow
-   ledgers (which post-V now provides, subject to the null-result
-   Phase V configuration being permanent).
-4. **Phase 7 player scouting reports.** Blocked on 1+3 completing +
-   any Phase V-iterate decision.
+1. **Phase 3 C2/C3 leave-one-out compute (RUNNING, ETA ~08:30 UTC).**
+   Job PID 27370 launched 03:31 UTC, replay 1/8 at 95%, ~4.7 h more
+   wall-clock. Heartbeat monitor v2.1 active with 60 s sampling.
+   When done: aggregate on disk → `reviews/g7_c2_c3_verdict_post-V.{md,json}`
+   → amend G7 verdict registry rows for post-V + post-F22. THEN
+   promote `experiments/phase_v_iterate/PROTOCOL.md` from
+   `template-pending-c2c3` to `pre-registered` by filling in the
+   TBD cells and picking exactly ONE arm per the mechanic-vs-
+   precondition table (already locked in the template).
+2. **Phase 6a-v2 news fetcher rewrite** (blocked, needs a
+   working-endpoint discovery). Options in
+   `data/news_calendar/STOP_NOTICE.md`: headless-browser reverse
+   of widgets.dukascopy.com, or switch primary to FF
+   (`nfs.faireconomy.media`) / TE (paid). The Phase 6b writer +
+   manifest + CLI (`1b6848c`) will consume whatever new fetcher
+   lands unchanged.
+3. **Phase 5 Φ5 HRP compute-side re-sim (Phase 6e proper).** Input
+   builder side landed (`bafd01b`); the actual walk-forward re-sim
+   against F19-wired squad still waits on Phase 3 per Amendment
+   §11.3 follow-up ordering.
+4. **Phase V-iterate arm implementation + walk-forward-post-V-iterate.**
+   Blocked on Phase 3 verdict — arm choice is deterministic from
+   C2/C3 per the template's precondition table.
+5. **Phase 7 player scouting reports.** Blocked on 3 + 4 completing.
 
 **Backlog (needs pre-reg before touching any parameter):**
 
