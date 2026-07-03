@@ -31,6 +31,21 @@ def _write_trades_jsonl(path: Path, trades: list[dict]) -> None:
 
 
 def _trade(agent_id: str, tqs: float) -> dict:
+    """Trade dict matching the on-disk TradeRecord schema (composite
+    TQS nested under ``tqs_components.tqs``). Kept minimal -- only
+    the fields the aggregator reads are populated."""
+    return {
+        "agent_id": agent_id,
+        "tqs_components": {"tqs": tqs},
+    }
+
+
+def _legacy_trade_top_level_tqs(agent_id: str, tqs: float) -> dict:
+    """Legacy fixture shape from pre-2026-07-03 Phase R scratch caches
+    (composite TQS at top level). The schema-tolerant reader accepts
+    both; a dedicated test locks this behaviour so we don't
+    accidentally break backward compatibility with older on-disk
+    caches."""
     return {"agent_id": agent_id, "tqs": tqs}
 
 
@@ -66,13 +81,66 @@ class TestPerAgentStats:
 
     def test_missing_tqs_counted_but_not_mean(self):
         trades = [
-            {"agent_id": "isagi_yoichi", "tqs": None},
+            {"agent_id": "isagi_yoichi", "tqs_components": {"tqs": None}},
             _trade("isagi_yoichi", 0.4),
         ]
         stats = lo1._per_agent_stats(trades)
         assert stats["isagi_yoichi"]["n_trades"] == 2.0
         # Only the numeric one contributes: mean = 0.4 / 1 = 0.4
         assert stats["isagi_yoichi"]["mean_tqs"] == pytest.approx(0.4)
+
+    def test_extract_tqs_from_tqs_components(self):
+        # Production schema: composite TQS lives at
+        # tqs_components["tqs"]. This is what run_isagi_phi3_gate.py
+        # emits when it serialises a TradeRecord to jsonl.
+        t = {
+            "agent_id": "isagi_yoichi",
+            "tqs_components": {
+                "r": 1.5, "efficiency": 0.7, "time_score": 0.7,
+                "cleanliness": 1.0, "beauty_bonus": 1.0,
+                "tqs": 0.679,
+            },
+        }
+        assert lo1._extract_tqs(t) == pytest.approx(0.679)
+
+    def test_extract_tqs_from_top_level_fallback(self):
+        # Legacy schema (pre-2026-07-03 Phase R scratch caches). The
+        # reader accepts it so older on-disk artefacts still
+        # aggregate correctly.
+        t = _legacy_trade_top_level_tqs("isagi_yoichi", 0.42)
+        assert lo1._extract_tqs(t) == pytest.approx(0.42)
+
+    def test_extract_tqs_missing_both_sources_returns_none(self):
+        assert lo1._extract_tqs({"agent_id": "x"}) is None
+        assert lo1._extract_tqs({"agent_id": "x", "tqs_components": {}}) is None
+        assert lo1._extract_tqs(
+            {"agent_id": "x", "tqs_components": None},
+        ) is None
+
+    def test_extract_tqs_non_numeric_returns_none(self):
+        assert lo1._extract_tqs(
+            {"agent_id": "x", "tqs_components": {"tqs": "0.5"}},
+        ) == pytest.approx(0.5)  # str-of-float is coercible
+        assert lo1._extract_tqs(
+            {"agent_id": "x", "tqs_components": {"tqs": "high"}},
+        ) is None
+        assert lo1._extract_tqs(
+            {"agent_id": "x", "tqs_components": {"tqs": None}, "tqs": "n/a"},
+        ) is None
+
+    def test_per_agent_stats_production_schema_end_to_end(self):
+        # Mixes production schema + legacy schema in one input list
+        # so a partially-migrated cache would still aggregate cleanly.
+        trades = [
+            _trade("isagi_yoichi", 0.3),
+            _legacy_trade_top_level_tqs("isagi_yoichi", 0.5),
+            _trade("bachira_meguru", 0.4),
+        ]
+        stats = lo1._per_agent_stats(trades)
+        assert stats == {
+            "isagi_yoichi": {"n_trades": 2.0, "mean_tqs": pytest.approx(0.4)},
+            "bachira_meguru": {"n_trades": 1.0, "mean_tqs": pytest.approx(0.4)},
+        }
 
 
 # ---------------------------------------------------------------------------

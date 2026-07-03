@@ -337,14 +337,43 @@ def _load_trades_from_jsonl(path: Path) -> list[dict]:
     return out
 
 
+def _extract_tqs(t: dict) -> float | None:
+    """Extract the composite TQS score from a trade dict.
+
+    The on-disk ``TradeRecord`` shape (verified against
+    ``g7_replay_cache_walk-forward-post-V/trades.jsonl`` schema
+    2026-07-03) nests the composite TQS under ``tqs_components.tqs``,
+    not at the top level. Older internal fixtures (e.g. some Phase R
+    scratch caches) put ``tqs`` at top level; we accept both to keep
+    the aggregator forward-compatible.
+
+    Returns ``None`` for missing / non-numeric values so the caller
+    can distinguish "no TQS" from "TQS = 0.0".
+    """
+    for candidate in (
+        t.get("tqs_components", {}).get("tqs") if isinstance(t.get("tqs_components"), dict) else None,
+        t.get("tqs"),
+    ):
+        if candidate is None:
+            continue
+        try:
+            return float(candidate)
+        except (TypeError, ValueError):
+            continue
+    return None
+
+
 def _per_agent_stats(trades: list[dict]) -> dict[str, dict[str, float]]:
     """Per-agent (agent_id) mean TQS + trade count from a trades list.
 
-    TQS is per-trade quality score, stored in ``tqs`` field on
-    ``TradeRecord``. Trade count includes ALL trades (even those with
-    missing/None TQS -- they still executed). Mean TQS is computed
-    over the subset of trades with a valid numeric TQS, so missing
-    values don't bias the mean toward zero.
+    TQS is per-trade quality score. On the production ``TradeRecord``
+    the composite score lives at ``tqs_components["tqs"]`` -- see
+    ``_extract_tqs`` for the schema-tolerant reader.
+
+    Trade count includes ALL trades (even those with missing/None
+    TQS -- they still executed). Mean TQS is computed over the
+    subset of trades with a valid numeric TQS, so missing values
+    don't bias the mean toward zero.
     """
     counts: dict[str, int] = {}
     tqs_valid_counts: dict[str, int] = {}
@@ -354,15 +383,11 @@ def _per_agent_stats(trades: list[dict]) -> dict[str, dict[str, float]]:
         if not aid:
             continue
         counts[aid] = counts.get(aid, 0) + 1
-        tqs = t.get("tqs")
+        tqs = _extract_tqs(t)
         if tqs is None:
             continue
-        try:
-            v = float(tqs)
-        except (TypeError, ValueError):
-            continue
         tqs_valid_counts[aid] = tqs_valid_counts.get(aid, 0) + 1
-        tqs_sums[aid] = tqs_sums.get(aid, 0.0) + v
+        tqs_sums[aid] = tqs_sums.get(aid, 0.0) + tqs
     out: dict[str, dict[str, float]] = {}
     for aid, n in counts.items():
         n_valid = tqs_valid_counts.get(aid, 0)
