@@ -393,14 +393,19 @@ class TestAggregateFromDisk:
             baseline_dir / "trades.jsonl",
             [_trade("isagi_yoichi", 0.3)],
         )
-        baseline_stats, per_excluded, c2c3 = lo1.aggregate_from_disk(
-            baseline_cache_dir=baseline_dir,
-            lo1_root_dir=tmp_path,
-            tag="unit",
+        baseline_stats, per_excluded, c2c3, role_registry = (
+            lo1.aggregate_from_disk(
+                baseline_cache_dir=baseline_dir,
+                lo1_root_dir=tmp_path,
+                tag="unit",
+            )
         )
         assert "isagi_yoichi" in baseline_stats
         assert per_excluded == {}
         assert c2c3 == {}
+        # Role registry always emits results for every agent in
+        # G7_AGENT_ORDER (with 0/waived values when data is missing).
+        assert set(role_registry.keys()) == set(lo1.G7_AGENT_ORDER)
 
     def test_end_to_end_two_lo1(self, tmp_path: Path):
         baseline_dir = tmp_path / "baseline"
@@ -438,14 +443,240 @@ class TestAggregateFromDisk:
                 _trade("chigiri_hyoma", 0.24),
             ],
         )
-        baseline_stats, per_excluded, c2c3 = lo1.aggregate_from_disk(
-            baseline_cache_dir=baseline_dir,
-            lo1_root_dir=tmp_path,
-            tag="unit",
+        baseline_stats, per_excluded, c2c3, role_registry = (
+            lo1.aggregate_from_disk(
+                baseline_cache_dir=baseline_dir,
+                lo1_root_dir=tmp_path,
+                tag="unit",
+            )
         )
         assert set(c2c3.keys()) == {"chigiri_hyoma", "bachira_meguru"}
         assert c2c3["chigiri_hyoma"].c2_pass is True
         assert c2c3["bachira_meguru"].c3_pass is False
+        # Role Registry always covers every agent in G7_AGENT_ORDER.
+        assert set(role_registry.keys()) == set(lo1.G7_AGENT_ORDER)
+
+
+# ---------------------------------------------------------------------------
+# Role Registry v1 (C7 / C8 proxy / C9 / role labels / retention)
+# ---------------------------------------------------------------------------
+
+class TestRoleRegistry:
+    def _baseline_and_lo1(self):
+        # 4-agent toy panel: X = "star_finisher" is what C7 should
+        # detect. Two peers (catalyst_a, catalyst_b) lift X's TQS when
+        # they are present; a third peer (solo) does not.
+        baseline_stats = {
+            "isagi_yoichi": {"n_trades": 100, "mean_tqs": 0.35},
+            "bachira_meguru": {"n_trades": 200, "mean_tqs": 0.40},
+            "nagi_seishiro": {"n_trades": 50, "mean_tqs": 0.50},
+            "chigiri_hyoma": {"n_trades": 30, "mean_tqs": 0.30},
+        }
+        # nagi is the "star_finisher"; isagi + bachira both lift nagi's
+        # mean_tqs by 0.03 when they are present.
+        per_excluded_stats = {
+            "isagi_yoichi": {  # remove isagi -> nagi's TQS drops
+                "bachira_meguru": {"n_trades": 200, "mean_tqs": 0.40},
+                "nagi_seishiro": {"n_trades": 50, "mean_tqs": 0.47},
+                "chigiri_hyoma": {"n_trades": 30, "mean_tqs": 0.30},
+            },
+            "bachira_meguru": {  # remove bachira -> nagi's TQS drops
+                "isagi_yoichi": {"n_trades": 100, "mean_tqs": 0.35},
+                "nagi_seishiro": {"n_trades": 50, "mean_tqs": 0.47},
+                "chigiri_hyoma": {"n_trades": 30, "mean_tqs": 0.30},
+            },
+            "nagi_seishiro": {  # remove nagi -> no peer changes
+                "isagi_yoichi": {"n_trades": 100, "mean_tqs": 0.35},
+                "bachira_meguru": {"n_trades": 200, "mean_tqs": 0.40},
+                "chigiri_hyoma": {"n_trades": 30, "mean_tqs": 0.30},
+            },
+            "chigiri_hyoma": {  # remove chigiri -> no peer changes
+                "isagi_yoichi": {"n_trades": 100, "mean_tqs": 0.35},
+                "bachira_meguru": {"n_trades": 200, "mean_tqs": 0.40},
+                "nagi_seishiro": {"n_trades": 50, "mean_tqs": 0.50},
+            },
+        }
+        return baseline_stats, per_excluded_stats
+
+    def test_c7_pass_for_star_finisher(self):
+        baseline, lo1_stats = self._baseline_and_lo1()
+        rr = lo1.compute_c7(
+            baseline_stats=baseline,
+            per_excluded_stats=lo1_stats,
+        )
+        nagi = rr["nagi_seishiro"]
+        assert nagi.c7_pass is True
+        assert len(nagi.c7_lifting_peers) == 2
+        assert set(nagi.c7_lifting_peers.keys()) == {
+            "isagi_yoichi", "bachira_meguru",
+        }
+        assert "isagi_yoichi" in nagi.c7_reason
+        assert "bachira_meguru" in nagi.c7_reason
+
+    def test_c7_fail_for_solo_scorer(self):
+        baseline, lo1_stats = self._baseline_and_lo1()
+        rr = lo1.compute_c7(
+            baseline_stats=baseline,
+            per_excluded_stats=lo1_stats,
+        )
+        # chigiri gets no lift from any peer
+        chigiri = rr["chigiri_hyoma"]
+        assert chigiri.c7_pass is False
+        assert len(chigiri.c7_lifting_peers) == 0
+
+    def test_c7_waived_for_zero_trade_agents(self):
+        # Simulate reo_mikage (0 trades) -- C7 has no TQS to measure.
+        baseline = {"reo_mikage": {"n_trades": 0, "mean_tqs": 0.0}}
+        rr = lo1.compute_c7(
+            baseline_stats=baseline,
+            per_excluded_stats={},
+        )
+        assert rr["reo_mikage"].c7_status == "waived"
+        assert rr["reo_mikage"].c7_pass is False
+
+    def test_c8_proxy_pass_when_workspace_activity_high(self):
+        baseline, lo1_stats = self._baseline_and_lo1()
+        # bachira excluded produces peer delta: nagi -0.03 tqs =
+        # 6 eps, ~0 trades. Only ~6 eps -- doesn't cross 50.
+        # Fabricate an "isagi" scenario where removing isagi produces
+        # LARGE trade delta for bachira to exercise the pass path.
+        lo1_stats["isagi_yoichi"]["bachira_meguru"] = {
+            "n_trades": 100, "mean_tqs": 0.40,
+        }
+        rr = lo1.compute_c7(
+            baseline_stats=baseline,
+            per_excluded_stats=lo1_stats,
+        )
+        lo1.compute_c8_proxy(
+            per_excluded_stats=lo1_stats,
+            baseline_stats=baseline,
+            results=rr,
+        )
+        # Removing isagi drops bachira from 200 -> 100 trades =
+        # 100 epsilon-units. Plus nagi 3 tqs = 6 eps. Total >= 50.
+        isagi = rr["isagi_yoichi"]
+        assert isagi.c8_pass is True
+        # Top-impacted peer should be bachira (largest single-peer impact).
+        assert isagi.c8_top_impacted_peer == "bachira_meguru"
+
+    def test_c8_proxy_fail_for_workspace_ghost(self):
+        # Kunigami-like: removing X produces ZERO delta on any peer.
+        baseline = {
+            "isagi_yoichi": {"n_trades": 100, "mean_tqs": 0.35},
+            "kunigami_rensuke": {"n_trades": 0, "mean_tqs": 0.0},
+        }
+        per_excluded = {
+            "kunigami_rensuke": {
+                "isagi_yoichi": {"n_trades": 100, "mean_tqs": 0.35},
+            },
+        }
+        rr = lo1.compute_c7(
+            baseline_stats=baseline, per_excluded_stats=per_excluded,
+        )
+        lo1.compute_c8_proxy(
+            per_excluded_stats=per_excluded,
+            baseline_stats=baseline,
+            results=rr,
+        )
+        kunigami = rr["kunigami_rensuke"]
+        assert kunigami.c8_pass is False
+        assert kunigami.c8_workspace_impact_epsilons == 0.0
+
+    def test_c9_pass_when_volume_share_above_floor(self):
+        # bachira has 200/380 trades = 52.6% share -- passes 5% floor.
+        baseline, _ = self._baseline_and_lo1()
+        rr = {aid: lo1.RoleRegistryResult(agent_id=aid) for aid in baseline}
+        lo1.compute_c9(baseline_stats=baseline, results=rr)
+        # nagi 50/380 = 13% > 5%
+        assert rr["nagi_seishiro"].c9_pass is True
+        # bachira 200/380 = 52%
+        assert rr["bachira_meguru"].c9_pass is True
+
+    def test_c9_waived_for_structural_falsifier(self):
+        # reo has 0 trades and is a structural falsifier.
+        baseline = {"reo_mikage": {"n_trades": 0, "mean_tqs": 0.0}}
+        rr = {"reo_mikage": lo1.RoleRegistryResult(agent_id="reo_mikage")}
+        lo1.compute_c9(baseline_stats=baseline, results=rr)
+        assert rr["reo_mikage"].c9_status == "waived"
+        assert rr["reo_mikage"].c9_pass is False
+
+    def test_role_label_chemistry_catalyst_when_c2_passes(self):
+        baseline, lo1_stats = self._baseline_and_lo1()
+        c2c3 = lo1.compute_c2_c3(
+            baseline_stats=baseline, per_excluded_stats=lo1_stats,
+        )
+        rr = lo1.compute_role_registry(
+            baseline_stats=baseline,
+            per_excluded_stats=lo1_stats,
+            c2c3=c2c3,
+        )
+        # isagi + bachira both lift nagi -- they are chemistry catalysts.
+        assert "chemistry_catalyst" in rr["isagi_yoichi"].role_labels
+        assert "chemistry_catalyst" in rr["bachira_meguru"].role_labels
+
+    def test_role_label_finisher_when_c7_passes(self):
+        baseline, lo1_stats = self._baseline_and_lo1()
+        c2c3 = lo1.compute_c2_c3(
+            baseline_stats=baseline, per_excluded_stats=lo1_stats,
+        )
+        rr = lo1.compute_role_registry(
+            baseline_stats=baseline,
+            per_excluded_stats=lo1_stats,
+            c2c3=c2c3,
+        )
+        # nagi is lifted by 2 peers -> C7 pass -> finisher label.
+        assert "finisher" in rr["nagi_seishiro"].role_labels
+
+    def test_role_label_retirement_candidate_when_all_fail(self):
+        # Fabricate an agent that fails C2 + C7 + C8 + C9.
+        baseline = {
+            "isagi_yoichi": {"n_trades": 100, "mean_tqs": 0.35},
+            "dead_weight_agent": {"n_trades": 1, "mean_tqs": 0.30},
+        }
+        per_excluded = {
+            "dead_weight_agent": {
+                "isagi_yoichi": {"n_trades": 100, "mean_tqs": 0.35},
+            },
+            "isagi_yoichi": {
+                "dead_weight_agent": {"n_trades": 1, "mean_tqs": 0.30},
+            },
+        }
+        c2c3 = lo1.compute_c2_c3(
+            baseline_stats=baseline, per_excluded_stats=per_excluded,
+        )
+        rr = lo1.compute_role_registry(
+            baseline_stats=baseline,
+            per_excluded_stats=per_excluded,
+            c2c3=c2c3,
+        )
+        # dead_weight_agent isn't in G7_AGENT_ORDER, so it won't be
+        # scored -- verify the mechanism works for real agents by
+        # asserting kunigami hits retirement.
+        # (kunigami will be in G7_AGENT_ORDER; with no data it fails
+        # all criteria.)
+        kunigami = rr.get("kunigami_rensuke")
+        assert kunigami is not None
+        assert "retirement_candidate" in kunigami.role_labels
+
+    def test_retention_requires_c3_and_one_role_axis(self):
+        # kunigami with only C3 pass but no role axis -> NOT retained.
+        baseline, lo1_stats = self._baseline_and_lo1()
+        c2c3 = lo1.compute_c2_c3(
+            baseline_stats=baseline, per_excluded_stats=lo1_stats,
+        )
+        rr = lo1.compute_role_registry(
+            baseline_stats=baseline,
+            per_excluded_stats=lo1_stats,
+            c2c3=c2c3,
+        )
+        # kunigami: no data in fixture -> C3 defaults to True, but
+        # no C2/C7/C8/C9 pass -> should NOT be retained.
+        # nagi: C7 pass -> IS retained.
+        assert rr["nagi_seishiro"].retained is True
+        # kunigami is in G7_AGENT_ORDER but not in the toy fixture,
+        # so its C2 defaults to fail; C3 defaults to True; C7/C8/C9
+        # all fail. Not retained.
+        assert rr["kunigami_rensuke"].retained is False
 
 
 # ---------------------------------------------------------------------------
@@ -501,6 +732,58 @@ class TestEmitters:
         assert "baseline_stats" in payload
         assert "c2_c3" in payload
         assert "isagi_yoichi" in payload["c2_c3"]
+
+    def test_role_registry_md_emits_all_sections(self, tmp_path: Path):
+        baseline_stats, per_excluded, c2c3 = self._fake_verdict()
+        role_registry = lo1.compute_role_registry(
+            baseline_stats=baseline_stats,
+            per_excluded_stats=per_excluded,
+            c2c3=c2c3,
+        )
+        md_path = tmp_path / "role_verdict.md"
+        lo1.emit_role_registry_verdict_md(
+            baseline_stats=baseline_stats,
+            c2c3=c2c3,
+            role_registry=role_registry,
+            out_path=md_path,
+            tag="unit",
+        )
+        content = md_path.read_text()
+        assert "G7 Role Registry v1 verdict (unit)" in content
+        assert "## Role Registry summary" in content
+        assert "## Criterion 7" in content
+        assert "## Criterion 8" in content
+        assert "## Criterion 9" in content
+        assert "## Retention verdict" in content
+        assert "## Squad-level verdict" in content
+
+    def test_role_registry_json_roundtrip(self, tmp_path: Path):
+        baseline_stats, per_excluded, c2c3 = self._fake_verdict()
+        role_registry = lo1.compute_role_registry(
+            baseline_stats=baseline_stats,
+            per_excluded_stats=per_excluded,
+            c2c3=c2c3,
+        )
+        json_path = tmp_path / "role_verdict.json"
+        lo1.emit_role_registry_verdict_json(
+            baseline_stats=baseline_stats,
+            c2c3=c2c3,
+            role_registry=role_registry,
+            out_path=json_path,
+            tag="unit",
+        )
+        payload = json.loads(json_path.read_text())
+        assert payload["tag"] == "unit"
+        assert "role_registry" in payload
+        # Every G7 agent must have a role_registry entry (waived or not).
+        for aid in lo1.G7_AGENT_ORDER:
+            assert aid in payload["role_registry"]
+            entry = payload["role_registry"][aid]
+            assert "c7_pass" in entry
+            assert "c8_pass" in entry
+            assert "c9_pass" in entry
+            assert "role_labels" in entry
+            assert "retained" in entry
 
 
 # ---------------------------------------------------------------------------

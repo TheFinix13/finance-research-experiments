@@ -1,0 +1,252 @@
+{
+  "tag": "post-V",
+  "generated_at_utc": "2026-07-03T08:40:00.848416+00:00",
+  "baseline_stats": {
+    "bachira_meguru": {
+      "n_trades": 2542.0,
+      "mean_tqs": 0.4025636630479434
+    },
+    "nagi_seishiro": {
+      "n_trades": 135.0,
+      "mean_tqs": 0.43131216726030147
+    },
+    "isagi_yoichi": {
+      "n_trades": 1923.0,
+      "mean_tqs": 0.3567900750956134
+    },
+    "itoshi_rin": {
+      "n_trades": 421.0,
+      "mean_tqs": 0.3940189215743256
+    },
+    "barou_shoei": {
+      "n_trades": 153.0,
+      "mean_tqs": 0.3469227504345721
+    },
+    "chigiri_hyoma": {
+      "n_trades": 430.0,
+      "mean_tqs": 0.2584870214393914
+    }
+  },
+  "c2_c3": {
+    "isagi_yoichi": {
+      "c2_pass": true,
+      "c2_reason": "peer 'bachira_meguru' lifted by presence: delta_tqs=+0.0133 delta_trades=-1823.0 (strongest on tqs, 2.7x epsilon)",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.418 on 'bachira_meguru'; below threshold 0.5"
+    },
+    "bachira_meguru": {
+      "c2_pass": true,
+      "c2_reason": "peer 'nagi_seishiro' lifted by presence: delta_tqs=+0.1979 delta_trades=+94.0 (strongest on trades, 94.0x epsilon)",
+      "c3_pass": false,
+      "c3_reason": "CANNIBALISATION: peer 'barou_shoei' traded 84.1% more when 'bachira_meguru' was absent"
+    },
+    "itoshi_rin": {
+      "c2_pass": true,
+      "c2_reason": "peer 'nagi_seishiro' lifted by presence: delta_tqs=+0.0886 delta_trades=+83.0 (strongest on trades, 83.0x epsilon)",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.210 on 'isagi_yoichi'; below threshold 0.5"
+    },
+    "chigiri_hyoma": {
+      "c2_pass": true,
+      "c2_reason": "peer 'nagi_seishiro' lifted by presence: delta_tqs=-0.0110 delta_trades=+5.0 (strongest on trades, 5.0x epsilon)",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.043 on 'itoshi_rin'; below threshold 0.5"
+    },
+    "reo_mikage": {
+      "c2_pass": true,
+      "c2_reason": "peer 'itoshi_rin' lifted by presence: delta_tqs=+0.0142 delta_trades=+45.0 (strongest on trades, 45.0x epsilon)",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.500 on 'nagi_seishiro'; below threshold 0.5"
+    },
+    "nagi_seishiro": {
+      "c2_pass": false,
+      "c2_reason": "no peer lifted by more than epsilon (tqs>0.005, trades>1.0); best lift on 'barou_shoei' at 0.292 epsilon-units",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.037 on 'itoshi_rin'; below threshold 0.5"
+    },
+    "barou_shoei": {
+      "c2_pass": false,
+      "c2_reason": "no peer lifted by more than epsilon (tqs>0.005, trades>1.0); best lift on 'isagi_yoichi' at 0.502 epsilon-units",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.041 on 'bachira_meguru'; below threshold 0.5"
+    },
+    "kunigami_rensuke": {
+      "c2_pass": false,
+      "c2_reason": "no peer lifted by more than epsilon (tqs>0.005, trades>1.0); best lift on None at 0.000 epsilon-units",
+      "c3_pass": true,
+      "c3_reason": "worst per-peer reduction 0.000 on None; below threshold 0.5"
+    }
+  },
+  "role_registry": {
+    "isagi_yoichi": {
+      "agent_id": "isagi_yoichi",
+      "c7_pass": false,
+      "c7_reason": "no peer lifts 'isagi_yoichi' by >= 0.02 TQS",
+      "c7_lifting_peers": {},
+      "c7_status": "measured",
+      "c8_pass": true,
+      "c8_reason": "workspace_impact=1873.0 epsilon-units >= 50.0 threshold (top-impacted peer: 'bachira_meguru' at 1825.7)",
+      "c8_workspace_impact_epsilons": 1873.0282442315258,
+      "c8_top_impacted_peer": "bachira_meguru",
+      "c9_pass": true,
+      "c9_reason": "volume_share=34.3% >= 5% floor (1923/5604 trades)",
+      "c9_volume_share": 0.3431477516059957,
+      "c9_status": "measured",
+      "role_labels": [
+        "chemistry_catalyst",
+        "workspace_catalyst"
+      ],
+      "retained": true,
+      "retention_reason": "RETAINED: C3 pass AND role axis ['C2', 'C8', 'C9'] (labels: ['chemistry_catalyst', 'workspace_catalyst'])"
+    },
+    "bachira_meguru": {
+      "agent_id": "bachira_meguru",
+      "c7_pass": false,
+      "c7_reason": "no peer lifts 'bachira_meguru' by >= 0.02 TQS",
+      "c7_lifting_peers": {},
+      "c7_status": "measured",
+      "c8_pass": true,
+      "c8_reason": "workspace_impact=1164.8 epsilon-units >= 50.0 threshold (top-impacted peer: 'barou_shoei' at 819.6)",
+      "c8_workspace_impact_epsilons": 1164.8429717583238,
+      "c8_top_impacted_peer": "barou_shoei",
+      "c9_pass": true,
+      "c9_reason": "volume_share=45.4% >= 5% floor (2542/5604 trades)",
+      "c9_volume_share": 0.453604568165596,
+      "c9_status": "measured",
+      "role_labels": [
+        "chemistry_catalyst",
+        "workspace_catalyst"
+      ],
+      "retained": false,
+      "retention_reason": "NOT RETAINED: C3 fail (cannibalises peer)"
+    },
+    "itoshi_rin": {
+      "agent_id": "itoshi_rin",
+      "c7_pass": false,
+      "c7_reason": "no peer lifts 'itoshi_rin' by >= 0.02 TQS",
+      "c7_lifting_peers": {},
+      "c7_status": "measured",
+      "c8_pass": true,
+      "c8_reason": "workspace_impact=718.6 epsilon-units >= 50.0 threshold (top-impacted peer: 'isagi_yoichi' at 511.0)",
+      "c8_workspace_impact_epsilons": 718.5898174710836,
+      "c8_top_impacted_peer": "isagi_yoichi",
+      "c9_pass": true,
+      "c9_reason": "volume_share=7.5% >= 5% floor (421/5604 trades)",
+      "c9_volume_share": 0.0751249107780157,
+      "c9_status": "measured",
+      "role_labels": [
+        "chemistry_catalyst",
+        "workspace_catalyst"
+      ],
+      "retained": true,
+      "retention_reason": "RETAINED: C3 pass AND role axis ['C2', 'C8', 'C9'] (labels: ['chemistry_catalyst', 'workspace_catalyst'])"
+    },
+    "chigiri_hyoma": {
+      "agent_id": "chigiri_hyoma",
+      "c7_pass": false,
+      "c7_reason": "no peer lifts 'chigiri_hyoma' by >= 0.02 TQS",
+      "c7_lifting_peers": {},
+      "c7_status": "measured",
+      "c8_pass": true,
+      "c8_reason": "workspace_impact=186.5 epsilon-units >= 50.0 threshold (top-impacted peer: 'bachira_meguru' at 105.3)",
+      "c8_workspace_impact_epsilons": 186.48505141008357,
+      "c8_top_impacted_peer": "bachira_meguru",
+      "c9_pass": true,
+      "c9_reason": "volume_share=7.7% >= 5% floor (430/5604 trades)",
+      "c9_volume_share": 0.07673090649536046,
+      "c9_status": "measured",
+      "role_labels": [
+        "chemistry_catalyst",
+        "workspace_catalyst"
+      ],
+      "retained": true,
+      "retention_reason": "RETAINED: C3 pass AND role axis ['C2', 'C8', 'C9'] (labels: ['chemistry_catalyst', 'workspace_catalyst'])"
+    },
+    "reo_mikage": {
+      "agent_id": "reo_mikage",
+      "c7_pass": false,
+      "c7_reason": "waived: 0 baseline trades (structural falsifier)",
+      "c7_lifting_peers": {},
+      "c7_status": "waived",
+      "c8_pass": true,
+      "c8_reason": "workspace_impact=245.4 epsilon-units >= 50.0 threshold (top-impacted peer: 'nagi_seishiro' at 149.4)",
+      "c8_workspace_impact_epsilons": 245.44067592471862,
+      "c8_top_impacted_peer": "nagi_seishiro",
+      "c9_pass": false,
+      "c9_reason": "waived: structural falsifier (intend() -> None by design)",
+      "c9_volume_share": 0.0,
+      "c9_status": "waived",
+      "role_labels": [
+        "chemistry_catalyst",
+        "workspace_catalyst"
+      ],
+      "retained": true,
+      "retention_reason": "RETAINED: C3 pass AND role axis ['C2', 'C8'] (labels: ['chemistry_catalyst', 'workspace_catalyst'])"
+    },
+    "nagi_seishiro": {
+      "agent_id": "nagi_seishiro",
+      "c7_pass": true,
+      "c7_reason": "3 peers lift 'nagi_seishiro' by >= 0.02 TQS. Top: bachira_meguru +0.1979, itoshi_rin +0.0886, reo_mikage +0.0719",
+      "c7_lifting_peers": {
+        "bachira_meguru": 0.19790101615645045,
+        "itoshi_rin": 0.08859295948024376,
+        "reo_mikage": 0.07193190625339407
+      },
+      "c7_status": "measured",
+      "c8_pass": true,
+      "c8_reason": "workspace_impact=65.8 epsilon-units >= 50.0 threshold (top-impacted peer: 'bachira_meguru' at 27.2)",
+      "c8_workspace_impact_epsilons": 65.80459810438978,
+      "c8_top_impacted_peer": "bachira_meguru",
+      "c9_pass": false,
+      "c9_reason": "volume_share=2.4% < 5% floor (135/5604 trades)",
+      "c9_volume_share": 0.024089935760171308,
+      "c9_status": "measured",
+      "role_labels": [
+        "finisher",
+        "workspace_catalyst"
+      ],
+      "retained": true,
+      "retention_reason": "RETAINED: C3 pass AND role axis ['C7', 'C8'] (labels: ['finisher', 'workspace_catalyst'])"
+    },
+    "barou_shoei": {
+      "agent_id": "barou_shoei",
+      "c7_pass": false,
+      "c7_reason": "no peer lifts 'barou_shoei' by >= 0.02 TQS",
+      "c7_lifting_peers": {},
+      "c7_status": "measured",
+      "c8_pass": true,
+      "c8_reason": "workspace_impact=151.3 epsilon-units >= 50.0 threshold (top-impacted peer: 'bachira_meguru' at 110.5)",
+      "c8_workspace_impact_epsilons": 151.29555223780073,
+      "c8_top_impacted_peer": "bachira_meguru",
+      "c9_pass": false,
+      "c9_reason": "volume_share=2.7% < 5% floor (153/5604 trades)",
+      "c9_volume_share": 0.027301927194860815,
+      "c9_status": "measured",
+      "role_labels": [
+        "workspace_catalyst"
+      ],
+      "retained": true,
+      "retention_reason": "RETAINED: C3 pass AND role axis ['C8'] (labels: ['workspace_catalyst'])"
+    },
+    "kunigami_rensuke": {
+      "agent_id": "kunigami_rensuke",
+      "c7_pass": false,
+      "c7_reason": "waived: 0 baseline trades (structural falsifier)",
+      "c7_lifting_peers": {},
+      "c7_status": "waived",
+      "c8_pass": false,
+      "c8_reason": "workspace_impact=0.0 epsilon-units < 50.0 threshold (no peer visibly affected by 'kunigami_rensuke''s workspace signals)",
+      "c8_workspace_impact_epsilons": 0.0,
+      "c8_top_impacted_peer": null,
+      "c9_pass": false,
+      "c9_reason": "waived: structural falsifier (intend() -> None by design)",
+      "c9_volume_share": 0.0,
+      "c9_status": "waived",
+      "role_labels": [
+        "retirement_candidate"
+      ],
+      "retained": false,
+      "retention_reason": "NOT RETAINED: C3 pass but no role axis passes (C2/C7/C8/C9 all fail)"
+    }
+  }
+}

@@ -92,6 +92,18 @@ G7_AGENT_ORDER: tuple[str, ...] = (
 )
 
 
+# Role Registry v1 -- structural falsifiers waived on trade-based
+# criteria (C1/C5/C6 in G7 v1 §11.1, C9 in Role Registry v1 §3). These
+# agents have intend() -> None by design and cannot be scored on trade
+# volume. Must match the STRUCTURAL_FALSIFIERS set in
+# ``run_g7_v1_checkpoint_gate.py`` -- kept as a duplicate literal here
+# rather than an import to avoid a circular dependency.
+_STRUCTURAL_FALSIFIERS: frozenset[str] = frozenset({
+    "reo_mikage",
+    "kunigami_rensuke",
+})
+
+
 def _instantiate_all_agents():
     isagi = A1IsagiV1()
     bachira = A2BachiraV1()
@@ -560,16 +572,413 @@ def compute_c2_c3(
     return out
 
 
+# ---------------------------------------------------------------------------
+# Role Registry v1 (companion to G7 v1) -- C7 (incoming chemistry),
+# C8 (workspace-signal impact via peer-delta magnitude proxy), C9
+# (trade-volume floor), and role-label emission. Pre-registered in
+# ``experiments/G7_role_registry_v1/PROTOCOL.md``.
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class RoleRegistryResult:
+    """Per-agent Role Registry v1 verdict + role label(s)."""
+
+    agent_id: str
+
+    # C7 -- incoming chemistry (finisher role).
+    c7_pass: bool = False
+    c7_reason: str = ""
+    c7_lifting_peers: dict[str, float] = field(default_factory=dict)
+    c7_status: str = "measured"  # measured | waived
+
+    # C8 -- workspace-signal impact (context-provider role, v1 proxy).
+    c8_pass: bool = False
+    c8_reason: str = ""
+    c8_workspace_impact_epsilons: float = 0.0
+    c8_top_impacted_peer: str | None = None
+
+    # C9 -- trade-volume floor (anti-dilution).
+    c9_pass: bool = False
+    c9_reason: str = ""
+    c9_volume_share: float = 0.0
+    c9_status: str = "measured"  # measured | waived
+
+    # Role labels emitted per §4 of the protocol. Multiple can apply.
+    role_labels: list[str] = field(default_factory=list)
+
+    # Retention rule per §5: pass C3 AND at least one of {C2, C7, C8, C9}.
+    # Populated by ``compute_retention`` after C2/C3 are known.
+    retained: bool = False
+    retention_reason: str = ""
+
+
+def compute_c7(
+    *,
+    baseline_stats: dict[str, dict[str, float]],
+    per_excluded_stats: dict[str, dict[str, dict[str, float]]],
+    c7_lift_threshold: float = 0.02,
+    c7_min_lifting_peers: int = 2,
+) -> dict[str, RoleRegistryResult]:
+    """C7 -- incoming chemistry (finisher role) per Role Registry v1 §3.
+
+    For each agent X, iterate over every OTHER agent p and ask: does X's
+    mean TQS DROP when p is removed from the squad? If ≥ c7_min_lifting_peers
+    peers each lift X by ≥ c7_lift_threshold in mean TQS, X passes C7 as a
+    ``finisher`` (chemistry beneficiary).
+
+    Args:
+        baseline_stats: per-agent stats when all agents are present.
+        per_excluded_stats: outer key = excluded agent, inner key = peer.
+            ``per_excluded_stats[p][X]`` = X's stats in the lo1 run
+            without p.
+        c7_lift_threshold: minimum TQS drop (baseline - lo1) to count p
+            as "lifting X". Default 0.02 = 4x C2's epsilon (deliberately
+            stricter than C2 because C7 aggregates across multiple peers).
+        c7_min_lifting_peers: how many peers must independently lift X
+            for C7 to pass. Default 2.
+
+    Returns:
+        dict keyed by agent_id -> RoleRegistryResult with C7 fields
+        populated only.
+    """
+    out: dict[str, RoleRegistryResult] = {}
+    for x in G7_AGENT_ORDER:
+        result = RoleRegistryResult(agent_id=x)
+        x_baseline = baseline_stats.get(x, {})
+        x_baseline_tqs = float(x_baseline.get("mean_tqs", 0.0))
+        x_baseline_n = float(x_baseline.get("n_trades", 0.0))
+        # Structural falsifiers with 0 baseline trades cannot be scored
+        # on incoming TQS lift -- there is no TQS to lift.
+        if x_baseline_n <= 0:
+            result.c7_status = "waived"
+            result.c7_pass = False
+            result.c7_reason = (
+                f"waived: 0 baseline trades (structural falsifier)"
+            )
+            out[x] = result
+            continue
+        # Iterate all peers p who could theoretically lift X.
+        for p in G7_AGENT_ORDER:
+            if p == x:
+                continue
+            # If we lack an lo1 cache for peer p being excluded, we
+            # cannot compute incoming_lift honestly -- skip. Treating
+            # missing data as "X's TQS went to zero" would produce
+            # false positives (baseline_tqs - 0.0 always exceeds the
+            # 0.02 threshold when baseline_tqs is > 0.02).
+            if p not in per_excluded_stats:
+                continue
+            lo1_without_p = per_excluded_stats[p]
+            x_when_p_absent = lo1_without_p.get(x)
+            # If X has no trades in the lo1_without_p cache either
+            # (e.g. X's trades all depend on p being present), the
+            # denominator collapses. Skip -- there is nothing to
+            # compare.
+            if x_when_p_absent is None:
+                continue
+            x_absent_tqs = float(x_when_p_absent.get("mean_tqs", 0.0))
+            # incoming_lift = X's TQS was HIGHER when p WAS present.
+            # baseline (all present) - lo1_without_p (X's TQS there).
+            incoming_lift = x_baseline_tqs - x_absent_tqs
+            if incoming_lift >= c7_lift_threshold:
+                result.c7_lifting_peers[p] = incoming_lift
+        n_lifters = len(result.c7_lifting_peers)
+        result.c7_pass = n_lifters >= c7_min_lifting_peers
+        if result.c7_pass:
+            top = sorted(
+                result.c7_lifting_peers.items(),
+                key=lambda kv: -kv[1],
+            )[:3]
+            top_str = ", ".join(f"{p} +{v:.4f}" for p, v in top)
+            result.c7_reason = (
+                f"{n_lifters} peers lift {x!r} by >= "
+                f"{c7_lift_threshold} TQS. Top: {top_str}"
+            )
+        else:
+            if n_lifters == 0:
+                result.c7_reason = (
+                    f"no peer lifts {x!r} by >= "
+                    f"{c7_lift_threshold} TQS"
+                )
+            else:
+                result.c7_reason = (
+                    f"only {n_lifters}/{c7_min_lifting_peers} peers "
+                    f"lift {x!r} by >= {c7_lift_threshold} TQS"
+                )
+        out[x] = result
+    return out
+
+
+def compute_c8_proxy(
+    *,
+    per_excluded_stats: dict[str, dict[str, dict[str, float]]],
+    baseline_stats: dict[str, dict[str, float]],
+    results: dict[str, RoleRegistryResult],
+    c8_epsilon_tqs: float = 0.005,
+    c8_epsilon_trades: float = 1.0,
+    c8_impact_threshold: float = 50.0,
+) -> None:
+    """C8 v1 proxy -- workspace-signal impact via peer-delta magnitude.
+
+    True citation counts (F22c ``interpreted_signal_family``) are not
+    persisted in post-V walk-forward artifacts; this v1 proxy uses the
+    on-disk lo1 caches to compute a strictly weaker but usable signal:
+    when X is excluded, how much do peer stats MOVE (in either direction)?
+    A workspace ghost like Kunigami produces zero peer movement; a real
+    context provider like Reo produces large peer movement (e.g. Nagi
+    -135 trades / +0.0719 TQS quality lift on the surviving trades).
+
+    Args:
+        per_excluded_stats: outer key = excluded agent X, inner key = peer.
+        baseline_stats: per-agent stats when all agents are present.
+        results: dict keyed by agent_id -> RoleRegistryResult (C7 already
+            populated). This function fills in C8 fields.
+        c8_epsilon_tqs, c8_epsilon_trades: same epsilon-normalisation as
+            C2's strongest-lift ranking.
+        c8_impact_threshold: workspace_impact score >= this floor passes
+            C8. Default 50.0 epsilon-units summed across all peers.
+
+    Mutates ``results`` in place.
+    """
+    for x in G7_AGENT_ORDER:
+        result = results.setdefault(x, RoleRegistryResult(agent_id=x))
+        # If we lack an lo1 cache for X being excluded, we cannot
+        # measure X's workspace impact honestly. Treating missing data
+        # as "all peers went to zero" would produce false positives.
+        if x not in per_excluded_stats:
+            result.c8_workspace_impact_epsilons = 0.0
+            result.c8_top_impacted_peer = None
+            result.c8_pass = False
+            result.c8_reason = (
+                f"no lo1 cache for excluded={x!r}; C8 cannot be measured"
+            )
+            continue
+        lo1_without_x = per_excluded_stats[x]
+        total_impact = 0.0
+        top_peer: str | None = None
+        top_peer_impact = 0.0
+        for p in G7_AGENT_ORDER:
+            if p == x:
+                continue
+            p_baseline = baseline_stats.get(p, {})
+            b_tqs = float(p_baseline.get("mean_tqs", 0.0))
+            b_n = float(p_baseline.get("n_trades", 0.0))
+            p_lo1 = lo1_without_x.get(p)
+            # Skip peer if we lack their stats in the lo1 cache (same
+            # data-availability guard as C7).
+            if p_lo1 is None:
+                continue
+            l_tqs = float(p_lo1.get("mean_tqs", 0.0))
+            l_n = float(p_lo1.get("n_trades", 0.0))
+            impact_tqs = abs(b_tqs - l_tqs) / max(c8_epsilon_tqs, 1e-9)
+            impact_trades = (
+                abs(b_n - l_n) / max(c8_epsilon_trades, 1e-9)
+            )
+            peer_impact = impact_tqs + impact_trades
+            total_impact += peer_impact
+            if peer_impact > top_peer_impact:
+                top_peer_impact = peer_impact
+                top_peer = p
+        result.c8_workspace_impact_epsilons = total_impact
+        result.c8_top_impacted_peer = top_peer
+        result.c8_pass = total_impact >= c8_impact_threshold
+        if result.c8_pass:
+            result.c8_reason = (
+                f"workspace_impact={total_impact:.1f} epsilon-units "
+                f">= {c8_impact_threshold} threshold "
+                f"(top-impacted peer: {top_peer!r} at "
+                f"{top_peer_impact:.1f})"
+            )
+        else:
+            result.c8_reason = (
+                f"workspace_impact={total_impact:.1f} epsilon-units "
+                f"< {c8_impact_threshold} threshold "
+                f"(no peer visibly affected by {x!r}'s workspace signals)"
+            )
+
+
+def compute_c9(
+    *,
+    baseline_stats: dict[str, dict[str, float]],
+    results: dict[str, RoleRegistryResult],
+    c9_volume_share_floor: float = 0.05,
+) -> None:
+    """C9 -- trade-volume floor (anti-dilution) per Role Registry v1 §3.
+
+    An agent holding >= c9_volume_share_floor of squad trades cannot be
+    cut without measurable volume regression, so retains a slot on
+    volume grounds even if C2/C7/C8 all fail. Structural falsifiers
+    have 0 trades by design and are waived.
+
+    Args:
+        baseline_stats: per-agent stats when all agents are present.
+        results: dict keyed by agent_id -> RoleRegistryResult (C7/C8
+            already populated). This function fills in C9 fields.
+        c9_volume_share_floor: minimum share of squad trades. Default
+            0.05 (5%).
+
+    Mutates ``results`` in place.
+    """
+    total_trades = sum(
+        float(baseline_stats.get(a, {}).get("n_trades", 0.0))
+        for a in G7_AGENT_ORDER
+    )
+    for x in G7_AGENT_ORDER:
+        result = results.setdefault(x, RoleRegistryResult(agent_id=x))
+        x_trades = float(baseline_stats.get(x, {}).get("n_trades", 0.0))
+        # Structural falsifiers with 0 trades: waived per §3 C9 note.
+        if x in _STRUCTURAL_FALSIFIERS and x_trades <= 0:
+            result.c9_status = "waived"
+            result.c9_pass = False
+            result.c9_volume_share = 0.0
+            result.c9_reason = (
+                f"waived: structural falsifier "
+                f"(intend() -> None by design)"
+            )
+            continue
+        share = x_trades / total_trades if total_trades > 0 else 0.0
+        result.c9_volume_share = share
+        result.c9_pass = share >= c9_volume_share_floor
+        if result.c9_pass:
+            result.c9_reason = (
+                f"volume_share={share*100:.1f}% >= "
+                f"{c9_volume_share_floor*100:.0f}% floor "
+                f"({int(x_trades)}/{int(total_trades)} trades)"
+            )
+        else:
+            result.c9_reason = (
+                f"volume_share={share*100:.1f}% < "
+                f"{c9_volume_share_floor*100:.0f}% floor "
+                f"({int(x_trades)}/{int(total_trades)} trades)"
+            )
+
+
+def _assign_role_labels(
+    *,
+    c2c3: dict[str, C2C3Result],
+    results: dict[str, RoleRegistryResult],
+) -> None:
+    """Emit role labels per Role Registry v1 §4.
+
+    Rules (labels are non-exclusive; multiple can apply):
+      * C2 pass                         -> ``chemistry_catalyst``
+      * C7 pass                         -> ``finisher``
+      * C8 pass                         -> ``workspace_catalyst``
+      * C9 pass (and C2/C7/C8 all fail) -> ``volume_specialist``
+      * all four fail                   -> ``retirement_candidate``
+    """
+    for x in G7_AGENT_ORDER:
+        result = results.setdefault(x, RoleRegistryResult(agent_id=x))
+        c2 = c2c3.get(x)
+        labels: list[str] = []
+        c2_pass = bool(c2 and c2.c2_pass)
+        c7_pass = bool(result.c7_pass)
+        c8_pass = bool(result.c8_pass)
+        c9_pass = bool(result.c9_pass)
+        if c2_pass:
+            labels.append("chemistry_catalyst")
+        if c7_pass:
+            labels.append("finisher")
+        if c8_pass:
+            labels.append("workspace_catalyst")
+        # volume_specialist only applies when NONE of the chemistry
+        # axes pass -- an agent held on volume floor alone.
+        if c9_pass and not (c2_pass or c7_pass or c8_pass):
+            labels.append("volume_specialist")
+        # retirement_candidate iff none of {C2, C7, C8, C9} pass.
+        if not (c2_pass or c7_pass or c8_pass or c9_pass):
+            labels.append("retirement_candidate")
+        result.role_labels = labels
+
+
+def compute_retention(
+    *,
+    c2c3: dict[str, C2C3Result],
+    results: dict[str, RoleRegistryResult],
+) -> None:
+    """Apply the Role Registry v1 §5 retention rule.
+
+    Rule: pass C3 (non-cannibalising) AND at least one of
+    {C2, C7, C8, C9}. Structural-falsifier waivers on C9 do NOT count
+    toward the OR-gate (waived != pass); C9 must be an actual pass or
+    else the agent needs some other axis.
+    """
+    for x in G7_AGENT_ORDER:
+        result = results.setdefault(x, RoleRegistryResult(agent_id=x))
+        c2 = c2c3.get(x)
+        c3_pass = bool(c2 and c2.c3_pass)
+        c2_pass = bool(c2 and c2.c2_pass)
+        c7_pass = bool(result.c7_pass)
+        c8_pass = bool(result.c8_pass)
+        c9_pass = bool(result.c9_pass)
+        any_role_axis = c2_pass or c7_pass or c8_pass or c9_pass
+        result.retained = bool(c3_pass and any_role_axis)
+        axes = []
+        if c2_pass:
+            axes.append("C2")
+        if c7_pass:
+            axes.append("C7")
+        if c8_pass:
+            axes.append("C8")
+        if c9_pass:
+            axes.append("C9")
+        if result.retained:
+            result.retention_reason = (
+                f"RETAINED: C3 pass AND role axis {axes} "
+                f"(labels: {result.role_labels})"
+            )
+        elif not c3_pass:
+            result.retention_reason = (
+                f"NOT RETAINED: C3 fail (cannibalises peer)"
+            )
+        else:
+            result.retention_reason = (
+                f"NOT RETAINED: C3 pass but no role axis passes "
+                f"(C2/C7/C8/C9 all fail)"
+            )
+
+
+def compute_role_registry(
+    *,
+    baseline_stats: dict[str, dict[str, float]],
+    per_excluded_stats: dict[str, dict[str, dict[str, float]]],
+    c2c3: dict[str, C2C3Result],
+) -> dict[str, RoleRegistryResult]:
+    """One-stop composition: C7 + C8 (proxy) + C9 + labels + retention."""
+    results = compute_c7(
+        baseline_stats=baseline_stats,
+        per_excluded_stats=per_excluded_stats,
+    )
+    compute_c8_proxy(
+        per_excluded_stats=per_excluded_stats,
+        baseline_stats=baseline_stats,
+        results=results,
+    )
+    compute_c9(
+        baseline_stats=baseline_stats,
+        results=results,
+    )
+    _assign_role_labels(c2c3=c2c3, results=results)
+    compute_retention(c2c3=c2c3, results=results)
+    return results
+
+
 def aggregate_from_disk(
     *,
     baseline_cache_dir: Path,
     lo1_root_dir: Path,
     tag: str,
-) -> tuple[dict, dict[str, dict[str, float]], dict[str, C2C3Result]]:
-    """Compose the on-disk trades caches into a C2/C3 verdict.
+) -> tuple[
+    dict[str, dict[str, float]],
+    dict[str, dict[str, dict[str, float]]],
+    dict[str, C2C3Result],
+    dict[str, RoleRegistryResult],
+]:
+    """Compose the on-disk trades caches into a C2/C3 + Role Registry verdict.
 
     Returns:
-        (baseline_stats, per_excluded_stats_mapping, c2c3_results)
+        (baseline_stats, per_excluded_stats, c2c3_results, role_registry)
     """
     baseline_trades_path = baseline_cache_dir / "trades.jsonl"
     baseline_trades = _load_trades_from_jsonl(baseline_trades_path)
@@ -599,7 +1008,12 @@ def aggregate_from_disk(
         baseline_stats=baseline_stats,
         per_excluded_stats=per_excluded_stats,
     )
-    return baseline_stats, per_excluded_stats, c2c3
+    role_registry = compute_role_registry(
+        baseline_stats=baseline_stats,
+        per_excluded_stats=per_excluded_stats,
+        c2c3=c2c3,
+    )
+    return baseline_stats, per_excluded_stats, c2c3, role_registry
 
 
 # ---------------------------------------------------------------------------
@@ -747,6 +1161,265 @@ def emit_c2_c3_verdict_json(
 
 
 # ---------------------------------------------------------------------------
+# Role Registry v1 emitters
+# ---------------------------------------------------------------------------
+
+def emit_role_registry_verdict_md(
+    *,
+    baseline_stats: dict[str, dict[str, float]],
+    c2c3: dict[str, C2C3Result],
+    role_registry: dict[str, RoleRegistryResult],
+    out_path: Path,
+    tag: str,
+) -> None:
+    """Emit Role Registry v1 verdict markdown."""
+    lines: list[str] = []
+    lines.append(f"# G7 Role Registry v1 verdict ({tag})")
+    lines.append("")
+    lines.append(
+        f"Generated {datetime.now(tz=timezone.utc).isoformat()} "
+        f"from post-{tag} baseline + leave-one-out caches. "
+        f"Pre-registered protocol: "
+        f"`experiments/G7_role_registry_v1/PROTOCOL.md`."
+    )
+    lines.append("")
+    lines.append(
+        "**Companion to G7 v1** — adds three role-differentiating "
+        "criteria (C7 incoming chemistry / C8 workspace-signal impact / "
+        "C9 trade-volume floor) and role labels. Retention rule (per §5): "
+        "C3 pass AND at least one of {C2, C7, C8, C9} pass."
+    )
+    lines.append("")
+
+    lines.append("## Role Registry summary")
+    lines.append("")
+    lines.append(
+        "| Agent | C2 | C3 | C7 | C8 | C9 | Role labels | Retained |"
+    )
+    lines.append("|---|:---:|:---:|:---:|:---:|:---:|---|:---:|")
+    for aid in G7_AGENT_ORDER:
+        c2 = c2c3.get(aid)
+        rr = role_registry.get(aid)
+        if c2 is None or rr is None:
+            lines.append(
+                f"| `{aid}` | ⏸ | ⏸ | ⏸ | ⏸ | ⏸ | pending | ⏸ |"
+            )
+            continue
+
+        def _badge(passed: bool, status: str = "measured") -> str:
+            if status == "waived":
+                return "W"
+            return "✅" if passed else "❌"
+
+        c2b = _badge(c2.c2_pass)
+        c3b = _badge(c2.c3_pass)
+        c7b = _badge(rr.c7_pass, rr.c7_status)
+        c8b = _badge(rr.c8_pass)
+        c9b = _badge(rr.c9_pass, rr.c9_status)
+        labels = ", ".join(rr.role_labels) if rr.role_labels else "--"
+        retained_badge = "✅" if rr.retained else "❌"
+        lines.append(
+            f"| `{aid}` | {c2b} | {c3b} | {c7b} | {c8b} | {c9b} | "
+            f"{labels} | {retained_badge} |"
+        )
+    lines.append("")
+
+    lines.append("## Criterion 7 — Incoming chemistry (finisher role)")
+    lines.append("")
+    lines.append(
+        "For each agent X, count peers p that lift X's mean TQS by "
+        "≥ 0.02 (4× C2's epsilon) when p is present vs absent. "
+        "**C7 PASS** if ≥ 2 peers independently lift X."
+    )
+    lines.append("")
+    lines.append(
+        "| Agent | Lifting peers | Reason |"
+    )
+    lines.append("|---|:---:|---|")
+    for aid in G7_AGENT_ORDER:
+        rr = role_registry.get(aid)
+        if rr is None:
+            lines.append(f"| `{aid}` | ⏸ | pending |")
+            continue
+        n_lifters = len(rr.c7_lifting_peers)
+        if rr.c7_status == "waived":
+            badge = "W"
+        else:
+            badge = f"{n_lifters} ({'✅' if rr.c7_pass else '❌'})"
+        lines.append(f"| `{aid}` | {badge} | {rr.c7_reason} |")
+    lines.append("")
+
+    lines.append(
+        "## Criterion 8 — Workspace-signal impact (v1 proxy)"
+    )
+    lines.append("")
+    lines.append(
+        "Peer-delta magnitude proxy for workspace-signal consumption "
+        "(the true `IntentDecision.interpreted_signal_family` citation "
+        "count is not persisted in post-V artifacts; see PROTOCOL §12 "
+        "amendment note). **C8 PASS** if workspace_impact ≥ 50 "
+        "epsilon-units summed across all peers."
+    )
+    lines.append("")
+    lines.append(
+        "| Agent | Workspace impact | C8 | Top-impacted peer |"
+    )
+    lines.append("|---|---:|:---:|---|")
+    for aid in G7_AGENT_ORDER:
+        rr = role_registry.get(aid)
+        if rr is None:
+            lines.append(f"| `{aid}` | -- | ⏸ | -- |")
+            continue
+        badge = "✅" if rr.c8_pass else "❌"
+        top = rr.c8_top_impacted_peer or "--"
+        lines.append(
+            f"| `{aid}` | "
+            f"{rr.c8_workspace_impact_epsilons:.1f} | "
+            f"{badge} | `{top}` |"
+        )
+    lines.append("")
+
+    lines.append("## Criterion 9 — Trade-volume floor (anti-dilution)")
+    lines.append("")
+    lines.append(
+        "**C9 PASS** if the agent holds ≥ 5% of squad baseline trades. "
+        "Structural falsifiers (Reo, Kunigami) are waived on C9 per "
+        "PROTOCOL §3."
+    )
+    lines.append("")
+    lines.append(
+        "| Agent | Volume share | C9 | Reason |"
+    )
+    lines.append("|---|---:|:---:|---|")
+    for aid in G7_AGENT_ORDER:
+        rr = role_registry.get(aid)
+        if rr is None:
+            lines.append(f"| `{aid}` | -- | ⏸ | -- |")
+            continue
+        badge = "W" if rr.c9_status == "waived" else (
+            "✅" if rr.c9_pass else "❌"
+        )
+        lines.append(
+            f"| `{aid}` | "
+            f"{rr.c9_volume_share*100:.1f}% | "
+            f"{badge} | {rr.c9_reason} |"
+        )
+    lines.append("")
+
+    lines.append("## Retention verdict")
+    lines.append("")
+    lines.append(
+        "Rule (§5): agent retained iff C3 pass AND at least one of "
+        "{C2, C7, C8, C9} passes. Waived counts as \"not a pass\" for "
+        "the OR-gate; the agent must have real evidence on at least "
+        "one axis."
+    )
+    lines.append("")
+    lines.append("| Agent | Retained | Role labels | Reason |")
+    lines.append("|---|:---:|---|---|")
+    for aid in G7_AGENT_ORDER:
+        rr = role_registry.get(aid)
+        if rr is None:
+            lines.append(f"| `{aid}` | ⏸ | -- | pending |")
+            continue
+        badge = "✅" if rr.retained else "❌"
+        labels = ", ".join(rr.role_labels) if rr.role_labels else "--"
+        lines.append(
+            f"| `{aid}` | {badge} | {labels} | {rr.retention_reason} |"
+        )
+    lines.append("")
+
+    retirement_candidates = [
+        aid for aid in G7_AGENT_ORDER
+        if (
+            (rr := role_registry.get(aid)) is not None
+            and "retirement_candidate" in rr.role_labels
+        )
+    ]
+    non_retained = [
+        aid for aid in G7_AGENT_ORDER
+        if (
+            (rr := role_registry.get(aid)) is not None and not rr.retained
+        )
+    ]
+    lines.append("## Squad-level verdict")
+    lines.append("")
+    lines.append(
+        f"- Retirement candidates: "
+        f"{len(retirement_candidates)} "
+        f"({', '.join(f'`{a}`' for a in retirement_candidates) or 'none'})"
+    )
+    lines.append(
+        f"- Agents failing retention: {len(non_retained)} "
+        f"({', '.join(f'`{a}`' for a in non_retained) or 'none'})"
+    )
+    passed = len(retirement_candidates) == 0
+    lines.append(
+        f"- Squad Role Registry verdict: "
+        f"**{'PASS' if passed else 'FAIL'}** "
+        f"(threshold: 0 retirement candidates)"
+    )
+    lines.append("")
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text("\n".join(lines), encoding="utf-8")
+    log.info("wrote %s", out_path)
+
+
+def emit_role_registry_verdict_json(
+    *,
+    baseline_stats: dict[str, dict[str, float]],
+    c2c3: dict[str, C2C3Result],
+    role_registry: dict[str, RoleRegistryResult],
+    out_path: Path,
+    tag: str,
+) -> None:
+    """JSON companion to the Role Registry markdown verdict."""
+    payload = {
+        "tag": tag,
+        "generated_at_utc": datetime.now(tz=timezone.utc).isoformat(),
+        "baseline_stats": baseline_stats,
+        "c2_c3": {
+            aid: {
+                "c2_pass": r.c2_pass,
+                "c2_reason": r.c2_reason,
+                "c3_pass": r.c3_pass,
+                "c3_reason": r.c3_reason,
+            }
+            for aid, r in c2c3.items()
+        },
+        "role_registry": {
+            aid: {
+                "agent_id": rr.agent_id,
+                "c7_pass": rr.c7_pass,
+                "c7_reason": rr.c7_reason,
+                "c7_lifting_peers": rr.c7_lifting_peers,
+                "c7_status": rr.c7_status,
+                "c8_pass": rr.c8_pass,
+                "c8_reason": rr.c8_reason,
+                "c8_workspace_impact_epsilons": (
+                    rr.c8_workspace_impact_epsilons
+                ),
+                "c8_top_impacted_peer": rr.c8_top_impacted_peer,
+                "c9_pass": rr.c9_pass,
+                "c9_reason": rr.c9_reason,
+                "c9_volume_share": rr.c9_volume_share,
+                "c9_status": rr.c9_status,
+                "role_labels": rr.role_labels,
+                "retained": rr.retained,
+                "retention_reason": rr.retention_reason,
+            }
+            for aid, rr in role_registry.items()
+        },
+    }
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(
+        json.dumps(payload, indent=2, sort_keys=False), encoding="utf-8",
+    )
+    log.info("wrote %s", out_path)
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -812,10 +1485,12 @@ def main(argv: list[str] | None = None) -> int:
             include_baseline=args.include_baseline,
         )
 
-    baseline_stats, per_excluded_stats, c2c3 = aggregate_from_disk(
-        baseline_cache_dir=args.baseline_cache_dir,
-        lo1_root_dir=args.out_dir,
-        tag=args.tag,
+    baseline_stats, per_excluded_stats, c2c3, role_registry = (
+        aggregate_from_disk(
+            baseline_cache_dir=args.baseline_cache_dir,
+            lo1_root_dir=args.out_dir,
+            tag=args.tag,
+        )
     )
     md_path = args.out_dir / f"g7_leave_one_out_verdict_{args.tag}.md"
     json_path = args.out_dir / f"g7_leave_one_out_verdict_{args.tag}.json"
@@ -830,6 +1505,24 @@ def main(argv: list[str] | None = None) -> int:
         per_excluded_stats=per_excluded_stats,
         c2c3=c2c3,
         out_path=json_path, tag=args.tag,
+    )
+    role_md_path = (
+        args.out_dir / f"g7_role_registry_verdict_{args.tag}.md"
+    )
+    role_json_path = (
+        args.out_dir / f"g7_role_registry_verdict_{args.tag}.json"
+    )
+    emit_role_registry_verdict_md(
+        baseline_stats=baseline_stats,
+        c2c3=c2c3,
+        role_registry=role_registry,
+        out_path=role_md_path, tag=args.tag,
+    )
+    emit_role_registry_verdict_json(
+        baseline_stats=baseline_stats,
+        c2c3=c2c3,
+        role_registry=role_registry,
+        out_path=role_json_path, tag=args.tag,
     )
     return 0
 
