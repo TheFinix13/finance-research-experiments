@@ -721,6 +721,93 @@ contribute counterfactual alpha, Option C (peer-YIELD) is the natural
 analogue to Rin's proven Phase T-evolve. Option A is tempting but
 risks over-firing without more analysis of the ratio distribution.
 
+### §11.10 (2026-07-03) — G7 Role Registry v1 companion test lands
+
+Post-V C2/C3 verdict (`reviews/g7_leave_one_out_verdict_post-V.md`)
+identified 3 agents failing strict C2 (Nagi, Barou, Kunigami). Rather
+than remove them, we pre-registered `experiments/G7_role_registry_v1/PROTOCOL.md`
+adding three ADDITIVE role-differentiating criteria to G7 v1's 6-bit
+vector:
+
+- **C7** — Incoming chemistry (finisher role). Agent X passes if ≥ 2
+  peers lift X's mean TQS by ≥ 0.02 when they are present. Nagi passes
+  strongly (Bachira +0.1979, Rin +0.0886, Reo +0.0719 TQS).
+- **C8** — Workspace-signal impact (v1 proxy). Peer-delta magnitude
+  score in epsilon-units. Reo: 245.4 (real gatekeeper). Kunigami:
+  **0.0 exactly** (dead-weight publisher — his §11.1 waiver becomes
+  a rubber stamp).
+- **C9** — Trade-volume floor. Agent holds ≥ 5% of squad trades. Waived
+  for structural falsifiers (Reo, Kunigami).
+
+Retention rule: pass C3 AND at least one of {C2, C7, C8, C9}. Emit role
+labels: `chemistry_catalyst`, `finisher`, `workspace_catalyst`,
+`volume_specialist`, `retirement_candidate`.
+
+**Post-V retention outcomes:**
+
+| Agent | Role label(s) | Retained |
+|---|---|:---:|
+| `isagi_yoichi` | chemistry_catalyst, workspace_catalyst | ✅ |
+| `bachira_meguru` | chemistry_catalyst, workspace_catalyst | ❌ (C3 fail on Barou 84.1%) |
+| `itoshi_rin` | chemistry_catalyst, workspace_catalyst | ✅ |
+| `chigiri_hyoma` | chemistry_catalyst, workspace_catalyst | ✅ |
+| `reo_mikage` | chemistry_catalyst, workspace_catalyst | ✅ |
+| `nagi_seishiro` | **finisher**, workspace_catalyst | ✅ |
+| `barou_shoei` | workspace_catalyst (thin single axis) | ✅ (pending Phase W-barou / Phi5 Arm 3/4) |
+| `kunigami_rensuke` | **retirement_candidate** | ❌ |
+
+Kunigami retirement decision doc drafted at
+`experiments/G7_role_registry_v1/DECISION_kunigami.md` (Options A retire
+[recommended] / B re-evolve / C wait for C8 v2). Awaits user sign-off
+before landing amendments §11.12 (roster reduction).
+
+C8 v1 uses peer-delta magnitude proxy; true `IntentDecision.interpreted_signal_family`
+citation count deferred to C8 v2 pending intents.jsonl persistence
+(see Role Registry PROTOCOL §12).
+
+Commits: `3c1ce7d` (spec + C7/C8/C9 aggregator + regenerated verdict).
+
+### §11.11 (2026-07-03) — Phase W-barou v1.1 landed as NULL RESULT
+
+Pre-registered at `experiments/phase_w_barou/PROTOCOL.md` (H1 lone-
+conviction claim; H2 continuation-entry offset deferred to v1.2 pending
+Phi5 Arm 4). H1 mechanic: when Bachira did NOT publish same-direction
+on Barou's symbol at the tick barrier, apply
+`BAROU_V1_1_LONE_CONVICTION_LIFT = 0.10`. Locked acceptance thresholds
+(LAND if n_trades ≥ 250 AND mean_tqs ≥ 0.34 AND Bachira→Barou
+cannibalisation ≤ 0.60; REVERT if n_trades < 100 or mean_tqs < 0.30).
+
+walk-forward-post-W measured (2026-07-03 UTC): **byte-identical to
+post-V.** Every per-agent trade count and mean_TQS matches to four
+decimal places (Barou 153/0.3469 both runs; Bachira 2542/0.4026 both
+runs; all others 0/0.0 delta). Same 5604 total trades, 28842 proposals,
+336707 thoughts, identical workspace_counts.json.
+
+Verdict: **AMBIGUOUS zone per PROTOCOL §5** — no auto-land, no
+auto-revert. Postmortem written at
+`experiments/phase_w_barou/POSTMORTEM.md`.
+
+Root cause: H1 only fires when Bachira did NOT compete on Barou's
+slot. On those ticks, Barou was already the sole proposer -- his
+proposal was going to win the R6 tournament with or without the +0.10
+lift. The ticks where Barou is BLOCKED (Bachira same-direction same-
+slot) explicitly fall through H1's skip branch. Same structural
+failure mode as Phase V-b (§11.9-postmortem 2026-07-02): agent-side
+conviction lift cannot flip aggregator single-slot mutex.
+
+**Resolution:**
+- Leave H1 code in place as DIAGNOSTIC-ONLY (Phase V-b precedent).
+  The new rationale fields (`barou_lone_conviction_claim`,
+  `barou_v1_1_bachira_read_present`, `barou_v1_1_bachira_same_direction`,
+  `_yield_reason`) are useful for post-hoc audits and for Phi5 Arm 3/4
+  pre-registration analysis.
+- Do NOT ship a Phase W-barou-v1.2 at the agent-conviction level.
+  Direct competition path is closed.
+- Escalate to Phi5 Arm 3 (same-direction merge) as the primary
+  intervention, Arm 4 (multi-position) as fallback.
+
+Commits: `d81bd46` (v1.1 landing) + postmortem (this amendment).
+
 ---
 
 ## 12. Verdict registry row (to be added)
