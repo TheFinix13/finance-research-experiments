@@ -1,4 +1,71 @@
-# AI Context — finance research experiments (updated 2026-07-03, Phase 6a Dukascopy fetcher + Phase V NULL RESULT reverted + F22 workspace-richness upgrade + Phase T-evolve CONFIRMED + Phase U shadow ledger + heartbeat monitor v2.1)
+# AI Context — finance research experiments (updated 2026-07-03, Phase 3 C2/C3 leave-one-out RUNNING + Phase 6b backfill CLI landed + Phase 6a Dukascopy fetcher + Phase V NULL RESULT reverted + F22 workspace-richness upgrade + Phase T-evolve CONFIRMED + Phase U shadow ledger + heartbeat monitor v2.1)
+
+## 2026-07-03 — Phase 3: C2/C3 leave-one-out compute LAUNCHED (running)
+
+The pre-registered Phase 3 gate criteria (C2 positive-sum chemistry +
+C3 non-cannibalising slot behaviour) that have been stubbed as
+"pending" in every G7 verdict since Phase R now have a real compute
+harness driving them. Job kicked off ~03:31 UTC on 2026-07-03, ETA
+~5.6 h wall-clock (8 sequential leave-one-out replays over the 2015-
+2025 EURUSD/GBPUSD/USDCAD panel, ~42 min each). Heartbeat monitor
+v2.1 active on the Python interpreter PID with 60 s sampling,
+20 % CPU floor, 6-sample stall gate, 30-sample no-output gate.
+
+**Committed now (`589aae7`, does not depend on results):**
+
+`sim/scoring/run_g7_leave_one_out.py` — leave-one-out compute runner
++ C2/C3 aggregator. Runs 8 replays sequentially with each agent
+removed from the proposer list (kept as config/state holders for
+isagi/barou/kunigami where needed), dumps `trades.jsonl` +
+`shadow.jsonl` + `workspace_counts.json` per lo1 for crash recovery,
+then aggregates against the walk-forward-post-V baseline cache to
+compute per-peer delta stats + C2/C3 verdicts + audit-grade md+json
+emitters.
+
+Aggregator math:
+- `_per_agent_stats`: n_trades over ALL trades; mean_tqs over trades
+  with a valid numeric tqs so partial writes don't bias the mean.
+- `_compute_reduction_ratio`: `(lo1_n - baseline_n) / lo1_n` --
+  fraction by which a peer's trade count grew when the excluded
+  agent was absent. Positive ⇒ cannibalisation.
+- `compute_c2_c3`: C2 pass = ∃ peer where baseline strictly better
+  than lo1 by ≥ 0.005 tqs or ≥ 1 trade (either metric qualifies);
+  C3 pass = worst per-peer reduction ratio ≤ 0.5.
+- `aggregate_from_disk`: composes baseline + lo1 caches into full
+  verdict; missing lo1 caches leave verdict `pending` (never
+  auto-pass).
+
+CLI: `--tag post-V --out-dir ... --baseline-cache-dir ...
+--exclude <agent_id> [repeatable] --aggregate-only --include-
+baseline -v/-vv`.
+
+**Tests: 26 new** (`test_run_g7_leave_one_out.py`) covering the
+math + emitters + CLI (compute side runs against real bars and is
+exercised by the actual job). Full sim suite: **666 pass / 4
+skipped**.
+
+Statistical-honesty guard: C2/C3 are DIAGNOSTIC criteria; they fill
+in pending G7 stubs but never authorise a code change on their own.
+The runner cannot "promote" any agent, only score.
+
+**Deliverables when compute lands (~08:00 UTC):**
+- `reviews/g7_leave_one_out_post-V/lo1_<agent>/…` × 8 (trades cache).
+- `reviews/g7_c2_c3_verdict_post-V.{md,json}` (verdict + per-peer
+  delta tables).
+- Amended G7 verdict registry row filling in C2/C3 for post-V (also
+  the F22 baseline row, since same panel + same baseline).
+
+## 2026-07-03 — Phase 6b: news-calendar backfill CLI + writer LANDED
+
+Commit `1b6848c`. Composes the Phase 6a Dukascopy fetcher into the
+partitioned parquet writer + SHA256 manifest builder pre-registered
+in the news calendar contract (`data/news_calendar/README.md`
+sec 3). CLI `scripts/backfill_news_calendar.py --source dukascopy
+--start ... --end ... --currencies USD,EUR,... --out-root ...
+--dry-run`. 31 new tests covering DF conversion / partition write /
+SHA256 / manifest / CLI. Full run against live DK deferred to Phase
+6c (~1 h compute, needs network — parked pending user go-ahead
+after C2/C3 lands).
 
 ## 2026-07-03 — Phase 6a: Dukascopy freeserv HTTP fetcher LANDED
 
@@ -616,24 +683,26 @@ wired end-to-end; G7 harness scaffolded with C1/C5/C6 live + C2/C3/C4
 stubbed. Bachira-Isagi flagship chemistry landed with 10 contract tests.
 Doctrine v0.5, roster v0.8, evolution ledger updated with 6 RELABEL rows.
 
-**Next immediate goal — sequenced from Phase V null result (2026-07-03):**
+**Next immediate goal — sequenced from Phase 3 launch (2026-07-03):**
 
-1. **Phase 6b news calendar backfill CLI (in flight -- Phase 6a
-   fetcher landed 2026-07-03).** Write
-   `scripts/backfill_news_calendar.py` composing the DK fetcher +
-   parquet writer + `_manifest.json` builder. Then Phase 6c is the
-   compute-session job actually running the ~1-hour 2007-2026
-   backfill against live Dukascopy.
-2. **Phase 3 C2/C3 leave-one-out compute job (~32h wall-clock).** 8
-   additional squad replays with each agent removed. Result decides
-   whether Chigiri/Barou need a Phase V-iterate at all (Option D
-   from postmortem: concede if leave-one-out shows their absence
-   doesn't hurt squad TQS). Blocks user go-ahead.
+1. **Phase 3 C2/C3 leave-one-out compute (RUNNING, ETA ~08:00 UTC).**
+   Job PID 27370 launched 03:31 UTC, 8 sequential replays, heartbeat
+   monitor v2.1 active with 60 s sampling. When done: aggregate on
+   disk → `reviews/g7_c2_c3_verdict_post-V.{md,json}` → amend G7
+   verdict registry rows for post-V + post-F22 → commit atomically.
+   Result decides whether Chigiri/Barou need a Phase V-iterate at all
+   (Option D from postmortem: concede if leave-one-out shows their
+   absence doesn't hurt squad TQS).
+2. **Phase 6c: run the 2007-2026 Dukascopy backfill (~1 h compute
+   session, needs full-network).** Phase 6a fetcher + 6b CLI +
+   writer + manifest all landed. Blocks on user go-ahead (network
+   permission) — the CLI is dry-run tested but not yet blessed for
+   live-hit.
 3. **Phase 5 Φ5 HRP re-sim with F19 variable-lot inputs + shadow-
    ledger covariance matrix.** Blocked on stable per-agent shadow
    ledgers (which post-V now provides, subject to the null-result
    Phase V configuration being permanent).
-4. **Phase 7 player scouting reports.** Blocked on 2+3 completing +
+4. **Phase 7 player scouting reports.** Blocked on 1+3 completing +
    any Phase V-iterate decision.
 
 **Backlog (needs pre-reg before touching any parameter):**
