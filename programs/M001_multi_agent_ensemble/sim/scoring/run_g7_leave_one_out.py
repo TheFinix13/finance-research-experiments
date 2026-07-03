@@ -468,11 +468,21 @@ def compute_c2_c3(
     out: dict[str, C2C3Result] = {}
     for excluded_id, lo1_stats in per_excluded_stats.items():
         result = C2C3Result(excluded_agent_id=excluded_id)
+        # STRONGEST-lift tracking (not first-hit). We rank peers by
+        # the max of their two normalised deltas (delta_tqs / epsilon_tqs
+        # OR delta_trades / epsilon_trades), so a peer with a 15x-epsilon
+        # TQS lift outranks a peer with a 1x-epsilon trade-count nudge.
+        # First-hit picking (the pre-2026-07-03 05:36 UTC bug) produced
+        # misleading c2_reason strings when the dict-insertion-order
+        # peer barely cleared threshold while another peer had a much
+        # larger lift on a different metric.
         best_lift_peer: str | None = None
         best_lift_val: float = 0.0
+        best_lift_delta_tqs: float = 0.0
+        best_lift_delta_trades: float = 0.0
+        best_lift_metric: str = ""
         worst_reduction: float = 0.0
         worst_reduction_peer: str | None = None
-        c2_hit_by = None
         for peer_id, peer_lo1 in lo1_stats.items():
             if peer_id == excluded_id:
                 continue
@@ -485,24 +495,44 @@ def compute_c2_c3(
             delta_trades = b_n - l_n
             result.per_peer_delta_tqs[peer_id] = delta_tqs
             result.per_peer_delta_trades[peer_id] = delta_trades
-            lift = max(delta_tqs / max(c2_epsilon_tqs, 1e-9),
-                       delta_trades / max(c2_epsilon_trades, 1e-9))
-            if lift > best_lift_val:
-                best_lift_val = lift
+            # Normalised per-metric lift ratios. Only consider POSITIVE
+            # deltas as "lift" -- a negative delta means the excluded
+            # agent HURT the peer, which is not a chemistry signal.
+            tqs_lift_epsilons = delta_tqs / max(c2_epsilon_tqs, 1e-9)
+            trades_lift_epsilons = (
+                delta_trades / max(c2_epsilon_trades, 1e-9)
+            )
+            if tqs_lift_epsilons >= trades_lift_epsilons:
+                peer_lift = tqs_lift_epsilons
+                peer_metric = "tqs"
+            else:
+                peer_lift = trades_lift_epsilons
+                peer_metric = "trades"
+            if peer_lift > best_lift_val:
+                best_lift_val = peer_lift
                 best_lift_peer = peer_id
-            if (delta_tqs > c2_epsilon_tqs or delta_trades > c2_epsilon_trades):
-                if c2_hit_by is None:
-                    c2_hit_by = (peer_id, delta_tqs, delta_trades)
+                best_lift_delta_tqs = delta_tqs
+                best_lift_delta_trades = delta_trades
+                best_lift_metric = peer_metric
             red = _compute_reduction_ratio(baseline_n=b_n, lo1_n=l_n)
             if red > worst_reduction:
                 worst_reduction = red
                 worst_reduction_peer = peer_id
-        result.c2_pass = c2_hit_by is not None
-        if result.c2_pass and c2_hit_by is not None:
-            peer, dt, dn = c2_hit_by
+        # C2 pass = strongest peer clears epsilon on AT LEAST ONE metric.
+        # Equivalent to best_lift_val > 1.0 (one epsilon-unit).
+        result.c2_pass = (
+            best_lift_peer is not None and best_lift_val > 1.0
+        )
+        if result.c2_pass and best_lift_peer is not None:
+            # Explicit metric attribution so a marginal trade-count
+            # pass with a negative TQS delta doesn't read as generic
+            # "lifted by presence".
             result.c2_reason = (
-                f"peer {peer!r} lifted by presence: "
-                f"delta_tqs={dt:+.4f} delta_trades={dn:+.1f}"
+                f"peer {best_lift_peer!r} lifted by presence: "
+                f"delta_tqs={best_lift_delta_tqs:+.4f} "
+                f"delta_trades={best_lift_delta_trades:+.1f} "
+                f"(strongest on {best_lift_metric}, "
+                f"{best_lift_val:.1f}x epsilon)"
             )
         else:
             result.c2_reason = (

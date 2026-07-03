@@ -250,6 +250,67 @@ class TestComputeC2C3:
         assert r.c2_pass is True
         assert "isagi_yoichi" in r.c2_reason
 
+    def test_c2_reason_reports_strongest_lift_not_first_hit(self):
+        # Regression guard for the 2026-07-03 05:36 UTC finding: two
+        # peers pass C2 threshold, one by a marginal trade-count nudge
+        # (bachira +1 trade = 1x epsilon) and one by a massive TQS lift
+        # (isagi +0.10 TQS = 20x epsilon). The reason string MUST
+        # attribute to isagi, not bachira. Pre-fix (first-hit) would
+        # have attributed to bachira because dict order is bachira
+        # first. This is the bug that would have made Reo's Nagi
+        # signal (+0.0719 TQS) invisible under Bachira's +0.0009 TQS.
+        baseline = {
+            "isagi_yoichi": {"n_trades": 100, "mean_tqs": 0.30},
+            "bachira_meguru": {"n_trades": 100, "mean_tqs": 0.30},
+        }
+        per_excluded_stats = {
+            "chigiri_hyoma": {
+                "bachira_meguru": {  # marginal: +1 trade
+                    "n_trades": 99, "mean_tqs": 0.30,
+                },
+                "isagi_yoichi": {  # strong: +0.10 TQS
+                    "n_trades": 100, "mean_tqs": 0.20,
+                },
+            },
+        }
+        c2c3 = lo1.compute_c2_c3(
+            baseline_stats=baseline,
+            per_excluded_stats=per_excluded_stats,
+        )
+        r = c2c3["chigiri_hyoma"]
+        assert r.c2_pass is True
+        # STRONGEST peer wins the reason string.
+        assert "isagi_yoichi" in r.c2_reason
+        assert "bachira_meguru" not in r.c2_reason
+        # Metric attribution surfaced.
+        assert "strongest on tqs" in r.c2_reason
+
+    def test_c2_reason_prefers_trade_count_when_larger(self):
+        # Inverse: a peer with a huge trade-count delta should beat
+        # a peer with a marginal TQS delta.
+        baseline = {
+            "isagi_yoichi": {"n_trades": 100, "mean_tqs": 0.30},
+            "bachira_meguru": {"n_trades": 100, "mean_tqs": 0.30},
+        }
+        per_excluded_stats = {
+            "chigiri_hyoma": {
+                "isagi_yoichi": {  # marginal: +0.006 TQS = 1.2x eps
+                    "n_trades": 100, "mean_tqs": 0.294,
+                },
+                "bachira_meguru": {  # strong: +50 trades = 50x eps
+                    "n_trades": 50, "mean_tqs": 0.30,
+                },
+            },
+        }
+        c2c3 = lo1.compute_c2_c3(
+            baseline_stats=baseline,
+            per_excluded_stats=per_excluded_stats,
+        )
+        r = c2c3["chigiri_hyoma"]
+        assert r.c2_pass is True
+        assert "bachira_meguru" in r.c2_reason
+        assert "strongest on trades" in r.c2_reason
+
     def test_c2_fail_no_peer_helped(self):
         # Excluded=chigiri. Removing chigiri leaves every peer BETTER
         # or same => chigiri is a leech, no positive-sum chemistry.
