@@ -35,6 +35,14 @@ from .hrp import (
     HRPWeightSnapshot,
     compute_hrp_weights,
 )
+from .hrp_shadow_inputs import (
+    ShadowHrpMetric,
+    WindowBoundary,
+    bucket_shadow_by_agent_window,
+    compute_hrp_weights_from_shadow,
+    per_agent_shadow_trade_counts,
+    per_agent_window_means_from_shadow,
+)
 from .multi_position import (
     Arm4Decision,
     MultiPositionAggregator,
@@ -56,10 +64,16 @@ __all__ = [
     "HRPWeightSnapshot",
     "MultiPositionAggregator",
     "OpenPosition",
+    "ShadowHrpMetric",
     "TQSFloorAggregator",
     "TQSFloorDecision",
+    "WindowBoundary",
     "admit_proposals",
     "apply_same_direction_merge",
     "apply_tqs_floor",
+    "bucket_shadow_by_agent_window",
     "compute_hrp_weights",
+    "compute_hrp_weights_from_shadow",
+    "per_agent_shadow_trade_counts",
+    "per_agent_window_means_from_shadow",
 ]
