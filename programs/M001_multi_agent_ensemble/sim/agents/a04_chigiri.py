@@ -105,6 +105,27 @@ CHIGIRI_V1_BASE_CONVICTION: float = 0.70
 CHIGIRI_V1_MAX_MAGNITUDE_BOOST: float = 0.25
 CHIGIRI_V1_MAGNITUDE_BOOST_PER_ATR: float = 0.10
 CHIGIRI_V1_CONV_CAP: float = 1.0
+
+# Phase V-a (2026-07-02, NULL RESULT): regime-specialist thresholds.
+# Originally designed as a rationale-flagged tier promotion (see G7
+# PROTOCOL sec 11.9). Walk-forward-post-V measured only 1 tick flip
+# in 992 (delta moved +0.002 in the WRONG direction), so the tier
+# promotion was reverted (see intend() below). The thresholds are
+# retained here because:
+#   1. The ratios (mag/atr, atr/median) are stamped into rationale
+#      for future re-analysis (a future Phase V-iterate can look at
+#      the distribution of ratios vs shadow outcomes to design a
+#      better mechanic).
+#   2. Regression tests exercise the boolean specialist bit, so the
+#      thresholds must remain stable for test reproducibility.
+#
+# - CHIGIRI_V1_REGIME_MIN_MAG_ATR: minimum breakout magnitude in
+#   ATR units. Routine breakout = 0.5 ATR; specialist = >= 1.5 ATR.
+# - CHIGIRI_V1_REGIME_ATR_MULT: minimum ATR / median-ATR ratio.
+#   Chigiri already only fires when ATR > median (vol_expansion);
+#   specialist tightens this to >= 1.5 x median.
+CHIGIRI_V1_REGIME_MIN_MAG_ATR: float = 1.5
+CHIGIRI_V1_REGIME_ATR_MULT: float = 1.5
 CHIGIRI_V1_WARMUP_BARS: int = (
     CHIGIRI_V1_BREAKOUT_LOOKBACK + CHIGIRI_V1_ATR_VOL_LOOKBACK + 5
 )
@@ -357,6 +378,32 @@ class A4ChigiriV1(BaseStriker):
                 isagi_frame_direction = str(isagi_t.coordinate.direction_bias)
                 if isagi_frame_direction in ("long", "short"):
                     isagi_momentum_agree = (isagi_frame_direction == direction)
+
+        # Phase V-a: regime-specialist promotion. Chigiri's breakout
+        # detector already returns ``magnitude`` (pips-space distance
+        # past the broken range) and ``atr`` + ``atr_median_vol``.
+        # Re-run it here so we can score both specialist conditions
+        # without piping extra state through my_recent_thought.
+        sig_verify = self._detect_breakout(prep, i)
+        regime_specialist = False
+        mag_atr_ratio: float | None = None
+        atr_expansion_ratio: float | None = None
+        if sig_verify is not None:
+            atr_at = float(sig_verify.get("atr", 0.0))
+            atr_median = float(sig_verify.get("atr_median_vol", 0.0))
+            magnitude = float(sig_verify.get("magnitude", 0.0))
+            if atr_at > 0.0:
+                mag_atr_ratio = magnitude / atr_at
+            if atr_median > 0.0:
+                atr_expansion_ratio = atr_at / atr_median
+            if (
+                mag_atr_ratio is not None
+                and atr_expansion_ratio is not None
+                and mag_atr_ratio >= CHIGIRI_V1_REGIME_MIN_MAG_ATR
+                and atr_expansion_ratio >= CHIGIRI_V1_REGIME_ATR_MULT
+            ):
+                regime_specialist = True
+
         proposal_rationale: dict[str, Any] = {
             "wrapped": "internal:atr_breakout_continuation_v1",
             "breakout_lookback": CHIGIRI_V1_BREAKOUT_LOOKBACK,
@@ -370,12 +417,34 @@ class A4ChigiriV1(BaseStriker):
             "final_conviction": float(my_recent_thought.confidence_in_thought),
             "isagi_frame_direction": isagi_frame_direction,
             "isagi_momentum_agree": isagi_momentum_agree,
-            "doctrine_ref": "06-blue-lock-doctrine.md sec 3.1 (speed)",
+            # Phase V-a wiring (DIAGNOSTIC ONLY -- see postmortem below):
+            # report the specialist score whether or not it fires, for
+            # audit + future walk-forward attribution. Kept as regression
+            # guard on the ratio arithmetic; NO effect on aggregator
+            # routing under the null-result configuration (see G7
+            # PROTOCOL sec 11.9-postmortem 2026-07-02).
+            "chigiri_regime_specialist": bool(regime_specialist),
+            "chigiri_mag_atr_ratio": mag_atr_ratio,
+            "chigiri_atr_expansion_ratio": atr_expansion_ratio,
+            "chigiri_regime_min_mag_atr": CHIGIRI_V1_REGIME_MIN_MAG_ATR,
+            "chigiri_regime_atr_mult": CHIGIRI_V1_REGIME_ATR_MULT,
+            "doctrine_ref": (
+                "06-blue-lock-doctrine.md sec 3.1 (speed) + G7 PROTOCOL "
+                "sec 11.9 Phase V-a null result (2026-07-02) -- specialist "
+                "bit stamped for audit; tier promotion reverted"
+            ),
             "empirical_prior": (
                 "E007 0/12 alive on impulse-origin RETEST; Chigiri v1 "
                 "fires on CONTINUATION, not retest"
             ),
         }
+        # Phase V-a null result (walk-forward-post-V 2026-07-02):
+        # ``_effective_tier=1`` promotion was reverted because the delta
+        # only moved +0.002 in the WRONG direction (target: >= -0.03
+        # movement toward 0). Root cause: raw conviction gap between
+        # Chigiri (~0.70--0.85) and Isagi (~0.85--1.00) exceeds the
+        # TIER_BIAS penalty, so promoting the effective tier alone does
+        # not tip the aggregator sort. Postmortem in PROTOCOL sec 11.9.
         stamp_provenance_pips(proposal_rationale, bars=prep.bars, i=i)
         return AgentProposal(
             agent_id=self.agent_id,

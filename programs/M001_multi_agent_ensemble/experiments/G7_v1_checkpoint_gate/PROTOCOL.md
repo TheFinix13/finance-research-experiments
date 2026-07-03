@@ -519,6 +519,210 @@ walk-forward + full amendment.
 
 ---
 
+### §11.9-implementation (2026-07-02) — Phase V-a + V-b landed
+
+**Status:** IMPLEMENTED, unit-tested, awaiting walk-forward-post-V.
+
+The design in §11.9 was refined during implementation from a hard
+conviction lift to a **rationale-flagged effective-tier promotion**,
+because tier-based mixing (TIER_BIAS on Tier-2 agents in
+`_tier_adjusted_conviction`) is where the routing loss actually
+happens -- lifting raw conviction would double-count the tier bias
+in some paths. The final mechanic is thinner and more auditable:
+
+**Aggregator carve-out (`sim/scoring/run_phi4_squad_gate.py`).**
+Added `_EFFECTIVE_TIER_RATIONALE_KEY = "_effective_tier"` constant
+and `_effective_tier(proposal, roster)` helper. The helper reads
+`proposal.rationale["_effective_tier"]` (if present and valid) and
+uses it in `_tier_adjusted_conviction` + the ordering key of
+`_phi4_aggregate`'s sort. The override cannot demote a tier-1 agent
+(Isagi/Bachira stay tier-1 regardless), so the only observable
+behaviour is a tier-2 agent being ranked at tier-1 parity on the
+specific ticks where the specialist bit fires.
+
+**Phase V-a (Chigiri) — implemented in `agents/a04_chigiri.py`.**
+Constants `CHIGIRI_V1_REGIME_MIN_MAG_ATR = 1.5` and
+`CHIGIRI_V1_REGIME_ATR_MULT = 1.5`. `intend()` now computes:
+
+    mag_atr_ratio       = abs(entry - stop) / atr(entry_bar)
+    atr_expansion_ratio = atr(entry_bar) / median(atr, prior 20 bars)
+
+Both are always stamped into `rationale` for audit
+(`chigiri_mag_atr_ratio`, `chigiri_atr_expansion_ratio`). If BOTH
+are `>= 1.5`, `rationale["chigiri_regime_specialist"] = True` and
+`rationale["_effective_tier"] = 1`. Analogous to Phase T-evolve's
+peer-yield-and-lift, this is a narrow carve-out that only fires on
+Chigiri's canon regime (high-magnitude breakout into vol-expansion).
+
+**Phase V-b (Barou) — implemented in `agents/a07_barou.py`.**
+When `"barou_devour_applied" in my_recent_thought.tags` (i.e. the
+F19-aware ledger read confirmed Barou's devour lift already fired
+in `observe()`), `intend()` stamps
+`rationale["barou_solo_king_specialist"] = True` and
+`rationale["_effective_tier"] = 1`. Non-devour proposals stay
+tier-2 with no rationale override -- they continue to compete
+rightly with Bachira on raw conviction, and the aggregator's ~90%
+rejection stays correct for that subset.
+
+**Unit tests.** `test_phase_v_regime_specialist.py` (7 tests) plus
+`TestPhaseVA_ChigiriRegimeSpecialist` in `test_a04_chigiri_wrap.py`
+(3 tests) and `TestPhaseVB_BarouSoloKingSpecialist` in
+`test_a07_barou_wrap.py` (2 tests) cover:
+- default `_effective_tier` matches agent tier
+- rationale override promotes tier-2 → effective tier-1
+- override never demotes tier-1
+- malformed override falls back to agent tier
+- `_tier_adjusted_conviction` removes the TIER_BIAS penalty for
+  promoted proposals
+- specialist Chigiri beats an equal-conviction Isagi
+- non-specialist Chigiri still loses to Isagi
+- specialist Chigiri still loses to a stronger Isagi
+- specialist bit absent on routine breakout / absent when devour
+  didn't fire
+
+**Acceptance test (walk-forward-post-V, kicked off 2026-07-02).**
+Combined test since V-a and V-b touch the same rationale mechanism:
+- Chigiri Phase-U delta `+0.049` (post-F22) → target `≤ +0.02`
+- Barou Phase-U delta `+0.015` (post-F22) → target `≤ 0.0`
+- Aggregate squad TQS regression `≤ 0.005` vs walk-forward-post-F22
+
+If either delta moves the wrong way, revert the corresponding
+rationale-stamp (mechanic revert, tests kept as regression guards)
+and log postmortem in §11.X.
+
+---
+
+### §11.9-postmortem (2026-07-02) — Phase V-a + V-b NULL RESULT
+
+**Verdict:** REVERT. Both Phase V-a and Phase V-b failed their pre-
+registered acceptance criteria on `walk-forward-post-V`. The active
+mechanic (rationale stamps `_effective_tier=1`) was surgically
+reverted; the aggregator plumbing (`_effective_tier` helper) and
+diagnostic ratios are retained as regression scaffolding and audit
+surface for a future Phase V-iterate.
+
+**Observed vs target (post-F22 → post-V, exact from JSONs):**
+
+| Agent   | N_shadow | N_flips | Δ_post-F22 | Δ_post-V | Change    | Target      | Verdict |
+|---------|---------:|--------:|-----------:|---------:|----------:|:------------|---------|
+| Chigiri | 992      | +1      | +0.04887   | +0.05085 | +0.00198  | ≤ +0.02     | FAIL (moved WRONG way) |
+| Barou   | 4576     | 0       | +0.01488   | +0.01488 | 0.00000   | ≤ 0.0       | FAIL (no movement)      |
+
+Side-effect check on other agents (must not regress):
+
+| Agent   | Δ_post-F22 | Δ_post-V | Change    | Verdict |
+|---------|-----------:|---------:|----------:|---------|
+| Rin     | −0.14622   | −0.14693 | −0.00071  | ✓ robust (regression guard held) |
+| Isagi   | +0.00507   | +0.00507 | 0         | ✓ no side-effect on tier-1 |
+| Bachira | −0.01275   | −0.01275 | 0         | ✓ no side-effect |
+| Nagi    | n/a        | n/a      | n/a       | ✓ no side-effect (0 rejected) |
+
+Aggregate squad totals unchanged: 5604 trades, 28842 shadow trades on
+both runs. No squad TQS regression.
+
+**Root cause -- why the mechanic fired but the routing didn't move.**
+
+The final implementation (see §11.9-implementation) used a rationale-
+flagged effective-tier promotion instead of the raw conviction lift
+originally proposed. The theory was: neutralise the `-TIER_BIAS`
+penalty on specialist ticks, and Chigiri/Barou can now win same-
+conviction tiebreaks against Isagi.
+
+**Empirically, the theory is wrong for this squad.** The raw
+conviction distributions are:
+
+- Isagi metavision: base 0.85, boosted to 0.90-1.00 on his D1
+  alignment path.
+- Chigiri breakout: base 0.70, boosted to 0.85-0.95 on his
+  magnitude-boost path.
+- Barou solo-king: base 0.65, boosted to ~0.85 on `devour_applied`.
+
+`TIER_BIAS` is a fixed 0.05 penalty (see `run_phi4_squad_gate.py`).
+Promoting Chigiri/Barou removes 0.05 from their adjusted-conviction
+penalty -- but the raw gap on their winning ticks averages 0.08-0.12
+in Isagi's favour. Removing 0.05 does NOT close the gap; Isagi still
+wins.
+
+Additionally, the `mag/atr >= 1.5 AND atr/median_atr >= 1.5` double
+hurdle restricts Chigiri's specialist bit to genuinely unusual bars
+(~5% of his fires), and on those bars Isagi's metavision typically
+ALSO scores highly because vol-expansion regimes are exactly what
+Isagi's D1-alignment path is designed for. The two agents peak
+together, and Isagi's raw margin dominates the tier bias adjustment.
+
+For Barou: the `barou_devour_applied` tag fires by definition when
+his direction OPPOSES Isagi's active position. So Isagi has already
+executed on that tick with high conviction. Barou's devour lift plus
+tier promotion still doesn't beat Isagi's raw conviction on the same
+tick. Result: zero flips.
+
+**What survives (regression scaffold + audit surface).**
+
+Retained:
+
+1. `_effective_tier` helper + `_EFFECTIVE_TIER_RATIONALE_KEY` in
+   `sim/scoring/run_phi4_squad_gate.py`. Regime-neutral: no side-
+   effect unless a proposal actively stamps the key.
+2. Chigiri's specialist-bit ratio computation (`mag_atr_ratio`,
+   `atr_expansion_ratio`, `chigiri_regime_specialist` boolean) in
+   `sim/agents/a04_chigiri.py`. Written to rationale for audit.
+3. Barou's `barou_solo_king_specialist` boolean in rationale.
+4. Aggregator-side tests in `test_phase_v_regime_specialist.py`
+   (docstring updated to reflect they test plumbing, not an active
+   mechanic).
+
+Reverted:
+
+1. `proposal_rationale["_effective_tier"] = 1` stamp in
+   `sim/agents/a04_chigiri.py::intend`.
+2. `rationale["_effective_tier"] = 1` stamp in
+   `sim/agents/a07_barou.py::intend`.
+3. `TestPhaseVA_ChigiriRegimeSpecialist` +
+   `TestPhaseVB_BarouSoloKingSpecialist` updated to assert the tier
+   override is ABSENT; a new
+   `test_specialist_bit_is_diagnostic_not_routing` in Barou's suite
+   makes the null-result explicit as a regression guard.
+
+**Next-mechanic hypotheses (parked for a future Phase V-iterate).**
+
+Do NOT implement without a fresh pre-registration + fresh walk-
+forward. Statistical honesty guard: no in-place tuning of Phase V
+thresholds.
+
+- **Option A -- per-tick conviction LIFT** (the original §11.9 draft).
+  On specialist ticks, add e.g. +0.10 to base conviction (not just
+  neutralise the tier bias). Would raise Chigiri from 0.85 to 0.95
+  on specialist ticks, potentially clearing Isagi's 0.90-1.00 range
+  on boundary cases. Risk: over-firing where Isagi is also correct.
+
+- **Option B -- symbol-conditional slot reservation.** When both
+  Isagi and Chigiri fire on the same tick with Chigiri in specialist
+  regime, PROMOTE Chigiri's proposal to a dedicated slot instead of
+  forcing them through R6. Requires aggregator changes beyond a
+  per-proposal flag.
+
+- **Option C -- Phase T-evolve-style peer-YIELD** (analogous to Rin).
+  When Chigiri detects Isagi is on the same-direction metavision
+  path, Chigiri YIELDS (returns a `YieldReason`) instead of
+  proposing. When Isagi disagrees or is quiet, Chigiri proposes
+  normally with a lone-read lift. This is a mechanic evolution, not
+  a routing hack. Direct analogue to the proven Rin v1.1 mechanic.
+
+- **Option D -- concede.** The +0.049 / +0.015 deltas are small in
+  absolute terms and may reflect canon role: complementary readers
+  that occasionally get out-competed on tiebreaks. C2/C3 leave-one-
+  out results (still pending, ~32h compute) will show whether
+  removing them hurts squad TQS. If not, their crowding is a feature
+  not a bug.
+
+**Recommended sequencing:** Option D (concede) first -- measure C2/C3
+before designing another mechanic. If C2/C3 shows Chigiri/Barou
+contribute counterfactual alpha, Option C (peer-YIELD) is the natural
+analogue to Rin's proven Phase T-evolve. Option A is tempting but
+risks over-firing without more analysis of the ratio distribution.
+
+---
+
 ## 12. Verdict registry row (to be added)
 
 The G7 gate row for `docs/methodology/gate_verdict_registry.md`:

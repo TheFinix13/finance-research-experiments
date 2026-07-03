@@ -259,10 +259,66 @@ def _interleave_bars(bars_by_symbol: dict[str, list]) -> list[_GlobalBar]:
 # to override -- meaningful override, not accidental.
 TIER_BIAS: float = 0.05
 
+# Phase V-a/V-b (2026-07-02, NULL RESULT: helper retained as plumbing).
+# Design intent: a tier-2 agent could promote itself to effective tier-1
+# on a specific tick by stamping ``rationale["_effective_tier"] = 1``,
+# neutralising the TIER_BIAS penalty against tier-1 anchors. Chigiri
+# would stamp on vol_expansion + high magnitude (V-a); Barou would stamp
+# on devour_active (V-b).
+#
+# **Walk-forward-post-V (2026-07-02) empirical result:** null. Chigiri's
+# delta moved WRONG way (+0.049 -> +0.051; 1 flip in 992); Barou's
+# unchanged (0 flips). Root cause: the raw conviction gap between
+# Chigiri/Barou (~0.70-0.85) and Isagi (~0.85-1.00) exceeds the 0.05
+# TIER_BIAS margin, so neutralising the penalty is not enough to tip
+# the sort. Per PROTOCOL §11.9 honesty guard, the active stamps were
+# reverted; this helper + rationale-key constant are RETAINED because:
+#
+#   1. Regime-neutral: no side effect unless a proposal actively stamps
+#      the key. No agent currently stamps.
+#   2. Ratios stored in Chigiri/Barou rationale still useful for a
+#      future V-iterate analysis of ratio-vs-outcome distribution.
+#   3. Aggregator-side tests in ``test_phase_v_regime_specialist.py``
+#      exercise the helper as regression guards on the plumbing.
+#
+# See G7 PROTOCOL §11.9-postmortem (2026-07-02) for full analysis and
+# next-mechanic hypotheses (Options A/B/C/D). Do NOT re-enable stamps
+# without a fresh pre-registration.
+_EFFECTIVE_TIER_RATIONALE_KEY: str = "_effective_tier"
+
+
+def _effective_tier(proposal: AgentProposal) -> int:
+    """Return the effective tier for aggregator bias.
+
+    Reads ``proposal.rationale["_effective_tier"]`` if present; falls
+    back to ``proposal.agent_tier``. Returns the MORE ANCHOR-LIKE value
+    (lower tier number = closer to anchor). Never demotes: a tier-1
+    agent stays tier-1 even if the rationale claims tier-2.
+
+    NOTE (2026-07-02, Phase V null result): no agent currently stamps
+    the rationale key -- the mechanic was reverted after walk-forward-
+    post-V. This helper is retained as regime-neutral plumbing for a
+    future Phase V-iterate; the tests in test_phase_v_regime_specialist
+    verify its behaviour as a regression guard.
+    """
+    try:
+        override = int(proposal.rationale.get(_EFFECTIVE_TIER_RATIONALE_KEY,
+                                              proposal.agent_tier))
+    except (TypeError, ValueError):
+        return int(proposal.agent_tier)
+    return min(int(proposal.agent_tier), override)
+
 
 def _tier_adjusted_conviction(proposal: AgentProposal) -> float:
-    """Return the aggregator-visible conviction after tier-anchor bias."""
-    return float(proposal.conviction) - TIER_BIAS * (int(proposal.agent_tier) - 1)
+    """Return the aggregator-visible conviction after tier-anchor bias.
+
+    Uses ``_effective_tier`` so a Phase V-iterate could re-enable
+    regime-specialist promotions by stamping the rationale key. Under
+    the current (2026-07-02 post-V) configuration, no agent stamps
+    the key, so this reduces to the standard tier-based bias applied
+    uniformly by ``proposal.agent_tier``.
+    """
+    return float(proposal.conviction) - TIER_BIAS * (_effective_tier(proposal) - 1)
 
 
 @dataclass
@@ -308,7 +364,7 @@ def _phi4_aggregate(
         plist.sort(
             key=lambda p: (
                 -_tier_adjusted_conviction(p),
-                int(p.agent_tier),
+                _effective_tier(p),   # Phase V plumbing (null since 2026-07-02)
                 p.agent_id,
             ),
         )

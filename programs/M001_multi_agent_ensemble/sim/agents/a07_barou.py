@@ -359,20 +359,29 @@ class A7BarouV1(BaseStriker):
                         workspace_isagi_direction != direction
                     )
         meta = getattr(sig, "meta", {}) or {}
+        devour_applied = "barou_devour_applied" in my_recent_thought.tags
         rationale: dict[str, Any] = {
             "wrapped": "agent.alphas.concepts.zone_alpha.SupplyDemandAlpha",
             "params": dict(BAROU_V1_PARAMS),
             "signal_reason": sig.reason,
             "htf_align": meta.get("htf_align"),  # None for Barou
             "bar_index": int(i),
-            "devour_applied": (
-                "barou_devour_applied" in my_recent_thought.tags
-            ),
+            "devour_applied": devour_applied,
             "base_conviction": float(sig.conviction),
             "final_conviction": conviction,
             "workspace_isagi_direction": workspace_isagi_direction,
             "workspace_isagi_disagrees": workspace_isagi_disagrees,
-            "doctrine_ref": "06-blue-lock-doctrine.md sec 3.4 (devour)",
+            # Phase V-b (2026-07-02, NULL RESULT): the specialist bit is
+            # stamped for audit but no longer promotes ``_effective_tier``.
+            # Walk-forward-post-V showed ZERO tick flips vs post-F22 --
+            # the tier promotion doesn't tip the aggregator on USDCAD
+            # because Isagi's conviction gap absorbs the TIER_BIAS margin.
+            # See G7 PROTOCOL sec 11.9-postmortem 2026-07-02.
+            "barou_solo_king_specialist": bool(devour_applied),
+            "doctrine_ref": (
+                "06-blue-lock-doctrine.md sec 3.4 (devour) + G7 PROTOCOL "
+                "sec 11.9 Phase V-b null result (2026-07-02)"
+            ),
             "empirical_prior": "E005 USDCAD baseline-zone +4.63 pips/trade",
         }
         stamp_provenance_pips(rationale, bars=prep.bars, i=i)

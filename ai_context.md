@@ -1,4 +1,63 @@
-# AI Context — finance research experiments (updated 2026-07-02, F22 workspace-richness upgrade + Phase T-evolve CONFIRMED + Phase U shadow ledger + heartbeat monitor v2.1)
+# AI Context — finance research experiments (updated 2026-07-03, Phase V NULL RESULT reverted + F22 workspace-richness upgrade + Phase T-evolve CONFIRMED + Phase U shadow ledger + heartbeat monitor v2.1)
+
+## 2026-07-02 evening → 2026-07-03 — Phase V-a + V-b NULL RESULT, reverted
+
+**Verdict:** REVERT. Both Chigiri regime-specialist (V-a) and Barou
+solo-king clarification (V-b) failed their pre-registered acceptance
+criteria on walk-forward-post-V. Per PROTOCOL §11.9 honesty guards,
+the active mechanic (rationale stamps `_effective_tier=1`) was
+surgically reverted; aggregator plumbing + diagnostic ratios retained
+as regression scaffolding + audit surface for a future V-iterate.
+
+**Delta comparison (post-F22 → post-V, exact from JSONs):**
+
+| Agent   | N_shadow | N_flips | Δ_post-F22 | Δ_post-V | Target      | Verdict |
+|---------|---------:|--------:|-----------:|---------:|:------------|---------|
+| Chigiri | 992      | +1      | +0.04887   | +0.05085 | ≤ +0.02     | FAIL (moved WRONG way) |
+| Barou   | 4576     | 0       | +0.01488   | +0.01488 | ≤ 0.0       | FAIL (no movement)     |
+| Rin     | 1494     | ~0      | −0.14622   | −0.14693 | (guard)     | ✓ robust               |
+| Isagi   | 6571     | 0       | +0.00507   | +0.00507 | (no-sfx)    | ✓ no side-effect       |
+
+**Root cause.** The rationale-flagged effective-tier promotion
+neutralises TIER_BIAS (0.05) but the raw conviction gap between
+Chigiri/Barou and Isagi averages 0.08-0.12 on the very ticks where
+they compete. Removing 0.05 does not close the gap; Isagi still wins.
+Also the specialist double-hurdle (`mag/atr>=1.5 AND atr/median>=1.5`)
+restricts firing to ~5% of Chigiri's bars, and on those bars Isagi's
+metavision peaks together with Chigiri's breakout. Zero routing
+mobility.
+
+**Retained** (regression scaffold + audit surface for future
+V-iterate):
+- `_effective_tier` helper + `_EFFECTIVE_TIER_RATIONALE_KEY` in
+  `run_phi4_squad_gate.py` (regime-neutral, no side-effect without
+  active stamp).
+- Chigiri's `mag_atr_ratio`, `atr_expansion_ratio`, and
+  `chigiri_regime_specialist` boolean in rationale (audit).
+- Barou's `barou_solo_king_specialist` boolean in rationale.
+- All aggregator-side tests in `test_phase_v_regime_specialist.py`
+  (docstring updated).
+
+**Reverted** (per statistical honesty guard):
+- `_effective_tier=1` stamp in `a04_chigiri.py::intend`.
+- `_effective_tier=1` stamp in `a07_barou.py::intend`.
+- Agent-level tests now assert the tier override is ABSENT + a new
+  regression guard `test_specialist_bit_is_diagnostic_not_routing`
+  in Barou's suite.
+
+**Next-mechanic hypotheses** (parked, do NOT implement without fresh
+pre-registration):
+- **Option A — per-tick conviction LIFT** (raw +0.10, not just neutralise
+  tier bias). Risk: over-firing.
+- **Option B — symbol-conditional slot reservation** (aggregator-side).
+- **Option C — Phase T-evolve-style peer-YIELD** (analogous to Rin's
+  proven v1.1 mechanic).
+- **Option D — concede.** Recommended first step: measure C2/C3
+  leave-one-out (~32h) to see if Chigiri/Barou contribute counterfactual
+  alpha at all. If not, their crowding is a canon-consistent feature.
+
+Full postmortem in G7 PROTOCOL §11.9-postmortem. Sim suite: 565
+passed / 4 skipped (+1 new regression guard test).
 
 ## 2026-07-02 afternoon — F22 workspace-richness upgrade (three commits)
 
@@ -66,12 +125,11 @@ promised: richer AUDIT surface, zero behavior drift.
 | Nagi    | 0.300   | n/a     | n/a         |
 | Barou   | 0.302   | 0.317   | **+0.015** (unchanged) |
 
-**Next up: Phase V.** Chigiri's positive delta widened slightly at
-+0.049 (was +0.044); Barou's stable at +0.015. Phase V design
-pre-registered in G7 PROTOCOL §11.9 -- regime-conditional tier-1-
-equivalent conviction bias for both agents on their canonical
-regime hit (Chigiri vol_expansion, Barou devour_active). Chigiri
-first, Barou second.
+**Phase V outcome (2026-07-03):** BOTH V-a and V-b returned NULL
+RESULTS on walk-forward-post-V and were reverted per honesty guard.
+See top-of-file postmortem for full delta analysis + root cause +
+next-mechanic hypotheses. Recommendation: concede + measure C2/C3
+before designing another mechanic.
 
 ## 2026-07-02 — Phase T-evolve walk-forward result: PASS
 
@@ -500,24 +558,33 @@ wired end-to-end; G7 harness scaffolded with C1/C5/C6 live + C2/C3/C4
 stubbed. Bachira-Isagi flagship chemistry landed with 10 contract tests.
 Doctrine v0.5, roster v0.8, evolution ledger updated with 6 RELABEL rows.
 
-**Next immediate goal — G7 full-panel batch run (opex, deferred to a
-dedicated compute session):**
+**Next immediate goal — sequenced from Phase V null result (2026-07-03):**
 
-1. **G7 batch run (highest priority for next session).** Run
-   `run_g7_v1_checkpoint_gate.py` on the full 7-window Φ4.1 panel plus
-   8 leave-one-out squads for criterion 2. PROTOCOL §8 stop rule #2
-   allows up to 32 hours wall-clock; ship partial verdict on timeout
-   per §11.2. Requires wiring the F21 workspace into
-   `_drive_squad_replay` (currently only `run_replay` in
-   `sim/core/engine.py` threads workspace) OR swapping G7 harness to
-   use `run_replay` on the interleaved bar stream.
-2. **Phi4.1 physical rerun completion + side-by-side report** (in
-   flight at 15:17 -- squad run done 5,236 trades; F17 isolated arms
-   in progress). When it completes, emit
-   `reviews/phi41_squad_v1_physical_vs_audit.md` with the ratio and
-   diagnostic.
-3. **Phase 6e Φ5 re-sim path** (Arms 3/4/5 full re-sim). Plumb the 5
-   arm aggregators into `_drive_squad_replay`. Runs after G7 batch.
+1. **Phase 6 news calendar wiring (independent, next up).** Dukascopy
+   DK backfill 2007→2026 + adapter live-swap. No compute contention;
+   safe to run in the same session as any other job. Scaffolding is
+   done (see 2026-07-01 Phase M entry above); this is the live-HTTP
+   fetch step.
+2. **Phase 3 C2/C3 leave-one-out compute job (~32h wall-clock).** 8
+   additional squad replays with each agent removed. Result decides
+   whether Chigiri/Barou need a Phase V-iterate at all (Option D
+   from postmortem: concede if leave-one-out shows their absence
+   doesn't hurt squad TQS). Blocks user go-ahead.
+3. **Phase 5 Φ5 HRP re-sim with F19 variable-lot inputs + shadow-
+   ledger covariance matrix.** Blocked on stable per-agent shadow
+   ledgers (which post-V now provides, subject to the null-result
+   Phase V configuration being permanent).
+4. **Phase 7 player scouting reports.** Blocked on 2+3 completing +
+   any Phase V-iterate decision.
+
+**Backlog (needs pre-reg before touching any parameter):**
+
+1. **Phase V-iterate** (if C2/C3 shows Chigiri/Barou contribute
+   counterfactual alpha). Options A/B/C from postmortem; C
+   (peer-YIELD analogous to Rin) is the cleanest analogue.
+2. **PLG cooldown / streak-halt tuning** (E017 pre-reg required).
+3. **E014 wider-grid amendment** (θ ∈ {20, 30, 40, 50}). Blocked by
+   §Amendments discipline in `E014_.../PROTOCOL.md`.
 
 **Backlog (needs pre-reg before touching any parameter):**
 
@@ -525,12 +592,13 @@ dedicated compute session):**
 2. **E014 wider-grid amendment** (θ ∈ {20, 30, 40, 50}). Blocked by
    §Amendments discipline in `E014_.../PROTOCOL.md`.
 
-**Deferred beyond G7 (was WIP but reprioritised 2026-07-01):**
+**Un-deferred as of 2026-07-03:** News calendar wiring (Phase 6) is
+now the highest-priority next task per Phase V postmortem sequencing
+above.
 
-1. **News calendar wiring.** Multi-source fallback + 2007-2026 backfill.
-   README at `data/news_calendar/README.md` marked
-   `DEFERRED-BEYOND-G7`.
-2. **v2 agent implementations** (Barou hybrid, Bachira/Rin/Chigiri/Reo
+**Still deferred beyond G7:**
+
+1. **v2 agent implementations** (Barou hybrid, Bachira/Rin/Chigiri/Reo
    refinements). Reclassified as v1 mechanic iterations per §3.11.5;
    no v2 arc authorised until G7 PASS.
 

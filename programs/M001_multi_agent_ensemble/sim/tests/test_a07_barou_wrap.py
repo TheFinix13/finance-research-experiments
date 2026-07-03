@@ -362,3 +362,173 @@ def test_barou_redacted_ledger_blocks_devour():
     market = _bar_to_market(fire_bar, fire_idx)
     t = barou.observe(market, redacted)
     assert "barou_devour_applied" not in t.tags
+
+
+# ---------------------------------------------------------------------------
+# Phase V-b: solo-king clarification (2026-07-02)
+# ---------------------------------------------------------------------------
+
+class TestPhaseVB_BarouSoloKingSpecialist:
+    """Barou stamps ``rationale["_effective_tier"] = 1`` when his
+    devour-lift fired in observe() (his direction opposes Isagi's
+    active USDCAD position at conviction >= 0.7). Non-devour proposals
+    stay tier-2 and continue to lose to Bachira on raw conviction.
+    """
+
+    def test_specialist_bit_fires_when_devour_active(self):
+        """Reuses the devour-fires fixture: builds a USDCAD signal +
+        opposite-direction Isagi thought at 0.85 conviction on tick-1.
+        Barou's observe() stamps devour_applied; intend() must stamp
+        the specialist bit + effective_tier=1.
+        """
+        bars = _build_synthetic_usdcad_bars(600)
+        barou = _make_barou()
+        barou.prepare("USDCAD", bars)
+        fire_idx = None
+        fire_direction = None
+        for i in range(200, len(bars) - 1):
+            sig = barou.inner_signal_at("USDCAD", i)
+            if sig is not None:
+                fire_idx = i
+                fire_direction = sig.direction.value
+                break
+        if fire_idx is None:
+            pytest.skip("synthetic series produced no Barou signal")
+        fire_bar = bars[fire_idx]
+        isagi_direction = "short" if fire_direction == "long" else "long"
+        isagi_coord = Coordinate(
+            agent_id="isagi_yoichi", symbol="USDCAD",
+            price_lo=float(fire_bar.close) - 0.0010,
+            price_hi=float(fire_bar.close) + 0.0010,
+            time_start=fire_bar.time - timedelta(hours=4),
+            time_end=fire_bar.time + timedelta(hours=20),
+            vol_band=(0.5, 2.0),
+            regime_predicate="D1_trend_against",
+            expected_strength=0.85, direction_bias=isagi_direction,
+            rationale={
+                "entry": float(fire_bar.close),
+                "stop": float(fire_bar.close) - 0.0010,
+                "take_profit": float(fire_bar.close) + 0.0015,
+            },
+        )
+        isagi_thought = Thought(
+            schema_version=SCHEMA_VERSION,
+            agent_id="isagi_yoichi", tick_id=fire_idx - 1,
+            timestamp=bars[fire_idx - 1].time, symbol="USDCAD",
+            narrative="prior isagi",
+            tags=["zone_d1_against", "htf_against"],
+            confidence_in_thought=0.85,
+            expected_action=f"{isagi_direction}_on_H4_close",
+            coordinate=isagi_coord,
+            decision_horizon=bars[fire_idx - 1].time,
+            ttl_ticks=6, references=[],
+        )
+        ledger = FullLedger()
+        ledger.append(isagi_thought)
+        market = _bar_to_market(fire_bar, fire_idx)
+        t = barou.observe(market, ledger)
+        assert "barou_devour_applied" in t.tags   # sanity
+        p = barou.intend(market, t)
+        assert p is not None
+        r = p.rationale
+        assert r["devour_applied"] is True
+        assert r["barou_solo_king_specialist"] is True
+        # Phase V-b null result: specialist bit is stamped for audit
+        # but NO tier override is applied (see PROTOCOL sec 11.9-
+        # postmortem). Regression guard: the override must be absent.
+        assert "_effective_tier" not in r, (
+            "Phase V-b null result: specialist bit is diagnostic; "
+            "tier promotion is reverted"
+        )
+
+    def test_specialist_bit_absent_when_no_devour(self):
+        """Signal fires but devour is skipped -- either because Isagi
+        agrees (test_barou_devour_skipped_on_isagi_agreement) or
+        because there's no Isagi thought. Barou stays tier-2.
+        """
+        bars = _build_synthetic_usdcad_bars(600)
+        barou = _make_barou()
+        barou.prepare("USDCAD", bars)
+        fire_idx = None
+        for i in range(200, len(bars) - 1):
+            sig = barou.inner_signal_at("USDCAD", i)
+            if sig is not None:
+                fire_idx = i
+                break
+        if fire_idx is None:
+            pytest.skip("synthetic series produced no Barou signal")
+        fire_bar = bars[fire_idx]
+        # Empty ledger: no Isagi thought -> no devour.
+        market = _bar_to_market(fire_bar, fire_idx)
+        t = barou.observe(market, FullLedger())
+        assert "barou_devour_applied" not in t.tags   # sanity
+        p = barou.intend(market, t)
+        assert p is not None
+        r = p.rationale
+        assert r["devour_applied"] is False
+        assert r["barou_solo_king_specialist"] is False
+        assert "_effective_tier" not in r, (
+            "Non-devour Barou proposal must stay at agent_tier (no override)"
+        )
+
+    def test_specialist_bit_is_diagnostic_not_routing(self):
+        """Regression guard for the Phase V-b null-result configuration
+        (see PROTOCOL sec 11.9-postmortem 2026-07-02): even when the
+        devour lift fires, the rationale must NOT contain any tier
+        override, so the aggregator's routing decision is unchanged.
+        """
+        bars = _build_synthetic_usdcad_bars(600)
+        barou = _make_barou()
+        barou.prepare("USDCAD", bars)
+        fire_idx = None
+        fire_direction = None
+        for i in range(200, len(bars) - 1):
+            sig = barou.inner_signal_at("USDCAD", i)
+            if sig is not None:
+                fire_idx = i
+                fire_direction = sig.direction.value
+                break
+        if fire_idx is None:
+            pytest.skip("synthetic series produced no Barou signal")
+        fire_bar = bars[fire_idx]
+        isagi_direction = "short" if fire_direction == "long" else "long"
+        isagi_coord = Coordinate(
+            agent_id="isagi_yoichi", symbol="USDCAD",
+            price_lo=float(fire_bar.close) - 0.0010,
+            price_hi=float(fire_bar.close) + 0.0010,
+            time_start=fire_bar.time - timedelta(hours=4),
+            time_end=fire_bar.time + timedelta(hours=20),
+            vol_band=(0.5, 2.0),
+            regime_predicate="D1_trend_against",
+            expected_strength=0.85, direction_bias=isagi_direction,
+            rationale={
+                "entry": float(fire_bar.close),
+                "stop": float(fire_bar.close) - 0.0010,
+                "take_profit": float(fire_bar.close) + 0.0015,
+            },
+        )
+        isagi_thought = Thought(
+            schema_version=SCHEMA_VERSION,
+            agent_id="isagi_yoichi", tick_id=fire_idx - 1,
+            timestamp=bars[fire_idx - 1].time, symbol="USDCAD",
+            narrative="prior isagi", tags=["zone_d1_against"],
+            confidence_in_thought=0.85,
+            expected_action=f"{isagi_direction}_on_H4_close",
+            coordinate=isagi_coord,
+            decision_horizon=bars[fire_idx - 1].time,
+            ttl_ticks=6, references=[],
+        )
+        ledger = FullLedger()
+        ledger.append(isagi_thought)
+        market = _bar_to_market(fire_bar, fire_idx)
+        t = barou.observe(market, ledger)
+        p = barou.intend(market, t)
+        assert p is not None
+        keys_that_would_promote_tier = [
+            k for k in p.rationale
+            if k == "_effective_tier"
+        ]
+        assert keys_that_would_promote_tier == [], (
+            "Phase V-b null result: rationale must NOT contain tier "
+            "override keys under the reverted mechanic"
+        )
