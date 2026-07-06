@@ -1,7 +1,12 @@
 # Kunigami retention decision (post-V, Role Registry v1)
 
-**Status:** DECISION-PENDING-USER-SIGN-OFF
-**Date:** 2026-07-03 07:40 UTC
+**Status:** DECIDED — Option A (RETIRE) signed off 2026-07-06, with a
+pre-registered Wild Card return path (Option B3 aggregator-side
+drawdown gate, to be protocolised after Φ5 Arm 3/4 verdicts). C8 v2
+(Option C) rejected as non-informative: the v1 proxy measured zero
+downstream effect, which bounds any citation count's relevance.
+Execution record: G7 v1 PROTOCOL §11.12 + Role Registry §12.1.
+**Date:** 2026-07-03 07:40 UTC (drafted); 2026-07-06 (decided)
 **Governing protocol:** `PROTOCOL.md` §5 (Retention rule).
 **Verdict source:** `../../reviews/g7_role_registry_verdict_post-V.md`.
 

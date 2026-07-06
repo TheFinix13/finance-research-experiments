@@ -94,6 +94,13 @@ from programs.M001_multi_agent_ensemble.sim.agents.a10_kunigami import (
     A10KunigamiV1,
     ClosedTradeRecord,
 )
+from programs.M001_multi_agent_ensemble.sim.core.aggregator_arms.multi_position import (
+    ARM4_K_POSITIONS,
+    _proposal_risk_dollars as _arm4_proposal_risk_dollars,
+)
+from programs.M001_multi_agent_ensemble.sim.core.aggregator_arms.same_direction_merge import (
+    apply_same_direction_merge,
+)
 from programs.M001_multi_agent_ensemble.sim.core.ledger import (
     FullLedger,
     RedactedLedger,
@@ -108,6 +115,7 @@ from programs.M001_multi_agent_ensemble.sim.core.sentinel import (
     SANDBOX_PER_TRADE_RISK_FRAC,
     SentinelContext,
     SentinelDecision,
+    check_r6_per_symbol_risk_cap,
     evaluate_proposal as sentinel_evaluate_proposal,
 )
 from programs.M001_multi_agent_ensemble.sim.core.types import (
@@ -166,6 +174,19 @@ SANDBOX_EQUITY_DOLLARS = 100.0
 # pip_value_per_lot = 10.0 in agent/config.py (broker constant, TF-invariant).
 # min-lot pip value = pip_value_per_lot * MIN_LOT = 10.0 * 0.01 = 0.10.
 SANDBOX_PIP_VALUE_PER_MIN_LOT = 0.10
+
+# Phi5 Arm 4 combined-risk cap, SANDBOX SCALE (phi5_aggregator PROTOCOL
+# §11.4 amendment, 2026-07-06). The protocol's original 1% cap was
+# written against a percent-risk sizing model; the fixed-lot sandbox
+# (0.1 lot, median SL 27.5 pips => ~$27.5 risk on $100 equity) makes a
+# 1% ($1) cap structurally unsatisfiable -- it would block EVERY
+# admission and Arm 4 would be null by construction, not by evidence.
+# The faithful translation of "matches single-position cap; budget is
+# SPLIT across positions, not doubled" is: combined risk across a
+# symbol's K positions may not exceed what ONE max-size single position
+# could risk under Sentinel R1 at fixed lot = 5% x 10 min-lot units =
+# 50% of equity. Locked BEFORE the Arm 4 re-sim ran.
+ARM4_SANDBOX_RISK_CAP_FRAC = 0.50
 
 
 # ---------------------------------------------------------------------------
@@ -500,6 +521,7 @@ def _drive_squad_replay(
     sentinel_blocks: bool = False,
     use_workspace: bool = False,
     use_shadow_ledger: bool = False,
+    aggregator_arm: str = "phi41",
 ) -> SquadRunOutput:
     """End-to-end Phi4 squad replay driver.
 
@@ -534,14 +556,44 @@ def _drive_squad_replay(
     (never moves the v1 bit vector); see doctrine §4.1a Phase U
     amendment and G7 PROTOCOL §11.7. Default OFF preserves Phi4/4.1
     reproduction fidelity.
+
+    Phi5 aggregator arms (2026-07-06, phi5_aggregator PROTOCOL §11.4).
+    ``aggregator_arm`` selects the slot-allocation policy:
+
+    - ``"phi41"`` (default) -- the sealed Phi4.1 single-slot
+      conviction tournament. Byte-identical to all prior verdicts.
+    - ``"arm3"`` -- same-direction merge: concurrent same-(symbol,
+      direction) proposals on one tick collapse into a single merged
+      proposal (tightest SL, median TP, max conviction) BEFORE the
+      tournament. Addresses the Bachira-Barou 84% cannibalisation
+      (G7 §11.11 escalation).
+    - ``"arm4"`` -- multi-position: up to K=2 concurrent positions
+      per symbol from DISTINCT agents, combined risk per symbol
+      capped by Sentinel R6 (1% of equity). Slot admission replaces
+      the single-position guard.
+
+    Arms 3/4 REQUIRE ``sentinel_blocks=True`` (Phi5 protocol §11.1
+    stop-rule amendment); the harness raises otherwise.
     """
+    if aggregator_arm not in ("phi41", "arm3", "arm4"):
+        raise ValueError(f"unknown aggregator_arm: {aggregator_arm!r}")
+    if aggregator_arm != "phi41" and not sentinel_blocks:
+        raise ValueError(
+            f"aggregator_arm={aggregator_arm!r} requires sentinel_blocks=True "
+            "(phi5_aggregator PROTOCOL §11.1)"
+        )
     out = SquadRunOutput()
     global_bars = _interleave_bars(bars_by_symbol)
     if not global_bars:
         return out
 
+    multi_position = aggregator_arm == "arm4"
+
     # Open trades keyed by symbol (per-symbol single-position rule).
+    # Arm 4 relaxes this to a list of up to ARM4_K_POSITIONS trades
+    # per symbol (distinct agents, R6 combined-risk cap).
     open_trades: dict[str, Any] = {}
+    open_trades_multi: dict[str, list[Any]] = {}
     cfg = isagi._cfg                       # cfg shared across wrappers
 
     # Sentinel state (R3/R5 need per-agent counters).
@@ -569,6 +621,37 @@ def _drive_squad_replay(
     n_bars_per_sym: dict[str, int] = {
         sym: len(bars) for sym, bars in bars_by_symbol.items()
     }
+
+    def _finalise_closed_trade(ot, *, tick_id: int, sym: str) -> None:
+        """Score + journal one closed trade (shared by single- and
+        multi-position paths; behaviour-identical to the pre-Phi5
+        inline block so sealed replays reproduce byte-for-byte)."""
+        tr = _score_trade(
+            ot, _agent_target_hold_hours(ot, agents),
+        )
+        tr_with_agent = _annotate_trade_record(
+            tr, ot, tick_id, sym,
+        )
+        out.trades.append(tr_with_agent)
+        # Push the closed-trade outcome into Kunigami so the
+        # loss-streak signal fires on squad-wide outcomes.
+        kunigami.record_closed_trade(ClosedTradeRecord(
+            agent_id=tr_with_agent.agent_id,
+            exit_time=tr_with_agent.exit_time,
+            pnl_pips=tr_with_agent.pnl_pips,
+            source_conviction=float(
+                getattr(ot, "_source_conviction", 0.0)
+            ),
+        ))
+        # Per-agent consecutive-loss counter feeds Sentinel R5
+        # directly (independent of Kunigami's window-based warning).
+        _aid = tr_with_agent.agent_id
+        if tr_with_agent.pnl_pips <= 0:
+            per_agent_consecutive_losses[_aid] = (
+                per_agent_consecutive_losses.get(_aid, 0) + 1
+            )
+        else:
+            per_agent_consecutive_losses[_aid] = 0
 
     # Progress logging (2026-07-01) -- long replays go silent for
     # 30-60 min otherwise, making it impossible to tell a stuck run
@@ -626,41 +709,28 @@ def _drive_squad_replay(
         )
         bars_seen_per_sym[symbol] += 1
 
-        # Trade management on THIS symbol's open trade.
-        ot = open_trades.get(symbol)
-        if ot is not None:
-            _update_excursion(ot, bar)
-            closed = _check_exit(ot, bar, cfg)
-            if closed:
-                # Translate prod Trade -> our TradeRecord; attach the
-                # source agent_id (we journal it on `ot` when opening).
-                tr = _score_trade(
-                    ot, _agent_target_hold_hours(ot, agents),
-                )
-                tr_with_agent = _annotate_trade_record(
-                    tr, ot, gb.tick_id, symbol,
-                )
-                out.trades.append(tr_with_agent)
-                # Push the closed-trade outcome into Kunigami so the
-                # loss-streak signal fires on squad-wide outcomes.
-                kunigami.record_closed_trade(ClosedTradeRecord(
-                    agent_id=tr_with_agent.agent_id,
-                    exit_time=tr_with_agent.exit_time,
-                    pnl_pips=tr_with_agent.pnl_pips,
-                    source_conviction=float(
-                        getattr(ot, "_source_conviction", 0.0)
-                    ),
-                ))
-                # Per-agent consecutive-loss counter feeds Sentinel R5
-                # directly (independent of Kunigami's window-based warning).
-                _aid = tr_with_agent.agent_id
-                if tr_with_agent.pnl_pips <= 0:
-                    per_agent_consecutive_losses[_aid] = (
-                        per_agent_consecutive_losses.get(_aid, 0) + 1
-                    )
+        # Trade management on THIS symbol's open trade(s).
+        if multi_position:
+            still_open: list[Any] = []
+            for ot in open_trades_multi.get(symbol, ()):
+                _update_excursion(ot, bar)
+                if _check_exit(ot, bar, cfg):
+                    _finalise_closed_trade(ot, tick_id=gb.tick_id, sym=symbol)
                 else:
-                    per_agent_consecutive_losses[_aid] = 0
-                open_trades.pop(symbol, None)
+                    still_open.append(ot)
+            if symbol in open_trades_multi:
+                if still_open:
+                    open_trades_multi[symbol] = still_open
+                else:
+                    open_trades_multi.pop(symbol, None)
+        else:
+            ot = open_trades.get(symbol)
+            if ot is not None:
+                _update_excursion(ot, bar)
+                closed = _check_exit(ot, bar, cfg)
+                if closed:
+                    _finalise_closed_trade(ot, tick_id=gb.tick_id, sym=symbol)
+                    open_trades.pop(symbol, None)
 
         # Determine eligible agents on this bar.
         eligible = sorted(
@@ -738,8 +808,19 @@ def _drive_squad_replay(
         if not proposals_this_tick:
             continue
 
+        # Phi5 Arm 3: collapse concurrent same-(symbol, direction)
+        # proposals into ONE merged proposal (tightest SL, median TP,
+        # max conviction, winner's tier) BEFORE the conviction
+        # tournament. Opposite-direction competition is untouched.
+        if aggregator_arm == "arm3":
+            proposals_for_aggregation = apply_same_direction_merge(
+                proposals_this_tick, tick_id=int(gb.tick_id),
+            )
+        else:
+            proposals_for_aggregation = proposals_this_tick
+
         outcome = _phi4_aggregate(
-            proposals_this_tick, tick_id=gb.tick_id,
+            proposals_for_aggregation, tick_id=gb.tick_id,
         )
         out.proposals_accepted.extend(outcome.accepted)
         out.proposals_rejected.extend(outcome.rejected)
@@ -828,7 +909,54 @@ def _drive_squad_replay(
                     "timestamp": proposal.timestamp.isoformat(),
                 })
                 continue
-            if symbol in open_trades:
+            if multi_position:
+                # Phi5 Arm 4 admission: up to K=2 positions per symbol
+                # from DISTINCT agents, combined risk capped (see
+                # phi5_aggregator PROTOCOL §11.4 for the sandbox-scale
+                # cap derivation).
+                current_positions = open_trades_multi.get(symbol, [])
+                arm4_reject_reason: str | None = None
+                if len(current_positions) >= ARM4_K_POSITIONS:
+                    arm4_reject_reason = "arm4_slot_full"
+                elif proposal.agent_id in {
+                    getattr(t, "_source_agent_id", None)
+                    for t in current_positions
+                }:
+                    arm4_reject_reason = "arm4_same_agent_already_on_symbol"
+                else:
+                    combined_risk = sum(
+                        float(getattr(t, "_source_risk_dollars", 0.0))
+                        for t in current_positions
+                    )
+                    additional_risk = _arm4_proposal_risk_dollars(
+                        proposal,
+                        pip_value_per_min_lot=SANDBOX_PIP_VALUE_PER_MIN_LOT,
+                    )
+                    r6 = check_r6_per_symbol_risk_cap(
+                        symbol=symbol,
+                        current_symbol_risk_dollars=combined_risk,
+                        additional_risk_dollars=additional_risk,
+                        equity=SANDBOX_EQUITY_DOLLARS,
+                        cap_frac=ARM4_SANDBOX_RISK_CAP_FRAC,
+                    )
+                    if not r6.allowed:
+                        arm4_reject_reason = "arm4_sentinel_R6_block"
+                if arm4_reject_reason is not None:
+                    out.proposals_rejected.append({
+                        "tick_id": int(gb.tick_id),
+                        "symbol": symbol,
+                        "winner_agent_id": proposal.agent_id,
+                        "winner_conviction": float(proposal.conviction),
+                        "loser_agent_id": proposal.agent_id,
+                        "loser_conviction": float(proposal.conviction),
+                        "loser_direction": proposal.direction,
+                        "winner_direction": proposal.direction,
+                        "rejection_reason": arm4_reject_reason,
+                        "rank_at_block": int(rank_idx),
+                        "timestamp": proposal.timestamp.isoformat(),
+                    })
+                    continue
+            elif symbol in open_trades:
                 # Per-symbol single-position rule: log winner as
                 # rejected-by-execution.
                 out.proposals_rejected.append({
@@ -860,6 +988,21 @@ def _drive_squad_replay(
                 trade._source_h1_swing_pips = _rat.get("h1_swing_pips")  # type: ignore[attr-defined]
                 trade._source_tick_id = int(gb.tick_id)      # type: ignore[attr-defined]
                 trade._source_proposal_rationale = dict(proposal.rationale)  # type: ignore[attr-defined]
+                # Arm 3 merged proposals carry the max-conviction
+                # winner's id in rationale; journal it so TQS scoring
+                # can use the winner's canonical target-hold-hours.
+                _winner_aid = _rat.get("arm3_winner_agent_id")
+                if _winner_aid:
+                    trade._source_winner_agent_id = str(_winner_aid)  # type: ignore[attr-defined]
+                if multi_position:
+                    trade._source_risk_dollars = _arm4_proposal_risk_dollars(  # type: ignore[attr-defined]
+                        proposal,
+                        pip_value_per_min_lot=SANDBOX_PIP_VALUE_PER_MIN_LOT,
+                    )
+                    open_trades_multi.setdefault(symbol, []).append(trade)
+                    if len(open_trades_multi[symbol]) >= ARM4_K_POSITIONS:
+                        break     # all K slots filled
+                    continue      # try to admit a runner-up for slot 2
                 open_trades[symbol] = trade
                 # Slot filled -- runner-ups for this symbol are moot.
                 break
@@ -870,7 +1013,15 @@ def _drive_squad_replay(
                 )
 
     # Close any remaining open trades on the final bar of each symbol.
-    for symbol, ot in list(open_trades.items()):
+    if multi_position:
+        _leftover = [
+            (sym, t)
+            for sym, trades_ in open_trades_multi.items()
+            for t in trades_
+        ]
+    else:
+        _leftover = list(open_trades.items())
+    for symbol, ot in _leftover:
         if ot.exit_time is None:
             last = bars_by_symbol[symbol][-1]
             ot.exit_time = last.time
@@ -889,7 +1040,8 @@ def _drive_squad_replay(
             out.trades.append(
                 _annotate_trade_record(tr, ot, gb.tick_id, symbol),
             )
-            open_trades.pop(symbol, None)
+            if not multi_position:
+                open_trades.pop(symbol, None)
 
     # F21 workspace participation counters flushed once at end (avoids
     # per-tick dict copy).
@@ -917,6 +1069,15 @@ def _agent_target_hold_hours(prod_trade, agents) -> float:
     for a in agents:
         if a.agent_id == aid:
             return float(a.canon_role.target_hold_hours)
+    # Phi5 Arm 3: merged proposals carry a synthetic agent_id
+    # ("arm3_merged_a+b") that matches no roster agent -- fall back to
+    # the max-conviction winner's canonical target hold so TQS's speed
+    # component is scored against a real playstyle, not the 24h default.
+    winner_aid = getattr(prod_trade, "_source_winner_agent_id", None)
+    if winner_aid:
+        for a in agents:
+            if a.agent_id == winner_aid:
+                return float(a.canon_role.target_hold_hours)
     return 24.0
 
 

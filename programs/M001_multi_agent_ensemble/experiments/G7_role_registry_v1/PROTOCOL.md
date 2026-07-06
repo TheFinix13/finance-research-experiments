@@ -185,3 +185,21 @@ Same as G7 v1 §11. Amendments append `§12.x` sub-sections. Any post-measuremen
 1. Original threshold + numeric result at the original threshold.
 2. Reason the original threshold was miscalibrated.
 3. New threshold + user sign-off if the change flips a role label.
+
+---
+
+### §12.1 (2026-07-06) — First retirement confirmed by C8 v1 proxy
+
+`kunigami_rensuke` is the first agent retired on Role Registry
+evidence: C8 workspace_impact = **0.0 epsilon-units** (no peer trade
+count or mean TQS moves at all when he is removed from the post-V
+squad), against `reo_mikage`'s 245.4 epsilon-units for the same
+structurally-waived publisher role. User signed off DECISION doc
+Option A on 2026-07-06 with a pre-registered Wild Card return path
+(aggregator-side drawdown gate, post-Φ5). Full record: G7 v1 PROTOCOL
+§11.12 + `DECISION_kunigami.md`.
+
+C8 v2 (true F22c citation counts) is NOT required for this
+retirement: the v1 proxy measured the downstream-effect side, which
+bounds any citation count's relevance — zero effect fails retention
+regardless of citation volume.

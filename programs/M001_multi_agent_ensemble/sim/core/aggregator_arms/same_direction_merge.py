@@ -91,6 +91,7 @@ def _merge_group(
         },
         "arm3_stop_by_agent": {m.agent_id: float(m.stop) for m in members},
     })
+    rationale["arm3_winner_agent_id"] = winner.agent_id
     return AgentProposal(
         agent_id=f"arm3_merged_{'+'.join(contributing_ids)}",
         tick_id=tick_id,
@@ -105,6 +106,11 @@ def _merge_group(
         regime_fit=max(m.regime_fit for m in members),
         valid_until=min(m.valid_until for m in members),
         rationale=rationale,
+        # Winner's tier so the merged proposal competes in the R6
+        # tournament with the same tier-anchor bias the winner would
+        # have had standing alone (tier default of 2 would silently
+        # penalise a merged tier-1 anchor).
+        agent_tier=winner.agent_tier,
     )
 
 

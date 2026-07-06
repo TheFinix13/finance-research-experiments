@@ -308,3 +308,60 @@ If the user wants different values, amend this protocol BEFORE tomorrow's run (p
 
 **Follow-up.** Phase 6e Φ5 re-sim now depends on G7 v1-checkpoint gate landing first (so the 8 agents have proven v1 status). Ordering: G7 batch → Φ5 arm re-sim.
 
+---
+
+## Amendment §11.4 — Arm 3/4 re-sim wiring, order-of-run, same-environment control, Arm 4 cap scale (2026-07-06)
+
+**Filed:** 2026-07-06, BEFORE any Arm 3/4 re-sim compute ran. All numbers referenced below are from already-sealed verdicts (post-V / post-W); no Arm 3/4 outcome is known at filing time.
+
+### A. What changed since §11.3 that this amendment must absorb
+
+1. **Roster.** Kunigami retired per G7 §11.12 (Role Registry v1 C8 = 0.0). The Φ5 §5 "Agent roster" row (8 agents) is superseded: **7 rostered agents** (isagi, bachira, rin, chigiri, reo, nagi, barou). Kunigami's Sentinel R5 side channel is retained (matches the measured lo1 configuration).
+2. **Environment.** The G7-era harness runs with `use_workspace=True` + `sentinel_blocks=True` + F19 variable lots + Barou v1.1 H1 (diagnostic) — a materially different environment from the Φ4.1 fixed-lot, workspace-off control (0.2922). Comparing an Arm 3 re-sim against 0.2922 would conflate the aggregator treatment with environment changes.
+3. **Motivating evidence sharpened.** G7 C2/C3 (post-V): Bachira cannibalises Barou by **84.1%** (worst peer reduction). Two agent-level fixes (Phase V-b §11.9, Phase W-barou v1.1 §11.11) produced NULL results with root cause "aggregator single-slot mutex". The binding constraint diagnosis of §2 stands, now with leave-one-out-grade evidence.
+
+### B. Locked control (supersedes Arm 0 for the re-sim family)
+
+**Control = `walk-forward-post-kunigami-retirement`**: the G7 walk-forward harness (`run_g7_v1_checkpoint_gate --mode walk-forward --retire-kunigami`) with the sealed `phi41` aggregator, 7-agent roster, full 2015-2025 panel, 7 OOS windows. Every treatment arm runs the IDENTICAL harness with ONLY `--aggregator-arm` changed. Locked statistic unchanged: **median across OOS windows of per-window mean squad TQS**.
+
+The legacy Φ4.1 control (0.2922) and Isagi-alone (0.3175) are reported as secondary references only.
+
+**Expected control values (declared, not yet run):** near-identical to the lo1_kunigami_rensuke leave-one-out cache (kunigami removal measured as a no-op on every peer). Any material deviation halts the experiment for investigation before arms run.
+
+### C. Locked order-of-run and decision rule
+
+1. **Arm 3 (same-direction merge) FIRST** — it directly targets the same-direction slot collision (52.7% of Isagi rejections were same-direction; Bachira-Barou 84.1% cannibalisation is a same-direction collision).
+2. **Arm 4 (multi-position K=2) SECOND** — runs regardless of Arm 3's verdict (both arms' evidence is needed for the Arm 5 stacking decision and for Phase W-barou v1.2 H2).
+3. **Arms 1/2 (HRP, TQS-floor)** — post-hoc gates re-run on the control run's `proposals_all.jsonl` (now persisted by the harness cache writer; the post-V cache lacked it). No re-sim needed.
+4. **Arm 5 (combined)** — deferred until Arm 3/4 verdicts land; will be its own §11.5 amendment.
+
+**Per-arm acceptance (unchanged from §4, restated against the new control):** arm passes if bootstrap 95% CI lower bound (n=7 window means, 10,000 resamples, Bonferroni α=0.01 across the arms run) exceeds the control's median-of-window-means AND Δ median ≥ 0.020.
+
+**Arm-specific mandatory diagnostics (from §8 pre-mortems):**
+- Arm 3: per-agent attributed trade counts + Bachira→Barou cannibalisation ratio recomputed; merged-trade fraction; tightest-SL early-clip effect on mean pips.
+- Arm 4: fraction of admissions blocked by R6; concurrent-positions-same-bar-stop event rate (>30% ⇒ structurally redundant with Arm 3).
+
+### D. Arm 4 sandbox risk-cap scale fix (locked pre-run)
+
+§3 Arm 4 locked `total_risk_cap_per_symbol = 1.0%` of equity assuming percent-risk sizing. The sandbox is fixed-lot 0.1 on $100 equity: measured post-V stop distribution (n=5604) is min 6.6 / median 27.5 / max 50.0 pips ⇒ per-position risk $6.6–$50. A 1% ($1) cap blocks EVERY admission including the first — Arm 4 would be null by construction, not by evidence. This is exactly the situation §11.1's registered follow-up anticipated ("if R6 blocks a material fraction of Arm 4 proposals, file an amendment — do NOT retune silently").
+
+**New locked value:** `ARM4_SANDBOX_RISK_CAP_FRAC = 0.50` of equity — the combined risk across a symbol's K positions may not exceed what ONE max-size single position can risk under Sentinel R1 at fixed lot (5% × 10 min-lot units = 50%). This is the faithful sandbox translation of "matches single-position cap; budget is SPLIT across positions, not doubled". Filed BEFORE the Arm 4 re-sim ran; the constant lives at `run_phi4_squad_gate.ARM4_SANDBOX_RISK_CAP_FRAC` with the derivation in-line.
+
+### E. Known semantic notes (declared pre-run)
+
+1. **Arm 3 trade attribution.** Merged trades carry `agent_id = "arm3_merged_<a>+<b>"`, with contributors + per-contributor conviction in rationale and `arm3_winner_agent_id` journalled. TQS hold-hours scoring uses the winner's canon target-hold. Per-agent G7-style slicing will therefore show merged trades under synthetic ids; the squad-level locked statistic is unaffected. Per-agent attribution analysis is post-hoc from rationale.
+2. **Arm 3 + Sentinel R3.** The per-agent proposals-today counter counts ORIGINAL proposals at proposal time; a merged proposal's synthetic id has no R3 history, so merged proposals are never R3-blocked. Contributors were each counted individually pre-merge. Declared as harness semantics, not tuned.
+3. **Arm 4 same-direction stacks.** Per §3, same-direction concurrent positions are admitted (flagged) in Arm 4 standalone; the correlation-block "count as one" rule applies to the cap check only via combined-risk dollars.
+
+### F. File footprint delta
+
+| Path | Action |
+|---|---|
+| `sim/scoring/run_phi4_squad_gate.py` | `_drive_squad_replay(aggregator_arm=...)` + Arm 3 merge call + Arm 4 admission/exit bookkeeping + `ARM4_SANDBOX_RISK_CAP_FRAC` |
+| `sim/scoring/run_g7_v1_checkpoint_gate.py` | `--retire-kunigami`, `--aggregator-arm`, proposals_all/rejected cache writer |
+| `sim/core/aggregator_arms/same_direction_merge.py` | winner tier propagation + `arm3_winner_agent_id` journal |
+| `sim/tests/test_aggregator_arm_wiring.py` | NEW (14 tests) |
+| `reviews/g7_replay_cache_walk-forward-post-kunigami-retirement/` | control cache (trades + proposals + workspace counts) |
+| `reviews/g7_replay_cache_phi5-arm3-*` / `phi5-arm4-*` | treatment caches |
+| `scripts/analyze_phi5_resim.py` | NEW — locked-statistic + bootstrap CI + diagnostics from the caches |
+

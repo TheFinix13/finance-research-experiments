@@ -810,6 +810,70 @@ Commits: `d81bd46` (v1.1 landing) + postmortem (this amendment).
 
 ---
 
+### §11.12 (2026-07-06) — Kunigami retirement (Role Registry v1 C8 fail) + Wild Card return path
+
+**User decision (2026-07-06):** Option A from
+`experiments/G7_role_registry_v1/DECISION_kunigami.md` — RETIRE — with
+the canon-faithful return path pre-registered below.
+
+**Empirical trigger.** Role Registry v1 C8 (workspace-signal impact,
+v1 peer-delta-magnitude proxy) measured `kunigami_rensuke` at exactly
+**0.0 epsilon-units**: across the full post-V leave-one-out panel, no
+peer's trade count or mean TQS moves by any amount when Kunigami is
+removed. His 53,164 workspace publishes are consumed by no peer
+decision. The §11.1 defensive-observer waiver was ratified on the
+hypothesis that his warnings influence peers; C8 tested exactly that
+hypothesis and it failed. Retention rule (C3 ∧ any of {C2,C7,C8,C9})
+→ NOT RETAINED; only agent in the squad labelled
+`retirement_candidate`.
+
+**Why not wait for C8 v2 (true citation counts)?** C8 v2 can only
+produce (a) zero citations — confirming retirement — or (b) nonzero
+citations whose downstream effect is provably zero (the v1 proxy
+already measured the effect side), which still fails retention. The
+decision cannot flip; waiting is compute without information.
+
+**Implementation (roster-construction flag, NOT constant deletion):**
+- `run_g7_v1_checkpoint_gate.run_g7_walk_forward(include_kunigami=False)`
+  + CLI `--retire-kunigami` remove him from the PROPOSER/PUBLISHER
+  roster.
+- His instance KEEPS feeding the Sentinel R5 anti-tilt side channel
+  (`record_closed_trade` / `warning_active_at`) — this is exactly the
+  configuration the C2/C3 lo1_kunigami_rensuke replay measured, so the
+  retirement baseline inherits the lo1 evidence without a new
+  unmeasured behaviour change. Deprecating the R5 channel would be a
+  SEPARATE experiment; it was not measured and is not part of this
+  amendment.
+- `G7_AGENT_ORDER` / `STRUCTURAL_FALSIFIERS` constants are retained so
+  old post-V artifacts stay readable; verdict loops skip agents absent
+  from the roster.
+- `sim/agents/a10_kunigami.py` retained (audit trail + R5 channel).
+
+**Baseline regeneration.** A fresh
+`walk-forward-post-kunigami-retirement` runs with the current code
+(NOT reusing the lo1 cache: Barou v1.1 H1 landed after the LOO batch,
+and the lo1 cache lacks the proposals stream). Expected near-identical
+to lo1_kunigami_rensuke trade outcomes; any deviation is investigated
+before Φ5 arms run. This baseline is the Φ5 re-sim comparator (see
+phi5_aggregator PROTOCOL §11.4).
+
+**Wild Card return path (pre-registered design direction, not yet a
+protocol).** Canon: Kunigami is eliminated, sent to the Wild Card
+program, and returns as a physical enforcer — stealing goals and
+defending, not talking. Mapped to our architecture this is DECISION
+doc Option B3: an **aggregator-side drawdown gate** — veto power over
+new position openings when squad drawdown breaches a threshold
+(defending the goal), plus possible slot-steal semantics in extreme
+regimes. That is Φ5-family work and will be pre-registered as its own
+`phase_x_kunigami_wildcard` protocol AFTER the Φ5 Arm 3/4 verdicts
+land. Kunigami does not return as a workspace publisher.
+
+Roster is now **7 agents**: isagi, bachira, rin, chigiri, reo, nagi,
+barou. The G7 §12 registry row's "all 8 agents" conjunction becomes
+"all 7 rostered agents" from this amendment forward.
+
+---
+
 ## 12. Verdict registry row (to be added)
 
 The G7 gate row for `docs/methodology/gate_verdict_registry.md`:

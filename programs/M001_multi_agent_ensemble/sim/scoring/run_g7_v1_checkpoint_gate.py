@@ -990,6 +990,8 @@ def run_g7_walk_forward(
     tag: str = "walk-forward",
     is_years: int = 4,
     oos_years: int = 1,
+    include_kunigami: bool = True,
+    aggregator_arm: str = "phi41",
 ) -> G7GateReport:
     """Full walk-forward baseline squad run for G7.
 
@@ -1000,6 +1002,17 @@ def run_g7_walk_forward(
 
     Leave-one-out squads (C2/C3) are NOT run here -- those are a
     separate compute job (~ 8 additional replays x N windows).
+
+    ``include_kunigami=False`` implements the G7 §11.12 Kunigami
+    retirement: he is removed from the PROPOSER/PUBLISHER roster but
+    his instance keeps feeding the Sentinel R5 anti-tilt side channel
+    (``record_closed_trade`` / ``warning_active_at``) -- exactly the
+    configuration the C2/C3 leave-one-out measured, keeping the
+    retirement baseline comparable to the lo1 evidence.
+
+    ``aggregator_arm`` threads through to ``_drive_squad_replay``
+    (``"phi41"`` control / ``"arm3"`` same-direction merge / ``"arm4"``
+    multi-position) per phi5_aggregator PROTOCOL §11.4.
     """
     ensure_production_repo_on_path()
 
@@ -1037,18 +1050,30 @@ def run_g7_walk_forward(
         for agent in (isagi, bachira, rin, chigiri, barou):
             if hasattr(agent, "prepare") and sym in agent.symbols:
                 agent.prepare(sym, bars)
-    agents = [isagi, bachira, rin, chigiri, reo, nagi, barou, kunigami]
+    agents = [isagi, bachira, rin, chigiri, reo, nagi, barou]
+    if include_kunigami:
+        agents.append(kunigami)
+    else:
+        log.info(
+            "G7 §11.12 Kunigami retirement active: kunigami_rensuke "
+            "removed from proposer/publisher roster (Sentinel R5 side "
+            "channel retained)"
+        )
     agents_by_id = {a.agent_id: a for a in agents}
 
     # Single-pass replay (workspace + sentinel enforcement).
     ledger = FullLedger()
-    log.info("Starting single-pass replay across full panel ...")
+    log.info(
+        "Starting single-pass replay across full panel "
+        "(aggregator_arm=%s) ...", aggregator_arm,
+    )
     out = _drive_squad_replay(
         agents=agents, isagi=isagi, barou=barou, kunigami=kunigami,
         bars_by_symbol=bars_by_symbol, ledger=ledger,
         sentinel_blocks=True,
         use_workspace=True,
         use_shadow_ledger=True,  # Phase U -- diagnostic-only counterfactuals
+        aggregator_arm=aggregator_arm,
     )
     log.info(
         "G7 walk-forward replay complete: %d thoughts, %d proposals, "
@@ -1078,9 +1103,25 @@ def run_g7_walk_forward(
                 "n_thoughts": len(out.thoughts),
                 "n_proposals": len(out.proposals_all),
             }, indent=2), encoding="utf-8")
+            # Phi5 needs the FULL proposal universe (accepted +
+            # rejected) to run Arms 1/2 post-hoc gates: TQS-floor
+            # filtering and HRP covariance both model the counterfactual
+            # proposal stream, not just executed trades. The post-V
+            # cache lacked this -- every fresh walk-forward now dumps it.
+            proposals_cache = cache_dir / "proposals_all.jsonl"
+            with proposals_cache.open("w", encoding="utf-8") as fh:
+                for p in out.proposals_all:
+                    fh.write(json.dumps(p.to_json_dict(), default=str) + "\n")
+            rejected_cache = cache_dir / "proposals_rejected.jsonl"
+            with rejected_cache.open("w", encoding="utf-8") as fh:
+                for r in out.proposals_rejected:
+                    fh.write(json.dumps(r, default=str) + "\n")
             log.info(
-                "G7 replay cache written: %s (%d trades) + %s",
+                "G7 replay cache written: %s (%d trades) + %s + %s "
+                "(%d proposals) + %s (%d rejections)",
                 trades_cache, len(out.trades), workspace_cache,
+                proposals_cache, len(out.proposals_all),
+                rejected_cache, len(out.proposals_rejected),
             )
         except Exception as exc:  # noqa: BLE001
             # Never let cache-write failure kill the run; just warn.
@@ -1338,6 +1379,17 @@ def main(argv: Optional[list[str]] = None) -> int:
     parser.add_argument("--out-dir", type=Path,
                         default=Path("programs/M001_multi_agent_ensemble/reviews"))
     parser.add_argument("--tag", type=str, default="dry-run")
+    parser.add_argument(
+        "--retire-kunigami", action="store_true",
+        help="G7 §11.12: drop kunigami_rensuke from the proposer/"
+             "publisher roster (Sentinel R5 side channel retained). "
+             "Walk-forward mode only.")
+    parser.add_argument(
+        "--aggregator-arm", choices=("phi41", "arm3", "arm4"),
+        default="phi41",
+        help="Phi5 aggregator arm (PROTOCOL §11.4): phi41 control, "
+             "arm3 same-direction merge, arm4 multi-position K=2. "
+             "Walk-forward mode only.")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args(argv)
 
@@ -1362,6 +1414,8 @@ def main(argv: Optional[list[str]] = None) -> int:
         run_g7_walk_forward(
             panel_start=start, panel_end=end,
             out_dir=args.out_dir, tag=args.tag,
+            include_kunigami=not args.retire_kunigami,
+            aggregator_arm=args.aggregator_arm,
         )
     else:
         run_g7_dry_run(
