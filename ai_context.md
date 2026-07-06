@@ -1,4 +1,59 @@
-# AI Context — finance research experiments (updated 2026-07-03 09:55 UTC, Phase 3 C2/C3 LANDED + Role Registry v1 LANDED + Phase W-barou v1.1 NULL RESULT + Kunigami retirement pending user sign-off + Phi5 Arm 3/4 escalation pending)
+# AI Context — finance research experiments (updated 2026-07-06 19:00 UTC, Kunigami RETIRED + Phi5 Arm 3/4 re-sim COMPLETE: NULL on locked TQS, Arm 4 fixes Barou starvation ×3.7 — adoption decision pending user sign-off)
+
+## 2026-07-06 — Kunigami retirement executed + Phi5 Arm 3/4 re-sim verdict
+
+Commits `7d27ce8` (pre-registration + wiring, BEFORE compute) and
+`666d87a` (results). Full suite 740 pass / 4 skip.
+
+**Kunigami RETIRED (G7 §11.12, user signed Option A).** Roster is now
+7 agents (isagi, bachira, rin, chigiri, reo, nagi, barou). His R5
+anti-tilt Sentinel side channel is retained (matches the measured lo1
+config). C8 v2 rejected as non-informative. **Wild Card return path
+pre-registered:** he comes back post-Φ5 as an aggregator-side drawdown
+gate (canon: Wild Card → steals goals / defends), NOT a workspace
+publisher. Implementation = `--retire-kunigami` roster flag, constants
+retained for old-cache compatibility.
+
+**Φ5 aggregator wiring landed** (`_drive_squad_replay(aggregator_arm=
+"phi41"|"arm3"|"arm4")`, sealed default byte-identical). Walk-forward
+caches now persist `proposals_all.jsonl` + `proposals_rejected.jsonl`
+(post-V gap fixed; one 32-min re-run burned on a `to_jsonable` name
+bug). Pre-run protocol fix locked in §11.4 D: Arm 4's 1% risk cap is
+unsatisfiable at fixed-lot scale (median position risks $27.50 on
+$100); amended to 50%-of-equity combined cap BEFORE running.
+
+**Φ5 re-sim verdict (§11.5, `reviews/phi5_resim_verdict.md`):**
+
+| run | n trades | median-of-window TQS | Δ vs control | verdict |
+|---|---:|---:|---:|---|
+| control post-kunigami (phi41) | 5604 | 0.3618 | — | baseline; byte-identical to post-V per-agent |
+| Arm 3 same-direction merge | 5653 | 0.3617 | −0.0001 | NULL; 56.5% trades merged, Barou solo attribution → 0 (wrong lever) |
+| Arm 4 multi-position K=2 | 7273 | 0.3643 | +0.0025 | NULL on TQS, **fixes starvation** |
+| Arm 1 HRP (post-hoc) | — | 0.3549 | −0.0069 | REGRESS |
+| Arm 2 TQS-floor (post-hoc) | — | 0.3643 | +0.0025 | NULL |
+
+Key Arm 4 numbers: Barou 153→567 trades (×3.7) at HIGHER TQS
+(0.3469→0.3944); Bachira-absent cannibalisation 528%→126%; squad
++30% trades; same-bar-stop rate 18.8% (clears the 30% redundancy
+pre-mortem); no arm-caused DD (control worst-window DD 1.82× exceeds
+both arms — sandbox fixed-lot curve was never DD-controlled).
+
+**Interpretation:** squad-level TQS is aggregator-invariant — proposal
+quality binds it, not routing. No arm is canonised on the G6-inherited
+locked statistic (honest NULL). BUT Arm 4 resolves the exact per-agent
+starvation pathology that nullified Phase V-b and Phase W-barou v1.1.
+
+**PENDING USER SIGN-OFF:** adopt Arm 4 as default G7-era aggregator on
+roster-health grounds (§11.5 recommendation). If adopted: Phase
+W-barou v1.2 H2 unblocks, Kunigami Wild Card gate designs against
+Arm 4, Arm 5 stays deferred (no evidence-backed components besides
+Arm 4 alone).
+
+New tooling: `scripts/analyze_phi5_resim.py` (locked statistic +
+bootstrap CI + diagnostics), `scripts/run_arm4_lo1_bachira.py`
+(cannibalisation diagnostic), `sim/tests/test_aggregator_arm_wiring.py`.
+
+---
 
 ## 2026-07-03 morning — Phase 3 verdict + Role Registry v1 + Phase W-barou v1.1 NULL
 

@@ -365,3 +365,44 @@ The legacy Φ4.1 control (0.2922) and Isagi-alone (0.3175) are reported as secon
 | `reviews/g7_replay_cache_phi5-arm3-*` / `phi5-arm4-*` | treatment caches |
 | `scripts/analyze_phi5_resim.py` | NEW — locked-statistic + bootstrap CI + diagnostics from the caches |
 
+---
+
+## Amendment §11.5 — Arm 3/4 re-sim VERDICT (2026-07-06)
+
+**Filed:** 2026-07-06, same session as §11.4, AFTER the pre-registered runs completed. Full numbers: `reviews/phi5_resim_verdict.{md,json}`; commits `7d27ce8` (pre-reg) → `666d87a` (results).
+
+### Locked-statistic verdict: NULL for both arms
+
+Control (`walk-forward-post-kunigami-retirement`, 7 agents, phi41 aggregator): **0.3618** median-of-window-mean squad TQS, 5,604 trades — per-agent byte-identical to post-V and to lo1_kunigami (retirement halt-condition CLEAR; Kunigami's removal is a confirmed no-op on trade outcomes).
+
+| Arm | n trades | median TQS | Δ vs control | CI99 lower | verdict |
+|---|---:|---:|---:|---:|---|
+| 3 same-direction merge | 5,653 | 0.3617 | −0.0001 | 0.3362 | NULL |
+| 4 multi-position K=2 | 7,273 | 0.3643 | +0.0025 | 0.3442 | NULL (positive, ns) |
+| 1 HRP (post-hoc) | — | 0.3549 | −0.0069 | — | REGRESS |
+| 2 TQS-floor (post-hoc) | — | 0.3643 | +0.0025 | — | NULL (positive, ns) |
+
+Per §4: **no arm is canonised on the locked statistic.** The squad-level TQS is aggregator-invariant on this panel — proposal quality, not slot routing, binds the median-of-window-means.
+
+§6 stop rule #1 (25% DD): the fixed-lot $100 sandbox equity curve breaches 25% DD in EVERY window INCLUDING control (worst window 1.82× control vs 1.45×/1.70× arms) — the rule targets arm-CAUSED risk inflation, which did not occur. Journalled, arms not blamed.
+
+### Mandatory diagnostics: Arm 4 resolves the §11.4 A.3 pathology
+
+The escalation that motivated this re-sim (G7 §11.11) was per-agent slot starvation, not squad TQS. There, Arm 4 is decisive:
+
+| measure | phi41 control | Arm 4 |
+|---|---:|---:|
+| Barou trades (Bachira present) | 153 @ 0.3469 TQS | **567 @ 0.3944 TQS** (×3.7, quality UP) |
+| Barou lo1-Bachira cannibalisation | 961 vs 153 = **+528%** (7-agent measure) | 1,280 vs 567 = **+126%** |
+| squad trades | 5,604 | 7,273 (+30%) |
+| same-bar-stop rate (§8 pre-mortem, >30% ⇒ redundant with Arm 3) | — | **18.8%** — clears |
+
+Arm 3 diagnostics: 56.5% of trades merged; Barou co-contributes to 1,568 merged trades but his SOLO attribution drops to zero — the merge erases exactly the per-agent identity the Role Registry needs. Arm 3 is the wrong lever for roster health.
+
+### Decision (recommendation, user sign-off required for canonisation)
+
+1. **Do NOT canonise any arm on G6-inherited TQS grounds** — the locked-statistic experiment is honestly NULL and the verdict ladder stays untouched.
+2. **Adopt Arm 4 as the default aggregator for the G7-era squad on ROSTER-HEALTH grounds** — a separate, explicitly non-TQS rationale: it collapses the Bachira→Barou starvation from 528% to 126% at zero squad-TQS cost (+0.0025, ns), lifts Barou's own TQS, and gives Rin/Chigiri/Nagi wider live streams. This unblocks Phase W-barou v1.2 H2 (continuation-entry) and future per-agent evolution work that the single-slot mutex was silently nullifying.
+3. Arm 5 (stacking) remains deferred: with Arm 3 null-and-attribution-destroying and Arm 1 regressing, the §3 Arm 5 order-of-operations has no evidence-backed components beyond Arm 4 alone.
+4. Kunigami Wild Card gate (G7 §11.12) will be designed against the Arm 4 aggregator if adopted.
+
