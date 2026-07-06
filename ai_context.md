@@ -1,4 +1,47 @@
-# AI Context — finance research experiments (updated 2026-07-06 19:00 UTC, Kunigami RETIRED + Phi5 Arm 3/4 re-sim COMPLETE: NULL on locked TQS, Arm 4 fixes Barou starvation ×3.7 — adoption decision pending user sign-off)
+# AI Context — finance research experiments (updated 2026-07-06 20:00 UTC, ARM 4 ADOPTED as G7-era default aggregator + chemistry re-baselined under Arm 4: Bachira→Barou cannibalisation 84%→55.7%, Nagi finisher role confirmed)
+
+## 2026-07-06 evening — Phase 5 CLOSED: Arm 4 adopted + lo1 chemistry re-baseline
+
+Commits `cb163d4` (§11.6 adoption + pre-registration BEFORE compute) and
+the §11.7 results commit. User signed off Arm 4 adoption 2026-07-06.
+
+**Arm 4 (multi-position K=2) is the default aggregator for ALL G7-era
+squad work.** Rationale is roster-health, NOT TQS (§11.5 NULLs stand).
+Code default in `_drive_squad_replay` stays `phi41` for sealed-replay
+byte-compat — harness invocations must pass `--aggregator-arm arm4`.
+
+**Chemistry re-baseline under Arm 4 (§11.6 B pre-registered, §11.7
+results):** 7 parallel lo1 replays (~40 min wall-clock total, heartbeat
+clean), aggregated against the `phi5-arm4-post-kunigami` baseline
+(7,273 trades @ 0.3643). Canonical verdict files:
+`reviews/g7_{leave_one_out,role_registry}_verdict_phi5-arm4.{md,json}`
+— these SUPERSEDE the post-V (phi41) verdicts for all future roster and
+evolution decisions (post-V stays sealed as the Phase-3 record).
+
+Headlines vs phi41-era Phase 3:
+- **Bachira→Barou cannibalisation 84% → 55.7%** (Barou 567 present /
+  1,280 absent — byte-matches the §11.5 one-off diagnostic). Still a
+  C3 FAIL but only 5.7 pts over the 50% threshold; residual is now an
+  AGENT-level problem → routed to Phase W-barou v1.2 H2
+  (continuation-entry under Arm 4), success criterion = drop below 50%.
+- **Nagi finisher role CONFIRMED under Arm 4**: C7 passes, 3 lifting
+  peers (Bachira +0.1806, Rin +0.0624, Reo +0.0504). Retained C7+C8.
+- Rin/Chigiri regain volume (436/437 trades, 6.0% share each); Barou
+  passes C9 at 7.8%. All 7 active agents retained except the Bachira
+  C3 flag (he is NOT removed: 48.8% of squad trades, Nagi's primary
+  lifter, passes C2/C8/C9 — measurement, not gate, per §11.6 B).
+- Kunigami rows in the new verdicts are artefacts of his §12.1
+  retirement (no lo1 cache by design) — no action.
+
+New harness flags on `run_g7_leave_one_out`: `--aggregator-arm`,
+`--retire-kunigami`, `--no-aggregate` (parallel per-agent lo1 compute).
+60/60 related tests pass.
+
+**Next up:** Phase W-barou v1.2 H2 (continuation-entry, pre-register
+against the 55.7% number) and Kunigami Wild Card drawdown gate — both
+design against Arm 4. Arm 5 stays deferred.
+
+---
 
 ## 2026-07-06 — Kunigami retirement executed + Phi5 Arm 3/4 re-sim verdict
 
@@ -43,7 +86,8 @@ quality binds it, not routing. No arm is canonised on the G6-inherited
 locked statistic (honest NULL). BUT Arm 4 resolves the exact per-agent
 starvation pathology that nullified Phase V-b and Phase W-barou v1.1.
 
-**PENDING USER SIGN-OFF:** adopt Arm 4 as default G7-era aggregator on
+**~~PENDING USER SIGN-OFF~~ → SIGNED OFF same day (see section above):**
+adopt Arm 4 as default G7-era aggregator on
 roster-health grounds (§11.5 recommendation). If adopted: Phase
 W-barou v1.2 H2 unblocks, Kunigami Wild Card gate designs against
 Arm 4, Arm 5 stays deferred (no evidence-backed components besides

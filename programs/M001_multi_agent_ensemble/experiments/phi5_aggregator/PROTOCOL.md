@@ -432,3 +432,21 @@ The Phase-3 C2/C3 + Role Registry verdicts (G7 §11.11) were measured under the 
 - **This is a MEASUREMENT, not a gate.** C2/C3/C7/C8/C9 definitions and thresholds inherited verbatim from G7 v1 §11.1 + Role Registry v1 §3. No roster change auto-triggers from these numbers; any retention/evolution decision citing them requires its own amendment. Expected (not required) outcome: Barou's lo1-Bachira cannibalisation ≈ +126% (matches the §11.5 diagnostic, which this batch supersedes for verdict purposes — the earlier one-off `run_arm4_lo1_bachira.py` cache used a non-canonical path).
 - **Outputs:** `reviews/g7_leave_one_out_verdict_phi5-arm4.{md,json}`, `reviews/g7_role_registry_verdict_phi5-arm4.{md,json}`, caches under `reviews/g7_leave_one_out_phi5-arm4/lo1_<agent>/`.
 
+---
+
+## Amendment §11.7 — Arm 4 chemistry re-baseline RESULTS (2026-07-06)
+
+**Filed:** 2026-07-06, after the §11.6 B pre-registered batch completed (7 parallel lo1 replays, 37–42 min each, heartbeat monitor clean exit, zero stalls). Verdict files: `reviews/g7_leave_one_out_verdict_phi5-arm4.{md,json}`, `reviews/g7_role_registry_verdict_phi5-arm4.{md,json}`.
+
+### Headline vs the phi41-era Phase-3 verdict (G7 §11.11)
+
+1. **Bachira→Barou cannibalisation: 84% → 55.7%** (Barou 567 with Bachira present vs 1,280 absent — matches the §11.5 one-off diagnostic exactly, confirming determinism). Still a **C3 FAIL** (threshold 50%), but the margin collapsed from 34 points over threshold to 5.7. The residual overlap is now an agent-level problem — exactly what Phase W-barou v1.2 H2 (continuation-entry) is scoped to attack, and Arm 4 has removed the aggregator confound that was silently nullifying agent-level fixes.
+2. **Nagi's finisher role is CONFIRMED under Arm 4**: C7 passes with 3 lifting peers (Bachira +0.1806, Rin +0.0624, Reo +0.0504 TQS) — the §11.11 role-aware retention transfers intact to the adopted aggregator. Retained via C7+C8.
+3. **All six other active agents retained**; Rin/Chigiri regain healthy volume (436/437 trades, 6.0% share each vs starvation under phi41). Barou passes C9 at 7.8% share (was starved to ~2.7% under phi41).
+4. **Kunigami rows are measurement artefacts**: he is retired (Role Registry v1 §12.1), has no lo1 cache by design, and the emitter's "retirement_candidate / squad FAIL" line simply re-confirms the already-executed retirement. No new action.
+
+### Consequences (per §11.6 B: measurement, not gate — no auto roster change)
+
+- Bachira is NOT removed: he holds 48.8% of squad trades, is Nagi's primary lifter (+0.1806), and passes C2/C8/C9. The C3 residual is routed to **Phase W-barou v1.2** (Barou continuation-entry under Arm 4) as the next pre-registered experiment; its success criterion should target the 55.7% reduction dropping below the 50% C3 threshold.
+- The `phi5-arm4` verdict files are now the CANONICAL chemistry baseline for all G7-era roster/evolution decisions; the `post-V` (phi41) verdicts remain sealed as the Phase-3 record.
+
