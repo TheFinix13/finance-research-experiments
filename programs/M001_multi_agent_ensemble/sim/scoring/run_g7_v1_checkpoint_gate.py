@@ -993,6 +993,7 @@ def run_g7_walk_forward(
     include_kunigami: bool = True,
     aggregator_arm: str = "phi41",
     barou_v12: bool = False,
+    kunigami_gate: bool = False,
 ) -> G7GateReport:
     """Full walk-forward baseline squad run for G7.
 
@@ -1019,6 +1020,11 @@ def run_g7_walk_forward(
     continuation-entry mechanic (``experiments/phase_w_barou/
     PROTOCOL_v1.2.md``). Default False keeps Barou byte-identical to
     every sealed cache.
+
+    ``kunigami_gate=True`` activates the Phase X-kunigami Wild Card
+    drawdown gate (``experiments/phase_x_kunigami_wildcard/
+    PROTOCOL.md``): aggregator-side admission veto while squad DD >=
+    25% (release at 12.5%). Default False.
     """
     ensure_production_repo_on_path()
 
@@ -1085,6 +1091,7 @@ def run_g7_walk_forward(
         use_workspace=True,
         use_shadow_ledger=True,  # Phase U -- diagnostic-only counterfactuals
         aggregator_arm=aggregator_arm,
+        kunigami_wildcard_gate=kunigami_gate,
     )
     log.info(
         "G7 walk-forward replay complete: %d thoughts, %d proposals, "
@@ -1405,6 +1412,12 @@ def main(argv: Optional[list[str]] = None) -> int:
         "--barou-v12", action="store_true",
         help="Phase W-barou v1.2 H2 continuation-entry (experiments/"
              "phase_w_barou/PROTOCOL_v1.2.md). Walk-forward mode only.")
+    parser.add_argument(
+        "--kunigami-gate", action="store_true",
+        help="Phase X-kunigami Wild Card drawdown gate (experiments/"
+             "phase_x_kunigami_wildcard/PROTOCOL.md): veto admissions "
+             "while squad DD >= 25%%, release at 12.5%%. "
+             "Walk-forward mode only.")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args(argv)
 
@@ -1432,6 +1445,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             include_kunigami=not args.retire_kunigami,
             aggregator_arm=args.aggregator_arm,
             barou_v12=args.barou_v12,
+            kunigami_gate=args.kunigami_gate,
         )
     else:
         run_g7_dry_run(

@@ -188,6 +188,46 @@ SANDBOX_PIP_VALUE_PER_MIN_LOT = 0.10
 # 50% of equity. Locked BEFORE the Arm 4 re-sim ran.
 ARM4_SANDBOX_RISK_CAP_FRAC = 0.50
 
+# Phase X-kunigami Wild Card drawdown gate (2026-07-06, pre-registered
+# at experiments/phase_x_kunigami_wildcard/PROTOCOL.md sec 2). Kunigami
+# returns as an aggregator-side DEFENDER: while the running sandbox
+# equity curve (1 pip = $1 at fixed 0.1 lot on $100) is in >= 25%
+# drawdown from peak, ALL new admissions are vetoed (journalled as
+# ``kunigami_wildcard_dd_gate``); open positions manage normally. The
+# gate releases at <= 12.5% (hysteresis). Trip level = the Phi5 sec 6
+# stop-rule bound, not a new number. Locked pre-run; no tuning.
+KUNIGAMI_GATE_TRIP_DD = 0.25
+KUNIGAMI_GATE_RELEASE_DD = 0.125
+KUNIGAMI_GATE_DOLLARS_PER_PIP = 1.0     # 0.1 lot x $10/pip/lot
+
+
+def kunigami_gate_step(
+    *,
+    equity: float,
+    peak: float,
+    tripped: bool,
+    pnl_pips: float,
+) -> tuple[float, float, bool, float, str | None]:
+    """Pure Phase X-kunigami gate transition (PROTOCOL.md sec 2).
+
+    Applies one closed trade's pnl to the running sandbox equity curve
+    and returns ``(equity, peak, tripped, dd, event)`` where ``event``
+    is ``"trip"``, ``"release"`` or ``None``. Hysteresis: trips at
+    DD >= 25%, releases only at DD <= 12.5% -- between the two levels
+    the gate holds its current state.
+    """
+    equity += pnl_pips * KUNIGAMI_GATE_DOLLARS_PER_PIP
+    peak = max(peak, equity)
+    dd = (peak - equity) / peak if peak > 0 else 1.0
+    event: str | None = None
+    if not tripped and dd >= KUNIGAMI_GATE_TRIP_DD:
+        tripped = True
+        event = "trip"
+    elif tripped and dd <= KUNIGAMI_GATE_RELEASE_DD:
+        tripped = False
+        event = "release"
+    return equity, peak, tripped, dd, event
+
 
 # ---------------------------------------------------------------------------
 # Sentinel journal helpers
@@ -522,6 +562,7 @@ def _drive_squad_replay(
     use_workspace: bool = False,
     use_shadow_ledger: bool = False,
     aggregator_arm: str = "phi41",
+    kunigami_wildcard_gate: bool = False,
 ) -> SquadRunOutput:
     """End-to-end Phi4 squad replay driver.
 
@@ -574,6 +615,14 @@ def _drive_squad_replay(
 
     Arms 3/4 REQUIRE ``sentinel_blocks=True`` (Phi5 protocol §11.1
     stop-rule amendment); the harness raises otherwise.
+
+    Phase X-kunigami Wild Card gate (2026-07-06, pre-registered at
+    ``experiments/phase_x_kunigami_wildcard/PROTOCOL.md``). Pass
+    ``kunigami_wildcard_gate=True`` to enable the aggregator-side
+    drawdown defender: new admissions are vetoed while the running
+    sandbox equity curve is in >= 25% drawdown from peak (release at
+    <= 12.5%); exits are managed normally. Default OFF -- every sealed
+    cache stays byte-identical.
     """
     if aggregator_arm not in ("phi41", "arm3", "arm4"):
         raise ValueError(f"unknown aggregator_arm: {aggregator_arm!r}")
@@ -622,6 +671,39 @@ def _drive_squad_replay(
         sym: len(bars) for sym, bars in bars_by_symbol.items()
     }
 
+    # Phase X-kunigami Wild Card gate state (only advances when the
+    # gate is enabled -- disabled runs never touch it).
+    gate_state = {
+        "equity": SANDBOX_EQUITY_DOLLARS,
+        "peak": SANDBOX_EQUITY_DOLLARS,
+        "tripped": False,
+        "n_trips": 0,
+        "n_vetoes": 0,
+    }
+
+    def _gate_update_on_close(pnl_pips: float, when: Any) -> None:
+        (
+            gate_state["equity"], gate_state["peak"],
+            gate_state["tripped"], dd, event,
+        ) = kunigami_gate_step(
+            equity=gate_state["equity"], peak=gate_state["peak"],
+            tripped=gate_state["tripped"], pnl_pips=pnl_pips,
+        )
+        if event == "trip":
+            gate_state["n_trips"] += 1
+            log.info(
+                "[kunigami wildcard] gate TRIPPED at %s: dd=%.1f%% "
+                "(equity=%.2f peak=%.2f, trip #%d)",
+                when, 100.0 * dd, gate_state["equity"],
+                gate_state["peak"], gate_state["n_trips"],
+            )
+        elif event == "release":
+            log.info(
+                "[kunigami wildcard] gate RELEASED at %s: dd=%.1f%% "
+                "(equity=%.2f peak=%.2f)",
+                when, 100.0 * dd, gate_state["equity"], gate_state["peak"],
+            )
+
     def _finalise_closed_trade(ot, *, tick_id: int, sym: str) -> None:
         """Score + journal one closed trade (shared by single- and
         multi-position paths; behaviour-identical to the pre-Phi5
@@ -652,6 +734,10 @@ def _drive_squad_replay(
             )
         else:
             per_agent_consecutive_losses[_aid] = 0
+        if kunigami_wildcard_gate:
+            _gate_update_on_close(
+                float(tr_with_agent.pnl_pips), tr_with_agent.exit_time,
+            )
 
     # Progress logging (2026-07-01) -- long replays go silent for
     # 30-60 min otherwise, making it impossible to tell a stuck run
@@ -874,6 +960,25 @@ def _drive_squad_replay(
         for rank_idx, proposal in enumerate(symbol_candidates):
             if proposal.symbol != symbol:
                 continue
+            if kunigami_wildcard_gate and gate_state["tripped"]:
+                # Phase X-kunigami: the Wild Card defender vetoes every
+                # NEW admission while squad drawdown exceeds the trip
+                # level. Exits above are untouched.
+                gate_state["n_vetoes"] += 1
+                out.proposals_rejected.append({
+                    "tick_id": int(gb.tick_id),
+                    "symbol": symbol,
+                    "winner_agent_id": proposal.agent_id,
+                    "winner_conviction": float(proposal.conviction),
+                    "loser_agent_id": proposal.agent_id,
+                    "loser_conviction": float(proposal.conviction),
+                    "loser_direction": proposal.direction,
+                    "winner_direction": proposal.direction,
+                    "rejection_reason": "kunigami_wildcard_dd_gate",
+                    "rank_at_block": int(rank_idx),
+                    "timestamp": proposal.timestamp.isoformat(),
+                })
+                continue
             sentinel_ctx = SentinelContext(
                 equity=SANDBOX_EQUITY_DOLLARS,
                 pip_value_per_min_lot=SANDBOX_PIP_VALUE_PER_MIN_LOT,
@@ -1058,6 +1163,13 @@ def _drive_squad_replay(
         len(out.trades), len(out.proposals_all),
         sentinel_blocks, use_workspace,
     )
+    if kunigami_wildcard_gate:
+        log.info(
+            "[kunigami wildcard] gate summary: trips=%d vetoes=%d "
+            "final_equity=%.2f peak=%.2f tripped_at_end=%s",
+            gate_state["n_trips"], gate_state["n_vetoes"],
+            gate_state["equity"], gate_state["peak"], gate_state["tripped"],
+        )
 
     return out
 

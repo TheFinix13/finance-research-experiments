@@ -1,6 +1,6 @@
 # Phase X-kunigami — Wild Card drawdown gate (pre-registered DESIGN)
 
-**Status:** PRE-REGISTERED DESIGN (2026-07-06 evening). Implementation and compute are explicitly NOT part of this session — they are sequenced AFTER the Phase W-barou v1.2 verdict so the gate is measured against whichever baseline is canonical at that point (one experiment in flight at a time; no confounded baselines).
+**Status:** RUNNING (2026-07-06 night). Pre-registered as design-only earlier the same evening; the Phase W-barou v1.2 verdict (HALT, `../phase_w_barou/POSTMORTEM_v1.2.md`) has since landed, so per §4 sequencing the canonical baseline is `walk-forward-phi5-arm4-post-kunigami` and implementation + compute are now unblocked. Implementation committed BEFORE compute launched; no constants changed from the locked design below.
 **Origin:** `../G7_role_registry_v1/DECISION_kunigami.md` Option B3 (the pre-registered Wild Card return path recorded at retirement sign-off, 2026-07-06) + G7 v1 PROTOCOL §11.12.
 **Aggregator context:** designed against Φ5 **Arm 4** (multi-position K=2), the adopted G7-era default (`../phi5_aggregator/PROTOCOL.md` §11.6).
 
