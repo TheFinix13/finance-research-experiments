@@ -1,4 +1,37 @@
-# AI Context — finance research experiments (updated 2026-07-06 20:00 UTC, ARM 4 ADOPTED as G7-era default aggregator + chemistry re-baselined under Arm 4: Bachira→Barou cannibalisation 84%→55.7%, Nagi finisher role confirmed)
+# AI Context — finance research experiments (updated 2026-07-06 21:00 UTC, W-barou v1.2 HALT with MAJOR FINDING: Bachira/Barou are literal strategy duplicates on USDCAD — cannibalisation is an attribution artifact, not lost alpha)
+
+## 2026-07-06 night — Phase W-barou v1.2: HALT, premise false, structural finding
+
+Commits `4749f13` (pre-reg + mechanic BEFORE compute) → results commit.
+Two pre-registered protocols landed: `phase_w_barou/PROTOCOL_v1.2.md`
+(H2 continuation-entry, Bachira-anchored stop, `--barou-v12` flag, OFF
+by default) and `phase_x_kunigami_wildcard/PROTOCOL.md` (Wild Card DD
+gate: trip 25%/release 12.5%, design-only, compute sequenced next).
+
+**v1.2 verdict: HALT per §5 stop rule** (`reviews/wbarou12_verdict.json`).
+The anchor fired on **0/4,576** eligible proposals because Bachira's
+stops are byte-identical to Barou's on every shared USDCAD tick —
+both wrap the SAME `SupplyDemandAlpha(htf_align=None, target_rr=1.5)`.
+`rebel_tight` describes conviction mechanics, not geometry. Both runs
+byte-identical to control (squad 0.3643, Barou 567/1,280, 55.7%);
+zero contamination, heartbeat clean.
+
+**The finding (POSTMORTEM_v1.2.md §3):** Bachira→Barou "cannibalisation"
+is literal strategy duplication. The lo1 "recovered" +713 trades are
+the same trades relabelled. Consequences: (1) Bachira's C3 FAIL is a
+duplication artifact — a C3 v2 (distinctness-aware) definition would
+likely flip the squad Role Registry to PASS; (2) the R1/R6 blocks on
+Barou are the risk system correctly refusing to double a duplicate
+position; (3) no aggregator/geometry mechanic can help — only true
+agent-level differentiation (parked: "Phase Y-barou v2 weapon
+differentiation", do NOT start without discussion).
+
+**Next compute:** Phase X-kunigami Wild Card gate (pre-registered,
+unblocked by this verdict). Also parked: C3 v2 definition amendment.
+
+---
+
+# Previous header (2026-07-06 20:00 UTC): ARM 4 ADOPTED as G7-era default aggregator + chemistry re-baselined under Arm 4 (Bachira→Barou cannibalisation 84%→55.7%, Nagi finisher role confirmed)
 
 ## 2026-07-06 evening — Phase 5 CLOSED: Arm 4 adopted + lo1 chemistry re-baseline
 

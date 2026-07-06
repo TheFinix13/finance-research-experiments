@@ -1,6 +1,7 @@
 # Phase W-barou v1.2 — pre-registered protocol (H2 continuation-entry under Φ5 Arm 4)
 
-**Status:** PRE-REGISTERED (2026-07-06 evening, BEFORE any v1.2 compute)
+**Status:** HALTED same day per §5 stop rule — the anchor premise is false (Bachira and Barou share identical stop geometry; 0/4,576 anchor fires). See `POSTMORTEM_v1.2.md` for the structural finding (strategy duplication, not slot competition). Pre-registration below preserved verbatim.
+**Original status:** PRE-REGISTERED (2026-07-06 evening, BEFORE any v1.2 compute)
 **Parent:** `PROTOCOL.md` (v1.1, H2 deferred per §1) + `POSTMORTEM.md` (v1.1 NULL, escalation to Φ5)
 **Unblocking event:** Φ5 Arm 4 (multi-position K=2) ADOPTED as default G7-era aggregator, `../phi5_aggregator/PROTOCOL.md` §11.6 (2026-07-06). The single-slot mutex that nullified Phase V-b and W-barou v1.1 is gone; the agent-side complement is now measurable.
 **Chemistry baseline (canonical):** `../../reviews/g7_leave_one_out_verdict_phi5-arm4.md` — Bachira→Barou cannibalisation **55.7%** (Barou 567 trades with Bachira present vs 1,280 absent), still a C3 FAIL against the 50% threshold.
