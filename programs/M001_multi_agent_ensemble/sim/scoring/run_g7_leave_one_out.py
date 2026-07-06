@@ -193,9 +193,14 @@ def run_single_leave_one_out(
     bars_by_symbol: dict[str, list],
     out_dir: Path,
     tag: str,
+    aggregator_arm: str = "phi41",
 ) -> LeaveOneOutRunResult:
     """Run one replay with ``exclude_agent_id`` removed from the
     proposer list. ``exclude_agent_id=None`` runs the full baseline.
+
+    ``aggregator_arm`` threads through to ``_drive_squad_replay``
+    (phi5_aggregator PROTOCOL §11.4/§11.6): pass ``"arm4"`` to measure
+    C2/C3 chemistry under the adopted multi-position aggregator.
     """
     started = time.time()
     if exclude_agent_id is None:
@@ -232,6 +237,7 @@ def run_single_leave_one_out(
         sentinel_blocks=True,
         use_workspace=True,
         use_shadow_ledger=True,
+        aggregator_arm=aggregator_arm,
     )
 
     cache_dir = _cache_dir_for(out_dir, tag, exclude_agent_id)
@@ -266,6 +272,8 @@ def run_all_leave_one_outs(
     tag: str = "post-V",
     exclude_agents: Iterable[str] | None = None,
     include_baseline: bool = False,
+    aggregator_arm: str = "phi41",
+    retire_kunigami: bool = False,
 ) -> list[LeaveOneOutRunResult]:
     """Run all 8 leave-one-out replays in canonical order.
 
@@ -294,11 +302,25 @@ def run_all_leave_one_outs(
     all_agents, isagi, barou, kunigami = _instantiate_all_agents()
     _prepare_agents(all_agents, bars_by_symbol)
 
+    if retire_kunigami:
+        # Kunigami is retired from the proposer/publisher roster
+        # (G7 Role Registry v1 §12.1) but his INSTANCE stays wired so
+        # the Sentinel R5 loss-streak side channel keeps working --
+        # mirrors run_g7_v1_checkpoint_gate.run_g7_walk_forward.
+        all_agents = [
+            a for a in all_agents
+            if getattr(a, "agent_id", None) != "kunigami_rensuke"
+        ]
+
     to_exclude: list[str | None] = []
     if include_baseline:
         to_exclude.append(None)
+    default_order: tuple[str, ...] = (
+        tuple(a for a in G7_AGENT_ORDER if a != "kunigami_rensuke")
+        if retire_kunigami else G7_AGENT_ORDER
+    )
     excludes = (
-        tuple(exclude_agents) if exclude_agents is not None else G7_AGENT_ORDER
+        tuple(exclude_agents) if exclude_agents is not None else default_order
     )
     to_exclude.extend(excludes)
 
@@ -315,6 +337,7 @@ def run_all_leave_one_outs(
                 isagi=isagi, barou=barou, kunigami=kunigami,
                 bars_by_symbol=bars_by_symbol,
                 out_dir=out_dir, tag=tag,
+                aggregator_arm=aggregator_arm,
             )
             results.append(result)
         except Exception:                                  # pragma: no cover
@@ -1461,6 +1484,25 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help=("Skip compute -- assume all lo1 caches already exist and "
               "just aggregate the C2/C3 verdict from disk."),
     )
+    p.add_argument(
+        "--no-aggregate", action="store_true",
+        help=("Compute only -- skip the C2/C3 aggregation step. Use "
+              "when running per-agent lo1 replays in parallel processes "
+              "(each with a single --exclude); aggregate once at the "
+              "end with --aggregate-only."),
+    )
+    p.add_argument(
+        "--aggregator-arm", default="phi41",
+        choices=("phi41", "arm3", "arm4"),
+        help=("Aggregator arm threaded into _drive_squad_replay for "
+              "every lo1 replay (phi5_aggregator PROTOCOL §11.6)."),
+    )
+    p.add_argument(
+        "--retire-kunigami", action="store_true",
+        help=("Drop Kunigami from the proposer roster (Role Registry "
+              "v1 §12.1) and from the default lo1 exclusion order; his "
+              "instance stays wired for the Sentinel R5 side channel."),
+    )
     p.add_argument("-v", "--verbose", action="count", default=0)
     return p
 
@@ -1483,7 +1525,12 @@ def main(argv: list[str] | None = None) -> int:
             tag=args.tag,
             exclude_agents=args.exclude,
             include_baseline=args.include_baseline,
+            aggregator_arm=args.aggregator_arm,
+            retire_kunigami=args.retire_kunigami,
         )
+
+    if args.no_aggregate:
+        return 0
 
     baseline_stats, per_excluded_stats, c2c3, role_registry = (
         aggregate_from_disk(

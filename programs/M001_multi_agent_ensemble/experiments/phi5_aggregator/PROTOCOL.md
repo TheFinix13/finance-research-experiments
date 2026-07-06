@@ -406,3 +406,29 @@ Arm 3 diagnostics: 56.5% of trades merged; Barou co-contributes to 1,568 merged 
 3. Arm 5 (stacking) remains deferred: with Arm 3 null-and-attribution-destroying and Arm 1 regressing, the §3 Arm 5 order-of-operations has no evidence-backed components beyond Arm 4 alone.
 4. Kunigami Wild Card gate (G7 §11.12) will be designed against the Arm 4 aggregator if adopted.
 
+---
+
+## Amendment §11.6 — Arm 4 ADOPTED + chemistry re-baseline pre-registration (2026-07-06)
+
+**Filed:** 2026-07-06, BEFORE the compute described in part B ran.
+
+### A. Adoption record
+
+User sign-off received 2026-07-06 ("phase 5 is highly needed … proceed in getting it done however is most efficient and effective"). Per §11.5 decision item 2:
+
+1. **Arm 4 (multi-position, K=2, `ARM4_SANDBOX_RISK_CAP_FRAC = 0.50`) is the default aggregator for all G7-era squad work from this date.** Rationale is roster-health (starvation collapse 528%→126% at zero squad-TQS cost), NOT a locked-statistic win — the §11.5 NULL verdicts stand unamended.
+2. All sealed artefacts (G6 verdict ladder, phi41-era caches, post-V/post-W walk-forwards, the §11.5 verdict files) are untouched. `_drive_squad_replay` keeps `aggregator_arm="phi41"` as its code default for byte-compatibility with sealed replays; G7-era harness invocations must pass `--aggregator-arm arm4` explicitly.
+3. Downstream unblocks: Phase W-barou v1.2 H2 (continuation-entry) and the Kunigami Wild Card drawdown gate (G7 §11.12) are designed against Arm 4.
+
+### B. Pre-registration: leave-one-out chemistry re-baseline under Arm 4
+
+The Phase-3 C2/C3 + Role Registry verdicts (G7 §11.11) were measured under the phi41 single-slot aggregator — the same mutex the adoption removes. The chemistry numbers driving roster decisions (Bachira→Barou −84%, Nagi's incoming lift, etc.) are therefore stale under the adopted aggregator and must be re-measured before any further roster/evolution decision cites them.
+
+**Locked before compute:**
+
+- **Runs:** 7 leave-one-out replays, one per active-roster agent (isagi, bachira, rin, chigiri, reo, nagi, barou). Kunigami retired per Role Registry v1 §12.1 — roster excludes him as proposer; instance stays wired for Sentinel R5.
+- **Config:** `run_g7_leave_one_out --aggregator-arm arm4 --retire-kunigami --tag phi5-arm4`, panel/env identical to §11.4 (same bars, sentinel_blocks, workspace, shadow ledger). Baseline = `g7_replay_cache_phi5-arm4-post-kunigami` (the §11.5 Arm 4 walk-forward, 7,273 trades @ 0.3643).
+- **Execution:** 7 independent single-`--exclude` processes in parallel with `--no-aggregate` (replay is deterministic per process; parallelism cannot change results), then one `--aggregate-only` pass. Heartbeat monitor on all PIDs.
+- **This is a MEASUREMENT, not a gate.** C2/C3/C7/C8/C9 definitions and thresholds inherited verbatim from G7 v1 §11.1 + Role Registry v1 §3. No roster change auto-triggers from these numbers; any retention/evolution decision citing them requires its own amendment. Expected (not required) outcome: Barou's lo1-Bachira cannibalisation ≈ +126% (matches the §11.5 diagnostic, which this batch supersedes for verdict purposes — the earlier one-off `run_arm4_lo1_bachira.py` cache used a non-canonical path).
+- **Outputs:** `reviews/g7_leave_one_out_verdict_phi5-arm4.{md,json}`, `reviews/g7_role_registry_verdict_phi5-arm4.{md,json}`, caches under `reviews/g7_leave_one_out_phi5-arm4/lo1_<agent>/`.
+
