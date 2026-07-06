@@ -992,6 +992,7 @@ def run_g7_walk_forward(
     oos_years: int = 1,
     include_kunigami: bool = True,
     aggregator_arm: str = "phi41",
+    barou_v12: bool = False,
 ) -> G7GateReport:
     """Full walk-forward baseline squad run for G7.
 
@@ -1013,6 +1014,11 @@ def run_g7_walk_forward(
     ``aggregator_arm`` threads through to ``_drive_squad_replay``
     (``"phi41"`` control / ``"arm3"`` same-direction merge / ``"arm4"``
     multi-position) per phi5_aggregator PROTOCOL §11.4.
+
+    ``barou_v12=True`` activates the Phase W-barou v1.2 H2
+    continuation-entry mechanic (``experiments/phase_w_barou/
+    PROTOCOL_v1.2.md``). Default False keeps Barou byte-identical to
+    every sealed cache.
     """
     ensure_production_repo_on_path()
 
@@ -1042,8 +1048,13 @@ def run_g7_walk_forward(
     chigiri = A4ChigiriV1()
     reo = A5ReoV1()
     nagi = A6NagiV1()
-    barou = A7BarouV1()
+    barou = A7BarouV1(continuation_entry_enabled=barou_v12)
     kunigami = A10KunigamiV1()
+    if barou_v12:
+        log.info(
+            "Phase W-barou v1.2 H2 continuation-entry ACTIVE "
+            "(experiments/phase_w_barou/PROTOCOL_v1.2.md)"
+        )
     for sym, bars in bars_by_symbol.items():
         if not bars:
             continue
@@ -1390,6 +1401,10 @@ def main(argv: Optional[list[str]] = None) -> int:
         help="Phi5 aggregator arm (PROTOCOL §11.4): phi41 control, "
              "arm3 same-direction merge, arm4 multi-position K=2. "
              "Walk-forward mode only.")
+    parser.add_argument(
+        "--barou-v12", action="store_true",
+        help="Phase W-barou v1.2 H2 continuation-entry (experiments/"
+             "phase_w_barou/PROTOCOL_v1.2.md). Walk-forward mode only.")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args(argv)
 
@@ -1416,6 +1431,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             out_dir=args.out_dir, tag=args.tag,
             include_kunigami=not args.retire_kunigami,
             aggregator_arm=args.aggregator_arm,
+            barou_v12=args.barou_v12,
         )
     else:
         run_g7_dry_run(

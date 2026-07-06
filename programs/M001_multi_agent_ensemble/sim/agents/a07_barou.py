@@ -123,6 +123,55 @@ BAROU_BACHIRA_AGENT_ID: str = "bachira_meguru"  # who we read for H1 gate
 # When Bachira DID publish same-direction, H1 skips -- existing devour
 # mechanic still applies. See PROTOCOL sec 3 for the decision table.
 
+# ---------------------------------------------------------------------------
+# Phase W-barou v1.2 (2026-07-06) -- H2 continuation-entry mechanic.
+# See ``experiments/phase_w_barou/PROTOCOL_v1.2.md`` sec 3. OFF by
+# default: only ``A7BarouV1(continuation_entry_enabled=True)`` activates
+# the branch, so every sealed cache stays byte-identical.
+# ---------------------------------------------------------------------------
+BAROU_V1_2_CONTINUATION_MIN_STOP_PIPS: float = 6.6
+# ^ measured post-V panel minimum stop (Phi5 PROTOCOL sec 11.4 D
+#   distribution, n=5604) -- the anchored stop can never be tighter than
+#   anything the squad has ever traded.
+_PIP: float = 0.0001
+
+
+def continuation_anchor_geometry(
+    *,
+    entry: float,
+    own_stop: float,
+    own_tp: float,
+    bachira_stop: float,
+    direction: str,
+    target_rr: float,
+) -> tuple[float, float, str, bool]:
+    """Pure H2 geometry (PROTOCOL_v1.2.md sec 3).
+
+    Returns ``(final_stop, final_tp, stop_source, fired)``. The anchored
+    stop distance is ``max(floor, min(own_dist, candidate_dist))`` and
+    only applies when strictly tighter than Barou's own stop; TP is
+    re-derived from the final stop distance at ``target_rr`` so RR is
+    preserved, not gamed. Fall-through keeps Barou's own geometry
+    untouched.
+    """
+    sign = 1.0 if direction == "long" else -1.0
+    own_dist = abs(entry - own_stop)
+    candidate_dist = sign * (entry - bachira_stop)
+    if candidate_dist <= 0.0:
+        return own_stop, own_tp, "invalid_anchor", False
+    new_dist = max(
+        BAROU_V1_2_CONTINUATION_MIN_STOP_PIPS * _PIP,
+        min(own_dist, candidate_dist),
+    )
+    if new_dist >= own_dist:
+        return own_stop, own_tp, "own", False
+    return (
+        entry - sign * new_dist,
+        entry + sign * target_rr * new_dist,
+        "bachira_anchor",
+        True,
+    )
+
 BAROU_V1_CANON_ROLE = CanonRole(
     canon_player="barou_shoei",
     weapon="lone_wolf_baseline_zone_usdcad",
@@ -168,6 +217,7 @@ class A7BarouV1(BaseStriker):
         *,
         production_cfg: Any | None = None,
         isagi_agent_id: str = BAROU_ISAGI_AGENT_ID,
+        continuation_entry_enabled: bool = False,
     ) -> None:
         super().__init__(
             agent_id=agent_id,
@@ -185,6 +235,8 @@ class A7BarouV1(BaseStriker):
         self._inner = SupplyDemandAlpha(cfg=self._cfg, **BAROU_V1_PARAMS)
         self._prepared: dict[str, _PreparedSeries] = {}
         self._isagi_agent_id = isagi_agent_id
+        # Phase W-barou v1.2 H2 gate (PROTOCOL_v1.2.md sec 3).
+        self._continuation_entry_enabled = bool(continuation_entry_enabled)
 
     # ------------------------------------------------------------------
     # Harness API
@@ -356,10 +408,16 @@ class A7BarouV1(BaseStriker):
         # Use the conviction from the observed Thought (so the devour
         # lift carries through to the Proposal as well).
         conviction = float(my_recent_thought.confidence_in_thought)
-        ladder = [LadderRung(price=float(sig.take_profit), fraction=1.0)]
         horizon = market.as_of + timedelta(
             hours=float(self.canon_role.target_hold_hours),
         )
+        # Phase W-barou v1.2 H2 defaults -- own geometry unless the
+        # continuation-entry branch anchors a tighter stop below.
+        own_stop_dist = abs(float(sig.entry) - float(sig.stop))
+        final_stop = float(sig.stop)
+        final_tp = float(sig.take_profit)
+        continuation_entry = False
+        v12_stop_source = "own"
         # F21 workspace read -- confirm Isagi's live USDCAD direction
         # AND read Bachira's same-symbol thought for Phase W-barou H1.
         workspace_isagi_direction: str | None = None
@@ -401,6 +459,35 @@ class A7BarouV1(BaseStriker):
                 yield_reason = "peer_did_not_read_this_setup"
             else:
                 yield_reason = "peer_claimed_slot_no_lift"
+                # Phase W-barou v1.2 H2 (PROTOCOL_v1.2.md sec 3):
+                # continuation entry on the exact branch H1 skips. Anchor
+                # Barou's invalidation to Bachira's published structural
+                # stop when it is tighter; entry stays Barou's own read;
+                # TP re-derived so RR 1.5 is preserved. No conviction
+                # change (V-b / v1.1 precedent: conviction lifts are dead
+                # ends).
+                if (
+                    self._continuation_entry_enabled
+                    and bachira_t is not None
+                    and bachira_t.coordinate is not None
+                ):
+                    _b_stop = (
+                        bachira_t.coordinate.rationale or {}
+                    ).get("stop")
+                    if isinstance(_b_stop, (int, float)):
+                        (
+                            final_stop,
+                            final_tp,
+                            v12_stop_source,
+                            continuation_entry,
+                        ) = continuation_anchor_geometry(
+                            entry=float(sig.entry),
+                            own_stop=float(sig.stop),
+                            own_tp=float(sig.take_profit),
+                            bachira_stop=float(_b_stop),
+                            direction=direction,
+                            target_rr=float(BAROU_V1_PARAMS["target_rr"]),
+                        )
             if lone_conviction_active:
                 lone_conviction_lift_applied = BAROU_V1_1_LONE_CONVICTION_LIFT
                 conviction = min(
@@ -415,6 +502,7 @@ class A7BarouV1(BaseStriker):
                     bachira_read_present, bachira_direction,
                     BAROU_V1_1_LONE_CONVICTION_LIFT, conviction,
                 )
+        ladder = [LadderRung(price=float(final_tp), fraction=1.0)]
         meta = getattr(sig, "meta", {}) or {}
         devour_applied = "barou_devour_applied" in my_recent_thought.tags
         rationale: dict[str, Any] = {
@@ -447,6 +535,15 @@ class A7BarouV1(BaseStriker):
             ),
             "barou_v1_1_bachira_direction": bachira_direction,
             "barou_workspace_snapshot_ok": bool(workspace_snapshot_ok),
+            # Phase W-barou v1.2 (2026-07-06): H2 continuation-entry.
+            # See experiments/phase_w_barou/PROTOCOL_v1.2.md sec 3.
+            "barou_continuation_entry": bool(continuation_entry),
+            "barou_v1_2_enabled": bool(self._continuation_entry_enabled),
+            "barou_v1_2_stop_source": v12_stop_source,
+            "barou_v1_2_stop_pips_own": float(own_stop_dist / _PIP),
+            "barou_v1_2_stop_pips_final": float(
+                abs(float(sig.entry) - final_stop) / _PIP
+            ),
             "_yield_reason": yield_reason,
             "doctrine_ref": (
                 "06-blue-lock-doctrine.md sec 3.4 (devour) + G7 PROTOCOL "
@@ -464,7 +561,7 @@ class A7BarouV1(BaseStriker):
             symbol=market.symbol,
             direction=direction,
             entry=float(sig.entry),
-            stop=float(sig.stop),
+            stop=float(final_stop),
             ladder=ladder,
             conviction=float(conviction),
             regime_fit=regime_fit_from_atr(prep.bars, i),

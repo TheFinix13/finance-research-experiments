@@ -104,14 +104,14 @@ _STRUCTURAL_FALSIFIERS: frozenset[str] = frozenset({
 })
 
 
-def _instantiate_all_agents():
+def _instantiate_all_agents(*, barou_v12: bool = False):
     isagi = A1IsagiV1()
     bachira = A2BachiraV1()
     rin = A3RinV1()
     chigiri = A4ChigiriV1()
     reo = A5ReoV1()
     nagi = A6NagiV1()
-    barou = A7BarouV1()
+    barou = A7BarouV1(continuation_entry_enabled=barou_v12)
     kunigami = A10KunigamiV1()
     all_agents = [isagi, bachira, rin, chigiri, reo, nagi, barou, kunigami]
     # Prepare all agents on all symbols they know about.
@@ -274,6 +274,7 @@ def run_all_leave_one_outs(
     include_baseline: bool = False,
     aggregator_arm: str = "phi41",
     retire_kunigami: bool = False,
+    barou_v12: bool = False,
 ) -> list[LeaveOneOutRunResult]:
     """Run all 8 leave-one-out replays in canonical order.
 
@@ -299,7 +300,14 @@ def run_all_leave_one_outs(
         )
         log.info("Loaded %d %s bars", len(bars_by_symbol[sym]), sym)
 
-    all_agents, isagi, barou, kunigami = _instantiate_all_agents()
+    all_agents, isagi, barou, kunigami = _instantiate_all_agents(
+        barou_v12=barou_v12,
+    )
+    if barou_v12:
+        log.info(
+            "Phase W-barou v1.2 H2 continuation-entry ACTIVE "
+            "(experiments/phase_w_barou/PROTOCOL_v1.2.md)"
+        )
     _prepare_agents(all_agents, bars_by_symbol)
 
     if retire_kunigami:
@@ -1503,6 +1511,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
               "v1 §12.1) and from the default lo1 exclusion order; his "
               "instance stays wired for the Sentinel R5 side channel."),
     )
+    p.add_argument(
+        "--barou-v12", action="store_true",
+        help=("Phase W-barou v1.2 H2 continuation-entry (experiments/"
+              "phase_w_barou/PROTOCOL_v1.2.md)."),
+    )
     p.add_argument("-v", "--verbose", action="count", default=0)
     return p
 
@@ -1527,6 +1540,7 @@ def main(argv: list[str] | None = None) -> int:
             include_baseline=args.include_baseline,
             aggregator_arm=args.aggregator_arm,
             retire_kunigami=args.retire_kunigami,
+            barou_v12=args.barou_v12,
         )
 
     if args.no_aggregate:

@@ -787,3 +787,248 @@ class TestPhaseW_BarouLoneConvictionClaim:
             base_conv_after_devour + BAROU_V1_1_LONE_CONVICTION_LIFT,
         )
         assert p.conviction == pytest.approx(expected_conv, abs=1e-9)
+
+
+# ---------------------------------------------------------------------------
+# Phase W-barou v1.2 (2026-07-06): H2 continuation-entry
+# (experiments/phase_w_barou/PROTOCOL_v1.2.md sec 3)
+# ---------------------------------------------------------------------------
+
+class TestPhaseW12_AnchorGeometryPure:
+    """Deterministic coverage of the locked H2 arithmetic
+    (PROTOCOL_v1.2.md sec 3) independent of the synthetic bar series."""
+
+    def _geom(self, **kw):
+        from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+            continuation_anchor_geometry,
+        )
+        defaults = dict(
+            entry=1.3000, own_stop=1.2970, own_tp=1.3045,
+            direction="long", target_rr=1.5,
+        )
+        defaults.update(kw)
+        return continuation_anchor_geometry(**defaults)
+
+    def test_tighter_anchor_fires_and_rederives_tp(self):
+        stop, tp, source, fired = self._geom(bachira_stop=1.2988)  # 12 pips
+        assert fired and source == "bachira_anchor"
+        assert stop == pytest.approx(1.2988, abs=1e-12)
+        assert tp == pytest.approx(1.3000 + 1.5 * 0.0012, abs=1e-12)
+
+    def test_floor_clamps_ultra_tight_anchor(self):
+        from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+            BAROU_V1_2_CONTINUATION_MIN_STOP_PIPS,
+        )
+        stop, tp, source, fired = self._geom(bachira_stop=1.2999)  # 1 pip
+        assert fired and source == "bachira_anchor"
+        floor = BAROU_V1_2_CONTINUATION_MIN_STOP_PIPS * 0.0001
+        assert stop == pytest.approx(1.3000 - floor, abs=1e-12)
+        assert tp == pytest.approx(1.3000 + 1.5 * floor, abs=1e-12)
+
+    def test_wider_anchor_falls_through_to_own(self):
+        stop, tp, source, fired = self._geom(bachira_stop=1.2950)  # 50 pips
+        assert not fired and source == "own"
+        assert stop == pytest.approx(1.2970, abs=1e-12)
+        assert tp == pytest.approx(1.3045, abs=1e-12)
+
+    def test_wrong_side_anchor_is_invalid(self):
+        stop, tp, source, fired = self._geom(bachira_stop=1.3010)
+        assert not fired and source == "invalid_anchor"
+        assert stop == pytest.approx(1.2970, abs=1e-12)
+
+    def test_short_direction_mirror(self):
+        stop, tp, source, fired = self._geom(
+            entry=1.3000, own_stop=1.3030, own_tp=1.2955,
+            direction="short", bachira_stop=1.3012,
+        )
+        assert fired and source == "bachira_anchor"
+        assert stop == pytest.approx(1.3012, abs=1e-12)
+        assert tp == pytest.approx(1.3000 - 1.5 * 0.0012, abs=1e-12)
+
+
+class TestPhaseW12_ContinuationEntry:
+    """H2: when Bachira published a SAME-direction thought and the
+    mechanic is explicitly enabled, Barou anchors his stop to Bachira's
+    published structural stop when tighter (floor 6.6 pips), re-derives
+    TP at RR 1.5, and stamps the audit trail. Disabled (default) must
+    be byte-identical to v1.1 behaviour.
+    """
+
+    def _fire(self, barou, bars):
+        for i in range(200, len(bars) - 1):
+            sig = barou.inner_signal_at("USDCAD", i)
+            if sig is not None:
+                return i, sig
+        pytest.skip("synthetic series produced no Barou signal")
+
+    def _make_bachira_thought_with_stop(
+        self, *, tick_id, as_of, direction, stop, symbol="USDCAD",
+    ):
+        coord = Coordinate(
+            agent_id="bachira_meguru", symbol=symbol,
+            price_lo=1.29, price_hi=1.31,
+            time_start=as_of - timedelta(hours=4),
+            time_end=as_of + timedelta(hours=20),
+            vol_band=(0.5, 2.0),
+            regime_predicate="test_regime",
+            expected_strength=0.70, direction_bias=direction,
+            rationale={"entry": 1.30, "stop": stop, "take_profit": 1.32},
+        )
+        return Thought(
+            schema_version=SCHEMA_VERSION,
+            agent_id="bachira_meguru",
+            tick_id=tick_id, timestamp=as_of, symbol=symbol,
+            narrative=f"[bachira test] {direction}",
+            tags=["bachira_test"], confidence_in_thought=0.70,
+            expected_action=f"{direction}_on_H4_close_USDCAD",
+            coordinate=coord,
+            decision_horizon=as_of,
+            ttl_ticks=6, references=[],
+        )
+
+    def _snapshot(self, *, tick_id, as_of, peer_thoughts):
+        from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
+            WorkspaceSnapshot,
+        )
+        return WorkspaceSnapshot(
+            thoughts=tuple(peer_thoughts),
+            as_of=as_of,
+            current_tick=tick_id,
+        )
+
+    def _run_same_dir_intend(self, *, enabled: bool, bachira_stop_fn):
+        """Drive one same-direction intend(); bachira_stop_fn(sig, sign)
+        returns the stop price to publish for Bachira."""
+        from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+            A7BarouV1,
+        )
+        bars = _build_synthetic_usdcad_bars(600)
+        barou = A7BarouV1(continuation_entry_enabled=enabled)
+        barou.prepare("USDCAD", bars)
+        fire_idx, sig = self._fire(barou, bars)
+        fire_bar = bars[fire_idx]
+        market = _bar_to_market(fire_bar, fire_idx)
+        t = barou.observe(market, FullLedger())
+        direction = sig.direction.value
+        sign = 1.0 if direction == "long" else -1.0
+        ws = self._snapshot(
+            tick_id=fire_idx, as_of=fire_bar.time,
+            peer_thoughts=[self._make_bachira_thought_with_stop(
+                tick_id=fire_idx, as_of=fire_bar.time,
+                direction=direction,
+                stop=bachira_stop_fn(sig, sign),
+            )],
+        )
+        p = barou.intend(market, t, workspace=ws)
+        assert p is not None
+        return p, sig, sign
+
+    def test_disabled_by_default_is_v11_byte_identical(self):
+        """Default constructor -> mechanic off; same-direction branch
+        keeps Barou's own stop/TP exactly (sealed-cache byte-compat)."""
+        p, sig, _ = self._run_same_dir_intend(
+            enabled=False,
+            bachira_stop_fn=lambda sig, sign: (
+                float(sig.entry) - sign * 0.0010   # much tighter anchor
+            ),
+        )
+        r = p.rationale
+        assert r["barou_v1_2_enabled"] is False
+        assert r["barou_continuation_entry"] is False
+        assert r["barou_v1_2_stop_source"] == "own"
+        assert p.stop == pytest.approx(float(sig.stop), abs=1e-12)
+        assert p.ladder[0].price == pytest.approx(
+            float(sig.take_profit), abs=1e-12,
+        )
+
+    def test_anchors_to_tighter_bachira_stop_and_rederives_tp(self):
+        """Enabled + same-direction + Bachira stop tighter than own ->
+        stop anchored at Bachira's distance, TP re-derived at RR 1.5."""
+        from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+            BAROU_V1_PARAMS,
+        )
+        anchor_dist = 0.0012   # 12 pips, above the 6.6-pip floor
+        p, sig, sign = self._run_same_dir_intend(
+            enabled=True,
+            bachira_stop_fn=lambda sig, sign: (
+                float(sig.entry) - sign * anchor_dist
+            ),
+        )
+        own_dist = abs(float(sig.entry) - float(sig.stop))
+        if own_dist <= anchor_dist:
+            pytest.skip("synthetic signal stop tighter than test anchor")
+        r = p.rationale
+        assert r["barou_v1_2_enabled"] is True
+        assert r["barou_continuation_entry"] is True
+        assert r["barou_v1_2_stop_source"] == "bachira_anchor"
+        assert r["barou_v1_2_stop_pips_final"] == pytest.approx(
+            anchor_dist / 0.0001, abs=1e-6,
+        )
+        assert p.stop == pytest.approx(
+            float(sig.entry) - sign * anchor_dist, abs=1e-12,
+        )
+        rr = float(BAROU_V1_PARAMS["target_rr"])
+        assert p.ladder[0].price == pytest.approx(
+            float(sig.entry) + sign * rr * anchor_dist, abs=1e-12,
+        )
+
+    def test_floor_clamps_ultra_tight_anchor(self):
+        """Bachira stop tighter than the 6.6-pip floor -> final stop
+        distance clamps to the floor, never below."""
+        from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+            BAROU_V1_2_CONTINUATION_MIN_STOP_PIPS,
+        )
+        p, sig, sign = self._run_same_dir_intend(
+            enabled=True,
+            bachira_stop_fn=lambda sig, sign: (
+                float(sig.entry) - sign * 0.0001   # 1 pip: below floor
+            ),
+        )
+        own_dist = abs(float(sig.entry) - float(sig.stop))
+        floor_dist = BAROU_V1_2_CONTINUATION_MIN_STOP_PIPS * 0.0001
+        if own_dist <= floor_dist:
+            pytest.skip("synthetic signal stop tighter than the floor")
+        r = p.rationale
+        assert r["barou_continuation_entry"] is True
+        assert r["barou_v1_2_stop_pips_final"] == pytest.approx(
+            BAROU_V1_2_CONTINUATION_MIN_STOP_PIPS, abs=1e-6,
+        )
+
+    def test_invalid_anchor_on_wrong_side_falls_through(self):
+        """Bachira stop on the PROFIT side of Barou's entry (invalid
+        invalidation anchor) -> own geometry kept, journalled as
+        invalid_anchor."""
+        p, sig, _ = self._run_same_dir_intend(
+            enabled=True,
+            bachira_stop_fn=lambda sig, sign: (
+                float(sig.entry) + sign * 0.0010   # wrong side
+            ),
+        )
+        r = p.rationale
+        assert r["barou_continuation_entry"] is False
+        assert r["barou_v1_2_stop_source"] == "invalid_anchor"
+        assert p.stop == pytest.approx(float(sig.stop), abs=1e-12)
+
+    def test_h1_branches_untouched_when_enabled(self):
+        """Enabled mechanic must not alter the H1 (no-Bachira) branch:
+        no continuation entry, own geometry, H1 lift still applied."""
+        from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+            A7BarouV1,
+        )
+        bars = _build_synthetic_usdcad_bars(600)
+        barou = A7BarouV1(continuation_entry_enabled=True)
+        barou.prepare("USDCAD", bars)
+        fire_idx, sig = self._fire(barou, bars)
+        fire_bar = bars[fire_idx]
+        market = _bar_to_market(fire_bar, fire_idx)
+        t = barou.observe(market, FullLedger())
+        ws = self._snapshot(
+            tick_id=fire_idx, as_of=fire_bar.time, peer_thoughts=[],
+        )
+        p = barou.intend(market, t, workspace=ws)
+        assert p is not None
+        r = p.rationale
+        assert r["barou_lone_conviction_claim"] is True
+        assert r["barou_continuation_entry"] is False
+        assert r["barou_v1_2_stop_source"] == "own"
+        assert p.stop == pytest.approx(float(sig.stop), abs=1e-12)
