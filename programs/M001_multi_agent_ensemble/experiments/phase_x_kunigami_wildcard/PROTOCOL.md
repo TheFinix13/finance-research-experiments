@@ -1,6 +1,6 @@
 # Phase X-kunigami — Wild Card drawdown gate (pre-registered DESIGN)
 
-**Status:** RUNNING (2026-07-06 night). Pre-registered as design-only earlier the same evening; the Phase W-barou v1.2 verdict (HALT, `../phase_w_barou/POSTMORTEM_v1.2.md`) has since landed, so per §4 sequencing the canonical baseline is `walk-forward-phi5-arm4-post-kunigami` and implementation + compute are now unblocked. Implementation committed BEFORE compute launched; no constants changed from the locked design below.
+**Status:** CLOSED — **AMBIGUOUS** (2026-07-06 night, see `POSTMORTEM.md`). The gate tripped only in Feb 2015 (2 trips, 9 vetoes), four years before the first OOS window: on the full-panel additive fixed-lot curve, a peak-relative 25% DD trigger goes structurally inert once cumulative pips dwarf the $100 base. All OOS numbers byte-identical to baseline. Per §5, no retuning; any rolling-base/dollar-trip variant is a new protocol. Implementation was committed BEFORE compute (`5769f9f`); no constants changed from the locked design below.
 **Origin:** `../G7_role_registry_v1/DECISION_kunigami.md` Option B3 (the pre-registered Wild Card return path recorded at retirement sign-off, 2026-07-06) + G7 v1 PROTOCOL §11.12.
 **Aggregator context:** designed against Φ5 **Arm 4** (multi-position K=2), the adopted G7-era default (`../phi5_aggregator/PROTOCOL.md` §11.6).
 

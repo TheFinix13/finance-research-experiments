@@ -1,0 +1,229 @@
+{
+  "generated_at_utc": "2026-07-06T20:27:20.464443+00:00",
+  "protocol": "experiments/phase_x_kunigami_wildcard/PROTOCOL.md sec 5",
+  "baseline": {
+    "tag": "phi5-arm4-post-kunigami",
+    "windows": [
+      {
+        "oos_start": "2019-01-01T00:00:00+00:00",
+        "oos_end": "2020-01-01T00:00:00+00:00",
+        "n_trades": 614,
+        "mean_tqs": 0.34847701450677,
+        "mean_pips": 5.50353855034054,
+        "max_drawdown_frac": 0.7919642857142861,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2020-01-01T00:00:00+00:00",
+        "oos_end": "2021-01-01T00:00:00+00:00",
+        "n_trades": 529,
+        "mean_tqs": 0.36324640359035854,
+        "mean_pips": 7.453337662495221,
+        "max_drawdown_frac": 1.6977418624579028,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2021-01-01T00:00:00+00:00",
+        "oos_end": "2022-01-01T00:00:00+00:00",
+        "n_trades": 670,
+        "mean_tqs": 0.34417129385377676,
+        "mean_pips": 3.91083339651145,
+        "max_drawdown_frac": 1.47354407294845,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2022-01-01T00:00:00+00:00",
+        "oos_end": "2023-01-01T00:00:00+00:00",
+        "n_trades": 670,
+        "mean_tqs": 0.40385471126401945,
+        "mean_pips": 10.563772078568052,
+        "max_drawdown_frac": 0.8914642857143161,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2023-01-01T00:00:00+00:00",
+        "oos_end": "2024-01-01T00:00:00+00:00",
+        "n_trades": 608,
+        "mean_tqs": 0.37305581121554293,
+        "mean_pips": 7.639518668126826,
+        "max_drawdown_frac": 0.35694805606648394,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2024-01-01T00:00:00+00:00",
+        "oos_end": "2025-01-01T00:00:00+00:00",
+        "n_trades": 496,
+        "mean_tqs": 0.3642768543250244,
+        "mean_pips": 6.230987661408539,
+        "max_drawdown_frac": 0.8255146406828784,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2025-01-01T00:00:00+00:00",
+        "oos_end": "2025-12-31T00:00:00+00:00",
+        "n_trades": 483,
+        "mean_tqs": 0.36921102943633677,
+        "mean_pips": 7.583974123378074,
+        "max_drawdown_frac": 0.46061211943138053,
+        "dd_stop_rule_breach": true
+      }
+    ],
+    "cross_statistics": {
+      "median_window_mean_tqs": 0.3642768543250244,
+      "mean_window_mean_tqs": 0.3666133025988327,
+      "pooled_per_trade_mean_tqs": 0.3754254856614746,
+      "pooled_per_trade_trimmed_mean_tqs_10": 0.33530508191873387,
+      "median_window_mean_pips": 7.453337662495221,
+      "pooled_per_trade_mean_pips": 7.56535457759418,
+      "cumulative_pips_forbidden_as_scoring": 55022.82384284244,
+      "hit_rate": 0.514643200879967,
+      "n_trades": 7273
+    },
+    "worst_window_dd_frac": 1.6977418624579028,
+    "per_agent": {
+      "bachira_meguru": {
+        "n_trades": 3546,
+        "mean_tqs": 0.3952777941462877
+      },
+      "barou_shoei": {
+        "n_trades": 567,
+        "mean_tqs": 0.39441650801838096
+      },
+      "chigiri_hyoma": {
+        "n_trades": 437,
+        "mean_tqs": 0.261667688435484
+      },
+      "isagi_yoichi": {
+        "n_trades": 2139,
+        "mean_tqs": 0.35387138165798
+      },
+      "itoshi_rin": {
+        "n_trades": 436,
+        "mean_tqs": 0.3951796406621515
+      },
+      "nagi_seishiro": {
+        "n_trades": 148,
+        "mean_tqs": 0.41623209854949633
+      }
+    }
+  },
+  "gated": {
+    "tag": "kunigate-arm4",
+    "windows": [
+      {
+        "oos_start": "2019-01-01T00:00:00+00:00",
+        "oos_end": "2020-01-01T00:00:00+00:00",
+        "n_trades": 614,
+        "mean_tqs": 0.34847701450677,
+        "mean_pips": 5.50353855034054,
+        "max_drawdown_frac": 0.7919642857142861,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2020-01-01T00:00:00+00:00",
+        "oos_end": "2021-01-01T00:00:00+00:00",
+        "n_trades": 529,
+        "mean_tqs": 0.36324640359035854,
+        "mean_pips": 7.453337662495221,
+        "max_drawdown_frac": 1.6977418624579028,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2021-01-01T00:00:00+00:00",
+        "oos_end": "2022-01-01T00:00:00+00:00",
+        "n_trades": 670,
+        "mean_tqs": 0.34417129385377676,
+        "mean_pips": 3.91083339651145,
+        "max_drawdown_frac": 1.47354407294845,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2022-01-01T00:00:00+00:00",
+        "oos_end": "2023-01-01T00:00:00+00:00",
+        "n_trades": 670,
+        "mean_tqs": 0.40385471126401945,
+        "mean_pips": 10.563772078568052,
+        "max_drawdown_frac": 0.8914642857143161,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2023-01-01T00:00:00+00:00",
+        "oos_end": "2024-01-01T00:00:00+00:00",
+        "n_trades": 608,
+        "mean_tqs": 0.37305581121554293,
+        "mean_pips": 7.639518668126826,
+        "max_drawdown_frac": 0.35694805606648394,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2024-01-01T00:00:00+00:00",
+        "oos_end": "2025-01-01T00:00:00+00:00",
+        "n_trades": 496,
+        "mean_tqs": 0.3642768543250244,
+        "mean_pips": 6.230987661408539,
+        "max_drawdown_frac": 0.8255146406828784,
+        "dd_stop_rule_breach": true
+      },
+      {
+        "oos_start": "2025-01-01T00:00:00+00:00",
+        "oos_end": "2025-12-31T00:00:00+00:00",
+        "n_trades": 483,
+        "mean_tqs": 0.36921102943633677,
+        "mean_pips": 7.583974123378074,
+        "max_drawdown_frac": 0.46061211943138053,
+        "dd_stop_rule_breach": true
+      }
+    ],
+    "cross_statistics": {
+      "median_window_mean_tqs": 0.3642768543250244,
+      "mean_window_mean_tqs": 0.3666133025988327,
+      "pooled_per_trade_mean_tqs": 0.37547711182836974,
+      "pooled_per_trade_trimmed_mean_tqs_10": 0.33536271428069997,
+      "median_window_mean_pips": 7.453337662495221,
+      "pooled_per_trade_mean_pips": 7.5718242554592425,
+      "cumulative_pips_forbidden_as_scoring": 55062.30598569958,
+      "hit_rate": 0.5147139713971397,
+      "n_trades": 7272
+    },
+    "worst_window_dd_frac": 1.6977418624579028,
+    "n_gate_vetoes": 9,
+    "per_agent": {
+      "bachira_meguru": {
+        "n_trades": 3546,
+        "mean_tqs": 0.3952777941462877
+      },
+      "barou_shoei": {
+        "n_trades": 567,
+        "mean_tqs": 0.39441650801838096
+      },
+      "chigiri_hyoma": {
+        "n_trades": 437,
+        "mean_tqs": 0.261667688435484
+      },
+      "isagi_yoichi": {
+        "n_trades": 2138,
+        "mean_tqs": 0.3540368968037508
+      },
+      "itoshi_rin": {
+        "n_trades": 436,
+        "mean_tqs": 0.3951796406621515
+      },
+      "nagi_seishiro": {
+        "n_trades": 148,
+        "mean_tqs": 0.41623209854949633
+      }
+    }
+  },
+  "dd_relative_reduction": 0.0,
+  "tqs_delta_vs_baseline": 0.0,
+  "trade_count_fraction_of_baseline": 0.9998625051560567,
+  "checks": {
+    "gate_ever_tripped": true,
+    "dd_reduced_ge_20pct": false,
+    "tqs_within_tolerance": true,
+    "trades_ge_60pct": true,
+    "revert_trades_lt_40pct": false,
+    "revert_tqs_drop_gt_0.010": false
+  },
+  "verdict": "AMBIGUOUS"
+}

@@ -1,4 +1,36 @@
-# AI Context — finance research experiments (updated 2026-07-06 21:00 UTC, W-barou v1.2 HALT with MAJOR FINDING: Bachira/Barou are literal strategy duplicates on USDCAD — cannibalisation is an attribution artifact, not lost alpha)
+# AI Context — finance research experiments (updated 2026-07-06 23:30 UTC, Phase X-kunigami Wild Card gate CLOSED AMBIGUOUS: peak-relative DD trigger is structurally inert on the full-panel additive fixed-lot curve)
+
+## 2026-07-06 night (2) — Phase X-kunigami Wild Card gate: AMBIGUOUS, mechanic inert over OOS
+
+Commits `5769f9f` (gate implementation + 12 tests BEFORE compute),
+`c55575a` (locked-criteria analyzer, committed mid-run before results),
+then the verdict commit. Full suite 760 pass / 6 skip.
+
+Gate per locked protocol: trip DD >= 25% of running peak on the $100
++$1/pip full-panel curve, release <= 12.5%, veto all admissions while
+tripped (journalled `kunigami_wildcard_dd_gate`), exits untouched.
+Flags: `_drive_squad_replay(kunigami_wildcard_gate=...)`, harness
+`--kunigami-gate`. Pure helper `kunigami_gate_step` unit-tested.
+
+**Verdict: AMBIGUOUS** (`reviews/kunigate_arm4_verdict.{md,json}`,
+gated `kunigate-arm4` vs baseline `phi5-arm4-post-kunigami`, ~23 min,
+heartbeat clean). Gate tripped twice, 9 vetoes — ALL in Feb 2015,
+four years before the first OOS window. Every OOS number byte-identical
+to baseline (7,272 vs 7,273 trades, TQS 0.3643, worst DD 169.8%).
+
+**Root cause (POSTMORTEM.md §3):** additive fixed-lot pnl vs
+multiplicative DD trigger. The squad nets ~55,000 pips over the panel,
+so by 2019 the running peak is in the thousands and a 25% relative DD
+needs thousands of pips — unreachable. The Φ5 §11.5 "every window
+breaches 25%" evidence was measured on per-window curves RESET to
+$100; mechanic and statistic silently used different conventions.
+Kunigami stays retired-with-R5; `wildcard_defender` label NOT granted.
+Any v2 (rolling-base or dollar-trip) needs a fresh pre-registration —
+parked. Note: production sizes risk as % of equity (adaptive lots),
+where peak-relative gating stays sensitive — sandbox convention is
+the distorting factor, worth carrying into live-agent risk design.
+
+---
 
 ## 2026-07-06 night — Phase W-barou v1.2: HALT, premise false, structural finding
 
@@ -26,8 +58,8 @@ position; (3) no aggregator/geometry mechanic can help — only true
 agent-level differentiation (parked: "Phase Y-barou v2 weapon
 differentiation", do NOT start without discussion).
 
-**Next compute:** Phase X-kunigami Wild Card gate (pre-registered,
-unblocked by this verdict). Also parked: C3 v2 definition amendment.
+**Next compute:** ~~Phase X-kunigami Wild Card gate~~ → executed and
+closed AMBIGUOUS (see block above). Parked: C3 v2 definition amendment.
 
 ---
 
