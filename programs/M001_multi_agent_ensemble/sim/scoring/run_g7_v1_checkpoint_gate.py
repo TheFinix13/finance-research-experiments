@@ -1111,7 +1111,7 @@ def run_g7_walk_forward(
             proposals_cache = cache_dir / "proposals_all.jsonl"
             with proposals_cache.open("w", encoding="utf-8") as fh:
                 for p in out.proposals_all:
-                    fh.write(json.dumps(p.to_json_dict(), default=str) + "\n")
+                    fh.write(json.dumps(p.to_jsonable(), default=str) + "\n")
             rejected_cache = cache_dir / "proposals_rejected.jsonl"
             with rejected_cache.open("w", encoding="utf-8") as fh:
                 for r in out.proposals_rejected:

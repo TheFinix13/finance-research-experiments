@@ -1,0 +1,17 @@
+{
+  "arm_id": "arm0",
+  "arm_name": "Control (Phi4.1 aggregator)",
+  "n_trades": 5604,
+  "median_window_mean_tqs": 0.36178622624981527,
+  "mean_window_mean_tqs": 0.3631539274021994,
+  "pooled_per_trade_mean_tqs": 0.37433295047735454,
+  "pooled_per_trade_mean_pips": 8.006880381026813,
+  "ratio_vs_isagi": 1.1394841771647726,
+  "ratio_vs_control": 1.0,
+  "delta_vs_control": 0.0,
+  "verdict": "baseline",
+  "caveats": [
+    "Locked control value from Phi4.1: median = 0.2922. This harness's re-computation should agree within a few basis points (any difference is arithmetic noise, not a re-derivation)."
+  ],
+  "per_agent_hrp_weights_by_window": null
+}

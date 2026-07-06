@@ -154,13 +154,18 @@ def _load_trades(path: Path) -> list[TradeRow]:
             if not line.strip():
                 continue
             row = json.loads(line)
+            # Schema tolerance (2026-07-06, PROTOCOL §11.4): the
+            # phi41-era cache nests TQS under "tqs"; the G7 replay
+            # caches (walk-forward-post-*) nest it under
+            # "tqs_components". Accept both.
+            tqs_blob = row.get("tqs") or row.get("tqs_components") or {}
             out.append(TradeRow(
                 agent_id=row["agent_id"],
                 symbol=row["symbol"],
                 entry_time=datetime.fromisoformat(row["entry_time"]),
                 direction=row["direction"],
                 pnl_pips=float(row["pnl_pips"]),
-                tqs=float(row["tqs"]["tqs"]),
+                tqs=float(tqs_blob["tqs"]),
             ))
     return out
 

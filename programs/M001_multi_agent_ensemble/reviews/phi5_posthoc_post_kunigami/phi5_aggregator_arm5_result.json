@@ -1,0 +1,17 @@
+{
+  "arm_id": "arm5",
+  "arm_name": "Combined (floor -> merge -> multi-position -> HRP)",
+  "n_trades": 0,
+  "median_window_mean_tqs": NaN,
+  "mean_window_mean_tqs": NaN,
+  "pooled_per_trade_mean_tqs": NaN,
+  "pooled_per_trade_mean_pips": NaN,
+  "ratio_vs_isagi": NaN,
+  "ratio_vs_control": NaN,
+  "delta_vs_control": NaN,
+  "verdict": "REQUIRES_RESIM",
+  "caveats": [
+    "The stack includes Arms 3 and 4 which require re-simulation. A partial stack (Arms 1 + 2 alone) is computable but does not match the pre-registered order-of-operations; reporting it would blur the verdict. Full stack requires the same re-sim path as Arms 3 and 4."
+  ],
+  "per_agent_hrp_weights_by_window": null
+}

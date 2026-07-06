@@ -1,0 +1,17 @@
+{
+  "arm_id": "arm4",
+  "arm_name": "Multi-position per symbol (K=2 + R6 cap)",
+  "n_trades": 0,
+  "median_window_mean_tqs": NaN,
+  "mean_window_mean_tqs": NaN,
+  "pooled_per_trade_mean_tqs": NaN,
+  "pooled_per_trade_mean_pips": NaN,
+  "ratio_vs_isagi": NaN,
+  "ratio_vs_control": NaN,
+  "delta_vs_control": NaN,
+  "verdict": "REQUIRES_RESIM",
+  "caveats": [
+    "Admitting a second concurrent position per symbol requires trade outcomes for previously-rejected proposals; those outcomes depend on H4 price paths not preserved in the artefacts. Requires a full re-simulation with the aggregator plumbed to `admit_proposals`. Sentinel R6 wiring is already in place (`sim/core/sentinel.py::check_r6_per_symbol_risk_cap`)."
+  ],
+  "per_agent_hrp_weights_by_window": null
+}
