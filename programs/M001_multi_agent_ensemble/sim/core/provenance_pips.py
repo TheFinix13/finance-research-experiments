@@ -213,6 +213,32 @@ def regime_fit_from_atr(
     return float(raw)
 
 
+def regime_fit_from_atr_pips(
+    atr_pips: float | None,
+    *,
+    mean_atr: float = DEFAULT_MEAN_ATR_PIPS,
+    lo_bound: float = 0.2,
+    hi_bound: float = 0.8,
+) -> float:
+    """Pips-domain twin of ``regime_fit_from_atr`` (dispersion-r2,
+    2026-07-14 doctrine §4.1a amendment).
+
+    For agents WITHOUT bar access (Nagi) that borrow a leader's stamped
+    ``atr_pips`` from the workspace: apply the identical Phase-S map to
+    the already-computed pips value. Returns 0.5 (neutral) when the
+    borrowed value is missing, so it drops in for the placeholder
+    without a null check.
+    """
+    if atr_pips is None or mean_atr <= 0:
+        return 0.5
+    raw = 0.5 * (float(atr_pips) / float(mean_atr))
+    if raw < lo_bound:
+        return lo_bound
+    if raw > hi_bound:
+        return hi_bound
+    return float(raw)
+
+
 def isagi_metavision_lift(
     peer_directions_agree: int,
     peer_directions_disagree: int,

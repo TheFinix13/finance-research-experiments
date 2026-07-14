@@ -34,7 +34,19 @@ def _market(tick: int, symbol: str = "EURUSD", tf: str = "H4") -> MarketState:
     )
 
 
-def _coord(symbol: str, *, lo: float, hi: float, direction: str, conv: float) -> Coordinate:
+def _coord(
+    symbol: str, *, lo: float, hi: float, direction: str, conv: float,
+    atr_pips: float | None = None, h1_swing_pips: float | None = None,
+) -> Coordinate:
+    rationale: dict = {
+        "entry": (lo + hi) / 2,
+        "stop": lo - 0.0005 if direction == "long" else hi + 0.0005,
+        "take_profit": hi + 0.0050 if direction == "long" else lo - 0.0050,
+    }
+    if atr_pips is not None:
+        rationale["atr_pips"] = float(atr_pips)
+    if h1_swing_pips is not None:
+        rationale["h1_swing_pips"] = float(h1_swing_pips)
     return Coordinate(
         agent_id="seed",
         symbol=symbol,
@@ -45,11 +57,7 @@ def _coord(symbol: str, *, lo: float, hi: float, direction: str, conv: float) ->
         regime_predicate="seed",
         expected_strength=conv,
         direction_bias=direction,
-        rationale={
-            "entry": (lo + hi) / 2,
-            "stop": lo - 0.0005 if direction == "long" else hi + 0.0005,
-            "take_profit": hi + 0.0050 if direction == "long" else lo - 0.0050,
-        },
+        rationale=rationale,
     )
 
 
@@ -235,3 +243,144 @@ def test_observation_only_when_direction_disagreement():
     t = nagi.observe(_market(tick=1), ledger)
     # Direction disagreement -> no confluence.
     assert t.coordinate is None
+
+
+# ---------------------------------------------------------------------------
+# Dispersion-primitives round 2 (2026-07-14): Nagi borrows the leader's
+# volatility provenance so his F19/F20 inputs are real and varying.
+# ---------------------------------------------------------------------------
+
+
+def _fire_confluence(
+    *, leader_coord: Coordinate, other_coord: Coordinate,
+    leader_conv: float = 0.80, other_conv: float = 0.85,
+) -> tuple[A6NagiV1, Thought, MarketState]:
+    """Build a two-peer confluence firing configuration and run
+    ``observe`` -> return (nagi, firing_thought, market)."""
+    nagi = A6NagiV1()
+    ledger = FullLedger()
+    common_tags = ["zone_d1_against", "htf_against", "shared_seed"]
+    ledger.append(_peer_thought(
+        agent_id="isagi_yoichi", tick=0, conviction=leader_conv,
+        tags=common_tags, coord=leader_coord,
+    ))
+    ledger.append(_peer_thought(
+        agent_id="barou_shoei", tick=0, conviction=other_conv,
+        tags=common_tags, coord=other_coord,
+    ))
+    market = _market(tick=1)
+    return nagi, nagi.observe(market, ledger), market
+
+
+def test_nagi_borrows_leader_atr_and_swing_when_stamped():
+    """Dispersion-r2 §2.3: Nagi's proposal rationale must carry the
+    leader's stamped ``atr_pips`` and ``h1_swing_pips`` (verbatim).
+    """
+    leader_coord = _coord(
+        "EURUSD", lo=1.0995, hi=1.1015, direction="long", conv=0.85,
+        atr_pips=42.0, h1_swing_pips=118.0,
+    )
+    other_coord = _coord(
+        "EURUSD", lo=1.1000, hi=1.1020, direction="long", conv=0.80,
+    )
+    nagi, firing, market = _fire_confluence(
+        leader_coord=leader_coord, other_coord=other_coord,
+        leader_conv=0.85, other_conv=0.80,   # isagi wins as leader
+    )
+    p = nagi.intend(market, firing)
+    assert p is not None
+    assert p.rationale["atr_pips"] == pytest.approx(42.0)
+    assert p.rationale["h1_swing_pips"] == pytest.approx(118.0)
+    assert p.rationale["regime_fit_source"] == "leader_atr_pips_phase_s_map"
+
+
+def test_nagi_regime_fit_reflects_borrowed_atr():
+    """Regime fit must be computed from the borrowed ATR, not the
+    NAGI_V1_REGIME_FIT (0.5) placeholder that G7 §11.13 pinned CV
+    to 0.000.
+    """
+    # Active tape (ATR 100 pips) -> phase-S map clips to 0.8.
+    active_leader = _coord(
+        "EURUSD", lo=1.0995, hi=1.1015, direction="long", conv=0.85,
+        atr_pips=100.0, h1_swing_pips=200.0,
+    )
+    other = _coord("EURUSD", lo=1.1000, hi=1.1020, direction="long", conv=0.80)
+    nagi, firing, market = _fire_confluence(
+        leader_coord=active_leader, other_coord=other,
+        leader_conv=0.85, other_conv=0.80,
+    )
+    p = nagi.intend(market, firing)
+    assert p is not None
+    assert p.regime_fit == pytest.approx(0.8)
+
+    # Quiet tape (ATR 5 pips) -> clips low to 0.2.
+    quiet_leader = _coord(
+        "EURUSD", lo=1.0995, hi=1.1015, direction="long", conv=0.85,
+        atr_pips=5.0, h1_swing_pips=30.0,
+    )
+    nagi, firing, market = _fire_confluence(
+        leader_coord=quiet_leader, other_coord=other,
+        leader_conv=0.85, other_conv=0.80,
+    )
+    p = nagi.intend(market, firing)
+    assert p is not None
+    assert p.regime_fit == pytest.approx(0.2)
+
+
+def test_nagi_regime_fit_defaults_to_neutral_when_leader_unstamped():
+    """Bar-less legacy case: leader coord has no atr_pips stamp.
+    Borrowed value is None; regime_fit falls back to 0.5. Proposal
+    still fires (safe degrade), and rationale keys are present but
+    None so downstream cache readers can distinguish "not-yet-wired"
+    from "wired but null".
+    """
+    leader_coord = _coord(
+        "EURUSD", lo=1.0995, hi=1.1015, direction="long", conv=0.85,
+    )
+    other_coord = _coord(
+        "EURUSD", lo=1.1000, hi=1.1020, direction="long", conv=0.80,
+    )
+    nagi, firing, market = _fire_confluence(
+        leader_coord=leader_coord, other_coord=other_coord,
+        leader_conv=0.85, other_conv=0.80,
+    )
+    p = nagi.intend(market, firing)
+    assert p is not None
+    assert p.rationale["atr_pips"] is None
+    assert p.rationale["h1_swing_pips"] is None
+    assert p.regime_fit == pytest.approx(0.5)
+
+
+def test_nagi_borrow_dispersion_over_a_range_of_leaders():
+    """Across a range of leader ATR/swing stamps, Nagi's borrowed
+    ``atr_pips`` and ``h1_swing_pips`` on his proposal rationale
+    span the same range -- i.e. once leaders vary, Nagi's F20 inputs
+    vary too. This is the dispersion-r2 core promise: Nagi's C5/C6
+    CV = 0.000 root cause (constant inputs) is removed.
+    """
+    stamps = [
+        (12.0, 55.0), (22.0, 80.0), (30.0, 120.0),
+        (42.0, 160.0), (65.0, 240.0),
+    ]
+    borrowed_atr: list[float] = []
+    borrowed_swing: list[float] = []
+    for atr, swing in stamps:
+        leader = _coord(
+            "EURUSD", lo=1.0995, hi=1.1015, direction="long", conv=0.85,
+            atr_pips=atr, h1_swing_pips=swing,
+        )
+        other = _coord(
+            "EURUSD", lo=1.1000, hi=1.1020, direction="long", conv=0.80,
+        )
+        nagi, firing, market = _fire_confluence(
+            leader_coord=leader, other_coord=other,
+            leader_conv=0.85, other_conv=0.80,
+        )
+        p = nagi.intend(market, firing)
+        assert p is not None
+        borrowed_atr.append(float(p.rationale["atr_pips"]))
+        borrowed_swing.append(float(p.rationale["h1_swing_pips"]))
+    # Inputs are truthfully varying (necessary condition for downstream
+    # C5/C6 CV to move off 0.000).
+    assert min(borrowed_atr) < max(borrowed_atr)
+    assert min(borrowed_swing) < max(borrowed_swing)

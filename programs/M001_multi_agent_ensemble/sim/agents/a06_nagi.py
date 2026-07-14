@@ -77,6 +77,9 @@ from datetime import datetime, timedelta
 from typing import Any, Optional
 
 from programs.M001_multi_agent_ensemble.sim.core.ledger import ThoughtLedger
+from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
+    regime_fit_from_atr_pips,
+)
 from programs.M001_multi_agent_ensemble.sim.core.reasoning_workspace import (
     WorkspaceSnapshot,
 )
@@ -313,6 +316,20 @@ class A6NagiV1(BaseStriker):
         ladder = [LadderRung(price=float(tp), fraction=1.0)]
         valid_until = market.as_of + timedelta(hours=NAGI_V1_VALID_HOURS)
 
+        # Dispersion-r2 (2026-07-14, doctrine §4.1a amendment +
+        # experiments/dispersion_primitives_r2/PROTOCOL.md §2.3): Nagi
+        # has no bar access by design, so he BORROWS the leader's
+        # stamped volatility provenance the same way he borrows the
+        # trade plan. G7 §11.13 measured C5/C6 CV = 0.000 because
+        # atr_pips was never stamped (evaluator constant fallback) and
+        # regime_fit was the 0.5 placeholder.
+        def _num(v: Any) -> float | None:
+            return float(v) if isinstance(v, (int, float)) else None
+
+        borrowed_atr_pips = _num(leader.get("atr_pips"))
+        borrowed_h1_swing_pips = _num(leader.get("h1_swing_pips"))
+        regime_fit = regime_fit_from_atr_pips(borrowed_atr_pips)
+
         # F21 workspace read -- confluence diagnostic mirror of the
         # ledger predicate. Counts peer directional agreement at the
         # tick barrier.
@@ -339,12 +356,18 @@ class A6NagiV1(BaseStriker):
             stop=float(stop),
             ladder=ladder,
             conviction=float(my_recent_thought.confidence_in_thought),
-            regime_fit=NAGI_V1_REGIME_FIT,
+            regime_fit=regime_fit,
             valid_until=valid_until,
             rationale={
                 "wrapped": "nagi_confluence_v1",
                 "leader_agent_id": leader.get("agent_id"),
                 "leader_thought_id": leader.get("thought_id"),
+                # Dispersion-r2: borrowed provenance flows into the
+                # trade record's source_atr_pips / source_h1_swing_pips
+                # via _annotate_trade_record (F20 inputs).
+                "atr_pips": borrowed_atr_pips,
+                "h1_swing_pips": borrowed_h1_swing_pips,
+                "regime_fit_source": "leader_atr_pips_phase_s_map",
                 "combined_conviction": float(
                     my_recent_thought.confidence_in_thought
                 ),

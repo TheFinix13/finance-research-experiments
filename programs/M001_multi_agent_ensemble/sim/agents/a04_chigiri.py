@@ -278,6 +278,9 @@ class A4ChigiriV1(BaseStriker):
             target_hold_hours=self.canon_role.target_hold_hours,
             conviction=final_conv,
         )
+        # Dispersion-r2 (2026-07-14): volatility provenance for
+        # bar-less borrowers (Nagi) -- see doctrine §4.1a amendment.
+        stamp_provenance_pips(coord.rationale, bars=prep.bars, i=i)
         tags = [
             "canon:chigiri",
             "weapon:speed",

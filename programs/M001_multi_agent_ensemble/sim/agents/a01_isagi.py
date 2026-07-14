@@ -282,6 +282,10 @@ class A1IsagiV1(BaseStriker):
             home_tf=self.home_tf,
             target_hold_hours=self.canon_role.target_hold_hours,
         )
+        # Dispersion-r2 (2026-07-14, doctrine §4.1a amendment): stamp
+        # volatility provenance into the workspace coordinate so
+        # bar-less borrowers (Nagi) can feed real F20 inputs.
+        stamp_provenance_pips(coord.rationale, bars=prep.bars, i=i)
         direction = sig.direction.value  # "long" | "short"
         stop_pips = stop_pips_from_prices(market.symbol, sig.entry, sig.stop)
         r_expected = expected_r_from_prices(sig.entry, sig.stop, sig.take_profit)

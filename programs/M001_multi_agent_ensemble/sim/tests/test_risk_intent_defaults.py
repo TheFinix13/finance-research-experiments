@@ -167,9 +167,17 @@ class TestPlaystyleRiskIntent:
         assert sl == DEFAULT_SL_PIPS
 
     def test_cv_across_atr_range_meets_v1_criterion(self):
-        """§3.11.5 criterion #6: SL CV or TP[0] CV >= 0.10 across varied inputs."""
+        """§3.11.5 criterion #6: SL CV or TP[0] CV >= 0.10 across varied inputs.
+
+        Dispersion-r2 (2026-07-14): ``conservative_metavision`` is now
+        full-ATR (mult 1.3, clip 30-50), so it belongs on this list.
+        """
         atr_range = [10.0, 20.0, 30.0, 40.0, 50.0]
-        for ps in ["rebel_tight", "speed_momentum", "confluence_only", "defensive"]:
+        for ps in [
+            "conservative_metavision",
+            "rebel_tight", "speed_momentum",
+            "confluence_only", "defensive",
+        ]:
             sls = [
                 playstyle_risk_intent(0.7, atr, 50.0, playstyle=ps)[0]
                 for atr in atr_range
@@ -178,6 +186,62 @@ class TestPlaystyleRiskIntent:
             if mean > 0:
                 cv = statistics.stdev(sls) / mean
                 assert cv >= 0.10, f"playstyle {ps} SL CV = {cv:.3f} < 0.10"
+
+    def test_isagi_conservative_metavision_full_atr_proportionality(self):
+        """Dispersion-r2 (2026-07-14): the damped 0.25× ATR sensitivity
+        (Phase-E choice, G7 §11.13 falsified with C6 = 0.083) is
+        replaced with full ATR proportionality. Locks the mechanism.
+        """
+        # At panel-mean ATR (~30 pips) the doctrine anchor "SL ≈ 40"
+        # is preserved: 1.3 × 30 = 39 (inside [30, 50] clip band).
+        sl_at_mean, _ = playstyle_risk_intent(
+            0.7, atr_pips=30.0, h1_swing_pips=60.0,
+            playstyle="conservative_metavision",
+        )
+        assert 30.0 <= sl_at_mean <= 50.0
+        assert sl_at_mean == pytest.approx(39.0, abs=0.01)
+        # Quiet tape clips to sl_min=30 (proportional response, not
+        # damped-to-40).
+        sl_quiet, _ = playstyle_risk_intent(
+            0.7, atr_pips=10.0, h1_swing_pips=60.0,
+            playstyle="conservative_metavision",
+        )
+        assert sl_quiet == pytest.approx(30.0)
+        # Active tape clips to sl_max=50.
+        sl_active, _ = playstyle_risk_intent(
+            0.7, atr_pips=80.0, h1_swing_pips=60.0,
+            playstyle="conservative_metavision",
+        )
+        assert sl_active == pytest.approx(50.0)
+
+    def test_rin_analytical_precision_de_saturated(self):
+        """Dispersion-r2 (2026-07-14): the structural stop is
+        de-saturated (fraction 0.30 -> 0.20, sl_pips_max 30 -> 35).
+
+        G7 §11.13 measured mean SL 29.18 with ceiling 30 -- pinned at
+        the clip. On the banked typical H4 20-bar swing (~125-140
+        pips), 0.20 × swing ≈ 25-28 restores the doctrine anchor
+        "SL ≈ 25" INSIDE the band.
+        """
+        # Typical swing at 130 pips -> 0.20 * 130 = 26, inside band.
+        sl_typical, _ = playstyle_risk_intent(
+            0.7, atr_pips=25.0, h1_swing_pips=130.0,
+            playstyle="analytical_precision",
+        )
+        assert sl_typical == pytest.approx(26.0)
+        assert sl_typical < 35.0  # not pinned at ceiling
+        # Very large swing still respects new ceiling of 35 (not 30).
+        sl_big, _ = playstyle_risk_intent(
+            0.7, atr_pips=25.0, h1_swing_pips=1000.0,
+            playstyle="analytical_precision",
+        )
+        assert sl_big == pytest.approx(35.0)
+        # Very small swing still respects sl_min=15.
+        sl_small, _ = playstyle_risk_intent(
+            0.7, atr_pips=25.0, h1_swing_pips=20.0,
+            playstyle="analytical_precision",
+        )
+        assert sl_small == pytest.approx(15.0)
 
     def test_cv_across_swing_range_for_structural_playstyles(self):
         """Rin + Barou depend on swing pips, not ATR."""

@@ -153,13 +153,19 @@ def playstyle_risk_intent(
     """
     if playstyle == "conservative_metavision":
         # Isagi: wide-stop zone-fade shape -- SL ≈ 40, TP1 ≈ 60.
-        # Uses ATR only mildly (fixed anchor at 40 with ±10 pip ATR jitter).
-        sl_base = 40.0
-        if atr_pips > 0:
-            sl = max(30.0, min(50.0, sl_base * (0.75 + 0.25 * (atr_pips / 40.0))))
-        else:
-            sl = sl_base
-        return sl, [sl * 1.5]
+        #
+        # Dispersion-r2 (2026-07-14, doctrine §4.1a amendment): the
+        # original damped anchor (0.25× ATR sensitivity) produced CV
+        # 0.083 < 0.10 in G7 §11.13. Replaced with full ATR
+        # proportionality: 1.3 × panel-mean ATR (~30 pips) ≈ 39 keeps
+        # the doctrine anchor "SL ≈ 40"; 1.3 is the multiplier already
+        # shipped for confluence_only / copier_hrp, not a new number.
+        # Payoff 1.5 preserves the ~60-pip TP1 anchor.
+        return atr_scaled_risk_intent(
+            conviction, atr_pips, h1_swing_pips,
+            atr_multiplier=1.3, payoff_ratio=1.5,
+            sl_pips_min=30.0, sl_pips_max=50.0,
+        )
     if playstyle == "rebel_tight":
         # Bachira: tight-stop-wide-TP pattern shape -- SL ≈ 20, TP1 ≈ 60.
         return atr_scaled_risk_intent(
@@ -169,10 +175,18 @@ def playstyle_risk_intent(
         )
     if playstyle == "analytical_precision":
         # Rin: structural SL, Fibonacci TP ladder [2x, 4x, 6x].
+        #
+        # Dispersion-r2 (2026-07-14, doctrine §4.1a amendment): G7
+        # §11.13 published mean SL 29.18 vs ceiling 30 -- the 0.30 ×
+        # swing map was pinned at the clip ceiling and the structural
+        # signal was saturated away (CV 0.086). De-saturated: fraction
+        # 0.20 maps the banked typical H4 20-bar swing (~125-140 pips)
+        # to ≈ 25-28, restoring the doctrine anchor "SL ≈ 25" INSIDE
+        # the band; ceiling lifted to 35. Min and TP ladder unchanged.
         return structural_risk_intent(
             conviction, atr_pips, h1_swing_pips,
-            sl_swing_fraction=0.30,
-            sl_pips_min=15.0, sl_pips_max=30.0,
+            sl_swing_fraction=0.20,
+            sl_pips_min=15.0, sl_pips_max=35.0,
             tp_multipliers=(2.0, 4.0, 6.0),
         )
     if playstyle == "speed_momentum":

@@ -133,6 +133,58 @@ def conviction_scaled_lot_intent(
 
 
 # ---------------------------------------------------------------------------
+# Shared building block: risk-normalised lot (SL-aware, non-saturating)
+# ---------------------------------------------------------------------------
+
+def risk_normalised_lot_intent(
+    conviction: float,
+    sl_pips: float,
+    equity: float,               # noqa: ARG001 -- interface signature
+    regime_fit: float,
+    *,
+    base_lot: float = FIXED_LOT,
+    ref_sl_pips: float = 30.0,
+    min_lot_floor: float = MIN_LOT,
+    max_lot_ceiling: float = 0.30,
+    conviction_pivot: float = 0.60,
+    conviction_gain: float = 2.0,
+    regime_fit_gain: float = 0.5,
+    sl_ratio_floor: float = 0.5,
+    sl_ratio_cap: float = 2.0,
+) -> float:
+    """Constant-risk sizing around a playstyle's doctrine-anchor stop.
+
+    Dispersion-primitives round 2 (2026-07-14, pre-registered in
+    ``experiments/dispersion_primitives_r2/PROTOCOL.md`` §2.1; doctrine
+    §4.1a amendment). The F19 signature carries ``sl_pips`` precisely
+    so sizing can respond to trade structure; ``conviction_scaled_lot_
+    intent`` ignores it. This block multiplies the conviction-scaled
+    core by an inverse-SL factor anchored at the playstyle's doctrine
+    SL (``ref_sl_pips``):
+
+        ratio = clip(ref_sl_pips / sl_pips, sl_ratio_floor, sl_ratio_cap)
+        raw   = base_lot × ratio
+                × (1 + conviction_gain × (conviction − pivot))
+                × (1 + regime_fit_gain × (regime_fit − 0.5))
+
+    Equal dollar risk per unit stop distance, expressed multiplicatively
+    so it cannot Kelly-saturate at MIN_LOT on the $100 sandbox (the
+    Phase S failure mode). ``sl_pips <= 0`` -> ratio 1.0 (defensive).
+    """
+    conviction = _clip01(conviction)
+    regime_fit = _clip01(regime_fit)
+    if sl_pips > 0 and ref_sl_pips > 0:
+        ratio = max(sl_ratio_floor, min(sl_ratio_cap, ref_sl_pips / sl_pips))
+    else:
+        ratio = 1.0
+    raw = base_lot * ratio * (
+        1.0 + conviction_gain * (conviction - conviction_pivot)
+    ) * (1.0 + regime_fit_gain * (regime_fit - 0.5))
+    clipped = max(min_lot_floor, min(max_lot_ceiling, raw))
+    return _round_down_to_min_lot(clipped, min_lot_floor)
+
+
+# ---------------------------------------------------------------------------
 # Shared building block: Kelly-fraction-aware lot (SL-aware)
 # ---------------------------------------------------------------------------
 
@@ -211,18 +263,28 @@ def playstyle_lot_intent(
     entirely with weapon-specific logic.
     """
     if playstyle == "conservative_metavision":
-        return conviction_scaled_lot_intent(
+        # Dispersion-r2 (2026-07-14, doctrine §4.1a amendment):
+        # conviction_scaled -> risk_normalised at the doctrine anchor
+        # SL ≈ 40. Metavision sizes to the structure it sees; all
+        # conviction constants carried over unchanged.
+        return risk_normalised_lot_intent(
             conviction, sl_pips, equity, regime_fit,
-            base_lot=FIXED_LOT, conviction_pivot=0.60, conviction_gain=1.5,
+            base_lot=FIXED_LOT, ref_sl_pips=40.0,
+            conviction_pivot=0.60, conviction_gain=1.5,
             max_lot_ceiling=0.20,
         )
     if playstyle == "rebel_tight":
         # Bachira: SMALL lot when rebel-lift gate blocked (peer-silence
         # failure). Callers pass conviction reduced-by-gate-decision;
         # this fn just implements the scaling.
-        return conviction_scaled_lot_intent(
+        #
+        # Dispersion-r2 (2026-07-14): risk-normalised at the doctrine
+        # anchor SL ≈ 20 -- the rebel's tight stops earn proportionally
+        # larger size. Conviction constants unchanged.
+        return risk_normalised_lot_intent(
             conviction, sl_pips, equity, regime_fit,
-            base_lot=0.05, conviction_pivot=0.65, conviction_gain=2.5,
+            base_lot=0.05, ref_sl_pips=20.0,
+            conviction_pivot=0.65, conviction_gain=2.5,
             max_lot_ceiling=0.15, regime_fit_gain=0.3,
         )
     if playstyle == "analytical_precision":
@@ -272,16 +334,30 @@ def playstyle_lot_intent(
         # predicate `1 - prod(1 - c_i)`) already ranges 0.7..0.95 -- a
         # steep conviction_gain of 3.5 turns that into a real lot
         # spread from 0.06 to 0.13.
-        return conviction_scaled_lot_intent(
+        #
+        # Dispersion-r2 (2026-07-14): risk-normalised at the doctrine
+        # anchor SL ≈ 30 -- the perfect trap takes equal risk per trap.
+        # G7 §11.13 showed CV exactly 0.000 (constant inputs); the
+        # provenance fix (leader-borrowed atr/regime_fit) plus this
+        # inverse-SL factor gives real dispersion channels. Conviction
+        # constants unchanged.
+        return risk_normalised_lot_intent(
             conviction, sl_pips, equity, regime_fit,
-            base_lot=0.08, conviction_pivot=0.70, conviction_gain=3.5,
+            base_lot=0.08, ref_sl_pips=30.0,
+            conviction_pivot=0.70, conviction_gain=3.5,
             max_lot_ceiling=0.20, regime_fit_gain=0.5,
         )
     if playstyle == "solo_king":
         # Barou: standard lot on all trades; single-symbol devour lift.
-        return conviction_scaled_lot_intent(
+        #
+        # Dispersion-r2 (2026-07-14): risk-normalised at the doctrine
+        # anchor SL ≈ 30 -- the king strikes with the same risk every
+        # time (constant risk = varying lot with stop width).
+        # Conviction constants unchanged.
+        return risk_normalised_lot_intent(
             conviction, sl_pips, equity, regime_fit,
-            base_lot=FIXED_LOT, conviction_pivot=0.55, conviction_gain=1.0,
+            base_lot=FIXED_LOT, ref_sl_pips=30.0,
+            conviction_pivot=0.55, conviction_gain=1.0,
             max_lot_ceiling=0.18, regime_fit_gain=0.4,
         )
     if playstyle == "defensive":
@@ -328,6 +404,7 @@ __all__ = [
     "LotIntent",
     "default_lot_intent",
     "conviction_scaled_lot_intent",
+    "risk_normalised_lot_intent",
     "kelly_lot_intent",
     "playstyle_lot_intent",
 ]

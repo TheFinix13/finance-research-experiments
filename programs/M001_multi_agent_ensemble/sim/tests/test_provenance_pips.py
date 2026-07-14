@@ -14,6 +14,7 @@ from programs.M001_multi_agent_ensemble.sim.core.provenance_pips import (
     atr_pips_at,
     isagi_metavision_lift,
     regime_fit_from_atr,
+    regime_fit_from_atr_pips,
     stamp_provenance_pips,
     swing_pips_from_bars,
 )
@@ -169,6 +170,51 @@ def test_regime_fit_quiet_tape_clips_to_lower_bound():
     bars = [_Bar(1.1000 + span, 1.1000, 1.1000 + span * 0.5) for _ in range(30)]
     v = regime_fit_from_atr(bars, i=20, mean_atr=30.0)
     assert v == pytest.approx(0.2)
+
+
+# ---------------------------------------------------------------------------
+# regime_fit_from_atr_pips (Dispersion-r2, 2026-07-14)
+# ---------------------------------------------------------------------------
+
+
+def test_regime_fit_pips_neutral_when_missing():
+    """None input -> 0.5 neutral (drops in for the placeholder without
+    a null check). This is the bar-less-borrower entry point."""
+    assert regime_fit_from_atr_pips(None) == 0.5
+
+
+def test_regime_fit_pips_at_mean_is_half():
+    # raw = 0.5 * 30 / 30 = 0.5 -> inside [0.2, 0.8] band -> 0.5.
+    assert regime_fit_from_atr_pips(30.0, mean_atr=30.0) == pytest.approx(0.5)
+
+
+def test_regime_fit_pips_active_tape_clips_high():
+    # raw = 0.5 * 100 / 30 = 1.67 -> clipped to 0.8.
+    assert regime_fit_from_atr_pips(100.0, mean_atr=30.0) == pytest.approx(0.8)
+
+
+def test_regime_fit_pips_quiet_tape_clips_low():
+    # raw = 0.5 * 5 / 30 = 0.083 -> clipped to 0.2.
+    assert regime_fit_from_atr_pips(5.0, mean_atr=30.0) == pytest.approx(0.2)
+
+
+def test_regime_fit_pips_matches_bar_domain_twin():
+    """The pips-domain helper is a byte-equivalent twin of the bar
+    -domain ``regime_fit_from_atr`` for any ATR-pips value.
+    Locks the "same Phase-S map, different entry point" contract.
+    """
+    for atr_pips in [3.0, 10.0, 20.0, 30.0, 45.0, 80.0, 120.0]:
+        # regime_fit_from_atr computes atr_pips_at internally; here we
+        # construct the map manually to compare against a value that
+        # WOULD have been passed through the same map by the leader.
+        raw = 0.5 * atr_pips / 30.0
+        expected = max(0.2, min(0.8, raw))
+        assert regime_fit_from_atr_pips(atr_pips) == pytest.approx(expected)
+
+
+def test_regime_fit_pips_zero_mean_returns_neutral():
+    """Degenerate input -> neutral 0.5 (defensive)."""
+    assert regime_fit_from_atr_pips(30.0, mean_atr=0.0) == 0.5
 
 
 # ---------------------------------------------------------------------------
