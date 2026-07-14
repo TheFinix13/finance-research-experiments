@@ -1197,6 +1197,89 @@ pre-condition is NOT met on the second attempt either.
 
 ---
 
+### §11.17 (2026-07-14) — Third gate attempt pre-registration (four-lever campaign, tag `g7retry2`)
+
+The user authorized a third gate attempt with explicit per-agent canon
+guidance, targeting the four §11.16 blockers. Four levers, each with
+its own pre-registered protocol committed BEFORE implementation results
+exist:
+
+1. **Lever A — Phase Z Bachira v1.4 weave weapon**
+   (`experiments/phase_z_bachira_weave/PROTOCOL.md`): Bachira fires
+   baseline-zone touches only when the D1 bias (Isagi's locked
+   `htf_bias_at` params, verbatim) is NEUTRAL — the set-complement of
+   Barou's with-gate and Isagi's against-gate. Canon: pure dribbling —
+   weave through congestion where there is no open lane. Targets
+   Bachira C3 (0/7, worst peer Barou in all 7 windows). Changes
+   Bachira's trade stream.
+2. **Lever B — Phase AB Barou multi-pair scope reversal**
+   (`experiments/phase_ab_barou_multipair/PROTOCOL.md`): the locked
+   Phase Y v1.3 weapon deploys on all three panel pairs (whitelist
+   USDCAD → USDCAD/EURUSD/GBPUSD; devour + lone-conviction lifts stay
+   USDCAD-only per doctrine §3.11.3 A7 mechanic B). Targets Barou C1
+   volume starvation under phi41 (n=43). The canon "steal" mechanic is
+   designed-but-untested in that protocol — NOT shipped. Changes
+   Barou's trade stream.
+3. **Lever C — Phase AA Chigiri v1.4 panther-ignition weapon**
+   (`experiments/phase_aa_chigiri_ignition/PROTOCOL.md`): the 0.5-ATR
+   breakout-magnitude confirmation tax is replaced by an ignition-bar
+   thrust gate (TR ≥ 1.5 × mean of prior 5 TRs) — earliest entry on
+   fresh momentum, per the '44 panther' canon. Targets Chigiri C1
+   (0.267) and C2 (no qualifying peer). Changes Chigiri's trade stream.
+4. **Lever D — C2 finisher clause**
+   (`experiments/c2_finisher_clause/PROTOCOL.md`): gate-DEFINITION
+   amendment — a confluence-gated agent with ≥ 2 statistically-
+   qualified INCOMING lifts satisfies C2 via the finisher clause.
+   Implemented behind `--c2-finisher-clause` in
+   `run_g7_final_verdict.py`, evaluated **ADVISORY pending user
+   ratification** (same pattern as C3 v2 §11.14). Changes NO trade
+   stream and no verdict-bearing output.
+
+**Multiplicity accounting (honest).** This is the THIRD firing of this
+gate (§11.13 first, §11.16 second). What changed between attempts:
+attempt 2 fixed the dispersion criteria (C5/C6, five agents) and
+de-duplicated Barou from Bachira; attempt 3 attacks the four blockers
+attempt 2 left standing, each with a doctrine-derived mechanism and no
+touched threshold. No §3 criterion, threshold, panel, or statistic
+changes in the verdict-bearing run — the multiplicity risk here is
+mechanism-shopping, not threshold-shopping, and the mitigation is that
+every lever's mechanism is derived from canon + banked evidence with
+frozen parameters (each lever protocol names its parameter sources and
+its priors AGAINST). The clause (Lever D) is the only definition
+change and stays advisory. §11.16's improvements landed exactly where
+attempt 2's levers pointed and nowhere else — evidence the process
+measures mechanisms, not noise.
+
+**Pre-registered predictions (phi41 verdict-bearing):**
+
+- Bachira C3 ❌→✅ (Lever A primary); Bachira C1/C2/C4/C5/C6 retained
+  (Z3 guardrails, activity floor 150).
+- Barou C1 ❌→✅ at n ≥ 100 (Lever B primary); C3/C5/C6 retained.
+- Chigiri C1 ❌→✅ and C2 ❌→✅ (Lever C primary); C3–C6 retained.
+- Nagi C2: verdict-bearing stays ❌ (no lever changes his outgoing
+  lift); advisory finisher clause expected `W` (≥ 2 incoming lifts).
+- Isagi, Rin, Reo: unchanged passes (no lever points at them; Phase Z
+  reduces Bachira volume, which §11.16 evidence says feeds Nagi and
+  marginally feeds no one else — Nagi C1 is the named interaction
+  risk, Z5).
+- Squad: if all three trade-stream levers land → 6/7 phi41 = PARTIAL
+  PASS (≥ 5); 7/7 PASS only if the user ratifies the finisher clause.
+  If any lever fails its own protocol, it STOPS (no iteration against
+  the same OOS).
+
+**Re-gate plan (single OOS touch):** fresh walk-forward baseline + 7
+leave-one-out replays per arm (phi41 verdict-bearing per §4 pin; arm4
+companion), 7-agent §11.12 roster, with Phase Z + Phase AA + Phase AB
+code active (dispersion-r2 + Phase Y v1.3 retained from attempt 2).
+`run_g7_final_verdict.py` produces the per-agent C1–C6 table and squad
+verdict recorded as **§11.18**, with `--c2-finisher-clause` advisory
+blocks and the §11.14 C3 v2 side-by-side (still advisory). Same
+bootstrap spec (n=10,000, seed 42, percentile, α=0.05). Implementation
++ tests committed before replays run; caches follow the existing
+naming with tag `g7retry2`.
+
+---
+
 ## 12. Verdict registry row (to be added)
 
 The G7 gate row for `docs/methodology/gate_verdict_registry.md`:
