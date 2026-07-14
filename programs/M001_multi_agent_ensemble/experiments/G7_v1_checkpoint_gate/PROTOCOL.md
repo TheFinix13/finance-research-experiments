@@ -983,6 +983,60 @@ in the JSONs.
 
 ---
 
+### §11.14 (2026-07-14) — C3 v2 distinctness-aware definition (pre-registered, ADVISORY pending user ratification)
+
+The user authorized formalizing the C3 v2 definition parked at Phase
+W-barou v1.2 (§11.13 discussion item 1). The full pre-registration —
+trade-plan identity key, statistic, predictions, stop rules — lives in
+`experiments/c3_v2_distinctness/PROTOCOL.md`, committed BEFORE any C3
+v2 number was computed.
+
+Summary of the definition: per (excluded agent `a`, peer `p`, window),
+the reduction ratio is computed on the peer's **distinct** trades only,
+where a trade is non-distinct iff its (symbol, direction,
+source_tick_id, entry, stop, take_profit) key — rounded to 1e-7 —
+matches a baseline trade of `a`. Thresholds (0.50 reduction, 4-of-7
+clean windows) are UNCHANGED from §3 Criterion 3.
+
+**Ratification status: C3 v1 remains verdict-bearing.** All C3 v2
+outputs (on the §11.13 banked caches and on any future gate attempt)
+are reported side-by-side as ADVISORY until the user ratifies this
+amendment. If ratified, the ratification note and effective gate
+attempt will be recorded here.
+
+---
+
+### §11.15 (2026-07-14) — Second gate attempt pre-registration (post three-lever campaign)
+
+The user authorized a three-lever campaign against the §11.13 blockers:
+
+1. **Phase Y — Barou v1.3 weapon differentiation**
+   (`experiments/phase_y_barou_weapon/PROTOCOL.md`): D1 with-trend
+   gate (Isagi's locked gate params, mode flipped) + structural TP +
+   `stop_atr_mult=1.0`, USDCAD only. Changes Barou's trade stream.
+2. **C3 v2** (§11.14, advisory).
+3. **Dispersion primitives round 2**
+   (`experiments/dispersion_primitives_r2/PROTOCOL.md`):
+   risk-normalised F19 sizing for the four failing-C5 playstyles,
+   Isagi C6 full-ATR proportionality, Rin C6 de-saturation, Nagi
+   provenance wiring (leader-borrowed atr/swing + Phase-S regime_fit
+   map). Changes NO trade stream.
+
+**Re-gate plan (single OOS touch, pre-registered):** fresh walk-forward
+baseline + 7 leave-one-out replays per arm (phi41 verdict-bearing per
+§4 pin; arm4 companion), 7-agent §11.12 roster, with Phase Y +
+dispersion-r2 code active. `run_g7_final_verdict.py` then produces the
+per-agent C1–C6 table and squad verdict recorded as **§11.16**. C3 v1
+is verdict-bearing; C3 v2 reported alongside (advisory). Same
+bootstrap spec as §11.13 (n=10,000, seed 42, percentile, α=0.05).
+Success criteria for the individual levers are in their own protocols;
+the squad graduation decision on the §11.16 result stays with the
+user. Implementation + tests are committed before replays run; replay
+caches follow the existing `g7_replay_cache_*` / `g7_leave_one_out_*`
+naming with tag `g7retry1`.
+
+---
+
 ## 12. Verdict registry row (to be added)
 
 The G7 gate row for `docs/methodology/gate_verdict_registry.md`:
