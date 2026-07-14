@@ -1,0 +1,24 @@
+# crash-fingerprint captured 20260714T133928Z
+# label=arm4_isagi  pid=76148
+# source=programs/M001_multi_agent_ensemble/reviews/loo_logs/arm4_isagi_yoichi.log
+# lines=80
+
+2026-07-14 14:39:09,147 INFO __main__ -- leave-one-out batch start: panel=2015-01-01..2025-12-31 out=programs/M001_multi_agent_ensemble/reviews tag=g7retry1-arm4
+2026-07-14 14:39:09,424 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:39:09,488 INFO agent.data.dukascopy -- Dukascopy fetch: EURUSD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:39:09,488 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:39:09,488 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-14 14:39:10,390 INFO DUKASCRIPT -- current timestamp :2019-10-23T13:00:00
+2026-07-14 14:39:11,288 INFO DUKASCRIPT -- current timestamp :2024-08-14T01:00:00
+2026-07-14 14:39:11,821 INFO __main__ -- Loaded 17723 EURUSD bars
+2026-07-14 14:39:11,823 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:39:11,823 INFO agent.data.dukascopy -- Dukascopy fetch: GBPUSD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:39:11,823 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:39:11,823 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-14 14:39:12,149 INFO DUKASCRIPT -- current timestamp :2019-10-24T01:00:00
+2026-07-14 14:39:12,979 INFO DUKASCRIPT -- current timestamp :2024-08-14T17:00:00
+2026-07-14 14:39:13,868 INFO __main__ -- Loaded 17718 GBPUSD bars
+2026-07-14 14:39:13,870 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:39:13,870 INFO agent.data.dukascopy -- Dukascopy fetch: USDCAD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:39:13,870 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:39:13,870 INFO root -- End Date :2025-12-31T00:00:00+00:00

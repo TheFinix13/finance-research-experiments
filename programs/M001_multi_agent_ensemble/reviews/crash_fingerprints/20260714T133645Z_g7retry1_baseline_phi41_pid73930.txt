@@ -1,0 +1,95 @@
+# crash-fingerprint captured 20260714T133645Z
+# label=g7retry1_baseline_phi41  pid=73930
+# source=/Users/the1finix/.cursor/projects/Users-the1finix-Documents-GitHub-multi-pair-trading-agent/terminals/173988.txt
+# lines=200
+
+---
+pid: 73930
+cwd: "/Users/the1finix/Documents/GitHub/finance-research-experiments"
+command: "export PYTHONPATH=/Users/the1finix/Documents/GitHub/finance-research-experiments && exec /Users/the1finix/Documents/GitHub/multi-pair-trading-agent/.venv/bin/python -m programs.M001_multi_agent_ensemble.sim.scoring.run_g7_v1_checkpoint_gate --mode walk-forward --tag g7retry1-phi41 --retire-kunigami --aggregator-arm phi41 --out-dir /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews -v"
+started_at: 2026-07-14T13:12:20.763Z
+running_for_ms: 1440870  
+---
+2026-07-14 14:12:20,926 INFO __main__ -- Walk-forward: auto-set --start to G7 default 2015-01-01
+2026-07-14 14:12:20,926 INFO __main__ -- Walk-forward: auto-set --end to G7 default 2025-12-31
+2026-07-14 14:12:21,014 INFO __main__ -- G7 walk-forward: panel 2015-01-01 -> 2025-12-31 | 7 windows | symbols ('EURUSD', 'GBPUSD', 'USDCAD')
+2026-07-14 14:12:21,014 INFO __main__ --   window 0: IS 2015-01-01 -> 2019-01-01 | OOS 2019-01-01 -> 2020-01-01
+2026-07-14 14:12:21,014 INFO __main__ --   window 1: IS 2016-01-01 -> 2020-01-01 | OOS 2020-01-01 -> 2021-01-01
+2026-07-14 14:12:21,014 INFO __main__ --   window 2: IS 2017-01-01 -> 2021-01-01 | OOS 2021-01-01 -> 2022-01-01
+2026-07-14 14:12:21,014 INFO __main__ --   window 3: IS 2018-01-01 -> 2022-01-01 | OOS 2022-01-01 -> 2023-01-01
+2026-07-14 14:12:21,014 INFO __main__ --   window 4: IS 2019-01-01 -> 2023-01-01 | OOS 2023-01-01 -> 2024-01-01
+2026-07-14 14:12:21,014 INFO __main__ --   window 5: IS 2020-01-01 -> 2024-01-01 | OOS 2024-01-01 -> 2025-01-01
+2026-07-14 14:12:21,014 INFO __main__ --   window 6: IS 2021-01-01 -> 2025-01-01 | OOS 2025-01-01 -> 2025-12-31
+2026-07-14 14:12:21,308 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:12:21,363 INFO agent.data.dukascopy -- Dukascopy fetch: EURUSD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:12:21,364 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:12:21,364 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-14 14:12:21,964 INFO DUKASCRIPT -- current timestamp :2019-10-23T13:00:00
+2026-07-14 14:12:22,734 INFO DUKASCRIPT -- current timestamp :2024-08-14T01:00:00
+2026-07-14 14:12:23,454 INFO __main__ -- Loaded 17723 EURUSD bars
+2026-07-14 14:12:23,457 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:12:23,457 INFO agent.data.dukascopy -- Dukascopy fetch: GBPUSD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:12:23,457 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:12:23,457 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-14 14:12:24,200 INFO DUKASCRIPT -- current timestamp :2019-10-24T01:00:00
+2026-07-14 14:12:24,830 INFO DUKASCRIPT -- current timestamp :2024-08-14T17:00:00
+2026-07-14 14:12:25,485 INFO __main__ -- Loaded 17718 GBPUSD bars
+2026-07-14 14:12:25,487 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:12:25,487 INFO agent.data.dukascopy -- Dukascopy fetch: USDCAD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:12:25,488 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:12:25,488 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-14 14:12:26,040 INFO DUKASCRIPT -- current timestamp :2019-10-23T17:00:00
+2026-07-14 14:12:26,673 INFO DUKASCRIPT -- current timestamp :2024-08-14T09:00:00
+2026-07-14 14:12:27,324 INFO __main__ -- Loaded 17722 USDCAD bars
+2026-07-14 14:12:27,725 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-14 14:12:28,257 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-14 14:12:28,660 INFO programs.M001_multi_agent_ensemble.sim.agents.a03_rin -- A3RinV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-14 14:12:28,664 INFO programs.M001_multi_agent_ensemble.sim.agents.a04_chigiri -- A4ChigiriV1 prepared EURUSD: 17723 bars, ATR ready
+2026-07-14 14:12:29,177 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings
+2026-07-14 14:12:29,674 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings
+2026-07-14 14:12:29,678 INFO programs.M001_multi_agent_ensemble.sim.agents.a04_chigiri -- A4ChigiriV1 prepared GBPUSD: 17718 bars, ATR ready
+2026-07-14 14:12:30,069 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared USDCAD: 17722 bars, 1704 zones, 2386 swings
+2026-07-14 14:12:30,508 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared USDCAD: 17722 bars, 1704 zones, 2386 swings
+2026-07-14 14:12:30,899 INFO programs.M001_multi_agent_ensemble.sim.agents.a07_barou -- A7BarouV1 prepared USDCAD: 17722 bars, 1704 zones, 2386 swings
+2026-07-14 14:12:30,900 INFO __main__ -- G7 §11.12 Kunigami retirement active: kunigami_rensuke removed from proposer/publisher roster (Sentinel R5 side channel retained)
+2026-07-14 14:12:30,900 INFO __main__ -- Starting single-pass replay across full panel (aggregator_arm=phi41) ...
+2026-07-14 14:12:30,948 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay starting: 53163 global bars across 3 symbols (sentinel_blocks=True, use_workspace=True)
+2026-07-14 14:12:34,165 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 2658/53163 bars (5.0%), elapsed=3.2 s, eta=61.1 s, trades=342, proposals_all=1911
+2026-07-14 14:12:42,251 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 5316/53163 bars (10.0%), elapsed=11.3 s, eta=101.7 s, trades=758, proposals_all=3964
+2026-07-14 14:13:04,014 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 7974/53163 bars (15.0%), elapsed=33.1 s, eta=187.4 s, trades=1104, proposals_all=5809
+2026-07-14 14:13:33,353 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 10632/53163 bars (20.0%), elapsed=62.4 s, eta=249.6 s, trades=1446, proposals_all=7484
+2026-07-14 14:14:10,494 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 13290/53163 bars (25.0%), elapsed=99.5 s, eta=298.7 s, trades=1807, proposals_all=9149
+2026-07-14 14:14:55,187 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 15948/53163 bars (30.0%), elapsed=144.2 s, eta=336.6 s, trades=2137, proposals_all=10832
+2026-07-14 14:15:42,505 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 18606/53163 bars (35.0%), elapsed=191.6 s, eta=355.8 s, trades=2441, proposals_all=12203
+2026-07-14 14:16:33,533 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 21264/53163 bars (40.0%), elapsed=242.6 s, eta=363.9 s, trades=2696, proposals_all=13324
+2026-07-14 14:17:29,687 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 23922/53163 bars (45.0%), elapsed=298.7 s, eta=365.2 s, trades=2942, proposals_all=14257
+2026-07-14 14:18:41,945 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 26580/53163 bars (50.0%), elapsed=371.0 s, eta=371.0 s, trades=3183, proposals_all=15617
+2026-07-14 14:19:53,426 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 29238/53163 bars (55.0%), elapsed=442.5 s, eta=362.1 s, trades=3403, proposals_all=16628
+2026-07-14 14:21:17,621 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 31896/53163 bars (60.0%), elapsed=526.7 s, eta=351.2 s, trades=3705, proposals_all=17924
+2026-07-14 14:22:45,168 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 34554/53163 bars (65.0%), elapsed=614.2 s, eta=330.8 s, trades=3945, proposals_all=18820
+2026-07-14 14:24:42,316 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 37212/53163 bars (70.0%), elapsed=731.4 s, eta=313.5 s, trades=4239, proposals_all=20392
+2026-07-14 14:26:39,708 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 39870/53163 bars (75.0%), elapsed=848.8 s, eta=283.0 s, trades=4557, proposals_all=21978
+2026-07-14 14:28:22,857 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 42528/53163 bars (80.0%), elapsed=951.9 s, eta=238.0 s, trades=4786, proposals_all=22843
+2026-07-14 14:30:07,065 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 45186/53163 bars (85.0%), elapsed=1056.1 s, eta=186.4 s, trades=4997, proposals_all=23602
+2026-07-14 14:31:58,410 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 47844/53163 bars (90.0%), elapsed=1167.5 s, eta=129.8 s, trades=5193, proposals_all=24336
+2026-07-14 14:34:20,138 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 50502/53163 bars (95.0%), elapsed=1309.2 s, eta=69.0 s, trades=5413, proposals_all=25575
+2026-07-14 14:36:23,210 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 53160/53163 bars (100.0%), elapsed=1432.3 s, eta=0.1 s, trades=5594, proposals_all=26346
+2026-07-14 14:36:23,258 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay complete: 53163 bars in 1432.3 s (37 bars/s), trades=5594, proposals_all=26346, sentinel_blocks=True, use_workspace=True
+2026-07-14 14:36:23,299 INFO __main__ -- G7 walk-forward replay complete: 283538 thoughts, 26346 proposals, 5594 trades, 26346 shadow_trades
+2026-07-14 14:36:23,823 INFO __main__ -- G7 replay cache written: /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews/g7_replay_cache_g7retry1-phi41/trades.jsonl (5594 trades) + /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews/g7_replay_cache_g7retry1-phi41/workspace_counts.json + /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews/g7_replay_cache_g7retry1-phi41/proposals_all.jsonl (26346 proposals) + /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews/g7_replay_cache_g7retry1-phi41/proposals_rejected.jsonl (27890 rejections)
+2026-07-14 14:36:23,825 INFO __main__ --   window 0 OOS 2019..2020 trades=439
+2026-07-14 14:36:23,829 INFO __main__ --   window 1 OOS 2020..2021 trades=422
+2026-07-14 14:36:23,832 INFO __main__ --   window 2 OOS 2021..2022 trades=506
+2026-07-14 14:36:23,835 INFO __main__ --   window 3 OOS 2022..2023 trades=539
+2026-07-14 14:36:23,839 INFO __main__ --   window 4 OOS 2023..2024 trades=451
+2026-07-14 14:36:23,842 INFO __main__ --   window 5 OOS 2024..2025 trades=355
+2026-07-14 14:36:23,844 INFO __main__ --   window 6 OOS 2025..2025 trades=362
+2026-07-14 14:36:23,958 INFO __main__ -- Phase U shadow ledger: 26346 shadow trades across 6 agents
+2026-07-14 14:36:23,959 INFO __main__ -- Wrote /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews/g7_v1_checkpoint_verdict_g7retry1-phi41.md
+2026-07-14 14:36:23,960 INFO __main__ -- Wrote /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews/g7_v1_checkpoint_report_g7retry1-phi41.json
+
+---
+exit_code: 0
+elapsed_ms: 1443403
+ended_at: 2026-07-14T13:36:24.166Z
+---

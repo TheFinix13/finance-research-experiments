@@ -1,0 +1,18 @@
+# crash-fingerprint captured 20260714T133928Z
+# label=phi41_isagi  pid=76088
+# source=programs/M001_multi_agent_ensemble/reviews/loo_logs/phi41_isagi_yoichi.log
+# lines=80
+
+2026-07-14 14:38:57,371 INFO __main__ -- leave-one-out batch start: panel=2015-01-01..2025-12-31 out=programs/M001_multi_agent_ensemble/reviews tag=g7retry1-phi41
+2026-07-14 14:38:57,913 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:38:58,008 INFO agent.data.dukascopy -- Dukascopy fetch: EURUSD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:38:58,008 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:38:58,008 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-14 14:38:59,110 INFO DUKASCRIPT -- current timestamp :2019-10-23T13:00:00
+2026-07-14 14:39:00,445 INFO DUKASCRIPT -- current timestamp :2024-08-14T01:00:00
+2026-07-14 14:39:01,135 INFO __main__ -- Loaded 17723 EURUSD bars
+2026-07-14 14:39:01,137 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:39:01,138 INFO agent.data.dukascopy -- Dukascopy fetch: GBPUSD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:39:01,138 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:39:01,138 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-14 14:39:01,496 INFO DUKASCRIPT -- current timestamp :2019-10-24T01:00:00

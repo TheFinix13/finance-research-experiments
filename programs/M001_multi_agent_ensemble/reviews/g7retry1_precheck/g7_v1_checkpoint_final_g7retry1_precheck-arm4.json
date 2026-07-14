@@ -1,0 +1,1954 @@
+{
+  "tag": "g7retry1_precheck-arm4",
+  "arm": "arm4",
+  "protocol": "experiments/G7_v1_checkpoint_gate/PROTOCOL.md",
+  "roster": [
+    "isagi_yoichi",
+    "bachira_meguru",
+    "itoshi_rin",
+    "chigiri_hyoma",
+    "reo_mikage",
+    "nagi_seishiro",
+    "barou_shoei"
+  ],
+  "baseline_cache": "/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews/g7_replay_cache_phi5-arm4-post-kunigami",
+  "lo1_root": "/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews",
+  "lo1_tag": "phi5-arm4",
+  "n_windows": 7,
+  "bootstrap": {
+    "seed": 42,
+    "n_boot": 10000
+  },
+  "verdict": "FAIL",
+  "n_agents_passing": 2,
+  "notes": [
+    "All statistics OOS-only (union of the 7 rolling OOS windows); differs from the diagnostic lo1 verdicts which pooled IS+OOS.",
+    "C4 evaluated on panel-wide publish/read counters (per-window counts not persisted in caches; documented harness limitation).",
+    "C5/C6 recomputed from cached source_* trade fields via the pure playstyle-dispatched F19/F20 primitives (no agent overrides exist)."
+  ],
+  "per_agent": {
+    "isagi_yoichi": {
+      "agent_id": "isagi_yoichi",
+      "playstyle": "conservative_metavision",
+      "tier": 1,
+      "bit_vector": "101111",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": true,
+          "statistic": 0.3512126829630244,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 1120,
+            "mean_tqs": 0.3512126829630244,
+            "windows_passing_0.20": 7,
+            "windows_required": 5,
+            "per_window_means": {
+              "0": 0.3784,
+              "1": 0.3444,
+              "2": 0.3311,
+              "3": 0.3454,
+              "4": 0.3576,
+              "5": 0.3552,
+              "6": 0.3469
+            },
+            "bootstrap_ci95": [
+              0.3287,
+              0.3738
+            ],
+            "ci_lower_floor": 0.25
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "computed",
+          "evidence": {
+            "qualifying_peers": [],
+            "per_peer": {
+              "bachira_meguru": {
+                "delta_tqs": 0.00505,
+                "tqs_ci95": [
+                  -0.01811,
+                  0.0283
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -496.0,
+                "window_deltas": [
+                  -69.0,
+                  -71.0,
+                  -81.0,
+                  -112.0,
+                  -67.0,
+                  -47.0,
+                  -49.0
+                ],
+                "trades_ci95": [
+                  -86.429,
+                  -57.0
+                ],
+                "trades_qualifies": false
+              },
+              "itoshi_rin": {
+                "delta_tqs": 0.00291,
+                "tqs_ci95": [
+                  -0.10564,
+                  0.1103
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -3.0,
+                "window_deltas": [
+                  0.0,
+                  -2.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  -1.0,
+                  -1.0
+                ],
+                "trades_ci95": [
+                  -1.143,
+                  0.286
+                ],
+                "trades_qualifies": false
+              },
+              "chigiri_hyoma": {
+                "delta_tqs": 0.00923,
+                "tqs_ci95": [
+                  -0.05204,
+                  0.07009
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -26.0,
+                "window_deltas": [
+                  -4.0,
+                  -5.0,
+                  -6.0,
+                  -2.0,
+                  -3.0,
+                  -4.0,
+                  -2.0
+                ],
+                "trades_ci95": [
+                  -4.714,
+                  -2.714
+                ],
+                "trades_qualifies": false
+              },
+              "reo_mikage": {
+                "delta_tqs": null,
+                "tqs_ci95": [
+                  NaN,
+                  NaN
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "trades_qualifies": false
+              },
+              "nagi_seishiro": {
+                "delta_tqs": 0.01889,
+                "tqs_ci95": [
+                  -0.14918,
+                  0.19153
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -4.0,
+                "window_deltas": [
+                  -1.0,
+                  0.0,
+                  -1.0,
+                  -2.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  -1.143,
+                  -0.143
+                ],
+                "trades_qualifies": false
+              },
+              "barou_shoei": {
+                "delta_tqs": 0.002,
+                "tqs_ci95": [
+                  -0.04964,
+                  0.05467
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -146.0,
+                "window_deltas": [
+                  -35.0,
+                  -17.0,
+                  -16.0,
+                  -14.0,
+                  -25.0,
+                  -16.0,
+                  -23.0
+                ],
+                "trades_ci95": [
+                  -26.429,
+                  -16.429
+                ],
+                "trades_qualifies": false
+              }
+            },
+            "rule": "exists peer with (delta_tqs > 0 AND bootstrap CI lower > 0) OR (delta_trades > 0 AND window-bootstrap CI lower > 0); alpha=0.05"
+          }
+        },
+        "3": {
+          "passed": true,
+          "statistic": 7.0,
+          "threshold": 4.0,
+          "status": "computed",
+          "evidence": {
+            "clean_windows": 7,
+            "windows_required": 4,
+            "max_reduction_threshold": 0.5,
+            "per_window": [
+              {
+                "window": 0,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.443,
+                "clean": true
+              },
+              {
+                "window": 1,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.3333,
+                "clean": true
+              },
+              {
+                "window": 2,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.2222,
+                "clean": true
+              },
+              {
+                "window": 3,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.2692,
+                "clean": true
+              },
+              {
+                "window": 4,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.3521,
+                "clean": true
+              },
+              {
+                "window": 5,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.2133,
+                "clean": true
+              },
+              {
+                "window": 6,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.3382,
+                "clean": true
+              }
+            ]
+          }
+        },
+        "4": {
+          "passed": true,
+          "statistic": 6571.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 53164,
+            "read_count": 6571,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": true,
+          "statistic": 0.19590436222797789,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 1120,
+            "mean_lot": 0.17639285714285716,
+            "min_lot": 0.09,
+            "max_lot": 0.2,
+            "cv": 0.19590436222797789
+          }
+        },
+        "6": {
+          "passed": true,
+          "statistic": 0.18512935570077302,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 1120,
+            "sl_cv": 0.185129355700773,
+            "tp1_cv": 0.18512935570077302,
+            "mean_sl": 41.82965993986881,
+            "mean_tp1": 62.74448990980322
+          }
+        }
+      }
+    },
+    "bachira_meguru": {
+      "agent_id": "bachira_meguru",
+      "playstyle": "rebel_tight",
+      "tier": 2,
+      "bit_vector": "110111",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": true,
+          "statistic": 0.383572705140882,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 2040,
+            "mean_tqs": 0.383572705140882,
+            "windows_passing_0.20": 7,
+            "windows_required": 5,
+            "per_window_means": {
+              "0": 0.3615,
+              "1": 0.3633,
+              "2": 0.3736,
+              "3": 0.4228,
+              "4": 0.3947,
+              "5": 0.3844,
+              "6": 0.3833
+            },
+            "bootstrap_ci95": [
+              0.3662,
+              0.4004
+            ],
+            "ci_lower_floor": 0.25
+          }
+        },
+        "2": {
+          "passed": true,
+          "statistic": 0.13566,
+          "threshold": 0.0,
+          "status": "computed",
+          "evidence": {
+            "qualifying_peers": [
+              "nagi_seishiro"
+            ],
+            "per_peer": {
+              "isagi_yoichi": {
+                "delta_tqs": -0.00386,
+                "tqs_ci95": [
+                  -0.03587,
+                  0.02768
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -56.0,
+                "window_deltas": [
+                  -7.0,
+                  -9.0,
+                  -17.0,
+                  -10.0,
+                  -8.0,
+                  0.0,
+                  -5.0
+                ],
+                "trades_ci95": [
+                  -11.714,
+                  -4.571
+                ],
+                "trades_qualifies": false
+              },
+              "itoshi_rin": {
+                "delta_tqs": -0.02974,
+                "tqs_ci95": [
+                  -0.13892,
+                  0.07822
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -31.0,
+                "window_deltas": [
+                  -2.0,
+                  -6.0,
+                  -4.0,
+                  -10.0,
+                  -2.0,
+                  -4.0,
+                  -3.0
+                ],
+                "trades_ci95": [
+                  -6.571,
+                  -2.714
+                ],
+                "trades_qualifies": false
+              },
+              "chigiri_hyoma": {
+                "delta_tqs": 0.00664,
+                "tqs_ci95": [
+                  -0.05623,
+                  0.0683
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -23.0,
+                "window_deltas": [
+                  -2.0,
+                  -5.0,
+                  -4.0,
+                  -3.0,
+                  -5.0,
+                  -3.0,
+                  -1.0
+                ],
+                "trades_ci95": [
+                  -4.286,
+                  -2.286
+                ],
+                "trades_qualifies": false
+              },
+              "reo_mikage": {
+                "delta_tqs": null,
+                "tqs_ci95": [
+                  NaN,
+                  NaN
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "trades_qualifies": false
+              },
+              "nagi_seishiro": {
+                "delta_tqs": 0.13566,
+                "tqs_ci95": [
+                  -0.10203,
+                  0.35185
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 53.0,
+                "window_deltas": [
+                  5.0,
+                  8.0,
+                  5.0,
+                  15.0,
+                  6.0,
+                  4.0,
+                  10.0
+                ],
+                "trades_ci95": [
+                  5.286,
+                  10.429
+                ],
+                "trades_qualifies": true
+              },
+              "barou_shoei": {
+                "delta_tqs": 0.00343,
+                "tqs_ci95": [
+                  -0.04686,
+                  0.05461
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -406.0,
+                "window_deltas": [
+                  -68.0,
+                  -56.0,
+                  -66.0,
+                  -63.0,
+                  -58.0,
+                  -44.0,
+                  -51.0
+                ],
+                "trades_ci95": [
+                  -63.571,
+                  -51.857
+                ],
+                "trades_qualifies": false
+              }
+            },
+            "rule": "exists peer with (delta_tqs > 0 AND bootstrap CI lower > 0) OR (delta_trades > 0 AND window-bootstrap CI lower > 0); alpha=0.05"
+          }
+        },
+        "3": {
+          "passed": false,
+          "statistic": 1.0,
+          "threshold": 4.0,
+          "status": "computed",
+          "evidence": {
+            "clean_windows": 1,
+            "windows_required": 4,
+            "max_reduction_threshold": 0.5,
+            "per_window": [
+              {
+                "window": 0,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.6071,
+                "clean": false
+              },
+              {
+                "window": 1,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.6222,
+                "clean": false
+              },
+              {
+                "window": 2,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.541,
+                "clean": false
+              },
+              {
+                "window": 3,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.6238,
+                "clean": false
+              },
+              {
+                "window": 4,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.5577,
+                "clean": false
+              },
+              {
+                "window": 5,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.4272,
+                "clean": true
+              },
+              {
+                "window": 6,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.5312,
+                "clean": false
+              }
+            ]
+          }
+        },
+        "4": {
+          "passed": true,
+          "statistic": 14551.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 53164,
+            "read_count": 14551,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": true,
+          "statistic": 0.44791449891019147,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 2040,
+            "mean_lot": 0.058416666666666665,
+            "min_lot": 0.02,
+            "max_lot": 0.13,
+            "cv": 0.44791449891019147
+          }
+        },
+        "6": {
+          "passed": true,
+          "statistic": 0.15617246408701493,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 2040,
+            "sl_cv": 0.1561724640870149,
+            "tp1_cv": 0.15617246408701493,
+            "mean_sl": 22.237378951580645,
+            "mean_tp1": 66.71213685474193
+          }
+        }
+      }
+    },
+    "itoshi_rin": {
+      "agent_id": "itoshi_rin",
+      "playstyle": "analytical_precision",
+      "tier": 2,
+      "bit_vector": "111111",
+      "is_v1_pass": true,
+      "criteria": {
+        "1": {
+          "passed": true,
+          "statistic": 0.3738187945743179,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 212,
+            "mean_tqs": 0.3738187945743179,
+            "windows_passing_0.20": 7,
+            "windows_required": 5,
+            "per_window_means": {
+              "0": 0.3668,
+              "1": 0.3855,
+              "2": 0.2383,
+              "3": 0.435,
+              "4": 0.3243,
+              "5": 0.3955,
+              "6": 0.3818
+            },
+            "bootstrap_ci95": [
+              0.2977,
+              0.454
+            ],
+            "ci_lower_floor": 0.25
+          }
+        },
+        "2": {
+          "passed": true,
+          "statistic": 0.13157,
+          "threshold": 0.0,
+          "status": "computed",
+          "evidence": {
+            "qualifying_peers": [
+              "nagi_seishiro"
+            ],
+            "per_peer": {
+              "isagi_yoichi": {
+                "delta_tqs": -0.00146,
+                "tqs_ci95": [
+                  -0.0327,
+                  0.02854
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -178.0,
+                "window_deltas": [
+                  -10.0,
+                  -28.0,
+                  -16.0,
+                  -66.0,
+                  -23.0,
+                  -15.0,
+                  -20.0
+                ],
+                "trades_ci95": [
+                  -40.0,
+                  -15.429
+                ],
+                "trades_qualifies": false
+              },
+              "bachira_meguru": {
+                "delta_tqs": 0.00137,
+                "tqs_ci95": [
+                  -0.02247,
+                  0.0253
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -112.0,
+                "window_deltas": [
+                  -12.0,
+                  -11.0,
+                  -23.0,
+                  -26.0,
+                  -8.0,
+                  -18.0,
+                  -14.0
+                ],
+                "trades_ci95": [
+                  -20.571,
+                  -11.714
+                ],
+                "trades_qualifies": false
+              },
+              "chigiri_hyoma": {
+                "delta_tqs": -0.00044,
+                "tqs_ci95": [
+                  -0.06196,
+                  0.06291
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -12.0,
+                "window_deltas": [
+                  -3.0,
+                  -2.0,
+                  -1.0,
+                  -1.0,
+                  -2.0,
+                  -2.0,
+                  -1.0
+                ],
+                "trades_ci95": [
+                  -2.286,
+                  -1.286
+                ],
+                "trades_qualifies": false
+              },
+              "reo_mikage": {
+                "delta_tqs": null,
+                "tqs_ci95": [
+                  NaN,
+                  NaN
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "trades_qualifies": false
+              },
+              "nagi_seishiro": {
+                "delta_tqs": 0.13157,
+                "tqs_ci95": [
+                  -0.05395,
+                  0.3122
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 45.0,
+                "window_deltas": [
+                  0.0,
+                  8.0,
+                  2.0,
+                  17.0,
+                  7.0,
+                  2.0,
+                  9.0
+                ],
+                "trades_ci95": [
+                  2.714,
+                  10.714
+                ],
+                "trades_qualifies": true
+              },
+              "barou_shoei": {
+                "delta_tqs": 0.0,
+                "tqs_ci95": [
+                  -0.05802,
+                  0.05735
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "trades_qualifies": false
+              }
+            },
+            "rule": "exists peer with (delta_tqs > 0 AND bootstrap CI lower > 0) OR (delta_trades > 0 AND window-bootstrap CI lower > 0); alpha=0.05"
+          }
+        },
+        "3": {
+          "passed": true,
+          "statistic": 7.0,
+          "threshold": 4.0,
+          "status": "computed",
+          "evidence": {
+            "clean_windows": 7,
+            "windows_required": 4,
+            "max_reduction_threshold": 0.5,
+            "per_window": [
+              {
+                "window": 0,
+                "worst_peer": "isagi_yoichi",
+                "worst_reduction": 0.0541,
+                "clean": true
+              },
+              {
+                "window": 1,
+                "worst_peer": "isagi_yoichi",
+                "worst_reduction": 0.1522,
+                "clean": true
+              },
+              {
+                "window": 2,
+                "worst_peer": "isagi_yoichi",
+                "worst_reduction": 0.0829,
+                "clean": true
+              },
+              {
+                "window": 3,
+                "worst_peer": "isagi_yoichi",
+                "worst_reduction": 0.2529,
+                "clean": true
+              },
+              {
+                "window": 4,
+                "worst_peer": "isagi_yoichi",
+                "worst_reduction": 0.1186,
+                "clean": true
+              },
+              {
+                "window": 5,
+                "worst_peer": "isagi_yoichi",
+                "worst_reduction": 0.1119,
+                "clean": true
+              },
+              {
+                "window": 6,
+                "worst_peer": "isagi_yoichi",
+                "worst_reduction": 0.1361,
+                "clean": true
+              }
+            ]
+          }
+        },
+        "4": {
+          "passed": true,
+          "statistic": 2988.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 17723,
+            "read_count": 2988,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": true,
+          "statistic": 0.1118672681998716,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 212,
+            "mean_lot": 0.08830188679245284,
+            "min_lot": 0.07,
+            "max_lot": 0.11,
+            "cv": 0.1118672681998716
+          }
+        },
+        "6": {
+          "passed": true,
+          "statistic": 0.21888691661220486,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 212,
+            "sl_cv": 0.21888691661220486,
+            "tp1_cv": 0.21888691661220486,
+            "mean_sl": 29.787547169811315,
+            "mean_tp1": 59.57509433962263
+          }
+        }
+      }
+    },
+    "chigiri_hyoma": {
+      "agent_id": "chigiri_hyoma",
+      "playstyle": "speed_momentum",
+      "tier": 2,
+      "bit_vector": "001111",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": false,
+          "statistic": 0.26895358974014766,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 300,
+            "mean_tqs": 0.26895358974014766,
+            "windows_passing_0.20": 6,
+            "windows_required": 5,
+            "per_window_means": {
+              "0": 0.1893,
+              "1": 0.3351,
+              "2": 0.2408,
+              "3": 0.3391,
+              "4": 0.2347,
+              "5": 0.3101,
+              "6": 0.2636
+            },
+            "bootstrap_ci95": [
+              0.2243,
+              0.315
+            ],
+            "ci_lower_floor": 0.25
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "computed",
+          "evidence": {
+            "qualifying_peers": [],
+            "per_peer": {
+              "isagi_yoichi": {
+                "delta_tqs": -0.00206,
+                "tqs_ci95": [
+                  -0.03393,
+                  0.02946
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -30.0,
+                "window_deltas": [
+                  -5.0,
+                  -2.0,
+                  -5.0,
+                  -4.0,
+                  -7.0,
+                  -4.0,
+                  -3.0
+                ],
+                "trades_ci95": [
+                  -5.429,
+                  -3.286
+                ],
+                "trades_qualifies": false
+              },
+              "bachira_meguru": {
+                "delta_tqs": 0.00077,
+                "tqs_ci95": [
+                  -0.02296,
+                  0.02422
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -84.0,
+                "window_deltas": [
+                  -26.0,
+                  -8.0,
+                  -2.0,
+                  -10.0,
+                  -15.0,
+                  -6.0,
+                  -17.0
+                ],
+                "trades_ci95": [
+                  -17.714,
+                  -6.714
+                ],
+                "trades_qualifies": false
+              },
+              "itoshi_rin": {
+                "delta_tqs": -0.01156,
+                "tqs_ci95": [
+                  -0.12473,
+                  0.10047
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -3.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  -2.0,
+                  1.0,
+                  -2.0
+                ],
+                "trades_ci95": [
+                  -1.143,
+                  0.286
+                ],
+                "trades_qualifies": false
+              },
+              "reo_mikage": {
+                "delta_tqs": null,
+                "tqs_ci95": [
+                  NaN,
+                  NaN
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "trades_qualifies": false
+              },
+              "nagi_seishiro": {
+                "delta_tqs": -0.00466,
+                "tqs_ci95": [
+                  -0.17785,
+                  0.17209
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 1.0,
+                "window_deltas": [
+                  -2.0,
+                  -1.0,
+                  0.0,
+                  1.0,
+                  2.0,
+                  0.0,
+                  1.0
+                ],
+                "trades_ci95": [
+                  -0.857,
+                  1.0
+                ],
+                "trades_qualifies": false
+              },
+              "barou_shoei": {
+                "delta_tqs": 0.0,
+                "tqs_ci95": [
+                  -0.05802,
+                  0.05735
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "trades_qualifies": false
+              }
+            },
+            "rule": "exists peer with (delta_tqs > 0 AND bootstrap CI lower > 0) OR (delta_trades > 0 AND window-bootstrap CI lower > 0); alpha=0.05"
+          }
+        },
+        "3": {
+          "passed": true,
+          "statistic": 7.0,
+          "threshold": 4.0,
+          "status": "computed",
+          "evidence": {
+            "clean_windows": 7,
+            "windows_required": 4,
+            "max_reduction_threshold": 0.5,
+            "per_window": [
+              {
+                "window": 0,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.2222,
+                "clean": true
+              },
+              {
+                "window": 1,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.0714,
+                "clean": true
+              },
+              {
+                "window": 2,
+                "worst_peer": "isagi_yoichi",
+                "worst_reduction": 0.0275,
+                "clean": true
+              },
+              {
+                "window": 3,
+                "worst_peer": "bachira_meguru",
+                "worst_reduction": 0.0312,
+                "clean": true
+              },
+              {
+                "window": 4,
+                "worst_peer": "itoshi_rin",
+                "worst_reduction": 0.0645,
+                "clean": true
+              },
+              {
+                "window": 5,
+                "worst_peer": "isagi_yoichi",
+                "worst_reduction": 0.0325,
+                "clean": true
+              },
+              {
+                "window": 6,
+                "worst_peer": "itoshi_rin",
+                "worst_reduction": 0.087,
+                "clean": true
+              }
+            ]
+          }
+        },
+        "4": {
+          "passed": true,
+          "statistic": 992.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 35442,
+            "read_count": 992,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": true,
+          "statistic": 0.10582593885408842,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 300,
+            "mean_lot": 0.1568,
+            "min_lot": 0.12,
+            "max_lot": 0.19,
+            "cv": 0.10582593885408842
+          }
+        },
+        "6": {
+          "passed": true,
+          "statistic": 0.17721088319513095,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 300,
+            "sl_cv": 0.17721088319513095,
+            "tp1_cv": 0.17721088319513095,
+            "mean_sl": 34.64710431383613,
+            "mean_tp1": 103.9413129415084
+          }
+        }
+      }
+    },
+    "reo_mikage": {
+      "agent_id": "reo_mikage",
+      "playstyle": "copier_hrp",
+      "tier": 2,
+      "bit_vector": "W11WWW",
+      "is_v1_pass": true,
+      "criteria": {
+        "1": {
+          "passed": true,
+          "statistic": 53164.0,
+          "threshold": 0.0,
+          "status": "waived",
+          "evidence": {
+            "reason": "structural falsifier waiver (sec 11.1) -- intend() returns None by design; earns v1 through publishing",
+            "publish_count": 53164
+          }
+        },
+        "2": {
+          "passed": true,
+          "statistic": 0.01055,
+          "threshold": 0.0,
+          "status": "computed",
+          "evidence": {
+            "qualifying_peers": [
+              "itoshi_rin"
+            ],
+            "per_peer": {
+              "isagi_yoichi": {
+                "delta_tqs": 0.00047,
+                "tqs_ci95": [
+                  -0.0314,
+                  0.03226
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 3.0,
+                "window_deltas": [
+                  0.0,
+                  -2.0,
+                  -1.0,
+                  2.0,
+                  2.0,
+                  2.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  -0.714,
+                  1.429
+                ],
+                "trades_qualifies": false
+              },
+              "bachira_meguru": {
+                "delta_tqs": 0.00146,
+                "tqs_ci95": [
+                  -0.0224,
+                  0.02537
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  -4.0,
+                  -1.0,
+                  4.0,
+                  6.0,
+                  3.0,
+                  -8.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  -3.571,
+                  3.143
+                ],
+                "trades_qualifies": false
+              },
+              "itoshi_rin": {
+                "delta_tqs": 0.01055,
+                "tqs_ci95": [
+                  -0.10429,
+                  0.12422
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 19.0,
+                "window_deltas": [
+                  2.0,
+                  0.0,
+                  1.0,
+                  10.0,
+                  4.0,
+                  2.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.714,
+                  5.429
+                ],
+                "trades_qualifies": true
+              },
+              "chigiri_hyoma": {
+                "delta_tqs": 0.00101,
+                "tqs_ci95": [
+                  -0.06319,
+                  0.06446
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 8.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  4.0,
+                  3.0,
+                  -1.0,
+                  1.0,
+                  1.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  2.429
+                ],
+                "trades_qualifies": false
+              },
+              "nagi_seishiro": {
+                "delta_tqs": 0.03876,
+                "tqs_ci95": [
+                  -0.11178,
+                  0.19549
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -60.0,
+                "window_deltas": [
+                  4.0,
+                  -3.0,
+                  -2.0,
+                  -42.0,
+                  -6.0,
+                  -3.0,
+                  -8.0
+                ],
+                "trades_ci95": [
+                  -20.429,
+                  -0.857
+                ],
+                "trades_qualifies": false
+              },
+              "barou_shoei": {
+                "delta_tqs": -0.0007,
+                "tqs_ci95": [
+                  -0.0582,
+                  0.05706
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -2.0,
+                "window_deltas": [
+                  -1.0,
+                  0.0,
+                  -1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  -0.571,
+                  0.0
+                ],
+                "trades_qualifies": false
+              }
+            },
+            "rule": "exists peer with (delta_tqs > 0 AND bootstrap CI lower > 0) OR (delta_trades > 0 AND window-bootstrap CI lower > 0); alpha=0.05"
+          }
+        },
+        "3": {
+          "passed": true,
+          "statistic": 6.0,
+          "threshold": 4.0,
+          "status": "computed",
+          "evidence": {
+            "clean_windows": 6,
+            "windows_required": 4,
+            "max_reduction_threshold": 0.5,
+            "per_window": [
+              {
+                "window": 0,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.0222,
+                "clean": true
+              },
+              {
+                "window": 1,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.1875,
+                "clean": true
+              },
+              {
+                "window": 2,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.2,
+                "clean": true
+              },
+              {
+                "window": 3,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.6667,
+                "clean": false
+              },
+              {
+                "window": 4,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.375,
+                "clean": true
+              },
+              {
+                "window": 5,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.375,
+                "clean": true
+              },
+              {
+                "window": 6,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.4,
+                "clean": true
+              }
+            ]
+          }
+        },
+        "4": {
+          "passed": true,
+          "statistic": 53164.0,
+          "threshold": 1.0,
+          "status": "waived",
+          "evidence": {
+            "reason": "structural falsifier -- publish alone suffices (doctrine sec 3.10 exception)",
+            "publish_count": 53164,
+            "read_count": 0
+          }
+        },
+        "5": {
+          "passed": true,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "waived",
+          "evidence": {
+            "reason": "structural falsifier waived on C5 -- agent's intend() returns None by design (doctrine sec 3.10 / 3.11); no trade-side lot dispersion measurable",
+            "agent_id": "reo_mikage"
+          }
+        },
+        "6": {
+          "passed": true,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "waived",
+          "evidence": {
+            "reason": "structural falsifier waived on C6 -- agent's intend() returns None by design (doctrine sec 3.10 / 3.11); no trade-side risk-shape dispersion measurable",
+            "agent_id": "reo_mikage"
+          }
+        }
+      }
+    },
+    "nagi_seishiro": {
+      "agent_id": "nagi_seishiro",
+      "playstyle": "confluence_only",
+      "tier": 2,
+      "bit_vector": "101110",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": true,
+          "statistic": 0.42741115382561384,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 76,
+            "mean_tqs": 0.42741115382561384,
+            "windows_passing_0.20": 5,
+            "windows_required": 5,
+            "per_window_means": {
+              "0": 0.1636,
+              "1": 0.3839,
+              "2": 0.3251,
+              "3": 0.5549,
+              "4": 0.6031,
+              "5": 0.1624,
+              "6": 0.4376
+            },
+            "bootstrap_ci95": [
+              0.3097,
+              0.5535
+            ],
+            "ci_lower_floor": 0.25
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "computed",
+          "evidence": {
+            "qualifying_peers": [],
+            "per_peer": {
+              "isagi_yoichi": {
+                "delta_tqs": -0.00205,
+                "tqs_ci95": [
+                  -0.03372,
+                  0.02991
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -5.0,
+                "window_deltas": [
+                  0.0,
+                  -1.0,
+                  -1.0,
+                  -3.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  -1.571,
+                  -0.143
+                ],
+                "trades_qualifies": false
+              },
+              "bachira_meguru": {
+                "delta_tqs": 0.00069,
+                "tqs_ci95": [
+                  -0.02301,
+                  0.02458
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -13.0,
+                "window_deltas": [
+                  -3.0,
+                  -2.0,
+                  -3.0,
+                  -3.0,
+                  -1.0,
+                  -1.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  -2.714,
+                  -1.0
+                ],
+                "trades_qualifies": false
+              },
+              "itoshi_rin": {
+                "delta_tqs": -0.00624,
+                "tqs_ci95": [
+                  -0.11622,
+                  0.10269
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -6.0,
+                "window_deltas": [
+                  0.0,
+                  -2.0,
+                  -1.0,
+                  -2.0,
+                  0.0,
+                  -1.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  -1.429,
+                  -0.286
+                ],
+                "trades_qualifies": false
+              },
+              "chigiri_hyoma": {
+                "delta_tqs": 0.00065,
+                "tqs_ci95": [
+                  -0.06216,
+                  0.06545
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -4.0,
+                "window_deltas": [
+                  0.0,
+                  -1.0,
+                  0.0,
+                  -1.0,
+                  -2.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  -1.143,
+                  -0.143
+                ],
+                "trades_qualifies": false
+              },
+              "reo_mikage": {
+                "delta_tqs": null,
+                "tqs_ci95": [
+                  NaN,
+                  NaN
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "trades_qualifies": false
+              },
+              "barou_shoei": {
+                "delta_tqs": -0.0007,
+                "tqs_ci95": [
+                  -0.0582,
+                  0.05706
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -2.0,
+                "window_deltas": [
+                  -1.0,
+                  0.0,
+                  -1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  -0.571,
+                  0.0
+                ],
+                "trades_qualifies": false
+              }
+            },
+            "rule": "exists peer with (delta_tqs > 0 AND bootstrap CI lower > 0) OR (delta_trades > 0 AND window-bootstrap CI lower > 0); alpha=0.05"
+          }
+        },
+        "3": {
+          "passed": true,
+          "statistic": 7.0,
+          "threshold": 4.0,
+          "status": "computed",
+          "evidence": {
+            "clean_windows": 7,
+            "windows_required": 4,
+            "max_reduction_threshold": 0.5,
+            "per_window": [
+              {
+                "window": 0,
+                "worst_peer": "barou_shoei",
+                "worst_reduction": 0.0222,
+                "clean": true
+              },
+              {
+                "window": 1,
+                "worst_peer": "itoshi_rin",
+                "worst_reduction": 0.0625,
+                "clean": true
+              },
+              {
+                "window": 2,
+                "worst_peer": "itoshi_rin",
+                "worst_reduction": 0.0345,
+                "clean": true
+              },
+              {
+                "window": 3,
+                "worst_peer": "chigiri_hyoma",
+                "worst_reduction": 0.0303,
+                "clean": true
+              },
+              {
+                "window": 4,
+                "worst_peer": "chigiri_hyoma",
+                "worst_reduction": 0.0444,
+                "clean": true
+              },
+              {
+                "window": 5,
+                "worst_peer": "itoshi_rin",
+                "worst_reduction": 0.0588,
+                "clean": true
+              },
+              {
+                "window": 6,
+                "worst_peer": null,
+                "worst_reduction": 0.0,
+                "clean": true
+              }
+            ]
+          }
+        },
+        "4": {
+          "passed": true,
+          "statistic": 658.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 53164,
+            "read_count": 658,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": true,
+          "statistic": 0.24612226362519213,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 76,
+            "mean_lot": 0.16473684210526315,
+            "min_lot": 0.08,
+            "max_lot": 0.2,
+            "cv": 0.24612226362519213
+          }
+        },
+        "6": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 76,
+            "sl_cv": 0.0,
+            "tp1_cv": 0.0,
+            "mean_sl": 39.0,
+            "mean_tp1": 58.5
+          }
+        }
+      }
+    },
+    "barou_shoei": {
+      "agent_id": "barou_shoei",
+      "playstyle": "solo_king",
+      "tier": 2,
+      "bit_vector": "101111",
+      "is_v1_pass": false,
+      "criteria": {
+        "1": {
+          "passed": true,
+          "statistic": 0.3877714458039127,
+          "threshold": 0.3,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 322,
+            "mean_tqs": 0.3877714458039127,
+            "windows_passing_0.20": 7,
+            "windows_required": 5,
+            "per_window_means": {
+              "0": 0.3499,
+              "1": 0.457,
+              "2": 0.3228,
+              "3": 0.46,
+              "4": 0.3951,
+              "5": 0.3491,
+              "6": 0.4356
+            },
+            "bootstrap_ci95": [
+              0.3464,
+              0.429
+            ],
+            "ci_lower_floor": 0.25
+          }
+        },
+        "2": {
+          "passed": false,
+          "statistic": 0.0,
+          "threshold": 0.0,
+          "status": "computed",
+          "evidence": {
+            "qualifying_peers": [],
+            "per_peer": {
+              "isagi_yoichi": {
+                "delta_tqs": -0.00067,
+                "tqs_ci95": [
+                  -0.03274,
+                  0.03101
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -19.0,
+                "window_deltas": [
+                  -1.0,
+                  -3.0,
+                  0.0,
+                  -2.0,
+                  -6.0,
+                  -3.0,
+                  -4.0
+                ],
+                "trades_ci95": [
+                  -4.143,
+                  -1.429
+                ],
+                "trades_qualifies": false
+              },
+              "bachira_meguru": {
+                "delta_tqs": 0.00099,
+                "tqs_ci95": [
+                  -0.02287,
+                  0.02432
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -34.0,
+                "window_deltas": [
+                  -4.0,
+                  -10.0,
+                  -3.0,
+                  -5.0,
+                  -4.0,
+                  -4.0,
+                  -4.0
+                ],
+                "trades_ci95": [
+                  -6.714,
+                  -3.714
+                ],
+                "trades_qualifies": false
+              },
+              "itoshi_rin": {
+                "delta_tqs": 0.0,
+                "tqs_ci95": [
+                  -0.11065,
+                  0.10904
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "trades_qualifies": false
+              },
+              "chigiri_hyoma": {
+                "delta_tqs": 0.0,
+                "tqs_ci95": [
+                  -0.06232,
+                  0.06208
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "trades_qualifies": false
+              },
+              "reo_mikage": {
+                "delta_tqs": null,
+                "tqs_ci95": [
+                  NaN,
+                  NaN
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": 0.0,
+                "window_deltas": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "trades_ci95": [
+                  0.0,
+                  0.0
+                ],
+                "trades_qualifies": false
+              },
+              "nagi_seishiro": {
+                "delta_tqs": 0.0047,
+                "tqs_ci95": [
+                  -0.15977,
+                  0.17038
+                ],
+                "tqs_qualifies": false,
+                "delta_trades": -5.0,
+                "window_deltas": [
+                  -1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  -1.0,
+                  -2.0,
+                  -1.0
+                ],
+                "trades_ci95": [
+                  -1.286,
+                  -0.286
+                ],
+                "trades_qualifies": false
+              }
+            },
+            "rule": "exists peer with (delta_tqs > 0 AND bootstrap CI lower > 0) OR (delta_trades > 0 AND window-bootstrap CI lower > 0); alpha=0.05"
+          }
+        },
+        "3": {
+          "passed": true,
+          "statistic": 7.0,
+          "threshold": 4.0,
+          "status": "computed",
+          "evidence": {
+            "clean_windows": 7,
+            "windows_required": 4,
+            "max_reduction_threshold": 0.5,
+            "per_window": [
+              {
+                "window": 0,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.125,
+                "clean": true
+              },
+              {
+                "window": 1,
+                "worst_peer": "bachira_meguru",
+                "worst_reduction": 0.038,
+                "clean": true
+              },
+              {
+                "window": 2,
+                "worst_peer": "bachira_meguru",
+                "worst_reduction": 0.0082,
+                "clean": true
+              },
+              {
+                "window": 3,
+                "worst_peer": "bachira_meguru",
+                "worst_reduction": 0.0158,
+                "clean": true
+              },
+              {
+                "window": 4,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.0909,
+                "clean": true
+              },
+              {
+                "window": 5,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.2857,
+                "clean": true
+              },
+              {
+                "window": 6,
+                "worst_peer": "nagi_seishiro",
+                "worst_reduction": 0.0769,
+                "clean": true
+              }
+            ]
+          }
+        },
+        "4": {
+          "passed": true,
+          "statistic": 4576.0,
+          "threshold": 1.0,
+          "status": "computed",
+          "evidence": {
+            "publish_count": 17722,
+            "read_count": 4576,
+            "note": "single-window dry-run; PROTOCOL sec 3 requires both > 0 in >= 7/7 windows for full-panel verdict"
+          }
+        },
+        "5": {
+          "passed": true,
+          "statistic": 0.15080250786079938,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 322,
+            "mean_lot": 0.1643167701863354,
+            "min_lot": 0.08,
+            "max_lot": 0.18,
+            "cv": 0.15080250786079938
+          }
+        },
+        "6": {
+          "passed": true,
+          "statistic": 0.18342133814379988,
+          "threshold": 0.1,
+          "status": "computed",
+          "evidence": {
+            "n_trades": 322,
+            "sl_cv": 0.18342133814379985,
+            "tp1_cv": 0.18342133814379988,
+            "mean_sl": 30.22833850931677,
+            "mean_tp1": 45.342507763975156
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+# crash-fingerprint captured 20260714T130622Z
+# label=g7retry1_baseline_phi41  pid=73178
+# source=/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews/g7retry1_logs/baseline_phi41.log
+# lines=200
+
+2026-07-14 14:05:53,855 INFO __main__ -- Walk-forward: auto-set --start to G7 default 2015-01-01
+2026-07-14 14:05:53,855 INFO __main__ -- Walk-forward: auto-set --end to G7 default 2025-12-31
+2026-07-14 14:05:53,974 INFO __main__ -- G7 walk-forward: panel 2015-01-01 -> 2025-12-31 | 7 windows | symbols ('EURUSD', 'GBPUSD', 'USDCAD')
+2026-07-14 14:05:53,975 INFO __main__ --   window 0: IS 2015-01-01 -> 2019-01-01 | OOS 2019-01-01 -> 2020-01-01
+2026-07-14 14:05:53,975 INFO __main__ --   window 1: IS 2016-01-01 -> 2020-01-01 | OOS 2020-01-01 -> 2021-01-01
+2026-07-14 14:05:53,975 INFO __main__ --   window 2: IS 2017-01-01 -> 2021-01-01 | OOS 2021-01-01 -> 2022-01-01
+2026-07-14 14:05:53,975 INFO __main__ --   window 3: IS 2018-01-01 -> 2022-01-01 | OOS 2022-01-01 -> 2023-01-01
+2026-07-14 14:05:53,975 INFO __main__ --   window 4: IS 2019-01-01 -> 2023-01-01 | OOS 2023-01-01 -> 2024-01-01
+2026-07-14 14:05:53,975 INFO __main__ --   window 5: IS 2020-01-01 -> 2024-01-01 | OOS 2024-01-01 -> 2025-01-01
+2026-07-14 14:05:53,975 INFO __main__ --   window 6: IS 2021-01-01 -> 2025-01-01 | OOS 2025-01-01 -> 2025-12-31
+2026-07-14 14:05:54,438 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:05:54,510 INFO agent.data.dukascopy -- Dukascopy fetch: EURUSD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:05:54,510 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:05:54,510 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-14 14:05:55,171 INFO DUKASCRIPT -- current timestamp :2019-10-23T13:00:00
+2026-07-14 14:05:56,217 INFO DUKASCRIPT -- current timestamp :2024-08-14T01:00:00
+2026-07-14 14:05:56,969 INFO __main__ -- Loaded 17723 EURUSD bars
+2026-07-14 14:05:56,972 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:05:56,977 INFO agent.data.dukascopy -- Dukascopy fetch: GBPUSD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:05:56,977 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:05:56,978 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-14 14:05:57,597 INFO DUKASCRIPT -- current timestamp :2019-10-24T01:00:00
+2026-07-14 14:05:58,256 INFO DUKASCRIPT -- current timestamp :2024-08-14T17:00:00

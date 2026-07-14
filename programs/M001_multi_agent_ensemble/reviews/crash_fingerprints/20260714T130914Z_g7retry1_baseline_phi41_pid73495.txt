@@ -1,0 +1,71 @@
+# crash-fingerprint captured 20260714T130914Z
+# label=g7retry1_baseline_phi41  pid=73495
+# source=/Users/the1finix/.cursor/projects/Users-the1finix-Documents-GitHub-multi-pair-trading-agent/terminals/173985.txt
+# lines=200
+
+---
+pid: 73495
+cwd: "/Users/the1finix/Documents/GitHub/finance-research-experiments"
+command: "export PYTHONPATH=/Users/the1finix/Documents/GitHub/finance-research-experiments && exec /Users/the1finix/Documents/GitHub/multi-pair-trading-agent/.venv/bin/python -m programs.M001_multi_agent_ensemble.sim.scoring.run_g7_v1_checkpoint_gate --mode walk-forward --tag g7retry1-phi41 --retire-kunigami --aggregator-arm phi41 --out-dir /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/reviews -v"
+started_at: 2026-07-14T13:08:50.646Z
+running_for_ms: 2        
+---
+2026-07-14 14:08:50,857 INFO __main__ -- Walk-forward: auto-set --start to G7 default 2015-01-01
+2026-07-14 14:08:50,857 INFO __main__ -- Walk-forward: auto-set --end to G7 default 2025-12-31
+2026-07-14 14:08:50,987 INFO __main__ -- G7 walk-forward: panel 2015-01-01 -> 2025-12-31 | 7 windows | symbols ('EURUSD', 'GBPUSD', 'USDCAD')
+2026-07-14 14:08:50,987 INFO __main__ --   window 0: IS 2015-01-01 -> 2019-01-01 | OOS 2019-01-01 -> 2020-01-01
+2026-07-14 14:08:50,987 INFO __main__ --   window 1: IS 2016-01-01 -> 2020-01-01 | OOS 2020-01-01 -> 2021-01-01
+2026-07-14 14:08:50,987 INFO __main__ --   window 2: IS 2017-01-01 -> 2021-01-01 | OOS 2021-01-01 -> 2022-01-01
+2026-07-14 14:08:50,987 INFO __main__ --   window 3: IS 2018-01-01 -> 2022-01-01 | OOS 2022-01-01 -> 2023-01-01
+2026-07-14 14:08:50,987 INFO __main__ --   window 4: IS 2019-01-01 -> 2023-01-01 | OOS 2023-01-01 -> 2024-01-01
+2026-07-14 14:08:50,987 INFO __main__ --   window 5: IS 2020-01-01 -> 2024-01-01 | OOS 2024-01-01 -> 2025-01-01
+2026-07-14 14:08:50,987 INFO __main__ --   window 6: IS 2021-01-01 -> 2025-01-01 | OOS 2025-01-01 -> 2025-12-31
+2026-07-14 14:08:51,547 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-14 14:08:51,615 INFO agent.data.dukascopy -- Dukascopy fetch: EURUSD H4 2015-01-01 -> 2025-12-31
+2026-07-14 14:08:51,615 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-14 14:08:51,615 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-14 14:08:52,190 INFO DUKASCRIPT -- current timestamp :2019-10-23T13:00:00
+2026-07-14 14:08:52,641 INFO DUKASCRIPT -- current timestamp :2024-08-14T01:00:00
+2026-07-14 14:08:53,195 INFO __main__ -- Loaded 17723 EURUSD bars
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/sim/scoring/run_g7_v1_checkpoint_gate.py", line 1460, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/sim/scoring/run_g7_v1_checkpoint_gate.py", line 1442, in main
+    run_g7_walk_forward(
+  File "/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/sim/scoring/run_g7_v1_checkpoint_gate.py", line 1047, in run_g7_walk_forward
+    bars_by_symbol[sym] = _load_production_bars(sym, panel_start, panel_end)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/sim/scoring/run_isagi_phi3_gate.py", line 187, in _load_production_bars
+    df = loader.get(symbol, Timeframe.H4, start, end, refresh=False)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/agent/data/loader.py", line 86, in get
+    cached = self.cache.load(symbol, timeframe)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/agent/data/source.py", line 133, in load
+    return pd.read_parquet(p)
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/.venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 671, in read_parquet
+    return impl.read(
+           ^^^^^^^^^^
+  File "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/.venv/lib/python3.11/site-packages/pandas/io/parquet.py", line 260, in read
+    pa_table = self.api.parquet.read_table(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/.venv/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 1891, in read_table
+    dataset = ParquetDataset(
+              ^^^^^^^^^^^^^^^
+  File "/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/.venv/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 1460, in __init__
+    [fragment], schema=schema or fragment.physical_schema,
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pyarrow/_dataset.pyx", line 1477, in pyarrow._dataset.Fragment.physical_schema.__get__
+  File "pyarrow/error.pxi", line 155, in pyarrow.lib.pyarrow_internal_check_status
+  File "pyarrow/error.pxi", line 92, in pyarrow.lib.check_status
+pyarrow.lib.ArrowInvalid: Could not open Parquet input source '<Buffer>': Parquet file size is 0 bytes
+
+---
+exit_code: 1
+elapsed_ms: 2604
+ended_at: 2026-07-14T13:08:53.250Z
+---
