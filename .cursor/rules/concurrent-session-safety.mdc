@@ -33,4 +33,30 @@ Before editing or committing any of `ai_context.md`, `EXPERIMENTS.md`,
    from a program you're not touching is a signal another session may
    be live right now.
 
+## Session claim ritual (added 2026-07-14)
+
+The canonical protocol now includes a session-claim mechanism — full
+detail in `agents/concurrent-session-safety.md` §1–§2 (brain-box).
+
+At session start, in EVERY repo this session will write to (this repo,
+and siblings like `multi-pair-trading-agent` or brain-box if you'll log
+there):
+
+1. `git status --short` + `git log --oneline -5` — unrecognized
+   uncommitted work (e.g. another lane's in-flight E0xx or M001
+   artifacts) or same-day unrelated commits = another session; treat
+   foreign paths as untouchable (never clean/stash/commit/revert them).
+2. Read `.sessions/` claim files; overlapping scope → narrower claim
+   wins the contested paths; genuine same-file conflict → ask the user.
+   Spine files (`ai_context.md`, `EXPERIMENTS.md`) stay shared under
+   append-only etiquette — list them in scope as "(append-only)".
+3. Drop your own claim: `.sessions/<date>_<topic>.md` (started-at,
+   anchor, topic, write-scope, status). Mark done or delete at session
+   end. `.sessions/` is gitignored (README inside has the format).
+
+Never commit another session's uncommitted work even if it looks
+finished. If a file changes under you mid-session, stop, snapshot your
+version, three-way diff, and hand both-touched hunks to the user — never
+guess-merge.
+
 See also: `/Users/the1finix/Documents/GitHub/brain-box/.cursor/rules/concurrent-session-safety.mdc`
