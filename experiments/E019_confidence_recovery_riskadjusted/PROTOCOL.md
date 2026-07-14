@@ -329,4 +329,4 @@ primary (`RaC_β`) is already covered by `chekhlov2005drawdown`.
 
 ---
 
-**Pre-registration commit:** _(hash after approval + push)_
+**Pre-registration commit:** acbaa73029e6f388b03c0ea203f6be0defe3d665

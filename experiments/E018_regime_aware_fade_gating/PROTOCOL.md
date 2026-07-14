@@ -298,4 +298,4 @@ read (§4).
 - Frozen breakout priors: `programs/M001_multi_agent_ensemble/sim/agents/a04_chigiri.py`.
 - Frozen trend convention: `programs/M001_multi_agent_ensemble/sim/regime/classifier.py`.
 
-**Pre-registration commit:** _(hash after push)_
+**Pre-registration commit:** beb60604bbaf68eac3893a80b6a809d02d942818
