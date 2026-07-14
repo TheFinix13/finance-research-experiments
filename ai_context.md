@@ -1,4 +1,63 @@
-# AI Context — finance research experiments (updated 2026-07-14, G7 v1 checkpoint gate FIRED: **FAIL 1/7**, no v2 authorisation)
+# AI Context — finance research experiments (updated 2026-07-14, G7 v1 checkpoint gate second attempt FIRED: **FAIL 3/7 phi41 / 2/7 arm4**, still no v2 authorisation)
+
+## 2026-07-14 — G7 v1 checkpoint gate SECOND ATTEMPT (`g7retry1`): FAIL 3/7 phi41 / 2/7 arm4
+
+Commits: `0a97835` (Phase Y v1.3 pre-reg + dispersion-r2 pre-reg + G7
+§11.14/§11.15 amendments), `3ca0286` (C3 v2 pre-reg), `53761d0` (C3 v2
+evaluator + tests), `8af416f` (C3 v2 side-by-side on §11.13 banked
+caches, advisory), `6457e86` (Phase Y Barou v1.3 weapon), `2bf5194`
+(dispersion-r2 primitives F19/F20 + Nagi provenance borrow). Second-
+attempt verdict commit follows.
+
+**Pre-registered three-lever campaign against §11.13 blockers** ran
+end-to-end: (a) Phase Y Barou v1.3 weapon — D1 with-trend gate (Isagi
+params, mode flipped) + structural TP + `stop_atr_mult=1.0`, USDCAD
+only; (b) dispersion-r2 F19 risk-normalised sizing (4 playstyles), F20
+Isagi full-ATR + Rin de-saturation, Nagi provenance borrow; (c) C3 v2
+distinctness-aware definition — advisory pending user ratification.
+Dispersion-r2 pre-check on §11.13 banked caches (binding stop rule)
+met every prediction before re-gate.
+
+**Verdict (phi41 verdict-bearing, arm4 companion), from
+`reviews/g7_v1_checkpoint_final_g7retry1-{phi41,arm4}.{md,json}`:**
+
+| Agent | phi41 | arm4 | Flipped vs §11.13 (phi41) |
+|---|---|---|---|
+| isagi | `111111` ✅ | `101111` no | C5 ❌→✅, C6 ❌→✅ (**v1 PASS**) |
+| bachira | `110111` no | `110111` no | C5 ❌→✅. C3 still fails; **duplication story disproved** (dup share 89%→0% phi41 / 94%→40% arm4, still fails). |
+| rin | `111111` ✅ | `111111` ✅ | C6 ❌→✅ (**v1 PASS both arms**) |
+| chigiri | `001111` no | `001111` no | unchanged — pre-reg made no C1/C2 prediction here |
+| reo | `W11WWW` ✅ | `W11WWW` ✅ | waivers hold |
+| nagi | `101111` no | `101111` no | C5 ❌→✅, C6 ❌→✅ (Nagi C5=C6=0.000 → 0.245/0.128 via borrowed provenance). C2 still fails. |
+| barou | `001111` no | `101111` no | C5 ❌→✅. C1 REGRESSED under phi41 (n 62→43, mean 0.283<0.30) — Phase Y USDCAD-only trimmed volume. arm4 passes C1 at n=86. |
+
+**Both arms FAIL (< 5).** Squad went from 1/7→3/7 (phi41) and 1/7→2/7
+(arm4). Improvements landed exactly where pre-registered (dispersion
+across five agents; Nagi provenance fix; Barou C5); nothing improved
+where no lever pointed (Chigiri C1/C2, Bachira C3, C2 CI-gate for
+low-volume agents).
+
+**C3 v2 material finding.** Phase Y de-duplicated Barou from Bachira
+(worst-peer dup 89%→0% phi41 / 94%→40% arm4), yet **Bachira still
+fails C3 v2 in both arms** (0/7 phi41, 3/7 arm4). §11.13's "Bachira
+C3 = duplication artifact" hypothesis is **falsified**. Bachira
+genuinely cannibalises Barou's *distinct* trades. C3 v2 stays
+advisory; ratifying it would not change §11.16 squad count.
+
+Per doctrine §3.11.5: **still no v2 arc authorised**. Levers remain
+committed as first-class code. On disk: PROTOCOL §11.14/§11.15/§11.16,
+`reviews/g7_v1_checkpoint_final_g7retry1-{phi41,arm4}.{md,json}`,
+`reviews/c3_v2_side_by_side_g7retry1-{phi41,arm4}.{md,json}`,
+`reviews/g7retry1_precheck/`, EXPERIMENTS.md second-attempt row.
+
+Standing user decisions (per §11.16): (1) C3 v2 ratification — evidence
+now argues against promoting to verdict-bearing; (2) authorise / decline
+a third gate attempt — candidate directions surfaced (Bachira-side
+weapon differentiation attacking C3 agent-level; multi-pair Barou
+scope-reversal for C1 volume; C2 low-volume re-scoping) but each needs
+a fresh pre-registration.
+
+---
 
 ## 2026-07-14 — G7 v1 checkpoint gate FINAL verdict: FAIL (1/7 agents)
 

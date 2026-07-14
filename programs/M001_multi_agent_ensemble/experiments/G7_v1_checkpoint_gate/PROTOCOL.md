@@ -1037,6 +1037,166 @@ naming with tag `g7retry1`.
 
 ---
 
+### §11.16 (2026-07-14) — Second gate attempt FINAL verdict: **FAIL (3/7 phi41; 2/7 arm4)**
+
+**Status:** the second gate attempt pre-registered in §11.15 has fired.
+Evaluator: `sim/scoring/run_g7_final_verdict.py` (unchanged from §11.13),
+consuming the freshly banked `g7retry1` replay caches — no post-freeze
+retuning. Both aggregator arms remain FAIL under §3.11.5 (< 5/7 agents
+pass all six criteria). The full three-lever campaign (Phase Y Barou
+v1.3 weapon + dispersion-r2 primitives + C3 v2 advisory) moved real
+numbers, but not enough of the C2/C3 blockers.
+
+**Aggregator-arm decision.** §4 continues to pin the Φ4.1 aggregator
+(the tension noted in §11.13 is unchanged), so the **verdict-bearing
+run is phi41** with an **Arm 4 companion**.
+
+**Inputs.**
+
+| Run | Baseline cache | lo1 caches |
+|---|---|---|
+| phi41 (verdict) | `reviews/g7_replay_cache_g7retry1-phi41` | `reviews/g7_leave_one_out_g7retry1-phi41/lo1_*` (7) |
+| arm4 (companion) | `reviews/g7_replay_cache_g7retry1-arm4` | `reviews/g7_leave_one_out_g7retry1-arm4/lo1_*` (7) |
+
+Both caches were produced by fresh walk-forward + LOO replays under
+Phase Y (Barou v1.3 weapon, USDCAD only, D1 with-trend gate + structural
+TP + `stop_atr_mult=1.0`) and dispersion-r2 primitives (F19 risk-
+normalised sizing for four playstyles, F20 Isagi full-ATR + Rin
+de-saturation, Nagi provenance-borrow) live. `g7retry1_precheck`
+(commit `2bf5194` pre-check on the banked §11.13 caches) met every
+pre-registered dispersion prediction before the re-gate ran; the re-gate
+numbers below inherit those improvements and add Nagi's fresh borrowed
+provenance (which the banked-cache pre-check could not exercise).
+
+**Verdict-bearing result (phi41): FAIL — 3/7 agents pass.**
+
+| Agent | Playstyle | Bit vector | C1 | C2 | C3 v1 | C4 | C5 | C6 | v1 pass? |
+|---|---|---|---|---|---|---|---|---|---|
+| `isagi_yoichi` | conservative_metavision | `111111` | 0.359 ✅ | -0.034 ✅ | 7/7 ✅ | 6571 ✅ | 0.204 ✅ | 0.178 ✅ | **YES** |
+| `bachira_meguru` | rebel_tight | `110111` | 0.386 ✅ | 0.206 ✅ | 0/7 ❌ | 14551 ✅ | 0.475 ✅ | 0.153 ✅ | no |
+| `itoshi_rin` | analytical_precision | `111111` | 0.375 ✅ | 0.178 ✅ | 7/7 ✅ | 2988 ✅ | 0.112 ✅ | 0.221 ✅ | **YES** |
+| `chigiri_hyoma` | speed_momentum | `001111` | 0.267 ❌ | 0.000 ❌ | 7/7 ✅ | 992 ✅ | 0.105 ✅ | 0.176 ✅ | no |
+| `reo_mikage` | copier_hrp | `W11WWW` | W | 0.002 ✅ | 6/7 ✅ | W | W | W | **YES** (waiver) |
+| `nagi_seishiro` | confluence_only | `101111` | 0.436 ✅ | 0.000 ❌ | 7/7 ✅ | 658 ✅ | 0.245 ✅ | 0.128 ✅ | no |
+| `barou_shoei` | solo_king | `001111` | 0.283 ❌ | 0.000 ❌ | 7/7 ✅ | 2080 ✅ | 0.283 ✅ | 0.195 ✅ | no |
+
+**Companion result (arm4): FAIL — 2/7 agents pass** (itoshi_rin
+`111111`; reo_mikage `W11WWW` PASS; isagi_yoichi `101111`;
+bachira_meguru `110111`; chigiri_hyoma `001111`; nagi_seishiro
+`101111`; barou_shoei `101111`).
+
+**C3 v1 vs C3 v2 side-by-side (advisory, per §11.14).** C3 v1 remains
+verdict-bearing pending user ratification. On the g7retry1 caches:
+
+| Agent | phi41 v1 clean | v1 pass | phi41 v2 clean | v2 pass | phi41 dup share | arm4 v1 clean | v1 pass | arm4 v2 clean | v2 pass | arm4 dup share |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `isagi_yoichi` | 7/7 | ✅ | 7/7 | ✅ | 34.6% | 7/7 | ✅ | 7/7 | ✅ | 36.7% |
+| `bachira_meguru` | 0/7 | ❌ | 0/7 | ❌ | 0.0% | 3/7 | ❌ | 3/7 | ❌ | 40.1% |
+| `itoshi_rin` | 7/7 | ✅ | 7/7 | ✅ | 0% | 7/7 | ✅ | 7/7 | ✅ | 0% |
+| `chigiri_hyoma` | 7/7 | ✅ | 7/7 | ✅ | 0% | 7/7 | ✅ | 7/7 | ✅ | 0% |
+| `reo_mikage` | 6/7 | ✅ | 6/7 | ✅ | 0% | 6/7 | ✅ | 6/7 | ✅ | 0% |
+| `nagi_seishiro` | 7/7 | ✅ | 7/7 | ✅ | 0% | 7/7 | ✅ | 7/7 | ✅ | 0% |
+| `barou_shoei` | 7/7 | ✅ | 7/7 | ✅ | 0% | 7/7 | ✅ | 7/7 | ✅ | 0% |
+
+**C3 v2 finding is material.** In §11.13 the Bachira→Barou worst-peer
+duplicate share was 89 % (phi41) / 94 % (arm4) — a genuine duplication
+artifact. Phase Y v1.3 differentiated Barou to the point that in
+g7retry1 the worst-peer duplicate share for Bachira is **0.0 %
+(phi41) / 40.1 % (arm4)**; and yet **Bachira still fails C3 v2** in
+both arms (0/7 phi41, 3/7 arm4). This falsifies the §11.13 discussion
+item 1 hypothesis that Bachira's C3 fail was a duplication artifact:
+after de-duplicating Barou's trade stream, Bachira still cannibalises
+Barou's distinct trades. C3 v2 no longer changes Bachira's squad
+outcome; the amendment remains ADVISORY pending user ratification, but
+its expected upside has been retired by the evidence.
+
+**Comparison to §11.13 (honest delta table under phi41; ✅→❌ or vice versa flagged).**
+
+| Agent | §11.13 bits | §11.16 bits | Flipped | Notes |
+|---|---|---|---|---|
+| isagi | `111100` | `111111` | C5 ❌→✅, C6 ❌→✅ | Dispersion-r2 (F19 risk-normalised + F20 full-ATR) landed as predicted; now v1 PASS. |
+| bachira | `110101` | `110111` | C5 ❌→✅ | Dispersion-r2 F19 fixed C5 (0.089→0.475). C3 still fails; falsifies the duplication story (see above). |
+| rin | `111110` | `111111` | C6 ❌→✅ | F20 de-saturation delivered C6 exactly as pre-registered. |
+| chigiri | `001111` | `001111` | — | No flip. Pre-reg explicitly said dispersion-r2 made no C1/C2 prediction here; Phase Y did not touch Chigiri. Consistent with §11.13 discussion item 3 (Role Registry axes, not C2). |
+| reo | `W11WWW` | `W11WWW` | — | Waivers held; C2 pass via Rin unchanged. |
+| nagi | `101100` | `101111` | C5 ❌→✅, C6 ❌→✅ | Nagi's freshly-stamped borrowed provenance did what the banked pre-check could not: C5 0.000→0.245 AND C6 0.000→0.128 (both were exactly 0 in §11.13). C2 still fails (peer-lift CI gate remains hard at low volume). |
+| barou | `001101` | `001111` | C5 ❌→✅ | Dispersion-r2 fixed C5 (0.068→0.283). C1 still fails — panel mean 0.283 < 0.30 at n=43. **C1 REGRESSED at the volume level** relative to §11.13's n=62 phi41: Phase Y's USDCAD-only weapon reduced Barou's phi41 trades further. Arm 4 companion holds him at n=86 with a passing C1 (0.380, CI [0.299, 0.462]) — Phase Y's mean is up under arm4, volume is down. |
+
+**Arm 4 companion delta table.** §11.13 arm4 = 1/7 (rin only), §11.16
+arm4 = 2/7 (rin + reo). isagi arm4 flipped C5/C6 to ✅ as predicted but
+C2 (already ❌ in §11.13) stayed ❌, and Bachira arm4 flipped C3 from
+❌ (3/7) to still ❌ (3/7 unchanged) — Phase Y de-duplicated the trade
+stream (dup 94%→40%) but did not push Bachira above the 4-of-7 threshold
+under arm4 either. Barou arm4 gave up C5 fix but lost C1 (was passing at
+n=322 first-attempt arm4; now n=86 still passes, but the volume delta
+is real).
+
+**Where the squad still falls short.**
+
+1. **Bachira C3 is agent-level, not duplication-level.** With the
+   duplication story disproved on the second attempt, the remaining
+   Bachira C3 fail is a genuine trade-stream cannibalisation of
+   Barou's *distinct* trades. Neither dispersion nor Phase Y touches
+   this. A new pre-registration (Phase Z? or a Bachira-side weapon
+   differentiation analogue to Phase Y) would be required to attack it.
+2. **C2 bootstrap-CI gate remains hard for low-volume agents.**
+   Chigiri, Nagi, Barou fail C2 in both arms in §11.16 exactly as they
+   did in §11.13. Their peer-lift deltas are directionally present but
+   never clear the bootstrap CI gate at n = 43–300. This is a
+   sample-size problem more than a chemistry problem, consistent with
+   the Role Registry finding that their retention axes are C7/C8/C9.
+3. **Barou C1 under phi41 is volume-limited by Phase Y (USDCAD only).**
+   Panel mean 0.283 fails at n = 43. Under arm4 he passes C1 at n = 86;
+   the aggregator tension noted in §11.13 has widened, not narrowed.
+4. **Chigiri C1/C2** unchanged from §11.13 — Phase Y and dispersion-r2
+   made no pre-registered prediction here and none was found.
+
+**Per doctrine §3.11.5:** FAIL (< 5 agents PASS all six criteria in
+the verdict-bearing arm). No v2 arc authorised. The squad graduation
+decision toward live paper mode remains with the user; the
+pre-condition is NOT met on the second attempt either.
+
+**Artifacts.**
+
+- `reviews/g7_v1_checkpoint_final_g7retry1-phi41.{md,json}` (verdict-bearing)
+- `reviews/g7_v1_checkpoint_final_g7retry1-arm4.{md,json}` (companion)
+- `reviews/c3_v2_side_by_side_g7retry1-{phi41,arm4}.{md,json}` (advisory C3 v2)
+- `reviews/g7_v1_checkpoint_verdict_g7retry1-{phi41,arm4}.{md,json}` (partial C2/C3 diagnostic from LOO aggregator; kept for lineage)
+- `reviews/g7_v1_checkpoint_report_g7retry1-{phi41,arm4}.json` (LOO aggregator raw report)
+- `reviews/g7retry1_precheck/` (dispersion-r2 pre-check on banked §11.13 caches — binding stop rule §5.1, all predictions met)
+- `reviews/g7_leave_one_out_g7retry1-{phi41,arm4}/lo1_*` (7 × 2 leave-one-out replay caches; 3379–6936 trades per LOO)
+- `reviews/g7_replay_cache_g7retry1-{phi41,arm4}/` (fresh walk-forward baselines)
+
+**Standing user decisions.**
+
+1. **C3 v2 ratification (§11.14).** Still parked; the second-attempt
+   evidence shows C3 v2 is no longer the lever that would flip Bachira
+   (dup share collapsed under Phase Y but Bachira still fails v2 in
+   both arms). Ratifying v2 as verdict-bearing would not change the
+   §11.16 squad count. Recommended posture: leave v2 as an advisory
+   companion in the protocol, do not promote to verdict-bearing.
+2. **Third gate attempt: authorise / decline.** Two candidate directions
+   surfaced by §11.16 evidence, neither should be started without a
+   fresh pre-registration:
+   - Bachira C3 cannibalisation of Barou's *distinct* trades — requires
+     an agent-level Bachira analogue of Phase Y (weapon differentiation
+     between Bachira and Barou beyond conviction mechanics; see §11.9
+     postmortem lineage).
+   - Chigiri / Nagi / Barou C2 under low volume — either widen their
+     panels (e.g. multi-pair Barou reversal of the Phase Y USDCAD-only
+     scope, with a real pre-registered acceptance test) or accept the
+     Role Registry framing and re-scope G7 v1 checkpoint C2 for
+     structurally-low-volume playstyles (needs a §11.N amendment with
+     doctrine sign-off).
+3. **Kept levers.** Phase Y Barou v1.3, dispersion-r2 F19/F20 primitives,
+   and Nagi provenance borrow are already committed as first-class code
+   (commits `6457e86`, `2bf5194`). Their code stays; the squad-level
+   verdict on them under G7 v1 is captured by §11.16 above. Individual
+   lever protocols (`phase_y_barou_weapon/`, `dispersion_primitives_r2/`,
+   `c3_v2_distinctness/`) reference this section for the joint result.
+
+---
+
 ## 12. Verdict registry row (to be added)
 
 The G7 gate row for `docs/methodology/gate_verdict_registry.md`:
