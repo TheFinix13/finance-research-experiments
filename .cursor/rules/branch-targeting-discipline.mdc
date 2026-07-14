@@ -1,0 +1,93 @@
+---
+description: The commit-target branch is whatever the user has declared for the current session — never inferred from HEAD, repo naming, or file layout. If unset, ask.
+alwaysApply: true
+---
+
+# Branch-targeting discipline (finance-research-experiments)
+
+Canonical protocol: `/Users/the1finix/Documents/GitHub/brain-box/agents/branch-targeting-discipline.md`.
+
+Sibling hazard to file-level races
+(`concurrent-session-safety.mdc`): multiple agents can be committing to
+different branches of this repo at once. If you don't pin the target branch
+before you commit, the commit lands on whatever branch is checked out —
+potentially the wrong lane.
+
+## Core rule (per-session declaration)
+
+**The commit-target branch is whatever the user has explicitly declared for
+this session's work.** It is not a fixed property of the repo, not inferred
+from `HEAD`, and not inferred from the repo's name or which files you're
+touching. New branches may be created at any time and must be adapted to
+on the fly.
+
+- If the user has said "we're working on `main` this session" → you commit
+  only to `main`. `multi-agent-ensemble` is off-limits for this session.
+- If the user has said "we're working on `multi-agent-ensemble` this
+  session" → you commit only there. `main` is off-limits.
+- **If the user names a new branch to work on, that's the target — never
+  assume the checked-out branch.**
+- If the user has NOT declared a target branch for the current session's
+  work, **ASK** before staging or committing. Do not infer.
+
+## Current declared mapping (illustrative, subject to user's per-session direction)
+
+This is the mapping in force at 2026-07-14. It is a *snapshot* of past
+declarations, not a canonical hardcoding — the user may reassign a branch
+or introduce a new one at any time, and that per-session direction wins.
+
+| Branch | Lane (as currently declared) |
+|---|---|
+| `main` | E0xx six-study research registry canonical state (locked / merged experiments, DATA_LEDGER / EXPERIMENTS updates) |
+| `multi-agent-ensemble` | Active M001 program (Blue Lock squad, G7 gate, Phase W / X / Y work) **plus most in-flight E0xx** (E017-E019 lived here at 2026-07-14 pre-merge) |
+| Any other branch | UNKNOWN unless the user has assigned it for this session |
+
+As of 2026-07-14 `git branch -a` shows only `main` and `multi-agent-ensemble`
+(plus their `origin/` mirrors); any other branch that appears later is
+UNKNOWN until the user assigns it for the current session.
+
+## Hard rule
+
+**If the user has told you which branch this session's work targets, you
+have no business touching any other branch.** Never assume the
+currently-checked-out branch is the intended target. Delegation prompts
+that involve `git commit` / `git push` MUST explicitly state the target
+branch and the one-line WHY; workers receiving a delegation without that
+MUST refuse and ask.
+
+## Pre-commit (short form)
+
+1. `git branch --show-current` — matches the branch the user declared for
+   this session's WORK?
+2. `git status --short` — no foreign files (see
+   `concurrent-session-safety.mdc` for how to spot another lane's WIP —
+   E0xx artifacts under `experiments/E0xx…` and `programs/E0xx/`,
+   M001 artifacts under `programs/M001_multi_agent_ensemble/`).
+3. `git log --oneline -5` on current, and on the intended target if
+   different.
+4. Stage explicit paths only. Never `git add -A` / `git add .`.
+5. If the declared target ≠ checked-out branch: `git checkout <target>`
+   FIRST, then stage and commit. Never commit wrong-branch on purpose and
+   cherry-pick as a matter of course.
+
+## Fixing a mistake
+
+Cherry-pick to the correct branch. No force-push, no history rewrite. Leave
+the wrong-branch commit alone unless the user asks for a revert. Report
+both branch states in the fix report.
+
+## See also
+
+- `/Users/the1finix/Documents/GitHub/finance-research-experiments/.cursor/rules/concurrent-session-safety.mdc`
+  — file-level race on the same working tree (the sibling hazard).
+- `/Users/the1finix/Documents/GitHub/brain-box/agents/branch-targeting-discipline.md`
+  — full protocol + incident log.
+
+## Why this rule exists
+
+2026-07-14: in the sibling repo `multi-pair-trading-agent`, a production
+reliability fix was delegated without a target-branch pin and landed on the
+wrong branch (`next-gen` instead of the `main` the user had declared for
+that session). This repo carries the same class of risk on
+`main` ↔ `multi-agent-ensemble`, and the same delegation discipline
+applies here.
