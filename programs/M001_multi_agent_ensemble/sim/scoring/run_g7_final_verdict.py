@@ -122,6 +122,62 @@ PARTIAL_PASS_MIN_AGENTS: int = 5
 DEFAULT_N_BOOT: int = 10_000
 DEFAULT_SEED: int = 42
 
+# ---------------------------------------------------------------------------
+# C2 finisher clause (2026-07-14, ADVISORY pending user ratification).
+# Pre-registration: ``experiments/c2_finisher_clause/PROTOCOL.md``;
+# campaign Lever D, G7 PROTOCOL sec 11.17. A confluence-gated agent
+# satisfies C2 via the clause iff >= 2 distinct peers' C2 evaluations
+# list it as a qualifying peer (statistically-qualified INCOMING lifts
+# under the evaluator's own CI-gated letter -- no new statistic).
+# The clause NEVER touches the verdict-bearing bit vectors.
+# ---------------------------------------------------------------------------
+C2_FINISHER_ELIGIBLE_PLAYSTYLES: frozenset[str] = frozenset(
+    {"confluence_only"}
+)
+C2_FINISHER_MIN_INCOMING_LIFTS: int = 2
+
+
+def evaluate_c2_finisher_clause(
+    agent_id: str,
+    *,
+    playstyle: str,
+    c2_by_excluded: dict[str, "CriterionResult"],
+) -> dict[str, Any]:
+    """Advisory finisher-clause outcome for one agent (pure).
+
+    ``c2_by_excluded`` maps each roster agent id to ITS OWN C2 result
+    (excluded = that agent). Agent ``agent_id`` has an incoming lift
+    from peer ``p`` iff ``agent_id`` appears in ``p``'s
+    ``qualifying_peers`` -- i.e. removing ``p`` significantly hurts
+    ``agent_id`` under the locked C2 qualification test.
+    """
+    eligible = playstyle in C2_FINISHER_ELIGIBLE_PLAYSTYLES
+    incoming: list[str] = []
+    if eligible:
+        for peer, res in c2_by_excluded.items():
+            if peer == agent_id or res is None:
+                continue
+            quals = (res.evidence or {}).get("qualifying_peers") or []
+            if agent_id in quals:
+                incoming.append(peer)
+    clause_pass = (
+        eligible and len(incoming) >= C2_FINISHER_MIN_INCOMING_LIFTS
+    )
+    return {
+        "eligible": eligible,
+        "playstyle": playstyle,
+        "incoming_lifting_peers": sorted(incoming),
+        "n_incoming_lifts": len(incoming),
+        "min_incoming_lifts": C2_FINISHER_MIN_INCOMING_LIFTS,
+        "clause_pass": clause_pass,
+        "status": "advisory",
+        "rule": (
+            "playstyle in {confluence_only} AND >= 2 distinct peers "
+            "whose C2 evaluation lists this agent as a qualifying peer "
+            "(evaluator's existing CI-gated letter, no new statistic)"
+        ),
+    }
+
 
 # ---------------------------------------------------------------------------
 # Cache readers
@@ -538,9 +594,13 @@ class G7FinalReport:
     verdict: str = "FAIL"          # "PASS" | "PARTIAL PASS" | "FAIL"
     n_agents_passing: int = 0
     notes: list[str] = field(default_factory=list)
+    # C2 finisher clause (Lever D, ADVISORY -- never verdict-bearing).
+    advisory_c2_finisher: dict[str, dict[str, Any]] | None = None
+    advisory_squad_verdict_with_clause: str | None = None
+    advisory_n_agents_passing_with_clause: int | None = None
 
     def to_jsonable(self) -> dict:
-        return {
+        out = {
             "tag": self.tag,
             "arm": self.arm,
             "protocol": "experiments/G7_v1_checkpoint_gate/PROTOCOL.md",
@@ -557,6 +617,15 @@ class G7FinalReport:
                 aid: v.to_jsonable() for aid, v in self.per_agent.items()
             },
         }
+        if self.advisory_c2_finisher is not None:
+            out["advisory_c2_finisher"] = self.advisory_c2_finisher
+            out["advisory_squad_verdict_with_clause"] = (
+                self.advisory_squad_verdict_with_clause
+            )
+            out["advisory_n_agents_passing_with_clause"] = (
+                self.advisory_n_agents_passing_with_clause
+            )
+        return out
 
 
 def squad_verdict(per_agent: dict[str, AgentVerdict]) -> tuple[str, int]:
@@ -612,6 +681,7 @@ def run_final_verdict(
     n_boot: int = DEFAULT_N_BOOT,
     seed: int = DEFAULT_SEED,
     agents_by_id: dict[str, Any] | None = None,
+    c2_finisher_clause: bool = False,
 ) -> G7FinalReport:
     """Compose the on-disk caches into the final six-criterion verdict.
 
@@ -710,6 +780,46 @@ def run_final_verdict(
     report.verdict, report.n_agents_passing = squad_verdict(
         report.per_agent,
     )
+
+    # Lever D (2026-07-14): advisory C2 finisher clause. Computed AFTER
+    # the verdict-bearing squad verdict; never mutates v.criteria, so
+    # the bit vectors and verdict above are byte-identical with the
+    # flag on or off.
+    if c2_finisher_clause:
+        c2_by_excluded = {
+            aid: v.criteria.get(2)
+            for aid, v in report.per_agent.items()
+        }
+        advisory: dict[str, dict[str, Any]] = {}
+        n_adv_pass = 0
+        for aid in G7_FINAL_ROSTER:
+            v = report.per_agent.get(aid)
+            if v is None:
+                continue
+            block = evaluate_c2_finisher_clause(
+                aid, playstyle=v.playstyle, c2_by_excluded=c2_by_excluded,
+            )
+            if block["eligible"]:
+                advisory[aid] = block
+            # Advisory pass: verdict-bearing pass, OR the ONLY failing
+            # criterion is C2 and the clause covers it (waiver-style).
+            fails = [
+                i for i in range(1, 7)
+                if (r := v.criteria.get(i)) is None
+                or r.status == "pending" or not r.passed
+            ]
+            if v.is_v1_pass or (fails == [2] and block["clause_pass"]):
+                n_adv_pass += 1
+        if n_adv_pass == len(G7_FINAL_ROSTER):
+            adv_verdict = "PASS"
+        elif n_adv_pass >= PARTIAL_PASS_MIN_AGENTS:
+            adv_verdict = "PARTIAL PASS"
+        else:
+            adv_verdict = "FAIL"
+        report.advisory_c2_finisher = advisory
+        report.advisory_squad_verdict_with_clause = adv_verdict
+        report.advisory_n_agents_passing_with_clause = n_adv_pass
+
     report.notes = [
         "All statistics OOS-only (union of the 7 rolling OOS windows); "
         "differs from the diagnostic lo1 verdicts which pooled IS+OOS.",
@@ -719,6 +829,13 @@ def run_final_verdict(
         "pure playstyle-dispatched F19/F20 primitives (no agent "
         "overrides exist).",
     ]
+    if c2_finisher_clause:
+        report.notes.append(
+            "C2 finisher clause evaluated ADVISORY-ONLY (experiments/"
+            "c2_finisher_clause/PROTOCOL.md, pending user ratification); "
+            "verdict-bearing bit vectors and squad verdict are computed "
+            "without it."
+        )
 
     if out_dir is not None:
         odir = Path(out_dir)
@@ -793,6 +910,26 @@ def render_final_report(report: G7FinalReport) -> str:
         "delta; C3 clean windows; C4 min(publish, read); C5/C6 CV)."
     )
     lines.append("")
+    if report.advisory_c2_finisher is not None:
+        lines.append("## ADVISORY -- C2 finisher clause (Lever D, pending ratification)")
+        lines.append("")
+        lines.append(
+            f"Advisory squad verdict WITH the clause: "
+            f"**{report.advisory_squad_verdict_with_clause}** "
+            f"({report.advisory_n_agents_passing_with_clause}/"
+            f"{len(G7_FINAL_ROSTER)}). The verdict-bearing numbers above "
+            f"are unaffected."
+        )
+        lines.append("")
+        for aid, block in report.advisory_c2_finisher.items():
+            lines.append(
+                f"- `{aid}` ({block['playstyle']}): "
+                f"{'W (clause pass)' if block['clause_pass'] else 'clause NOT satisfied'} "
+                f"-- {block['n_incoming_lifts']} qualified incoming "
+                f"lift(s) {block['incoming_lifting_peers']} "
+                f"(need >= {block['min_incoming_lifts']})"
+            )
+        lines.append("")
     lines.append("## Notes")
     lines.append("")
     for n in report.notes:
@@ -871,6 +1008,14 @@ def build_arg_parser() -> argparse.ArgumentParser:
                    default=Path("programs/M001_multi_agent_ensemble/reviews"))
     p.add_argument("--n-boot", type=int, default=DEFAULT_N_BOOT)
     p.add_argument("--seed", type=int, default=DEFAULT_SEED)
+    p.add_argument(
+        "--c2-finisher-clause", action="store_true",
+        help=(
+            "Also evaluate the ADVISORY C2 finisher clause "
+            "(experiments/c2_finisher_clause/PROTOCOL.md); "
+            "verdict-bearing outputs are unchanged."
+        ),
+    )
     p.add_argument("-v", "--verbose", action="count", default=0)
     return p
 
@@ -890,6 +1035,7 @@ def main(argv: list[str] | None = None) -> int:
         out_dir=args.out_dir,
         n_boot=args.n_boot,
         seed=args.seed,
+        c2_finisher_clause=bool(args.c2_finisher_clause),
     )
     print(
         f"G7 FINAL verdict [{args.tag}] ({args.arm}): {report.verdict} "
@@ -900,6 +1046,13 @@ def main(argv: list[str] | None = None) -> int:
         if v is not None:
             print(f"  {aid:<18} {v.bit_vector}  "
                   f"{'v1 PASS' if v.is_v1_pass else 'no'}")
+    if report.advisory_squad_verdict_with_clause is not None:
+        print(
+            f"  [ADVISORY c2-finisher-clause] "
+            f"{report.advisory_squad_verdict_with_clause} "
+            f"({report.advisory_n_agents_passing_with_clause}/"
+            f"{len(G7_FINAL_ROSTER)})"
+        )
     return 0
 
 

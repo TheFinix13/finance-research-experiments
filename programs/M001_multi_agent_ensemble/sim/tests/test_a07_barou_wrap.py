@@ -127,7 +127,14 @@ def _make_barou():
 # ---------------------------------------------------------------------------
 
 def test_barou_abstains_on_eurusd_observe_and_intend():
-    barou = _make_barou()
+    # Phase AB (2026-07-14): the default whitelist now includes
+    # EURUSD/GBPUSD; the single-symbol construction pins the legacy
+    # off-symbol abstention contract (see test_phase_ab_barou_multipair
+    # for the multi-pair behaviour).
+    from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+        A7BarouV1,
+    )
+    barou = A7BarouV1(symbols=["USDCAD"])
     market = MarketState(
         tick_id=0, symbol="EURUSD", timeframe="H4",
         as_of=datetime(2024, 1, 1, tzinfo=timezone.utc),

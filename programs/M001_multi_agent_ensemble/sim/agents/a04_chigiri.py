@@ -130,6 +130,28 @@ CHIGIRI_V1_WARMUP_BARS: int = (
     CHIGIRI_V1_BREAKOUT_LOOKBACK + CHIGIRI_V1_ATR_VOL_LOOKBACK + 5
 )
 
+# ---------------------------------------------------------------------------
+# Phase AA (2026-07-14) -- Chigiri v1.4 panther-ignition weapon.
+# Pre-registration: ``experiments/phase_aa_chigiri_ignition/PROTOCOL.md``
+# (committed before any result). §11.16: C1 mean 0.267 < 0.30, C2 no
+# qualifying peer. Phase U (banked): Chigiri's REJECTED proposals
+# out-scored his accepted ones -- the v1 magnitude hurdle (>= 0.5 ATR
+# past the level, the "confirmation tax") makes him a late
+# confirmation trader, the opposite of the canon.
+#
+# v1.4 fires on the FIRST H4 close beyond the 20-bar range -- no
+# distance hurdle -- but only when the breakout bar is an IGNITION
+# bar: its true range shows acceleration vs the immediately preceding
+# bars (TR[i] >= thrust_ratio x mean(TR[i-window..i-1])). Constants
+# are drawn from the 1.5x family already frozen in this cell
+# (REGIME_MIN_MAG_ATR / REGIME_ATR_MULT / target_rr) and the existing
+# +5 warmup pad -- zero new tuning.
+# ---------------------------------------------------------------------------
+CHIGIRI_V14_IGNITION_PARAMS: dict[str, float | int] = {
+    "thrust_ratio": 1.5,   # from the locked 1.5x family
+    "thrust_window": 5,    # matches the +5 warmup pad
+}
+
 CHIGIRI_V1_SYMBOLS: tuple[str, ...] = ("EURUSD", "GBPUSD")
 
 CHIGIRI_V1_CANON_ROLE = CanonRole(
@@ -148,6 +170,22 @@ class _PreparedSeries:
     bars: list                 # list of objects with .time, .open, .high, .low, .close
     index_by_ts: dict[datetime, int]
     atr: list[float]           # ATR_14 series (same length as bars; NaN where < period)
+    tr: list[float]            # raw true-range series (Phase AA ignition gate)
+
+
+def _true_range_series(bars: list) -> list[float]:
+    """Raw true range per bar (same recurrence base as `_wilder_atr`)."""
+    n = len(bars)
+    tr: list[float] = [0.0] * n
+    for i in range(n):
+        h = float(bars[i].high)
+        l = float(bars[i].low)
+        if i == 0:
+            tr[i] = h - l
+            continue
+        pc = float(bars[i - 1].close)
+        tr[i] = max(h - l, abs(h - pc), abs(l - pc))
+    return tr
 
 
 def _wilder_atr(bars: list, period: int) -> list[float]:
@@ -207,6 +245,8 @@ class A4ChigiriV1(BaseStriker):
         canon_role: Optional[CanonRole] = None,
         home_tf: str = "H4",
         symbols: Optional[list[str]] = None,
+        *,
+        weapon_ignition: bool = True,
     ) -> None:
         super().__init__(
             agent_id=agent_id,
@@ -217,6 +257,10 @@ class A4ChigiriV1(BaseStriker):
             tier=2,
         )
         self._prepared: dict[str, _PreparedSeries] = {}
+        # Phase AA (2026-07-14): v1.4 panther-ignition weapon is the
+        # default; the legacy v1 magnitude-hurdle weapon stays available
+        # behind ``weapon_ignition=False`` for cache-reproduction tests.
+        self._weapon_ignition = bool(weapon_ignition)
 
     # ------------------------------------------------------------------
     # Harness API
@@ -230,9 +274,10 @@ class A4ChigiriV1(BaseStriker):
             )
             return
         atr = _wilder_atr(bars, CHIGIRI_V1_ATR_PERIOD)
+        tr = _true_range_series(bars)
         index_by_ts = {b.time: i for i, b in enumerate(bars)}
         self._prepared[symbol] = _PreparedSeries(
-            bars=list(bars), index_by_ts=index_by_ts, atr=atr,
+            bars=list(bars), index_by_ts=index_by_ts, atr=atr, tr=tr,
         )
         log.info(
             "A4ChigiriV1 prepared %s: %d bars, ATR ready", symbol, len(bars),
@@ -265,10 +310,20 @@ class A4ChigiriV1(BaseStriker):
         direction = sig["direction"]
         magnitude = float(sig["magnitude"])
         atr_at = float(sig["atr"])
-        boost = min(
-            CHIGIRI_V1_MAX_MAGNITUDE_BOOST,
-            CHIGIRI_V1_MAGNITUDE_BOOST_PER_ATR * (magnitude / max(atr_at, 1e-9)),
-        )
+        if self._weapon_ignition:
+            # Phase AA: boost driver is ACCELERATION (observed thrust
+            # ratio), not distance -- same coefficient, same cap.
+            thrust = float(sig["thrust_ratio_observed"] or 0.0)
+            boost = min(
+                CHIGIRI_V1_MAX_MAGNITUDE_BOOST,
+                CHIGIRI_V1_MAGNITUDE_BOOST_PER_ATR * thrust,
+            )
+        else:
+            boost = min(
+                CHIGIRI_V1_MAX_MAGNITUDE_BOOST,
+                CHIGIRI_V1_MAGNITUDE_BOOST_PER_ATR
+                * (magnitude / max(atr_at, 1e-9)),
+            )
         final_conv = min(
             CHIGIRI_V1_CONV_CAP, CHIGIRI_V1_BASE_CONVICTION + boost,
         )
@@ -291,14 +346,28 @@ class A4ChigiriV1(BaseStriker):
             f"breakout_level:{sig['broken_level']:.5f}",
             "regime:vol_expansion",
         ]
-        narrative = (
-            f"[chigiri v1] {market.symbol} H4 close {market.as_of}: "
-            f"{direction} breakout of "
-            f"{CHIGIRI_V1_BREAKOUT_LOOKBACK}-bar range; "
-            f"magnitude={magnitude:.5f} ({magnitude / atr_at:.2f} ATR); "
-            f"ATR={atr_at:.5f}; conv "
-            f"{CHIGIRI_V1_BASE_CONVICTION:.2f}+{boost:.2f}={final_conv:.2f}."
-        )
+        if self._weapon_ignition:
+            tags.append("chigiri_ignition_bar")
+            narrative = (
+                f"[chigiri v1.4] {market.symbol} H4 close {market.as_of}: "
+                f"{direction} FIRST close beyond "
+                f"{CHIGIRI_V1_BREAKOUT_LOOKBACK}-bar range on ignition bar "
+                f"(thrust {float(sig['thrust_ratio_observed'] or 0.0):.2f}x "
+                f"vs prior-{CHIGIRI_V14_IGNITION_PARAMS['thrust_window']} "
+                f"mean TR); ATR={atr_at:.5f}; conv "
+                f"{CHIGIRI_V1_BASE_CONVICTION:.2f}+{boost:.2f}"
+                f"={final_conv:.2f}."
+            )
+        else:
+            narrative = (
+                f"[chigiri v1] {market.symbol} H4 close {market.as_of}: "
+                f"{direction} breakout of "
+                f"{CHIGIRI_V1_BREAKOUT_LOOKBACK}-bar range; "
+                f"magnitude={magnitude:.5f} ({magnitude / atr_at:.2f} ATR); "
+                f"ATR={atr_at:.5f}; conv "
+                f"{CHIGIRI_V1_BASE_CONVICTION:.2f}+{boost:.2f}"
+                f"={final_conv:.2f}."
+            )
         return Thought(
             schema_version=SCHEMA_VERSION,
             agent_id=self.agent_id,
@@ -409,6 +478,16 @@ class A4ChigiriV1(BaseStriker):
 
         proposal_rationale: dict[str, Any] = {
             "wrapped": "internal:atr_breakout_continuation_v1",
+            # Phase AA (2026-07-14): weapon + observed thrust ratio.
+            "weapon": (
+                "chigiri_v14_ignition" if self._weapon_ignition
+                else "chigiri_v1"
+            ),
+            "ignition_params": dict(CHIGIRI_V14_IGNITION_PARAMS),
+            "thrust_ratio_observed": (
+                sig_verify.get("thrust_ratio_observed")
+                if sig_verify is not None else None
+            ),
             "breakout_lookback": CHIGIRI_V1_BREAKOUT_LOOKBACK,
             "atr_period": CHIGIRI_V1_ATR_PERIOD,
             "breakout_atr_mult": CHIGIRI_V1_BREAKOUT_ATR_MULT,
@@ -506,18 +585,44 @@ class A4ChigiriV1(BaseStriker):
         recent_high = max(float(bars[k].high) for k in range(lookback_lo, i))
         recent_low = min(float(bars[k].low) for k in range(lookback_lo, i))
         close_i = float(bars[i].close)
-        threshold = CHIGIRI_V1_BREAKOUT_ATR_MULT * atr_at
 
-        if close_i - recent_high >= threshold:
-            direction = "long"
-            broken_level = recent_high
-            magnitude = close_i - recent_high
-        elif recent_low - close_i >= threshold:
-            direction = "short"
-            broken_level = recent_low
-            magnitude = recent_low - close_i
+        thrust_ratio_observed: float | None = None
+        if self._weapon_ignition:
+            # Phase AA v1.4: FIRST close beyond the range (no magnitude
+            # hurdle), gated on the ignition thrust of the breakout bar.
+            if close_i > recent_high:
+                direction = "long"
+                broken_level = recent_high
+                magnitude = close_i - recent_high
+            elif close_i < recent_low:
+                direction = "short"
+                broken_level = recent_low
+                magnitude = recent_low - close_i
+            else:
+                return None
+            window = int(CHIGIRI_V14_IGNITION_PARAMS["thrust_window"])
+            prior_tr = prep.tr[i - window:i]
+            mean_prior_tr = sum(prior_tr) / float(window)
+            if mean_prior_tr <= 0.0:
+                return None
+            thrust_ratio_observed = prep.tr[i] / mean_prior_tr
+            if thrust_ratio_observed < float(
+                CHIGIRI_V14_IGNITION_PARAMS["thrust_ratio"]
+            ):
+                return None
         else:
-            return None
+            # Legacy v1 (locked Phi4.1): magnitude hurdle past the level.
+            threshold = CHIGIRI_V1_BREAKOUT_ATR_MULT * atr_at
+            if close_i - recent_high >= threshold:
+                direction = "long"
+                broken_level = recent_high
+                magnitude = close_i - recent_high
+            elif recent_low - close_i >= threshold:
+                direction = "short"
+                broken_level = recent_low
+                magnitude = recent_low - close_i
+            else:
+                return None
 
         if direction == "long":
             stop = broken_level - CHIGIRI_V1_STOP_ATR_MULT * atr_at
@@ -533,6 +638,14 @@ class A4ChigiriV1(BaseStriker):
             "direction": direction,
             "broken_level": float(broken_level),
             "magnitude": float(magnitude),
+            "weapon": (
+                "chigiri_v14_ignition" if self._weapon_ignition
+                else "chigiri_v1"
+            ),
+            "thrust_ratio_observed": (
+                float(thrust_ratio_observed)
+                if thrust_ratio_observed is not None else None
+            ),
             "atr": float(atr_at),
             "atr_median_vol": float(atr_median),
             "close": float(close_i),
@@ -640,6 +753,8 @@ def _coordinate_from_breakout(
             "take_profit": float(sig["take_profit"]),
             "broken_level": float(sig["broken_level"]),
             "magnitude": float(sig["magnitude"]),
+            "weapon": sig.get("weapon", "chigiri_v1"),
+            "thrust_ratio_observed": sig.get("thrust_ratio_observed"),
             "atr": float(sig["atr"]),
             "atr_median_vol": float(sig["atr_median_vol"]),
             "signal_reason": "chigiri_speed_breakout_continuation",

@@ -111,6 +111,30 @@ BACHIRA_V1_PARAMS: dict[str, Any] = {
     "target_rr": 1.5,
 }
 
+# ---------------------------------------------------------------------------
+# Phase Z (2026-07-14) -- Bachira v1.4 weave-weapon differentiation.
+# Pre-registration: ``experiments/phase_z_bachira_weave/PROTOCOL.md``
+# (committed before any result). §11.16 falsified the duplication story
+# (dup share 89%->0% under Phase Y, Bachira still fails C3 v1+v2): the
+# residual suppression channel is the single-position slot mutex on
+# ticks where both Bachira (ungated) and Barou (D1-with) fire. v1.4
+# shrinks Bachira's fire set to the D1-NEUTRAL subset -- the canonical
+# "no open lane, weave through congestion" read -- which is the exact
+# set-complement of Barou's with-gate AND Isagi's against-gate, so the
+# three zone-family strikers partition the D1-bias space and can never
+# co-propose from the same signal tick.
+#
+# Gate params are copied verbatim from Isagi's locked E001-derived cell
+# (ISAGI_V1_PARAMS) -- zero re-tuning. The gate predicate (bias is
+# NEUTRAL) is the set-complement of the two locked sibling gates, not a
+# searched value.
+# ---------------------------------------------------------------------------
+BACHIRA_V14_WEAVE_PARAMS: dict[str, Any] = {
+    "htf": "D1",
+    "htf_lookback": 10,          # verbatim from ISAGI_V1_PARAMS
+    "htf_min_move_pips": 60.0,   # verbatim from ISAGI_V1_PARAMS
+}
+
 BACHIRA_V1_SYMBOLS: tuple[str, ...] = ("EURUSD", "GBPUSD", "USDCAD")
 
 BACHIRA_V1_REBEL_LIFT: float = 0.10        # +0.10 to base conviction
@@ -160,6 +184,7 @@ class A2BachiraV1(BaseStriker):
         symbols: Optional[list[str]] = None,
         *,
         production_cfg: Any | None = None,
+        weapon_weave: bool = True,
     ) -> None:
         super().__init__(
             agent_id=agent_id,
@@ -176,6 +201,10 @@ class A2BachiraV1(BaseStriker):
         self._cfg = production_cfg if production_cfg is not None else load_config()
         self._inner = SupplyDemandAlpha(cfg=self._cfg, **BACHIRA_V1_PARAMS)
         self._prepared: dict[str, _PreparedSeries] = {}
+        # Phase Z (2026-07-14): v1.4 weave gate is the default; the
+        # legacy ungated v1 weapon stays available behind
+        # ``weapon_weave=False`` for cache-reproduction tests only.
+        self._weapon_weave = bool(weapon_weave)
 
     # ------------------------------------------------------------------
     # Harness API
@@ -233,6 +262,15 @@ class A2BachiraV1(BaseStriker):
         if sig is None:
             return self._abstain_thought(market, reason="no_zone_touch")
 
+        # Phase Z weave gate: only weave when there is NO open lane
+        # (D1 bias NEUTRAL). UP/DOWN lanes belong to Barou (with) and
+        # Isagi (against) -- structural disjointness on the signal tick.
+        weave_bias = self._weave_bias_at(prep, i)
+        if self._weapon_weave and weave_bias != "neutral":
+            return self._abstain_thought(
+                market, reason=f"bachira_weave_abstain_d1_{weave_bias}",
+            )
+
         direction = sig.direction.value
         base_conv = float(sig.conviction)
         rebel_fired = self._has_opposite_recent_swing(
@@ -260,6 +298,8 @@ class A2BachiraV1(BaseStriker):
             f"signal_reason:{sig.reason}",
             f"direction:{direction}",
         ]
+        if self._weapon_weave:
+            tags.append("bachira_weave_gate_neutral")
         if rebel_fired:
             tags.append("bachira_rebel_lift_applied")
         narrative = (
@@ -324,6 +364,13 @@ class A2BachiraV1(BaseStriker):
         if sig is None:
             return None
 
+        # Phase Z weave gate re-check (mirrors observe(); the observed
+        # Thought on a gated tick is an abstention, but the double-check
+        # keeps intend() safe against stale thoughts).
+        weave_bias = self._weave_bias_at(prep, i)
+        if self._weapon_weave and weave_bias != "neutral":
+            return None
+
         direction = sig.direction.value
         # Base conviction from the observed Thought (already carries the
         # rebel lift). The F21 peer-confluence-with-Isagi bonus stacks
@@ -347,6 +394,11 @@ class A2BachiraV1(BaseStriker):
         rationale: dict[str, Any] = {
             "wrapped": "agent.alphas.concepts.zone_alpha.SupplyDemandAlpha",
             "params": dict(BACHIRA_V1_PARAMS),
+            "weapon": (
+                "bachira_v14_weave" if self._weapon_weave else "bachira_v1"
+            ),
+            "weave_params": dict(BACHIRA_V14_WEAVE_PARAMS),
+            "weave_gate_bias": weave_bias,
             "signal_reason": sig.reason,
             "htf_align": meta.get("htf_align"),  # None for Bachira
             "bar_index": int(i),
@@ -407,6 +459,28 @@ class A2BachiraV1(BaseStriker):
         if peer is None or peer.coordinate is None:
             return False
         return str(peer.coordinate.direction_bias) == direction
+
+    # ------------------------------------------------------------------
+    # Phase Z -- weave gate (D1-bias read)
+    # ------------------------------------------------------------------
+
+    def _weave_bias_at(self, prep: _PreparedSeries, i: int) -> str:
+        """Return the D1 bias at bar ``i`` as ``"up" | "down" | "neutral"``.
+
+        Same ``htf_bias_at`` read (and verbatim gate params) as the
+        Isagi/Barou locked cells -- Bachira just consumes the third
+        value of the partition. Pure function of prepared bars; no
+        state.
+        """
+        from agent.alphas.concepts._htf import htf_bias_at  # noqa: E402
+
+        bias = htf_bias_at(
+            prep.bars, i,
+            htf=BACHIRA_V14_WEAVE_PARAMS["htf"],
+            htf_lookback=BACHIRA_V14_WEAVE_PARAMS["htf_lookback"],
+            min_move_pips=BACHIRA_V14_WEAVE_PARAMS["htf_min_move_pips"],
+        )
+        return str(bias.value)
 
     # ------------------------------------------------------------------
     # Rebel-lift predicate

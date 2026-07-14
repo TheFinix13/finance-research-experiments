@@ -44,8 +44,11 @@ design / refuses to participate in chemical reactions" describes the
 Symbols
 -------
 
-USDCAD only. EURUSD / GBPUSD ticks produce observation-only Thoughts
-with the `barou_abstain_symbol` tag; `intend` returns None.
+Historically USDCAD only. Phase AB (2026-07-14,
+``experiments/phase_ab_barou_multipair/PROTOCOL.md``) expanded the
+whitelist to USDCAD + EURUSD + GBPUSD with the v1.3 weapon params
+byte-unchanged; the devour lift, H1 lone-conviction lift and H2
+continuation entry remain USDCAD (home-ground) privileges.
 
 Cross-repo import is bracketed by
 `sim._cross_repo.ensure_production_repo_on_path()`; the contract is
@@ -129,7 +132,19 @@ BAROU_V13_PARAMS: dict[str, Any] = {
     "stop_atr_mult": 1.0,
 }
 
-BAROU_V1_SYMBOLS: tuple[str, ...] = ("USDCAD",)
+# ---------------------------------------------------------------------------
+# Phase AB (2026-07-14) -- multi-pair scope reversal.
+# Pre-registration: ``experiments/phase_ab_barou_multipair/PROTOCOL.md``.
+# §11.16: the v1.3 weapon starves under phi41 at USDCAD-only (n=43 OOS,
+# C1 mean 0.283 < 0.30). Doctrine §3.11.3 A7 mechanic B (2026-06-30)
+# pre-registered the whitelist expansion; Phase AB activates it with
+# BAROU_V13_PARAMS byte-unchanged. Home-ground privileges (devour lift
+# + v1.1 lone-conviction lift) stay USDCAD-only per the mechanic-B
+# letter ("the devour lift remains USDCAD-only -- EURUSD/GBPUSD slice
+# runs raw").
+# ---------------------------------------------------------------------------
+BAROU_V1_SYMBOLS: tuple[str, ...] = ("USDCAD", "EURUSD", "GBPUSD")
+BAROU_HOME_SYMBOL: str = "USDCAD"
 
 BAROU_V1_DEVOUR_LIFT: float = 0.20           # +0.20 to conviction
 BAROU_V1_DEVOUR_OBS_FLOOR: float = 0.5       # Isagi conviction threshold
@@ -346,7 +361,19 @@ class A7BarouV1(BaseStriker):
 
         direction = sig.direction.value  # "long" | "short"
         base_conv = float(sig.conviction)
-        devour_info = self._maybe_apply_devour(market, ledger, direction)
+        # Phase AB: the devour lift is a HOME-GROUND privilege
+        # (doctrine §3.11.3 A7 mechanic B letter) -- off-USDCAD the
+        # weapon runs raw.
+        if market.symbol == BAROU_HOME_SYMBOL:
+            devour_info = self._maybe_apply_devour(market, ledger, direction)
+        else:
+            devour_info = {
+                "fired": False,
+                "isagi_direction": None,
+                "isagi_conviction": 0.0,
+                "references": [],
+                "reason": "off_home_ground",
+            }
         final_conv = min(
             BAROU_V1_CONV_CAP,
             base_conv + (BAROU_V1_DEVOUR_LIFT if devour_info["fired"] else 0.0),
@@ -381,8 +408,8 @@ class A7BarouV1(BaseStriker):
             if self._weapon_v13 else "baseline-zone fade (NO D1 gate)"
         )
         narrative = (
-            f"[barou {'v1.3' if self._weapon_v13 else 'v1'}] USDCAD H4 "
-            f"close {market.as_of}: {weapon_desc} "
+            f"[barou {'v1.3' if self._weapon_v13 else 'v1'}] "
+            f"{market.symbol} H4 close {market.as_of}: {weapon_desc} "
             f"{direction}. entry={sig.entry:.5f} "
             f"stop={sig.stop:.5f} tp={sig.take_profit:.5f}; "
             f"conv {base_conv:.2f}"
@@ -403,7 +430,7 @@ class A7BarouV1(BaseStriker):
             narrative=narrative,
             tags=tags,
             confidence_in_thought=float(final_conv),
-            expected_action=f"{direction}_on_H4_close_USDCAD",
+            expected_action=f"{direction}_on_H4_close_{market.symbol}",
             coordinate=coord,
             decision_horizon=market.as_of,
             ttl_ticks=6,
@@ -481,6 +508,14 @@ class A7BarouV1(BaseStriker):
         lone_conviction_lift_applied: float = 0.0
         yield_reason: str = "workspace_unavailable"
         workspace_snapshot_ok: bool = workspace is not None
+        # Phase AB: H1 lone-conviction + H2 continuation are HOME-GROUND
+        # privileges like the devour lift -- off-USDCAD the weapon runs
+        # raw (no conviction lifts, no anchored geometry). The F21
+        # workspace read of Isagi's direction still happens on all
+        # symbols (C4 provenance is not a lift).
+        on_home_ground = market.symbol == BAROU_HOME_SYMBOL
+        if not on_home_ground:
+            yield_reason = "off_home_ground"
         if workspace is not None:
             latest_by_agent = workspace.latest_by_agent(symbol=market.symbol)
             isagi_t = latest_by_agent.get(BAROU_ISAGI_AGENT_ID)
@@ -491,6 +526,8 @@ class A7BarouV1(BaseStriker):
                         workspace_isagi_direction != direction
                     )
             # H1 gate: read Bachira's latest same-symbol thought.
+            # Phase AB: read happens everywhere (provenance); the H1/H2
+            # branches below only run on home ground.
             bachira_t = latest_by_agent.get(BAROU_BACHIRA_AGENT_ID)
             if bachira_t is not None and bachira_t.coordinate is not None:
                 bachira_direction = str(bachira_t.coordinate.direction_bias)
@@ -501,7 +538,9 @@ class A7BarouV1(BaseStriker):
             #   bachira_read_present=False        -> H1 fires (genuine solo)
             #   bachira_same_direction=False      -> H1 fires (counter-conviction)
             #   bachira_same_direction=True       -> H1 skips (default devour path)
-            if not bachira_read_present:
+            if not on_home_ground:
+                pass  # Phase AB: no H1/H2 privileges off USDCAD
+            elif not bachira_read_present:
                 lone_conviction_active = True
                 yield_reason = "peer_did_not_read_this_setup"
             elif not bachira_same_direction:
@@ -559,6 +598,9 @@ class A7BarouV1(BaseStriker):
             "wrapped": "agent.alphas.concepts.zone_alpha.SupplyDemandAlpha",
             "params": dict(self._weapon_params),
             "weapon": "barou_v13" if self._weapon_v13 else "barou_v1",
+            # Phase AB (2026-07-14): multi-pair scope reversal; lifts
+            # (devour/H1/H2) are home-ground-only.
+            "barou_home_ground": bool(on_home_ground),
             "signal_reason": sig.reason,
             "htf_align": meta.get("htf_align"),
             "bar_index": int(i),
@@ -708,8 +750,7 @@ class A7BarouV1(BaseStriker):
             symbol=market.symbol,
             narrative=(
                 f"[barou v1] {market.symbol} {market.timeframe} @ "
-                f"{market.as_of} -- abstain ({reason}); USDCAD-only "
-                "specialist."
+                f"{market.as_of} -- abstain ({reason})."
             ),
             tags=tags,
             confidence_in_thought=0.0,

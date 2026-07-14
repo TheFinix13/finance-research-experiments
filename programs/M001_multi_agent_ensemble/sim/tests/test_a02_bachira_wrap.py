@@ -105,11 +105,11 @@ def _bar_to_market(bar, tick_id: int, symbol: str = "EURUSD") -> MarketState:
     )
 
 
-def _make_bachira():
+def _make_bachira(**kwargs):
     from programs.M001_multi_agent_ensemble.sim.agents.a02_bachira import (
         A2BachiraV1,
     )
-    return A2BachiraV1()
+    return A2BachiraV1(**kwargs)
 
 
 # ---------------------------------------------------------------------------
@@ -222,8 +222,11 @@ def test_bachira_observe_emits_proposal_grade_thought():
     """Sanity: when the inner alpha fires, observe emits a Thought with
     a Coordinate and a positive conviction tagged with canon:bachira.
     """
+    # Phase Z (2026-07-14): this test pins the LEGACY v1 weapon
+    # contract; the v1.4 weave gate is covered by
+    # test_phase_z_bachira_weave.py.
     bars = _build_synthetic_bars(600)
-    bachira = _make_bachira()
+    bachira = _make_bachira(weapon_weave=False)
     bachira.prepare("EURUSD", bars)
 
     fire_idx, fire_sig = _first_fire(bachira, bars)
@@ -279,8 +282,9 @@ def test_bachira_intend_carries_final_conviction():
     any rebel lift), so downstream aggregator + Nagi see the lifted
     value.
     """
+    # Phase Z (2026-07-14): legacy v1 weapon pin (see above).
     bars = _build_synthetic_bars(600)
-    bachira = _make_bachira()
+    bachira = _make_bachira(weapon_weave=False)
     bachira.prepare("EURUSD", bars)
 
     fire_idx, _ = _first_fire(bachira, bars)
