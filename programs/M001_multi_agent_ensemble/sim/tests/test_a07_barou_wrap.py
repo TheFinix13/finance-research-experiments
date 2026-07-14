@@ -158,11 +158,18 @@ def test_barou_wraps_baseline_zone_no_d1_gate():
     """The production SupplyDemandAlpha with `htf_align=None` is the
     baseline cell (no D1 trend gate). Confirm Barou's inner alpha emits
     the same signal as a raw baseline-zone SupplyDemandAlpha.
+
+    Phase Y (2026-07-14): this is the LEGACY v1 weapon, retained behind
+    ``weapon_v13=False``. The v1.3 weapon is covered by
+    ``test_a07_barou_v13_weapon.py``.
     """
     from agent.alphas.base import AlphaContext
     from agent.alphas.concepts.zone_alpha import SupplyDemandAlpha
     from agent.config import load_config
     from agent.rules.engine import precompute
+    from programs.M001_multi_agent_ensemble.sim.agents.a07_barou import (
+        A7BarouV1,
+    )
 
     bars = _build_synthetic_usdcad_bars(600)
     cfg = load_config()
@@ -179,7 +186,7 @@ def test_barou_wraps_baseline_zone_no_d1_gate():
     if not raw_signals:
         pytest.skip("synthetic USDCAD series produced no baseline zone signals")
 
-    barou = _make_barou()
+    barou = A7BarouV1(weapon_v13=False)
     barou.prepare("USDCAD", bars)
 
     for i in list(raw_signals.keys())[:5]:

@@ -95,6 +95,40 @@ BAROU_V1_PARAMS: dict[str, Any] = {
     "target_rr": 1.5,         # same RR as Isagi; rigid for parity
 }
 
+# ---------------------------------------------------------------------------
+# Phase Y (2026-07-14) -- Barou v1.3 weapon differentiation.
+# Pre-registration: ``experiments/phase_y_barou_weapon/PROTOCOL.md``
+# (committed before any result). Phase W-barou v1.2 HALT established
+# that the v1 weapon is a literal duplicate of Bachira's cell; v1.3
+# changes all three geometry legs so no Barou trade can duplicate a
+# Bachira trade:
+#
+# - D1 WITH-trend gate (roster sec 3.7 canon "USDCAD-locked H4 trend
+#   continuation"); gate params copied verbatim from Isagi's locked
+#   E001-derived cell with only the mode flipped -- zero re-tuning.
+# - Structural TP (production ``target_via_structure`` mode, shipped
+#   defaults) -- the solo king finishes the full move.
+# - ``stop_atr_mult = 1.0`` (2x the production default 0.5, a
+#   qualitative doubling) -- wide invalidation, room for the strike.
+#
+# Empirical basis (banked only): E005 side-note -- on USDCAD baseline
+# zone beats zone_d1_against, i.e. the with-trend complement subset
+# contributed positively. E001's with-trend negative was on EURUSD;
+# Barou stays USDCAD-locked precisely because of that prior.
+# ---------------------------------------------------------------------------
+BAROU_V13_PARAMS: dict[str, Any] = {
+    "name": "A7_barou_v13_king_trend_continuation_usdcad",
+    "htf_align": "D1",
+    "htf_align_mode": "with",
+    "htf_lookback": 10,          # verbatim from ISAGI_V1_PARAMS
+    "htf_min_move_pips": 60.0,   # verbatim from ISAGI_V1_PARAMS
+    "target_rr": 1.5,            # fallback when no structural target
+    "target_via_structure": True,
+    "structural_lookback": 200,  # production default
+    "min_structural_rr": 1.0,    # production default
+    "stop_atr_mult": 1.0,
+}
+
 BAROU_V1_SYMBOLS: tuple[str, ...] = ("USDCAD",)
 
 BAROU_V1_DEVOUR_LIFT: float = 0.20           # +0.20 to conviction
@@ -218,6 +252,7 @@ class A7BarouV1(BaseStriker):
         production_cfg: Any | None = None,
         isagi_agent_id: str = BAROU_ISAGI_AGENT_ID,
         continuation_entry_enabled: bool = False,
+        weapon_v13: bool = True,
     ) -> None:
         super().__init__(
             agent_id=agent_id,
@@ -232,7 +267,14 @@ class A7BarouV1(BaseStriker):
         from agent.config import load_config  # noqa: E402
 
         self._cfg = production_cfg if production_cfg is not None else load_config()
-        self._inner = SupplyDemandAlpha(cfg=self._cfg, **BAROU_V1_PARAMS)
+        # Phase Y (2026-07-14): v1.3 weapon is the default; the legacy
+        # v1 weapon stays available behind ``weapon_v13=False`` for
+        # cache-reproduction tests only.
+        self._weapon_v13 = bool(weapon_v13)
+        self._weapon_params: dict[str, Any] = dict(
+            BAROU_V13_PARAMS if self._weapon_v13 else BAROU_V1_PARAMS
+        )
+        self._inner = SupplyDemandAlpha(cfg=self._cfg, **self._weapon_params)
         self._prepared: dict[str, _PreparedSeries] = {}
         self._isagi_agent_id = isagi_agent_id
         # Phase W-barou v1.2 H2 gate (PROTOCOL_v1.2.md sec 3).
@@ -331,9 +373,14 @@ class A7BarouV1(BaseStriker):
             tags.append("barou_devour_applied")
             tags.append(f"devour_against:{devour_info['isagi_direction']}")
 
+        weapon_desc = (
+            "king trend-continuation (D1 WITH gate, structural TP)"
+            if self._weapon_v13 else "baseline-zone fade (NO D1 gate)"
+        )
         narrative = (
-            f"[barou v1] USDCAD H4 close {market.as_of}: baseline-zone "
-            f"{direction} fade (NO D1 gate). entry={sig.entry:.5f} "
+            f"[barou {'v1.3' if self._weapon_v13 else 'v1'}] USDCAD H4 "
+            f"close {market.as_of}: {weapon_desc} "
+            f"{direction}. entry={sig.entry:.5f} "
             f"stop={sig.stop:.5f} tp={sig.take_profit:.5f}; "
             f"conv {base_conv:.2f}"
             + (
@@ -486,7 +533,7 @@ class A7BarouV1(BaseStriker):
                             own_tp=float(sig.take_profit),
                             bachira_stop=float(_b_stop),
                             direction=direction,
-                            target_rr=float(BAROU_V1_PARAMS["target_rr"]),
+                            target_rr=float(self._weapon_params["target_rr"]),
                         )
             if lone_conviction_active:
                 lone_conviction_lift_applied = BAROU_V1_1_LONE_CONVICTION_LIFT
@@ -507,9 +554,10 @@ class A7BarouV1(BaseStriker):
         devour_applied = "barou_devour_applied" in my_recent_thought.tags
         rationale: dict[str, Any] = {
             "wrapped": "agent.alphas.concepts.zone_alpha.SupplyDemandAlpha",
-            "params": dict(BAROU_V1_PARAMS),
+            "params": dict(self._weapon_params),
+            "weapon": "barou_v13" if self._weapon_v13 else "barou_v1",
             "signal_reason": sig.reason,
-            "htf_align": meta.get("htf_align"),  # None for Barou
+            "htf_align": meta.get("htf_align"),
             "bar_index": int(i),
             "devour_applied": devour_applied,
             "base_conviction": float(sig.conviction),
