@@ -874,6 +874,115 @@ barou. The G7 §12 registry row's "all 8 agents" conjunction becomes
 
 ---
 
+### §11.13 (2026-07-14) — G7 v1 checkpoint gate FINAL verdict: **FAIL (1/7)**
+
+**Status:** gate FIRED. All six criteria computed end-to-end for the
+§11.12 7-agent roster. Evaluator: `sim/scoring/run_g7_final_verdict.py`
+(commit `5d5c1d1`, implementation + 36 tests committed BEFORE any gate
+run), consuming on-disk replay caches — no new replay compute was
+required because the banked caches already cover the full panel.
+
+**Aggregator-arm decision.** §4 of this protocol pins the Φ4.1
+aggregator ("the G7 gate is about *agent-side* chemistry, not
+aggregator selection") and predates the Arm 4 adoption
+(phi5_aggregator §11.6, 2026-07-06). No amendment changed §4, so the
+**verdict-bearing run is phi41**. Because Arm 4 is the adopted G7-era
+default for all other squad work, an **Arm 4 companion run** is
+reported alongside (clearly labelled, non-verdict-bearing). The
+tension is noted here rather than silently resolved.
+
+**Inputs (cache reuse justification).**
+
+| Run | Baseline cache | lo1 caches |
+|---|---|---|
+| phi41 (verdict) | `reviews/g7_replay_cache_walk-forward-post-kunigami-retirement` | `reviews/g7_leave_one_out_post-V/lo1_*` (8) |
+| arm4 (companion) | `reviews/g7_replay_cache_phi5-arm4-post-kunigami` | `reviews/g7_leave_one_out_phi5-arm4/lo1_*` (7) |
+
+Reuse is sound because (verified 2026-07-14, this session): the
+kunigami-retirement baseline is byte-identical in per-agent
+n_trades/mean_TQS to both the post-V baseline and the post-V
+`lo1_kunigami_rensuke` cache — current code reproduces the post-V
+phi41 trade stream exactly (Barou v1.1 H1 and Phase X gate are inert /
+off by default), and Kunigami's presence in the post-V lo1 squads is a
+no-op (Role Registry C8 = 0.0 exactly). The arm4 caches were produced
+under the retired roster directly (§11.6 B).
+
+**Evaluator specifics (locked before results were seen).**
+
+- All statistics OOS-only (union of the 7 rolling OOS windows,
+  2019–2025). NOTE: the earlier DIAGNOSTIC lo1 verdicts
+  (`g7_leave_one_out_verdict_*.md`) pooled IS+OOS; numbers differ.
+- C1 per §3 letter: panel mean ≥ 0.30 AND window mean ≥ 0.20 in ≥ 5/7
+  AND bootstrap 95 % CI lower bound > 0.25 (percentile, n=10,000,
+  seed 42).
+- C2 per §3 letter: a peer qualifies via (TQS route) trade-level
+  bootstrap CI lower bound > 0 on `mean_tqs(baseline) − mean_tqs(lo1)`,
+  or (count route) strictly positive total trade-count delta with a
+  window-level bootstrap CI lower bound > 0. Stricter than the
+  diagnostic C2's fixed epsilons — several diagnostic C2 passes do not
+  survive the CI gate.
+- C3 per §3 letter: per-window reduction ratios, pass iff ≥ 4/7 clean
+  windows. The `lo1_n = 0` branch is scored 0.0 (no attributable
+  reduction); the diagnostic aggregator's 1.0 return for that branch
+  is wrong-signed and was NOT used for the gate.
+- C4: panel-wide publish/read counters (per-window counts are not
+  persisted in caches — documented harness limitation).
+- C5/C6: panel-wide CVs per §3 letter (not the harness's stricter
+  all-7-windows fold), recomputed from cached `source_*` trade fields
+  through the pure playstyle-dispatched F19/F20 primitives.
+
+**Verdict-bearing result (phi41): FAIL — 1/7 agents pass (< 5).**
+
+| Agent | Bit vector | Failing criteria (statistic vs threshold) |
+|---|---|---|
+| isagi_yoichi | `111100` | C5 CV 0.086 < 0.10; C6 CV 0.083 < 0.10 |
+| bachira_meguru | `110101` | C3 0/7 clean windows (Barou reduced 76–97 % every window); C5 CV 0.089 |
+| itoshi_rin | `111110` | C6 CV 0.086 |
+| chigiri_hyoma | `001111` | C1 mean 0.267 < 0.30; C2 no peer clears CI gate |
+| reo_mikage | `W11WWW` | **v1 PASS** (waivers §11.1 + C2 pass via Rin, C3 7/7 clean) |
+| nagi_seishiro | `101100` | C2 fail; C5 CV 0.000; C6 CV 0.000 (constant lots/stops) |
+| barou_shoei | `001101` | C1 CI lower 0.247 ≤ 0.25 (n=62); C2 fail; C5 CV 0.068 |
+
+**Companion result (arm4): FAIL — 1/7** (isagi `101100`, bachira
+`110111`, rin `111110`, chigiri `001111`, reo `W11WWW` PASS, nagi
+`101100`, barou `101111`). Arm 4 moves real needles — Barou goes
+5/6 (C1 passes at n=322, C5/C6 pass; only C2 fails) and Bachira's C3
+worst-window reduction drops from 0.76–0.97 to 0.43–0.62 — but the
+squad verdict is unchanged.
+
+**Discussion.**
+
+1. **Bachira C3 is the known duplication artifact.** Phase W-barou
+   v1.2 (§11.11 lineage, POSTMORTEM_v1.2) established Bachira and
+   Barou wrap the SAME `SupplyDemandAlpha` on shared symbols — the
+   "cannibalisation" is literal strategy duplication, an agent-level
+   identity problem no aggregator can fix. C3 is applied here AS
+   PRE-REGISTERED; the parked distinctness-aware C3 v2 definition was
+   NOT invented mid-gate. Under a C3 v2 that nets out duplicate-alpha
+   pairs, Bachira would plausibly flip; that requires a fresh
+   pre-registration.
+2. **C5/C6 are the broadest blocker** — five of six trade-taking
+   agents fail at least one dispersion criterion, mostly marginally
+   (0.068–0.089 vs 0.10). Nagi is the extreme case: exactly zero
+   dispersion (constant conviction × constant `NAGI_V1_REGIME_FIT`
+   into the F19/F20 maps). Same Phase-S root cause family as §11.6.
+3. **C2 under the CI letter is hard for low-volume agents.** Chigiri,
+   Nagi, Barou fail C2 in both arms — their peer-lift deltas are real
+   in sign in places but never clear the bootstrap CI gate. This is
+   consistent with the Role Registry finding that their retention
+   axes are C7/C8/C9, not C2.
+4. **Per doctrine §3.11.5:** FAIL (< 5 agents) — **no v2 arc is
+   authorised**; all v2 backlog items stay parked. The graduation
+   decision toward live paper mode is the user's; this verdict is the
+   pre-condition input to it, and the pre-condition is NOT met.
+
+**Artifacts:** `reviews/g7_v1_checkpoint_final_g7final-phi41.{md,json}`
+(verdict-bearing) and `reviews/g7_v1_checkpoint_final_g7final-arm4.{md,json}`
+(companion). Full per-peer bootstrap CIs and per-window C3 tables are
+in the JSONs.
+
+---
+
 ## 12. Verdict registry row (to be added)
 
 The G7 gate row for `docs/methodology/gate_verdict_registry.md`:

@@ -33,6 +33,16 @@ Master index of every hypothesis test in this repository. Numeric IDs
 
 Register in this table **before** writing `experiments/E00X_*/PROTOCOL.md`.
 
+## M001 program gates (cross-registry visibility)
+
+M001 gate protocols live under `programs/M001_multi_agent_ensemble/experiments/`;
+verdicts are recorded as dated §11.N amendments in each protocol. Rows here
+are pointers, not the canonical record.
+
+| Gate | Pre-reg | Verdict | Record |
+|---|---|---|---|
+| G7 v1 checkpoint gate | 2026-07-01 | **FAIL 1/7 (2026-07-14)** — verdict-bearing phi41 run per protocol §4; Arm 4 companion also FAIL 1/7 (Barou 5/6 under Arm 4). Only Reo passes 6/6. Blockers: C5/C6 dispersion (five agents, mostly marginal; Nagi CV exactly 0), Bachira C3 (known Bachira↔Barou strategy-duplication artifact, applied as pre-registered), C2 bootstrap-CI gate (Chigiri/Nagi/Barou). No v2 arc authorised per doctrine §3.11.5. | `programs/M001_multi_agent_ensemble/experiments/G7_v1_checkpoint_gate/PROTOCOL.md` §11.13; `reviews/g7_v1_checkpoint_final_g7final-{phi41,arm4}.{md,json}` |
+
 ## Completed 2026-07-01 research-pipeline sweep (E011–E016)
 
 Six pre-registered studies fired in the 2026-07-01 research pipeline

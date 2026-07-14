@@ -1,4 +1,51 @@
-# AI Context — finance research experiments (updated 2026-07-06 23:30 UTC, Phase X-kunigami Wild Card gate CLOSED AMBIGUOUS: peak-relative DD trigger is structurally inert on the full-panel additive fixed-lot curve)
+# AI Context — finance research experiments (updated 2026-07-14, G7 v1 checkpoint gate FIRED: **FAIL 1/7**, no v2 authorisation)
+
+## 2026-07-14 — G7 v1 checkpoint gate FINAL verdict: FAIL (1/7 agents)
+
+Commits `5d5c1d1` (final-verdict evaluator + 36 tests, BEFORE any gate
+run) then the verdict commit. Full sim suite 796 pass / 6 skip.
+
+**Zero new replay compute** — all six criteria were computed from the
+banked caches. Verified first that the kunigami-retirement baseline is
+byte-identical (per-agent n/TQS) to the post-V baseline AND to
+post-V `lo1_kunigami_rensuke`, so the post-V lo1 caches are
+current-code-valid for phi41; arm4 used the §11.6 B caches directly.
+
+New `sim/scoring/run_g7_final_verdict.py` implements PROTOCOL §3's
+LOCKED letter (OOS-only; C1 mean≥0.30 + window≥0.20 in ≥5/7 +
+bootstrap CI low > 0.25; C2 bootstrap-CI-gated leave-one-out lift;
+C3 per-window 4-of-7 at 50%; C4 panel-wide publish/read; C5/C6
+panel-wide CV; §11.1 waivers; §11.12 7-agent roster; seed 42, n=10k).
+
+**Verdict-bearing run = phi41** (protocol §4 pins the Φ4.1 aggregator;
+predates Arm 4 adoption, never amended — tension noted in §11.13, and
+an **arm4 companion** was evaluated alongside):
+
+| Agent | phi41 | arm4 | blockers (phi41) |
+|---|---|---|---|
+| isagi | `111100` | `101100` | C5 0.086 / C6 0.083 |
+| bachira | `110101` | `110111` | C3 0/7 clean (Barou dup artifact), C5 0.089 |
+| rin | `111110` | `111110` | C6 0.086 |
+| chigiri | `001111` | `001111` | C1 0.267, C2 |
+| reo | `W11WWW` ✅ | `W11WWW` ✅ | — (only 6/6 pass) |
+| nagi | `101100` | `101100` | C2; C5=C6=0.000 exactly |
+| barou | `001101` | `101111` | C1 CI 0.247≤0.25 @n=62; C2; C5 |
+
+**Both arms FAIL (1/7 < 5).** Arm 4 moves real needles (Barou → 5/6,
+Bachira worst C3 window 0.97→0.62) but not the verdict. Bachira's C3
+applied AS PRE-REGISTERED — the duplication-aware C3 v2 stays parked.
+Per doctrine §3.11.5: **no v2 arc authorised**. Graduation toward live
+paper mode is the USER's decision; the pre-condition is NOT met.
+
+On disk: PROTOCOL §11.13 (full record + cache-reuse justification),
+`reviews/g7_v1_checkpoint_final_g7final-{phi41,arm4}.{md,json}`,
+EXPERIMENTS.md "M001 program gates" row.
+
+Natural next levers (need fresh pre-reg, do NOT start unasked):
+(1) C3 v2 distinctness-aware definition (Bachira), (2) F19/F20
+dispersion amplification round 2 (five agents at 0.068–0.089 vs 0.10;
+Nagi constant-lot root cause), (3) Barou volume floor (n=62 OOS under
+phi41 makes his C1 CI unstable; arm4 already fixes it).
 
 ## 2026-07-06 night (2) — Phase X-kunigami Wild Card gate: AMBIGUOUS, mechanic inert over OOS
 
