@@ -1278,6 +1278,88 @@ bootstrap spec (n=10,000, seed 42, percentile, α=0.05). Implementation
 + tests committed before replays run; caches follow the existing
 naming with tag `g7retry2`.
 
+### §11.18 (2026-07-15) — Third gate attempt FINAL verdict: **FAIL (3/7 phi41; 4/7 arm4)**
+
+**Status:** the third gate attempt pre-registered in §11.17 has fired.
+Single OOS touch: fresh `g7retry2` walk-forward baseline + 7
+leave-one-out replays per arm, evaluated by `run_g7_final_verdict.py`
+(same bootstrap spec), with the C3 v2 side-by-side and the C2 finisher
+clause both advisory. Artifacts:
+`reviews/g7_v1_checkpoint_final_g7retry2-{phi41,arm4}.{md,json}`,
+`reviews/c3_v2_side_by_side_g7retry2-{phi41,arm4}.{md,json}`,
+`reviews/g7retry2_lever_audits.json`,
+`reviews/phase_{z,aa,ab}_verdict.md`.
+
+**Per-agent bit vectors (verdict-bearing phi41 / companion arm4):**
+
+| Agent | §11.16 phi41 | §11.18 phi41 | §11.18 arm4 | Moved |
+|---|---|---|---|---|
+| isagi_yoichi | `111111` PASS | `111111` PASS | `111111` PASS | — |
+| bachira_meguru | `110111` | **`111111` PASS** | `111111` PASS | C3 0/7→7/7 (Phase Z) |
+| itoshi_rin | `111111` PASS | `111111` PASS | `111111` PASS | — |
+| chigiri_hyoma | `001111` | `001111` | `001111` | C1 0.267→0.239 (Phase AA FAIL) |
+| reo_mikage | `W11WWW` PASS | `W01WWW` | `W11WWW` PASS | C2 lost under phi41 (0.002→none) |
+| nagi_seishiro | `101111` | `001111` | `001111` | **C1 0.436→0.197 LOST** (Z5 fired) |
+| barou_shoei | `001111` | `101111` | `101111` | C1 0.283 (n=43)→0.406 (n=444) (Phase AB PASS) |
+
+Squad: **FAIL 3/7 phi41** (isagi, bachira, rin) / **4/7 arm4** (+ reo).
+Same phi41 count as §11.16 but different composition — one blocker
+fixed (Bachira C3), one fixed (Barou C1), one unchanged-failed
+(Chigiri), one **new** break (Nagi C1) caused by the fix to the first.
+Advisory squad-with-finisher-clause: unchanged (3/7 and 4/7) — the
+clause flips Nagi's C2 to `W` (3 qualified incoming lifts phi41:
+bachira/isagi/rin; 4 under arm4) but cannot rescue his new C1 fail.
+
+**Lever outcomes vs their own pre-registered criteria (honest):**
+
+1. **Lever A / Phase Z (Bachira weave): FAIL on Z5.** Z1–Z4 all pass —
+   C3 0/7→7/7 clean, zero Bachira×Barou same-tick fired proposals
+   (Z2 audit), Bachira retains everything at n=733, squad TQS within
+   tolerance (phi41 −0.011, arm4 −0.014). But the weave halved
+   Bachira's volume (1468→733) and Nagi's confluence fuel collapsed
+   with it (67→21 trades), breaking Nagi C1 — the exact interaction
+   risk Z5 pre-registered as a phase failure. `reviews/phase_z_verdict.md`.
+2. **Lever B / Phase AB (Barou multi-pair): PASS** — all of AB1–AB5.
+   n 43→444, C1 0.406 with CI low 0.365, C3 7/7 kept, no peer C3
+   poisoning, EURUSD slice 0.363 over 120 trades (audit vs E001 prior
+   disclosed). `reviews/phase_ab_verdict.md`.
+3. **Lever C / Phase AA (Chigiri ignition): FAIL on AA1+AA2+AA-M.**
+   Volume rose (296→503) but mean TQS fell 0.267→0.239 and the
+   entry-efficiency component — the component the mechanism predicted
+   would rise — fell 0.290→0.278. No C2 peer emerged. The doctrine
+   §3.11.3 A4 prior (Chigiri needs stricter, not looser, filtering)
+   stands. `reviews/phase_aa_verdict.md`.
+4. **Lever D / C2 finisher clause: behaved exactly as pre-registered**
+   (advisory `W` for Nagi with 3–4 qualified incoming lifts; verdict-
+   bearing outputs byte-identical with the flag on/off, enforced by
+   unit test). Ratification remains with the user; note it is
+   currently moot for the squad count until Nagi C1 is restored.
+
+**C3 v2 side-by-side (§11.14, advisory):** v1 and v2 agree on every
+agent in both arms (all 7/7 clean except reo 6/7 phi41), duplicate
+share 0% everywhere. Post-Phase-Z there is no distinctness question
+left for v2 to adjudicate — the ratification decision is now
+essentially cosmetic.
+
+**Standing decisions surfaced by §11.18 (user calls, not started):**
+
+1. **Bachira weave default (`weapon_weave`):** keep (C3 fixed, Bachira
+   full pass) and pursue a Nagi-fuel repair lever, or revert (restores
+   Nagi C1, reopens C3). The obvious candidate direction — gate
+   Bachira's *proposals* but keep his *thought stream* at v1 volume so
+   Nagi's confluence fuel survives — requires a fresh pre-registered
+   phase; Nagi reads fired thoughts, so this is a harness-semantics
+   question to settle in design.
+2. **Chigiri ignition default (`weapon_ignition`):** recommended
+   revert to v1 magnitude hurdle (Phase AA clean FAIL).
+3. **Barou multi-pair whitelist:** recommended adopt as standing v1.3
+   configuration (Phase AB clean PASS).
+4. **C2 finisher clause + C3 v2 ratification:** both advisory, both
+   pending.
+5. Reo's phi41 C2 flip (pass→fail) is low-n volatility of the
+   CI-gated statistic (his §11.16 pass was +0.002 marginal), not a
+   lever effect; no action proposed.
+
 ---
 
 ## 12. Verdict registry row (to be added)

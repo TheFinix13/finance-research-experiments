@@ -1,4 +1,59 @@
-# AI Context — finance research experiments (updated 2026-07-14, G7 v1 checkpoint gate second attempt FIRED: **FAIL 3/7 phi41 / 2/7 arm4**, still no v2 authorisation)
+# AI Context — finance research experiments (updated 2026-07-15, G7 v1 checkpoint gate THIRD attempt FIRED: **FAIL 3/7 phi41 / 4/7 arm4**, still no v2 authorisation)
+
+## 2026-07-15 — G7 v1 checkpoint gate THIRD ATTEMPT (`g7retry2`): FAIL 3/7 phi41 / 4/7 arm4
+
+Four-lever campaign per user canon guidance, each lever with its own
+protocol committed BEFORE implementation, implementation + tests
+committed BEFORE the single pre-registered OOS touch (§11.17 → §11.18).
+Commits: `405731d` (four lever protocols + §11.17), `33295de` (levers
+implemented + tested), `a96c250` (timeframe-choice roadmap), then the
+replay/verdict/registry commits.
+
+**Lever outcomes vs their own pre-registered criteria (honest):**
+
+- **Lever B / Phase AB — Barou multi-pair scope reversal: PASS.**
+  Whitelist USDCAD → +EURUSD/GBPUSD (home-ground devour/lone-conviction
+  lifts stay USDCAD-only). C1 0.283 (n=43) → **0.406 (n=444)** phi41,
+  CI low 0.365; C3 7/7 kept; no peer C3 poisoning; EURUSD slice 0.363
+  @ n=120 (E001-prior audit disclosed). `reviews/phase_ab_verdict.md`.
+- **Lever A / Phase Z — Bachira v1.4 weave (D1-NEUTRAL gate): FAIL on
+  Z5.** The mechanism worked: C3 0/7 → **7/7 clean**, ZERO Bachira×Barou
+  same-tick fired proposals (Z2 audit), Bachira full pass `111111` for
+  the first time, squad TQS within tolerance. But the weave halved his
+  volume (1468→733) and Nagi's confluence fuel collapsed (67→21 trades,
+  C1 0.436→0.197 FAIL) — the exact pre-registered Z5 interaction risk.
+  `reviews/phase_z_verdict.md`.
+- **Lever C / Phase AA — Chigiri v1.4 panther-ignition: FAIL on
+  AA1+AA2+AA-M.** Volume up 296→503 but mean TQS 0.267→0.239 and
+  entry-efficiency 0.290→0.278 (the component the mechanism predicted
+  would RISE). No C2 peer. The doctrine A4 stricter-filter prior
+  stands. `reviews/phase_aa_verdict.md`.
+- **Lever D — C2 finisher clause (ADVISORY): behaves as designed.**
+  Nagi `W` with 3 (phi41) / 4 (arm4) qualified incoming lifts; verdict-
+  bearing outputs byte-identical flag on/off (unit-tested). Currently
+  moot for squad count while Nagi C1 fails. Pending ratification.
+
+**§11.18 squad verdict:** FAIL 3/7 phi41 (isagi, bachira, rin) / 4/7
+arm4 (+reo). Same phi41 count as §11.16, different composition: Bachira
+FIXED, Barou C1 FIXED, Chigiri unchanged, **Nagi C1 newly broken by
+Phase Z** (fuel starvation). Reo's phi41 C2 flip is low-n volatility
+(his §11.16 pass was +0.002 marginal). C3 v2 side-by-side: v1≡v2
+everywhere, dup share 0% — nothing left for v2 to adjudicate.
+Artifacts: `reviews/g7_v1_checkpoint_final_g7retry2-{phi41,arm4}.{md,json}`,
+`reviews/g7retry2_lever_audits.json`, `reviews/c3_v2_side_by_side_g7retry2-*`.
+
+**Standing user decisions (per §11.18, none started):** (1) Bachira
+`weapon_weave` default — keep (C3 fixed) + design a Nagi-fuel repair
+lever, or revert (restores Nagi, reopens C3); (2) Chigiri
+`weapon_ignition` — recommended revert to v1 hurdle; (3) Barou
+multi-pair whitelist — recommended adopt; (4) C2 finisher clause + C3
+v2 ratification (both advisory). Roadmap note (NOT v1 work):
+`experiments/_ROADMAP_timeframe_choice.md` — per-agent timeframe choice
+slots into the v2 arc; M15/H1 panels for GBPUSD/USDCAD not yet cached.
+
+Per doctrine §3.11.5: **still no v2 arc authorised.**
+
+---
 
 ## 2026-07-14 — G7 v1 checkpoint gate SECOND ATTEMPT (`g7retry1`): FAIL 3/7 phi41 / 2/7 arm4
 
