@@ -1,0 +1,51 @@
+# crash-fingerprint captured 20260715T001836Z
+# label=g7retry2_arm4_bachira_meguru  pid=8690
+# source=programs/M001_multi_agent_ensemble/reviews/loo_logs/g7retry2_arm4_bachira_meguru.log
+# lines=200
+
+2026-07-15 00:05:51,065 INFO __main__ -- leave-one-out batch start: panel=2015-01-01..2025-12-31 out=programs/M001_multi_agent_ensemble/reviews tag=g7retry2-arm4
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:242: IOError: sysctlbyname failed for 'hw.l1dcachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:242: IOError: sysctlbyname failed for 'hw.l2cachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:242: IOError: sysctlbyname failed for 'hw.l3cachesize'. Detail: [errno 1] Operation not permitted
+/Users/runner/work/crossbow/crossbow/arrow/cpp/src/arrow/util/cpu_info.cc:242: IOError: sysctlbyname failed for 'hw.optional.neon'. Detail: [errno 1] Operation not permitted
+2026-07-15 00:05:52,025 INFO __main__ -- Loaded 17723 EURUSD bars
+2026-07-15 00:05:52,418 INFO __main__ -- Loaded 17718 GBPUSD bars
+2026-07-15 00:05:52,904 INFO __main__ -- Loaded 17722 USDCAD bars
+2026-07-15 00:05:54,061 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-15 00:05:55,115 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-15 00:05:55,973 INFO programs.M001_multi_agent_ensemble.sim.agents.a03_rin -- A3RinV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-15 00:05:55,991 INFO programs.M001_multi_agent_ensemble.sim.agents.a04_chigiri -- A4ChigiriV1 prepared EURUSD: 17723 bars, ATR ready
+2026-07-15 00:05:56,822 INFO programs.M001_multi_agent_ensemble.sim.agents.a07_barou -- A7BarouV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-15 00:05:57,800 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings
+2026-07-15 00:05:59,126 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings
+2026-07-15 00:05:59,140 INFO programs.M001_multi_agent_ensemble.sim.agents.a04_chigiri -- A4ChigiriV1 prepared GBPUSD: 17718 bars, ATR ready
+2026-07-15 00:06:00,200 INFO programs.M001_multi_agent_ensemble.sim.agents.a07_barou -- A7BarouV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings
+2026-07-15 00:06:01,411 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared USDCAD: 17722 bars, 1704 zones, 2386 swings
+2026-07-15 00:06:02,463 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared USDCAD: 17722 bars, 1704 zones, 2386 swings
+2026-07-15 00:06:03,462 INFO programs.M001_multi_agent_ensemble.sim.agents.a07_barou -- A7BarouV1 prepared USDCAD: 17722 bars, 1704 zones, 2386 swings
+2026-07-15 00:06:03,463 INFO __main__ -- === leave-one-out 1/1: excluded=bachira_meguru ===
+2026-07-15 00:06:03,463 INFO __main__ -- leave-one-out: excluded=bachira_meguru agents_in_run=['isagi_yoichi', 'itoshi_rin', 'chigiri_hyoma', 'reo_mikage', 'nagi_seishiro', 'barou_shoei']
+2026-07-15 00:06:03,639 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay starting: 53163 global bars across 3 symbols (sentinel_blocks=True, use_workspace=True)
+2026-07-15 00:06:16,928 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 2658/53163 bars (5.0%), elapsed=13.3 s, eta=252.5 s, trades=250, proposals_all=1297
+2026-07-15 00:06:58,281 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 5316/53163 bars (10.0%), elapsed=54.6 s, eta=491.8 s, trades=554, proposals_all=2610
+2026-07-15 00:08:07,453 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 7974/53163 bars (15.0%), elapsed=123.8 s, eta=701.7 s, trades=809, proposals_all=3810
+2026-07-15 00:09:39,638 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 10632/53163 bars (20.0%), elapsed=216.0 s, eta=864.1 s, trades=1045, proposals_all=4806
+2026-07-15 00:11:37,001 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 13290/53163 bars (25.0%), elapsed=333.4 s, eta=1000.2 s, trades=1326, proposals_all=5839
+2026-07-15 00:14:01,367 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 15948/53163 bars (30.0%), elapsed=477.7 s, eta=1114.8 s, trades=1603, proposals_all=6918
+2026-07-15 00:16:42,708 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 18606/53163 bars (35.0%), elapsed=639.1 s, eta=1186.9 s, trades=1855, proposals_all=7804
+2026-07-15 00:19:58,105 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 21264/53163 bars (40.0%), elapsed=834.5 s, eta=1251.8 s, trades=2063, proposals_all=8487
+2026-07-15 00:22:55,974 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 23922/53163 bars (45.0%), elapsed=1012.3 s, eta=1237.4 s, trades=2255, proposals_all=9035
+2026-07-15 00:26:51,965 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 26580/53163 bars (50.0%), elapsed=1248.3 s, eta=1248.5 s, trades=2432, proposals_all=9904
+2026-07-15 00:30:53,975 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 29238/53163 bars (55.0%), elapsed=1490.3 s, eta=1219.5 s, trades=2599, proposals_all=10525
+2026-07-15 00:35:30,937 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 31896/53163 bars (60.0%), elapsed=1767.3 s, eta=1178.4 s, trades=2810, proposals_all=11204
+2026-07-15 00:40:02,978 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 34554/53163 bars (65.0%), elapsed=2039.3 s, eta=1098.3 s, trades=2997, proposals_all=11734
+2026-07-15 00:46:12,738 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 37212/53163 bars (70.0%), elapsed=2409.1 s, eta=1032.7 s, trades=3235, proposals_all=12801
+2026-07-15 00:52:23,975 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 39870/53163 bars (75.0%), elapsed=2780.3 s, eta=927.0 s, trades=3460, proposals_all=13818
+2026-07-15 00:58:13,826 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 42528/53163 bars (80.0%), elapsed=3130.2 s, eta=782.8 s, trades=3651, proposals_all=14341
+2026-07-15 01:04:06,183 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 45186/53163 bars (85.0%), elapsed=3482.5 s, eta=614.8 s, trades=3805, proposals_all=14726
+2026-07-15 01:10:06,764 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 47844/53163 bars (90.0%), elapsed=3843.1 s, eta=427.3 s, trades=3966, proposals_all=15129
+2026-07-15 01:14:35,128 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 50502/53163 bars (95.0%), elapsed=4111.5 s, eta=216.6 s, trades=4143, proposals_all=15847
+2026-07-15 01:18:15,910 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay progress: 53160/53163 bars (100.0%), elapsed=4332.3 s, eta=0.2 s, trades=4298, proposals_all=16265
+2026-07-15 01:18:15,994 INFO programs.M001_multi_agent_ensemble.sim.scoring.run_phi4_squad_gate -- Squad replay complete: 53163 bars in 4332.4 s (12 bars/s), trades=4298, proposals_all=16265, sentinel_blocks=True, use_workspace=True
+2026-07-15 01:18:16,961 INFO __main__ -- leave-one-out complete: excluded=bachira_meguru trades=4298 shadow=16265 elapsed=4333.5s cache=programs/M001_multi_agent_ensemble/reviews/g7_leave_one_out_g7retry2-arm4/lo1_bachira_meguru
+2026-07-15 01:18:17,158 INFO __main__ -- leave-one-out batch complete: 1/1 runs succeeded
