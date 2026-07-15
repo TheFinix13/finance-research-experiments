@@ -1,0 +1,992 @@
+{
+  "tag": "g7retry2-arm4",
+  "arm": "arm4",
+  "protocol": "experiments/c3_v2_distinctness/PROTOCOL.md",
+  "advisory": true,
+  "baseline_cache": "programs/M001_multi_agent_ensemble/reviews/g7_replay_cache_g7retry2-arm4",
+  "lo1_root": "programs/M001_multi_agent_ensemble/reviews",
+  "lo1_tag": "g7retry2-arm4",
+  "n_windows": 7,
+  "per_agent": {
+    "isagi_yoichi": {
+      "status": "computed",
+      "v1_clean_windows": 7,
+      "v1_pass": true,
+      "v2_clean_windows": 7,
+      "v2_pass": true,
+      "v1_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.2121,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1111,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1163,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1127,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1111,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1216,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1385,
+          "clean": true
+        }
+      ],
+      "v2_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.2121,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1111,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1163,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1127,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1111,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1216,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.1385,
+          "clean": true
+        }
+      ],
+      "duplicate_share": {
+        "bachira_meguru": {
+          "lo1_n": 796,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 764,
+          "baseline_duplicates": 0
+        },
+        "itoshi_rin": {
+          "lo1_n": 214,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 213,
+          "baseline_duplicates": 0
+        },
+        "chigiri_hyoma": {
+          "lo1_n": 514,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 514,
+          "baseline_duplicates": 0
+        },
+        "reo_mikage": {
+          "lo1_n": 0,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 0,
+          "baseline_duplicates": 0
+        },
+        "nagi_seishiro": {
+          "lo1_n": 14,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 25,
+          "baseline_duplicates": 0
+        },
+        "barou_shoei": {
+          "lo1_n": 530,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 458,
+          "baseline_duplicates": 0
+        }
+      },
+      "worst_peer_lo1_duplicate_share": 0.0
+    },
+    "bachira_meguru": {
+      "status": "computed",
+      "v1_clean_windows": 7,
+      "v1_pass": true,
+      "v2_clean_windows": 7,
+      "v2_pass": true,
+      "v1_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.0602,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.04,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0492,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.0597,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0562,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0756,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "itoshi_rin",
+          "worst_reduction": 0.0833,
+          "clean": true
+        }
+      ],
+      "v2_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.0602,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.04,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0492,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.0597,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0562,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0756,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "itoshi_rin",
+          "worst_reduction": 0.0833,
+          "clean": true
+        }
+      ],
+      "duplicate_share": {
+        "isagi_yoichi": {
+          "lo1_n": 1144,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 1100,
+          "baseline_duplicates": 0
+        },
+        "itoshi_rin": {
+          "lo1_n": 218,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 213,
+          "baseline_duplicates": 0
+        },
+        "chigiri_hyoma": {
+          "lo1_n": 519,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 514,
+          "baseline_duplicates": 0
+        },
+        "reo_mikage": {
+          "lo1_n": 0,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 0,
+          "baseline_duplicates": 0
+        },
+        "nagi_seishiro": {
+          "lo1_n": 11,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 25,
+          "baseline_duplicates": 0
+        },
+        "barou_shoei": {
+          "lo1_n": 482,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 458,
+          "baseline_duplicates": 0
+        }
+      },
+      "worst_peer_lo1_duplicate_share": 0.0
+    },
+    "itoshi_rin": {
+      "status": "computed",
+      "v1_clean_windows": 7,
+      "v1_pass": true,
+      "v2_clean_windows": 7,
+      "v2_pass": true,
+      "v1_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0398,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.153,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0745,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.2374,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.125,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.1129,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.1111,
+          "clean": true
+        }
+      ],
+      "v2_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0398,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.153,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0745,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.2374,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.125,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.1129,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.1111,
+          "clean": true
+        }
+      ],
+      "duplicate_share": {
+        "isagi_yoichi": {
+          "lo1_n": 1264,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 1100,
+          "baseline_duplicates": 0
+        },
+        "bachira_meguru": {
+          "lo1_n": 786,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 764,
+          "baseline_duplicates": 0
+        },
+        "chigiri_hyoma": {
+          "lo1_n": 521,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 514,
+          "baseline_duplicates": 0
+        },
+        "reo_mikage": {
+          "lo1_n": 0,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 0,
+          "baseline_duplicates": 0
+        },
+        "nagi_seishiro": {
+          "lo1_n": 17,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 25,
+          "baseline_duplicates": 0
+        },
+        "barou_shoei": {
+          "lo1_n": 474,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 458,
+          "baseline_duplicates": 0
+        }
+      },
+      "worst_peer_lo1_duplicate_share": 0.0
+    },
+    "chigiri_hyoma": {
+      "status": "computed",
+      "v1_clean_windows": 7,
+      "v1_pass": true,
+      "v2_clean_windows": 7,
+      "v2_pass": true,
+      "v1_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.0828,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": "itoshi_rin",
+          "worst_reduction": 0.0909,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "itoshi_rin",
+          "worst_reduction": 0.1935,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "nagi_seishiro",
+          "worst_reduction": 0.3333,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "itoshi_rin",
+          "worst_reduction": 0.0882,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0598,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.06,
+          "clean": true
+        }
+      ],
+      "v2_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.0828,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": "itoshi_rin",
+          "worst_reduction": 0.0909,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "itoshi_rin",
+          "worst_reduction": 0.1935,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "nagi_seishiro",
+          "worst_reduction": 0.3333,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "itoshi_rin",
+          "worst_reduction": 0.0882,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0598,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.06,
+          "clean": true
+        }
+      ],
+      "duplicate_share": {
+        "isagi_yoichi": {
+          "lo1_n": 1147,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 1100,
+          "baseline_duplicates": 0
+        },
+        "bachira_meguru": {
+          "lo1_n": 790,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 764,
+          "baseline_duplicates": 0
+        },
+        "itoshi_rin": {
+          "lo1_n": 232,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 213,
+          "baseline_duplicates": 0
+        },
+        "reo_mikage": {
+          "lo1_n": 0,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 0,
+          "baseline_duplicates": 0
+        },
+        "nagi_seishiro": {
+          "lo1_n": 27,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 25,
+          "baseline_duplicates": 0
+        },
+        "barou_shoei": {
+          "lo1_n": 465,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 458,
+          "baseline_duplicates": 0
+        }
+      },
+      "worst_peer_lo1_duplicate_share": 0.0
+    },
+    "reo_mikage": {
+      "status": "computed",
+      "v1_clean_windows": 7,
+      "v1_pass": true,
+      "v2_clean_windows": 7,
+      "v2_pass": true,
+      "v1_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0117,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": null,
+          "worst_reduction": 0.0,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.0066,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "nagi_seishiro",
+          "worst_reduction": 0.3333,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.027,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": null,
+          "worst_reduction": 0.0,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.0175,
+          "clean": true
+        }
+      ],
+      "v2_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0117,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": null,
+          "worst_reduction": 0.0,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.0066,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "nagi_seishiro",
+          "worst_reduction": 0.3333,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.027,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": null,
+          "worst_reduction": 0.0,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.0175,
+          "clean": true
+        }
+      ],
+      "duplicate_share": {
+        "isagi_yoichi": {
+          "lo1_n": 1103,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 1100,
+          "baseline_duplicates": 0
+        },
+        "bachira_meguru": {
+          "lo1_n": 764,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 764,
+          "baseline_duplicates": 0
+        },
+        "itoshi_rin": {
+          "lo1_n": 213,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 213,
+          "baseline_duplicates": 0
+        },
+        "chigiri_hyoma": {
+          "lo1_n": 514,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 514,
+          "baseline_duplicates": 0
+        },
+        "nagi_seishiro": {
+          "lo1_n": 9,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 25,
+          "baseline_duplicates": 0
+        },
+        "barou_shoei": {
+          "lo1_n": 461,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 458,
+          "baseline_duplicates": 0
+        }
+      },
+      "worst_peer_lo1_duplicate_share": 0.0
+    },
+    "nagi_seishiro": {
+      "status": "computed",
+      "v1_clean_windows": 7,
+      "v1_pass": true,
+      "v2_clean_windows": 7,
+      "v2_pass": true,
+      "v1_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0117,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": null,
+          "worst_reduction": 0.0,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.0066,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.0156,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.0137,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": null,
+          "worst_reduction": 0.0,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": null,
+          "worst_reduction": 0.0,
+          "clean": true
+        }
+      ],
+      "v2_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0117,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": null,
+          "worst_reduction": 0.0,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.0066,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.0156,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "barou_shoei",
+          "worst_reduction": 0.0137,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": null,
+          "worst_reduction": 0.0,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": null,
+          "worst_reduction": 0.0,
+          "clean": true
+        }
+      ],
+      "duplicate_share": {
+        "isagi_yoichi": {
+          "lo1_n": 1103,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 1100,
+          "baseline_duplicates": 0
+        },
+        "bachira_meguru": {
+          "lo1_n": 768,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 764,
+          "baseline_duplicates": 0
+        },
+        "itoshi_rin": {
+          "lo1_n": 213,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 213,
+          "baseline_duplicates": 0
+        },
+        "chigiri_hyoma": {
+          "lo1_n": 514,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 514,
+          "baseline_duplicates": 0
+        },
+        "reo_mikage": {
+          "lo1_n": 0,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 0,
+          "baseline_duplicates": 0
+        },
+        "barou_shoei": {
+          "lo1_n": 460,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 458,
+          "baseline_duplicates": 0
+        }
+      },
+      "worst_peer_lo1_duplicate_share": 0.0
+    },
+    "barou_shoei": {
+      "status": "computed",
+      "v1_clean_windows": 7,
+      "v1_pass": true,
+      "v2_clean_windows": 7,
+      "v2_pass": true,
+      "v1_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "itoshi_rin",
+          "worst_reduction": 0.1765,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0663,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0842,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "nagi_seishiro",
+          "worst_reduction": 0.3333,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.1379,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.1226,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.0693,
+          "clean": true
+        }
+      ],
+      "v2_per_window": [
+        {
+          "window": 0,
+          "worst_peer": "itoshi_rin",
+          "worst_reduction": 0.1765,
+          "clean": true
+        },
+        {
+          "window": 1,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0663,
+          "clean": true
+        },
+        {
+          "window": 2,
+          "worst_peer": "isagi_yoichi",
+          "worst_reduction": 0.0842,
+          "clean": true
+        },
+        {
+          "window": 3,
+          "worst_peer": "nagi_seishiro",
+          "worst_reduction": 0.3333,
+          "clean": true
+        },
+        {
+          "window": 4,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.1379,
+          "clean": true
+        },
+        {
+          "window": 5,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.1226,
+          "clean": true
+        },
+        {
+          "window": 6,
+          "worst_peer": "bachira_meguru",
+          "worst_reduction": 0.0693,
+          "clean": true
+        }
+      ],
+      "duplicate_share": {
+        "isagi_yoichi": {
+          "lo1_n": 1187,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 1100,
+          "baseline_duplicates": 0
+        },
+        "bachira_meguru": {
+          "lo1_n": 824,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 764,
+          "baseline_duplicates": 0
+        },
+        "itoshi_rin": {
+          "lo1_n": 221,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 213,
+          "baseline_duplicates": 0
+        },
+        "chigiri_hyoma": {
+          "lo1_n": 535,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 514,
+          "baseline_duplicates": 0
+        },
+        "reo_mikage": {
+          "lo1_n": 0,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 0,
+          "baseline_duplicates": 0
+        },
+        "nagi_seishiro": {
+          "lo1_n": 24,
+          "lo1_duplicates": 0,
+          "lo1_duplicate_share": 0.0,
+          "baseline_n": 25,
+          "baseline_duplicates": 0
+        }
+      },
+      "worst_peer_lo1_duplicate_share": 0.0
+    }
+  }
+}

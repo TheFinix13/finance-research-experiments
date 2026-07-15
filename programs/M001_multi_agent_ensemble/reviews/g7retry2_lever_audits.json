@@ -1,0 +1,112 @@
+{
+  "squad_tqs_phi41": {
+    "g7retry1_mean_of_window_means": 0.364,
+    "g7retry2_mean_of_window_means": 0.3529,
+    "delta": -0.0112,
+    "tolerance": -0.02,
+    "pass": true,
+    "g7retry1_window_means": [
+      0.3417,
+      0.3636,
+      0.3332,
+      0.4015,
+      0.3823,
+      0.3556,
+      0.3704
+    ],
+    "g7retry2_window_means": [
+      0.3473,
+      0.3346,
+      0.331,
+      0.3954,
+      0.3754,
+      0.3452,
+      0.3411
+    ]
+  },
+  "aam_chigiri_efficiency_phi41": {
+    "g7retry1_mean": 0.2904,
+    "g7retry2_mean": 0.2775,
+    "n1": 296,
+    "n2": 503,
+    "pass_strict_increase": false
+  },
+  "ab_barou_symbol_split_phi41": {
+    "EURUSD": {
+      "n": 120,
+      "mean_tqs": 0.3631
+    },
+    "GBPUSD": {
+      "n": 158,
+      "mean_tqs": 0.4573
+    },
+    "USDCAD": {
+      "n": 166,
+      "mean_tqs": 0.3872
+    }
+  },
+  "z5_nagi_n_phi41": {
+    "g7retry1_n": 67,
+    "g7retry2_n": 21
+  },
+  "z3_bachira_n_phi41": {
+    "g7retry1_n": 1468,
+    "g7retry2_n": 733
+  },
+  "z2_overlap_phi41": 0,
+  "squad_tqs_arm4": {
+    "g7retry1_mean_of_window_means": 0.367,
+    "g7retry2_mean_of_window_means": 0.353,
+    "delta": -0.0141,
+    "tolerance": -0.02,
+    "pass": true,
+    "g7retry1_window_means": [
+      0.3518,
+      0.3607,
+      0.3477,
+      0.3991,
+      0.3804,
+      0.3678,
+      0.3618
+    ],
+    "g7retry2_window_means": [
+      0.3503,
+      0.3336,
+      0.3387,
+      0.3946,
+      0.3669,
+      0.3504,
+      0.3362
+    ]
+  },
+  "aam_chigiri_efficiency_arm4": {
+    "g7retry1_mean": 0.2916,
+    "g7retry2_mean": 0.2788,
+    "n1": 300,
+    "n2": 514,
+    "pass_strict_increase": false
+  },
+  "ab_barou_symbol_split_arm4": {
+    "EURUSD": {
+      "n": 127,
+      "mean_tqs": 0.3625
+    },
+    "GBPUSD": {
+      "n": 160,
+      "mean_tqs": 0.4558
+    },
+    "USDCAD": {
+      "n": 171,
+      "mean_tqs": 0.38
+    }
+  },
+  "z5_nagi_n_arm4": {
+    "g7retry1_n": 79,
+    "g7retry2_n": 25
+  },
+  "z3_bachira_n_arm4": {
+    "g7retry1_n": 2035,
+    "g7retry2_n": 764
+  },
+  "z2_overlap_arm4": 0
+}
