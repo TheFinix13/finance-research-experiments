@@ -1,0 +1,467 @@
+{
+  "agent_id": "kunigami_rensuke",
+  "requested_symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDCAD",
+    "AUDUSD",
+    "NZDUSD",
+    "USDJPY",
+    "USDCHF"
+  ],
+  "available_symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDCAD",
+    "AUDUSD",
+    "NZDUSD",
+    "USDJPY",
+    "USDCHF"
+  ],
+  "skipped_symbols": [],
+  "roster": [
+    {
+      "agent_id": "isagi_yoichi",
+      "playstyle": "conservative_metavision",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDCAD"
+      ],
+      "is_proposer": true,
+      "is_movable_being_widened": false
+    },
+    {
+      "agent_id": "bachira_meguru",
+      "playstyle": "rebel_tight",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDCAD"
+      ],
+      "is_proposer": true,
+      "is_movable_being_widened": false
+    },
+    {
+      "agent_id": "itoshi_rin",
+      "playstyle": "analytical_precision",
+      "symbols": [
+        "EURUSD"
+      ],
+      "is_proposer": true,
+      "is_movable_being_widened": false
+    },
+    {
+      "agent_id": "chigiri_hyoma",
+      "playstyle": "speed_momentum",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD"
+      ],
+      "is_proposer": true,
+      "is_movable_being_widened": false
+    },
+    {
+      "agent_id": "reo_mikage",
+      "playstyle": "copier_hrp",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDCAD"
+      ],
+      "is_proposer": true,
+      "is_movable_being_widened": false
+    },
+    {
+      "agent_id": "nagi_seishiro",
+      "playstyle": "confluence_only",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDCAD"
+      ],
+      "is_proposer": true,
+      "is_movable_being_widened": false
+    },
+    {
+      "agent_id": "barou_shoei",
+      "playstyle": "solo_king",
+      "symbols": [
+        "USDCAD",
+        "EURUSD",
+        "GBPUSD"
+      ],
+      "is_proposer": true,
+      "is_movable_being_widened": false
+    },
+    {
+      "agent_id": "kunigami_rensuke",
+      "playstyle": "defensive",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDCAD",
+        "AUDUSD",
+        "NZDUSD",
+        "USDJPY",
+        "USDCHF"
+      ],
+      "is_proposer": true,
+      "is_movable_being_widened": true
+    }
+  ],
+  "windows": [
+    {
+      "idx": 0,
+      "is_start": "2015-01-01T00:00:00+00:00",
+      "is_end": "2019-01-01T00:00:00+00:00",
+      "oos_start": "2019-01-01T00:00:00+00:00",
+      "oos_end": "2020-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 1,
+      "is_start": "2016-01-01T00:00:00+00:00",
+      "is_end": "2020-01-01T00:00:00+00:00",
+      "oos_start": "2020-01-01T00:00:00+00:00",
+      "oos_end": "2021-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 2,
+      "is_start": "2017-01-01T00:00:00+00:00",
+      "is_end": "2021-01-01T00:00:00+00:00",
+      "oos_start": "2021-01-01T00:00:00+00:00",
+      "oos_end": "2022-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 3,
+      "is_start": "2018-01-01T00:00:00+00:00",
+      "is_end": "2022-01-01T00:00:00+00:00",
+      "oos_start": "2022-01-01T00:00:00+00:00",
+      "oos_end": "2023-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 4,
+      "is_start": "2019-01-01T00:00:00+00:00",
+      "is_end": "2023-01-01T00:00:00+00:00",
+      "oos_start": "2023-01-01T00:00:00+00:00",
+      "oos_end": "2024-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 5,
+      "is_start": "2020-01-01T00:00:00+00:00",
+      "is_end": "2024-01-01T00:00:00+00:00",
+      "oos_start": "2024-01-01T00:00:00+00:00",
+      "oos_end": "2025-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 6,
+      "is_start": "2021-01-01T00:00:00+00:00",
+      "is_end": "2025-01-01T00:00:00+00:00",
+      "oos_start": "2025-01-01T00:00:00+00:00",
+      "oos_end": "2025-12-31T00:00:00+00:00"
+    }
+  ],
+  "per_pair_window_stats": [
+    {
+      "symbol": "EURUSD",
+      "window_idx": 0,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "GBPUSD",
+      "window_idx": 0,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCAD",
+      "window_idx": 0,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "AUDUSD",
+      "window_idx": 0,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "NZDUSD",
+      "window_idx": 0,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDJPY",
+      "window_idx": 0,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCHF",
+      "window_idx": 0,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "EURUSD",
+      "window_idx": 1,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "GBPUSD",
+      "window_idx": 1,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCAD",
+      "window_idx": 1,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "AUDUSD",
+      "window_idx": 1,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "NZDUSD",
+      "window_idx": 1,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDJPY",
+      "window_idx": 1,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCHF",
+      "window_idx": 1,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "EURUSD",
+      "window_idx": 2,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "GBPUSD",
+      "window_idx": 2,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCAD",
+      "window_idx": 2,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "AUDUSD",
+      "window_idx": 2,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "NZDUSD",
+      "window_idx": 2,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDJPY",
+      "window_idx": 2,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCHF",
+      "window_idx": 2,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "EURUSD",
+      "window_idx": 3,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "GBPUSD",
+      "window_idx": 3,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCAD",
+      "window_idx": 3,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "AUDUSD",
+      "window_idx": 3,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "NZDUSD",
+      "window_idx": 3,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDJPY",
+      "window_idx": 3,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCHF",
+      "window_idx": 3,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "EURUSD",
+      "window_idx": 4,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "GBPUSD",
+      "window_idx": 4,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCAD",
+      "window_idx": 4,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "AUDUSD",
+      "window_idx": 4,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "NZDUSD",
+      "window_idx": 4,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDJPY",
+      "window_idx": 4,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCHF",
+      "window_idx": 4,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "EURUSD",
+      "window_idx": 5,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "GBPUSD",
+      "window_idx": 5,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCAD",
+      "window_idx": 5,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "AUDUSD",
+      "window_idx": 5,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "NZDUSD",
+      "window_idx": 5,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDJPY",
+      "window_idx": 5,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCHF",
+      "window_idx": 5,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "EURUSD",
+      "window_idx": 6,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "GBPUSD",
+      "window_idx": 6,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCAD",
+      "window_idx": 6,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "AUDUSD",
+      "window_idx": 6,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "NZDUSD",
+      "window_idx": 6,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDJPY",
+      "window_idx": 6,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    },
+    {
+      "symbol": "USDCHF",
+      "window_idx": 6,
+      "mean_tqs": 0.0,
+      "n_trades": 0
+    }
+  ],
+  "n_thoughts": 441219,
+  "n_proposals": 19723,
+  "n_trades_total": 5119,
+  "n_trades_movable": 0,
+  "aggregator_arm": "phi41",
+  "include_kunigami_unretired": true,
+  "fired_at_utc": "2026-07-20T22:27:32.289584+00:00"
+}
