@@ -1,0 +1,3039 @@
+{
+  "verdict": {
+    "verdict": "FAIL",
+    "condition_1_two_of_three_movables_with_ci_lower_on_abs_beta_gt_0": {
+      "required": true,
+      "observed": false,
+      "n_movables_passing": 1,
+      "per_agent_passing_features": {
+        "chigiri_hyoma": [
+          "d1_ac1",
+          "h4_atr_percentile",
+          "max_session_impulse",
+          "d1_chop_fraction"
+        ],
+        "itoshi_rin": [],
+        "kunigami_rensuke": []
+      }
+    },
+    "condition_2_at_least_one_direction_respected": {
+      "required": true,
+      "observed": true,
+      "passing_directional_pairs": [
+        {
+          "agent": "chigiri_hyoma",
+          "feature": "max_session_impulse"
+        }
+      ]
+    }
+  },
+  "regressions": {
+    "movable_agents": {
+      "chigiri_hyoma": {
+        "symbols_present": [
+          "EURUSD",
+          "GBPUSD"
+        ],
+        "n_symbols_present": 2,
+        "n_windows_present": 7,
+        "features": {
+          "d1_ac1": {
+            "n": 14,
+            "beta": -1.2613122182574987,
+            "r2": 0.16433604944001,
+            "ci_lower": -2.8168394179516283,
+            "ci_upper": 0.31441883350161565,
+            "abs_ci_lower": 0.08455567916162261,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 14,
+            "n_unique_x": 2,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.2134798685636497,
+                "n_trades": 32
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.13876979967190117,
+                "n_trades": 18
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.3910228410950094,
+                "n_trades": 27
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.24079115267584345,
+                "n_trades": 16
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.2140849561306357,
+                "n_trades": 25
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.2884424790303827,
+                "n_trades": 14
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.337588784763038,
+                "n_trades": 20
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.3415517506488936,
+                "n_trades": 12
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.21068221335800513,
+                "n_trades": 20
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.22644635368776794,
+                "n_trades": 22
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.3443712490949954,
+                "n_trades": 23
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.2772158181019958,
+                "n_trades": 24
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.38972903773808,
+                "n_trades": 24
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.10424373388520204,
+                "n_trades": 19
+              }
+            ]
+          },
+          "h4_atr_percentile": {
+            "n": 14,
+            "beta": -0.1726778082290809,
+            "r2": 0.16433604944001,
+            "ci_lower": -0.38563461907721464,
+            "ci_upper": 0.04304497669102835,
+            "abs_ci_lower": 0.011575951726782965,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 14,
+            "n_unique_x": 2,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.2134798685636497,
+                "n_trades": 32
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.13876979967190117,
+                "n_trades": 18
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.3910228410950094,
+                "n_trades": 27
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.24079115267584345,
+                "n_trades": 16
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.2140849561306357,
+                "n_trades": 25
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.2884424790303827,
+                "n_trades": 14
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.337588784763038,
+                "n_trades": 20
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.3415517506488936,
+                "n_trades": 12
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.21068221335800513,
+                "n_trades": 20
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.22644635368776794,
+                "n_trades": 22
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.3443712490949954,
+                "n_trades": 23
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.2772158181019958,
+                "n_trades": 24
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.38972903773808,
+                "n_trades": 24
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.10424373388520204,
+                "n_trades": 19
+              }
+            ]
+          },
+          "max_session_impulse": {
+            "n": 14,
+            "beta": 8.894554453056669,
+            "r2": 0.16433604944001,
+            "ci_lower": -2.2161288387830256,
+            "ci_upper": 19.899106950868294,
+            "abs_ci_lower": 0.5962719473670409,
+            "n_boot_valid": 10000,
+            "prelocked_direction": "+",
+            "direction_respected": true,
+            "n_observations": 14,
+            "n_unique_x": 2,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.2134798685636497,
+                "n_trades": 32
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.13876979967190117,
+                "n_trades": 18
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.3910228410950094,
+                "n_trades": 27
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.24079115267584345,
+                "n_trades": 16
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.2140849561306357,
+                "n_trades": 25
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.2884424790303827,
+                "n_trades": 14
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.337588784763038,
+                "n_trades": 20
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.3415517506488936,
+                "n_trades": 12
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.21068221335800513,
+                "n_trades": 20
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.22644635368776794,
+                "n_trades": 22
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.3443712490949954,
+                "n_trades": 23
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.2772158181019958,
+                "n_trades": 24
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.38972903773808,
+                "n_trades": 24
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.10424373388520204,
+                "n_trades": 19
+              }
+            ]
+          },
+          "d1_chop_fraction": {
+            "n": 14,
+            "beta": 6.17199823127374,
+            "r2": 0.16433604944001012,
+            "ci_lower": -1.5377884688246581,
+            "ci_upper": 13.808139975182137,
+            "abs_ci_lower": 0.41375758886301534,
+            "n_boot_valid": 10000,
+            "prelocked_direction": "-",
+            "direction_respected": false,
+            "n_observations": 14,
+            "n_unique_x": 2,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.2134798685636497,
+                "n_trades": 32
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.13876979967190117,
+                "n_trades": 18
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.3910228410950094,
+                "n_trades": 27
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.24079115267584345,
+                "n_trades": 16
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.2140849561306357,
+                "n_trades": 25
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.2884424790303827,
+                "n_trades": 14
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.337588784763038,
+                "n_trades": 20
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.3415517506488936,
+                "n_trades": 12
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.21068221335800513,
+                "n_trades": 20
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.22644635368776794,
+                "n_trades": 22
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.3443712490949954,
+                "n_trades": 23
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.2772158181019958,
+                "n_trades": 24
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.38972903773808,
+                "n_trades": 24
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.10424373388520204,
+                "n_trades": 19
+              }
+            ]
+          }
+        }
+      },
+      "itoshi_rin": {
+        "symbols_present": [
+          "EURUSD"
+        ],
+        "n_symbols_present": 1,
+        "n_windows_present": 7,
+        "features": {
+          "d1_ac1": {
+            "n": 7,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=7, unique_x=1 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 7,
+            "n_unique_x": 1,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.42322161079353926,
+                "n_trades": 13
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.3952401230776162,
+                "n_trades": 28
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.24712773889210052,
+                "n_trades": 27
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.4167609995238781,
+                "n_trades": 69
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.3359137113189849,
+                "n_trades": 28
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.39553995589392205,
+                "n_trades": 16
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.38183895733005063,
+                "n_trades": 21
+              }
+            ]
+          },
+          "h4_atr_percentile": {
+            "n": 7,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=7, unique_x=1 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": "-",
+            "direction_respected": false,
+            "n_observations": 7,
+            "n_unique_x": 1,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.42322161079353926,
+                "n_trades": 13
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.3952401230776162,
+                "n_trades": 28
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.24712773889210052,
+                "n_trades": 27
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.4167609995238781,
+                "n_trades": 69
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.3359137113189849,
+                "n_trades": 28
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.39553995589392205,
+                "n_trades": 16
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.38183895733005063,
+                "n_trades": 21
+              }
+            ]
+          },
+          "max_session_impulse": {
+            "n": 7,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=7, unique_x=1 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 7,
+            "n_unique_x": 1,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.42322161079353926,
+                "n_trades": 13
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.3952401230776162,
+                "n_trades": 28
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.24712773889210052,
+                "n_trades": 27
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.4167609995238781,
+                "n_trades": 69
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.3359137113189849,
+                "n_trades": 28
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.39553995589392205,
+                "n_trades": 16
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.38183895733005063,
+                "n_trades": 21
+              }
+            ]
+          },
+          "d1_chop_fraction": {
+            "n": 7,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=7, unique_x=1 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 7,
+            "n_unique_x": 1,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.42322161079353926,
+                "n_trades": 13
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.3952401230776162,
+                "n_trades": 28
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.24712773889210052,
+                "n_trades": 27
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.4167609995238781,
+                "n_trades": 69
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.3359137113189849,
+                "n_trades": 28
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.39553995589392205,
+                "n_trades": 16
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.38183895733005063,
+                "n_trades": 21
+              }
+            ]
+          }
+        }
+      },
+      "kunigami_rensuke": {
+        "symbols_present": [],
+        "n_symbols_present": 0,
+        "n_windows_present": 0,
+        "features": {
+          "d1_ac1": {
+            "n": 0,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=0, unique_x=0 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 0,
+            "n_unique_x": 0,
+            "observations": []
+          },
+          "h4_atr_percentile": {
+            "n": 0,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=0, unique_x=0 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 0,
+            "n_unique_x": 0,
+            "observations": []
+          },
+          "max_session_impulse": {
+            "n": 0,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=0, unique_x=0 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 0,
+            "n_unique_x": 0,
+            "observations": []
+          },
+          "d1_chop_fraction": {
+            "n": 0,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=0, unique_x=0 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": "+",
+            "direction_respected": false,
+            "n_observations": 0,
+            "n_unique_x": 0,
+            "observations": []
+          }
+        }
+      }
+    },
+    "audit_anchors": {
+      "isagi_yoichi": {
+        "symbols_present": [
+          "EURUSD",
+          "GBPUSD",
+          "USDCAD"
+        ],
+        "n_symbols_present": 3,
+        "n_windows_present": 7,
+        "features": {
+          "d1_ac1": {
+            "n": 21,
+            "beta": -0.46734701034780496,
+            "r2": 0.034122479719678966,
+            "ci_lower": -1.383223037566226,
+            "ci_upper": 0.5053425369808391,
+            "abs_ci_lower": 0.023812667982040767,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 21,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.39062842591583535,
+                "n_trades": 14
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.3724053813538847,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.39863971866503484,
+                "n_trades": 45
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.3876033504933924,
+                "n_trades": 66
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.2608698438769869,
+                "n_trades": 24
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.3784425094719296,
+                "n_trades": 56
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.3338505964683175,
+                "n_trades": 97
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.28757124994863725,
+                "n_trades": 47
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.37555709548206406,
+                "n_trades": 13
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.35057485966504376,
+                "n_trades": 97
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.3391449784696864,
+                "n_trades": 52
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.37138962985206,
+                "n_trades": 21
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.43678126816299156,
+                "n_trades": 57
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.3438269051394582,
+                "n_trades": 73
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.3670441134094798,
+                "n_trades": 25
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.3904819967605114,
+                "n_trades": 48
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.2594026731375879,
+                "n_trades": 40
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.46766190420608883,
+                "n_trades": 19
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.34235815548314774,
+                "n_trades": 42
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.3404368091420013,
+                "n_trades": 62
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.505485157335196,
+                "n_trades": 12
+              }
+            ]
+          },
+          "h4_atr_percentile": {
+            "n": 21,
+            "beta": -0.08164896859877302,
+            "r2": 0.05324861856597363,
+            "ci_lower": -0.2246930340419982,
+            "ci_upper": 0.06972114666994873,
+            "abs_ci_lower": 0.004378253483696282,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 21,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.39062842591583535,
+                "n_trades": 14
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.3724053813538847,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.39863971866503484,
+                "n_trades": 45
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.3876033504933924,
+                "n_trades": 66
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.2608698438769869,
+                "n_trades": 24
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.3784425094719296,
+                "n_trades": 56
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.3338505964683175,
+                "n_trades": 97
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.28757124994863725,
+                "n_trades": 47
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.37555709548206406,
+                "n_trades": 13
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.35057485966504376,
+                "n_trades": 97
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.3391449784696864,
+                "n_trades": 52
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.37138962985206,
+                "n_trades": 21
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.43678126816299156,
+                "n_trades": 57
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.3438269051394582,
+                "n_trades": 73
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.3670441134094798,
+                "n_trades": 25
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.3904819967605114,
+                "n_trades": 48
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.2594026731375879,
+                "n_trades": 40
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.46766190420608883,
+                "n_trades": 19
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.34235815548314774,
+                "n_trades": 42
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.3404368091420013,
+                "n_trades": 62
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.505485157335196,
+                "n_trades": 12
+              }
+            ]
+          },
+          "max_session_impulse": {
+            "n": 21,
+            "beta": 4.894151979304954,
+            "r2": 0.0823318039107983,
+            "ci_lower": -3.4926600597806483,
+            "ci_upper": 13.125182444910438,
+            "abs_ci_lower": 0.272833150030519,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 21,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.39062842591583535,
+                "n_trades": 14
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.3724053813538847,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.39863971866503484,
+                "n_trades": 45
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.3876033504933924,
+                "n_trades": 66
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.2608698438769869,
+                "n_trades": 24
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.3784425094719296,
+                "n_trades": 56
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.3338505964683175,
+                "n_trades": 97
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.28757124994863725,
+                "n_trades": 47
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.37555709548206406,
+                "n_trades": 13
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.35057485966504376,
+                "n_trades": 97
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.3391449784696864,
+                "n_trades": 52
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.37138962985206,
+                "n_trades": 21
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.43678126816299156,
+                "n_trades": 57
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.3438269051394582,
+                "n_trades": 73
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.3670441134094798,
+                "n_trades": 25
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.3904819967605114,
+                "n_trades": 48
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.2594026731375879,
+                "n_trades": 40
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.46766190420608883,
+                "n_trades": 19
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.34235815548314774,
+                "n_trades": 42
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.3404368091420013,
+                "n_trades": 62
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.505485157335196,
+                "n_trades": 12
+              }
+            ]
+          },
+          "d1_chop_fraction": {
+            "n": 21,
+            "beta": 3.392049900144152,
+            "r2": 0.08417129049055383,
+            "ci_lower": -2.388303050094798,
+            "ci_upper": 9.09785221109701,
+            "abs_ci_lower": 0.1882139753681568,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 21,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.39062842591583535,
+                "n_trades": 14
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.3724053813538847,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.39863971866503484,
+                "n_trades": 45
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.3876033504933924,
+                "n_trades": 66
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.2608698438769869,
+                "n_trades": 24
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.3784425094719296,
+                "n_trades": 56
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.3338505964683175,
+                "n_trades": 97
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.28757124994863725,
+                "n_trades": 47
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.37555709548206406,
+                "n_trades": 13
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.35057485966504376,
+                "n_trades": 97
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.3391449784696864,
+                "n_trades": 52
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.37138962985206,
+                "n_trades": 21
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.43678126816299156,
+                "n_trades": 57
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.3438269051394582,
+                "n_trades": 73
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.3670441134094798,
+                "n_trades": 25
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.3904819967605114,
+                "n_trades": 48
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.2594026731375879,
+                "n_trades": 40
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.46766190420608883,
+                "n_trades": 19
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.34235815548314774,
+                "n_trades": 42
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.3404368091420013,
+                "n_trades": 62
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.505485157335196,
+                "n_trades": 12
+              }
+            ]
+          }
+        }
+      },
+      "bachira_meguru": {
+        "symbols_present": [
+          "EURUSD",
+          "GBPUSD",
+          "USDCAD"
+        ],
+        "n_symbols_present": 3,
+        "n_windows_present": 7,
+        "features": {
+          "d1_ac1": {
+            "n": 21,
+            "beta": 0.4400155329156974,
+            "r2": 0.053236623981790854,
+            "ci_lower": -0.40106310681899815,
+            "ci_upper": 1.1911826914235204,
+            "abs_ci_lower": 0.02489664985409713,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 21,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.3213296241151846,
+                "n_trades": 55
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.350374619933883,
+                "n_trades": 72
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.382795561449866,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.3634206034020642,
+                "n_trades": 59
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.41993760421866855,
+                "n_trades": 67
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.30977010301568425,
+                "n_trades": 61
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.3789139920565616,
+                "n_trades": 106
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.3888556761213962,
+                "n_trades": 66
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.32393457979118534,
+                "n_trades": 103
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.39154557741014817,
+                "n_trades": 82
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.4441342790430307,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.4712731319248317,
+                "n_trades": 76
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.41770201358830533,
+                "n_trades": 79
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.4001100508766478,
+                "n_trades": 66
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.4079997919040984,
+                "n_trades": 60
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.4158225836743431,
+                "n_trades": 51
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.3208157111454843,
+                "n_trades": 47
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.3794873145343933,
+                "n_trades": 75
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.43042533244302517,
+                "n_trades": 69
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.3368384676545229,
+                "n_trades": 47
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.41911032033574214,
+                "n_trades": 51
+              }
+            ]
+          },
+          "h4_atr_percentile": {
+            "n": 21,
+            "beta": 0.06743433629338591,
+            "r2": 0.06392665182132118,
+            "ci_lower": -0.046043024887459344,
+            "ci_upper": 0.17185118748148306,
+            "abs_ci_lower": 0.0034194991570580487,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 21,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.3213296241151846,
+                "n_trades": 55
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.350374619933883,
+                "n_trades": 72
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.382795561449866,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.3634206034020642,
+                "n_trades": 59
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.41993760421866855,
+                "n_trades": 67
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.30977010301568425,
+                "n_trades": 61
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.3789139920565616,
+                "n_trades": 106
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.3888556761213962,
+                "n_trades": 66
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.32393457979118534,
+                "n_trades": 103
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.39154557741014817,
+                "n_trades": 82
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.4441342790430307,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.4712731319248317,
+                "n_trades": 76
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.41770201358830533,
+                "n_trades": 79
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.4001100508766478,
+                "n_trades": 66
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.4079997919040984,
+                "n_trades": 60
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.4158225836743431,
+                "n_trades": 51
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.3208157111454843,
+                "n_trades": 47
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.3794873145343933,
+                "n_trades": 75
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.43042533244302517,
+                "n_trades": 69
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.3368384676545229,
+                "n_trades": 47
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.41911032033574214,
+                "n_trades": 51
+              }
+            ]
+          },
+          "max_session_impulse": {
+            "n": 21,
+            "beta": -3.4139968343515394,
+            "r2": 0.07051017634722112,
+            "ci_lower": -8.577852518847532,
+            "ci_upper": 1.8627786614848705,
+            "abs_ci_lower": 0.17114896238344784,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 21,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.3213296241151846,
+                "n_trades": 55
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.350374619933883,
+                "n_trades": 72
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.382795561449866,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.3634206034020642,
+                "n_trades": 59
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.41993760421866855,
+                "n_trades": 67
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.30977010301568425,
+                "n_trades": 61
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.3789139920565616,
+                "n_trades": 106
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.3888556761213962,
+                "n_trades": 66
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.32393457979118534,
+                "n_trades": 103
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.39154557741014817,
+                "n_trades": 82
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.4441342790430307,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.4712731319248317,
+                "n_trades": 76
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.41770201358830533,
+                "n_trades": 79
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.4001100508766478,
+                "n_trades": 66
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.4079997919040984,
+                "n_trades": 60
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.4158225836743431,
+                "n_trades": 51
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.3208157111454843,
+                "n_trades": 47
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.3794873145343933,
+                "n_trades": 75
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.43042533244302517,
+                "n_trades": 69
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.3368384676545229,
+                "n_trades": 47
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.41911032033574214,
+                "n_trades": 51
+              }
+            ]
+          },
+          "d1_chop_fraction": {
+            "n": 21,
+            "beta": -2.335694351001801,
+            "r2": 0.07023998111036389,
+            "ci_lower": -5.924481244170938,
+            "ci_upper": 1.296578847898206,
+            "abs_ci_lower": 0.1283876570139089,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 21,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.3213296241151846,
+                "n_trades": 55
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.350374619933883,
+                "n_trades": 72
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.382795561449866,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.3634206034020642,
+                "n_trades": 59
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.41993760421866855,
+                "n_trades": 67
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.30977010301568425,
+                "n_trades": 61
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.3789139920565616,
+                "n_trades": 106
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.3888556761213962,
+                "n_trades": 66
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.32393457979118534,
+                "n_trades": 103
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.39154557741014817,
+                "n_trades": 82
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.4441342790430307,
+                "n_trades": 88
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.4712731319248317,
+                "n_trades": 76
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.41770201358830533,
+                "n_trades": 79
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.4001100508766478,
+                "n_trades": 66
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.4079997919040984,
+                "n_trades": 60
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.4158225836743431,
+                "n_trades": 51
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.3208157111454843,
+                "n_trades": 47
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.3794873145343933,
+                "n_trades": 75
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.43042533244302517,
+                "n_trades": 69
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.3368384676545229,
+                "n_trades": 47
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.41911032033574214,
+                "n_trades": 51
+              }
+            ]
+          }
+        }
+      },
+      "nagi_seishiro": {
+        "symbols_present": [
+          "EURUSD",
+          "GBPUSD",
+          "USDCAD"
+        ],
+        "n_symbols_present": 3,
+        "n_windows_present": 7,
+        "features": {
+          "d1_ac1": {
+            "n": 18,
+            "beta": -0.5316224464868837,
+            "r2": 0.002707191573248724,
+            "ci_lower": -5.480973313503012,
+            "ci_upper": 4.479827676765512,
+            "abs_ci_lower": 0.07854133840696265,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 18,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.23798771373294028,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.0,
+                "n_trades": 2
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.4691674237699175,
+                "n_trades": 9
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.2559739415057276,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.3673835522372922,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.3755495841149055,
+                "n_trades": 3
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.6298005399094814,
+                "n_trades": 14
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.0,
+                "n_trades": 2
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.7579319744227041,
+                "n_trades": 1
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.6556595657031927,
+                "n_trades": 8
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.3930914260109099,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.0,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.40595636628644755,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": -0.02156247832839873,
+                "y_mean_tqs": 0.5485964595158762,
+                "n_trades": 8
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.03319884269254089,
+                "y_mean_tqs": 0.4310426346758804,
+                "n_trades": 2
+              }
+            ]
+          },
+          "h4_atr_percentile": {
+            "n": 18,
+            "beta": -0.2004840475403854,
+            "r2": 0.01996206793288502,
+            "ci_lower": -0.884733039922572,
+            "ci_upper": 0.4996263647899286,
+            "abs_ci_lower": 0.012387758125655013,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 18,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.23798771373294028,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.0,
+                "n_trades": 2
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.4691674237699175,
+                "n_trades": 9
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.2559739415057276,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.3673835522372922,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.3755495841149055,
+                "n_trades": 3
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.6298005399094814,
+                "n_trades": 14
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.0,
+                "n_trades": 2
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.7579319744227041,
+                "n_trades": 1
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.6556595657031927,
+                "n_trades": 8
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.3930914260109099,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.0,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.40595636628644755,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.5,
+                "y_mean_tqs": 0.5485964595158762,
+                "n_trades": 8
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.9,
+                "y_mean_tqs": 0.4310426346758804,
+                "n_trades": 2
+              }
+            ]
+          },
+          "max_session_impulse": {
+            "n": 18,
+            "beta": 20.095133276176384,
+            "r2": 0.08273230478020566,
+            "ci_lower": -12.429097124787994,
+            "ci_upper": 51.18560702371542,
+            "abs_ci_lower": 1.1044257809706894,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 18,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.23798771373294028,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.0,
+                "n_trades": 2
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.4691674237699175,
+                "n_trades": 9
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.2559739415057276,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.3673835522372922,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.3755495841149055,
+                "n_trades": 3
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.6298005399094814,
+                "n_trades": 14
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.0,
+                "n_trades": 2
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.7579319744227041,
+                "n_trades": 1
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.6556595657031927,
+                "n_trades": 8
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.3930914260109099,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.0,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.40595636628644755,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.4891180185017455,
+                "y_mean_tqs": 0.5485964595158762,
+                "n_trades": 8
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.48135246670753556,
+                "y_mean_tqs": 0.4310426346758804,
+                "n_trades": 2
+              }
+            ]
+          },
+          "d1_chop_fraction": {
+            "n": 18,
+            "beta": 14.400507858155585,
+            "r2": 0.08975649290682386,
+            "ci_lower": -7.743291198961583,
+            "ci_upper": 35.48944752001766,
+            "abs_ci_lower": 0.8649144554470467,
+            "n_boot_valid": 10000,
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 18,
+            "n_unique_x": 3,
+            "observations": [
+              {
+                "symbol": "EURUSD",
+                "window": 0,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.23798771373294028,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 0,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.0,
+                "n_trades": 2
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 1,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.4691674237699175,
+                "n_trades": 9
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.2559739415057276,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 1,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.0,
+                "n_trades": 1
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 2,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.3673835522372922,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 2,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.3755495841149055,
+                "n_trades": 3
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 3,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.6298005399094814,
+                "n_trades": 14
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.0,
+                "n_trades": 2
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 3,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.7579319744227041,
+                "n_trades": 1
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 4,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.6556595657031927,
+                "n_trades": 8
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 4,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.3930914260109099,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 5,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.0,
+                "n_trades": 3
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 5,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.40595636628644755,
+                "n_trades": 2
+              },
+              {
+                "symbol": "EURUSD",
+                "window": 6,
+                "x_feature": 0.31974420463629094,
+                "y_mean_tqs": 0.5485964595158762,
+                "n_trades": 8
+              },
+              {
+                "symbol": "GBPUSD",
+                "window": 6,
+                "x_feature": 0.3085531574740208,
+                "y_mean_tqs": 0.4310426346758804,
+                "n_trades": 2
+              }
+            ]
+          }
+        }
+      },
+      "barou_shoei": {
+        "symbols_present": [
+          "USDCAD"
+        ],
+        "n_symbols_present": 1,
+        "n_windows_present": 7,
+        "features": {
+          "d1_ac1": {
+            "n": 7,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=7, unique_x=1 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 7,
+            "n_unique_x": 1,
+            "observations": [
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.20962475868664313,
+                "n_trades": 8
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.2918495171793566,
+                "n_trades": 5
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.34189995968212195,
+                "n_trades": 2
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.16089889546863498,
+                "n_trades": 5
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.4295540009028228,
+                "n_trades": 11
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.2553746072303595,
+                "n_trades": 7
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": -0.004082416464530122,
+                "y_mean_tqs": 0.20502387142781173,
+                "n_trades": 5
+              }
+            ]
+          },
+          "h4_atr_percentile": {
+            "n": 7,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=7, unique_x=1 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 7,
+            "n_unique_x": 1,
+            "observations": [
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.20962475868664313,
+                "n_trades": 8
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.2918495171793566,
+                "n_trades": 5
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.34189995968212195,
+                "n_trades": 2
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.16089889546863498,
+                "n_trades": 5
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.4295540009028228,
+                "n_trades": 11
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.2553746072303595,
+                "n_trades": 7
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": 0.7,
+                "y_mean_tqs": 0.20502387142781173,
+                "n_trades": 5
+              }
+            ]
+          },
+          "max_session_impulse": {
+            "n": 7,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=7, unique_x=1 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 7,
+            "n_unique_x": 1,
+            "observations": [
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.20962475868664313,
+                "n_trades": 8
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.2918495171793566,
+                "n_trades": 5
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.34189995968212195,
+                "n_trades": 2
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.16089889546863498,
+                "n_trades": 5
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.4295540009028228,
+                "n_trades": 11
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.2553746072303595,
+                "n_trades": 7
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": 0.4827030006582503,
+                "y_mean_tqs": 0.20502387142781173,
+                "n_trades": 5
+              }
+            ]
+          },
+          "d1_chop_fraction": {
+            "n": 7,
+            "beta": null,
+            "r2": null,
+            "ci_lower": null,
+            "ci_upper": null,
+            "abs_ci_lower": null,
+            "n_boot_valid": 0,
+            "degenerate_reason": "n=7, unique_x=1 \u2014 need n>=2 with >1 unique x-value for OLS \u03b2.",
+            "prelocked_direction": null,
+            "direction_respected": null,
+            "n_observations": 7,
+            "n_unique_x": 1,
+            "observations": [
+              {
+                "symbol": "USDCAD",
+                "window": 0,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.20962475868664313,
+                "n_trades": 8
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 1,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.2918495171793566,
+                "n_trades": 5
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 2,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.34189995968212195,
+                "n_trades": 2
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 3,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.16089889546863498,
+                "n_trades": 5
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 4,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.4295540009028228,
+                "n_trades": 11
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 5,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.2553746072303595,
+                "n_trades": 7
+              },
+              {
+                "symbol": "USDCAD",
+                "window": 6,
+                "x_feature": 0.3101518784972022,
+                "y_mean_tqs": 0.20502387142781173,
+                "n_trades": 5
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "training_window_utc": [
+    "2015-01-01T00:00:00+00:00",
+    "2019-01-01T00:00:00+00:00"
+  ],
+  "oos_windows": [
+    {
+      "idx": 0,
+      "oos_start": "2019-01-01T00:00:00+00:00",
+      "oos_end": "2020-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 1,
+      "oos_start": "2020-01-01T00:00:00+00:00",
+      "oos_end": "2021-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 2,
+      "oos_start": "2021-01-01T00:00:00+00:00",
+      "oos_end": "2022-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 3,
+      "oos_start": "2022-01-01T00:00:00+00:00",
+      "oos_end": "2023-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 4,
+      "oos_start": "2023-01-01T00:00:00+00:00",
+      "oos_end": "2024-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 5,
+      "oos_start": "2024-01-01T00:00:00+00:00",
+      "oos_end": "2025-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 6,
+      "oos_start": "2025-01-01T00:00:00+00:00",
+      "oos_end": "2026-01-01T00:00:00+00:00"
+    }
+  ],
+  "banked_source": "programs/M001_multi_agent_ensemble/reviews/g7_replay_cache_g7retry1-phi41/trades.jsonl",
+  "n_bootstrap": 10000
+}

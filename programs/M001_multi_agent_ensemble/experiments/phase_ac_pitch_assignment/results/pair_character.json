@@ -1,0 +1,78 @@
+{
+  "EURUSD": {
+    "n_h4": 6440,
+    "n_d1": 1251,
+    "d1_ac1": -0.02156247832839873,
+    "median_h4_atr_abs": 0.003234282078565486,
+    "max_session_impulse": 0.4891180185017455,
+    "d1_chop_fraction": 0.31974420463629094,
+    "training_window_utc": [
+      "2015-01-01T00:00:00+00:00",
+      "2019-01-01T00:00:00+00:00"
+    ],
+    "h4_atr_percentile": 0.5,
+    "dxy_beta": "dropped (DXY not in production parquet)"
+  },
+  "GBPUSD": {
+    "n_h4": 6440,
+    "n_d1": 1251,
+    "d1_ac1": 0.03319884269254089,
+    "median_h4_atr_abs": 0.004090459640863993,
+    "max_session_impulse": 0.48135246670753556,
+    "d1_chop_fraction": 0.3085531574740208,
+    "training_window_utc": [
+      "2015-01-01T00:00:00+00:00",
+      "2019-01-01T00:00:00+00:00"
+    ],
+    "h4_atr_percentile": 0.9,
+    "dxy_beta": "dropped (DXY not in production parquet)"
+  },
+  "USDCAD": {
+    "n_h4": 6440,
+    "n_d1": 1251,
+    "d1_ac1": -0.004082416464530122,
+    "median_h4_atr_abs": 0.003644312404164923,
+    "max_session_impulse": 0.4827030006582503,
+    "d1_chop_fraction": 0.3101518784972022,
+    "training_window_utc": [
+      "2015-01-01T00:00:00+00:00",
+      "2019-01-01T00:00:00+00:00"
+    ],
+    "h4_atr_percentile": 0.7,
+    "dxy_beta": "dropped (DXY not in production parquet)"
+  },
+  "AUDUSD": {
+    "n_h4": 6440,
+    "n_d1": 1251,
+    "d1_ac1": -0.050997749507039204,
+    "median_h4_atr_abs": 0.0026681549459860346,
+    "max_session_impulse": 0.4648370951799911,
+    "d1_chop_fraction": 0.3301358912869704,
+    "training_window_utc": [
+      "2015-01-01T00:00:00+00:00",
+      "2019-01-01T00:00:00+00:00"
+    ],
+    "h4_atr_percentile": 0.1,
+    "dxy_beta": "dropped (DXY not in production parquet)"
+  },
+  "NZDUSD": {
+    "n_h4": 6439,
+    "n_d1": 1250,
+    "d1_ac1": -0.009343470539465408,
+    "median_h4_atr_abs": 0.0027362336659707285,
+    "max_session_impulse": 0.44022575924416396,
+    "d1_chop_fraction": 0.2968,
+    "training_window_utc": [
+      "2015-01-01T00:00:00+00:00",
+      "2019-01-01T00:00:00+00:00"
+    ],
+    "h4_atr_percentile": 0.3,
+    "dxy_beta": "dropped (DXY not in production parquet)"
+  },
+  "USDJPY": {
+    "error": "NEEDS CACHE PULL \u2014 pair not in production parquet"
+  },
+  "USDCHF": {
+    "error": "NEEDS CACHE PULL \u2014 pair not in production parquet"
+  }
+}
