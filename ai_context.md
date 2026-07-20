@@ -1,4 +1,67 @@
-# AI Context — finance research experiments (updated 2026-07-15, G7 v1 checkpoint gate THIRD attempt FIRED: **FAIL 3/7 phi41 / 4/7 arm4**, still no v2 authorisation)
+# AI Context — finance research experiments (updated 2026-07-20, Phase AC pitch-assignment pre-reg landed + AC.0 FIRED and FAILED, campaign STOPPED per §5 fail-branch)
+
+## 2026-07-20 — Phase AC pitch-assignment: PRE-REG landed, AC.0 FAILED, AC.1/AC.2 NOT FIRED
+
+Commits (on `multi-agent-ensemble`): `3e0f611` (harness extension —
+promote `SYMBOLS_G7` to a runtime parameter + 5 new tests),
+`083c0e9` (pre-registered PROTOCOL.md for AC.0 + AC.1 + AC.2 arms),
+`61920b4` (AC.0 outputs + verdict + AC.1/AC.2 stop notices).
+
+**Motivating problem:** G7 §11.18 3/7 phi41 pass with two failing
+movable agents (Chigiri, Rin) whose canon playstyles suggest a
+different pair-character than their current home would be a better fit;
+Kunigami retired as a proposer per §11.12 and user wants to test
+un-retirement on a candidate pitch.
+
+**Structure (pre-locked):**
+- AC.0 meta-control: does pair-character predict per-agent mean TQS?
+  Regress banked g7retry1-phi41 telemetry on a 5-feature pair-character
+  vector (§4). Pass gates AC.1 / AC.2; fail STOPS the study per §5
+  fail-branch.
+- AC.1 per-agent multi-pitch fit: 8 sub-arms (3 runnable today, 5
+  blocked on USDJPY/USDCHF cache pull).
+- AC.2 squad composition: 4 arms (A1 baseline, A2 single-squad,
+  B1-hard multi-squad isolated, B1-soft shared-workspace). Deferred
+  to end.
+- Additivity flag (§5.1) pre-locked to UNION per user.
+
+**Harness extension (§7 methodology, no strategy change):**
+`SYMBOLS_G7` was hardcoded at module scope; Phase AC promotes it to
+a runtime parameter on `run_g7_walk_forward` / `run_g7_dry_run` +
+`--symbols` CLI flag. Default preserved; every sealed cache is byte-
+identical when the flag is omitted. Full sim suite: 863 passed, 4
+skipped, 0 failed after the change. 5 new unit tests cover the
+override contract + CLI parsing.
+
+**AC.0 verdict: FAIL.** Feature vector computed on 5 in-cache pairs
+(EURUSD, GBPUSD, USDCAD, AUDUSD, NZDUSD; USDJPY/USDCHF blocked pending
+cache pull; DXY-beta dropped — DXY not in production parquet). §5 pass
+criterion requires ≥2 of {Chigiri, Rin, Kunigami} with a feature whose
+bootstrap 95 % CI lower on |β| > 0. Only Chigiri produces a defined β
+(n=14 obs, 2 unique x-values → 2-group ANOVA degenerate at R²=0.164
+identical across features); Rin has 1 unique x-value (`.symbols =
+('EURUSD',)`) — OLS undefined; Kunigami has 0 banked trades (retired).
+Verdict: pitch-character-predicts-agent-success unsupported at the
+banked-panel scale. Per §5 + §10 kill condition, AC.1 and AC.2 arms
+DO NOT fire.
+
+**Structural finding for any future amendment (§13):** the pre-reg §9
+pre-mortem assumed n=5 banked-panel pairs but reality is n=3, and
+per-movable-agent unique-x collapses further to 2/1/0. Reviving Phase
+AC needs either (a) re-running the g7retry1-phi41 walk-forward with
+movable agents' `.symbols` deliberately widened before the replay so
+banked telemetry covers all pairs, or (b) a different statistic that
+does not require per-agent per-pair OLS.
+
+**What still needs a data step:** USDJPY / USDCHF H4 + D1 (11 years)
+via the Windows/MT5 VM `scripts/refresh_cache.py`. Orthogonal to the
+AC.0 verdict; unlocks the 5 blocked AC.1 sub-arms if the pre-reg is
+ever amended and Phase AC is revived.
+
+Standing user decisions per §11.18 (from 2026-07-15 entry below) remain
+open; none started in this session.
+
+---
 
 ## 2026-07-15 — G7 v1 checkpoint gate THIRD ATTEMPT (`g7retry2`): FAIL 3/7 phi41 / 4/7 arm4
 
