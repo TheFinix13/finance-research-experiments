@@ -1,0 +1,1525 @@
+{
+  "study": "E022",
+  "title": "Structure-aware TP snap (order-placement)",
+  "generated_at": "2026-07-20T18:30:05.069951+00:00",
+  "generator_commit": "7e1a3e7",
+  "pre_registration": "experiments/E022_structure_aware_tp_snap/PROTOCOL.md",
+  "harness": "programs/E022/level_detector.py + programs/E022/rescorer.py (bypasses programs/_shared/counterfactual_replay/replay.py adjust_tp semantics \u2014 see rescorer.py module docstring)",
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDCAD"
+  ],
+  "per_symbol_meta": {
+    "EURUSD": {
+      "symbol": "EURUSD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "M5": 737
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:16:14.472863+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 737,
+      "hit_rate": 0.5577,
+      "mean_r": 0.382,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    },
+    "GBPUSD": {
+      "symbol": "GBPUSD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "M15": 668,
+        "H4": 276
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:15:58.944332+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 944,
+      "hit_rate": 0.5561,
+      "mean_r": 0.3586,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    },
+    "USDCAD": {
+      "symbol": "USDCAD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "H4": 707
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:15:47.885405+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 707,
+      "hit_rate": 0.5446,
+      "mean_r": 0.3685,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    }
+  },
+  "total_trades": 2388,
+  "results": {
+    "arms": [
+      {
+        "arm_id": "daily_only_d5",
+        "snap_source": "daily_only",
+        "snap_distance": 5.0,
+        "snap_offset": 2.5,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": 0.0098,
+            "ci_low": -0.0054,
+            "ci_high": 0.0284,
+            "p_two_sided": 0.2376,
+            "sharpe_arm": 0.2453,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": 0.0096,
+            "snap_fire_rate": 0.126,
+            "delta_p_tp_fills": 0.0098
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0025,
+            "ci_low": -0.0119,
+            "ci_high": 0.0109,
+            "p_two_sided": 0.6376,
+            "sharpe_arm": 0.3937,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0079,
+            "snap_fire_rate": 0.1134,
+            "delta_p_tp_fills": 0.005
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": 0.0014,
+            "ci_low": -0.0075,
+            "ci_high": 0.0136,
+            "p_two_sided": 0.8252,
+            "sharpe_arm": 0.2921,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.0006,
+            "snap_fire_rate": 0.0989,
+            "delta_p_tp_fills": 0.0067
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.01,
+            "ci_low": -0.0156,
+            "ci_high": -0.0052,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.3058,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.0169,
+            "snap_fire_rate": 0.1111,
+            "delta_p_tp_fills": 0.0
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0151,
+            "ci_low": -0.0246,
+            "ci_high": -0.0075,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.2488,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0248,
+            "snap_fire_rate": 0.1216,
+            "delta_p_tp_fills": 0.0
+          }
+        ],
+        "fold_positive_flags": [
+          true,
+          false,
+          true,
+          false,
+          false
+        ],
+        "n_folds_positive": 2,
+        "pooled": {
+          "delta_sharpe": -0.0008,
+          "ci_low": -0.0055,
+          "ci_high": 0.0049,
+          "p_two_sided": 0.7384,
+          "sharpe_arm": 0.2759,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0044,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.1085,
+          "filled_at_snap_rate": 0.0641,
+          "delta_p_tp_fills": 0.0046,
+          "delta_mean_r_on_winners": -0.0079,
+          "n_winners_pooled": 1332,
+          "delta_mean_time_in_trade_winners_hours": -0.711,
+          "delta_mean_time_in_trade_winners_bars_h4": -0.178
+        },
+        "bh_fdr_rejected": false,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "daily_only_d10",
+        "snap_source": "daily_only",
+        "snap_distance": 10.0,
+        "snap_offset": 3.0,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": 0.0011,
+            "ci_low": -0.0178,
+            "ci_high": 0.0225,
+            "p_two_sided": 0.956,
+            "sharpe_arm": 0.2366,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.0062,
+            "snap_fire_rate": 0.2283,
+            "delta_p_tp_fills": 0.0177
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0326,
+            "ci_low": -0.0491,
+            "ci_high": -0.0153,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.3636,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0549,
+            "snap_fire_rate": 0.2343,
+            "delta_p_tp_fills": 0.005
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.008,
+            "ci_low": -0.0233,
+            "ci_high": 0.0099,
+            "p_two_sided": 0.3584,
+            "sharpe_arm": 0.2827,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.0179,
+            "snap_fire_rate": 0.1933,
+            "delta_p_tp_fills": 0.0157
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0274,
+            "ci_low": -0.0602,
+            "ci_high": 0.0103,
+            "p_two_sided": 0.1412,
+            "sharpe_arm": 0.2884,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.0571,
+            "snap_fire_rate": 0.2857,
+            "delta_p_tp_fills": 0.0119
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.012,
+            "ci_low": -0.0421,
+            "ci_high": 0.0255,
+            "p_two_sided": 0.4576,
+            "sharpe_arm": 0.252,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0314,
+            "snap_fire_rate": 0.2162,
+            "delta_p_tp_fills": 0.0135
+          }
+        ],
+        "fold_positive_flags": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 1,
+        "pooled": {
+          "delta_sharpe": -0.0107,
+          "ci_low": -0.0189,
+          "ci_high": -0.0017,
+          "p_two_sided": 0.0184,
+          "sharpe_arm": 0.266,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0242,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.214,
+          "filled_at_snap_rate": 0.1315,
+          "delta_p_tp_fills": 0.0117,
+          "delta_mean_r_on_winners": -0.0429,
+          "n_winners_pooled": 1349,
+          "delta_mean_time_in_trade_winners_hours": -1.664,
+          "delta_mean_time_in_trade_winners_bars_h4": -0.416
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "daily_only_d15",
+        "snap_source": "daily_only",
+        "snap_distance": 15.0,
+        "snap_offset": 3.0,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0097,
+            "ci_low": -0.0341,
+            "ci_high": 0.0173,
+            "p_two_sided": 0.44,
+            "sharpe_arm": 0.2259,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.0271,
+            "snap_fire_rate": 0.3268,
+            "delta_p_tp_fills": 0.0276
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.038,
+            "ci_low": -0.0652,
+            "ci_high": -0.0084,
+            "p_two_sided": 0.016,
+            "sharpe_arm": 0.3582,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0723,
+            "snap_fire_rate": 0.3224,
+            "delta_p_tp_fills": 0.0202
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.0306,
+            "ci_low": -0.0495,
+            "ci_high": -0.0098,
+            "p_two_sided": 0.004,
+            "sharpe_arm": 0.2601,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.0527,
+            "snap_fire_rate": 0.2876,
+            "delta_p_tp_fills": 0.018
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0208,
+            "ci_low": -0.0648,
+            "ci_high": 0.0294,
+            "p_two_sided": 0.4,
+            "sharpe_arm": 0.2949,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.0598,
+            "snap_fire_rate": 0.3929,
+            "delta_p_tp_fills": 0.0357
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0059,
+            "ci_low": -0.0472,
+            "ci_high": 0.0404,
+            "p_two_sided": 0.7732,
+            "sharpe_arm": 0.2581,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0317,
+            "snap_fire_rate": 0.3153,
+            "delta_p_tp_fills": 0.027
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.0164,
+          "ci_low": -0.0272,
+          "ci_high": -0.0043,
+          "p_two_sided": 0.0076,
+          "sharpe_arm": 0.2603,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0386,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.3061,
+          "filled_at_snap_rate": 0.1977,
+          "delta_p_tp_fills": 0.0235,
+          "delta_mean_r_on_winners": -0.067,
+          "n_winners_pooled": 1377,
+          "delta_mean_time_in_trade_winners_hours": -4.309,
+          "delta_mean_time_in_trade_winners_bars_h4": -1.077
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "ladder_top_d5",
+        "snap_source": "ladder_top",
+        "snap_distance": 5.0,
+        "snap_offset": 2.5,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": 0.0091,
+            "ci_low": -0.0034,
+            "ci_high": 0.0256,
+            "p_two_sided": 0.1784,
+            "sharpe_arm": 0.2447,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": 0.0101,
+            "snap_fire_rate": 0.0335,
+            "delta_p_tp_fills": 0.0059
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0036,
+            "ci_low": -0.0073,
+            "ci_high": -0.0005,
+            "p_two_sided": 0.01,
+            "sharpe_arm": 0.3926,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0059,
+            "snap_fire_rate": 0.0252,
+            "delta_p_tp_fills": 0.0
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.0029,
+            "ci_low": -0.0057,
+            "ci_high": -0.0009,
+            "p_two_sided": 0.0008,
+            "sharpe_arm": 0.2878,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.0048,
+            "snap_fire_rate": 0.0337,
+            "delta_p_tp_fills": 0.0
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0063,
+            "ci_low": -0.0117,
+            "ci_high": -0.002,
+            "p_two_sided": 0.0036,
+            "sharpe_arm": 0.3094,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.0105,
+            "snap_fire_rate": 0.0397,
+            "delta_p_tp_fills": 0.0
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0026,
+            "ci_low": -0.0116,
+            "ci_high": 0.0068,
+            "p_two_sided": 0.5512,
+            "sharpe_arm": 0.2614,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0048,
+            "snap_fire_rate": 0.0405,
+            "delta_p_tp_fills": 0.0045
+          }
+        ],
+        "fold_positive_flags": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 1,
+        "pooled": {
+          "delta_sharpe": 0.0006,
+          "ci_low": -0.0032,
+          "ci_high": 0.0052,
+          "p_two_sided": 0.8228,
+          "sharpe_arm": 0.2773,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0008,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.0302,
+          "filled_at_snap_rate": 0.0188,
+          "delta_p_tp_fills": 0.0021,
+          "delta_mean_r_on_winners": -0.0015,
+          "n_winners_pooled": 1326,
+          "delta_mean_time_in_trade_winners_hours": 0.174,
+          "delta_mean_time_in_trade_winners_bars_h4": 0.044
+        },
+        "bh_fdr_rejected": false,
+        "verdict": "inactive_snap_never_fires"
+      },
+      {
+        "arm_id": "ladder_top_d10",
+        "snap_source": "ladder_top",
+        "snap_distance": 10.0,
+        "snap_offset": 3.0,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": 0.0134,
+            "ci_low": -0.0055,
+            "ci_high": 0.0364,
+            "p_two_sided": 0.1956,
+            "sharpe_arm": 0.2489,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": 0.012,
+            "snap_fire_rate": 0.0748,
+            "delta_p_tp_fills": 0.0138
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0134,
+            "ci_low": -0.0295,
+            "ci_high": 0.0046,
+            "p_two_sided": 0.14,
+            "sharpe_arm": 0.3828,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0256,
+            "snap_fire_rate": 0.073,
+            "delta_p_tp_fills": 0.005
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.0077,
+            "ci_low": -0.0171,
+            "ci_high": 0.0031,
+            "p_two_sided": 0.1404,
+            "sharpe_arm": 0.2829,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.0136,
+            "snap_fire_rate": 0.0652,
+            "delta_p_tp_fills": 0.0022
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0174,
+            "ci_low": -0.043,
+            "ci_high": 0.0133,
+            "p_two_sided": 0.2264,
+            "sharpe_arm": 0.2983,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.035,
+            "snap_fire_rate": 0.119,
+            "delta_p_tp_fills": 0.0079
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": 0.0056,
+            "ci_low": -0.0252,
+            "ci_high": 0.0429,
+            "p_two_sided": 0.7912,
+            "sharpe_arm": 0.2695,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0032,
+            "snap_fire_rate": 0.0856,
+            "delta_p_tp_fills": 0.018
+          }
+        ],
+        "fold_positive_flags": [
+          true,
+          false,
+          false,
+          false,
+          true
+        ],
+        "n_folds_positive": 2,
+        "pooled": {
+          "delta_sharpe": -0.0012,
+          "ci_low": -0.0085,
+          "ci_high": 0.007,
+          "p_two_sided": 0.7344,
+          "sharpe_arm": 0.2755,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0081,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.0745,
+          "filled_at_snap_rate": 0.0503,
+          "delta_p_tp_fills": 0.008,
+          "delta_mean_r_on_winners": -0.0158,
+          "n_winners_pooled": 1339,
+          "delta_mean_time_in_trade_winners_hours": -1.09,
+          "delta_mean_time_in_trade_winners_bars_h4": -0.272
+        },
+        "bh_fdr_rejected": false,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "ladder_top_d15",
+        "snap_source": "ladder_top",
+        "snap_distance": 15.0,
+        "snap_offset": 3.0,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0088,
+            "ci_low": -0.0337,
+            "ci_high": 0.018,
+            "p_two_sided": 0.4904,
+            "sharpe_arm": 0.2267,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.0238,
+            "snap_fire_rate": 0.1378,
+            "delta_p_tp_fills": 0.0177
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0462,
+            "ci_low": -0.0755,
+            "ci_high": -0.0149,
+            "p_two_sided": 0.004,
+            "sharpe_arm": 0.35,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0804,
+            "snap_fire_rate": 0.1587,
+            "delta_p_tp_fills": 0.0151
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.0267,
+            "ci_low": -0.0436,
+            "ci_high": -0.0083,
+            "p_two_sided": 0.0048,
+            "sharpe_arm": 0.264,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.044,
+            "snap_fire_rate": 0.1146,
+            "delta_p_tp_fills": 0.0045
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0336,
+            "ci_low": -0.079,
+            "ci_high": 0.016,
+            "p_two_sided": 0.1728,
+            "sharpe_arm": 0.2822,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.0709,
+            "snap_fire_rate": 0.1944,
+            "delta_p_tp_fills": 0.0198
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0199,
+            "ci_low": -0.0625,
+            "ci_high": 0.0258,
+            "p_two_sided": 0.3616,
+            "sharpe_arm": 0.2441,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0448,
+            "snap_fire_rate": 0.1622,
+            "delta_p_tp_fills": 0.0225
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.02,
+          "ci_low": -0.0308,
+          "ci_high": -0.0087,
+          "p_two_sided": 0.0012,
+          "sharpe_arm": 0.2567,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0398,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.1357,
+          "filled_at_snap_rate": 0.0997,
+          "delta_p_tp_fills": 0.0134,
+          "delta_mean_r_on_winners": -0.0718,
+          "n_winners_pooled": 1352,
+          "delta_mean_time_in_trade_winners_hours": -2.273,
+          "delta_mean_time_in_trade_winners_bars_h4": -0.568
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "round_number_d5",
+        "snap_source": "round_number",
+        "snap_distance": 5.0,
+        "snap_offset": 2.5,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": 0.0043,
+            "ci_low": -0.0055,
+            "ci_high": 0.0169,
+            "p_two_sided": 0.4836,
+            "sharpe_arm": 0.2398,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": 0.0038,
+            "snap_fire_rate": 0.1063,
+            "delta_p_tp_fills": 0.0079
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0076,
+            "ci_low": -0.0118,
+            "ci_high": -0.0041,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.3886,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0131,
+            "snap_fire_rate": 0.0907,
+            "delta_p_tp_fills": 0.0
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.0016,
+            "ci_low": -0.0081,
+            "ci_high": 0.0089,
+            "p_two_sided": 0.6152,
+            "sharpe_arm": 0.2891,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.0044,
+            "snap_fire_rate": 0.0989,
+            "delta_p_tp_fills": 0.0022
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0012,
+            "ci_low": -0.0115,
+            "ci_high": 0.0156,
+            "p_two_sided": 0.75,
+            "sharpe_arm": 0.3146,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.0054,
+            "snap_fire_rate": 0.1071,
+            "delta_p_tp_fills": 0.004
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0054,
+            "ci_low": -0.0125,
+            "ci_high": 0.0029,
+            "p_two_sided": 0.1948,
+            "sharpe_arm": 0.2586,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0099,
+            "snap_fire_rate": 0.0946,
+            "delta_p_tp_fills": 0.0045
+          }
+        ],
+        "fold_positive_flags": [
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 1,
+        "pooled": {
+          "delta_sharpe": -0.0022,
+          "ci_low": -0.0055,
+          "ci_high": 0.0016,
+          "p_two_sided": 0.2452,
+          "sharpe_arm": 0.2745,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0052,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.0984,
+          "filled_at_snap_rate": 0.0616,
+          "delta_p_tp_fills": 0.0034,
+          "delta_mean_r_on_winners": -0.0094,
+          "n_winners_pooled": 1329,
+          "delta_mean_time_in_trade_winners_hours": -0.889,
+          "delta_mean_time_in_trade_winners_bars_h4": -0.222
+        },
+        "bh_fdr_rejected": false,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "round_number_d10",
+        "snap_source": "round_number",
+        "snap_distance": 10.0,
+        "snap_offset": 3.0,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0035,
+            "ci_low": -0.0195,
+            "ci_high": 0.0157,
+            "p_two_sided": 0.6704,
+            "sharpe_arm": 0.232,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.0122,
+            "snap_fire_rate": 0.2283,
+            "delta_p_tp_fills": 0.0138
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0116,
+            "ci_low": -0.028,
+            "ci_high": 0.009,
+            "p_two_sided": 0.2444,
+            "sharpe_arm": 0.3846,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0284,
+            "snap_fire_rate": 0.2368,
+            "delta_p_tp_fills": 0.0101
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.0119,
+            "ci_low": -0.0252,
+            "ci_high": 0.004,
+            "p_two_sided": 0.1336,
+            "sharpe_arm": 0.2788,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.0223,
+            "snap_fire_rate": 0.1775,
+            "delta_p_tp_fills": 0.0067
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0215,
+            "ci_low": -0.0425,
+            "ci_high": 0.0034,
+            "p_two_sided": 0.078,
+            "sharpe_arm": 0.2943,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.04,
+            "snap_fire_rate": 0.2024,
+            "delta_p_tp_fills": 0.0079
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0172,
+            "ci_low": -0.0312,
+            "ci_high": -0.0017,
+            "p_two_sided": 0.0292,
+            "sharpe_arm": 0.2468,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0296,
+            "snap_fire_rate": 0.1982,
+            "delta_p_tp_fills": 0.009
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.0118,
+          "ci_low": -0.0179,
+          "ci_high": -0.0051,
+          "p_two_sided": 0.0012,
+          "sharpe_arm": 0.2649,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0232,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.2064,
+          "filled_at_snap_rate": 0.1311,
+          "delta_p_tp_fills": 0.0088,
+          "delta_mean_r_on_winners": -0.0413,
+          "n_winners_pooled": 1342,
+          "delta_mean_time_in_trade_winners_hours": -2.216,
+          "delta_mean_time_in_trade_winners_bars_h4": -0.554
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "round_number_d15",
+        "snap_source": "round_number",
+        "snap_distance": 15.0,
+        "snap_offset": 3.0,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.007,
+            "ci_low": -0.0267,
+            "ci_high": 0.0154,
+            "p_two_sided": 0.5052,
+            "sharpe_arm": 0.2285,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.0202,
+            "snap_fire_rate": 0.3031,
+            "delta_p_tp_fills": 0.0256
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0146,
+            "ci_low": -0.0423,
+            "ci_high": 0.0179,
+            "p_two_sided": 0.336,
+            "sharpe_arm": 0.3816,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0453,
+            "snap_fire_rate": 0.3476,
+            "delta_p_tp_fills": 0.0176
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.0262,
+            "ci_low": -0.0429,
+            "ci_high": -0.0074,
+            "p_two_sided": 0.0092,
+            "sharpe_arm": 0.2644,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.0452,
+            "snap_fire_rate": 0.2607,
+            "delta_p_tp_fills": 0.0112
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0301,
+            "ci_low": -0.0584,
+            "ci_high": 0.0013,
+            "p_two_sided": 0.06,
+            "sharpe_arm": 0.2856,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.0561,
+            "snap_fire_rate": 0.2937,
+            "delta_p_tp_fills": 0.0159
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0107,
+            "ci_low": -0.0395,
+            "ci_high": 0.0255,
+            "p_two_sided": 0.498,
+            "sharpe_arm": 0.2532,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0288,
+            "snap_fire_rate": 0.3108,
+            "delta_p_tp_fills": 0.0225
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.015,
+          "ci_low": -0.024,
+          "ci_high": -0.0052,
+          "p_two_sided": 0.004,
+          "sharpe_arm": 0.2617,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0329,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.299,
+          "filled_at_snap_rate": 0.1935,
+          "delta_p_tp_fills": 0.0188,
+          "delta_mean_r_on_winners": -0.0582,
+          "n_winners_pooled": 1365,
+          "delta_mean_time_in_trade_winners_hours": -3.18,
+          "delta_mean_time_in_trade_winners_bars_h4": -0.795
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "all_d5",
+        "snap_source": "all",
+        "snap_distance": 5.0,
+        "snap_offset": 2.5,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": 0.0106,
+            "ci_low": -0.0065,
+            "ci_high": 0.0316,
+            "p_two_sided": 0.2388,
+            "sharpe_arm": 0.2461,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": 0.0091,
+            "snap_fire_rate": 0.2185,
+            "delta_p_tp_fills": 0.0138
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0106,
+            "ci_low": -0.0215,
+            "ci_high": 0.0031,
+            "p_two_sided": 0.1172,
+            "sharpe_arm": 0.3856,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0217,
+            "snap_fire_rate": 0.2015,
+            "delta_p_tp_fills": 0.005
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": 0.0021,
+            "ci_low": -0.01,
+            "ci_high": 0.0174,
+            "p_two_sided": 0.8156,
+            "sharpe_arm": 0.2928,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.0013,
+            "snap_fire_rate": 0.1843,
+            "delta_p_tp_fills": 0.009
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.021,
+            "ci_low": -0.0288,
+            "ci_high": -0.0141,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.2948,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.0354,
+            "snap_fire_rate": 0.2222,
+            "delta_p_tp_fills": 0.0
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0194,
+            "ci_low": -0.0306,
+            "ci_high": -0.0082,
+            "p_two_sided": 0.0012,
+            "sharpe_arm": 0.2446,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0326,
+            "snap_fire_rate": 0.2072,
+            "delta_p_tp_fills": 0.0045
+          }
+        ],
+        "fold_positive_flags": [
+          true,
+          false,
+          true,
+          false,
+          false
+        ],
+        "n_folds_positive": 2,
+        "pooled": {
+          "delta_sharpe": -0.0042,
+          "ci_low": -0.0097,
+          "ci_high": 0.0022,
+          "p_two_sided": 0.1836,
+          "sharpe_arm": 0.2725,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0109,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.1977,
+          "filled_at_snap_rate": 0.1164,
+          "delta_p_tp_fills": 0.0067,
+          "delta_mean_r_on_winners": -0.0194,
+          "n_winners_pooled": 1337,
+          "delta_mean_time_in_trade_winners_hours": -0.867,
+          "delta_mean_time_in_trade_winners_bars_h4": -0.217
+        },
+        "bh_fdr_rejected": false,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "all_d10",
+        "snap_source": "all",
+        "snap_distance": 10.0,
+        "snap_offset": 3.0,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0079,
+            "ci_low": -0.0299,
+            "ci_high": 0.0171,
+            "p_two_sided": 0.4944,
+            "sharpe_arm": 0.2276,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.0231,
+            "snap_fire_rate": 0.4173,
+            "delta_p_tp_fills": 0.0256
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0325,
+            "ci_low": -0.0545,
+            "ci_high": -0.0067,
+            "p_two_sided": 0.0148,
+            "sharpe_arm": 0.3637,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.0641,
+            "snap_fire_rate": 0.4081,
+            "delta_p_tp_fills": 0.0126
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.0128,
+            "ci_low": -0.0305,
+            "ci_high": 0.0074,
+            "p_two_sided": 0.202,
+            "sharpe_arm": 0.2778,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.0276,
+            "snap_fire_rate": 0.3258,
+            "delta_p_tp_fills": 0.018
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0397,
+            "ci_low": -0.0751,
+            "ci_high": 0.002,
+            "p_two_sided": 0.06,
+            "sharpe_arm": 0.276,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.0794,
+            "snap_fire_rate": 0.4286,
+            "delta_p_tp_fills": 0.0159
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0308,
+            "ci_low": -0.0629,
+            "ci_high": 0.0075,
+            "p_two_sided": 0.1132,
+            "sharpe_arm": 0.2332,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0601,
+            "snap_fire_rate": 0.3829,
+            "delta_p_tp_fills": 0.018
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.0177,
+          "ci_low": -0.0273,
+          "ci_high": -0.0073,
+          "p_two_sided": 0.0016,
+          "sharpe_arm": 0.259,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0383,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.3781,
+          "filled_at_snap_rate": 0.2282,
+          "delta_p_tp_fills": 0.0176,
+          "delta_mean_r_on_winners": -0.0671,
+          "n_winners_pooled": 1363,
+          "delta_mean_time_in_trade_winners_hours": -2.08,
+          "delta_mean_time_in_trade_winners_bars_h4": -0.52
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "all_d15",
+        "snap_source": "all",
+        "snap_distance": 15.0,
+        "snap_offset": 3.0,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0127,
+            "ci_low": -0.0396,
+            "ci_high": 0.0171,
+            "p_two_sided": 0.3948,
+            "sharpe_arm": 0.2228,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.0361,
+            "snap_fire_rate": 0.5472,
+            "delta_p_tp_fills": 0.0453
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.0676,
+            "ci_low": -0.1016,
+            "ci_high": -0.0319,
+            "p_two_sided": 0.0008,
+            "sharpe_arm": 0.3286,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.1241,
+            "snap_fire_rate": 0.5819,
+            "delta_p_tp_fills": 0.0252
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.0338,
+            "ci_low": -0.0575,
+            "ci_high": -0.0074,
+            "p_two_sided": 0.0148,
+            "sharpe_arm": 0.2569,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.063,
+            "snap_fire_rate": 0.4652,
+            "delta_p_tp_fills": 0.027
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0463,
+            "ci_low": -0.0951,
+            "ci_high": 0.0108,
+            "p_two_sided": 0.104,
+            "sharpe_arm": 0.2694,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1028,
+            "snap_fire_rate": 0.6032,
+            "delta_p_tp_fills": 0.0437
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.019,
+            "ci_low": -0.0708,
+            "ci_high": 0.0396,
+            "p_two_sided": 0.4896,
+            "sharpe_arm": 0.2449,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.0611,
+            "snap_fire_rate": 0.5811,
+            "delta_p_tp_fills": 0.045
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.0282,
+          "ci_low": -0.0412,
+          "ci_high": -0.014,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.2485,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.0616,
+          "median_delta_r": 0.0
+        },
+        "mechanism": {
+          "snap_fire_rate": 0.531,
+          "filled_at_snap_rate": 0.3346,
+          "delta_p_tp_fills": 0.0348,
+          "delta_mean_r_on_winners": -0.1056,
+          "n_winners_pooled": 1403,
+          "delta_mean_time_in_trade_winners_hours": -4.001,
+          "delta_mean_time_in_trade_winners_bars_h4": -1.0
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      }
+    ],
+    "grid": {
+      "snap_distance": [
+        5.0,
+        10.0,
+        15.0
+      ],
+      "snap_source": [
+        "daily_only",
+        "ladder_top",
+        "round_number",
+        "all"
+      ],
+      "n_arms": 12
+    },
+    "folds": [
+      {
+        "name": "fold1",
+        "start": "2017-01-01T00:00:00+00:00",
+        "end": "2019-01-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold2",
+        "start": "2019-01-01T00:00:00+00:00",
+        "end": "2021-01-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold3",
+        "start": "2021-01-01T00:00:00+00:00",
+        "end": "2023-01-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold4",
+        "start": "2023-01-01T00:00:00+00:00",
+        "end": "2024-07-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold5",
+        "start": "2024-07-01T00:00:00+00:00",
+        "end": "2026-01-01T00:00:00+00:00"
+      }
+    ],
+    "bootstrap": {
+      "seed": 42,
+      "resamples": 5000
+    },
+    "fdr": {
+      "method": "BH",
+      "alpha": 0.1,
+      "family_size": 12
+    },
+    "fire_rate_floor": 0.05
+  },
+  "motivating_trade": {
+    "ticket": "2969136564",
+    "symbol": "GBPUSD",
+    "date": "2026-07-16",
+    "direction": "short",
+    "entry": 1.3506,
+    "tp": 1.34264,
+    "note": "n=1 descriptive case (PROTOCOL \u00a75.3); this ticket predates the PRE-0 ledger window (2015-01 \u2192 2025-12), so it is NOT in the sweep population. Level values are the ones declared in PROTOCOL \u00a75.3 (ladder_top swing @ 1.34111, round-number set {1.34500, 1.35000}). Under every arm, the pre-registration predicts snap does NOT fire.",
+    "arm_outcomes": [
+      {
+        "arm_id": "ladder_top_d5",
+        "snap_source": "ladder_top",
+        "snap_distance": 5.0,
+        "snap_offset": 2.5,
+        "L_used": [
+          1.34111
+        ],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "round_number_d5",
+        "snap_source": "round_number",
+        "snap_distance": 5.0,
+        "snap_offset": 2.5,
+        "L_used": [
+          1.345,
+          1.35
+        ],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "daily_only_d5",
+        "snap_source": "daily_only",
+        "snap_distance": 5.0,
+        "snap_offset": 2.5,
+        "L_used": [],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "all_d5",
+        "snap_source": "all",
+        "snap_distance": 5.0,
+        "snap_offset": 2.5,
+        "L_used": [
+          1.34111,
+          1.345,
+          1.35
+        ],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "ladder_top_d10",
+        "snap_source": "ladder_top",
+        "snap_distance": 10.0,
+        "snap_offset": 3.0,
+        "L_used": [
+          1.34111
+        ],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "round_number_d10",
+        "snap_source": "round_number",
+        "snap_distance": 10.0,
+        "snap_offset": 3.0,
+        "L_used": [
+          1.345,
+          1.35
+        ],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "daily_only_d10",
+        "snap_source": "daily_only",
+        "snap_distance": 10.0,
+        "snap_offset": 3.0,
+        "L_used": [],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "all_d10",
+        "snap_source": "all",
+        "snap_distance": 10.0,
+        "snap_offset": 3.0,
+        "L_used": [
+          1.34111,
+          1.345,
+          1.35
+        ],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "ladder_top_d15",
+        "snap_source": "ladder_top",
+        "snap_distance": 15.0,
+        "snap_offset": 3.0,
+        "L_used": [
+          1.34111
+        ],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "round_number_d15",
+        "snap_source": "round_number",
+        "snap_distance": 15.0,
+        "snap_offset": 3.0,
+        "L_used": [
+          1.345,
+          1.35
+        ],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "daily_only_d15",
+        "snap_source": "daily_only",
+        "snap_distance": 15.0,
+        "snap_offset": 3.0,
+        "L_used": [],
+        "new_tp": 1.34264,
+        "fired": false
+      },
+      {
+        "arm_id": "all_d15",
+        "snap_source": "all",
+        "snap_distance": 15.0,
+        "snap_offset": 3.0,
+        "L_used": [
+          1.34111,
+          1.345,
+          1.35
+        ],
+        "new_tp": 1.34264,
+        "fired": false
+      }
+    ]
+  },
+  "study_verdict": "dead",
+  "winning_arms": [],
+  "parked_arms": [
+    [
+      "ladder_top_d5",
+      "inactive_snap_never_fires"
+    ]
+  ]
+}
