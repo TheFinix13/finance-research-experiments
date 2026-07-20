@@ -1,0 +1,6653 @@
+{
+ "meta": {
+  "symbol": "EURUSD",
+  "timeframe": "H4",
+  "alpha": "zone_d1_against",
+  "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+  "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013, read-only reuse)",
+  "full_start": "2015-01-01T00:00:00+00:00",
+  "full_end": "2025-12-01T00:00:00+00:00",
+  "generated_at": "2026-07-13T20:24:07.066040+00:00",
+  "n_trades": 737,
+  "hit_rate": 0.5577,
+  "mean_r": 0.382,
+  "median_r": 1.5,
+  "min_r": -2.0,
+  "max_r": 1.5
+ },
+ "trades": [
+  {
+   "entry_time": "2015-02-17T08:00:00+00:00",
+   "exit_time": "2015-02-17T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 37.61,
+   "pnl_pips": 56.42,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-02-20T20:00:00+00:00",
+   "exit_time": "2015-02-23T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 22.41,
+   "pnl_pips": 33.62,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-02-25T08:00:00+00:00",
+   "exit_time": "2015-02-25T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.41,
+   "pnl_pips": 27.62,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-02-26T16:00:00+00:00",
+   "exit_time": "2015-02-27T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 19.59,
+   "pnl_pips": 29.39,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-03-02T12:00:00+00:00",
+   "exit_time": "2015-03-04T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 78.82,
+   "pnl_pips": -78.82,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-03-12T04:00:00+00:00",
+   "exit_time": "2015-03-12T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 27.9,
+   "pnl_pips": 41.86,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-03-12T08:00:00+00:00",
+   "exit_time": "2015-03-13T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 129.49,
+   "pnl_pips": -129.49,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-03-16T04:00:00+00:00",
+   "exit_time": "2015-03-17T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 80.86,
+   "pnl_pips": 121.29,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-03-17T16:00:00+00:00",
+   "exit_time": "2015-03-18T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 58.7,
+   "pnl_pips": 88.04,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-03-18T20:00:00+00:00",
+   "exit_time": "2015-04-13T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 285.3,
+   "pnl_pips": -285.3,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-04-14T08:00:00+00:00",
+   "exit_time": "2015-04-14T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 21.88,
+   "pnl_pips": 32.82,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-04-14T16:00:00+00:00",
+   "exit_time": "2015-04-21T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 133.91,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-04-21T08:00:00+00:00",
+   "exit_time": "2015-04-21T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 25.27,
+   "pnl_pips": 37.91,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-04-21T16:00:00+00:00",
+   "exit_time": "2015-04-23T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 62.47,
+   "pnl_pips": -62.47,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-04-28T12:00:00+00:00",
+   "exit_time": "2015-04-28T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 34.65,
+   "pnl_pips": -34.65,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-04-29T16:00:00+00:00",
+   "exit_time": "2015-04-29T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 26.11,
+   "pnl_pips": 39.16,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-05-01T08:00:00+00:00",
+   "exit_time": "2015-05-01T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 35.76,
+   "pnl_pips": 53.65,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-05-01T16:00:00+00:00",
+   "exit_time": "2015-05-05T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 63.63,
+   "pnl_pips": 95.44,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-05-05T08:00:00+00:00",
+   "exit_time": "2015-05-05T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 90.32,
+   "pnl_pips": -90.32,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-05-06T16:00:00+00:00",
+   "exit_time": "2015-05-07T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 62.3,
+   "pnl_pips": 93.44,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-05-08T00:00:00+00:00",
+   "exit_time": "2015-05-11T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 70.52,
+   "pnl_pips": 105.79,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-05-11T04:00:00+00:00",
+   "exit_time": "2015-05-12T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 88.75,
+   "pnl_pips": -88.75,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-05-13T16:00:00+00:00",
+   "exit_time": "2015-05-14T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 25.2,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-05-15T08:00:00+00:00",
+   "exit_time": "2015-05-15T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 60.11,
+   "pnl_pips": -60.11,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-05-18T00:00:00+00:00",
+   "exit_time": "2015-05-18T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 31.21,
+   "pnl_pips": 46.82,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-05-18T08:00:00+00:00",
+   "exit_time": "2015-05-19T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 80.1,
+   "pnl_pips": 120.15,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-05-22T04:00:00+00:00",
+   "exit_time": "2015-05-22T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 66.97,
+   "pnl_pips": -133.94,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-05-25T00:00:00+00:00",
+   "exit_time": "2015-05-26T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 49.03,
+   "pnl_pips": -49.03,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-05-28T04:00:00+00:00",
+   "exit_time": "2015-05-28T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 33.14,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-05-28T12:00:00+00:00",
+   "exit_time": "2015-05-28T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 23.45,
+   "pnl_pips": 35.18,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-05-28T16:00:00+00:00",
+   "exit_time": "2015-05-29T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 41.56,
+   "pnl_pips": 62.34,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-02T04:00:00+00:00",
+   "exit_time": "2015-06-02T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 30.65,
+   "pnl_pips": 45.97,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-02T08:00:00+00:00",
+   "exit_time": "2015-06-02T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 54.64,
+   "pnl_pips": 81.95,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-04T08:00:00+00:00",
+   "exit_time": "2015-06-04T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 50.41,
+   "pnl_pips": -100.81,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-06-04T20:00:00+00:00",
+   "exit_time": "2015-06-05T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 74.51,
+   "pnl_pips": 111.77,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-05T16:00:00+00:00",
+   "exit_time": "2015-06-08T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 155.36,
+   "pnl_pips": -155.36,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-06-09T04:00:00+00:00",
+   "exit_time": "2015-06-09T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 31.32,
+   "pnl_pips": 46.98,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-09T08:00:00+00:00",
+   "exit_time": "2015-06-09T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 48.89,
+   "pnl_pips": 73.34,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-09T16:00:00+00:00",
+   "exit_time": "2015-06-10T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 59.63,
+   "pnl_pips": -59.63,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-06-11T08:00:00+00:00",
+   "exit_time": "2015-06-12T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 80.46,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-06-12T16:00:00+00:00",
+   "exit_time": "2015-06-14T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 30.86,
+   "pnl_pips": 46.3,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-16T08:00:00+00:00",
+   "exit_time": "2015-06-16T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.97,
+   "pnl_pips": 37.45,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-16T12:00:00+00:00",
+   "exit_time": "2015-06-17T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 72.51,
+   "pnl_pips": -72.51,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-06-18T12:00:00+00:00",
+   "exit_time": "2015-06-19T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 65.18,
+   "pnl_pips": 97.77,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-19T08:00:00+00:00",
+   "exit_time": "2015-06-23T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 96.7,
+   "pnl_pips": 145.06,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-24T04:00:00+00:00",
+   "exit_time": "2015-06-28T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 56.42,
+   "pnl_pips": -112.84,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-06-29T04:00:00+00:00",
+   "exit_time": "2015-06-29T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 84.68,
+   "pnl_pips": 127.01,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-06-29T16:00:00+00:00",
+   "exit_time": "2015-07-05T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 153.02,
+   "pnl_pips": -153.02,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-07-06T04:00:00+00:00",
+   "exit_time": "2015-07-10T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 88.55,
+   "pnl_pips": 132.83,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-07-10T20:00:00+00:00",
+   "exit_time": "2015-07-12T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 27.41,
+   "pnl_pips": 41.12,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-07-13T08:00:00+00:00",
+   "exit_time": "2015-07-13T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 30.45,
+   "pnl_pips": -30.45,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-07-14T04:00:00+00:00",
+   "exit_time": "2015-07-14T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 57.44,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-07-14T20:00:00+00:00",
+   "exit_time": "2015-07-15T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 48.56,
+   "pnl_pips": -48.56,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-07-20T04:00:00+00:00",
+   "exit_time": "2015-07-20T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 15.61,
+   "pnl_pips": 23.42,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-07-20T08:00:00+00:00",
+   "exit_time": "2015-07-21T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 49.97,
+   "pnl_pips": 74.96,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-07-22T12:00:00+00:00",
+   "exit_time": "2015-07-22T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 18.71,
+   "pnl_pips": -18.71,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-07-23T00:00:00+00:00",
+   "exit_time": "2015-07-23T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 18.09,
+   "pnl_pips": 27.13,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-07-23T04:00:00+00:00",
+   "exit_time": "2015-07-23T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 38.49,
+   "pnl_pips": 57.73,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-07-24T16:00:00+00:00",
+   "exit_time": "2015-07-27T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 72.01,
+   "pnl_pips": 108.02,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-07-27T12:00:00+00:00",
+   "exit_time": "2015-07-30T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 106.19,
+   "pnl_pips": 159.28,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-07-31T08:00:00+00:00",
+   "exit_time": "2015-07-31T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 69.98,
+   "pnl_pips": -139.96,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-08-03T00:00:00+00:00",
+   "exit_time": "2015-08-03T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 21.42,
+   "pnl_pips": -21.42,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-08-06T16:00:00+00:00",
+   "exit_time": "2015-08-11T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 89.59,
+   "pnl_pips": 134.38,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-08-14T08:00:00+00:00",
+   "exit_time": "2015-08-18T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 53.48,
+   "pnl_pips": 80.22,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-08-20T04:00:00+00:00",
+   "exit_time": "2015-08-20T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 43.69,
+   "pnl_pips": -43.69,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-08-21T16:00:00+00:00",
+   "exit_time": "2015-08-24T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 35.43,
+   "pnl_pips": -70.86,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-08-25T04:00:00+00:00",
+   "exit_time": "2015-08-25T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 117.77,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-08-26T00:00:00+00:00",
+   "exit_time": "2015-08-26T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 67.77,
+   "pnl_pips": 101.66,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-08-26T12:00:00+00:00",
+   "exit_time": "2015-08-28T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 158.75,
+   "pnl_pips": 238.13,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-08-28T16:00:00+00:00",
+   "exit_time": "2015-09-01T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 126.26,
+   "pnl_pips": -126.26,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-09-03T16:00:00+00:00",
+   "exit_time": "2015-09-03T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 24.0,
+   "pnl_pips": 35.99,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-09-08T00:00:00+00:00",
+   "exit_time": "2015-09-08T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 15.83,
+   "pnl_pips": 23.74,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-09-08T04:00:00+00:00",
+   "exit_time": "2015-09-09T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 57.86,
+   "pnl_pips": -57.86,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-09-09T20:00:00+00:00",
+   "exit_time": "2015-09-11T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 79.83,
+   "pnl_pips": 119.74,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-09-16T16:00:00+00:00",
+   "exit_time": "2015-09-17T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 37.49,
+   "pnl_pips": -74.97,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-09-18T16:00:00+00:00",
+   "exit_time": "2015-09-22T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 127.63,
+   "pnl_pips": 191.45,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-09-25T00:00:00+00:00",
+   "exit_time": "2015-09-25T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 38.78,
+   "pnl_pips": -38.78,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-09-29T00:00:00+00:00",
+   "exit_time": "2015-09-29T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.72,
+   "pnl_pips": 40.08,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-10-14T08:00:00+00:00",
+   "exit_time": "2015-10-14T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 59.14,
+   "pnl_pips": -59.14,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-10-15T08:00:00+00:00",
+   "exit_time": "2015-10-19T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 70.64,
+   "pnl_pips": 105.96,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-10-19T12:00:00+00:00",
+   "exit_time": "2015-10-22T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 54.84,
+   "pnl_pips": 82.25,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-10-22T16:00:00+00:00",
+   "exit_time": "2015-10-22T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 19.55,
+   "pnl_pips": -19.55,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-10-23T04:00:00+00:00",
+   "exit_time": "2015-10-23T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 64.33,
+   "pnl_pips": -64.33,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-10-26T12:00:00+00:00",
+   "exit_time": "2015-10-26T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 23.77,
+   "pnl_pips": 35.65,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-10-26T20:00:00+00:00",
+   "exit_time": "2015-10-28T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 41.9,
+   "pnl_pips": -41.9,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-10-29T08:00:00+00:00",
+   "exit_time": "2015-10-29T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 42.05,
+   "pnl_pips": 63.08,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-10-30T04:00:00+00:00",
+   "exit_time": "2015-10-30T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 21.67,
+   "pnl_pips": 32.51,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-10-30T08:00:00+00:00",
+   "exit_time": "2015-10-30T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 37.57,
+   "pnl_pips": 56.36,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-10-30T16:00:00+00:00",
+   "exit_time": "2015-11-04T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 101.02,
+   "pnl_pips": -101.02,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-11-05T04:00:00+00:00",
+   "exit_time": "2015-11-05T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 34.04,
+   "pnl_pips": -34.04,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-11-05T16:00:00+00:00",
+   "exit_time": "2015-11-06T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 27.52,
+   "pnl_pips": -27.52,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-11-09T04:00:00+00:00",
+   "exit_time": "2015-11-10T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 65.99,
+   "pnl_pips": -65.99,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-11-11T00:00:00+00:00",
+   "exit_time": "2015-11-13T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 71.76,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-11-15T20:00:00+00:00",
+   "exit_time": "2015-11-17T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 77.5,
+   "pnl_pips": -77.5,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-11-19T00:00:00+00:00",
+   "exit_time": "2015-11-20T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 69.46,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-11-24T20:00:00+00:00",
+   "exit_time": "2015-11-25T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 41.07,
+   "pnl_pips": -41.07,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-12-02T16:00:00+00:00",
+   "exit_time": "2015-12-02T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.72,
+   "pnl_pips": 22.09,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2015-12-02T20:00:00+00:00",
+   "exit_time": "2015-12-03T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.61,
+   "pnl_pips": -26.61,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-12-03T16:00:00+00:00",
+   "exit_time": "2015-12-03T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 28.86,
+   "pnl_pips": -57.73,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-12-04T08:00:00+00:00",
+   "exit_time": "2015-12-09T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 120.05,
+   "pnl_pips": -120.05,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-12-14T12:00:00+00:00",
+   "exit_time": "2015-12-14T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.37,
+   "pnl_pips": -36.75,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-12-15T04:00:00+00:00",
+   "exit_time": "2015-12-15T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 19.05,
+   "pnl_pips": -38.09,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2015-12-15T16:00:00+00:00",
+   "exit_time": "2015-12-21T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 115.84,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2015-12-23T16:00:00+00:00",
+   "exit_time": "2015-12-24T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 33.59,
+   "pnl_pips": 50.38,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-01-04T08:00:00+00:00",
+   "exit_time": "2016-01-04T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 39.51,
+   "pnl_pips": 59.27,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-01-06T20:00:00+00:00",
+   "exit_time": "2016-01-07T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 95.84,
+   "pnl_pips": 143.76,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-01-11T12:00:00+00:00",
+   "exit_time": "2016-01-12T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 70.6,
+   "pnl_pips": -70.6,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-01-21T16:00:00+00:00",
+   "exit_time": "2016-01-21T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 22.59,
+   "pnl_pips": 33.89,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-02-05T16:00:00+00:00",
+   "exit_time": "2016-02-09T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 96.06,
+   "pnl_pips": -96.06,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-02-23T12:00:00+00:00",
+   "exit_time": "2016-02-23T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 17.0,
+   "pnl_pips": 25.5,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-02-23T16:00:00+00:00",
+   "exit_time": "2016-02-24T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 19.29,
+   "pnl_pips": -19.29,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-02-24T16:00:00+00:00",
+   "exit_time": "2016-02-26T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 45.79,
+   "pnl_pips": -91.59,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2016-03-02T12:00:00+00:00",
+   "exit_time": "2016-03-02T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 21.66,
+   "pnl_pips": -21.66,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-03-03T00:00:00+00:00",
+   "exit_time": "2016-03-03T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 36.07,
+   "pnl_pips": 54.11,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-03-10T16:00:00+00:00",
+   "exit_time": "2016-03-10T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 28.58,
+   "pnl_pips": -57.16,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2016-03-11T08:00:00+00:00",
+   "exit_time": "2016-03-17T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 93.73,
+   "pnl_pips": -93.73,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-03-21T08:00:00+00:00",
+   "exit_time": "2016-03-23T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 52.1,
+   "pnl_pips": 78.16,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-03-29T20:00:00+00:00",
+   "exit_time": "2016-03-30T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 14.24,
+   "pnl_pips": -28.48,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2016-04-05T04:00:00+00:00",
+   "exit_time": "2016-04-05T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 16.48,
+   "pnl_pips": 24.72,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-04-05T08:00:00+00:00",
+   "exit_time": "2016-04-06T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 56.68,
+   "pnl_pips": -56.68,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-04-07T04:00:00+00:00",
+   "exit_time": "2016-04-07T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.35,
+   "pnl_pips": -48.69,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2016-04-07T16:00:00+00:00",
+   "exit_time": "2016-04-12T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 39.11,
+   "pnl_pips": -39.11,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-04-21T16:00:00+00:00",
+   "exit_time": "2016-04-22T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 29.21,
+   "pnl_pips": -29.21,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-04-22T20:00:00+00:00",
+   "exit_time": "2016-04-26T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 61.77,
+   "pnl_pips": 92.66,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-04-28T20:00:00+00:00",
+   "exit_time": "2016-04-29T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 30.68,
+   "pnl_pips": -30.68,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-05-03T04:00:00+00:00",
+   "exit_time": "2016-05-03T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 19.4,
+   "pnl_pips": -38.79,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2016-05-03T16:00:00+00:00",
+   "exit_time": "2016-05-05T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 53.27,
+   "pnl_pips": 79.91,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-05-10T04:00:00+00:00",
+   "exit_time": "2016-05-11T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 22.22,
+   "pnl_pips": -44.44,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2016-05-12T04:00:00+00:00",
+   "exit_time": "2016-05-12T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 16.77,
+   "pnl_pips": 25.15,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-05-17T08:00:00+00:00",
+   "exit_time": "2016-05-18T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 37.69,
+   "pnl_pips": -37.69,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-05-19T08:00:00+00:00",
+   "exit_time": "2016-05-19T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.1,
+   "pnl_pips": -14.1,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-06-01T04:00:00+00:00",
+   "exit_time": "2016-06-01T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 10.45,
+   "pnl_pips": 15.67,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-06-01T08:00:00+00:00",
+   "exit_time": "2016-06-02T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 38.65,
+   "pnl_pips": 57.98,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-06-03T16:00:00+00:00",
+   "exit_time": "2016-06-03T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 20.04,
+   "pnl_pips": -20.04,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-06-10T16:00:00+00:00",
+   "exit_time": "2016-06-14T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 55.15,
+   "pnl_pips": 82.73,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-06-21T16:00:00+00:00",
+   "exit_time": "2016-06-22T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 19.27,
+   "pnl_pips": 28.91,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-06-22T20:00:00+00:00",
+   "exit_time": "2016-06-23T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 49.04,
+   "pnl_pips": 73.56,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-06-23T12:00:00+00:00",
+   "exit_time": "2016-06-23T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 59.34,
+   "pnl_pips": 89.0,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-06-24T04:00:00+00:00",
+   "exit_time": "2016-06-24T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 40.49,
+   "pnl_pips": 60.73,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-06-24T16:00:00+00:00",
+   "exit_time": "2016-07-22T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 133.02,
+   "pnl_pips": -133.02,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-08-18T20:00:00+00:00",
+   "exit_time": "2016-08-21T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 45.25,
+   "pnl_pips": 67.88,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-08-30T16:00:00+00:00",
+   "exit_time": "2016-09-01T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 34.38,
+   "pnl_pips": 51.57,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-09-12T08:00:00+00:00",
+   "exit_time": "2016-09-12T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 15.49,
+   "pnl_pips": 23.24,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-09-12T20:00:00+00:00",
+   "exit_time": "2016-09-14T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 30.22,
+   "pnl_pips": -30.22,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-09-20T12:00:00+00:00",
+   "exit_time": "2016-09-20T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.6,
+   "pnl_pips": -26.6,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-09-21T12:00:00+00:00",
+   "exit_time": "2016-09-22T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 37.05,
+   "pnl_pips": 55.58,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-09-28T08:00:00+00:00",
+   "exit_time": "2016-09-28T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 10.8,
+   "pnl_pips": 16.2,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-10-11T12:00:00+00:00",
+   "exit_time": "2016-10-11T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 22.44,
+   "pnl_pips": -22.44,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-10-13T04:00:00+00:00",
+   "exit_time": "2016-10-14T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 32.44,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-10-14T08:00:00+00:00",
+   "exit_time": "2016-10-14T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 21.53,
+   "pnl_pips": -21.53,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-10-26T00:00:00+00:00",
+   "exit_time": "2016-10-26T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.74,
+   "pnl_pips": 19.1,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-10-26T08:00:00+00:00",
+   "exit_time": "2016-10-28T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 45.19,
+   "pnl_pips": 67.79,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-11-02T12:00:00+00:00",
+   "exit_time": "2016-11-02T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 11.61,
+   "pnl_pips": -11.61,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-11-03T04:00:00+00:00",
+   "exit_time": "2016-11-03T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.96,
+   "pnl_pips": 19.44,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-11-03T12:00:00+00:00",
+   "exit_time": "2016-11-04T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 39.21,
+   "pnl_pips": -39.21,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-11-07T16:00:00+00:00",
+   "exit_time": "2016-11-09T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 55.39,
+   "pnl_pips": -110.79,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2016-11-09T12:00:00+00:00",
+   "exit_time": "2016-11-09T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 29.33,
+   "pnl_pips": 43.99,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-11-17T00:00:00+00:00",
+   "exit_time": "2016-11-17T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 59.64,
+   "pnl_pips": -59.64,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-11-18T12:00:00+00:00",
+   "exit_time": "2016-11-23T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 64.53,
+   "pnl_pips": -64.53,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-11-28T04:00:00+00:00",
+   "exit_time": "2016-12-04T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 74.03,
+   "pnl_pips": -74.03,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-12-05T12:00:00+00:00",
+   "exit_time": "2016-12-05T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 27.82,
+   "pnl_pips": -27.82,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-12-21T16:00:00+00:00",
+   "exit_time": "2016-12-28T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 60.5,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2016-12-28T12:00:00+00:00",
+   "exit_time": "2016-12-29T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 38.26,
+   "pnl_pips": 57.39,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2016-12-30T00:00:00+00:00",
+   "exit_time": "2016-12-30T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 19.13,
+   "pnl_pips": 28.7,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-01-02T08:00:00+00:00",
+   "exit_time": "2017-01-02T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 33.33,
+   "pnl_pips": 50.0,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-01-03T04:00:00+00:00",
+   "exit_time": "2017-01-03T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 16.74,
+   "pnl_pips": 25.1,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-01-03T08:00:00+00:00",
+   "exit_time": "2017-01-03T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 26.93,
+   "pnl_pips": 40.39,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-01-05T04:00:00+00:00",
+   "exit_time": "2017-01-05T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 26.51,
+   "pnl_pips": -53.01,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-01-05T16:00:00+00:00",
+   "exit_time": "2017-01-06T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 27.11,
+   "pnl_pips": 40.67,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-01-10T20:00:00+00:00",
+   "exit_time": "2017-01-11T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 64.21,
+   "pnl_pips": 96.32,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-01-11T20:00:00+00:00",
+   "exit_time": "2017-01-12T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.06,
+   "pnl_pips": -24.06,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-01-12T20:00:00+00:00",
+   "exit_time": "2017-01-17T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 83.16,
+   "pnl_pips": -83.16,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-01-18T20:00:00+00:00",
+   "exit_time": "2017-01-19T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 47.45,
+   "pnl_pips": 71.17,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-01-19T20:00:00+00:00",
+   "exit_time": "2017-01-20T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.14,
+   "pnl_pips": -18.14,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-01-20T12:00:00+00:00",
+   "exit_time": "2017-01-20T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 49.33,
+   "pnl_pips": -49.33,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-01-24T16:00:00+00:00",
+   "exit_time": "2017-01-24T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 16.85,
+   "pnl_pips": 25.27,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-01-24T20:00:00+00:00",
+   "exit_time": "2017-01-30T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 46.26,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-01-30T04:00:00+00:00",
+   "exit_time": "2017-01-30T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 15.15,
+   "pnl_pips": 22.72,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-01-30T08:00:00+00:00",
+   "exit_time": "2017-01-30T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 36.97,
+   "pnl_pips": 55.46,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-01-30T16:00:00+00:00",
+   "exit_time": "2017-01-31T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 29.36,
+   "pnl_pips": -58.72,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-02-01T08:00:00+00:00",
+   "exit_time": "2017-02-02T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 36.59,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-02-02T04:00:00+00:00",
+   "exit_time": "2017-02-03T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 29.08,
+   "pnl_pips": 43.62,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-02-14T04:00:00+00:00",
+   "exit_time": "2017-02-14T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 23.01,
+   "pnl_pips": -23.01,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-02-16T12:00:00+00:00",
+   "exit_time": "2017-02-21T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 48.54,
+   "pnl_pips": -48.54,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-02-22T16:00:00+00:00",
+   "exit_time": "2017-03-01T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 67.91,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-03-03T12:00:00+00:00",
+   "exit_time": "2017-03-03T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 37.99,
+   "pnl_pips": 56.98,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-03-16T04:00:00+00:00",
+   "exit_time": "2017-03-16T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 47.85,
+   "pnl_pips": -47.85,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-03-17T04:00:00+00:00",
+   "exit_time": "2017-03-20T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 30.92,
+   "pnl_pips": 46.38,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-03-29T08:00:00+00:00",
+   "exit_time": "2017-03-30T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 53.33,
+   "pnl_pips": 79.99,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-04-07T16:00:00+00:00",
+   "exit_time": "2017-04-07T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 17.53,
+   "pnl_pips": -35.06,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-04-10T08:00:00+00:00",
+   "exit_time": "2017-04-12T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 28.79,
+   "pnl_pips": 43.18,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-04-12T20:00:00+00:00",
+   "exit_time": "2017-04-20T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 68.65,
+   "pnl_pips": 102.98,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-04-20T16:00:00+00:00",
+   "exit_time": "2017-04-20T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 32.76,
+   "pnl_pips": 49.14,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-04-21T20:00:00+00:00",
+   "exit_time": "2017-04-21T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 20.56,
+   "pnl_pips": -20.56,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-05-08T00:00:00+00:00",
+   "exit_time": "2017-05-09T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 48.05,
+   "pnl_pips": 72.08,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-05-16T08:00:00+00:00",
+   "exit_time": "2017-05-16T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 11.05,
+   "pnl_pips": -22.1,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-05-17T04:00:00+00:00",
+   "exit_time": "2017-05-17T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.17,
+   "pnl_pips": 18.25,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-05-17T08:00:00+00:00",
+   "exit_time": "2017-05-17T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 21.08,
+   "pnl_pips": -21.08,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-05-22T00:00:00+00:00",
+   "exit_time": "2017-05-22T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 19.52,
+   "pnl_pips": 29.28,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-05-22T12:00:00+00:00",
+   "exit_time": "2017-05-23T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 16.58,
+   "pnl_pips": -33.16,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-05-23T16:00:00+00:00",
+   "exit_time": "2017-06-27T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 87.31,
+   "pnl_pips": -87.31,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-06-30T04:00:00+00:00",
+   "exit_time": "2017-06-30T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 21.7,
+   "pnl_pips": 32.55,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-06-30T08:00:00+00:00",
+   "exit_time": "2017-07-05T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 50.65,
+   "pnl_pips": 75.98,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-07-07T16:00:00+00:00",
+   "exit_time": "2017-07-11T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 62.8,
+   "pnl_pips": -62.8,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-07-12T08:00:00+00:00",
+   "exit_time": "2017-07-13T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 46.04,
+   "pnl_pips": 69.05,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-07-18T12:00:00+00:00",
+   "exit_time": "2017-07-18T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 13.3,
+   "pnl_pips": -26.6,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-07-20T00:00:00+00:00",
+   "exit_time": "2017-07-20T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 13.16,
+   "pnl_pips": 19.74,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-07-20T04:00:00+00:00",
+   "exit_time": "2017-07-20T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 29.84,
+   "pnl_pips": -59.67,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-07-24T00:00:00+00:00",
+   "exit_time": "2017-07-24T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.72,
+   "pnl_pips": 26.58,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-07-24T08:00:00+00:00",
+   "exit_time": "2017-07-26T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 49.11,
+   "pnl_pips": -98.21,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-07-27T04:00:00+00:00",
+   "exit_time": "2017-07-27T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.48,
+   "pnl_pips": 26.22,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-07-27T08:00:00+00:00",
+   "exit_time": "2017-07-28T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 71.81,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-08-04T08:00:00+00:00",
+   "exit_time": "2017-08-04T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.35,
+   "pnl_pips": 27.53,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-08-04T16:00:00+00:00",
+   "exit_time": "2017-08-25T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 151.21,
+   "pnl_pips": -151.21,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-08-28T04:00:00+00:00",
+   "exit_time": "2017-08-28T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 29.54,
+   "pnl_pips": -29.54,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-08-29T16:00:00+00:00",
+   "exit_time": "2017-08-30T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 66.16,
+   "pnl_pips": 99.25,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-08-30T12:00:00+00:00",
+   "exit_time": "2017-09-06T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 70.2,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-09-06T16:00:00+00:00",
+   "exit_time": "2017-09-07T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 23.71,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-09-07T08:00:00+00:00",
+   "exit_time": "2017-09-07T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 15.56,
+   "pnl_pips": -31.13,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-09-08T16:00:00+00:00",
+   "exit_time": "2017-09-11T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 56.4,
+   "pnl_pips": 84.6,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-09-13T12:00:00+00:00",
+   "exit_time": "2017-09-13T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 47.7,
+   "pnl_pips": 71.55,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-09-15T16:00:00+00:00",
+   "exit_time": "2017-09-20T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 55.99,
+   "pnl_pips": 83.98,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-09-21T16:00:00+00:00",
+   "exit_time": "2017-09-25T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 76.94,
+   "pnl_pips": -76.94,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-09-26T12:00:00+00:00",
+   "exit_time": "2017-09-27T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 31.63,
+   "pnl_pips": -31.63,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-09-28T04:00:00+00:00",
+   "exit_time": "2017-09-28T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 15.04,
+   "pnl_pips": 22.55,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-09-28T08:00:00+00:00",
+   "exit_time": "2017-09-28T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 30.37,
+   "pnl_pips": 45.55,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-10-02T08:00:00+00:00",
+   "exit_time": "2017-10-02T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.36,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-10-03T04:00:00+00:00",
+   "exit_time": "2017-10-03T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 13.74,
+   "pnl_pips": 20.61,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-10-03T08:00:00+00:00",
+   "exit_time": "2017-10-04T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 27.21,
+   "pnl_pips": 40.82,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-10-04T16:00:00+00:00",
+   "exit_time": "2017-10-05T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 40.38,
+   "pnl_pips": -40.38,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-10-06T12:00:00+00:00",
+   "exit_time": "2017-10-10T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 33.07,
+   "pnl_pips": 49.6,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-10-11T16:00:00+00:00",
+   "exit_time": "2017-10-12T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 28.38,
+   "pnl_pips": -28.38,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-10-20T00:00:00+00:00",
+   "exit_time": "2017-10-20T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 13.92,
+   "pnl_pips": 20.88,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-10-20T04:00:00+00:00",
+   "exit_time": "2017-10-22T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 44.04,
+   "pnl_pips": 66.06,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-10-26T16:00:00+00:00",
+   "exit_time": "2017-10-26T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 28.42,
+   "pnl_pips": -56.84,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-10-30T12:00:00+00:00",
+   "exit_time": "2017-11-03T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 48.7,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-11-09T04:00:00+00:00",
+   "exit_time": "2017-11-09T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 10.03,
+   "pnl_pips": 15.05,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-11-09T08:00:00+00:00",
+   "exit_time": "2017-11-09T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 23.9,
+   "pnl_pips": 35.84,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-11-15T08:00:00+00:00",
+   "exit_time": "2017-11-15T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.3,
+   "pnl_pips": -24.59,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2017-11-15T20:00:00+00:00",
+   "exit_time": "2017-11-16T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 20.35,
+   "pnl_pips": 30.52,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-11-20T00:00:00+00:00",
+   "exit_time": "2017-11-22T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 86.74,
+   "pnl_pips": -86.74,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-11-27T16:00:00+00:00",
+   "exit_time": "2017-11-30T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 77.4,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-11-30T16:00:00+00:00",
+   "exit_time": "2017-11-30T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.5,
+   "pnl_pips": 27.74,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-12-01T12:00:00+00:00",
+   "exit_time": "2017-12-05T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 50.79,
+   "pnl_pips": 76.18,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-12-05T16:00:00+00:00",
+   "exit_time": "2017-12-08T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 57.9,
+   "pnl_pips": 86.85,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2017-12-21T16:00:00+00:00",
+   "exit_time": "2017-12-22T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 41.53,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2017-12-25T20:00:00+00:00",
+   "exit_time": "2017-12-27T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.61,
+   "pnl_pips": -24.61,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-01-02T12:00:00+00:00",
+   "exit_time": "2018-01-02T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 25.95,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-01-03T12:00:00+00:00",
+   "exit_time": "2018-01-04T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 58.71,
+   "pnl_pips": -58.71,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-01-08T08:00:00+00:00",
+   "exit_time": "2018-01-10T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 72.22,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-01-10T12:00:00+00:00",
+   "exit_time": "2018-01-10T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 13.64,
+   "pnl_pips": 20.45,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-01-11T16:00:00+00:00",
+   "exit_time": "2018-01-12T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 21.51,
+   "pnl_pips": -43.03,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2018-01-16T04:00:00+00:00",
+   "exit_time": "2018-01-16T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 41.72,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-01-16T20:00:00+00:00",
+   "exit_time": "2018-01-17T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 28.84,
+   "pnl_pips": 43.25,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-01-17T08:00:00+00:00",
+   "exit_time": "2018-01-23T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 83.05,
+   "pnl_pips": -83.05,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-01-25T12:00:00+00:00",
+   "exit_time": "2018-01-25T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 76.66,
+   "pnl_pips": -76.66,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-01-26T00:00:00+00:00",
+   "exit_time": "2018-02-01T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 95.66,
+   "pnl_pips": -95.66,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-02-02T12:00:00+00:00",
+   "exit_time": "2018-02-02T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 42.69,
+   "pnl_pips": 64.03,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-02-02T16:00:00+00:00",
+   "exit_time": "2018-02-07T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 98.83,
+   "pnl_pips": 148.24,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-02-07T20:00:00+00:00",
+   "exit_time": "2018-02-13T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 49.46,
+   "pnl_pips": 74.19,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-02-14T04:00:00+00:00",
+   "exit_time": "2018-02-15T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 57.94,
+   "pnl_pips": 86.91,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-02-27T16:00:00+00:00",
+   "exit_time": "2018-02-28T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 17.08,
+   "pnl_pips": -34.16,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2018-03-02T08:00:00+00:00",
+   "exit_time": "2018-03-02T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 17.1,
+   "pnl_pips": 25.66,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-03-02T12:00:00+00:00",
+   "exit_time": "2018-03-06T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 59.54,
+   "pnl_pips": 89.3,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-03-06T12:00:00+00:00",
+   "exit_time": "2018-03-08T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 35.29,
+   "pnl_pips": 52.93,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-03-15T08:00:00+00:00",
+   "exit_time": "2018-03-15T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 28.45,
+   "pnl_pips": 42.67,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-03-20T16:00:00+00:00",
+   "exit_time": "2018-03-21T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.54,
+   "pnl_pips": 39.81,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-03-27T08:00:00+00:00",
+   "exit_time": "2018-03-27T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 14.5,
+   "pnl_pips": 21.75,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-03-28T20:00:00+00:00",
+   "exit_time": "2018-03-29T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 19.04,
+   "pnl_pips": 28.56,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-04-06T16:00:00+00:00",
+   "exit_time": "2018-04-10T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 66.92,
+   "pnl_pips": 100.38,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-04-10T16:00:00+00:00",
+   "exit_time": "2018-04-11T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 34.8,
+   "pnl_pips": 52.2,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-04-16T08:00:00+00:00",
+   "exit_time": "2018-04-17T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 29.14,
+   "pnl_pips": -29.14,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-04-23T12:00:00+00:00",
+   "exit_time": "2018-04-23T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 28.88,
+   "pnl_pips": -28.88,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-04-24T04:00:00+00:00",
+   "exit_time": "2018-04-25T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 21.82,
+   "pnl_pips": -21.82,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2018-04-27T08:00:00+00:00",
+   "exit_time": "2018-04-27T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.46,
+   "pnl_pips": 24.7,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-04-27T16:00:00+00:00",
+   "exit_time": "2018-05-01T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 61.09,
+   "pnl_pips": -61.09,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-05-02T16:00:00+00:00",
+   "exit_time": "2018-05-02T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 38.28,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-05-07T08:00:00+00:00",
+   "exit_time": "2018-05-07T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.37,
+   "pnl_pips": -16.37,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-05-09T04:00:00+00:00",
+   "exit_time": "2018-05-09T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.15,
+   "pnl_pips": -28.31,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2018-05-09T16:00:00+00:00",
+   "exit_time": "2018-05-10T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.14,
+   "pnl_pips": 24.21,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-05-10T12:00:00+00:00",
+   "exit_time": "2018-05-11T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 47.6,
+   "pnl_pips": 71.41,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-05-15T00:00:00+00:00",
+   "exit_time": "2018-05-15T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 32.2,
+   "pnl_pips": -32.2,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-05-30T04:00:00+00:00",
+   "exit_time": "2018-05-30T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 19.3,
+   "pnl_pips": 28.96,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-05-30T08:00:00+00:00",
+   "exit_time": "2018-06-06T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 105.66,
+   "pnl_pips": 158.5,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-06-08T04:00:00+00:00",
+   "exit_time": "2018-06-08T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.83,
+   "pnl_pips": 26.74,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-06-08T08:00:00+00:00",
+   "exit_time": "2018-06-10T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 36.76,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-06-11T04:00:00+00:00",
+   "exit_time": "2018-06-12T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 23.7,
+   "pnl_pips": 35.56,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-06-12T16:00:00+00:00",
+   "exit_time": "2018-06-12T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 31.65,
+   "pnl_pips": 47.48,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-06-12T20:00:00+00:00",
+   "exit_time": "2018-06-14T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 72.03,
+   "pnl_pips": 108.04,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-06-15T08:00:00+00:00",
+   "exit_time": "2018-06-27T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 93.34,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-06-27T20:00:00+00:00",
+   "exit_time": "2018-06-29T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 33.76,
+   "pnl_pips": 50.64,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-07-01T20:00:00+00:00",
+   "exit_time": "2018-07-02T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 19.86,
+   "pnl_pips": 29.79,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-07-03T00:00:00+00:00",
+   "exit_time": "2018-07-03T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.2,
+   "pnl_pips": -24.2,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-07-05T08:00:00+00:00",
+   "exit_time": "2018-07-06T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 33.89,
+   "pnl_pips": -67.79,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2018-07-09T12:00:00+00:00",
+   "exit_time": "2018-07-09T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.18,
+   "pnl_pips": 18.27,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-07-10T00:00:00+00:00",
+   "exit_time": "2018-07-10T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 35.28,
+   "pnl_pips": 52.92,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-07-10T12:00:00+00:00",
+   "exit_time": "2018-07-16T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 62.92,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-07-16T12:00:00+00:00",
+   "exit_time": "2018-07-17T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 33.92,
+   "pnl_pips": 50.88,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-08-03T04:00:00+00:00",
+   "exit_time": "2018-08-03T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 19.3,
+   "pnl_pips": -19.3,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-08-03T16:00:00+00:00",
+   "exit_time": "2018-08-03T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.82,
+   "pnl_pips": -26.82,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-08-07T08:00:00+00:00",
+   "exit_time": "2018-08-09T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 34.51,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-08-09T16:00:00+00:00",
+   "exit_time": "2018-08-09T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 22.77,
+   "pnl_pips": -22.77,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-08-13T12:00:00+00:00",
+   "exit_time": "2018-08-14T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 55.65,
+   "pnl_pips": -55.65,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-08-16T04:00:00+00:00",
+   "exit_time": "2018-08-20T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 63.7,
+   "pnl_pips": 95.55,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-08-21T16:00:00+00:00",
+   "exit_time": "2018-08-21T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 36.54,
+   "pnl_pips": 54.81,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-08-28T20:00:00+00:00",
+   "exit_time": "2018-08-31T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 55.46,
+   "pnl_pips": 83.19,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-09-04T04:00:00+00:00",
+   "exit_time": "2018-09-04T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 31.46,
+   "pnl_pips": 47.2,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-09-10T16:00:00+00:00",
+   "exit_time": "2018-09-13T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 56.56,
+   "pnl_pips": 84.84,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-09-18T20:00:00+00:00",
+   "exit_time": "2018-09-20T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 69.19,
+   "pnl_pips": -69.19,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-09-26T12:00:00+00:00",
+   "exit_time": "2018-09-27T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 53.78,
+   "pnl_pips": 80.67,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-10-03T04:00:00+00:00",
+   "exit_time": "2018-10-03T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 51.1,
+   "pnl_pips": -51.1,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-10-09T08:00:00+00:00",
+   "exit_time": "2018-10-09T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.46,
+   "pnl_pips": -24.92,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2018-10-09T20:00:00+00:00",
+   "exit_time": "2018-10-10T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 25.55,
+   "pnl_pips": 38.32,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-10-10T16:00:00+00:00",
+   "exit_time": "2018-10-17T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 75.89,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-10-24T08:00:00+00:00",
+   "exit_time": "2018-10-25T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 49.41,
+   "pnl_pips": -49.41,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-11-02T08:00:00+00:00",
+   "exit_time": "2018-11-05T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 60.35,
+   "pnl_pips": -60.35,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2018-11-06T12:00:00+00:00",
+   "exit_time": "2018-11-07T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 43.44,
+   "pnl_pips": 65.15,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-11-07T12:00:00+00:00",
+   "exit_time": "2018-11-08T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 44.18,
+   "pnl_pips": 66.27,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-11-08T08:00:00+00:00",
+   "exit_time": "2018-11-08T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.14,
+   "pnl_pips": 25.71,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-11-13T00:00:00+00:00",
+   "exit_time": "2018-11-13T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 13.45,
+   "pnl_pips": 20.17,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-11-13T04:00:00+00:00",
+   "exit_time": "2018-11-13T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 23.13,
+   "pnl_pips": 34.69,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-11-13T16:00:00+00:00",
+   "exit_time": "2018-11-16T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 58.89,
+   "pnl_pips": 88.33,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-12-06T08:00:00+00:00",
+   "exit_time": "2018-12-06T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 21.79,
+   "pnl_pips": 32.69,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-12-19T16:00:00+00:00",
+   "exit_time": "2018-12-19T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 13.59,
+   "pnl_pips": 20.39,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-12-20T00:00:00+00:00",
+   "exit_time": "2018-12-20T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 42.32,
+   "pnl_pips": -84.64,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2018-12-28T12:00:00+00:00",
+   "exit_time": "2018-12-28T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.18,
+   "pnl_pips": 25.77,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2018-12-28T16:00:00+00:00",
+   "exit_time": "2019-01-02T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 44.89,
+   "pnl_pips": 67.34,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-01-03T00:00:00+00:00",
+   "exit_time": "2019-01-03T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 17.13,
+   "pnl_pips": 25.7,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-01-03T12:00:00+00:00",
+   "exit_time": "2019-01-03T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 36.36,
+   "pnl_pips": 54.54,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-01-10T20:00:00+00:00",
+   "exit_time": "2019-01-15T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 63.3,
+   "pnl_pips": 94.94,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-01-24T16:00:00+00:00",
+   "exit_time": "2019-01-30T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 68.98,
+   "pnl_pips": 103.46,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-02-27T12:00:00+00:00",
+   "exit_time": "2019-02-27T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 11.09,
+   "pnl_pips": 16.63,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-02-27T16:00:00+00:00",
+   "exit_time": "2019-02-28T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 13.67,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2019-03-01T20:00:00+00:00",
+   "exit_time": "2019-03-07T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 63.31,
+   "pnl_pips": 94.97,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-03-11T04:00:00+00:00",
+   "exit_time": "2019-03-11T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 13.65,
+   "pnl_pips": 20.48,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-03-11T12:00:00+00:00",
+   "exit_time": "2019-03-12T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 24.96,
+   "pnl_pips": 37.44,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-03-12T12:00:00+00:00",
+   "exit_time": "2019-03-12T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 10.29,
+   "pnl_pips": 15.43,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-03-12T16:00:00+00:00",
+   "exit_time": "2019-03-13T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 31.96,
+   "pnl_pips": 47.94,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-03-20T20:00:00+00:00",
+   "exit_time": "2019-03-20T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 11.32,
+   "pnl_pips": 16.99,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-04-03T04:00:00+00:00",
+   "exit_time": "2019-04-08T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 32.24,
+   "pnl_pips": 48.36,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-04-25T12:00:00+00:00",
+   "exit_time": "2019-04-25T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 11.73,
+   "pnl_pips": 17.59,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-04-25T16:00:00+00:00",
+   "exit_time": "2019-04-26T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.62,
+   "pnl_pips": 18.93,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-04-26T16:00:00+00:00",
+   "exit_time": "2019-04-30T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 42.78,
+   "pnl_pips": 64.17,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-06-12T04:00:00+00:00",
+   "exit_time": "2019-06-12T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 8.63,
+   "pnl_pips": 12.95,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-06-12T12:00:00+00:00",
+   "exit_time": "2019-06-12T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.28,
+   "pnl_pips": 25.92,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-06-25T00:00:00+00:00",
+   "exit_time": "2019-06-25T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 15.15,
+   "pnl_pips": 22.72,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-06-26T16:00:00+00:00",
+   "exit_time": "2019-06-27T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.61,
+   "pnl_pips": 27.92,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-06-28T04:00:00+00:00",
+   "exit_time": "2019-06-28T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.25,
+   "pnl_pips": -17.25,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2019-06-28T16:00:00+00:00",
+   "exit_time": "2019-06-28T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 10.26,
+   "pnl_pips": 15.4,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-06-28T20:00:00+00:00",
+   "exit_time": "2019-07-01T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.11,
+   "pnl_pips": 18.17,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-07-11T04:00:00+00:00",
+   "exit_time": "2019-07-16T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 35.86,
+   "pnl_pips": -35.86,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2019-08-22T08:00:00+00:00",
+   "exit_time": "2019-08-23T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 28.76,
+   "pnl_pips": -28.76,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2019-09-13T16:00:00+00:00",
+   "exit_time": "2019-09-16T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 51.52,
+   "pnl_pips": 77.28,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-10-01T12:00:00+00:00",
+   "exit_time": "2019-10-01T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 27.95,
+   "pnl_pips": 41.93,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-10-02T08:00:00+00:00",
+   "exit_time": "2019-10-02T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 9.75,
+   "pnl_pips": 14.62,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-10-02T16:00:00+00:00",
+   "exit_time": "2019-10-03T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 28.34,
+   "pnl_pips": 42.5,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-10-04T00:00:00+00:00",
+   "exit_time": "2019-10-10T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 30.07,
+   "pnl_pips": 45.1,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-10-17T12:00:00+00:00",
+   "exit_time": "2019-10-18T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 46.6,
+   "pnl_pips": -46.6,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2019-10-21T08:00:00+00:00",
+   "exit_time": "2019-10-21T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 10.22,
+   "pnl_pips": 15.33,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-10-21T16:00:00+00:00",
+   "exit_time": "2019-10-24T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 27.55,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2019-10-24T08:00:00+00:00",
+   "exit_time": "2019-10-24T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 8.59,
+   "pnl_pips": 12.89,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-10-24T12:00:00+00:00",
+   "exit_time": "2019-10-25T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 29.93,
+   "pnl_pips": 44.9,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-10-28T12:00:00+00:00",
+   "exit_time": "2019-10-29T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.03,
+   "pnl_pips": -17.03,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2019-10-30T20:00:00+00:00",
+   "exit_time": "2019-10-31T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 9.49,
+   "pnl_pips": -18.99,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2019-11-07T04:00:00+00:00",
+   "exit_time": "2019-11-07T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 8.7,
+   "pnl_pips": 13.06,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-11-14T12:00:00+00:00",
+   "exit_time": "2019-11-14T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 7.61,
+   "pnl_pips": 11.42,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-11-14T16:00:00+00:00",
+   "exit_time": "2019-11-14T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.96,
+   "pnl_pips": 22.44,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-11-14T20:00:00+00:00",
+   "exit_time": "2019-11-18T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 35.38,
+   "pnl_pips": 53.07,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-12-18T04:00:00+00:00",
+   "exit_time": "2019-12-20T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 29.58,
+   "pnl_pips": 44.37,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-12-27T04:00:00+00:00",
+   "exit_time": "2019-12-27T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 29.7,
+   "pnl_pips": 44.55,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2019-12-30T00:00:00+00:00",
+   "exit_time": "2019-12-30T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 8.05,
+   "pnl_pips": -16.09,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2020-01-14T16:00:00+00:00",
+   "exit_time": "2020-01-16T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 27.86,
+   "pnl_pips": 41.79,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-02-21T08:00:00+00:00",
+   "exit_time": "2020-02-21T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 17.9,
+   "pnl_pips": 26.84,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-02-24T20:00:00+00:00",
+   "exit_time": "2020-02-26T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 42.71,
+   "pnl_pips": 64.06,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-02-27T12:00:00+00:00",
+   "exit_time": "2020-02-27T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 23.13,
+   "pnl_pips": -46.26,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2020-02-28T12:00:00+00:00",
+   "exit_time": "2020-03-02T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 63.55,
+   "pnl_pips": -63.55,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-03-08T20:00:00+00:00",
+   "exit_time": "2020-03-09T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 70.48,
+   "pnl_pips": -140.96,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2020-03-09T20:00:00+00:00",
+   "exit_time": "2020-03-10T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 68.74,
+   "pnl_pips": 103.11,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-03-10T08:00:00+00:00",
+   "exit_time": "2020-03-12T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 141.05,
+   "pnl_pips": 211.57,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-03-16T00:00:00+00:00",
+   "exit_time": "2020-03-17T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 102.07,
+   "pnl_pips": 153.11,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-03-19T12:00:00+00:00",
+   "exit_time": "2020-03-19T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 43.37,
+   "pnl_pips": 65.05,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-03-20T00:00:00+00:00",
+   "exit_time": "2020-03-20T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 43.08,
+   "pnl_pips": 64.62,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-03-20T04:00:00+00:00",
+   "exit_time": "2020-03-26T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 124.22,
+   "pnl_pips": 186.33,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-03-26T04:00:00+00:00",
+   "exit_time": "2020-03-26T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 78.49,
+   "pnl_pips": 117.74,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-03-30T12:00:00+00:00",
+   "exit_time": "2020-03-30T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 29.85,
+   "pnl_pips": -29.85,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-04-02T12:00:00+00:00",
+   "exit_time": "2020-04-03T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 74.1,
+   "pnl_pips": 111.14,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-04-03T08:00:00+00:00",
+   "exit_time": "2020-04-07T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 86.47,
+   "pnl_pips": -86.47,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-04-07T20:00:00+00:00",
+   "exit_time": "2020-04-08T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 39.4,
+   "pnl_pips": 59.09,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-04-17T00:00:00+00:00",
+   "exit_time": "2020-04-17T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.27,
+   "pnl_pips": 27.4,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-04-17T16:00:00+00:00",
+   "exit_time": "2020-04-20T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 20.54,
+   "pnl_pips": 30.81,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-04-23T08:00:00+00:00",
+   "exit_time": "2020-04-23T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 15.52,
+   "pnl_pips": -31.04,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2020-04-23T20:00:00+00:00",
+   "exit_time": "2020-04-24T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 18.9,
+   "pnl_pips": -37.79,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2020-04-28T08:00:00+00:00",
+   "exit_time": "2020-04-28T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 30.7,
+   "pnl_pips": 46.04,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-04-28T16:00:00+00:00",
+   "exit_time": "2020-04-29T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 27.52,
+   "pnl_pips": 41.28,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-04-30T16:00:00+00:00",
+   "exit_time": "2020-05-01T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.95,
+   "pnl_pips": -24.95,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-05-18T08:00:00+00:00",
+   "exit_time": "2020-05-18T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 11.99,
+   "pnl_pips": 17.99,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-05-21T12:00:00+00:00",
+   "exit_time": "2020-05-21T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 14.4,
+   "pnl_pips": 21.6,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-05-21T16:00:00+00:00",
+   "exit_time": "2020-05-22T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 43.0,
+   "pnl_pips": 64.49,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-05-27T12:00:00+00:00",
+   "exit_time": "2020-05-27T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 14.47,
+   "pnl_pips": 21.71,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-05-27T16:00:00+00:00",
+   "exit_time": "2020-05-27T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 16.03,
+   "pnl_pips": -32.06,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2020-05-28T16:00:00+00:00",
+   "exit_time": "2020-05-29T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 56.16,
+   "pnl_pips": -56.16,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-06-02T12:00:00+00:00",
+   "exit_time": "2020-06-03T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 32.58,
+   "pnl_pips": -32.58,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-06-11T12:00:00+00:00",
+   "exit_time": "2020-06-11T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 38.69,
+   "pnl_pips": 58.03,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-06-11T20:00:00+00:00",
+   "exit_time": "2020-06-23T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 97.53,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-06-25T08:00:00+00:00",
+   "exit_time": "2020-06-30T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 45.45,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-07-15T16:00:00+00:00",
+   "exit_time": "2020-07-21T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 57.96,
+   "pnl_pips": -57.96,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-07-29T04:00:00+00:00",
+   "exit_time": "2020-07-29T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.28,
+   "pnl_pips": -36.56,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2020-07-29T16:00:00+00:00",
+   "exit_time": "2020-07-30T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 19.4,
+   "pnl_pips": 29.09,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-07-31T12:00:00+00:00",
+   "exit_time": "2020-08-03T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 90.52,
+   "pnl_pips": 135.78,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-08-03T16:00:00+00:00",
+   "exit_time": "2020-08-04T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 62.49,
+   "pnl_pips": -62.49,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-08-05T12:00:00+00:00",
+   "exit_time": "2020-08-05T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.91,
+   "pnl_pips": -37.82,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2020-08-10T00:00:00+00:00",
+   "exit_time": "2020-08-10T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 26.08,
+   "pnl_pips": 39.12,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-08-11T12:00:00+00:00",
+   "exit_time": "2020-08-11T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 16.3,
+   "pnl_pips": 24.44,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-09-11T00:00:00+00:00",
+   "exit_time": "2020-09-11T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 24.29,
+   "pnl_pips": 36.43,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-09-17T04:00:00+00:00",
+   "exit_time": "2020-09-17T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 40.45,
+   "pnl_pips": 60.67,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-10-20T16:00:00+00:00",
+   "exit_time": "2020-10-21T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 38.9,
+   "pnl_pips": -38.9,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-11-03T04:00:00+00:00",
+   "exit_time": "2020-11-03T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 32.2,
+   "pnl_pips": 48.3,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-11-03T20:00:00+00:00",
+   "exit_time": "2020-11-03T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 17.94,
+   "pnl_pips": 26.9,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-11-04T00:00:00+00:00",
+   "exit_time": "2020-11-04T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 76.48,
+   "pnl_pips": -152.96,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2020-11-04T12:00:00+00:00",
+   "exit_time": "2020-11-06T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 101.22,
+   "pnl_pips": 151.83,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-11-25T12:00:00+00:00",
+   "exit_time": "2020-11-27T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 47.94,
+   "pnl_pips": -47.94,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-11-30T08:00:00+00:00",
+   "exit_time": "2020-11-30T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 9.03,
+   "pnl_pips": -9.03,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-11-30T20:00:00+00:00",
+   "exit_time": "2020-12-01T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 36.18,
+   "pnl_pips": -72.36,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2020-12-04T08:00:00+00:00",
+   "exit_time": "2020-12-04T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 15.16,
+   "pnl_pips": -15.16,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-12-04T20:00:00+00:00",
+   "exit_time": "2020-12-07T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 31.56,
+   "pnl_pips": 47.35,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-12-09T12:00:00+00:00",
+   "exit_time": "2020-12-10T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 47.47,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-12-10T16:00:00+00:00",
+   "exit_time": "2020-12-16T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 28.97,
+   "pnl_pips": -28.97,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-12-16T12:00:00+00:00",
+   "exit_time": "2020-12-16T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 14.13,
+   "pnl_pips": 21.19,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-12-17T00:00:00+00:00",
+   "exit_time": "2020-12-17T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 15.24,
+   "pnl_pips": -15.24,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-12-20T20:00:00+00:00",
+   "exit_time": "2020-12-21T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 14.08,
+   "pnl_pips": 21.12,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2020-12-21T04:00:00+00:00",
+   "exit_time": "2020-12-30T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 74.83,
+   "pnl_pips": -74.83,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2020-12-31T12:00:00+00:00",
+   "exit_time": "2020-12-31T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 41.55,
+   "pnl_pips": 62.33,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-01-06T16:00:00+00:00",
+   "exit_time": "2021-01-11T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 85.13,
+   "pnl_pips": 127.69,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-01-13T12:00:00+00:00",
+   "exit_time": "2021-01-15T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 40.86,
+   "pnl_pips": -81.72,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2021-01-19T04:00:00+00:00",
+   "exit_time": "2021-01-20T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 33.45,
+   "pnl_pips": 50.17,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-01-20T16:00:00+00:00",
+   "exit_time": "2021-01-21T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 43.21,
+   "pnl_pips": 64.81,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-01-22T04:00:00+00:00",
+   "exit_time": "2021-01-25T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 29.95,
+   "pnl_pips": -29.95,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-01-26T12:00:00+00:00",
+   "exit_time": "2021-01-26T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.45,
+   "pnl_pips": 24.67,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-01-29T16:00:00+00:00",
+   "exit_time": "2021-01-31T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 16.09,
+   "pnl_pips": 24.14,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-02-04T12:00:00+00:00",
+   "exit_time": "2021-02-05T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 40.56,
+   "pnl_pips": 60.84,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-02-09T04:00:00+00:00",
+   "exit_time": "2021-02-10T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 42.3,
+   "pnl_pips": 63.45,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-02-17T08:00:00+00:00",
+   "exit_time": "2021-02-18T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 35.65,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-02-19T08:00:00+00:00",
+   "exit_time": "2021-02-19T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 25.39,
+   "pnl_pips": -25.39,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-02-25T12:00:00+00:00",
+   "exit_time": "2021-02-25T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 13.67,
+   "pnl_pips": 20.51,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-02-25T20:00:00+00:00",
+   "exit_time": "2021-02-26T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 73.69,
+   "pnl_pips": 110.54,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-03-01T12:00:00+00:00",
+   "exit_time": "2021-03-02T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 31.2,
+   "pnl_pips": -31.2,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-03-04T20:00:00+00:00",
+   "exit_time": "2021-03-05T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 27.86,
+   "pnl_pips": -27.86,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-03-11T04:00:00+00:00",
+   "exit_time": "2021-03-11T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 25.58,
+   "pnl_pips": 38.37,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-03-11T16:00:00+00:00",
+   "exit_time": "2021-03-16T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 53.19,
+   "pnl_pips": -53.19,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-03-26T08:00:00+00:00",
+   "exit_time": "2021-03-30T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 25.73,
+   "pnl_pips": -51.46,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2021-04-06T00:00:00+00:00",
+   "exit_time": "2021-04-06T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 18.49,
+   "pnl_pips": 27.73,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-04-08T08:00:00+00:00",
+   "exit_time": "2021-04-13T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 42.97,
+   "pnl_pips": -42.97,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-04-19T12:00:00+00:00",
+   "exit_time": "2021-04-21T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 37.86,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-04-22T08:00:00+00:00",
+   "exit_time": "2021-04-23T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 46.63,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-04-23T08:00:00+00:00",
+   "exit_time": "2021-04-23T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.26,
+   "pnl_pips": -34.52,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2021-04-28T20:00:00+00:00",
+   "exit_time": "2021-04-30T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 43.49,
+   "pnl_pips": 65.24,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-05-10T20:00:00+00:00",
+   "exit_time": "2021-05-13T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 51.48,
+   "pnl_pips": 77.22,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-05-17T00:00:00+00:00",
+   "exit_time": "2021-05-17T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 11.35,
+   "pnl_pips": 17.02,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-05-17T04:00:00+00:00",
+   "exit_time": "2021-05-17T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 26.74,
+   "pnl_pips": -26.74,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-05-18T12:00:00+00:00",
+   "exit_time": "2021-05-19T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 36.01,
+   "pnl_pips": 54.02,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-05-21T04:00:00+00:00",
+   "exit_time": "2021-05-21T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 11.89,
+   "pnl_pips": 17.83,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-05-24T16:00:00+00:00",
+   "exit_time": "2021-05-25T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 32.83,
+   "pnl_pips": -32.83,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-05-26T04:00:00+00:00",
+   "exit_time": "2021-05-26T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 11.06,
+   "pnl_pips": 16.59,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-05-26T08:00:00+00:00",
+   "exit_time": "2021-05-26T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.41,
+   "pnl_pips": 36.61,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-06-11T16:00:00+00:00",
+   "exit_time": "2021-06-14T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.3,
+   "pnl_pips": 18.45,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-06-14T08:00:00+00:00",
+   "exit_time": "2021-06-15T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.02,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-06-15T12:00:00+00:00",
+   "exit_time": "2021-06-15T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 13.83,
+   "pnl_pips": 20.74,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-06-16T20:00:00+00:00",
+   "exit_time": "2021-06-17T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.67,
+   "pnl_pips": -29.34,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2021-06-22T08:00:00+00:00",
+   "exit_time": "2021-06-22T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 13.53,
+   "pnl_pips": 20.29,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-06-22T20:00:00+00:00",
+   "exit_time": "2021-06-30T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 52.21,
+   "pnl_pips": -52.21,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-07-09T12:00:00+00:00",
+   "exit_time": "2021-07-13T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 42.75,
+   "pnl_pips": -42.75,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-08-02T08:00:00+00:00",
+   "exit_time": "2021-08-06T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 36.27,
+   "pnl_pips": 54.4,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-09-20T12:00:00+00:00",
+   "exit_time": "2021-09-20T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 9.07,
+   "pnl_pips": 13.61,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-09-20T16:00:00+00:00",
+   "exit_time": "2021-09-22T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 31.98,
+   "pnl_pips": -31.98,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-09-23T16:00:00+00:00",
+   "exit_time": "2021-09-27T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 35.86,
+   "pnl_pips": -35.86,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-10-01T08:00:00+00:00",
+   "exit_time": "2021-10-04T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 27.54,
+   "pnl_pips": 41.31,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-10-04T12:00:00+00:00",
+   "exit_time": "2021-10-06T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 51.18,
+   "pnl_pips": -51.18,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-10-13T04:00:00+00:00",
+   "exit_time": "2021-10-13T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 31.17,
+   "pnl_pips": 46.75,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-10-21T04:00:00+00:00",
+   "exit_time": "2021-10-21T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 9.43,
+   "pnl_pips": 14.14,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-10-21T08:00:00+00:00",
+   "exit_time": "2021-10-25T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 25.56,
+   "pnl_pips": 38.34,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-10-28T16:00:00+00:00",
+   "exit_time": "2021-10-29T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.84,
+   "pnl_pips": 28.26,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-11-04T16:00:00+00:00",
+   "exit_time": "2021-11-08T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 28.03,
+   "pnl_pips": 42.04,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-11-26T04:00:00+00:00",
+   "exit_time": "2021-11-26T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 22.31,
+   "pnl_pips": 33.47,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2021-11-29T04:00:00+00:00",
+   "exit_time": "2021-11-29T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.97,
+   "pnl_pips": -12.97,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2021-11-29T16:00:00+00:00",
+   "exit_time": "2021-11-29T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.28,
+   "pnl_pips": 21.42,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-01-12T20:00:00+00:00",
+   "exit_time": "2022-01-14T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 19.39,
+   "pnl_pips": -19.39,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-01-27T08:00:00+00:00",
+   "exit_time": "2022-01-27T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.14,
+   "pnl_pips": -24.29,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-02-04T12:00:00+00:00",
+   "exit_time": "2022-02-04T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.95,
+   "pnl_pips": 26.92,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-02-04T16:00:00+00:00",
+   "exit_time": "2022-02-10T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 49.74,
+   "pnl_pips": -49.74,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-02-24T12:00:00+00:00",
+   "exit_time": "2022-02-24T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 19.05,
+   "pnl_pips": -38.1,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-02-25T00:00:00+00:00",
+   "exit_time": "2022-02-25T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 22.51,
+   "pnl_pips": 33.77,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-02-25T08:00:00+00:00",
+   "exit_time": "2022-02-27T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 48.48,
+   "pnl_pips": -48.48,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-02-28T16:00:00+00:00",
+   "exit_time": "2022-03-01T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 97.27,
+   "pnl_pips": -97.27,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-03-08T08:00:00+00:00",
+   "exit_time": "2022-03-08T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 37.76,
+   "pnl_pips": 56.64,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-03-08T12:00:00+00:00",
+   "exit_time": "2022-03-09T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 68.81,
+   "pnl_pips": 103.21,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-03-10T20:00:00+00:00",
+   "exit_time": "2022-03-11T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 30.97,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-03-11T08:00:00+00:00",
+   "exit_time": "2022-03-11T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 27.3,
+   "pnl_pips": 40.95,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-03-11T12:00:00+00:00",
+   "exit_time": "2022-03-11T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 57.24,
+   "pnl_pips": -57.24,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-03-14T00:00:00+00:00",
+   "exit_time": "2022-03-15T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 51.08,
+   "pnl_pips": 76.62,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-03-15T08:00:00+00:00",
+   "exit_time": "2022-03-22T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 98.32,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-04-05T20:00:00+00:00",
+   "exit_time": "2022-04-06T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.19,
+   "pnl_pips": -24.37,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-04-06T16:00:00+00:00",
+   "exit_time": "2022-04-07T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 21.32,
+   "pnl_pips": -21.32,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-04-19T00:00:00+00:00",
+   "exit_time": "2022-04-19T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 19.32,
+   "pnl_pips": 28.99,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-04-19T12:00:00+00:00",
+   "exit_time": "2022-04-20T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 36.43,
+   "pnl_pips": 54.64,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-04-21T04:00:00+00:00",
+   "exit_time": "2022-04-21T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 13.8,
+   "pnl_pips": 20.7,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-04-28T04:00:00+00:00",
+   "exit_time": "2022-04-28T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 17.59,
+   "pnl_pips": 26.38,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-04-28T08:00:00+00:00",
+   "exit_time": "2022-04-28T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 25.5,
+   "pnl_pips": -50.99,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-04-29T04:00:00+00:00",
+   "exit_time": "2022-04-29T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 42.81,
+   "pnl_pips": 64.21,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-04-29T08:00:00+00:00",
+   "exit_time": "2022-05-12T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 93.44,
+   "pnl_pips": -93.44,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-05-13T00:00:00+00:00",
+   "exit_time": "2022-05-17T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 42.8,
+   "pnl_pips": 64.19,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-05-17T08:00:00+00:00",
+   "exit_time": "2022-05-17T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 47.72,
+   "pnl_pips": 71.58,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-05-24T08:00:00+00:00",
+   "exit_time": "2022-05-24T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.25,
+   "pnl_pips": 27.38,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-05-25T04:00:00+00:00",
+   "exit_time": "2022-05-25T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 43.28,
+   "pnl_pips": 64.92,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-05-27T00:00:00+00:00",
+   "exit_time": "2022-05-27T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 21.78,
+   "pnl_pips": -21.78,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-05-27T12:00:00+00:00",
+   "exit_time": "2022-05-30T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 44.11,
+   "pnl_pips": -44.11,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-06-07T12:00:00+00:00",
+   "exit_time": "2022-06-07T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 13.67,
+   "pnl_pips": 20.51,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-06-09T16:00:00+00:00",
+   "exit_time": "2022-06-09T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 19.88,
+   "pnl_pips": -39.76,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-06-10T16:00:00+00:00",
+   "exit_time": "2022-06-12T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 22.48,
+   "pnl_pips": -22.48,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-06-13T08:00:00+00:00",
+   "exit_time": "2022-06-13T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.99,
+   "pnl_pips": -26.99,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-06-14T04:00:00+00:00",
+   "exit_time": "2022-06-14T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 45.7,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-06-14T16:00:00+00:00",
+   "exit_time": "2022-06-15T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 37.74,
+   "pnl_pips": 56.61,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-06-15T08:00:00+00:00",
+   "exit_time": "2022-06-16T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 88.12,
+   "pnl_pips": 132.19,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-06-20T00:00:00+00:00",
+   "exit_time": "2022-06-20T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 24.7,
+   "pnl_pips": 37.04,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-06-20T04:00:00+00:00",
+   "exit_time": "2022-06-23T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 63.61,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-06-23T08:00:00+00:00",
+   "exit_time": "2022-06-27T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 57.44,
+   "pnl_pips": 86.15,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-06-27T16:00:00+00:00",
+   "exit_time": "2022-06-28T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 38.39,
+   "pnl_pips": 57.59,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-06-30T04:00:00+00:00",
+   "exit_time": "2022-06-30T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 15.55,
+   "pnl_pips": 23.32,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-06-30T12:00:00+00:00",
+   "exit_time": "2022-06-30T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 29.18,
+   "pnl_pips": 43.77,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-07-08T04:00:00+00:00",
+   "exit_time": "2022-07-08T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 18.79,
+   "pnl_pips": -37.59,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-07-08T16:00:00+00:00",
+   "exit_time": "2022-07-11T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 48.21,
+   "pnl_pips": -48.21,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-07-12T04:00:00+00:00",
+   "exit_time": "2022-07-12T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 22.56,
+   "pnl_pips": 33.84,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-07-12T12:00:00+00:00",
+   "exit_time": "2022-07-13T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 58.39,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-07-14T00:00:00+00:00",
+   "exit_time": "2022-07-14T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 31.91,
+   "pnl_pips": -63.83,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-07-15T08:00:00+00:00",
+   "exit_time": "2022-07-15T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 40.99,
+   "pnl_pips": 61.48,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-07-15T16:00:00+00:00",
+   "exit_time": "2022-07-19T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 103.64,
+   "pnl_pips": 155.46,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-07-26T04:00:00+00:00",
+   "exit_time": "2022-07-26T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 21.37,
+   "pnl_pips": 32.06,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-07-26T12:00:00+00:00",
+   "exit_time": "2022-08-01T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 116.84,
+   "pnl_pips": -116.84,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-08-12T08:00:00+00:00",
+   "exit_time": "2022-08-15T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 46.16,
+   "pnl_pips": 69.24,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-08-15T12:00:00+00:00",
+   "exit_time": "2022-08-15T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 13.73,
+   "pnl_pips": 20.59,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-08-15T20:00:00+00:00",
+   "exit_time": "2022-08-16T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.0,
+   "pnl_pips": -28.0,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-08-18T20:00:00+00:00",
+   "exit_time": "2022-08-19T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 31.67,
+   "pnl_pips": -31.67,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-08-23T08:00:00+00:00",
+   "exit_time": "2022-08-23T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 18.18,
+   "pnl_pips": 27.27,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-08-23T16:00:00+00:00",
+   "exit_time": "2022-08-26T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 60.62,
+   "pnl_pips": 90.93,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-08-26T20:00:00+00:00",
+   "exit_time": "2022-08-28T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 23.47,
+   "pnl_pips": -23.47,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-08-29T08:00:00+00:00",
+   "exit_time": "2022-08-29T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 43.79,
+   "pnl_pips": 65.69,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-08-30T00:00:00+00:00",
+   "exit_time": "2022-08-31T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 40.49,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-08-31T16:00:00+00:00",
+   "exit_time": "2022-09-01T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 113.8,
+   "pnl_pips": -113.8,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-09-02T20:00:00+00:00",
+   "exit_time": "2022-09-04T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 22.06,
+   "pnl_pips": -44.11,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-09-07T12:00:00+00:00",
+   "exit_time": "2022-09-07T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 18.53,
+   "pnl_pips": 27.79,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-09-09T04:00:00+00:00",
+   "exit_time": "2022-09-09T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.02,
+   "pnl_pips": -24.02,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-09-12T08:00:00+00:00",
+   "exit_time": "2022-09-12T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 26.42,
+   "pnl_pips": 39.63,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-09-13T08:00:00+00:00",
+   "exit_time": "2022-09-13T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 22.71,
+   "pnl_pips": -22.71,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-09-16T08:00:00+00:00",
+   "exit_time": "2022-09-16T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 15.32,
+   "pnl_pips": 22.98,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-09-20T08:00:00+00:00",
+   "exit_time": "2022-09-20T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 32.29,
+   "pnl_pips": 48.44,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-09-20T12:00:00+00:00",
+   "exit_time": "2022-09-21T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 80.65,
+   "pnl_pips": 120.97,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-09-26T00:00:00+00:00",
+   "exit_time": "2022-09-26T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 21.28,
+   "pnl_pips": -42.55,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-09-26T12:00:00+00:00",
+   "exit_time": "2022-09-26T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 28.74,
+   "pnl_pips": 43.11,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-09-26T16:00:00+00:00",
+   "exit_time": "2022-09-27T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 29.21,
+   "pnl_pips": 43.82,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-09-28T16:00:00+00:00",
+   "exit_time": "2022-10-04T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 168.14,
+   "pnl_pips": 252.21,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-10-05T04:00:00+00:00",
+   "exit_time": "2022-10-05T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 48.39,
+   "pnl_pips": 72.59,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-10-06T08:00:00+00:00",
+   "exit_time": "2022-10-06T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 40.35,
+   "pnl_pips": 60.53,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-10-09T20:00:00+00:00",
+   "exit_time": "2022-10-13T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 83.94,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-10-14T12:00:00+00:00",
+   "exit_time": "2022-10-14T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 46.71,
+   "pnl_pips": 70.07,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-10-17T08:00:00+00:00",
+   "exit_time": "2022-10-17T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 33.58,
+   "pnl_pips": 50.37,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-10-21T16:00:00+00:00",
+   "exit_time": "2022-10-21T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 23.83,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-10-25T00:00:00+00:00",
+   "exit_time": "2022-10-25T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 22.61,
+   "pnl_pips": 33.91,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-10-25T12:00:00+00:00",
+   "exit_time": "2022-10-25T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 37.16,
+   "pnl_pips": -74.32,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-10-26T08:00:00+00:00",
+   "exit_time": "2022-10-26T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 20.46,
+   "pnl_pips": 30.7,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-10-27T04:00:00+00:00",
+   "exit_time": "2022-10-27T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 44.57,
+   "pnl_pips": 66.86,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-10-31T00:00:00+00:00",
+   "exit_time": "2022-10-31T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 32.05,
+   "pnl_pips": 48.08,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-11-01T08:00:00+00:00",
+   "exit_time": "2022-11-01T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 35.94,
+   "pnl_pips": 53.91,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-11-02T12:00:00+00:00",
+   "exit_time": "2022-11-02T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.4,
+   "pnl_pips": 27.59,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-11-02T16:00:00+00:00",
+   "exit_time": "2022-11-02T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 38.38,
+   "pnl_pips": -76.75,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-11-04T12:00:00+00:00",
+   "exit_time": "2022-11-04T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 63.21,
+   "pnl_pips": 94.82,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-11-08T16:00:00+00:00",
+   "exit_time": "2022-11-09T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 44.73,
+   "pnl_pips": 67.1,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-11-09T20:00:00+00:00",
+   "exit_time": "2022-11-10T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 51.3,
+   "pnl_pips": -51.3,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-11-11T08:00:00+00:00",
+   "exit_time": "2022-11-11T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 53.97,
+   "pnl_pips": -53.97,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-11-14T08:00:00+00:00",
+   "exit_time": "2022-11-14T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 53.91,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-11-14T20:00:00+00:00",
+   "exit_time": "2022-11-14T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.35,
+   "pnl_pips": 36.53,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-11-15T00:00:00+00:00",
+   "exit_time": "2022-11-15T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 62.67,
+   "pnl_pips": -62.67,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-11-15T20:00:00+00:00",
+   "exit_time": "2022-11-16T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 27.88,
+   "pnl_pips": -27.88,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2022-11-17T04:00:00+00:00",
+   "exit_time": "2022-11-18T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 62.6,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-11-18T04:00:00+00:00",
+   "exit_time": "2022-11-18T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 45.11,
+   "pnl_pips": 67.67,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-11-20T20:00:00+00:00",
+   "exit_time": "2022-11-23T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 83.46,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-11-23T08:00:00+00:00",
+   "exit_time": "2022-11-23T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 59.86,
+   "pnl_pips": -59.86,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-11-24T04:00:00+00:00",
+   "exit_time": "2022-11-24T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.59,
+   "pnl_pips": 26.38,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-11-24T08:00:00+00:00",
+   "exit_time": "2022-11-24T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 21.46,
+   "pnl_pips": 32.2,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-11-24T12:00:00+00:00",
+   "exit_time": "2022-11-25T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 33.72,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-11-28T12:00:00+00:00",
+   "exit_time": "2022-11-28T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.96,
+   "pnl_pips": 28.44,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-11-30T16:00:00+00:00",
+   "exit_time": "2022-11-30T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.51,
+   "pnl_pips": 39.76,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-12-05T00:00:00+00:00",
+   "exit_time": "2022-12-05T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 23.45,
+   "pnl_pips": -23.45,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2022-12-05T12:00:00+00:00",
+   "exit_time": "2022-12-05T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.34,
+   "pnl_pips": 36.51,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2022-12-05T16:00:00+00:00",
+   "exit_time": "2022-12-08T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 77.37,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-01-03T00:00:00+00:00",
+   "exit_time": "2023-01-03T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 15.11,
+   "pnl_pips": 22.67,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-01-18T16:00:00+00:00",
+   "exit_time": "2023-01-23T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 57.18,
+   "pnl_pips": -57.18,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-01-30T12:00:00+00:00",
+   "exit_time": "2023-01-30T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 14.97,
+   "pnl_pips": 22.46,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-01-31T16:00:00+00:00",
+   "exit_time": "2023-02-01T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 29.56,
+   "pnl_pips": -29.56,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-02-02T08:00:00+00:00",
+   "exit_time": "2023-02-02T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 49.91,
+   "pnl_pips": 74.86,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-02-13T00:00:00+00:00",
+   "exit_time": "2023-02-13T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.85,
+   "pnl_pips": -16.85,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-02-13T12:00:00+00:00",
+   "exit_time": "2023-02-13T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.01,
+   "pnl_pips": 24.02,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-02-13T16:00:00+00:00",
+   "exit_time": "2023-02-15T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 60.09,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-02-15T04:00:00+00:00",
+   "exit_time": "2023-02-15T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.76,
+   "pnl_pips": -29.53,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2023-02-17T08:00:00+00:00",
+   "exit_time": "2023-02-17T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.67,
+   "pnl_pips": -16.67,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-03-15T12:00:00+00:00",
+   "exit_time": "2023-03-15T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 23.42,
+   "pnl_pips": -46.84,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2023-03-31T04:00:00+00:00",
+   "exit_time": "2023-03-31T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.95,
+   "pnl_pips": 19.42,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-03-31T08:00:00+00:00",
+   "exit_time": "2023-04-02T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 35.95,
+   "pnl_pips": 53.92,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-04-03T12:00:00+00:00",
+   "exit_time": "2023-04-04T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 41.18,
+   "pnl_pips": -41.18,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-04-13T12:00:00+00:00",
+   "exit_time": "2023-04-13T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 29.2,
+   "pnl_pips": -58.4,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2023-05-04T00:00:00+00:00",
+   "exit_time": "2023-05-04T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 36.86,
+   "pnl_pips": 55.29,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-05-22T00:00:00+00:00",
+   "exit_time": "2023-05-23T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 32.97,
+   "pnl_pips": -32.97,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-05-30T08:00:00+00:00",
+   "exit_time": "2023-05-30T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 34.46,
+   "pnl_pips": 51.69,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-06-05T16:00:00+00:00",
+   "exit_time": "2023-06-13T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 47.9,
+   "pnl_pips": 71.85,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-06-14T16:00:00+00:00",
+   "exit_time": "2023-06-14T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.18,
+   "pnl_pips": 18.26,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-06-15T04:00:00+00:00",
+   "exit_time": "2023-06-15T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 43.22,
+   "pnl_pips": -86.45,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2023-06-22T08:00:00+00:00",
+   "exit_time": "2023-06-22T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.42,
+   "pnl_pips": 18.63,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-06-22T16:00:00+00:00",
+   "exit_time": "2023-06-23T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 55.09,
+   "pnl_pips": 82.64,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-06-27T16:00:00+00:00",
+   "exit_time": "2023-06-28T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 9.98,
+   "pnl_pips": 14.97,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-06-28T12:00:00+00:00",
+   "exit_time": "2023-06-28T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 26.85,
+   "pnl_pips": 40.27,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-06-28T16:00:00+00:00",
+   "exit_time": "2023-06-30T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 64.9,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-07-10T16:00:00+00:00",
+   "exit_time": "2023-07-11T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.78,
+   "pnl_pips": -18.78,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-07-18T12:00:00+00:00",
+   "exit_time": "2023-07-19T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 33.32,
+   "pnl_pips": 49.98,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-07-19T12:00:00+00:00",
+   "exit_time": "2023-07-20T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 37.1,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-07-20T04:00:00+00:00",
+   "exit_time": "2023-07-20T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.99,
+   "pnl_pips": 37.48,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-07-24T08:00:00+00:00",
+   "exit_time": "2023-07-27T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 64.28,
+   "pnl_pips": 96.42,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-08-10T00:00:00+00:00",
+   "exit_time": "2023-08-10T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.79,
+   "pnl_pips": 22.18,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-08-21T08:00:00+00:00",
+   "exit_time": "2023-08-22T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 30.08,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-08-22T12:00:00+00:00",
+   "exit_time": "2023-08-22T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.15,
+   "pnl_pips": -52.29,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2023-08-25T04:00:00+00:00",
+   "exit_time": "2023-08-25T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.63,
+   "pnl_pips": 18.95,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-08-25T12:00:00+00:00",
+   "exit_time": "2023-08-25T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 24.39,
+   "pnl_pips": 36.59,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-08-25T16:00:00+00:00",
+   "exit_time": "2023-08-25T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.98,
+   "pnl_pips": 22.47,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-08-25T20:00:00+00:00",
+   "exit_time": "2023-08-29T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 25.0,
+   "pnl_pips": 37.5,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-09-05T08:00:00+00:00",
+   "exit_time": "2023-09-05T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 13.76,
+   "pnl_pips": -27.52,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2023-09-11T12:00:00+00:00",
+   "exit_time": "2023-09-11T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 9.8,
+   "pnl_pips": 14.69,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-09-11T16:00:00+00:00",
+   "exit_time": "2023-09-14T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 31.74,
+   "pnl_pips": -63.48,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2023-09-21T04:00:00+00:00",
+   "exit_time": "2023-09-21T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.35,
+   "pnl_pips": 18.53,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-09-28T04:00:00+00:00",
+   "exit_time": "2023-09-28T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.19,
+   "pnl_pips": 24.28,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-09-28T12:00:00+00:00",
+   "exit_time": "2023-10-02T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 55.32,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-10-02T16:00:00+00:00",
+   "exit_time": "2023-10-02T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.75,
+   "pnl_pips": -14.75,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-10-03T16:00:00+00:00",
+   "exit_time": "2023-10-03T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.61,
+   "pnl_pips": 18.91,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-10-03T20:00:00+00:00",
+   "exit_time": "2023-10-04T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.35,
+   "pnl_pips": 21.53,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-10-18T08:00:00+00:00",
+   "exit_time": "2023-10-18T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 11.6,
+   "pnl_pips": 17.41,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-10-24T04:00:00+00:00",
+   "exit_time": "2023-10-24T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 11.5,
+   "pnl_pips": 17.26,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-10-31T00:00:00+00:00",
+   "exit_time": "2023-10-31T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 20.04,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-10-31T12:00:00+00:00",
+   "exit_time": "2023-10-31T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 15.04,
+   "pnl_pips": 22.56,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-11-07T04:00:00+00:00",
+   "exit_time": "2023-11-07T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 26.44,
+   "pnl_pips": 39.65,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-11-08T20:00:00+00:00",
+   "exit_time": "2023-11-13T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 33.48,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-11-13T20:00:00+00:00",
+   "exit_time": "2023-11-14T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 19.99,
+   "pnl_pips": -39.99,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2023-11-15T20:00:00+00:00",
+   "exit_time": "2023-11-17T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 56.25,
+   "pnl_pips": -56.25,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-11-28T20:00:00+00:00",
+   "exit_time": "2023-12-01T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 85.2,
+   "pnl_pips": 127.81,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-12-07T04:00:00+00:00",
+   "exit_time": "2023-12-07T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 13.13,
+   "pnl_pips": 19.69,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-12-07T08:00:00+00:00",
+   "exit_time": "2023-12-08T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 34.79,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-12-08T16:00:00+00:00",
+   "exit_time": "2023-12-11T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 22.52,
+   "pnl_pips": -22.52,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2023-12-13T16:00:00+00:00",
+   "exit_time": "2023-12-13T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 32.65,
+   "pnl_pips": 48.97,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2023-12-13T20:00:00+00:00",
+   "exit_time": "2023-12-27T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 129.04,
+   "pnl_pips": 193.56,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-02-15T16:00:00+00:00",
+   "exit_time": "2024-02-20T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 45.04,
+   "pnl_pips": 67.56,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-02-26T12:00:00+00:00",
+   "exit_time": "2024-03-04T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 46.62,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2024-03-08T16:00:00+00:00",
+   "exit_time": "2024-03-08T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.05,
+   "pnl_pips": 18.07,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-03-08T20:00:00+00:00",
+   "exit_time": "2024-03-11T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.32,
+   "pnl_pips": 18.48,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-04-10T16:00:00+00:00",
+   "exit_time": "2024-04-11T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 11.98,
+   "pnl_pips": -11.98,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2024-04-16T04:00:00+00:00",
+   "exit_time": "2024-04-16T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 11.11,
+   "pnl_pips": 16.67,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-04-16T12:00:00+00:00",
+   "exit_time": "2024-04-18T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 32.59,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2024-04-23T04:00:00+00:00",
+   "exit_time": "2024-04-23T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 15.31,
+   "pnl_pips": 22.97,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-04-23T08:00:00+00:00",
+   "exit_time": "2024-04-25T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 39.31,
+   "pnl_pips": 58.97,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-05-22T12:00:00+00:00",
+   "exit_time": "2024-05-28T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 43.24,
+   "pnl_pips": -43.24,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2024-05-30T08:00:00+00:00",
+   "exit_time": "2024-05-31T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 24.19,
+   "pnl_pips": 36.28,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-06-12T04:00:00+00:00",
+   "exit_time": "2024-06-12T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 11.06,
+   "pnl_pips": 16.59,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-06-13T20:00:00+00:00",
+   "exit_time": "2024-06-14T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 14.81,
+   "pnl_pips": -29.63,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2024-06-24T00:00:00+00:00",
+   "exit_time": "2024-06-24T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 8.18,
+   "pnl_pips": 12.27,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-07-23T04:00:00+00:00",
+   "exit_time": "2024-07-23T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 6.66,
+   "pnl_pips": 9.99,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-07-23T08:00:00+00:00",
+   "exit_time": "2024-07-24T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.2,
+   "pnl_pips": 36.3,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-08-02T08:00:00+00:00",
+   "exit_time": "2024-08-02T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 33.26,
+   "pnl_pips": 49.89,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-09-03T12:00:00+00:00",
+   "exit_time": "2024-09-03T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 8.45,
+   "pnl_pips": 12.68,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-09-04T12:00:00+00:00",
+   "exit_time": "2024-09-04T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.33,
+   "pnl_pips": 18.5,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-09-04T16:00:00+00:00",
+   "exit_time": "2024-09-06T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 43.96,
+   "pnl_pips": 65.94,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-09-09T08:00:00+00:00",
+   "exit_time": "2024-09-09T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 23.44,
+   "pnl_pips": -23.44,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2024-09-12T12:00:00+00:00",
+   "exit_time": "2024-09-12T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.74,
+   "pnl_pips": 25.11,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-09-23T20:00:00+00:00",
+   "exit_time": "2024-09-24T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 40.5,
+   "pnl_pips": -40.5,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2024-10-03T16:00:00+00:00",
+   "exit_time": "2024-10-04T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 20.25,
+   "pnl_pips": -20.25,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2024-10-22T20:00:00+00:00",
+   "exit_time": "2024-10-23T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 20.82,
+   "pnl_pips": -20.82,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2024-10-28T00:00:00+00:00",
+   "exit_time": "2024-10-28T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 9.36,
+   "pnl_pips": -9.36,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2024-10-29T12:00:00+00:00",
+   "exit_time": "2024-10-29T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 8.41,
+   "pnl_pips": -16.83,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2024-10-30T00:00:00+00:00",
+   "exit_time": "2024-10-30T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 23.2,
+   "pnl_pips": 34.79,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-11-06T12:00:00+00:00",
+   "exit_time": "2024-11-06T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.89,
+   "pnl_pips": 40.34,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-11-07T00:00:00+00:00",
+   "exit_time": "2024-11-07T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 51.86,
+   "pnl_pips": 77.79,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-11-18T08:00:00+00:00",
+   "exit_time": "2024-11-18T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 33.81,
+   "pnl_pips": 50.72,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-11-19T12:00:00+00:00",
+   "exit_time": "2024-11-21T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 47.14,
+   "pnl_pips": -47.14,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2024-11-25T04:00:00+00:00",
+   "exit_time": "2024-11-25T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 35.97,
+   "pnl_pips": -35.97,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2024-11-26T04:00:00+00:00",
+   "exit_time": "2024-11-26T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 28.84,
+   "pnl_pips": 43.26,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-12-03T12:00:00+00:00",
+   "exit_time": "2024-12-06T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 58.4,
+   "pnl_pips": 87.59,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-12-06T16:00:00+00:00",
+   "exit_time": "2024-12-18T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 82.68,
+   "pnl_pips": 124.01,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-12-20T08:00:00+00:00",
+   "exit_time": "2024-12-20T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 40.96,
+   "pnl_pips": 61.44,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2024-12-20T20:00:00+00:00",
+   "exit_time": "2024-12-31T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 77.73,
+   "pnl_pips": -77.73,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-01-02T00:00:00+00:00",
+   "exit_time": "2025-01-02T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 12.76,
+   "pnl_pips": 19.15,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-01-02T04:00:00+00:00",
+   "exit_time": "2025-01-02T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 32.99,
+   "pnl_pips": -32.99,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-01-03T00:00:00+00:00",
+   "exit_time": "2025-01-06T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 58.05,
+   "pnl_pips": 87.07,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-01-08T12:00:00+00:00",
+   "exit_time": "2025-01-10T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 51.28,
+   "pnl_pips": -51.28,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-01-14T16:00:00+00:00",
+   "exit_time": "2025-01-20T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 61.42,
+   "pnl_pips": 92.13,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-01-21T20:00:00+00:00",
+   "exit_time": "2025-01-24T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 37.36,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-01-24T12:00:00+00:00",
+   "exit_time": "2025-01-24T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 15.77,
+   "pnl_pips": -31.54,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2025-01-27T00:00:00+00:00",
+   "exit_time": "2025-01-27T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 19.64,
+   "pnl_pips": -39.28,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2025-01-28T00:00:00+00:00",
+   "exit_time": "2025-02-02T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 88.55,
+   "pnl_pips": 132.82,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-02-03T00:00:00+00:00",
+   "exit_time": "2025-02-03T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 21.91,
+   "pnl_pips": -21.91,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-02-03T12:00:00+00:00",
+   "exit_time": "2025-02-03T20:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 56.68,
+   "pnl_pips": 85.02,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-02-04T12:00:00+00:00",
+   "exit_time": "2025-02-05T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 77.49,
+   "pnl_pips": 116.24,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-02-07T20:00:00+00:00",
+   "exit_time": "2025-02-13T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 74.05,
+   "pnl_pips": 111.07,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-02-14T12:00:00+00:00",
+   "exit_time": "2025-02-20T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 59.16,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-02-20T16:00:00+00:00",
+   "exit_time": "2025-02-20T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 10.63,
+   "pnl_pips": -21.26,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2025-02-21T04:00:00+00:00",
+   "exit_time": "2025-02-21T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 13.57,
+   "pnl_pips": 20.35,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-02-24T04:00:00+00:00",
+   "exit_time": "2025-02-24T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 12.84,
+   "pnl_pips": 19.25,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-03-07T16:00:00+00:00",
+   "exit_time": "2025-03-07T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.61,
+   "pnl_pips": 36.91,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-03-07T20:00:00+00:00",
+   "exit_time": "2025-03-11T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 51.42,
+   "pnl_pips": -51.42,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-03-12T16:00:00+00:00",
+   "exit_time": "2025-03-12T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 19.59,
+   "pnl_pips": 29.38,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-03-12T20:00:00+00:00",
+   "exit_time": "2025-03-14T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 52.93,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-03-14T12:00:00+00:00",
+   "exit_time": "2025-03-18T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 46.79,
+   "pnl_pips": -46.79,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-04-03T08:00:00+00:00",
+   "exit_time": "2025-04-03T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 20.36,
+   "pnl_pips": -40.73,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2025-04-04T04:00:00+00:00",
+   "exit_time": "2025-04-04T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 30.2,
+   "pnl_pips": 45.29,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-04-04T08:00:00+00:00",
+   "exit_time": "2025-04-10T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 127.74,
+   "pnl_pips": -127.74,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-04-11T12:00:00+00:00",
+   "exit_time": "2025-04-20T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 86.65,
+   "pnl_pips": -86.65,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-04-21T16:00:00+00:00",
+   "exit_time": "2025-04-22T20:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 85.4,
+   "pnl_pips": 128.11,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-05-07T04:00:00+00:00",
+   "exit_time": "2025-05-08T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 59.55,
+   "pnl_pips": -59.55,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-05-13T12:00:00+00:00",
+   "exit_time": "2025-05-13T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 25.34,
+   "pnl_pips": 38.01,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-05-13T16:00:00+00:00",
+   "exit_time": "2025-05-21T00:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 95.32,
+   "pnl_pips": 142.98,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-05-28T16:00:00+00:00",
+   "exit_time": "2025-05-29T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 70.11,
+   "pnl_pips": -70.11,
+   "r": -1.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2025-06-05T16:00:00+00:00",
+   "exit_time": "2025-06-12T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 91.99,
+   "pnl_pips": -91.99,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-06-13T00:00:00+00:00",
+   "exit_time": "2025-06-13T00:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 17.54,
+   "pnl_pips": 26.3,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-06-13T04:00:00+00:00",
+   "exit_time": "2025-06-23T12:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 63.5,
+   "pnl_pips": 0.0,
+   "r": 0.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-06-23T16:00:00+00:00",
+   "exit_time": "2025-06-23T16:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 18.21,
+   "pnl_pips": -36.41,
+   "r": -2.0,
+   "exit_reason": "sl_panic"
+  },
+  {
+   "entry_time": "2025-07-07T04:00:00+00:00",
+   "exit_time": "2025-07-07T08:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 24.82,
+   "pnl_pips": 37.24,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-07-25T20:00:00+00:00",
+   "exit_time": "2025-07-28T04:00:00+00:00",
+   "direction": "short",
+   "stop_pips": 31.37,
+   "pnl_pips": 47.05,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-07-29T16:00:00+00:00",
+   "exit_time": "2025-07-30T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 66.7,
+   "pnl_pips": -66.7,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-08-01T12:00:00+00:00",
+   "exit_time": "2025-08-01T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 18.94,
+   "pnl_pips": 28.41,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-08-01T16:00:00+00:00",
+   "exit_time": "2025-09-16T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 166.93,
+   "pnl_pips": 250.4,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-10-08T16:00:00+00:00",
+   "exit_time": "2025-10-09T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 45.4,
+   "pnl_pips": -45.4,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-10-14T16:00:00+00:00",
+   "exit_time": "2025-10-17T04:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 77.56,
+   "pnl_pips": 116.35,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-10-30T16:00:00+00:00",
+   "exit_time": "2025-10-31T16:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 33.42,
+   "pnl_pips": -33.42,
+   "r": -1.0,
+   "exit_reason": "sl_close"
+  },
+  {
+   "entry_time": "2025-11-06T12:00:00+00:00",
+   "exit_time": "2025-11-07T08:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 26.12,
+   "pnl_pips": 39.18,
+   "r": 1.5,
+   "exit_reason": "tp"
+  },
+  {
+   "entry_time": "2025-11-25T08:00:00+00:00",
+   "exit_time": "2025-11-25T12:00:00+00:00",
+   "direction": "long",
+   "stop_pips": 16.64,
+   "pnl_pips": 24.95,
+   "r": 1.5,
+   "exit_reason": "tp"
+  }
+ ]
+}
