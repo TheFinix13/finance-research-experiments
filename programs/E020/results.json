@@ -1,0 +1,1311 @@
+{
+  "study": "E020",
+  "title": "MFE-ratcheted trailing stop",
+  "generated_at": "2026-07-20T17:37:06.082578+00:00",
+  "generator_commit": "faf186f",
+  "pre_registration": "experiments/E020_mfe_ratcheted_trail/PROTOCOL.md",
+  "harness": "programs/_shared/counterfactual_replay/replay.py",
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDCAD"
+  ],
+  "per_symbol_meta": {
+    "EURUSD": {
+      "symbol": "EURUSD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "M5": 737
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:16:14.472863+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 737,
+      "hit_rate": 0.5577,
+      "mean_r": 0.382,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    },
+    "GBPUSD": {
+      "symbol": "GBPUSD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "M15": 668,
+        "H4": 276
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:15:58.944332+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 944,
+      "hit_rate": 0.5561,
+      "mean_r": 0.3586,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    },
+    "USDCAD": {
+      "symbol": "USDCAD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "H4": 707
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:15:47.885405+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 707,
+      "hit_rate": 0.5446,
+      "mean_r": 0.3685,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    }
+  },
+  "total_trades": 2388,
+  "results": {
+    "arms": [
+      {
+        "arm_id": "a1.0_l0.4",
+        "activation_R": 1.0,
+        "lock_fraction": 0.4,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0717,
+            "ci_low": -0.1401,
+            "ci_high": -0.0062,
+            "p_two_sided": 0.0312,
+            "sharpe_arm": 0.1639,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1373
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1538,
+            "ci_low": -0.2452,
+            "ci_high": -0.0726,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2424,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2482
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1429,
+            "ci_low": -0.2212,
+            "ci_high": -0.0712,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1478,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2175
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.1119,
+            "ci_low": -0.2124,
+            "ci_high": -0.0196,
+            "p_two_sided": 0.0144,
+            "sharpe_arm": 0.2038,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1983
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0886,
+            "ci_low": -0.1907,
+            "ci_high": 0.0054,
+            "p_two_sided": 0.0668,
+            "sharpe_arm": 0.1753,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1618
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1136,
+          "ci_low": -0.1461,
+          "ci_high": -0.0829,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1631,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1895,
+          "median_delta_r": 0.0
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 7,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": -1,
+          "p_winner_reaches_1r_arm": 0.3333,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.2198
+        },
+        "mechanism": {
+          "n_fired_no_reach": 299,
+          "mean_baseline_r_of_fired_no_reach": -0.3579
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.0_l0.5",
+        "activation_R": 1.0,
+        "lock_fraction": 0.5,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0666,
+            "ci_low": -0.1371,
+            "ci_high": -0.0021,
+            "p_two_sided": 0.0432,
+            "sharpe_arm": 0.1689,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1337
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1566,
+            "ci_low": -0.2482,
+            "ci_high": -0.0741,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2396,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2555
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1467,
+            "ci_low": -0.2249,
+            "ci_high": -0.0741,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.144,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2245
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.1056,
+            "ci_low": -0.2065,
+            "ci_high": -0.0154,
+            "p_two_sided": 0.0232,
+            "sharpe_arm": 0.2101,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1936
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0881,
+            "ci_low": -0.1915,
+            "ci_high": 0.0081,
+            "p_two_sided": 0.07,
+            "sharpe_arm": 0.1759,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1632
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1142,
+          "ci_low": -0.1466,
+          "ci_high": -0.0835,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1625,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1926,
+          "median_delta_r": 0.0
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 7,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": -1,
+          "p_winner_reaches_1r_arm": 0.2998,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.2534
+        },
+        "mechanism": {
+          "n_fired_no_reach": 299,
+          "mean_baseline_r_of_fired_no_reach": -0.3579
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.0_l0.6",
+        "activation_R": 1.0,
+        "lock_fraction": 0.6,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0593,
+            "ci_low": -0.1308,
+            "ci_high": 0.007,
+            "p_two_sided": 0.086,
+            "sharpe_arm": 0.1762,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1273
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1583,
+            "ci_low": -0.2498,
+            "ci_high": -0.0756,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2379,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2617
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1382,
+            "ci_low": -0.2203,
+            "ci_high": -0.066,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1525,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2163
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0899,
+            "ci_low": -0.1911,
+            "ci_high": 0.002,
+            "p_two_sided": 0.0564,
+            "sharpe_arm": 0.2259,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1765
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0882,
+            "ci_low": -0.1914,
+            "ci_high": 0.0096,
+            "p_two_sided": 0.0748,
+            "sharpe_arm": 0.1758,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1658
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1102,
+          "ci_low": -0.1431,
+          "ci_high": -0.079,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1665,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.19,
+          "median_delta_r": -0.0002
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 7,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": -1,
+          "p_winner_reaches_1r_arm": 0.263,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.2902
+        },
+        "mechanism": {
+          "n_fired_no_reach": 299,
+          "mean_baseline_r_of_fired_no_reach": -0.3579
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.0_l0.7",
+        "activation_R": 1.0,
+        "lock_fraction": 0.7,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0598,
+            "ci_low": -0.132,
+            "ci_high": 0.0087,
+            "p_two_sided": 0.0916,
+            "sharpe_arm": 0.1757,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1305
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1485,
+            "ci_low": -0.2403,
+            "ci_high": -0.0649,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2477,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2527
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1295,
+            "ci_low": -0.2113,
+            "ci_high": -0.0558,
+            "p_two_sided": 0.0008,
+            "sharpe_arm": 0.1612,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2078
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0802,
+            "ci_low": -0.1802,
+            "ci_high": 0.0126,
+            "p_two_sided": 0.0932,
+            "sharpe_arm": 0.2356,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1669
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0802,
+            "ci_low": -0.1853,
+            "ci_high": 0.0185,
+            "p_two_sided": 0.1072,
+            "sharpe_arm": 0.1837,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1578
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1041,
+          "ci_low": -0.1372,
+          "ci_high": -0.0722,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1726,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1847,
+          "median_delta_r": -0.0003
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 7,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": -1,
+          "p_winner_reaches_1r_arm": 0.245,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.3082
+        },
+        "mechanism": {
+          "n_fired_no_reach": 299,
+          "mean_baseline_r_of_fired_no_reach": -0.3579
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.2_l0.4",
+        "activation_R": 1.2,
+        "lock_fraction": 0.4,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0793,
+            "ci_low": -0.1481,
+            "ci_high": -0.0161,
+            "p_two_sided": 0.0152,
+            "sharpe_arm": 0.1563,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1424
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1371,
+            "ci_low": -0.2255,
+            "ci_high": -0.0581,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.259,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.22
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1517,
+            "ci_low": -0.2298,
+            "ci_high": -0.0813,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.139,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2244
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0916,
+            "ci_low": -0.1899,
+            "ci_high": -0.0055,
+            "p_two_sided": 0.0396,
+            "sharpe_arm": 0.2242,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1672
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0721,
+            "ci_low": -0.1709,
+            "ci_high": 0.0167,
+            "p_two_sided": 0.112,
+            "sharpe_arm": 0.1918,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1371
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1099,
+          "ci_low": -0.1417,
+          "ci_high": -0.0802,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1668,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1809,
+          "median_delta_r": 0.0
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 8,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": 0,
+          "p_winner_reaches_1r_arm": 0.3702,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.183
+        },
+        "mechanism": {
+          "n_fired_no_reach": 158,
+          "mean_baseline_r_of_fired_no_reach": -0.3671
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.2_l0.5",
+        "activation_R": 1.2,
+        "lock_fraction": 0.5,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0743,
+            "ci_low": -0.1431,
+            "ci_high": -0.0107,
+            "p_two_sided": 0.0224,
+            "sharpe_arm": 0.1613,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1376
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1391,
+            "ci_low": -0.228,
+            "ci_high": -0.0601,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2571,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2247
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1531,
+            "ci_low": -0.2319,
+            "ci_high": -0.0826,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1375,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2274
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0899,
+            "ci_low": -0.1875,
+            "ci_high": -0.0026,
+            "p_two_sided": 0.042,
+            "sharpe_arm": 0.2258,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1669
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0782,
+            "ci_low": -0.1773,
+            "ci_high": 0.0123,
+            "p_two_sided": 0.0872,
+            "sharpe_arm": 0.1858,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1464
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1098,
+          "ci_low": -0.1417,
+          "ci_high": -0.0796,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1669,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1822,
+          "median_delta_r": 0.0
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 8,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": 0,
+          "p_winner_reaches_1r_arm": 0.3492,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.2039
+        },
+        "mechanism": {
+          "n_fired_no_reach": 158,
+          "mean_baseline_r_of_fired_no_reach": -0.3671
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.2_l0.6",
+        "activation_R": 1.2,
+        "lock_fraction": 0.6,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0677,
+            "ci_low": -0.1367,
+            "ci_high": -0.0029,
+            "p_two_sided": 0.0404,
+            "sharpe_arm": 0.1678,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1308
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1487,
+            "ci_low": -0.2388,
+            "ci_high": -0.0702,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2475,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2401
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1432,
+            "ci_low": -0.2218,
+            "ci_high": -0.0713,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1475,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2161
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0786,
+            "ci_low": -0.1758,
+            "ci_high": 0.009,
+            "p_two_sided": 0.0796,
+            "sharpe_arm": 0.2372,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1534
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0772,
+            "ci_low": -0.1769,
+            "ci_high": 0.0138,
+            "p_two_sided": 0.0964,
+            "sharpe_arm": 0.1867,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1466
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1077,
+          "ci_low": -0.1398,
+          "ci_high": -0.0774,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.169,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1808,
+          "median_delta_r": 0.0
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 8,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": 0,
+          "p_winner_reaches_1r_arm": 0.3237,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.2295
+        },
+        "mechanism": {
+          "n_fired_no_reach": 158,
+          "mean_baseline_r_of_fired_no_reach": -0.3671
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.2_l0.7",
+        "activation_R": 1.2,
+        "lock_fraction": 0.7,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0657,
+            "ci_low": -0.1352,
+            "ci_high": 0.0003,
+            "p_two_sided": 0.0508,
+            "sharpe_arm": 0.1699,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1296
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1497,
+            "ci_low": -0.241,
+            "ci_high": -0.0702,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2465,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2436
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1407,
+            "ci_low": -0.2193,
+            "ci_high": -0.0688,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1499,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2142
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0735,
+            "ci_low": -0.1714,
+            "ci_high": 0.0137,
+            "p_two_sided": 0.1024,
+            "sharpe_arm": 0.2422,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1482
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0773,
+            "ci_low": -0.1774,
+            "ci_high": 0.0152,
+            "p_two_sided": 0.0944,
+            "sharpe_arm": 0.1867,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1479
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1063,
+          "ci_low": -0.1385,
+          "ci_high": -0.0757,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1704,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1804,
+          "median_delta_r": -0.0001
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 8,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": 0,
+          "p_winner_reaches_1r_arm": 0.3224,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.2307
+        },
+        "mechanism": {
+          "n_fired_no_reach": 158,
+          "mean_baseline_r_of_fired_no_reach": -0.3671
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.3_l0.4",
+        "activation_R": 1.3,
+        "lock_fraction": 0.4,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0782,
+            "ci_low": -0.1458,
+            "ci_high": -0.0154,
+            "p_two_sided": 0.0136,
+            "sharpe_arm": 0.1573,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1391
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1385,
+            "ci_low": -0.2257,
+            "ci_high": -0.0588,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2577,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2198
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1525,
+            "ci_low": -0.2305,
+            "ci_high": -0.0835,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1382,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.224
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0969,
+            "ci_low": -0.1952,
+            "ci_high": -0.011,
+            "p_two_sided": 0.0268,
+            "sharpe_arm": 0.2188,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1709
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0606,
+            "ci_low": -0.1589,
+            "ci_high": 0.0283,
+            "p_two_sided": 0.1844,
+            "sharpe_arm": 0.2033,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1214
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1076,
+          "ci_low": -0.1388,
+          "ci_high": -0.0781,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1691,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1765,
+          "median_delta_r": 0.0
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 8,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": 0,
+          "p_winner_reaches_1r_arm": 0.3869,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.1662
+        },
+        "mechanism": {
+          "n_fired_no_reach": 104,
+          "mean_baseline_r_of_fired_no_reach": -0.4135
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.3_l0.5",
+        "activation_R": 1.3,
+        "lock_fraction": 0.5,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0746,
+            "ci_low": -0.1426,
+            "ci_high": -0.0113,
+            "p_two_sided": 0.0216,
+            "sharpe_arm": 0.1609,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1355
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1386,
+            "ci_low": -0.2267,
+            "ci_high": -0.0598,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2576,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2214
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1488,
+            "ci_low": -0.2269,
+            "ci_high": -0.0793,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1419,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2202
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0985,
+            "ci_low": -0.1983,
+            "ci_high": -0.012,
+            "p_two_sided": 0.0228,
+            "sharpe_arm": 0.2173,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1741
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.06,
+            "ci_low": -0.1584,
+            "ci_high": 0.0301,
+            "p_two_sided": 0.1928,
+            "sharpe_arm": 0.204,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1216
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1063,
+          "ci_low": -0.1378,
+          "ci_high": -0.0766,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1704,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1757,
+          "median_delta_r": 0.0
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 8,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": 0,
+          "p_winner_reaches_1r_arm": 0.374,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.1792
+        },
+        "mechanism": {
+          "n_fired_no_reach": 104,
+          "mean_baseline_r_of_fired_no_reach": -0.4135
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.3_l0.6",
+        "activation_R": 1.3,
+        "lock_fraction": 0.6,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0707,
+            "ci_low": -0.1391,
+            "ci_high": -0.0071,
+            "p_two_sided": 0.032,
+            "sharpe_arm": 0.1648,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1314
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1458,
+            "ci_low": -0.2346,
+            "ci_high": -0.0663,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2504,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2331
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1453,
+            "ci_low": -0.2233,
+            "ci_high": -0.0755,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1454,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2166
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.089,
+            "ci_low": -0.188,
+            "ci_high": -0.0027,
+            "p_two_sided": 0.0428,
+            "sharpe_arm": 0.2268,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1621
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0602,
+            "ci_low": -0.1595,
+            "ci_high": 0.0307,
+            "p_two_sided": 0.1988,
+            "sharpe_arm": 0.2037,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1231
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1046,
+          "ci_low": -0.1356,
+          "ci_high": -0.075,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1721,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1743,
+          "median_delta_r": 0.0
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 8,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": 0,
+          "p_winner_reaches_1r_arm": 0.3564,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.1968
+        },
+        "mechanism": {
+          "n_fired_no_reach": 104,
+          "mean_baseline_r_of_fired_no_reach": -0.4135
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "a1.3_l0.7",
+        "activation_R": 1.3,
+        "lock_fraction": 0.7,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.069,
+            "ci_low": -0.1377,
+            "ci_high": -0.0046,
+            "p_two_sided": 0.038,
+            "sharpe_arm": 0.1665,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1301
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1415,
+            "ci_low": -0.2306,
+            "ci_high": -0.062,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2547,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2287
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1423,
+            "ci_low": -0.2207,
+            "ci_high": -0.072,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1484,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2135
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.091,
+            "ci_low": -0.1875,
+            "ci_high": -0.0039,
+            "p_two_sided": 0.038,
+            "sharpe_arm": 0.2248,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.166
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0591,
+            "ci_low": -0.1582,
+            "ci_high": 0.0321,
+            "p_two_sided": 0.204,
+            "sharpe_arm": 0.2048,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1228
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1027,
+          "ci_low": -0.1341,
+          "ci_high": -0.0727,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.174,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1727,
+          "median_delta_r": 0.0
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "max_consec_loss_streak_arm": 8,
+          "max_consec_loss_streak_base": 8,
+          "delta_max_consec_loss_streak": 0,
+          "p_winner_reaches_1r_arm": 0.3727,
+          "p_winner_reaches_1r_base": 0.5532,
+          "delta_p_winner_reaches_1r": -0.1805
+        },
+        "mechanism": {
+          "n_fired_no_reach": 104,
+          "mean_baseline_r_of_fired_no_reach": -0.4135
+        },
+        "bh_fdr_rejected": true,
+        "verdict": "dead"
+      }
+    ],
+    "grid": {
+      "activation_R": [
+        1.0,
+        1.2,
+        1.3
+      ],
+      "lock_fraction": [
+        0.4,
+        0.5,
+        0.6,
+        0.7
+      ],
+      "n_arms": 12
+    },
+    "folds": [
+      {
+        "name": "fold1",
+        "start": "2017-01-01T00:00:00+00:00",
+        "end": "2019-01-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold2",
+        "start": "2019-01-01T00:00:00+00:00",
+        "end": "2021-01-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold3",
+        "start": "2021-01-01T00:00:00+00:00",
+        "end": "2023-01-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold4",
+        "start": "2023-01-01T00:00:00+00:00",
+        "end": "2024-07-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold5",
+        "start": "2024-07-01T00:00:00+00:00",
+        "end": "2026-01-01T00:00:00+00:00"
+      }
+    ],
+    "bootstrap": {
+      "seed": 42,
+      "resamples": 5000
+    },
+    "fdr": {
+      "method": "BH",
+      "alpha": 0.1,
+      "family_size": 12
+    }
+  },
+  "study_verdict": "dead"
+}
