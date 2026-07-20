@@ -161,52 +161,26 @@ dispersion amplification round 2 (five agents at 0.068–0.089 vs 0.10;
 Nagi constant-lot root cause), (3) Barou volume floor (n=62 OOS under
 phi41 makes his C1 CI unstable; arm4 already fixes it).
 
-## 2026-07-14 — E018 regime-aware fade gating: COMPLETE (`dead`) + E019 pre-reg DRAFT
+## 2026-07-20 — v1 E010-E019 lineage moved to `main`
 
-**E018 verdict `dead` (STOP, no live change).** Tested whether standing
-aside on trend-extension/breakout (R2) fades of `zone_d1_against` isolates a
-losing subset OOS. Frozen causal R2 label (Chigiri Φ4.1 breakout priors,
-frozen BEFORE labelling) is NOT negative-expectancy 2019–2025: R2 exp
-+0.19/+16.20/+2.53 pips (EURUSD/GBPUSD/USDCAD), BH q=0.70/0.98/0.70, 0/3
-pairs sig-negative. The fade's edge concentrates in R1 pullback (all BH
-q=0.001). The 2026-07 incident is a descriptive small-sample streak, not a
-generalizable regime. Deliverables `experiments/E018_regime_aware_fade_gating/
-{PROTOCOL,MANIFEST,REPORT,STOP_NOTICE,results.json}`; harness `programs/E018/`
-(labeller 10/10 tests). Alpha layer untouched; `zone_d1_against` unchanged.
+E010-E019 six-study line and E020-E025 exit-management campaign now
+live canonically on `main`. This branch is M001-only from `d819b83`
+onwards. For E017/E018/E019 verdicts, E011-E016 sweep results, and
+E020-E025 pre-registration, see `main` branch:
 
-**E019 verdict `dead` / STOP (2026-07-14, Phase 2 ran).** Redesigned parked
-E017 around risk-adjusted primary `RaC_β=AnnRet/CDaR_β` (β=0.95) vs shipped AK
-auto-clear baseline. GR-S is genuinely SAFER on every risk guardrail (CDaR
-0.027 vs 0.097, worst-DD 0.089 vs 0.355, ruin 0 vs 0.38) but annualised
-return collapses to ≈0.2%/yr (equity gauge suppresses exposure whenever off
-peak) → `RaC_β`≈0.03–0.10 vs AK ≈11.6–15.5; loses all 6 DGP×ρ cells,
-bootstrap p=1.000, PBO=0.0, deflated z=−0.39. E017's terminal-equity failure
-reappears one level up (numerator ≈0). **Phase 3 blocked — keep shipped AK
-auto-clear; any reframe needs a new id (E020+), e.g. loss-regime-conditioned
-objective or a gauge that resumes exposure near peak.** N=10k, 16 tests.
-`experiments/E019_confidence_recovery_riskadjusted/{REPORT,STOP_NOTICE,results.json}`.
+- E017 `parked_capital_cost` (2026-07-13) — kill-switch replacement
+  Pareto-fails on equity vs HK baseline; binary `kill.txt` stays.
+- E018 `dead` (2026-07-14) — R2 stand-aside not negative-expectancy;
+  `zone_d1_against` unchanged.
+- E019 `dead` (2026-07-14) — risk-adjusted E017 redesign; annualised
+  return collapses. Reframe needs new id.
+- E011-E016 closed 2026-07-01 (E013 `combined_alive` validated
+  existing wick+BE stack; no strategy port shipped).
+- E020-E025 pre-registered 2026-07-20 — exit-management campaign
+  motivated by 2026-07-16 GBPUSD near-TP miss.
 
-## 2026-07-13 — E017 confidence-gated cooldown: COMPLETE (`parked_capital_cost`)
-
-Phase 2 MC harness ran (N=10,000 paths, 11,000-day horizon, seed 42,
-~2.4 h wall-clock). **Verdict: `parked_capital_cost`** — graduated
-confidence + shadow (GC-S) **eliminates blind dead time** (median 0 h vs
-HK 6,500 h) and **cuts median max DD** (2.5% vs 16.9%) but **fails
-Pareto dominance** on median terminal equity (GC-S ~$1,020 flat vs HK
-compounding under bootstrap positive-R ledger). Gauge convergence PASS;
-Jul-08 incident replay descriptive PASS. **Phase 3 production wiring
-blocked** — binary `kill.txt` stays.
-
-- **On disk:** `experiments/E017_confidence_gated_cooldown/{REPORT.md,
-  STOP_NOTICE.md, results.json}`; harness `programs/E017/{confidence_sim.py,
-  run_e017_validation.py, tests/}`; ledger
-  `programs/E017/data/trade_ledger_EURUSD_H4.json`.
-- **Re-open:** fresh pre-reg (E018+) if redesigning success metric or
-  recovery function.
-
-## 2026-07-13 — E017 Phase 1 (superseded — see completion block above)
-
-Pre-reg + lit review only; Phase 2 harness and verdict now on disk.
+Full history and REPORT.md files on `main`, categorized under
+"Six-study line" and "Exit-management campaign" in `EXPERIMENTS.md`.
 
 ---
 
@@ -1113,13 +1087,13 @@ not wiring).
   the caller passes `--mode walk-forward` — fixed a launch-time bug
   where the first Phase-R rerun produced 0 windows.
 
-Research workshop for the M001 multi-agent ensemble AND for the six single-
-alpha studies gating live-agent improvements (E011-E016). Production
-execution lives in `multi-pair-trading-agent`; lab experiments never
-auto-change live params. Parquet cache:
+Research workshop for the M001 multi-agent ensemble (v2 squad).
+Production execution lives in `multi-pair-trading-agent`; lab
+experiments never auto-change live params. Parquet cache:
 `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
 Index: `EXPERIMENTS.md` · Rules: `PROTOCOL_DISCIPLINE.md` · M001 program:
-`programs/M001_multi_agent_ensemble/` (branch `multi-agent-ensemble`).
+`programs/M001_multi_agent_ensemble/` (this branch, `multi-agent-ensemble`).
+v1 E-line research (E001-E025) lives on `main`.
 
 ## 2026-07-01 evening — Phase N + O + P wiring fixes shipped
 
@@ -1243,22 +1217,6 @@ requires §11 amendment before any threshold change; 458 sim tests
 passing + 4 slow skips (this session added 62 tests over the earlier
 396 baseline: 49 news calendar + windowing + 13 workspace threading).
 
-## 2026-07-01 research-pipeline sweep (E011-E016) — closed
-
-| ID | Verdict | Registry |
-|---|---|---|
-| E011 small-stop subset expectancy | `stopped_at_stage_1` | Kills E012 |
-| E012 pending-limit entry | `cancelled_dep_failed` | -- |
-| E013 safety-layer contribution | `combined_alive` Δ+0.80 Sharpe; `wick_alive` Δ+0.75; BE `not_alive`; PLG `plg_earns_keep` (protocol's own label for "PLG is expensive") | `experiments/E013_.../REPORT.md` |
-| E017 confidence-gated cooldown | `parked_capital_cost` (dead-time win, Pareto fail on equity) | `experiments/E017_.../STOP_NOTICE.md` |
-| E014 quality-score entry gate | `parked_low_yield` (12 % vol) | Kills E015 + E016 |
-| E015 / E016 | `cancelled_dep_failed` | -- |
-
-**Follow-up backlog:** E017 confidence-gated kill-switch replacement
-**parked** (`parked_capital_cost`, 2026-07-13) — keep binary `kill.txt`.
-PLG cooldown / streak-halt tuning still needs fresh pre-reg (E018+) if
-pursued. Do NOT tweak `PostLossGuard` constants without a protocol.
-
 ## 1) What is built and working
 
 **Lab Phase 1 (E001–E007) — closed.** Tag `lab-phase-1-closed`. E004
@@ -1320,8 +1278,6 @@ workspace threading + 49 news calendar / windowing = 196 new tests).
 | M001 G7 pre-reg | `experiments/G7_v1_checkpoint_gate/PROTOCOL.md` |
 | M001 v2 backlog | `reviews/v2_arc_backlog_resolution_{2026-06-25,round2_2026-06-30}.md` (both now "v1 mechanic iterations pending G7" per §3.11.5) |
 | News calendar (DEFERRED beyond G7) | `data/news_calendar/README.md` + `specs/news_calendar_wiring{,_DECISION_TREE}.md` |
-| E011-E017 protocols + reports | `experiments/E01[1-7]_.../PROTOCOL.md` + `E01{1,3,4,7}_.../{REPORT,STOP_NOTICE}.md` |
-
 `PYTHONPATH=../multi-pair-trading-agent:. M001_PRODUCTION_REPO=../multi-pair-trading-agent ../multi-pair-trading-agent/.venv/bin/python -m pytest -q`
 
 ## 3) Next immediate goal
@@ -1364,17 +1320,9 @@ Doctrine v0.5, roster v0.8, evolution ledger updated with 6 RELABEL rows.
 1. **Phase V-iterate** (if C2/C3 shows Chigiri/Barou contribute
    counterfactual alpha). Options A/B/C from postmortem; C
    (peer-YIELD analogous to Rin) is the cleanest analogue.
-2. **PLG cooldown / streak-halt tuning** (fresh E018+ pre-reg if pursued;
-   E017 confidence-gated kill-switch replacement parked).
-3. **E014 wider-grid amendment** (θ ∈ {20, 30, 40, 50}). Blocked by
-   §Amendments discipline in `E014_.../PROTOCOL.md`.
 
-**Backlog (needs pre-reg before touching any parameter):**
-
-1. **PLG cooldown / streak-halt tuning** (fresh E018+ pre-reg if pursued;
-   E017 confidence-gated kill-switch replacement parked).
-2. **E014 wider-grid amendment** (θ ∈ {20, 30, 40, 50}). Blocked by
-   §Amendments discipline in `E014_.../PROTOCOL.md`.
+(v1 follow-ups — PLG cooldown tuning, E014 wider-grid amendment,
+E020-E025 exit-management campaign — tracked on `main` branch.)
 
 **Un-deferred as of 2026-07-03:** News calendar wiring (Phase 6) is
 now the highest-priority next task per Phase V postmortem sequencing
