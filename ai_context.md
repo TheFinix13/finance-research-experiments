@@ -1,67 +1,82 @@
-# AI Context — finance research experiments (updated 2026-06-16)
+# AI Context — finance research experiments (updated 2026-07-20)
 
 Read this first in a fresh chat. This repo is the **central research workshop**
-for all hypothesis tests. The trading agent (`multi-pair-trading-agent`) executes only
-what survived the agent validation chain (E001–E005); lab experiments (E006+)
-never auto-change live params.
+for all hypothesis tests. The trading agent (`multi-pair-trading-agent`)
+executes only what survived the agent validation chain (E001–E005); lab
+experiments never auto-change live params.
 
 **Index:** `EXPERIMENTS.md` · **Rules:** `PROTOCOL_DISCIPLINE.md` ·
 **Data accounting:** `DATA_LEDGER.md`
 
-Parquet cache: borrow via `PYTHONPATH=../multi-pair-trading-agent:.` (no duplicate data).
+Parquet cache: borrow via `PYTHONPATH=../multi-pair-trading-agent:.` (no
+duplicate data). Two-branch discipline: `main` = v1 six-study E0xx research
+registry (this file). `multi-agent-ensemble` = v2 M001 Blue-Lock squad
+program (separate lane; do not commit v1 work there — see
+`.cursor/rules/branch-targeting-discipline.mdc`).
 
 ## 1) What is built and working
 
-### Agent validation chain (documented retrospectively as E001–E005)
+**Agent validation chain (documented retrospectively as E001–E005):**
+E001 concept ablation; E002 zone grid; E003 holdout; E004 walk-forward
+(`zone_d1_against`/H4/all, `target_rr=1.5`, 7/7 OOS windows +11.34 p/trade);
+E005 cross-pair sealed (GBPUSD +10.24 p=0.001, USDCAD +4.63 p=0.028).
 
-- **E001** concept ablation: 6 ICT concepts eliminated; zone sole survivor;
-  `zone_d1_against` (fade H4 zone against D1) discovered.
-- **E002** zone grid: 13 BH cells on full window (candidate list only).
-- **E003** holdout: 1/8 IS-survivors OOS — selection-bias lesson.
-- **E004** walk-forward: `H4/all` 7/7 positive OOS windows, median +11.34
-  pips/trade → deployed cell.
-- **E005** cross-pair frozen: GBPUSD +10.24/trade p=0.001; USDCAD +4.63
-  p=0.028; AUD/NZD excluded. Sealed 2026: 16 trades +7.75/trade p=0.29.
+**Lab experiments E006–E019 (all pre-registered, all landed):**
+- E006 price-action confluence (5/284 alive gate-sized on EURUSD).
+- E007 impulse-origin bounce dead.
+- E010–E016 various zone-context / gate / re-entry / conviction studies
+  (mostly parked or dead — see `EXPERIMENTS.md`).
+- E017 confidence-gated cooldown → `parked`.
+- E018 regime-aware fade gating → `dead`.
+- E019 risk-adjusted confidence recovery → `dead` (GR-S safer but
+  10× lower AnnRet → `RaC_β` collapses).
 
-Agent code stays in `multi-pair-trading-agent`; reports copied under `experiments/E00X/`.
+**Exit-management campaign (E020–E025, 2026-07-20):**
+Shared PRE-0 counterfactual-replay harness (`faf186f`) + all five studies
+on `main` at HEAD `929a585`. Full campaign result: all four upstream
+mechanisms `dead` on the deployed cell; E025 joint-stack cancelled per
+PROTOCOL §4a. 98/105 pre-registered arms rejected in the DEGRADATION
+direction (0/105 in favour). The deployed 1.5R fixed TP + BE-at-1R +
+wick_proof + PLG stack is close to optimal given the entry model:
 
-### Lab experiments (pre-registered in this repo)
-
-- **E006** price-action confluence (legacy Test A): 18 detectors, 76 event
-  types; hour-matched controls (v2.1); 5/284 alive on EURUSD screen; gate-
-  sized effects only. Canonical: `experiments/E006_test_a_price_action/`.
-- **E007** impulse-origin bounce: 0/12 alive; bounce ≈ random hour-matched
-  levels; stop at Stage 1. Canonical: `experiments/E007_impulse_origin_bounce/`.
-
-### Planned
-
-- **E008** technical indicators only (v2-PROTOCOL "Test B" family).
-- **E009** cross-family A×B (v2-PROTOCOL "Test C").
-- **E010** Stage-2b `equal_highs_pool` context (from E006 exploratory).
+| Study | Verdict | Mechanism | Commit |
+|---|---|---|---|
+| E020 MFE ratchet | dead (12/12) | Runner-choke — P(reach 1R) drops 22 pp | `7e1a3e7` |
+| E021 partial at R | dead (9/9) | Give-up on 47–63 % of trades dominates tail cap | `343b512` |
+| E022 structure TP snap | dead (11/12) | ΔP(TP) +3.48 pp real, per-winner-R give-up 5× larger | `dbe398c` |
+| E024 near-TP stall exit | dead (72/72 cells) | Δ P(false positive) 0.63–0.91 across every arm | `93f4887` |
+| E025 joint stack | cancelled_dependency_failed | 0 alive upstream | `929a585` |
 
 ## 2) Key file paths
 
 | Area | Files |
 |---|---|
 | Registry | `EXPERIMENTS.md`, `DATA_LEDGER.md`, `PROTOCOL_DISCIPLINE.md` |
-| Experiments | `experiments/E001_…` through `E007_…`, `experiments/_TEMPLATE/` |
-| E006 code | `conflab/detectors_*.py`, `conflab/screening.py`, `scripts/run_stage1.py` |
-| E007 code | `conflab/detectors_impulse_return.py`, `conflab/friction.py`, `scripts/test_b/` |
-| Shared stats | `conflab/stats.py` |
-| Outputs | `output/` (E006), `output/test_b/` (E007) |
+| PRE-0 shared harness | `programs/_shared/counterfactual_replay/{SPEC.md, replay.py, export_ledger_with_paths.py, tests/, data/*_H4_paths.jsonl}` |
+| E020–E025 experiment dirs | `experiments/E02{0..5}_*/{PROTOCOL,MANIFEST,REPORT,STOP_NOTICE}.md` |
+| E020–E024 program dirs | `programs/E02{0,1,2,4}/{run_e0xx_validation.py, results.json, tests/}` (E025 is docs-only) |
+| E017 lineage | `programs/E017/{confidence_sim.py, export_trade_ledger.py, run_e017_validation.py, data/trade_ledger_EURUSD_H4.json}` |
+| E018/E019 lineage | `programs/E018/`, `programs/E019/` |
+| v1 harness | `scripts/{run_walk_forward_ab.py, run_e011.py, run_e014.py, analyze_e013.py}` (ported from multi-agent-ensemble in `bb00c9e`) |
 
-Tests: **70** passing. Run:
-`PYTHONPATH=../multi-pair-trading-agent:. ../multi-pair-trading-agent/.venv/bin/python -m pytest -q`
+Tests: E020–E024 unit tests + PRE-0 invariants all pass under
+`PYTHONPATH=../multi-pair-trading-agent:.:scripts ../multi-pair-trading-agent/.venv/bin/python -m pytest programs/`.
 
 ## 3) Next immediate goal
 
-**Use the registry for every new hypothesis.** Before screening:
+**Exit-side campaign is closed on the current cell.** Any future exit-side
+work needs one of: (a) run E023 (post-BE structure trail, pre-registered
+but Phase-2 unstarted) — only mechanism outside the E020–E024 family;
+(b) redesign the underlying cell (fresh walk-forward with different
+`target_rr`) — new pre-registration required; (c) leave the deployed
+mechanics alone — the campaign is strong evidence that they are close
+to locally optimal.
 
-1. Assign E0XX in `EXPERIMENTS.md`.
-2. Pre-register in `experiments/E0XX_*/PROTOCOL.md`.
-3. Check `DATA_LEDGER.md` — prefer pristine slices (USDCAD H1/M15, etc.).
-4. Never import lab findings into agent execution without agent validation.
+**Parked (do not start without discussion):** E008 indicators; E009
+cross-family; E010 Stage-2b `equal_highs_pool`; E023 post-BE structure
+trail (pre-registered on main but not run — decide before touching);
+any new exit-side mechanism that has not been pre-registered.
 
-Parked: E010 Stage-2b; E008 indicators; E009 cross-family; D1 power redesign.
-
-Honesty rules binding: see `PROTOCOL_DISCIPLINE.md`.
+**Do not:** flip `LiveConfig.partial_exits`, wire `agent/live/exit_manager.py`,
+or narrow the 1.5R TP without a fresh pre-registration and full agent
+validation chain re-run. Honesty rules binding per `PROTOCOL_DISCIPLINE.md`.
