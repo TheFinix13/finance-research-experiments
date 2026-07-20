@@ -70,9 +70,31 @@
     "dxy_beta": "dropped (DXY not in production parquet)"
   },
   "USDJPY": {
-    "error": "NEEDS CACHE PULL \u2014 pair not in production parquet"
+    "n_h4": 5542,
+    "n_d1": 1076,
+    "d1_ac1": 0.012955050851204597,
+    "median_h4_atr_abs": 0.3293751281914249,
+    "max_session_impulse": 0.46882375185150255,
+    "d1_chop_fraction": 0.30390334572490707,
+    "training_window_utc": [
+      "2015-01-01T00:00:00+00:00",
+      "2019-01-01T00:00:00+00:00"
+    ],
+    "h4_atr_percentile": 0.6428571428571429,
+    "dxy_beta": "dropped (DXY not in production parquet)"
   },
   "USDCHF": {
-    "error": "NEEDS CACHE PULL \u2014 pair not in production parquet"
+    "n_h4": 5542,
+    "n_d1": 1076,
+    "d1_ac1": 0.030188567773046276,
+    "median_h4_atr_abs": 0.0025745363668091504,
+    "max_session_impulse": 0.4785689930211075,
+    "d1_chop_fraction": 0.3392193308550186,
+    "training_window_utc": [
+      "2015-01-01T00:00:00+00:00",
+      "2019-01-01T00:00:00+00:00"
+    ],
+    "h4_atr_percentile": 0.07142857142857142,
+    "dxy_beta": "dropped (DXY not in production parquet)"
   }
 }
