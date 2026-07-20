@@ -1,6 +1,17 @@
 # Shared counterfactual-replay harness — SPEC (PRE-0)
 
-**Status:** SPEC · **Date:** 2026-07-20 · **Consumers:** E020, E021, E023, E024, E025
+**Status:** SHIPPED (2026-07-20) · **Consumers:** E020, E021, E023, E024, E025
+
+> **Amendment 2026-07-20 (post-implementation):** intraday data cache
+> coverage differs by symbol; SPEC §1 originally called for M5 with an
+> H4 fallback. Actual delivery uses **per-trade resolution fallback** —
+> finest cache whose data range covers the trade window (see §1 amended
+> field-derivation rules and §6 amended histogram meta). The H4-alone
+> USDCAD case degrades gracefully; the GBPUSD post-2021 window falls to
+> H4 for 276 / 944 trades. All null-rule invariant tests
+> (`programs/_shared/counterfactual_replay/tests/test_replay_invariants.py`)
+> pass on all three symbols, byte-for-byte reproducing the base ledger
+> across 2,388 trades.
 
 ## Purpose
 
@@ -88,17 +99,37 @@ publish one loader utility every consumer study imports.
 - `mae_pips` = max adverse move from entry across the same path.
 - `mfe_ts` = timestamp of the M5 bar whose high (long) or low (short)
   produced the MFE; **if ties, the earliest bar wins** (deterministic).
-- `path_m5` uses the same M5 OHLC source as the E017 harness. If M5 not
-  available for a date range, the path degrades to `path_h4` bars and
-  the record carries `"path_resolution": "H4"` with `mfe_pips/mae_pips`
-  computed from H4 highs/lows (lower fidelity — flagged, not silently
-  dropped).
+- `path` (schema field renamed from `path_m5` in the amended
+  implementation to reflect that resolution varies per trade) uses the
+  finest intraday cache whose data range covers `[entry_time,
+  exit_time + trade_tf_duration]`. Preference per symbol:
+  - EURUSD: M5 → M15 → H1 → H4
+  - GBPUSD: M15 → H1 → H4  (no M5 cache locally)
+  - USDCAD: H4 only  (no intraday cache locally)
+  Every record carries `"path_resolution": {"M5"|"M15"|"H1"|"H4"}`.
+  For a symbol whose finest cache doesn't reach the trade year, that
+  trade automatically falls back to the next available. Meta header
+  reports the per-symbol resolution histogram in
+  `path_resolution_histogram`.
+- The path spans `[entry_time, exit_time + trade_tf_duration)` — i.e. the
+  finest bars strictly BEFORE the next trade-TF bar boundary after
+  `exit_time`. This is a slight superset of the true trade window (some
+  post-exit intra-H4 bars are included when TP fires intra-bar and we
+  can't localise the exit to a specific fine bar). MFE/MAE are therefore
+  "trade-bar-conservative" — they cannot be smaller than the true
+  trade's MFE/MAE, but MAE may be inflated on TP-hit trades where price
+  pulled back after the intra-H4 TP moment.
+- Companion `path_h1` has been REMOVED. Consumer studies that want H1
+  granularity should either (a) accept the base path resolution and
+  aggregate finer bars on the fly, or (b) request an H1 path via the
+  replay engine's future `rebin(path, target_tf)` helper (not yet
+  shipped).
 - `target_ladder` is only included when the production near-miss vault
   or ladder journal has an entry for that trade; otherwise omitted.
   (Historical trades from 2015-2025 will have this field mostly absent;
   2026-onward trades will have it. Studies must not require it.)
 
-## §2 Symbols and window
+## §2 Symbols and window (SHIPPED)
 
 - **Symbols:** EURUSD, GBPUSD, USDCAD (all three deployed cells, per user
   scope decision 2026-07-20).
@@ -106,9 +137,15 @@ publish one loader utility every consumer study imports.
 - **Alpha / toggles:** `zone_d1_against` with `all_on` (wick_proof +
   be_migration + plg) — same production-matching harness E017 pinned.
 - **Full window:** 2015-01-01 → 2025-12-01 (matches E017 §7 §A1).
-- **Expected trade counts:** EURUSD 737 (locked from E017 hit-rate 0.5577
-  reconciliation); GBPUSD and USDCAD to be generated fresh — will publish
-  actual counts + hit-rates in `data/{symbol}_{tf}_paths.jsonl` header.
+- **Actual counts (2026-07-20 generation, commit `bb00c9e`):**
+  - **EURUSD** 737 trades · HR 0.5577 · mean R 0.382 · path=M5 (all)
+    — reconciles exactly to E017 anchor.
+  - **GBPUSD** 944 trades · HR 0.5561 · mean R 0.359 · path=M15 (668
+    trades pre-2022) or H4 (276 trades 2022-2025 fallback).
+  - **USDCAD** 707 trades · HR 0.5446 · mean R 0.369 · path=H4 (all
+    — no intraday cache available locally).
+
+Total: 2,388 counterfactual-replayable trades.
 
 ## §3 Walk-forward split (mirrors E004)
 

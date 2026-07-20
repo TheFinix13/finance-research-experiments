@@ -36,3 +36,9 @@ programs/M001_multi_agent_ensemble/reviews/g7_leave_one_out_post-V/lo1_*/shadow_
 # Session claim files (ephemeral coordination state — see brain-box agents/concurrent-session-safety.md)
 .sessions/*
 !.sessions/README.md
+
+# PRE-0 counterfactual-replay path ledgers (~34 MB total; regenerable from
+# programs/_shared/counterfactual_replay/export_ledger_with_paths.py using
+# the agent parquet cache. Consumer studies E020-E025 depend on these but
+# regenerate deterministically — see programs/_shared/counterfactual_replay/README.md)
+programs/_shared/counterfactual_replay/data/*_paths.jsonl
