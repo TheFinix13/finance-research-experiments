@@ -1,0 +1,161 @@
+{
+  "sub_arm_id": "AC.1.rin-a",
+  "agent_id": "itoshi_rin",
+  "symbols": [
+    "EURUSD",
+    "USDCHF"
+  ],
+  "evaluated_pairs": [
+    "EURUSD",
+    "USDCHF"
+  ],
+  "dropped_pairs": [],
+  "prereq": "cache pull",
+  "testable": true,
+  "not_testable_reason": null,
+  "n_populated_windows": 7,
+  "total_trades_across_sub_arm": 403,
+  "per_window": [
+    {
+      "window_idx": 0,
+      "per_window_mean_tqs": 0.19645693108062662,
+      "n_trades_window": 23,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.32472682306673495,
+          "n_trades": 11
+        },
+        {
+          "symbol": "USDCHF",
+          "mean_tqs": 0.07887619676002726,
+          "n_trades": 12
+        }
+      ]
+    },
+    {
+      "window_idx": 1,
+      "per_window_mean_tqs": 0.38526071265111594,
+      "n_trades_window": 61,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.3371607298830675,
+          "n_trades": 27
+        },
+        {
+          "symbol": "USDCHF",
+          "mean_tqs": 0.42345775779044853,
+          "n_trades": 34
+        }
+      ]
+    },
+    {
+      "window_idx": 2,
+      "per_window_mean_tqs": 0.41808690089617145,
+      "n_trades_window": 56,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.31346605384204773,
+          "n_trades": 25
+        },
+        {
+          "symbol": "USDCHF",
+          "mean_tqs": 0.5024585517462712,
+          "n_trades": 31
+        }
+      ]
+    },
+    {
+      "window_idx": 3,
+      "per_window_mean_tqs": 0.456496522269447,
+      "n_trades_window": 98,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.4536348610068982,
+          "n_trades": 73
+        },
+        {
+          "symbol": "USDCHF",
+          "mean_tqs": 0.464852573156089,
+          "n_trades": 25
+        }
+      ]
+    },
+    {
+      "window_idx": 4,
+      "per_window_mean_tqs": 0.34812909909659506,
+      "n_trades_window": 65,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.32433047989419234,
+          "n_trades": 29
+        },
+        {
+          "symbol": "USDCHF",
+          "mean_tqs": 0.3673002090096418,
+          "n_trades": 36
+        }
+      ]
+    },
+    {
+      "window_idx": 5,
+      "per_window_mean_tqs": 0.30251509728089687,
+      "n_trades_window": 40,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.3722728996648678,
+          "n_trades": 17
+        },
+        {
+          "symbol": "USDCHF",
+          "mean_tqs": 0.2509549824753531,
+          "n_trades": 23
+        }
+      ]
+    },
+    {
+      "window_idx": 6,
+      "per_window_mean_tqs": 0.39284320568564035,
+      "n_trades_window": 60,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.4665819695710504,
+          "n_trades": 21
+        },
+        {
+          "symbol": "USDCHF",
+          "mean_tqs": 0.3531377174396503,
+          "n_trades": 39
+        }
+      ]
+    }
+  ],
+  "c1_evaluation": {
+    "thresholds": {
+      "mean_tqs_ge": 0.3,
+      "per_window_ge": 0.2,
+      "min_passing_windows": 5,
+      "bootstrap_ci_lower_gt": 0.25
+    },
+    "observed": {
+      "mean_tqs": 0.3571126384229276,
+      "n_windows_ge_020": 6,
+      "bootstrap_ci_lower": 0.2952393077138158,
+      "bootstrap_ci_upper": 0.4105888365636905,
+      "bootstrap_p_mean_tqs_gt_025": 0.0003
+    },
+    "sub_criteria": {
+      "mean_tqs_met": true,
+      "k_of_n_met": true,
+      "bootstrap_met": true
+    },
+    "c1_pass": true
+  },
+  "telemetry_source": "itoshi_rin_walkforward.json"
+}

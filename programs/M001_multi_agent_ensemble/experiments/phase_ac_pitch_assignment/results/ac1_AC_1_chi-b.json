@@ -1,0 +1,39 @@
+{
+  "sub_arm_id": "AC.1.chi-b",
+  "agent_id": "chigiri_hyoma",
+  "symbols": [
+    "USDJPY"
+  ],
+  "evaluated_pairs": [],
+  "dropped_pairs": [
+    "USDJPY"
+  ],
+  "prereq": "cache pull",
+  "testable": false,
+  "not_testable_reason": "amendment \u00a78 sentinel: all symbols in this sub-arm (USDJPY) are newly-widened for chigiri_hyoma (v1 defaults = ['EURUSD', 'GBPUSD']) and produced 0 trades in every OOS window in the AC.0-v2 fresh compute. This is a data/logic problem for the movable on those pairs, not a legitimate y = 0 signal \u2014 cannot enter the C1 test.",
+  "n_populated_windows": 0,
+  "total_trades_across_sub_arm": 0,
+  "per_window": [],
+  "c1_evaluation": {
+    "thresholds": {
+      "mean_tqs_ge": 0.3,
+      "per_window_ge": 0.2,
+      "min_passing_windows": 5,
+      "bootstrap_ci_lower_gt": 0.25
+    },
+    "observed": {
+      "mean_tqs": null,
+      "n_windows_ge_020": null,
+      "bootstrap_ci_lower": null,
+      "bootstrap_ci_upper": null,
+      "bootstrap_p_mean_tqs_gt_025": null
+    },
+    "sub_criteria": {
+      "mean_tqs_met": null,
+      "k_of_n_met": null,
+      "bootstrap_met": null
+    },
+    "c1_pass": null
+  },
+  "telemetry_source": "chigiri_hyoma_walkforward.json"
+}

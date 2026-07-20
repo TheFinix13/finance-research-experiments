@@ -1,0 +1,43 @@
+{
+  "sub_arm_id": "AC.1.kun-b",
+  "agent_id": "kunigami_rensuke",
+  "symbols": [
+    "AUDUSD",
+    "NZDUSD",
+    "USDJPY"
+  ],
+  "evaluated_pairs": [],
+  "dropped_pairs": [
+    "AUDUSD",
+    "NZDUSD",
+    "USDJPY"
+  ],
+  "prereq": "cache pull",
+  "testable": false,
+  "not_testable_reason": "amendment \u00a78 sentinel: Kunigami un-retired produced 0 trades across ALL 7 pairs (49 pair-windows) in the AC.0-v2 fresh compute \u2014 un-retirement wiring failed silently. Cannot legitimately be counted as y = 0 observations for AC.1. Fix required: investigate Kunigami proposer-wiring in run_ac0_compute._build_movable_roster",
+  "n_populated_windows": 0,
+  "total_trades_across_sub_arm": 0,
+  "per_window": [],
+  "c1_evaluation": {
+    "thresholds": {
+      "mean_tqs_ge": 0.3,
+      "per_window_ge": 0.2,
+      "min_passing_windows": 5,
+      "bootstrap_ci_lower_gt": 0.25
+    },
+    "observed": {
+      "mean_tqs": null,
+      "n_windows_ge_020": null,
+      "bootstrap_ci_lower": null,
+      "bootstrap_ci_upper": null,
+      "bootstrap_p_mean_tqs_gt_025": null
+    },
+    "sub_criteria": {
+      "mean_tqs_met": null,
+      "k_of_n_met": null,
+      "bootstrap_met": null
+    },
+    "c1_pass": null
+  },
+  "telemetry_source": "kunigami_rensuke_walkforward.json"
+}

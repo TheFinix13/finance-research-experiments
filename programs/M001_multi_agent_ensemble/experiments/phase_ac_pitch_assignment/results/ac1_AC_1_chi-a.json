@@ -1,0 +1,161 @@
+{
+  "sub_arm_id": "AC.1.chi-a",
+  "agent_id": "chigiri_hyoma",
+  "symbols": [
+    "AUDUSD",
+    "NZDUSD"
+  ],
+  "evaluated_pairs": [
+    "AUDUSD",
+    "NZDUSD"
+  ],
+  "dropped_pairs": [],
+  "prereq": "none",
+  "testable": true,
+  "not_testable_reason": null,
+  "n_populated_windows": 7,
+  "total_trades_across_sub_arm": 531,
+  "per_window": [
+    {
+      "window_idx": 0,
+      "per_window_mean_tqs": 0.2176074439283581,
+      "n_trades_window": 73,
+      "per_pair_breakdown": [
+        {
+          "symbol": "AUDUSD",
+          "mean_tqs": 0.24900007087724327,
+          "n_trades": 29
+        },
+        {
+          "symbol": "NZDUSD",
+          "mean_tqs": 0.19691684889386563,
+          "n_trades": 44
+        }
+      ]
+    },
+    {
+      "window_idx": 1,
+      "per_window_mean_tqs": 0.2964646729258433,
+      "n_trades_window": 83,
+      "per_pair_breakdown": [
+        {
+          "symbol": "AUDUSD",
+          "mean_tqs": 0.3175692104155904,
+          "n_trades": 37
+        },
+        {
+          "symbol": "NZDUSD",
+          "mean_tqs": 0.27948928407539453,
+          "n_trades": 46
+        }
+      ]
+    },
+    {
+      "window_idx": 2,
+      "per_window_mean_tqs": 0.17921346248547607,
+      "n_trades_window": 68,
+      "per_pair_breakdown": [
+        {
+          "symbol": "AUDUSD",
+          "mean_tqs": 0.1583012550518353,
+          "n_trades": 33
+        },
+        {
+          "symbol": "NZDUSD",
+          "mean_tqs": 0.19893068663719451,
+          "n_trades": 35
+        }
+      ]
+    },
+    {
+      "window_idx": 3,
+      "per_window_mean_tqs": 0.21372450410541366,
+      "n_trades_window": 79,
+      "per_pair_breakdown": [
+        {
+          "symbol": "AUDUSD",
+          "mean_tqs": 0.2112732509320197,
+          "n_trades": 35
+        },
+        {
+          "symbol": "NZDUSD",
+          "mean_tqs": 0.21567436458424974,
+          "n_trades": 44
+        }
+      ]
+    },
+    {
+      "window_idx": 4,
+      "per_window_mean_tqs": 0.18350184075180836,
+      "n_trades_window": 79,
+      "per_pair_breakdown": [
+        {
+          "symbol": "AUDUSD",
+          "mean_tqs": 0.19101249188644004,
+          "n_trades": 45
+        },
+        {
+          "symbol": "NZDUSD",
+          "mean_tqs": 0.17356127307361938,
+          "n_trades": 34
+        }
+      ]
+    },
+    {
+      "window_idx": 5,
+      "per_window_mean_tqs": 0.18446713754733549,
+      "n_trades_window": 87,
+      "per_pair_breakdown": [
+        {
+          "symbol": "AUDUSD",
+          "mean_tqs": 0.20952898465201591,
+          "n_trades": 44
+        },
+        {
+          "symbol": "NZDUSD",
+          "mean_tqs": 0.1588224567890578,
+          "n_trades": 43
+        }
+      ]
+    },
+    {
+      "window_idx": 6,
+      "per_window_mean_tqs": 0.17193937671193743,
+      "n_trades_window": 62,
+      "per_pair_breakdown": [
+        {
+          "symbol": "AUDUSD",
+          "mean_tqs": 0.1285885612167749,
+          "n_trades": 26
+        },
+        {
+          "symbol": "NZDUSD",
+          "mean_tqs": 0.2032482990139993,
+          "n_trades": 36
+        }
+      ]
+    }
+  ],
+  "c1_evaluation": {
+    "thresholds": {
+      "mean_tqs_ge": 0.3,
+      "per_window_ge": 0.2,
+      "min_passing_windows": 5,
+      "bootstrap_ci_lower_gt": 0.25
+    },
+    "observed": {
+      "mean_tqs": 0.20670263406516748,
+      "n_windows_ge_020": 3,
+      "bootstrap_ci_lower": 0.18255238890300687,
+      "bootstrap_ci_upper": 0.2395903544386535,
+      "bootstrap_p_mean_tqs_gt_025": 0.9919
+    },
+    "sub_criteria": {
+      "mean_tqs_met": false,
+      "k_of_n_met": false,
+      "bootstrap_met": false
+    },
+    "c1_pass": false
+  },
+  "telemetry_source": "chigiri_hyoma_walkforward.json"
+}

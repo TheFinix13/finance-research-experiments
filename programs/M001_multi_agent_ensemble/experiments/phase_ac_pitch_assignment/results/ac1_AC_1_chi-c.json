@@ -1,0 +1,124 @@
+{
+  "sub_arm_id": "AC.1.chi-c",
+  "agent_id": "chigiri_hyoma",
+  "symbols": [
+    "GBPUSD"
+  ],
+  "evaluated_pairs": [
+    "GBPUSD"
+  ],
+  "dropped_pairs": [],
+  "prereq": "none",
+  "testable": true,
+  "not_testable_reason": null,
+  "n_populated_windows": 7,
+  "total_trades_across_sub_arm": 232,
+  "per_window": [
+    {
+      "window_idx": 0,
+      "per_window_mean_tqs": 0.24909957557648213,
+      "n_trades_window": 34,
+      "per_pair_breakdown": [
+        {
+          "symbol": "GBPUSD",
+          "mean_tqs": 0.24909957557648213,
+          "n_trades": 34
+        }
+      ]
+    },
+    {
+      "window_idx": 1,
+      "per_window_mean_tqs": 0.20301052292114502,
+      "n_trades_window": 33,
+      "per_pair_breakdown": [
+        {
+          "symbol": "GBPUSD",
+          "mean_tqs": 0.20301052292114502,
+          "n_trades": 33
+        }
+      ]
+    },
+    {
+      "window_idx": 2,
+      "per_window_mean_tqs": 0.22820377524469332,
+      "n_trades_window": 26,
+      "per_pair_breakdown": [
+        {
+          "symbol": "GBPUSD",
+          "mean_tqs": 0.22820377524469332,
+          "n_trades": 26
+        }
+      ]
+    },
+    {
+      "window_idx": 3,
+      "per_window_mean_tqs": 0.21197151828448713,
+      "n_trades_window": 31,
+      "per_pair_breakdown": [
+        {
+          "symbol": "GBPUSD",
+          "mean_tqs": 0.21197151828448713,
+          "n_trades": 31
+        }
+      ]
+    },
+    {
+      "window_idx": 4,
+      "per_window_mean_tqs": 0.14820003388720907,
+      "n_trades_window": 32,
+      "per_pair_breakdown": [
+        {
+          "symbol": "GBPUSD",
+          "mean_tqs": 0.14820003388720907,
+          "n_trades": 32
+        }
+      ]
+    },
+    {
+      "window_idx": 5,
+      "per_window_mean_tqs": 0.2803179317504588,
+      "n_trades_window": 38,
+      "per_pair_breakdown": [
+        {
+          "symbol": "GBPUSD",
+          "mean_tqs": 0.2803179317504588,
+          "n_trades": 38
+        }
+      ]
+    },
+    {
+      "window_idx": 6,
+      "per_window_mean_tqs": 0.20979484186963354,
+      "n_trades_window": 38,
+      "per_pair_breakdown": [
+        {
+          "symbol": "GBPUSD",
+          "mean_tqs": 0.20979484186963354,
+          "n_trades": 38
+        }
+      ]
+    }
+  ],
+  "c1_evaluation": {
+    "thresholds": {
+      "mean_tqs_ge": 0.3,
+      "per_window_ge": 0.2,
+      "min_passing_windows": 5,
+      "bootstrap_ci_lower_gt": 0.25
+    },
+    "observed": {
+      "mean_tqs": 0.21865688564772987,
+      "n_windows_ge_020": 6,
+      "bootstrap_ci_lower": 0.18959971381313911,
+      "bootstrap_ci_upper": 0.24613094734799945,
+      "bootstrap_p_mean_tqs_gt_025": 0.9878
+    },
+    "sub_criteria": {
+      "mean_tqs_met": false,
+      "k_of_n_met": true,
+      "bootstrap_met": false
+    },
+    "c1_pass": false
+  },
+  "telemetry_source": "chigiri_hyoma_walkforward.json"
+}

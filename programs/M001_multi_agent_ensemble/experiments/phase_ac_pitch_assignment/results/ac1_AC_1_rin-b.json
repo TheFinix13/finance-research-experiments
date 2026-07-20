@@ -1,0 +1,127 @@
+{
+  "sub_arm_id": "AC.1.rin-b",
+  "agent_id": "itoshi_rin",
+  "symbols": [
+    "EURUSD",
+    "USDJPY"
+  ],
+  "evaluated_pairs": [
+    "EURUSD"
+  ],
+  "dropped_pairs": [
+    "USDJPY"
+  ],
+  "prereq": "cache pull",
+  "testable": true,
+  "not_testable_reason": null,
+  "n_populated_windows": 7,
+  "total_trades_across_sub_arm": 203,
+  "per_window": [
+    {
+      "window_idx": 0,
+      "per_window_mean_tqs": 0.32472682306673495,
+      "n_trades_window": 11,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.32472682306673495,
+          "n_trades": 11
+        }
+      ]
+    },
+    {
+      "window_idx": 1,
+      "per_window_mean_tqs": 0.3371607298830675,
+      "n_trades_window": 27,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.3371607298830675,
+          "n_trades": 27
+        }
+      ]
+    },
+    {
+      "window_idx": 2,
+      "per_window_mean_tqs": 0.31346605384204773,
+      "n_trades_window": 25,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.31346605384204773,
+          "n_trades": 25
+        }
+      ]
+    },
+    {
+      "window_idx": 3,
+      "per_window_mean_tqs": 0.45363486100689826,
+      "n_trades_window": 73,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.4536348610068982,
+          "n_trades": 73
+        }
+      ]
+    },
+    {
+      "window_idx": 4,
+      "per_window_mean_tqs": 0.32433047989419234,
+      "n_trades_window": 29,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.32433047989419234,
+          "n_trades": 29
+        }
+      ]
+    },
+    {
+      "window_idx": 5,
+      "per_window_mean_tqs": 0.3722728996648678,
+      "n_trades_window": 17,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.3722728996648678,
+          "n_trades": 17
+        }
+      ]
+    },
+    {
+      "window_idx": 6,
+      "per_window_mean_tqs": 0.4665819695710504,
+      "n_trades_window": 21,
+      "per_pair_breakdown": [
+        {
+          "symbol": "EURUSD",
+          "mean_tqs": 0.4665819695710504,
+          "n_trades": 21
+        }
+      ]
+    }
+  ],
+  "c1_evaluation": {
+    "thresholds": {
+      "mean_tqs_ge": 0.3,
+      "per_window_ge": 0.2,
+      "min_passing_windows": 5,
+      "bootstrap_ci_lower_gt": 0.25
+    },
+    "observed": {
+      "mean_tqs": 0.3703105452755513,
+      "n_windows_ge_020": 7,
+      "bootstrap_ci_lower": 0.32861455004044293,
+      "bootstrap_ci_upper": 0.41591323184169043,
+      "bootstrap_p_mean_tqs_gt_025": 0.0
+    },
+    "sub_criteria": {
+      "mean_tqs_met": true,
+      "k_of_n_met": true,
+      "bootstrap_met": true
+    },
+    "c1_pass": true
+  },
+  "telemetry_source": "itoshi_rin_walkforward.json"
+}

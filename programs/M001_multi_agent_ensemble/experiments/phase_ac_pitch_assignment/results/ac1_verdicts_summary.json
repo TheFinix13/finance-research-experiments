@@ -1,0 +1,869 @@
+{
+  "fired_at_utc": "2026-07-20T22:56:51.451317+00:00",
+  "telemetry_dir": "programs/M001_multi_agent_ensemble/experiments/phase_ac_pitch_assignment/results/ac0_compute",
+  "n_boot": 10000,
+  "rng_seed": 20260720,
+  "fdr_q": 0.1,
+  "sub_arms": [
+    {
+      "sub_arm_id": "AC.1.chi-a",
+      "agent_id": "chigiri_hyoma",
+      "symbols": [
+        "AUDUSD",
+        "NZDUSD"
+      ],
+      "evaluated_pairs": [
+        "AUDUSD",
+        "NZDUSD"
+      ],
+      "dropped_pairs": [],
+      "prereq": "none",
+      "testable": true,
+      "not_testable_reason": null,
+      "n_populated_windows": 7,
+      "total_trades_across_sub_arm": 531,
+      "per_window": [
+        {
+          "window_idx": 0,
+          "per_window_mean_tqs": 0.2176074439283581,
+          "n_trades_window": 73,
+          "per_pair_breakdown": [
+            {
+              "symbol": "AUDUSD",
+              "mean_tqs": 0.24900007087724327,
+              "n_trades": 29
+            },
+            {
+              "symbol": "NZDUSD",
+              "mean_tqs": 0.19691684889386563,
+              "n_trades": 44
+            }
+          ]
+        },
+        {
+          "window_idx": 1,
+          "per_window_mean_tqs": 0.2964646729258433,
+          "n_trades_window": 83,
+          "per_pair_breakdown": [
+            {
+              "symbol": "AUDUSD",
+              "mean_tqs": 0.3175692104155904,
+              "n_trades": 37
+            },
+            {
+              "symbol": "NZDUSD",
+              "mean_tqs": 0.27948928407539453,
+              "n_trades": 46
+            }
+          ]
+        },
+        {
+          "window_idx": 2,
+          "per_window_mean_tqs": 0.17921346248547607,
+          "n_trades_window": 68,
+          "per_pair_breakdown": [
+            {
+              "symbol": "AUDUSD",
+              "mean_tqs": 0.1583012550518353,
+              "n_trades": 33
+            },
+            {
+              "symbol": "NZDUSD",
+              "mean_tqs": 0.19893068663719451,
+              "n_trades": 35
+            }
+          ]
+        },
+        {
+          "window_idx": 3,
+          "per_window_mean_tqs": 0.21372450410541366,
+          "n_trades_window": 79,
+          "per_pair_breakdown": [
+            {
+              "symbol": "AUDUSD",
+              "mean_tqs": 0.2112732509320197,
+              "n_trades": 35
+            },
+            {
+              "symbol": "NZDUSD",
+              "mean_tqs": 0.21567436458424974,
+              "n_trades": 44
+            }
+          ]
+        },
+        {
+          "window_idx": 4,
+          "per_window_mean_tqs": 0.18350184075180836,
+          "n_trades_window": 79,
+          "per_pair_breakdown": [
+            {
+              "symbol": "AUDUSD",
+              "mean_tqs": 0.19101249188644004,
+              "n_trades": 45
+            },
+            {
+              "symbol": "NZDUSD",
+              "mean_tqs": 0.17356127307361938,
+              "n_trades": 34
+            }
+          ]
+        },
+        {
+          "window_idx": 5,
+          "per_window_mean_tqs": 0.18446713754733549,
+          "n_trades_window": 87,
+          "per_pair_breakdown": [
+            {
+              "symbol": "AUDUSD",
+              "mean_tqs": 0.20952898465201591,
+              "n_trades": 44
+            },
+            {
+              "symbol": "NZDUSD",
+              "mean_tqs": 0.1588224567890578,
+              "n_trades": 43
+            }
+          ]
+        },
+        {
+          "window_idx": 6,
+          "per_window_mean_tqs": 0.17193937671193743,
+          "n_trades_window": 62,
+          "per_pair_breakdown": [
+            {
+              "symbol": "AUDUSD",
+              "mean_tqs": 0.1285885612167749,
+              "n_trades": 26
+            },
+            {
+              "symbol": "NZDUSD",
+              "mean_tqs": 0.2032482990139993,
+              "n_trades": 36
+            }
+          ]
+        }
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs": 0.20670263406516748,
+          "n_windows_ge_020": 3,
+          "bootstrap_ci_lower": 0.18255238890300687,
+          "bootstrap_ci_upper": 0.2395903544386535,
+          "bootstrap_p_mean_tqs_gt_025": 0.9919
+        },
+        "sub_criteria": {
+          "mean_tqs_met": false,
+          "k_of_n_met": false,
+          "bootstrap_met": false
+        },
+        "c1_pass": false
+      },
+      "telemetry_source": "chigiri_hyoma_walkforward.json"
+    },
+    {
+      "sub_arm_id": "AC.1.chi-b",
+      "agent_id": "chigiri_hyoma",
+      "symbols": [
+        "USDJPY"
+      ],
+      "evaluated_pairs": [],
+      "dropped_pairs": [
+        "USDJPY"
+      ],
+      "prereq": "cache pull",
+      "testable": false,
+      "not_testable_reason": "amendment \u00a78 sentinel: all symbols in this sub-arm (USDJPY) are newly-widened for chigiri_hyoma (v1 defaults = ['EURUSD', 'GBPUSD']) and produced 0 trades in every OOS window in the AC.0-v2 fresh compute. This is a data/logic problem for the movable on those pairs, not a legitimate y = 0 signal \u2014 cannot enter the C1 test.",
+      "n_populated_windows": 0,
+      "total_trades_across_sub_arm": 0,
+      "per_window": [],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs": null,
+          "n_windows_ge_020": null,
+          "bootstrap_ci_lower": null,
+          "bootstrap_ci_upper": null,
+          "bootstrap_p_mean_tqs_gt_025": null
+        },
+        "sub_criteria": {
+          "mean_tqs_met": null,
+          "k_of_n_met": null,
+          "bootstrap_met": null
+        },
+        "c1_pass": null
+      },
+      "telemetry_source": "chigiri_hyoma_walkforward.json"
+    },
+    {
+      "sub_arm_id": "AC.1.chi-c",
+      "agent_id": "chigiri_hyoma",
+      "symbols": [
+        "GBPUSD"
+      ],
+      "evaluated_pairs": [
+        "GBPUSD"
+      ],
+      "dropped_pairs": [],
+      "prereq": "none",
+      "testable": true,
+      "not_testable_reason": null,
+      "n_populated_windows": 7,
+      "total_trades_across_sub_arm": 232,
+      "per_window": [
+        {
+          "window_idx": 0,
+          "per_window_mean_tqs": 0.24909957557648213,
+          "n_trades_window": 34,
+          "per_pair_breakdown": [
+            {
+              "symbol": "GBPUSD",
+              "mean_tqs": 0.24909957557648213,
+              "n_trades": 34
+            }
+          ]
+        },
+        {
+          "window_idx": 1,
+          "per_window_mean_tqs": 0.20301052292114502,
+          "n_trades_window": 33,
+          "per_pair_breakdown": [
+            {
+              "symbol": "GBPUSD",
+              "mean_tqs": 0.20301052292114502,
+              "n_trades": 33
+            }
+          ]
+        },
+        {
+          "window_idx": 2,
+          "per_window_mean_tqs": 0.22820377524469332,
+          "n_trades_window": 26,
+          "per_pair_breakdown": [
+            {
+              "symbol": "GBPUSD",
+              "mean_tqs": 0.22820377524469332,
+              "n_trades": 26
+            }
+          ]
+        },
+        {
+          "window_idx": 3,
+          "per_window_mean_tqs": 0.21197151828448713,
+          "n_trades_window": 31,
+          "per_pair_breakdown": [
+            {
+              "symbol": "GBPUSD",
+              "mean_tqs": 0.21197151828448713,
+              "n_trades": 31
+            }
+          ]
+        },
+        {
+          "window_idx": 4,
+          "per_window_mean_tqs": 0.14820003388720907,
+          "n_trades_window": 32,
+          "per_pair_breakdown": [
+            {
+              "symbol": "GBPUSD",
+              "mean_tqs": 0.14820003388720907,
+              "n_trades": 32
+            }
+          ]
+        },
+        {
+          "window_idx": 5,
+          "per_window_mean_tqs": 0.2803179317504588,
+          "n_trades_window": 38,
+          "per_pair_breakdown": [
+            {
+              "symbol": "GBPUSD",
+              "mean_tqs": 0.2803179317504588,
+              "n_trades": 38
+            }
+          ]
+        },
+        {
+          "window_idx": 6,
+          "per_window_mean_tqs": 0.20979484186963354,
+          "n_trades_window": 38,
+          "per_pair_breakdown": [
+            {
+              "symbol": "GBPUSD",
+              "mean_tqs": 0.20979484186963354,
+              "n_trades": 38
+            }
+          ]
+        }
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs": 0.21865688564772987,
+          "n_windows_ge_020": 6,
+          "bootstrap_ci_lower": 0.18959971381313911,
+          "bootstrap_ci_upper": 0.24613094734799945,
+          "bootstrap_p_mean_tqs_gt_025": 0.9878
+        },
+        "sub_criteria": {
+          "mean_tqs_met": false,
+          "k_of_n_met": true,
+          "bootstrap_met": false
+        },
+        "c1_pass": false
+      },
+      "telemetry_source": "chigiri_hyoma_walkforward.json"
+    },
+    {
+      "sub_arm_id": "AC.1.rin-a",
+      "agent_id": "itoshi_rin",
+      "symbols": [
+        "EURUSD",
+        "USDCHF"
+      ],
+      "evaluated_pairs": [
+        "EURUSD",
+        "USDCHF"
+      ],
+      "dropped_pairs": [],
+      "prereq": "cache pull",
+      "testable": true,
+      "not_testable_reason": null,
+      "n_populated_windows": 7,
+      "total_trades_across_sub_arm": 403,
+      "per_window": [
+        {
+          "window_idx": 0,
+          "per_window_mean_tqs": 0.19645693108062662,
+          "n_trades_window": 23,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.32472682306673495,
+              "n_trades": 11
+            },
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.07887619676002726,
+              "n_trades": 12
+            }
+          ]
+        },
+        {
+          "window_idx": 1,
+          "per_window_mean_tqs": 0.38526071265111594,
+          "n_trades_window": 61,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.3371607298830675,
+              "n_trades": 27
+            },
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.42345775779044853,
+              "n_trades": 34
+            }
+          ]
+        },
+        {
+          "window_idx": 2,
+          "per_window_mean_tqs": 0.41808690089617145,
+          "n_trades_window": 56,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.31346605384204773,
+              "n_trades": 25
+            },
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.5024585517462712,
+              "n_trades": 31
+            }
+          ]
+        },
+        {
+          "window_idx": 3,
+          "per_window_mean_tqs": 0.456496522269447,
+          "n_trades_window": 98,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.4536348610068982,
+              "n_trades": 73
+            },
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.464852573156089,
+              "n_trades": 25
+            }
+          ]
+        },
+        {
+          "window_idx": 4,
+          "per_window_mean_tqs": 0.34812909909659506,
+          "n_trades_window": 65,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.32433047989419234,
+              "n_trades": 29
+            },
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.3673002090096418,
+              "n_trades": 36
+            }
+          ]
+        },
+        {
+          "window_idx": 5,
+          "per_window_mean_tqs": 0.30251509728089687,
+          "n_trades_window": 40,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.3722728996648678,
+              "n_trades": 17
+            },
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.2509549824753531,
+              "n_trades": 23
+            }
+          ]
+        },
+        {
+          "window_idx": 6,
+          "per_window_mean_tqs": 0.39284320568564035,
+          "n_trades_window": 60,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.4665819695710504,
+              "n_trades": 21
+            },
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.3531377174396503,
+              "n_trades": 39
+            }
+          ]
+        }
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs": 0.3571126384229276,
+          "n_windows_ge_020": 6,
+          "bootstrap_ci_lower": 0.2952393077138158,
+          "bootstrap_ci_upper": 0.4105888365636905,
+          "bootstrap_p_mean_tqs_gt_025": 0.0003
+        },
+        "sub_criteria": {
+          "mean_tqs_met": true,
+          "k_of_n_met": true,
+          "bootstrap_met": true
+        },
+        "c1_pass": true
+      },
+      "telemetry_source": "itoshi_rin_walkforward.json"
+    },
+    {
+      "sub_arm_id": "AC.1.rin-b",
+      "agent_id": "itoshi_rin",
+      "symbols": [
+        "EURUSD",
+        "USDJPY"
+      ],
+      "evaluated_pairs": [
+        "EURUSD"
+      ],
+      "dropped_pairs": [
+        "USDJPY"
+      ],
+      "prereq": "cache pull",
+      "testable": true,
+      "not_testable_reason": null,
+      "n_populated_windows": 7,
+      "total_trades_across_sub_arm": 203,
+      "per_window": [
+        {
+          "window_idx": 0,
+          "per_window_mean_tqs": 0.32472682306673495,
+          "n_trades_window": 11,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.32472682306673495,
+              "n_trades": 11
+            }
+          ]
+        },
+        {
+          "window_idx": 1,
+          "per_window_mean_tqs": 0.3371607298830675,
+          "n_trades_window": 27,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.3371607298830675,
+              "n_trades": 27
+            }
+          ]
+        },
+        {
+          "window_idx": 2,
+          "per_window_mean_tqs": 0.31346605384204773,
+          "n_trades_window": 25,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.31346605384204773,
+              "n_trades": 25
+            }
+          ]
+        },
+        {
+          "window_idx": 3,
+          "per_window_mean_tqs": 0.45363486100689826,
+          "n_trades_window": 73,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.4536348610068982,
+              "n_trades": 73
+            }
+          ]
+        },
+        {
+          "window_idx": 4,
+          "per_window_mean_tqs": 0.32433047989419234,
+          "n_trades_window": 29,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.32433047989419234,
+              "n_trades": 29
+            }
+          ]
+        },
+        {
+          "window_idx": 5,
+          "per_window_mean_tqs": 0.3722728996648678,
+          "n_trades_window": 17,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.3722728996648678,
+              "n_trades": 17
+            }
+          ]
+        },
+        {
+          "window_idx": 6,
+          "per_window_mean_tqs": 0.4665819695710504,
+          "n_trades_window": 21,
+          "per_pair_breakdown": [
+            {
+              "symbol": "EURUSD",
+              "mean_tqs": 0.4665819695710504,
+              "n_trades": 21
+            }
+          ]
+        }
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs": 0.3703105452755513,
+          "n_windows_ge_020": 7,
+          "bootstrap_ci_lower": 0.32861455004044293,
+          "bootstrap_ci_upper": 0.41591323184169043,
+          "bootstrap_p_mean_tqs_gt_025": 0.0
+        },
+        "sub_criteria": {
+          "mean_tqs_met": true,
+          "k_of_n_met": true,
+          "bootstrap_met": true
+        },
+        "c1_pass": true
+      },
+      "telemetry_source": "itoshi_rin_walkforward.json"
+    },
+    {
+      "sub_arm_id": "AC.1.rin-c",
+      "agent_id": "itoshi_rin",
+      "symbols": [
+        "USDCHF"
+      ],
+      "evaluated_pairs": [
+        "USDCHF"
+      ],
+      "dropped_pairs": [],
+      "prereq": "cache pull",
+      "testable": true,
+      "not_testable_reason": null,
+      "n_populated_windows": 7,
+      "total_trades_across_sub_arm": 200,
+      "per_window": [
+        {
+          "window_idx": 0,
+          "per_window_mean_tqs": 0.07887619676002726,
+          "n_trades_window": 12,
+          "per_pair_breakdown": [
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.07887619676002726,
+              "n_trades": 12
+            }
+          ]
+        },
+        {
+          "window_idx": 1,
+          "per_window_mean_tqs": 0.42345775779044853,
+          "n_trades_window": 34,
+          "per_pair_breakdown": [
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.42345775779044853,
+              "n_trades": 34
+            }
+          ]
+        },
+        {
+          "window_idx": 2,
+          "per_window_mean_tqs": 0.5024585517462712,
+          "n_trades_window": 31,
+          "per_pair_breakdown": [
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.5024585517462712,
+              "n_trades": 31
+            }
+          ]
+        },
+        {
+          "window_idx": 3,
+          "per_window_mean_tqs": 0.4648525731560891,
+          "n_trades_window": 25,
+          "per_pair_breakdown": [
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.464852573156089,
+              "n_trades": 25
+            }
+          ]
+        },
+        {
+          "window_idx": 4,
+          "per_window_mean_tqs": 0.3673002090096418,
+          "n_trades_window": 36,
+          "per_pair_breakdown": [
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.3673002090096418,
+              "n_trades": 36
+            }
+          ]
+        },
+        {
+          "window_idx": 5,
+          "per_window_mean_tqs": 0.2509549824753531,
+          "n_trades_window": 23,
+          "per_pair_breakdown": [
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.2509549824753531,
+              "n_trades": 23
+            }
+          ]
+        },
+        {
+          "window_idx": 6,
+          "per_window_mean_tqs": 0.3531377174396503,
+          "n_trades_window": 39,
+          "per_pair_breakdown": [
+            {
+              "symbol": "USDCHF",
+              "mean_tqs": 0.3531377174396503,
+              "n_trades": 39
+            }
+          ]
+        }
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs": 0.34871971262535445,
+          "n_windows_ge_020": 6,
+          "bootstrap_ci_lower": 0.24375338139041683,
+          "bootstrap_ci_upper": 0.4385855323501647,
+          "bootstrap_p_mean_tqs_gt_025": 0.0327
+        },
+        "sub_criteria": {
+          "mean_tqs_met": true,
+          "k_of_n_met": true,
+          "bootstrap_met": false
+        },
+        "c1_pass": false
+      },
+      "telemetry_source": "itoshi_rin_walkforward.json"
+    },
+    {
+      "sub_arm_id": "AC.1.kun-a",
+      "agent_id": "kunigami_rensuke",
+      "symbols": [
+        "AUDUSD",
+        "NZDUSD"
+      ],
+      "evaluated_pairs": [],
+      "dropped_pairs": [
+        "AUDUSD",
+        "NZDUSD"
+      ],
+      "prereq": "none",
+      "testable": false,
+      "not_testable_reason": "amendment \u00a78 sentinel: Kunigami un-retired produced 0 trades across ALL 7 pairs (49 pair-windows) in the AC.0-v2 fresh compute \u2014 un-retirement wiring failed silently. Cannot legitimately be counted as y = 0 observations for AC.1. Fix required: investigate Kunigami proposer-wiring in run_ac0_compute._build_movable_roster",
+      "n_populated_windows": 0,
+      "total_trades_across_sub_arm": 0,
+      "per_window": [],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs": null,
+          "n_windows_ge_020": null,
+          "bootstrap_ci_lower": null,
+          "bootstrap_ci_upper": null,
+          "bootstrap_p_mean_tqs_gt_025": null
+        },
+        "sub_criteria": {
+          "mean_tqs_met": null,
+          "k_of_n_met": null,
+          "bootstrap_met": null
+        },
+        "c1_pass": null
+      },
+      "telemetry_source": "kunigami_rensuke_walkforward.json"
+    },
+    {
+      "sub_arm_id": "AC.1.kun-b",
+      "agent_id": "kunigami_rensuke",
+      "symbols": [
+        "AUDUSD",
+        "NZDUSD",
+        "USDJPY"
+      ],
+      "evaluated_pairs": [],
+      "dropped_pairs": [
+        "AUDUSD",
+        "NZDUSD",
+        "USDJPY"
+      ],
+      "prereq": "cache pull",
+      "testable": false,
+      "not_testable_reason": "amendment \u00a78 sentinel: Kunigami un-retired produced 0 trades across ALL 7 pairs (49 pair-windows) in the AC.0-v2 fresh compute \u2014 un-retirement wiring failed silently. Cannot legitimately be counted as y = 0 observations for AC.1. Fix required: investigate Kunigami proposer-wiring in run_ac0_compute._build_movable_roster",
+      "n_populated_windows": 0,
+      "total_trades_across_sub_arm": 0,
+      "per_window": [],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs": null,
+          "n_windows_ge_020": null,
+          "bootstrap_ci_lower": null,
+          "bootstrap_ci_upper": null,
+          "bootstrap_p_mean_tqs_gt_025": null
+        },
+        "sub_criteria": {
+          "mean_tqs_met": null,
+          "k_of_n_met": null,
+          "bootstrap_met": null
+        },
+        "c1_pass": null
+      },
+      "telemetry_source": "kunigami_rensuke_walkforward.json"
+    }
+  ],
+  "bh_fdr": {
+    "AC.1.rin-b": {
+      "rank": 1,
+      "family_size": 5,
+      "raw_p": 0.0,
+      "bh_threshold": 0.020000000000000004,
+      "reject_at_q": true
+    },
+    "AC.1.rin-a": {
+      "rank": 2,
+      "family_size": 5,
+      "raw_p": 0.0003,
+      "bh_threshold": 0.04000000000000001,
+      "reject_at_q": true
+    },
+    "AC.1.rin-c": {
+      "rank": 3,
+      "family_size": 5,
+      "raw_p": 0.0327,
+      "bh_threshold": 0.06,
+      "reject_at_q": true
+    },
+    "AC.1.chi-c": {
+      "rank": 4,
+      "family_size": 5,
+      "raw_p": 0.9878,
+      "bh_threshold": 0.08000000000000002,
+      "reject_at_q": false
+    },
+    "AC.1.chi-a": {
+      "rank": 5,
+      "family_size": 5,
+      "raw_p": 0.9919,
+      "bh_threshold": 0.1,
+      "reject_at_q": false
+    }
+  },
+  "n_pass_c1": 2,
+  "n_bh_reject": 3,
+  "n_testable": 5
+}
