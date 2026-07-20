@@ -83,6 +83,10 @@ log = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 # G7 constants (locked per PROTOCOL sec 3)
 # ---------------------------------------------------------------------------
+# Default panel per G7 PROTOCOL sec 3. Phase AC (experiments/
+# phase_ac_pitch_assignment/PROTOCOL.md §7) may override this via the
+# ``symbols`` parameter on run_g7_walk_forward / run_g7_dry_run or the
+# ``--symbols`` CLI flag — methodology extension, no strategy change.
 SYMBOLS_G7: tuple[str, ...] = ("EURUSD", "GBPUSD", "USDCAD")
 
 # Criterion thresholds -- all locked in PROTOCOL sec 3. Do NOT retune
@@ -712,6 +716,7 @@ def run_g7_dry_run(
     *,
     panel_start: datetime = DEFAULT_PANEL_START,
     panel_end: datetime = DEFAULT_PANEL_END,
+    symbols: tuple[str, ...] = SYMBOLS_G7,
     oos_start: datetime = DEFAULT_OOS_START,
     oos_end: datetime = DEFAULT_OOS_END,
     out_dir: Path | str | None = None,
@@ -721,15 +726,21 @@ def run_g7_dry_run(
 
     Emits a partial verdict scaffold. Full 7-window batch run is a
     separate compute job (see PROTOCOL sec 8 stop rule #2).
+
+    ``symbols`` overrides the default panel (``SYMBOLS_G7``) — used by
+    Phase AC (experiments/phase_ac_pitch_assignment/PROTOCOL.md §7) to
+    extend the panel with USDJPY / USDCHF / AUDUSD / NZDUSD without
+    altering strategy.
     """
     ensure_production_repo_on_path()
+    symbols = tuple(symbols)
     log.info(
         "G7 dry-run: panel %s -> %s | OOS %s -> %s | symbols %s",
         panel_start.date(), panel_end.date(),
-        oos_start.date(), oos_end.date(), SYMBOLS_G7,
+        oos_start.date(), oos_end.date(), symbols,
     )
     bars_by_symbol: dict[str, list] = {}
-    for sym in SYMBOLS_G7:
+    for sym in symbols:
         bars_by_symbol[sym] = _load_production_bars(sym, panel_start, panel_end)
         log.info("Loaded %d %s bars", len(bars_by_symbol[sym]), sym)
 
@@ -986,6 +997,7 @@ def run_g7_walk_forward(
     *,
     panel_start: datetime = G7_PANEL_START,
     panel_end: datetime = G7_PANEL_END,
+    symbols: tuple[str, ...] = SYMBOLS_G7,
     out_dir: Path | str | None = None,
     tag: str = "walk-forward",
     is_years: int = 4,
@@ -1025,14 +1037,21 @@ def run_g7_walk_forward(
     drawdown gate (``experiments/phase_x_kunigami_wildcard/
     PROTOCOL.md``): aggregator-side admission veto while squad DD >=
     25% (release at 12.5%). Default False.
+
+    ``symbols`` overrides the default panel (``SYMBOLS_G7``) — used by
+    Phase AC (experiments/phase_ac_pitch_assignment/PROTOCOL.md §7) to
+    extend the panel with USDJPY / USDCHF / AUDUSD / NZDUSD without
+    altering strategy. Every listed symbol must be present in the
+    production parquet cache.
     """
     ensure_production_repo_on_path()
 
+    symbols = tuple(symbols)
     windows = _g7_windows(panel_start, panel_end, is_years, oos_years)
     n_windows = len(windows)
     log.info(
         "G7 walk-forward: panel %s -> %s | %d windows | symbols %s",
-        panel_start.date(), panel_end.date(), n_windows, SYMBOLS_G7,
+        panel_start.date(), panel_end.date(), n_windows, symbols,
     )
     for w in windows:
         log.info(
@@ -1043,7 +1062,7 @@ def run_g7_walk_forward(
 
     # Load full panel bars once.
     bars_by_symbol: dict[str, list] = {}
-    for sym in SYMBOLS_G7:
+    for sym in symbols:
         bars_by_symbol[sym] = _load_production_bars(sym, panel_start, panel_end)
         log.info("Loaded %d %s bars", len(bars_by_symbol[sym]), sym)
 
@@ -1418,8 +1437,18 @@ def main(argv: Optional[list[str]] = None) -> int:
              "phase_x_kunigami_wildcard/PROTOCOL.md): veto admissions "
              "while squad DD >= 25%%, release at 12.5%%. "
              "Walk-forward mode only.")
+    parser.add_argument(
+        "--symbols", nargs="+", default=None,
+        help="Override the panel symbols (default: SYMBOLS_G7 = "
+             "EURUSD GBPUSD USDCAD). Phase AC "
+             "(experiments/phase_ac_pitch_assignment/PROTOCOL.md §7) "
+             "extension: methodology-only, no strategy change. Every "
+             "listed symbol must be in the production parquet cache.")
     parser.add_argument("--verbose", "-v", action="store_true")
     args = parser.parse_args(argv)
+    symbols_override: tuple[str, ...] = (
+        tuple(args.symbols) if args.symbols else SYMBOLS_G7
+    )
 
     logging.basicConfig(
         level=logging.INFO if args.verbose else logging.WARNING,
@@ -1441,6 +1470,7 @@ def main(argv: Optional[list[str]] = None) -> int:
             log.info("Walk-forward: auto-set --end to G7 default %s", end.date())
         run_g7_walk_forward(
             panel_start=start, panel_end=end,
+            symbols=symbols_override,
             out_dir=args.out_dir, tag=args.tag,
             include_kunigami=not args.retire_kunigami,
             aggregator_arm=args.aggregator_arm,
@@ -1450,6 +1480,7 @@ def main(argv: Optional[list[str]] = None) -> int:
     else:
         run_g7_dry_run(
             panel_start=args.start, panel_end=args.end,
+            symbols=symbols_override,
             oos_start=args.oos_start, oos_end=args.oos_end,
             out_dir=args.out_dir, tag=args.tag,
         )
