@@ -1,0 +1,464 @@
+{
+  "meta": {
+    "id": "E018",
+    "status": "completed",
+    "generated_at": "2026-07-14T01:48:02.043842+00:00",
+    "verdict": "dead",
+    "pairs": [
+      "EURUSD",
+      "GBPUSD",
+      "USDCAD"
+    ],
+    "timeframe": "H4",
+    "n_resamples": 2000,
+    "seed": 42,
+    "min_cell_n": 30,
+    "oos_pooled": [
+      "2019-01-01T00:00:00+00:00",
+      "2025-12-01T00:00:00+00:00"
+    ],
+    "harness": "programs/E018/run_e018_validation.py"
+  },
+  "gate": {
+    "r2_significantly_negative_by_pair": {
+      "EURUSD": false,
+      "GBPUSD": false,
+      "USDCAD": false
+    },
+    "n_pairs_r2_sig_neg": 0,
+    "any_r2_sig_positive_contradiction": false,
+    "filter_helps_by_pair": {
+      "EURUSD": true,
+      "GBPUSD": false,
+      "USDCAD": true
+    },
+    "filter_helps_pooled": true,
+    "condition_1_r2_real_neg_edge": false,
+    "condition_2_robust_across_pairs": false,
+    "condition_3_filter_improves_survivors": true,
+    "verdict": "dead"
+  },
+  "regime_cells_pooled_oos": {
+    "EURUSD/R1": {
+      "n": 375,
+      "exp_pips": 17.133473545183485,
+      "median_pips": 20.292857142856224,
+      "hit_rate": 0.6,
+      "p": 0.0004997501249375312,
+      "alternative": "greater",
+      "powered": true,
+      "q": 0.0009995002498750624,
+      "bh_reject": true
+    },
+    "EURUSD/R2": {
+      "n": 35,
+      "exp_pips": 0.1880612244897454,
+      "median_pips": -11.978571428572504,
+      "hit_rate": 0.45714285714285713,
+      "p": 0.4707646176911544,
+      "alternative": "less",
+      "powered": true,
+      "q": 0.6980509745127437,
+      "bh_reject": false
+    },
+    "GBPUSD/R1": {
+      "n": 480,
+      "exp_pips": 19.561867559523968,
+      "median_pips": 24.988392857143715,
+      "hit_rate": 0.5666666666666667,
+      "p": 0.0004997501249375312,
+      "alternative": "greater",
+      "powered": true,
+      "q": 0.0009995002498750624,
+      "bh_reject": true
+    },
+    "GBPUSD/R2": {
+      "n": 37,
+      "exp_pips": 16.20024131274123,
+      "median_pips": 34.526785714286135,
+      "hit_rate": 0.6216216216216216,
+      "p": 0.984007996001999,
+      "alternative": "less",
+      "powered": true,
+      "q": 0.9840079960019988,
+      "bh_reject": false
+    },
+    "USDCAD/R1": {
+      "n": 361,
+      "exp_pips": 18.183448753462624,
+      "median_pips": 20.02500000000129,
+      "hit_rate": 0.5678670360110804,
+      "p": 0.0004997501249375312,
+      "alternative": "greater",
+      "powered": true,
+      "q": 0.0009995002498750624,
+      "bh_reject": true
+    },
+    "USDCAD/R2": {
+      "n": 28,
+      "exp_pips": 2.525318877550919,
+      "median_pips": -11.960714285713658,
+      "hit_rate": 0.42857142857142855,
+      "p": 0.5817091454272864,
+      "alternative": "less",
+      "powered": false,
+      "q": 0.6980509745127437,
+      "bh_reject": false
+    }
+  },
+  "r2_per_window": {
+    "EURUSD": [
+      {
+        "oos_year": 2019,
+        "n": 4,
+        "exp_pips": -7.752678571427696,
+        "neg": true
+      },
+      {
+        "oos_year": 2020,
+        "n": 7,
+        "exp_pips": 5.891581632652925,
+        "neg": false
+      },
+      {
+        "oos_year": 2021,
+        "n": 8,
+        "exp_pips": 5.508705357142318,
+        "neg": false
+      },
+      {
+        "oos_year": 2022,
+        "n": 10,
+        "exp_pips": 0.48571428571397846,
+        "neg": false
+      },
+      {
+        "oos_year": 2023,
+        "n": 3,
+        "exp_pips": 7.346428571429382,
+        "neg": false
+      },
+      {
+        "oos_year": 2024,
+        "n": 1,
+        "exp_pips": -11.978571428572504,
+        "neg": true
+      },
+      {
+        "oos_year": 2025,
+        "n": 2,
+        "exp_pips": -31.317857142856287,
+        "neg": true
+      }
+    ],
+    "GBPUSD": [
+      {
+        "oos_year": 2019,
+        "n": 8,
+        "exp_pips": 29.37031249999972,
+        "neg": false
+      },
+      {
+        "oos_year": 2020,
+        "n": 3,
+        "exp_pips": 36.44464285714299,
+        "neg": false
+      },
+      {
+        "oos_year": 2021,
+        "n": 8,
+        "exp_pips": 18.512276785713766,
+        "neg": false
+      },
+      {
+        "oos_year": 2022,
+        "n": 5,
+        "exp_pips": 2.1732142857149293,
+        "neg": false
+      },
+      {
+        "oos_year": 2023,
+        "n": 4,
+        "exp_pips": -0.846428571427138,
+        "neg": true
+      },
+      {
+        "oos_year": 2024,
+        "n": 7,
+        "exp_pips": 1.9076530612241858,
+        "neg": false
+      },
+      {
+        "oos_year": 2025,
+        "n": 2,
+        "exp_pips": 43.090178571426605,
+        "neg": false
+      }
+    ],
+    "USDCAD": [
+      {
+        "oos_year": 2019,
+        "n": 8,
+        "exp_pips": 5.4575892857144925,
+        "neg": false
+      },
+      {
+        "oos_year": 2020,
+        "n": 1,
+        "exp_pips": 53.68392857142634,
+        "neg": false
+      },
+      {
+        "oos_year": 2021,
+        "n": 5,
+        "exp_pips": -4.813928571428151,
+        "neg": true
+      },
+      {
+        "oos_year": 2022,
+        "n": 3,
+        "exp_pips": 23.884523809523102,
+        "neg": false
+      },
+      {
+        "oos_year": 2023,
+        "n": 4,
+        "exp_pips": -7.065625000000075,
+        "neg": true
+      },
+      {
+        "oos_year": 2024,
+        "n": 4,
+        "exp_pips": -20.339285714287,
+        "neg": true
+      },
+      {
+        "oos_year": 2025,
+        "n": 3,
+        "exp_pips": 11.800000000001068,
+        "neg": false
+      }
+    ]
+  },
+  "arms_pooled_oos": {
+    "EURUSD": {
+      "baseline": {
+        "label": "EURUSD/baseline",
+        "n": 410,
+        "expectancy": {
+          "value": 14.986913956831591,
+          "lo": 9.502531835974722,
+          "hi": 20.6921715132285
+        },
+        "expectancy_pips": 15.686913956831578,
+        "profit_factor": 2.028404037882439,
+        "win_rate": 0.5878048780487805,
+        "sharpe": 4.811203171531297,
+        "max_drawdown_pct": 0.017803123634076136,
+        "verdict": "EDGE"
+      },
+      "r2_filtered": {
+        "label": "EURUSD/r2_filtered",
+        "n": 375,
+        "expectancy": {
+          "value": 16.4334735451835,
+          "lo": 10.791131330653629,
+          "hi": 22.383273545183542
+        },
+        "expectancy_pips": 17.133473545183485,
+        "profit_factor": 2.1355504229389215,
+        "win_rate": 0.6,
+        "sharpe": 5.179202103054637,
+        "max_drawdown_pct": 0.015230881200358376,
+        "verdict": "EDGE"
+      },
+      "n_r2_dropped": 35
+    },
+    "GBPUSD": {
+      "baseline": {
+        "label": "GBPUSD/baseline",
+        "n": 517,
+        "expectancy": {
+          "value": 18.62128695772328,
+          "lo": 12.200518098922455,
+          "hi": 25.58626347057218
+        },
+        "expectancy_pips": 19.321286957723267,
+        "profit_factor": 1.905988201660728,
+        "win_rate": 0.5705996131528046,
+        "sharpe": 4.265253853161504,
+        "max_drawdown_pct": 0.030672033361387324,
+        "verdict": "EDGE"
+      },
+      "r2_filtered": {
+        "label": "GBPUSD/r2_filtered",
+        "n": 480,
+        "expectancy": {
+          "value": 18.86186755952399,
+          "lo": 12.290353422619127,
+          "hi": 26.108939732143067
+        },
+        "expectancy_pips": 19.561867559523968,
+        "profit_factor": 1.8919602940648772,
+        "win_rate": 0.5666666666666667,
+        "sharpe": 4.234463415497809,
+        "max_drawdown_pct": 0.029902911869382237,
+        "verdict": "EDGE"
+      },
+      "n_r2_dropped": 37
+    },
+    "USDCAD": {
+      "baseline": {
+        "label": "USDCAD/baseline",
+        "n": 389,
+        "expectancy": {
+          "value": 16.356385420492124,
+          "lo": 10.049917370547178,
+          "hi": 22.708134410576573
+        },
+        "expectancy_pips": 17.056385420492116,
+        "profit_factor": 1.9825892598608474,
+        "win_rate": 0.5578406169665809,
+        "sharpe": 4.3745266495080335,
+        "max_drawdown_pct": 0.02891634337110489,
+        "verdict": "EDGE"
+      },
+      "r2_filtered": {
+        "label": "USDCAD/r2_filtered",
+        "n": 361,
+        "expectancy": {
+          "value": 17.48344875346264,
+          "lo": 10.540977443609105,
+          "hi": 24.188860308666488
+        },
+        "expectancy_pips": 18.183448753462624,
+        "profit_factor": 2.0411192214111944,
+        "win_rate": 0.5678670360110804,
+        "sharpe": 4.583021571058538,
+        "max_drawdown_pct": 0.029024351739785657,
+        "verdict": "EDGE"
+      },
+      "n_r2_dropped": 28
+    },
+    "ALL": {
+      "baseline": {
+        "label": "ALL/baseline",
+        "n": 1316,
+        "expectancy": {
+          "value": 16.819509124631647,
+          "lo": 13.222159243727399,
+          "hi": 20.52404532741064
+        },
+        "expectancy_pips": 17.519509124631696,
+        "profit_factor": 1.95917851407191,
+        "win_rate": 0.5721884498480243,
+        "sharpe": 4.670231954258172,
+        "max_drawdown_pct": 0.022219628442223572,
+        "verdict": "EDGE"
+      },
+      "r2_filtered": {
+        "label": "ALL/r2_filtered",
+        "n": 1216,
+        "expectancy": {
+          "value": 17.703761519749396,
+          "lo": 14.038304897761918,
+          "hi": 21.649044497927363
+        },
+        "expectancy_pips": 18.403761519749438,
+        "profit_factor": 1.99483622276901,
+        "win_rate": 0.5773026315789473,
+        "sharpe": 4.783764552712479,
+        "max_drawdown_pct": 0.021465314344611824,
+        "verdict": "EDGE"
+      },
+      "n_r2_dropped": 100
+    }
+  },
+  "is_band_descriptive_2015_2018": {
+    "EURUSD": {
+      "R1": {
+        "n": 304,
+        "exp_pips": 8.696886748120294
+      },
+      "R2": {
+        "n": 23,
+        "exp_pips": 10.882919254658075
+      }
+    },
+    "GBPUSD": {
+      "R1": {
+        "n": 391,
+        "exp_pips": 17.46931859700397
+      },
+      "R2": {
+        "n": 36,
+        "exp_pips": 7.127480158730165
+      }
+    },
+    "USDCAD": {
+      "R1": {
+        "n": 300,
+        "exp_pips": 14.024999999999842
+      },
+      "R2": {
+        "n": 18,
+        "exp_pips": -8.115575396825392
+      }
+    }
+  },
+  "sealed_final_oos_window": {
+    "year": 2025,
+    "cells": {
+      "EURUSD": {
+        "R1": {
+          "n": 43,
+          "exp_pips": 18.166048359157845
+        },
+        "R2": {
+          "n": 2,
+          "exp_pips": -31.317857142856287
+        }
+      },
+      "GBPUSD": {
+        "R1": {
+          "n": 58,
+          "exp_pips": 21.223676108374747
+        },
+        "R2": {
+          "n": 2,
+          "exp_pips": 43.090178571426605
+        }
+      },
+      "USDCAD": {
+        "R1": {
+          "n": 41,
+          "exp_pips": 25.755879790940632
+        },
+        "R2": {
+          "n": 3,
+          "exp_pips": 11.800000000001068
+        }
+      }
+    }
+  },
+  "counts": {
+    "EURUSD": {
+      "total": 737,
+      "R1": 679,
+      "R2": 58,
+      "R3": 0
+    },
+    "GBPUSD": {
+      "total": 944,
+      "R1": 871,
+      "R2": 73,
+      "R3": 0
+    },
+    "USDCAD": {
+      "total": 707,
+      "R1": 661,
+      "R2": 46,
+      "R3": 0
+    }
+  }
+}

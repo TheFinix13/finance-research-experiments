@@ -1,0 +1,1081 @@
+{
+  "meta": {
+    "symbol": "EURUSD",
+    "timeframe": "H4",
+    "alpha": "zone_d1_against",
+    "full_start": "2015-01-01T00:00:00+00:00",
+    "full_end": "2025-12-01T00:00:00+00:00",
+    "is_years": 4,
+    "oos_years": 1,
+    "n_windows": 7,
+    "arms": [
+      {
+        "name": "all_on",
+        "wick_proof_enabled": true,
+        "be_migration_enabled": true,
+        "plg_enabled": true
+      },
+      {
+        "name": "wick_off",
+        "wick_proof_enabled": false,
+        "be_migration_enabled": true,
+        "plg_enabled": true
+      },
+      {
+        "name": "be_off",
+        "wick_proof_enabled": true,
+        "be_migration_enabled": false,
+        "plg_enabled": true
+      },
+      {
+        "name": "all_off",
+        "wick_proof_enabled": false,
+        "be_migration_enabled": false,
+        "plg_enabled": false
+      }
+    ],
+    "generated_at": "2026-07-01T13:11:33.936814+00:00",
+    "harness": "run_walk_forward_ab.py"
+  },
+  "arms": {
+    "all_on": {
+      "toggles": {
+        "name": "all_on",
+        "wick_proof_enabled": true,
+        "be_migration_enabled": true,
+        "plg_enabled": true
+      },
+      "full_series": {
+        "n_trades": 737,
+        "hit_rate": 0.5576662143826323,
+        "median_pips": 19.103571428575883,
+        "mean_pips": 12.653725151406583,
+        "sharpe": 1.7045760137492745,
+        "sum_pips": 9325.795436586659
+      },
+      "full_series_plg_blocks": {
+        "n_blocks": 123,
+        "false_neg_rate": 0.6422764227642277,
+        "false_pos_rate": 0.3333333333333333,
+        "median_would_be_pips": 23.501785714288292,
+        "mean_would_be_pips": 10.425203252032626
+      },
+      "windows": [
+        {
+          "window": 1,
+          "is_start": "2015-01-01T00:00:00+00:00",
+          "is_end": "2019-01-01T00:00:00+00:00",
+          "oos_start": "2019-01-01T00:00:00+00:00",
+          "oos_end": "2020-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 327,
+            "hit_rate": 0.5198776758409785,
+            "median_pips": 19.43571428571156,
+            "mean_pips": 8.850644386194817,
+            "sharpe": 1.0941283044251078,
+            "sum_pips": 2894.160714285705
+          },
+          "oos": {
+            "n_trades": 44,
+            "hit_rate": 0.7954545454545454,
+            "median_pips": 19.706250000000036,
+            "mean_pips": 25.080113636363954,
+            "sharpe": 6.253240980161388,
+            "sum_pips": 1103.5250000000142
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 2,
+            "false_neg_rate": 1.0,
+            "false_pos_rate": 0.0,
+            "median_would_be_pips": 16.74642857143138,
+            "mean_would_be_pips": 16.74642857143138
+          }
+        },
+        {
+          "window": 2,
+          "is_start": "2016-01-01T00:00:00+00:00",
+          "is_end": "2020-01-01T00:00:00+00:00",
+          "oos_start": "2020-01-01T00:00:00+00:00",
+          "oos_end": "2021-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 267,
+            "hit_rate": 0.5692883895131086,
+            "median_pips": 19.103571428575883,
+            "mean_pips": 11.89093766720178,
+            "sharpe": 1.8559296087348884,
+            "sum_pips": 3174.880357142875
+          },
+          "oos": {
+            "n_trades": 61,
+            "hit_rate": 0.5573770491803278,
+            "median_pips": 21.600000000001618,
+            "mean_pips": 16.499912177986097,
+            "sharpe": 1.8875826883121511,
+            "sum_pips": 1006.4946428571523
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 10,
+            "false_neg_rate": 0.6,
+            "false_pos_rate": 0.4,
+            "median_would_be_pips": 17.868749999999658,
+            "mean_would_be_pips": 7.516428571429534
+          }
+        },
+        {
+          "window": 3,
+          "is_start": "2017-01-01T00:00:00+00:00",
+          "is_end": "2021-01-01T00:00:00+00:00",
+          "oos_start": "2021-01-01T00:00:00+00:00",
+          "oos_end": "2022-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 268,
+            "hit_rate": 0.5895522388059702,
+            "median_pips": 21.002678571429012,
+            "mean_pips": 15.538126332622694,
+            "sharpe": 2.282554861062377,
+            "sum_pips": 4164.217857142882
+          },
+          "oos": {
+            "n_trades": 53,
+            "hit_rate": 0.5849056603773585,
+            "median_pips": 17.83392857142907,
+            "mean_pips": 11.256165768193796,
+            "sharpe": 2.102187191091253,
+            "sum_pips": 596.5767857142712
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 6,
+            "false_neg_rate": 0.3333333333333333,
+            "false_pos_rate": 0.6666666666666666,
+            "median_would_be_pips": -17.339285714286223,
+            "mean_would_be_pips": 0.6925595238101613
+          }
+        },
+        {
+          "window": 4,
+          "is_start": "2018-01-01T00:00:00+00:00",
+          "is_end": "2022-01-01T00:00:00+00:00",
+          "oos_start": "2022-01-01T00:00:00+00:00",
+          "oos_end": "2023-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 238,
+            "hit_rate": 0.6134453781512605,
+            "median_pips": 20.627678571428774,
+            "mean_pips": 17.18860294117646,
+            "sharpe": 2.5889560844312838,
+            "sum_pips": 4090.8874999999985
+          },
+          "oos": {
+            "n_trades": 108,
+            "hit_rate": 0.5462962962962963,
+            "median_pips": 24.84910714285804,
+            "mean_pips": 14.91726190476186,
+            "sharpe": 2.1201303651515393,
+            "sum_pips": 1611.0642857142811
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 22,
+            "false_neg_rate": 0.5909090909090909,
+            "false_pos_rate": 0.4090909090909091,
+            "median_would_be_pips": 27.348214285715102,
+            "mean_would_be_pips": 1.0272727272729467
+          }
+        },
+        {
+          "window": 5,
+          "is_start": "2019-01-01T00:00:00+00:00",
+          "is_end": "2023-01-01T00:00:00+00:00",
+          "oos_start": "2023-01-01T00:00:00+00:00",
+          "oos_end": "2024-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 266,
+            "hit_rate": 0.5977443609022557,
+            "median_pips": 20.721428571428557,
+            "mean_pips": 16.23180719656285,
+            "sharpe": 2.3860536495400977,
+            "sum_pips": 4317.660714285718
+          },
+          "oos": {
+            "n_trades": 61,
+            "hit_rate": 0.5737704918032787,
+            "median_pips": 18.262500000001403,
+            "mean_pips": 12.559748243559898,
+            "sharpe": 2.1734021262651293,
+            "sum_pips": 766.144642857154
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 5,
+            "false_neg_rate": 0.6,
+            "false_pos_rate": 0.2,
+            "median_would_be_pips": 18.085714285713816,
+            "mean_would_be_pips": 10.925714285714426
+          }
+        },
+        {
+          "window": 6,
+          "is_start": "2020-01-01T00:00:00+00:00",
+          "is_end": "2024-01-01T00:00:00+00:00",
+          "oos_start": "2024-01-01T00:00:00+00:00",
+          "oos_end": "2025-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 283,
+            "hit_rate": 0.5618374558303887,
+            "median_pips": 19.687500000000746,
+            "mean_pips": 14.064594901564869,
+            "sharpe": 2.030396798331494,
+            "sum_pips": 3980.280357142858
+          },
+          "oos": {
+            "n_trades": 38,
+            "hit_rate": 0.631578947368421,
+            "median_pips": 17.37053571428504,
+            "mean_pips": 16.56118421052633,
+            "sharpe": 3.222591981465272,
+            "sum_pips": 629.3250000000005
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 6,
+            "false_neg_rate": 0.6666666666666666,
+            "false_pos_rate": 0.16666666666666666,
+            "median_would_be_pips": 13.266964285715277,
+            "mean_would_be_pips": 12.557440476190415
+          }
+        },
+        {
+          "window": 7,
+          "is_start": "2021-01-01T00:00:00+00:00",
+          "is_end": "2025-01-01T00:00:00+00:00",
+          "oos_start": "2025-01-01T00:00:00+00:00",
+          "oos_end": "2025-12-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 260,
+            "hit_rate": 0.573076923076923,
+            "median_pips": 18.511607142857045,
+            "mean_pips": 13.858118131868101,
+            "sharpe": 2.2435626372744455,
+            "sum_pips": 3603.1107142857054
+          },
+          "oos": {
+            "n_trades": 45,
+            "hit_rate": 0.5111111111111111,
+            "median_pips": 19.14661282130803,
+            "mean_pips": 15.96676367017944,
+            "sharpe": 1.754680134741381,
+            "sum_pips": 718.5043651580748
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 5,
+            "false_neg_rate": 0.8,
+            "false_pos_rate": 0.2,
+            "median_would_be_pips": 25.558928571429718,
+            "mean_would_be_pips": 24.734285714285598
+          }
+        }
+      ]
+    },
+    "wick_off": {
+      "toggles": {
+        "name": "wick_off",
+        "wick_proof_enabled": false,
+        "be_migration_enabled": true,
+        "plg_enabled": true
+      },
+      "full_series": {
+        "n_trades": 781,
+        "hit_rate": 0.46094750320102434,
+        "median_pips": 0.0,
+        "mean_pips": 7.36748089557464,
+        "sharpe": 1.058478056017859,
+        "sum_pips": 5754.002579443794
+      },
+      "full_series_plg_blocks": {
+        "n_blocks": 198,
+        "false_neg_rate": 0.5151515151515151,
+        "false_pos_rate": 0.35858585858585856,
+        "median_would_be_pips": 14.081249999999823,
+        "mean_would_be_pips": 7.863221500721531
+      },
+      "windows": [
+        {
+          "window": 1,
+          "is_start": "2015-01-01T00:00:00+00:00",
+          "is_end": "2019-01-01T00:00:00+00:00",
+          "oos_start": "2019-01-01T00:00:00+00:00",
+          "oos_end": "2020-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 354,
+            "hit_rate": 0.4180790960451977,
+            "median_pips": 0.0,
+            "mean_pips": 2.797835956416451,
+            "sharpe": 0.3765806722844758,
+            "sum_pips": 990.433928571424
+          },
+          "oos": {
+            "n_trades": 48,
+            "hit_rate": 0.6041666666666666,
+            "median_pips": 15.321428571427598,
+            "mean_pips": 15.962313988095397,
+            "sharpe": 3.8122401038871128,
+            "sum_pips": 766.1910714285793
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 12,
+            "false_neg_rate": 0.6666666666666666,
+            "false_pos_rate": 0.25,
+            "median_would_be_pips": 15.125892857142942,
+            "mean_would_be_pips": 13.049404761904526
+          }
+        },
+        {
+          "window": 2,
+          "is_start": "2016-01-01T00:00:00+00:00",
+          "is_end": "2020-01-01T00:00:00+00:00",
+          "oos_start": "2020-01-01T00:00:00+00:00",
+          "oos_end": "2021-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 296,
+            "hit_rate": 0.44932432432432434,
+            "median_pips": 0.0,
+            "mean_pips": 4.785466940154444,
+            "sharpe": 0.7939435680062291,
+            "sum_pips": 1416.4982142857148
+          },
+          "oos": {
+            "n_trades": 64,
+            "hit_rate": 0.453125,
+            "median_pips": -10.510714285714151,
+            "mean_pips": 13.848102678571532,
+            "sharpe": 1.715647608564091,
+            "sum_pips": 886.2785714285789
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 19,
+            "false_neg_rate": 0.5789473684210527,
+            "false_pos_rate": 0.21052631578947367,
+            "median_would_be_pips": 18.680357142857318,
+            "mean_would_be_pips": 17.48646616541423
+          }
+        },
+        {
+          "window": 3,
+          "is_start": "2017-01-01T00:00:00+00:00",
+          "is_end": "2021-01-01T00:00:00+00:00",
+          "oos_start": "2021-01-01T00:00:00+00:00",
+          "oos_end": "2022-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 292,
+            "hit_rate": 0.4554794520547945,
+            "median_pips": 0.0,
+            "mean_pips": 7.832662671232885,
+            "sharpe": 1.217782044150169,
+            "sum_pips": 2287.137500000002
+          },
+          "oos": {
+            "n_trades": 57,
+            "hit_rate": 0.49122807017543857,
+            "median_pips": 0.0,
+            "mean_pips": 5.577224310776932,
+            "sharpe": 1.1859884683548334,
+            "sum_pips": 317.90178571428515
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 12,
+            "false_neg_rate": 0.3333333333333333,
+            "false_pos_rate": 0.5,
+            "median_would_be_pips": -5.549999999999722,
+            "mean_would_be_pips": 10.16502976190492
+          }
+        },
+        {
+          "window": 4,
+          "is_start": "2018-01-01T00:00:00+00:00",
+          "is_end": "2022-01-01T00:00:00+00:00",
+          "oos_start": "2022-01-01T00:00:00+00:00",
+          "oos_end": "2023-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 259,
+            "hit_rate": 0.4749034749034749,
+            "median_pips": 0.0,
+            "mean_pips": 8.48835493656923,
+            "sharpe": 1.3517665064363455,
+            "sum_pips": 2198.4839285714315
+          },
+          "oos": {
+            "n_trades": 109,
+            "hit_rate": 0.45871559633027525,
+            "median_pips": 0.0,
+            "mean_pips": 9.565678243774562,
+            "sharpe": 1.3827264311698506,
+            "sum_pips": 1042.658928571427
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 34,
+            "false_neg_rate": 0.5,
+            "false_pos_rate": 0.35294117647058826,
+            "median_would_be_pips": 9.026785714285612,
+            "mean_would_be_pips": 6.9353991596639535
+          }
+        },
+        {
+          "window": 5,
+          "is_start": "2019-01-01T00:00:00+00:00",
+          "is_end": "2023-01-01T00:00:00+00:00",
+          "oos_start": "2023-01-01T00:00:00+00:00",
+          "oos_end": "2024-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 278,
+            "hit_rate": 0.4892086330935252,
+            "median_pips": 0.0,
+            "mean_pips": 10.838238694758523,
+            "sharpe": 1.6819991794181055,
+            "sum_pips": 3013.0303571428694
+          },
+          "oos": {
+            "n_trades": 60,
+            "hit_rate": 0.4666666666666667,
+            "median_pips": 0.0,
+            "mean_pips": 7.889642857142849,
+            "sharpe": 1.5121687648484743,
+            "sum_pips": 473.3785714285709
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 10,
+            "false_neg_rate": 0.8,
+            "false_pos_rate": 0.2,
+            "median_would_be_pips": 23.250000000001325,
+            "mean_would_be_pips": 22.4798214285713
+          }
+        },
+        {
+          "window": 6,
+          "is_start": "2020-01-01T00:00:00+00:00",
+          "is_end": "2024-01-01T00:00:00+00:00",
+          "oos_start": "2024-01-01T00:00:00+00:00",
+          "oos_end": "2025-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 290,
+            "hit_rate": 0.46551724137931033,
+            "median_pips": 0.0,
+            "mean_pips": 9.380061576354693,
+            "sharpe": 1.4394774211068593,
+            "sum_pips": 2720.2178571428644
+          },
+          "oos": {
+            "n_trades": 39,
+            "hit_rate": 0.6153846153846154,
+            "median_pips": 16.67142857142867,
+            "mean_pips": 16.245970695970698,
+            "sharpe": 3.168071983632195,
+            "sum_pips": 633.5928571428572
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 7,
+            "false_neg_rate": 0.5714285714285714,
+            "false_pos_rate": 0.0,
+            "median_would_be_pips": 12.43928571428743,
+            "mean_would_be_pips": 12.660459183673519
+          }
+        },
+        {
+          "window": 7,
+          "is_start": "2021-01-01T00:00:00+00:00",
+          "is_end": "2025-01-01T00:00:00+00:00",
+          "oos_start": "2025-01-01T00:00:00+00:00",
+          "oos_end": "2025-12-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 265,
+            "hit_rate": 0.49056603773584906,
+            "median_pips": 0.0,
+            "mean_pips": 9.311442048517511,
+            "sharpe": 1.5821845122299085,
+            "sum_pips": 2467.5321428571397
+          },
+          "oos": {
+            "n_trades": 50,
+            "hit_rate": 0.48,
+            "median_pips": 0.0,
+            "mean_pips": 12.871337303161436,
+            "sharpe": 1.464305702503152,
+            "sum_pips": 643.5668651580717
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 6,
+            "false_neg_rate": 0.5,
+            "false_pos_rate": 0.16666666666666666,
+            "median_would_be_pips": 12.779464285714859,
+            "mean_would_be_pips": 18.36815476190523
+          }
+        }
+      ]
+    },
+    "be_off": {
+      "toggles": {
+        "name": "be_off",
+        "wick_proof_enabled": true,
+        "be_migration_enabled": false,
+        "plg_enabled": true
+      },
+      "full_series": {
+        "n_trades": 660,
+        "hit_rate": 0.6,
+        "median_pips": 22.133035714283487,
+        "mean_pips": 12.460296116040348,
+        "sharpe": 1.5258448279214563,
+        "sum_pips": 8223.795436586635
+      },
+      "full_series_plg_blocks": {
+        "n_blocks": 124,
+        "false_neg_rate": 0.6290322580645161,
+        "false_pos_rate": 0.3709677419354839,
+        "median_would_be_pips": 22.48392857142956,
+        "mean_would_be_pips": 8.145290898617544
+      },
+      "windows": [
+        {
+          "window": 1,
+          "is_start": "2015-01-01T00:00:00+00:00",
+          "is_end": "2019-01-01T00:00:00+00:00",
+          "oos_start": "2019-01-01T00:00:00+00:00",
+          "oos_end": "2020-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 288,
+            "hit_rate": 0.5520833333333334,
+            "median_pips": 23.32767857142981,
+            "mean_pips": 8.579644097222195,
+            "sharpe": 0.953030914269168,
+            "sum_pips": 2470.9374999999923
+          },
+          "oos": {
+            "n_trades": 41,
+            "hit_rate": 0.8292682926829268,
+            "median_pips": 22.43571428571567,
+            "mean_pips": 25.384494773519446,
+            "sharpe": 5.86924859088981,
+            "sum_pips": 1040.764285714297
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 2,
+            "false_neg_rate": 1.0,
+            "false_pos_rate": 0.0,
+            "median_would_be_pips": 16.74642857143138,
+            "mean_would_be_pips": 16.74642857143138
+          }
+        },
+        {
+          "window": 2,
+          "is_start": "2016-01-01T00:00:00+00:00",
+          "is_end": "2020-01-01T00:00:00+00:00",
+          "oos_start": "2020-01-01T00:00:00+00:00",
+          "oos_end": "2021-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 237,
+            "hit_rate": 0.5991561181434599,
+            "median_pips": 20.882142857141517,
+            "mean_pips": 10.961324593128484,
+            "sharpe": 1.5270308349028976,
+            "sum_pips": 2597.8339285714515
+          },
+          "oos": {
+            "n_trades": 59,
+            "hit_rate": 0.576271186440678,
+            "median_pips": 21.70714285714137,
+            "mean_pips": 15.092584745762899,
+            "sharpe": 1.6604332227525425,
+            "sum_pips": 890.4625000000115
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 10,
+            "false_neg_rate": 0.6,
+            "false_pos_rate": 0.4,
+            "median_would_be_pips": 17.868749999999658,
+            "mean_would_be_pips": 3.010357142858133
+          }
+        },
+        {
+          "window": 3,
+          "is_start": "2017-01-01T00:00:00+00:00",
+          "is_end": "2021-01-01T00:00:00+00:00",
+          "oos_start": "2021-01-01T00:00:00+00:00",
+          "oos_end": "2022-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 239,
+            "hit_rate": 0.6234309623430963,
+            "median_pips": 24.208928571427535,
+            "mean_pips": 14.677644949193198,
+            "sharpe": 1.927041985340488,
+            "sum_pips": 3507.9571428571744
+          },
+          "oos": {
+            "n_trades": 49,
+            "hit_rate": 0.6122448979591837,
+            "median_pips": 18.450000000000966,
+            "mean_pips": 10.70827259475194,
+            "sharpe": 1.889288150946878,
+            "sum_pips": 524.7053571428451
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 7,
+            "false_neg_rate": 0.2857142857142857,
+            "false_pos_rate": 0.7142857142857143,
+            "median_would_be_pips": -23.332142857142024,
+            "mean_would_be_pips": -5.107397959183452
+          }
+        },
+        {
+          "window": 4,
+          "is_start": "2018-01-01T00:00:00+00:00",
+          "is_end": "2022-01-01T00:00:00+00:00",
+          "oos_start": "2022-01-01T00:00:00+00:00",
+          "oos_end": "2023-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 216,
+            "hit_rate": 0.6481481481481481,
+            "median_pips": 22.577678571429338,
+            "mean_pips": 16.595494378306892,
+            "sharpe": 2.26806394605636,
+            "sum_pips": 3584.6267857142893
+          },
+          "oos": {
+            "n_trades": 94,
+            "hit_rate": 0.5957446808510638,
+            "median_pips": 27.484821428572225,
+            "mean_pips": 13.131705927051419,
+            "sharpe": 1.6367517550070014,
+            "sum_pips": 1234.3803571428336
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 21,
+            "false_neg_rate": 0.6190476190476191,
+            "false_pos_rate": 0.38095238095238093,
+            "median_would_be_pips": 30.326785714285265,
+            "mean_would_be_pips": 2.491666666666918
+          }
+        },
+        {
+          "window": 5,
+          "is_start": "2019-01-01T00:00:00+00:00",
+          "is_end": "2023-01-01T00:00:00+00:00",
+          "oos_start": "2023-01-01T00:00:00+00:00",
+          "oos_end": "2024-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 243,
+            "hit_rate": 0.6337448559670782,
+            "median_pips": 22.98214285714306,
+            "mean_pips": 15.186471193415583,
+            "sharpe": 2.0487534593387235,
+            "sum_pips": 3690.3124999999877
+          },
+          "oos": {
+            "n_trades": 53,
+            "hit_rate": 0.660377358490566,
+            "median_pips": 18.91071428571589,
+            "mean_pips": 11.738847708894992,
+            "sharpe": 1.7878395607616486,
+            "sum_pips": 622.1589285714347
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 7,
+            "false_neg_rate": 0.42857142857142855,
+            "false_pos_rate": 0.5714285714285714,
+            "median_would_be_pips": -16.67499999999933,
+            "mean_would_be_pips": -6.990561224490107
+          }
+        },
+        {
+          "window": 6,
+          "is_start": "2020-01-01T00:00:00+00:00",
+          "is_end": "2024-01-01T00:00:00+00:00",
+          "oos_start": "2024-01-01T00:00:00+00:00",
+          "oos_end": "2025-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 255,
+            "hit_rate": 0.6078431372549019,
+            "median_pips": 21.530357142858225,
+            "mean_pips": 12.83022408963578,
+            "sharpe": 1.6845032706115468,
+            "sum_pips": 3271.7071428571253
+          },
+          "oos": {
+            "n_trades": 36,
+            "hit_rate": 0.6944444444444444,
+            "median_pips": 18.27321428571338,
+            "mean_pips": 18.471577380952336,
+            "sharpe": 3.413708242872265,
+            "sum_pips": 664.976785714284
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 5,
+            "false_neg_rate": 0.8,
+            "false_pos_rate": 0.2,
+            "median_would_be_pips": 14.094642857143125,
+            "mean_would_be_pips": 10.86071428571378
+          }
+        },
+        {
+          "window": 7,
+          "is_start": "2021-01-01T00:00:00+00:00",
+          "is_end": "2025-01-01T00:00:00+00:00",
+          "oos_start": "2025-01-01T00:00:00+00:00",
+          "oos_end": "2025-12-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 232,
+            "hit_rate": 0.6293103448275862,
+            "median_pips": 20.552678571428284,
+            "mean_pips": 13.130264778324987,
+            "sharpe": 1.9081514250417602,
+            "sum_pips": 3046.2214285713962
+          },
+          "oos": {
+            "n_trades": 40,
+            "hit_rate": 0.575,
+            "median_pips": 25.93125000000085,
+            "mean_pips": 19.38524305752332,
+            "sharpe": 1.978762351890373,
+            "sum_pips": 775.4097223009327
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 3,
+            "false_neg_rate": 0.6666666666666666,
+            "false_pos_rate": 0.3333333333333333,
+            "median_would_be_pips": 30.208928571429094,
+            "mean_would_be_pips": 22.89999999999903
+          }
+        }
+      ]
+    },
+    "all_off": {
+      "toggles": {
+        "name": "all_off",
+        "wick_proof_enabled": false,
+        "be_migration_enabled": false,
+        "plg_enabled": false
+      },
+      "full_series": {
+        "n_trades": 855,
+        "hit_rate": 0.5228070175438596,
+        "median_pips": 15.626785714286662,
+        "mean_pips": 7.919461368379118,
+        "sharpe": 1.1056907388537955,
+        "sum_pips": 6771.13946996415
+      },
+      "full_series_plg_blocks": {
+        "n_blocks": 0,
+        "false_neg_rate": null,
+        "false_pos_rate": null,
+        "median_would_be_pips": null
+      },
+      "windows": [
+        {
+          "window": 1,
+          "is_start": "2015-01-01T00:00:00+00:00",
+          "is_end": "2019-01-01T00:00:00+00:00",
+          "oos_start": "2019-01-01T00:00:00+00:00",
+          "oos_end": "2020-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 392,
+            "hit_rate": 0.49744897959183676,
+            "median_pips": -10.39285714285687,
+            "mean_pips": 4.425086552478063,
+            "sharpe": 0.5758886027998917,
+            "sum_pips": 1734.633928571401
+          },
+          "oos": {
+            "n_trades": 50,
+            "hit_rate": 0.7,
+            "median_pips": 16.810714285714347,
+            "mean_pips": 18.793357142857303,
+            "sharpe": 4.356683129179867,
+            "sum_pips": 939.6678571428654
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 0,
+            "false_neg_rate": null,
+            "false_pos_rate": null,
+            "median_would_be_pips": null
+          }
+        },
+        {
+          "window": 2,
+          "is_start": "2016-01-01T00:00:00+00:00",
+          "is_end": "2020-01-01T00:00:00+00:00",
+          "oos_start": "2020-01-01T00:00:00+00:00",
+          "oos_end": "2021-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 322,
+            "hit_rate": 0.5248447204968945,
+            "median_pips": 15.4151785714296,
+            "mean_pips": 6.129236912156101,
+            "sharpe": 0.9761866377942705,
+            "sum_pips": 1973.614285714264
+          },
+          "oos": {
+            "n_trades": 77,
+            "hit_rate": 0.4935064935064935,
+            "median_pips": -9.028571428570942,
+            "mean_pips": 14.804591836734895,
+            "sharpe": 1.9637705546279811,
+            "sum_pips": 1139.9535714285867
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 0,
+            "false_neg_rate": null,
+            "false_pos_rate": null,
+            "median_would_be_pips": null
+          }
+        },
+        {
+          "window": 3,
+          "is_start": "2017-01-01T00:00:00+00:00",
+          "is_end": "2021-01-01T00:00:00+00:00",
+          "oos_start": "2021-01-01T00:00:00+00:00",
+          "oos_end": "2022-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 314,
+            "hit_rate": 0.5382165605095541,
+            "median_pips": 16.4491071428563,
+            "mean_pips": 10.469267515923582,
+            "sharpe": 1.5779171767017102,
+            "sum_pips": 3287.3500000000045
+          },
+          "oos": {
+            "n_trades": 62,
+            "hit_rate": 0.4838709677419355,
+            "median_pips": -10.889285714286157,
+            "mean_pips": 6.444873271889426,
+            "sharpe": 1.232816749548755,
+            "sum_pips": 399.5821428571444
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 0,
+            "false_neg_rate": null,
+            "false_pos_rate": null,
+            "median_would_be_pips": null
+          }
+        },
+        {
+          "window": 4,
+          "is_start": "2018-01-01T00:00:00+00:00",
+          "is_end": "2022-01-01T00:00:00+00:00",
+          "oos_start": "2022-01-01T00:00:00+00:00",
+          "oos_end": "2023-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 286,
+            "hit_rate": 0.5384615384615384,
+            "median_pips": 15.530357142858886,
+            "mean_pips": 11.025511988012042,
+            "sharpe": 1.7204684746753058,
+            "sum_pips": 3153.296428571445
+          },
+          "oos": {
+            "n_trades": 119,
+            "hit_rate": 0.5210084033613446,
+            "median_pips": 20.59285714285597,
+            "mean_pips": 7.601605642256796,
+            "sharpe": 1.054640799998315,
+            "sum_pips": 904.5910714285587
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 0,
+            "false_neg_rate": null,
+            "false_pos_rate": null,
+            "median_would_be_pips": null
+          }
+        },
+        {
+          "window": 5,
+          "is_start": "2019-01-01T00:00:00+00:00",
+          "is_end": "2023-01-01T00:00:00+00:00",
+          "oos_start": "2023-01-01T00:00:00+00:00",
+          "oos_end": "2024-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 308,
+            "hit_rate": 0.5357142857142857,
+            "median_pips": 15.530357142858886,
+            "mean_pips": 10.98634624304271,
+            "sharpe": 1.6727163208668694,
+            "sum_pips": 3383.7946428571563
+          },
+          "oos": {
+            "n_trades": 63,
+            "hit_rate": 0.5555555555555556,
+            "median_pips": 17.405357142856737,
+            "mean_pips": 7.398327664399047,
+            "sharpe": 1.2977617755769517,
+            "sum_pips": 466.0946428571399
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 0,
+            "false_neg_rate": null,
+            "false_pos_rate": null,
+            "median_would_be_pips": null
+          }
+        },
+        {
+          "window": 6,
+          "is_start": "2020-01-01T00:00:00+00:00",
+          "is_end": "2024-01-01T00:00:00+00:00",
+          "oos_start": "2024-01-01T00:00:00+00:00",
+          "oos_end": "2025-01-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 321,
+            "hit_rate": 0.514018691588785,
+            "median_pips": 14.973214285713965,
+            "mean_pips": 9.066110369381402,
+            "sharpe": 1.3558760556581788,
+            "sum_pips": 2910.221428571431
+          },
+          "oos": {
+            "n_trades": 43,
+            "hit_rate": 0.627906976744186,
+            "median_pips": 16.59107142856886,
+            "mean_pips": 13.87778239202669,
+            "sharpe": 2.719858146454319,
+            "sum_pips": 596.7446428571476
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 0,
+            "false_neg_rate": null,
+            "false_pos_rate": null,
+            "median_would_be_pips": null
+          }
+        },
+        {
+          "window": 7,
+          "is_start": "2021-01-01T00:00:00+00:00",
+          "is_end": "2025-01-01T00:00:00+00:00",
+          "oos_start": "2025-01-01T00:00:00+00:00",
+          "oos_end": "2025-12-01T00:00:00+00:00",
+          "is": {
+            "n_trades": 287,
+            "hit_rate": 0.5365853658536586,
+            "median_pips": 16.59107142856886,
+            "mean_pips": 8.247430313588819,
+            "sharpe": 1.3280342521865904,
+            "sum_pips": 2367.0124999999907
+          },
+          "oos": {
+            "n_trades": 49,
+            "hit_rate": 0.5102040816326531,
+            "median_pips": 19.253571428572425,
+            "mean_pips": 12.038196180026574,
+            "sharpe": 1.3141948650181319,
+            "sum_pips": 589.871612821302
+          },
+          "oos_plg_blocks": {
+            "n_blocks": 0,
+            "false_neg_rate": null,
+            "false_pos_rate": null,
+            "median_would_be_pips": null
+          }
+        }
+      ]
+    }
+  },
+  "analysis": {
+    "n_gate_per_window": 15,
+    "n_resamples": 5000,
+    "seed": 42,
+    "per_arm_per_window_oos_sharpe": {
+      "all_on": [
+        6.253240980161388,
+        1.8875826883121511,
+        2.102187191091253,
+        2.1201303651515393,
+        2.1734021262651293,
+        3.222591981465272,
+        1.754680134741381
+      ],
+      "wick_off": [
+        3.8122401038871128,
+        1.715647608564091,
+        1.1859884683548334,
+        1.3827264311698506,
+        1.5121687648484743,
+        3.168071983632195,
+        1.464305702503152
+      ],
+      "be_off": [
+        5.86924859088981,
+        1.6604332227525425,
+        1.889288150946878,
+        1.6367517550070014,
+        1.7878395607616486,
+        3.413708242872265,
+        1.978762351890373
+      ],
+      "all_off": [
+        4.356683129179867,
+        1.9637705546279811,
+        1.232816749548755,
+        1.054640799998315,
+        1.2977617755769517,
+        2.719858146454319,
+        1.3141948650181319
+      ]
+    },
+    "deltas": {
+      "wick": {
+        "windows": [
+          2.4410008762742756,
+          0.1719350797480601,
+          0.9161987227364194,
+          0.7374039339816887,
+          0.661233361416655,
+          0.05451999783307704,
+          0.2903744322382289
+        ],
+        "mean": 0.753238057746915,
+        "ci_95_lower": 0.29274088113581537,
+        "ci_95_upper": 1.3758541339929882,
+        "p_gt_zero": 0.0,
+        "bh_reject": true
+      },
+      "be": {
+        "windows": [
+          0.38399238927157864,
+          0.2271494655596087,
+          0.21289904014437488,
+          0.48337861014453787,
+          0.38556256550348067,
+          -0.191116261406993,
+          -0.224082217148992
+        ],
+        "mean": 0.18254051315251368,
+        "ci_95_lower": -0.01860471858662554,
+        "ci_95_upper": 0.3639532601223379,
+        "p_gt_zero": 0.03600000000000003,
+        "bh_reject": true
+      },
+      "combined": {
+        "windows": [
+          1.8965578509815213,
+          -0.07618786631582997,
+          0.8693704415424979,
+          1.0654895651532243,
+          0.8756403506881776,
+          0.5027338350109534,
+          0.4404852697232491
+        ],
+        "mean": 0.7962984923976848,
+        "ci_95_lower": 0.3817073418303753,
+        "ci_95_upper": 1.2239646663392125,
+        "p_gt_zero": 0.0,
+        "bh_reject": true
+      }
+    },
+    "plg": {
+      "n_blocks": 123,
+      "false_neg_rate": 0.6422764227642277,
+      "false_pos_rate": 0.3333333333333333,
+      "median_would_be_pips": 23.501785714288292,
+      "mean_would_be_pips": 10.425203252032626
+    },
+    "verdicts": {
+      "wick_alive": true,
+      "be_alive": false,
+      "combined_alive": true,
+      "plg": "plg_earns_keep"
+    },
+    "generated_at": "2026-07-01T13:12:54.003258+00:00"
+  }
+}

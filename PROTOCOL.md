@@ -1,5 +1,8 @@
 # Protocol v2 — role-structured cross-timeframe study
 
+> **DEPRECATED REDIRECT** — kept for backward compatibility; canonical:
+> [`experiments/E006_test_a_price_action/PROTOCOL.md`](experiments/E006_test_a_price_action/PROTOCOL.md)
+
 > **Canonical location:** [`experiments/E006_test_a_price_action/PROTOCOL.md`](experiments/E006_test_a_price_action/PROTOCOL.md)
 >
 > This root file is a **redirect** for backward compatibility. New work uses
