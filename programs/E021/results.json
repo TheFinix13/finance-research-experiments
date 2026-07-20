@@ -1,0 +1,1381 @@
+{
+  "study": "E021",
+  "title": "Partial exit at fixed-R milestone",
+  "generated_at": "2026-07-20T18:28:21.957272+00:00",
+  "generator_commit": "7e1a3e7",
+  "pre_registration": "experiments/E021_partial_exit_at_r_milestone/PROTOCOL.md",
+  "harness": "programs/_shared/counterfactual_replay/replay.py",
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDCAD"
+  ],
+  "per_symbol_meta": {
+    "EURUSD": {
+      "symbol": "EURUSD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "M5": 737
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:16:14.472863+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 737,
+      "hit_rate": 0.5577,
+      "mean_r": 0.382,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    },
+    "GBPUSD": {
+      "symbol": "GBPUSD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "M15": 668,
+        "H4": 276
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:15:58.944332+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 944,
+      "hit_rate": 0.5561,
+      "mean_r": 0.3586,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    },
+    "USDCAD": {
+      "symbol": "USDCAD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "H4": 707
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:15:47.885405+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 707,
+      "hit_rate": 0.5446,
+      "mean_r": 0.3685,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    }
+  },
+  "total_trades": 2388,
+  "results": {
+    "arms": [
+      {
+        "arm_id": "pR0.7_pf0.25",
+        "partial_R": 0.7,
+        "partial_fraction": 0.25,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0913,
+            "ci_low": -0.1577,
+            "ci_high": -0.0284,
+            "p_two_sided": 0.0044,
+            "sharpe_arm": 0.1442,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1693,
+            "n_partial_fired": 330
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1567,
+            "ci_low": -0.2449,
+            "ci_high": -0.0791,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2395,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2648,
+            "n_partial_fired": 259
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1508,
+            "ci_low": -0.227,
+            "ci_high": -0.0832,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1398,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2353,
+            "n_partial_fired": 283
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.1079,
+            "ci_low": -0.2056,
+            "ci_high": -0.0228,
+            "p_two_sided": 0.014,
+            "sharpe_arm": 0.2079,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.2039,
+            "n_partial_fired": 162
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0586,
+            "ci_low": -0.1561,
+            "ci_high": 0.0321,
+            "p_two_sided": 0.2208,
+            "sharpe_arm": 0.2053,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1389,
+            "n_partial_fired": 141
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1161,
+          "ci_low": -0.1472,
+          "ci_high": -0.0869,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1606,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.202,
+          "median_delta_r": -0.1992,
+          "delta_variance_r": -0.698638,
+          "delta_variance_r_ci_low": -0.751529,
+          "delta_variance_r_ci_high": -0.644296
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "delta_mean_r": -0.202,
+          "delta_p_rescue_on_fired": 0.147
+        },
+        "mechanism": {
+          "n_partial_fired": 1510,
+          "fire_rate": 0.6323,
+          "mean_r_arm_on_fired": 0.8451,
+          "mean_r_base_on_fired": 0.9692,
+          "delta_mean_r_on_fired": -0.1241,
+          "p_arm_positive_on_fired": 0.896,
+          "p_base_positive_on_fired": 0.749,
+          "delta_p_rescue_on_fired": 0.147
+        },
+        "per_symbol": {
+          "EURUSD": {
+            "n_trades": 737,
+            "sharpe_arm": 0.1879,
+            "sharpe_base": 0.2871,
+            "delta_sharpe": -0.0993,
+            "mean_delta_r": -0.1875,
+            "n_partial_fired": 475,
+            "fire_rate": 0.6445
+          },
+          "GBPUSD": {
+            "n_trades": 944,
+            "sharpe_arm": 0.1694,
+            "sharpe_base": 0.2651,
+            "delta_sharpe": -0.0957,
+            "mean_delta_r": -0.1836,
+            "n_partial_fired": 606,
+            "fire_rate": 0.6419
+          },
+          "USDCAD": {
+            "n_trades": 707,
+            "sharpe_arm": 0.121,
+            "sharpe_base": 0.2813,
+            "delta_sharpe": -0.1603,
+            "mean_delta_r": -0.2418,
+            "n_partial_fired": 429,
+            "fire_rate": 0.6068
+          }
+        },
+        "bh_fdr_rejected": true,
+        "bh_adjusted_p": 0.0,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "pR0.7_pf0.4",
+        "partial_R": 0.7,
+        "partial_fraction": 0.4,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0905,
+            "ci_low": -0.1593,
+            "ci_high": -0.0252,
+            "p_two_sided": 0.0072,
+            "sharpe_arm": 0.145,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1776,
+            "n_partial_fired": 330
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1698,
+            "ci_low": -0.2586,
+            "ci_high": -0.0906,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.2264,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2931,
+            "n_partial_fired": 259
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1547,
+            "ci_low": -0.2318,
+            "ci_high": -0.0845,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.136,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2478,
+            "n_partial_fired": 283
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.1198,
+            "ci_low": -0.2171,
+            "ci_high": -0.0333,
+            "p_two_sided": 0.0072,
+            "sharpe_arm": 0.196,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.2287,
+            "n_partial_fired": 162
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0726,
+            "ci_low": -0.1751,
+            "ci_high": 0.0232,
+            "p_two_sided": 0.1488,
+            "sharpe_arm": 0.1914,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1668,
+            "n_partial_fired": 141
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1245,
+          "ci_low": -0.1565,
+          "ci_high": -0.0936,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1522,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.2204,
+          "median_delta_r": -0.3194,
+          "delta_variance_r": -0.82606,
+          "delta_variance_r_ci_low": -0.878706,
+          "delta_variance_r_ci_high": -0.772512
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "delta_mean_r": -0.2204,
+          "delta_p_rescue_on_fired": 0.147
+        },
+        "mechanism": {
+          "n_partial_fired": 1510,
+          "fire_rate": 0.6323,
+          "mean_r_arm_on_fired": 0.816,
+          "mean_r_base_on_fired": 0.9692,
+          "delta_mean_r_on_fired": -0.1532,
+          "p_arm_positive_on_fired": 0.896,
+          "p_base_positive_on_fired": 0.749,
+          "delta_p_rescue_on_fired": 0.147
+        },
+        "per_symbol": {
+          "EURUSD": {
+            "n_trades": 737,
+            "sharpe_arm": 0.1798,
+            "sharpe_base": 0.2871,
+            "delta_sharpe": -0.1073,
+            "mean_delta_r": -0.2073,
+            "n_partial_fired": 475,
+            "fire_rate": 0.6445
+          },
+          "GBPUSD": {
+            "n_trades": 944,
+            "sharpe_arm": 0.1634,
+            "sharpe_base": 0.2651,
+            "delta_sharpe": -0.1018,
+            "mean_delta_r": -0.2003,
+            "n_partial_fired": 606,
+            "fire_rate": 0.6419
+          },
+          "USDCAD": {
+            "n_trades": 707,
+            "sharpe_arm": 0.1093,
+            "sharpe_base": 0.2813,
+            "delta_sharpe": -0.172,
+            "mean_delta_r": -0.2608,
+            "n_partial_fired": 429,
+            "fire_rate": 0.6068
+          }
+        },
+        "bh_fdr_rejected": true,
+        "bh_adjusted_p": 0.0,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "pR0.7_pf0.5",
+        "partial_R": 0.7,
+        "partial_fraction": 0.5,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0908,
+            "ci_low": -0.1613,
+            "ci_high": -0.0229,
+            "p_two_sided": 0.0076,
+            "sharpe_arm": 0.1447,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1831,
+            "n_partial_fired": 330
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1804,
+            "ci_low": -0.271,
+            "ci_high": -0.0988,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.2157,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.3119,
+            "n_partial_fired": 259
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1582,
+            "ci_low": -0.2363,
+            "ci_high": -0.0858,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1325,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2561,
+            "n_partial_fired": 283
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.1294,
+            "ci_low": -0.2273,
+            "ci_high": -0.0406,
+            "p_two_sided": 0.0044,
+            "sharpe_arm": 0.1863,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.2452,
+            "n_partial_fired": 162
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0838,
+            "ci_low": -0.1896,
+            "ci_high": 0.0161,
+            "p_two_sided": 0.1092,
+            "sharpe_arm": 0.1802,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1854,
+            "n_partial_fired": 141
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1314,
+          "ci_low": -0.1638,
+          "ci_high": -0.0997,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1453,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.2326,
+          "median_delta_r": -0.3995,
+          "delta_variance_r": -0.898107,
+          "delta_variance_r_ci_low": -0.950568,
+          "delta_variance_r_ci_high": -0.844472
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "delta_mean_r": -0.2326,
+          "delta_p_rescue_on_fired": 0.147
+        },
+        "mechanism": {
+          "n_partial_fired": 1510,
+          "fire_rate": 0.6323,
+          "mean_r_arm_on_fired": 0.7967,
+          "mean_r_base_on_fired": 0.9692,
+          "delta_mean_r_on_fired": -0.1725,
+          "p_arm_positive_on_fired": 0.896,
+          "p_base_positive_on_fired": 0.749,
+          "delta_p_rescue_on_fired": 0.147
+        },
+        "per_symbol": {
+          "EURUSD": {
+            "n_trades": 737,
+            "sharpe_arm": 0.1731,
+            "sharpe_base": 0.2871,
+            "delta_sharpe": -0.1141,
+            "mean_delta_r": -0.2204,
+            "n_partial_fired": 475,
+            "fire_rate": 0.6445
+          },
+          "GBPUSD": {
+            "n_trades": 944,
+            "sharpe_arm": 0.1581,
+            "sharpe_base": 0.2651,
+            "delta_sharpe": -0.1071,
+            "mean_delta_r": -0.2115,
+            "n_partial_fired": 606,
+            "fire_rate": 0.6419
+          },
+          "USDCAD": {
+            "n_trades": 707,
+            "sharpe_arm": 0.1002,
+            "sharpe_base": 0.2813,
+            "delta_sharpe": -0.1811,
+            "mean_delta_r": -0.2735,
+            "n_partial_fired": 429,
+            "fire_rate": 0.6068
+          }
+        },
+        "bh_fdr_rejected": true,
+        "bh_adjusted_p": 0.0,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "pR1.0_pf0.25",
+        "partial_R": 1.0,
+        "partial_fraction": 0.25,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0892,
+            "ci_low": -0.156,
+            "ci_high": -0.027,
+            "p_two_sided": 0.0052,
+            "sharpe_arm": 0.1463,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.158,
+            "n_partial_fired": 292
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1472,
+            "ci_low": -0.2339,
+            "ci_high": -0.0703,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.249,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2411,
+            "n_partial_fired": 239
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.148,
+            "ci_low": -0.224,
+            "ci_high": -0.0796,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1427,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2236,
+            "n_partial_fired": 251
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.098,
+            "ci_low": -0.1967,
+            "ci_high": -0.0118,
+            "p_two_sided": 0.0268,
+            "sharpe_arm": 0.2178,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1815,
+            "n_partial_fired": 149
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.06,
+            "ci_low": -0.1557,
+            "ci_high": 0.0276,
+            "p_two_sided": 0.1908,
+            "sharpe_arm": 0.204,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1272,
+            "n_partial_fired": 125
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1116,
+          "ci_low": -0.1428,
+          "ci_high": -0.0827,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1651,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1875,
+          "median_delta_r": -0.1242,
+          "delta_variance_r": -0.570639,
+          "delta_variance_r_ci_low": -0.623609,
+          "delta_variance_r_ci_high": -0.516127
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "delta_mean_r": -0.1875,
+          "delta_p_rescue_on_fired": 0.1848
+        },
+        "mechanism": {
+          "n_partial_fired": 1353,
+          "fire_rate": 0.5666,
+          "mean_r_arm_on_fired": 1.0848,
+          "mean_r_base_on_fired": 1.1689,
+          "delta_mean_r_on_fired": -0.0841,
+          "p_arm_positive_on_fired": 1.0,
+          "p_base_positive_on_fired": 0.8152,
+          "delta_p_rescue_on_fired": 0.1848
+        },
+        "per_symbol": {
+          "EURUSD": {
+            "n_trades": 737,
+            "sharpe_arm": 0.1933,
+            "sharpe_base": 0.2871,
+            "delta_sharpe": -0.0938,
+            "mean_delta_r": -0.1704,
+            "n_partial_fired": 429,
+            "fire_rate": 0.5821
+          },
+          "GBPUSD": {
+            "n_trades": 944,
+            "sharpe_arm": 0.1719,
+            "sharpe_base": 0.2651,
+            "delta_sharpe": -0.0932,
+            "mean_delta_r": -0.1704,
+            "n_partial_fired": 540,
+            "fire_rate": 0.572
+          },
+          "USDCAD": {
+            "n_trades": 707,
+            "sharpe_arm": 0.127,
+            "sharpe_base": 0.2813,
+            "delta_sharpe": -0.1543,
+            "mean_delta_r": -0.2281,
+            "n_partial_fired": 384,
+            "fire_rate": 0.5431
+          }
+        },
+        "bh_fdr_rejected": true,
+        "bh_adjusted_p": 0.0,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "pR1.0_pf0.4",
+        "partial_R": 1.0,
+        "partial_fraction": 0.4,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0867,
+            "ci_low": -0.1542,
+            "ci_high": -0.0237,
+            "p_two_sided": 0.0084,
+            "sharpe_arm": 0.1489,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1594,
+            "n_partial_fired": 292
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1525,
+            "ci_low": -0.24,
+            "ci_high": -0.0743,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2437,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2551,
+            "n_partial_fired": 239
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1491,
+            "ci_low": -0.2257,
+            "ci_high": -0.0802,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1415,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.229,
+            "n_partial_fired": 251
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.102,
+            "ci_low": -0.2018,
+            "ci_high": -0.0152,
+            "p_two_sided": 0.022,
+            "sharpe_arm": 0.2138,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1928,
+            "n_partial_fired": 149
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0727,
+            "ci_low": -0.1697,
+            "ci_high": 0.0167,
+            "p_two_sided": 0.1156,
+            "sharpe_arm": 0.1912,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1482,
+            "n_partial_fired": 125
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1158,
+          "ci_low": -0.1472,
+          "ci_high": -0.0863,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1609,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1971,
+          "median_delta_r": -0.1994,
+          "delta_variance_r": -0.637383,
+          "delta_variance_r_ci_low": -0.689603,
+          "delta_variance_r_ci_high": -0.584328
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "delta_mean_r": -0.1971,
+          "delta_p_rescue_on_fired": 0.1848
+        },
+        "mechanism": {
+          "n_partial_fired": 1353,
+          "fire_rate": 0.5666,
+          "mean_r_arm_on_fired": 1.0679,
+          "mean_r_base_on_fired": 1.1689,
+          "delta_mean_r_on_fired": -0.101,
+          "p_arm_positive_on_fired": 1.0,
+          "p_base_positive_on_fired": 0.8152,
+          "delta_p_rescue_on_fired": 0.1848
+        },
+        "per_symbol": {
+          "EURUSD": {
+            "n_trades": 737,
+            "sharpe_arm": 0.1901,
+            "sharpe_base": 0.2871,
+            "delta_sharpe": -0.097,
+            "mean_delta_r": -0.1799,
+            "n_partial_fired": 429,
+            "fire_rate": 0.5821
+          },
+          "GBPUSD": {
+            "n_trades": 944,
+            "sharpe_arm": 0.1686,
+            "sharpe_base": 0.2651,
+            "delta_sharpe": -0.0965,
+            "mean_delta_r": -0.1792,
+            "n_partial_fired": 540,
+            "fire_rate": 0.572
+          },
+          "USDCAD": {
+            "n_trades": 707,
+            "sharpe_arm": 0.1205,
+            "sharpe_base": 0.2813,
+            "delta_sharpe": -0.1608,
+            "mean_delta_r": -0.2389,
+            "n_partial_fired": 384,
+            "fire_rate": 0.5431
+          }
+        },
+        "bh_fdr_rejected": true,
+        "bh_adjusted_p": 0.0,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "pR1.0_pf0.5",
+        "partial_R": 1.0,
+        "partial_fraction": 0.5,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0853,
+            "ci_low": -0.1533,
+            "ci_high": -0.0217,
+            "p_two_sided": 0.0112,
+            "sharpe_arm": 0.1502,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1604,
+            "n_partial_fired": 292
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1568,
+            "ci_low": -0.2451,
+            "ci_high": -0.078,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2394,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2644,
+            "n_partial_fired": 239
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1503,
+            "ci_low": -0.2274,
+            "ci_high": -0.0803,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1404,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2326,
+            "n_partial_fired": 251
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.1053,
+            "ci_low": -0.2048,
+            "ci_high": -0.0175,
+            "p_two_sided": 0.02,
+            "sharpe_arm": 0.2105,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.2003,
+            "n_partial_fired": 149
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.082,
+            "ci_low": -0.1803,
+            "ci_high": 0.0098,
+            "p_two_sided": 0.082,
+            "sharpe_arm": 0.182,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1621,
+            "n_partial_fired": 125
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1192,
+          "ci_low": -0.1508,
+          "ci_high": -0.0893,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1575,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.2035,
+          "median_delta_r": -0.2495,
+          "delta_variance_r": -0.675695,
+          "delta_variance_r_ci_low": -0.727267,
+          "delta_variance_r_ci_high": -0.623306
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "delta_mean_r": -0.2035,
+          "delta_p_rescue_on_fired": 0.1848
+        },
+        "mechanism": {
+          "n_partial_fired": 1353,
+          "fire_rate": 0.5666,
+          "mean_r_arm_on_fired": 1.0566,
+          "mean_r_base_on_fired": 1.1689,
+          "delta_mean_r_on_fired": -0.1123,
+          "p_arm_positive_on_fired": 1.0,
+          "p_base_positive_on_fired": 0.8152,
+          "delta_p_rescue_on_fired": 0.1848
+        },
+        "per_symbol": {
+          "EURUSD": {
+            "n_trades": 737,
+            "sharpe_arm": 0.1874,
+            "sharpe_base": 0.2871,
+            "delta_sharpe": -0.0997,
+            "mean_delta_r": -0.1862,
+            "n_partial_fired": 429,
+            "fire_rate": 0.5821
+          },
+          "GBPUSD": {
+            "n_trades": 944,
+            "sharpe_arm": 0.1659,
+            "sharpe_base": 0.2651,
+            "delta_sharpe": -0.0993,
+            "mean_delta_r": -0.1851,
+            "n_partial_fired": 540,
+            "fire_rate": 0.572
+          },
+          "USDCAD": {
+            "n_trades": 707,
+            "sharpe_arm": 0.1158,
+            "sharpe_base": 0.2813,
+            "delta_sharpe": -0.1655,
+            "mean_delta_r": -0.2461,
+            "n_partial_fired": 384,
+            "fire_rate": 0.5431
+          }
+        },
+        "bh_fdr_rejected": true,
+        "bh_adjusted_p": 0.0,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "pR1.3_pf0.25",
+        "partial_R": 1.3,
+        "partial_fraction": 0.25,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.089,
+            "ci_low": -0.156,
+            "ci_high": -0.0277,
+            "p_two_sided": 0.0056,
+            "sharpe_arm": 0.1465,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1526,
+            "n_partial_fired": 233
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1418,
+            "ci_low": -0.2277,
+            "ci_high": -0.0645,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2544,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.2254,
+            "n_partial_fired": 203
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1473,
+            "ci_low": -0.2231,
+            "ci_high": -0.0788,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1433,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2178,
+            "n_partial_fired": 201
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0969,
+            "ci_low": -0.1943,
+            "ci_high": -0.0118,
+            "p_two_sided": 0.0264,
+            "sharpe_arm": 0.2189,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1719,
+            "n_partial_fired": 122
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0479,
+            "ci_low": -0.143,
+            "ci_high": 0.0386,
+            "p_two_sided": 0.2888,
+            "sharpe_arm": 0.216,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1055,
+            "n_partial_fired": 111
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1076,
+          "ci_low": -0.1385,
+          "ci_high": -0.079,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.1691,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.177,
+          "median_delta_r": -0.0492,
+          "delta_variance_r": -0.489536,
+          "delta_variance_r_ci_low": -0.543325,
+          "delta_variance_r_ci_high": -0.434582
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "delta_mean_r": -0.177,
+          "delta_p_rescue_on_fired": 0.0733
+        },
+        "mechanism": {
+          "n_partial_fired": 1118,
+          "fire_rate": 0.4682,
+          "mean_r_arm_on_fired": 1.3353,
+          "mean_r_base_on_fired": 1.3649,
+          "delta_mean_r_on_fired": -0.0296,
+          "p_arm_positive_on_fired": 1.0,
+          "p_base_positive_on_fired": 0.9267,
+          "delta_p_rescue_on_fired": 0.0733
+        },
+        "per_symbol": {
+          "EURUSD": {
+            "n_trades": 737,
+            "sharpe_arm": 0.1983,
+            "sharpe_base": 0.2871,
+            "delta_sharpe": -0.0888,
+            "mean_delta_r": -0.1576,
+            "n_partial_fired": 359,
+            "fire_rate": 0.4871
+          },
+          "GBPUSD": {
+            "n_trades": 944,
+            "sharpe_arm": 0.1742,
+            "sharpe_base": 0.2651,
+            "delta_sharpe": -0.091,
+            "mean_delta_r": -0.1616,
+            "n_partial_fired": 441,
+            "fire_rate": 0.4672
+          },
+          "USDCAD": {
+            "n_trades": 707,
+            "sharpe_arm": 0.1321,
+            "sharpe_base": 0.2813,
+            "delta_sharpe": -0.1492,
+            "mean_delta_r": -0.2177,
+            "n_partial_fired": 318,
+            "fire_rate": 0.4498
+          }
+        },
+        "bh_fdr_rejected": true,
+        "bh_adjusted_p": 0.0,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "pR1.3_pf0.4",
+        "partial_R": 1.3,
+        "partial_fraction": 0.4,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0861,
+            "ci_low": -0.154,
+            "ci_high": -0.024,
+            "p_two_sided": 0.008,
+            "sharpe_arm": 0.1495,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1509,
+            "n_partial_fired": 233
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1429,
+            "ci_low": -0.2297,
+            "ci_high": -0.0652,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2533,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.23,
+            "n_partial_fired": 203
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1476,
+            "ci_low": -0.2235,
+            "ci_high": -0.0792,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1431,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.2197,
+            "n_partial_fired": 201
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.0993,
+            "ci_low": -0.1968,
+            "ci_high": -0.0137,
+            "p_two_sided": 0.0228,
+            "sharpe_arm": 0.2164,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1775,
+            "n_partial_fired": 122
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0523,
+            "ci_low": -0.148,
+            "ci_high": 0.0352,
+            "p_two_sided": 0.2468,
+            "sharpe_arm": 0.2117,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1134,
+            "n_partial_fired": 111
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1087,
+          "ci_low": -0.1399,
+          "ci_high": -0.08,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.168,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1803,
+          "median_delta_r": -0.0794,
+          "delta_variance_r": -0.516632,
+          "delta_variance_r_ci_low": -0.570122,
+          "delta_variance_r_ci_high": -0.461837
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "delta_mean_r": -0.1803,
+          "delta_p_rescue_on_fired": 0.0733
+        },
+        "mechanism": {
+          "n_partial_fired": 1118,
+          "fire_rate": 0.4682,
+          "mean_r_arm_on_fired": 1.3282,
+          "mean_r_base_on_fired": 1.3649,
+          "delta_mean_r_on_fired": -0.0367,
+          "p_arm_positive_on_fired": 1.0,
+          "p_base_positive_on_fired": 0.9267,
+          "delta_p_rescue_on_fired": 0.0733
+        },
+        "per_symbol": {
+          "EURUSD": {
+            "n_trades": 737,
+            "sharpe_arm": 0.1988,
+            "sharpe_base": 0.2871,
+            "delta_sharpe": -0.0883,
+            "mean_delta_r": -0.1594,
+            "n_partial_fired": 359,
+            "fire_rate": 0.4871
+          },
+          "GBPUSD": {
+            "n_trades": 944,
+            "sharpe_arm": 0.1729,
+            "sharpe_base": 0.2651,
+            "delta_sharpe": -0.0923,
+            "mean_delta_r": -0.1651,
+            "n_partial_fired": 441,
+            "fire_rate": 0.4672
+          },
+          "USDCAD": {
+            "n_trades": 707,
+            "sharpe_arm": 0.1295,
+            "sharpe_base": 0.2813,
+            "delta_sharpe": -0.1518,
+            "mean_delta_r": -0.2222,
+            "n_partial_fired": 318,
+            "fire_rate": 0.4498
+          }
+        },
+        "bh_fdr_rejected": true,
+        "bh_adjusted_p": 0.0,
+        "verdict": "dead"
+      },
+      {
+        "arm_id": "pR1.3_pf0.5",
+        "partial_R": 1.3,
+        "partial_fraction": 0.5,
+        "n_trades": 2388,
+        "per_fold": [
+          {
+            "fold": "fold1",
+            "n_trades": 508,
+            "delta_sharpe": -0.0843,
+            "ci_low": -0.1529,
+            "ci_high": -0.0217,
+            "p_two_sided": 0.0104,
+            "sharpe_arm": 0.1513,
+            "sharpe_base": 0.2355,
+            "mean_delta_r": -0.1497,
+            "n_partial_fired": 233
+          },
+          {
+            "fold": "fold2",
+            "n_trades": 397,
+            "delta_sharpe": -0.1439,
+            "ci_low": -0.2316,
+            "ci_high": -0.0655,
+            "p_two_sided": 0.0004,
+            "sharpe_arm": 0.2523,
+            "sharpe_base": 0.3962,
+            "mean_delta_r": -0.233,
+            "n_partial_fired": 203
+          },
+          {
+            "fold": "fold3",
+            "n_trades": 445,
+            "delta_sharpe": -0.1479,
+            "ci_low": -0.2242,
+            "ci_high": -0.079,
+            "p_two_sided": 0.0,
+            "sharpe_arm": 0.1428,
+            "sharpe_base": 0.2907,
+            "mean_delta_r": -0.221,
+            "n_partial_fired": 201
+          },
+          {
+            "fold": "fold4",
+            "n_trades": 252,
+            "delta_sharpe": -0.1012,
+            "ci_low": -0.1986,
+            "ci_high": -0.0156,
+            "p_two_sided": 0.0216,
+            "sharpe_arm": 0.2146,
+            "sharpe_base": 0.3158,
+            "mean_delta_r": -0.1813,
+            "n_partial_fired": 122
+          },
+          {
+            "fold": "fold5",
+            "n_trades": 222,
+            "delta_sharpe": -0.0553,
+            "ci_low": -0.1517,
+            "ci_high": 0.0325,
+            "p_two_sided": 0.228,
+            "sharpe_arm": 0.2086,
+            "sharpe_base": 0.264,
+            "mean_delta_r": -0.1187,
+            "n_partial_fired": 111
+          }
+        ],
+        "fold_positive_flags": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "n_folds_positive": 0,
+        "pooled": {
+          "delta_sharpe": -0.1097,
+          "ci_low": -0.1408,
+          "ci_high": -0.081,
+          "p_two_sided": 0.0,
+          "sharpe_arm": 0.167,
+          "sharpe_base": 0.2767,
+          "mean_delta_r": -0.1825,
+          "median_delta_r": -0.0995,
+          "delta_variance_r": -0.532266,
+          "delta_variance_r_ci_low": -0.585435,
+          "delta_variance_r_ci_high": -0.478036
+        },
+        "guardrails": {
+          "tail_arm_worst10": -1.0013,
+          "tail_base_worst10": -2.0,
+          "delta_tail_worst10": 0.9987,
+          "delta_mean_r": -0.1825,
+          "delta_p_rescue_on_fired": 0.0733
+        },
+        "mechanism": {
+          "n_partial_fired": 1118,
+          "fire_rate": 0.4682,
+          "mean_r_arm_on_fired": 1.3235,
+          "mean_r_base_on_fired": 1.3649,
+          "delta_mean_r_on_fired": -0.0414,
+          "p_arm_positive_on_fired": 1.0,
+          "p_base_positive_on_fired": 0.9267,
+          "delta_p_rescue_on_fired": 0.0733
+        },
+        "per_symbol": {
+          "EURUSD": {
+            "n_trades": 737,
+            "sharpe_arm": 0.199,
+            "sharpe_base": 0.2871,
+            "delta_sharpe": -0.0882,
+            "mean_delta_r": -0.1606,
+            "n_partial_fired": 359,
+            "fire_rate": 0.4871
+          },
+          "GBPUSD": {
+            "n_trades": 944,
+            "sharpe_arm": 0.1719,
+            "sharpe_base": 0.2651,
+            "delta_sharpe": -0.0933,
+            "mean_delta_r": -0.1675,
+            "n_partial_fired": 441,
+            "fire_rate": 0.4672
+          },
+          "USDCAD": {
+            "n_trades": 707,
+            "sharpe_arm": 0.1276,
+            "sharpe_base": 0.2813,
+            "delta_sharpe": -0.1537,
+            "mean_delta_r": -0.2253,
+            "n_partial_fired": 318,
+            "fire_rate": 0.4498
+          }
+        },
+        "bh_fdr_rejected": true,
+        "bh_adjusted_p": 0.0,
+        "verdict": "dead"
+      }
+    ],
+    "grid": {
+      "partial_R": [
+        0.7,
+        1.0,
+        1.3
+      ],
+      "partial_fraction": [
+        0.25,
+        0.4,
+        0.5
+      ],
+      "n_arms": 9
+    },
+    "folds": [
+      {
+        "name": "fold1",
+        "start": "2017-01-01T00:00:00+00:00",
+        "end": "2019-01-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold2",
+        "start": "2019-01-01T00:00:00+00:00",
+        "end": "2021-01-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold3",
+        "start": "2021-01-01T00:00:00+00:00",
+        "end": "2023-01-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold4",
+        "start": "2023-01-01T00:00:00+00:00",
+        "end": "2024-07-01T00:00:00+00:00"
+      },
+      {
+        "name": "fold5",
+        "start": "2024-07-01T00:00:00+00:00",
+        "end": "2026-01-01T00:00:00+00:00"
+      }
+    ],
+    "bootstrap": {
+      "seed": 42,
+      "resamples": 5000
+    },
+    "fdr": {
+      "method": "BH",
+      "alpha": 0.1,
+      "family_size": 9
+    },
+    "guardrail_bands": {
+      "min_delta_mean_r": -0.05,
+      "min_delta_p_rescue_on_fired": -0.05,
+      "min_delta_tail_worst10": -0.1
+    }
+  },
+  "study_verdict": "dead"
+}
