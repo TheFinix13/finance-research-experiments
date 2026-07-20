@@ -1,4 +1,89 @@
-# AI Context — finance research experiments (updated 2026-07-20, Phase AC pitch-assignment pre-reg landed + AC.0 FIRED and FAILED, campaign STOPPED per §5 fail-branch)
+# AI Context — finance research experiments (updated 2026-07-20 evening, Phase AC.2 AMENDMENT landed: AC.0 methodology switched from banked-telemetry OLS to fresh-compute per-movable-agent walk-forward; harness + regression + tests shipped. Heavy compute deferred pending USDJPY/USDCHF cache pull. Earlier same day: Phase AC pre-reg landed + AC.0-v1 FIRED and FAILED.)
+
+## 2026-07-20 evening — Phase AC.2 amendment: AC.0 methodology switch to fresh compute; harness + regression + tests LANDED (no compute fire)
+
+Commits (on `multi-agent-ensemble`): `0ac645a` (amendment file +
+PROTOCOL §14 pointer), `093999b` (`sim/scoring/run_ac0_compute.py` +
+8 harness tests), `f142198` (`sim/analysis/regress_ac0.py` + 11
+regression tests). Sim suite: **863 → 882 passed, 4 skipped, 0
+failed** across the three commits.
+
+**Trigger.** AC.0-v1's §5 pass criterion is *mathematically inaccessible*
+on the realised banked g7retry1-phi41 panel — 2 of 3 movables collapse
+to single-x or zero-obs. See `results/ac0_verdict.md` §5a and
+`results/ac0_regression.json` (R² = 0.1643 identical across features
+diagnostic).
+
+**What the amendment changes (locked in
+`AMENDMENT_2026-07-20_ac0_methodology_switch.md`).** AC.0's y-axis
+switches from banked telemetry to fresh compute: one walk-forward per
+movable proposer (Chigiri, Rin, Kunigami-unretired) with the movable's
+`.symbols` explicitly widened to the extended panel (up to
+EURUSD/GBPUSD/USDCAD/AUDUSD/NZDUSD/USDJPY/USDCHF). PROTOCOL §3
+(playstyle map), §4 (feature vector + frozen `pair_character.json`),
+§5 pass criterion (both conditions), §5.1 UNION additivity, §5.2 AC.2
+criteria, and §6 statistic are ALL unchanged and re-locked in
+amendment §8. §11 file footprint gains
+`results/ac0_compute/<agent>_walkforward.{json,md}` +
+`results/ac0_regression_v2.json` + `results/ac0_verdict_v2.md` (v1
+files preserved on-disk per `07-research-standards.md` §3). §12
+sequencing gains a Step 3b: AC.0 recompute before AC.1 fire. §10 kill
+conditions gain the zero-trades-on-widened-pair sentinel + a
+roster-composition sentinel. **Amendment §7 explicitly forbids a third
+methodology switch if AC.0-v2 also fails** — honest kill path is
+"pitch-terrain underpowered by panel size, requires ≥10 USD-quoted
+pairs before further testing".
+
+**Harness (`run_ac0_compute.py`, 763 LOC).** Public API:
+`run_ac0_compute(*, panel_start, panel_end, symbols, movable_agents,
+out_dir, is_years, oos_years, aggregator_arm='phi41',
+include_kunigami_unretired=True, skip_missing_pairs=True)`. Per
+movable: fresh 7-proposer roster (Kunigami joined only for his own run
+under un-retirement); movable-only `.symbols` widening; parquet-cache
+skip-with-warning; per-pair per-window mean-TQS extracted from
+`_drive_squad_replay.trades` sliced to movable's `originator_id`. CLI:
+`python -m programs.M001_multi_agent_ensemble.sim.scoring.run_ac0_compute
+--symbols … --out-dir …`.
+
+**Regression (`sim/analysis/regress_ac0.py`, 775 LOC — new
+subpackage).** Public API: `regress_ac0(*, telemetry_dir,
+pair_character_path, out_regression, out_verdict, n_boot=10_000,
+rng_seed=20260720)`. OLS + bootstrap primitives are **bit-for-bit
+copies** of `experiments/phase_ac_pitch_assignment/run_ac0_regression.py`
+by design (amendment §6 lock: statistic must not drift between v1 and
+v2). Anti-post-hoc guards baked in: zero-trades rows dropped (§8
+sentinel), missing per-movable telemetry files WARN and count as
+non-passing, missing-file errors raise `FileNotFoundError` with
+explicit pointers.
+
+**Test surface (19 new tests, all fast).**
+- `test_run_ac0_compute.py` (8): per-movable symbol widening, missing-
+  pair skip, fail-fast on `skip_missing_pairs=False`, output schema,
+  Kunigami un-retirement wiring, per-movable roster isolation
+  (distinct agent instances), aggregator-arm propagation, unknown-
+  movable guardrail.
+- `test_regress_ac0.py` (11): β = +2 recovery within 2.5 %,
+  degenerate-x null → verdict FAIL cleanly, bootstrap seed
+  reproducibility (bit-identical CI), 2-of-3 movables → PASS,
+  1-of-3 → FAIL, direction gate (right magnitude, wrong sign →
+  excluded), zero-trades sentinel, missing-movable WARN,
+  output schema + guardrails.
+
+Honest caveat surfaced during test design: the frozen §5 criterion is
+literally `abs_ci_lower > 0` with no magnitude floor. On non-degenerate
+x + constant y, floating-point noise in bootstrap resamples leaves
+`abs_ci_lower` at ~1e-33 — technically "passing". This is a known lax
+edge of the sealed semantic (AC.0-v1 already exhibited it on
+Chigiri's `abs_ci_lower = 0.0846`). The v2 test suite works around it
+by using degenerate-x for null cases; the semantic itself is NOT
+changed by the amendment.
+
+**Explicit non-scope.** No compute fire. AC.0-v2 compute run is a
+separate delegation blocked on the USDJPY/USDCHF H4+D1 cache pull via
+the Windows/MT5 VM `scripts/refresh_cache.py`. Without that pull, the
+fresh-compute panel drops to 5 pairs (still better than the banked
+3-pair collapse but reduces statistical power). Recommended: wait for
+pull before firing.
 
 ## 2026-07-20 — Phase AC pitch-assignment: PRE-REG landed, AC.0 FAILED, AC.1/AC.2 NOT FIRED
 
