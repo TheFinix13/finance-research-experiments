@@ -328,3 +328,19 @@ first-AC.0-fire time.
 - Additivity flag ratification (§5.1 — currently UNION).
 - Harness extension implemented (§7).
 - User final green-light for `git add` on `multi-agent-ensemble`.
+
+---
+
+## 14. Amendments
+
+- **2026-07-20** — `AMENDMENT_2026-07-20_ac0_methodology_switch.md` —
+  AC.0 methodology switched from banked-telemetry OLS to fresh-compute
+  per-movable-agent walk-forward regression. §3 / §4 / §6 unchanged;
+  §5 pass criterion unchanged; §11 file footprint extended
+  (`results/ac0_compute/*`, `results/ac0_regression_v2.json`,
+  `results/ac0_verdict_v2.md`; old AC.0-v1 files preserved on-disk);
+  §12 sequencing gains a *Step 3b: AC.0 recompute* before AC.1 fire;
+  §10 kill conditions gain a zero-trades-on-widened-pair sentinel and
+  a roster-composition sentinel. Authorised by user 2026-07-20; see
+  amendment file for full rationale, new kill conditions, and the
+  honest-kill path if AC.0-v2 also fails.
