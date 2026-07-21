@@ -1,4 +1,77 @@
-# AI Context — finance research experiments (updated 2026-07-20 evening, Phase AC.2 AMENDMENT landed: AC.0 methodology switched from banked-telemetry OLS to fresh-compute per-movable-agent walk-forward; harness + regression + tests shipped. Heavy compute deferred pending USDJPY/USDCHF cache pull. Earlier same day: Phase AC pre-reg landed + AC.0-v1 FIRED and FAILED.)
+# AI Context — finance research experiments (updated 2026-07-21 late-night, Phase AC pipeline COMPLETE: AC.0-v2 PASS (thin), AC.1 authorised Rin USDCHF only, AC.2 A2 FAILED squad-lift (delta −0.006, p=0.861) + Nagi=0 in BOTH arms — recommended action: stay with A1 baseline, no port to `next-gen`. B1-hard/B1-soft deferred, AC2.4/AC2.5 not measured. REPORT.md written. Earlier same evening: AC.0-v2 amendment landed + harness/tests shipped.)
+
+## 2026-07-21 late-night — Phase AC pipeline resumed and COMPLETED (AC.0-v2 → AC.1 → AC.2-partial → REPORT.md)
+
+Resumer session on `multi-agent-ensemble` after the original pipeline
+runner died mid-Stage-1 (API usage limit); its detached AC.0-v2 compute
+survived (3h 8m wall) and dropped `results/ac0_compute/*.json` +
+`summary.json` on disk. This session continued from Stage 2.
+
+Commits (on `multi-agent-ensemble`, oldest first):
+- `b31a36f` — AC.0-v2 PASS (thin). Chigiri × `max_session_impulse`
+  direction-respected; Rin passes Cond 1 (any-feature) but no feature
+  matches her pre-locked directional prior; Kunigami zero-trades
+  sentinel (un-retirement wiring broken silently). 2/3 movables →
+  Cond 1 + Cond 2 both met.
+- `fd5d55d` — AC.1 evaluated via wide-panel proxy (results/ac1_eval.py,
+  ~920 LOC). Methodology transparency: extracted per-pair per-window
+  mean-TQS from AC.0-v2 telemetry rather than firing 8 fresh sub-arm
+  walk-forwards (harness/scope reasons documented in `ac1_verdicts.md`
+  §1). Testable sub-arms: 5/8; NOT_TESTABLE: 3/8 (chi-b, kun-a, kun-b
+  — amendment §8 sentinels). BH q=0.10: rin-a + rin-b + rin-c
+  arithmetically reject H0; STRICT reading (credit only
+  `evaluated_pairs`) reduces authorisation to a single new widening:
+  **Rin USDCHF** (AC.1.rin-a).
+- `2c8e363` — AC.2 A1 baseline + A2 (Rin widened). B1-hard / B1-soft
+  DEFERRED (`_drive_squad_replay` requires isagi/barou/kunigami role-
+  kwargs; multi-squad rosters break the harness; out of resumer scope
+  — needs a proper `SquadEngineMulti`). AC2.4 (C3 poisoning) NOT
+  MEASURED — `ac2_run.py` slicer does not export same-tick collision
+  counts; flagged as not-measured rather than assumed-clean. AC2.5
+  NOT REPORTED (B1 arms deferred). Locked criteria:
+  * **AC2.1 anchor lock PASS** — Isagi/Bachira/Barou C1 identical A1
+    vs A2 (0.358 / 0.392 / 0.401 in both arms).
+  * **AC2.2 squad TQS lift FAIL** — delta A2−A1 = **−0.006**
+    [boot 95% CI −0.017, +0.005], p(delta ≤ 0) = **0.861**.
+    Rin per-agent still passes C1 (0.341, CI [0.272, 0.396], 6/7
+    windows ≥ 0.20) but mean-TQS dropped 0.370 → 0.341 while trades
+    rose 203 → 391 — quality dilution from USDCHF at the squad level.
+  * **AC2.3 Nagi ≥ 50 trades FAIL in BOTH arms** — Nagi = 0 in A1
+    and A2. Baseline-reproduction regression on the extended 7-pair
+    panel: on the 2026-07-01 3-pair baseline Nagi passed C1 at 0.385;
+    on the 7-pair panel he never fires despite 53,163 bar-events on
+    his home pairs. NOT a widening penalty. Reo also 0 trades in both
+    arms (same likely mechanism).
+- REPORT.md written (`programs/M001_multi_agent_ensemble/experiments/
+  phase_ac_pitch_assignment/REPORT.md`, ~200 lines). Topline: **stay
+  with A1 baseline**; do NOT ship
+  `build_roster(pitch_overrides={'itoshi_rin': ('EURUSD', 'USDCHF')})`.
+
+Compute wall-clock (resumer session): AC.0-v2 regression ~3 s;
+AC.1 eval ~2 s; AC.2 A1 + A2 in overlapping detached `screen` sessions
+~57 min total (A1 48 min, A2 57 min; heartbeat monitors wired per PID;
+CPU 98–100% throughout, no stalls). Zero foreign-file contamination
+(E020–E025 sibling session's untracked files under `experiments/E02x/`
++ `programs/E02x/` left strictly untouched; commit staging always
+listed explicit paths).
+
+Follow-ups sequenced (not this session, see REPORT.md §6):
+1. **Nagi extended-panel diagnostic** — blocking prerequisite for any
+   faithful AC.2 re-run; investigate why the 7-pair interleaved bar
+   stream silences Nagi's peer-confluence gate.
+2. **Kunigami un-retirement wiring fix** in
+   `run_ac0_compute._build_movable_roster` (amendment §8 sentinel).
+3. **`SquadEngineMulti` build** in `sim/` for B1-hard / B1-soft.
+4. **AC2.4 C3 export** in `ac2_run.py`.
+5. **Panel-size sensitivity study** (3, 4, 5, 6, 7 pairs) on Nagi's
+   confluence-fire count.
+
+FDR accounting: 3 rejects out of 28 pre-registered tests (all AC.1
+rins; STRICT reading credits only rin-a for widening). 17-test AC.2
+shortfall (20 reserved − 3 executed) is a documented budget under-run
+from B1 deferral + AC2.4/AC2.5 not measured; a follow-up worker
+running B1-hard / B1-soft / AC2.4 should treat that as the correct
+BH-family size for its own log.
 
 ## 2026-07-20 evening — Phase AC.2 amendment: AC.0 methodology switch to fresh compute; harness + regression + tests LANDED (no compute fire)
 
