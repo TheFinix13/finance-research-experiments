@@ -1,0 +1,294 @@
+{
+  "arm_id": "A1",
+  "fired_at_utc": "2026-07-20T23:51:41.225852+00:00",
+  "n_windows": 7,
+  "n_trades_total": 5117,
+  "per_agent_c1": {
+    "isagi_yoichi": {
+      "agent_id": "isagi_yoichi",
+      "n_trades_total": 955,
+      "n_populated_windows": 7,
+      "per_window_mean_tqs": [
+        0.3789209768329189,
+        0.34919380243115156,
+        0.33604707389233535,
+        0.3557838923896876,
+        0.3750849173666357,
+        0.36510566602692457,
+        0.34493438078483646
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs_over_populated": 0.35786724424635574,
+          "n_windows_ge_020": 7,
+          "bootstrap_ci_lower": 0.3471977405938664,
+          "bootstrap_ci_upper": 0.36863048374553165
+        },
+        "sub_criteria": {
+          "mean_tqs_met": true,
+          "k_of_n_met": true,
+          "bootstrap_met": true
+        },
+        "c1_pass": true
+      }
+    },
+    "bachira_meguru": {
+      "agent_id": "bachira_meguru",
+      "n_trades_total": 736,
+      "n_populated_windows": 7,
+      "per_window_mean_tqs": [
+        0.3802355787193624,
+        0.35275126645242844,
+        0.3116173272547901,
+        0.43191100661435927,
+        0.42492147563809185,
+        0.40135960307679375,
+        0.44067369538456097
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs_over_populated": 0.3919242790200553,
+          "n_windows_ge_020": 7,
+          "bootstrap_ci_lower": 0.3585531607710737,
+          "bootstrap_ci_upper": 0.4216694373474412
+        },
+        "sub_criteria": {
+          "mean_tqs_met": true,
+          "k_of_n_met": true,
+          "bootstrap_met": true
+        },
+        "c1_pass": true
+      }
+    },
+    "itoshi_rin": {
+      "agent_id": "itoshi_rin",
+      "n_trades_total": 203,
+      "n_populated_windows": 7,
+      "per_window_mean_tqs": [
+        0.32472682306673495,
+        0.3371607298830675,
+        0.31346605384204773,
+        0.4536348610068982,
+        0.32433047989419234,
+        0.3722728996648678,
+        0.4665819695710504
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs_over_populated": 0.3703105452755513,
+          "n_windows_ge_020": 7,
+          "bootstrap_ci_lower": 0.3299647885838786,
+          "bootstrap_ci_upper": 0.4187654490031709
+        },
+        "sub_criteria": {
+          "mean_tqs_met": true,
+          "k_of_n_met": true,
+          "bootstrap_met": true
+        },
+        "c1_pass": true
+      }
+    },
+    "chigiri_hyoma": {
+      "agent_id": "chigiri_hyoma",
+      "n_trades_total": 503,
+      "n_populated_windows": 7,
+      "per_window_mean_tqs": [
+        0.24822253534098013,
+        0.25603550104355866,
+        0.2209482106161233,
+        0.29666224852569445,
+        0.17131741128598396,
+        0.2569910148305863,
+        0.2226134999998213
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs_over_populated": 0.2389700602346783,
+          "n_windows_ge_020": 6,
+          "bootstrap_ci_lower": 0.2120183507805311,
+          "bootstrap_ci_upper": 0.26443123127835344
+        },
+        "sub_criteria": {
+          "mean_tqs_met": false,
+          "k_of_n_met": true,
+          "bootstrap_met": false
+        },
+        "c1_pass": false
+      }
+    },
+    "reo_mikage": {
+      "agent_id": "reo_mikage",
+      "n_trades_total": 0,
+      "n_populated_windows": 0,
+      "per_window_mean_tqs": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs_over_populated": null,
+          "n_windows_ge_020": 0,
+          "bootstrap_ci_lower": null,
+          "bootstrap_ci_upper": null
+        },
+        "sub_criteria": {
+          "mean_tqs_met": false,
+          "k_of_n_met": false,
+          "bootstrap_met": false
+        },
+        "c1_pass": false
+      }
+    },
+    "nagi_seishiro": {
+      "agent_id": "nagi_seishiro",
+      "n_trades_total": 0,
+      "n_populated_windows": 0,
+      "per_window_mean_tqs": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs_over_populated": null,
+          "n_windows_ge_020": 0,
+          "bootstrap_ci_lower": null,
+          "bootstrap_ci_upper": null
+        },
+        "sub_criteria": {
+          "mean_tqs_met": false,
+          "k_of_n_met": false,
+          "bootstrap_met": false
+        },
+        "c1_pass": false
+      }
+    },
+    "barou_shoei": {
+      "agent_id": "barou_shoei",
+      "n_trades_total": 438,
+      "n_populated_windows": 7,
+      "per_window_mean_tqs": [
+        0.3289798984191254,
+        0.40341523771939697,
+        0.473656199158872,
+        0.46292416279669657,
+        0.546512673257123,
+        0.31191010406058683,
+        0.282342279668977
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs_over_populated": 0.40139150786868255,
+          "n_windows_ge_020": 7,
+          "bootstrap_ci_lower": 0.33632232028610526,
+          "bootstrap_ci_upper": 0.46867309816353514
+        },
+        "sub_criteria": {
+          "mean_tqs_met": true,
+          "k_of_n_met": true,
+          "bootstrap_met": true
+        },
+        "c1_pass": true
+      }
+    },
+    "kunigami_rensuke": {
+      "agent_id": "kunigami_rensuke",
+      "n_trades_total": 0,
+      "n_populated_windows": 0,
+      "per_window_mean_tqs": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "c1_evaluation": {
+        "thresholds": {
+          "mean_tqs_ge": 0.3,
+          "per_window_ge": 0.2,
+          "min_passing_windows": 5,
+          "bootstrap_ci_lower_gt": 0.25
+        },
+        "observed": {
+          "mean_tqs_over_populated": null,
+          "n_windows_ge_020": 0,
+          "bootstrap_ci_lower": null,
+          "bootstrap_ci_upper": null
+        },
+        "sub_criteria": {
+          "mean_tqs_met": false,
+          "k_of_n_met": false,
+          "bootstrap_met": false
+        },
+        "c1_pass": false
+      }
+    }
+  },
+  "squad_per_window_mean_tqs": [
+    0.33221716247582433,
+    0.3397113075059206,
+    0.3311469729528337,
+    0.40018323426666724,
+    0.36843339148840537,
+    0.34152785753195186,
+    0.35142916508184924
+  ],
+  "squad_mean_of_window_mean": 0.3520927273290646,
+  "squad_ci_lower": 0.33720954150000404,
+  "squad_ci_upper": 0.37021724953652757,
+  "nagi_trades_total": 0,
+  "ac23_nagi_pass": false
+}

@@ -1,0 +1,1018 @@
+{
+  "arm_id": "A1",
+  "description": "Baseline (control): current wiring on the extended 7-pair panel. Anchors at canon home (Isagi, Bachira, Barou), movables at v1 doctrine defaults (Rin EURUSD only, Chigiri EURUSD+GBPUSD, Kunigami retired). Reproduces the current 3/7 verdict on the extended panel for shared reference.",
+  "fired_at_utc": "2026-07-20T23:51:41.225852+00:00",
+  "panel_start_utc": "2015-01-01T00:00:00+00:00",
+  "panel_end_utc": "2025-12-31T00:00:00+00:00",
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDCAD",
+    "AUDUSD",
+    "NZDUSD",
+    "USDJPY",
+    "USDCHF"
+  ],
+  "aggregator_arm": "phi41",
+  "include_kunigami": false,
+  "agent_symbols_overrides": {},
+  "roster_actual": [
+    {
+      "agent_id": "isagi_yoichi",
+      "playstyle": "conservative_metavision",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDCAD"
+      ],
+      "is_proposer": true
+    },
+    {
+      "agent_id": "bachira_meguru",
+      "playstyle": "rebel_tight",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDCAD"
+      ],
+      "is_proposer": true
+    },
+    {
+      "agent_id": "itoshi_rin",
+      "playstyle": "analytical_precision",
+      "symbols": [
+        "EURUSD"
+      ],
+      "is_proposer": true
+    },
+    {
+      "agent_id": "chigiri_hyoma",
+      "playstyle": "speed_momentum",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD"
+      ],
+      "is_proposer": true
+    },
+    {
+      "agent_id": "reo_mikage",
+      "playstyle": "copier_hrp",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDCAD"
+      ],
+      "is_proposer": true
+    },
+    {
+      "agent_id": "nagi_seishiro",
+      "playstyle": "confluence_only",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDCAD"
+      ],
+      "is_proposer": true
+    },
+    {
+      "agent_id": "barou_shoei",
+      "playstyle": "solo_king",
+      "symbols": [
+        "USDCAD",
+        "EURUSD",
+        "GBPUSD"
+      ],
+      "is_proposer": true
+    },
+    {
+      "agent_id": "kunigami_rensuke",
+      "playstyle": "defensive",
+      "symbols": [
+        "EURUSD",
+        "GBPUSD",
+        "USDCAD"
+      ],
+      "is_proposer": false
+    }
+  ],
+  "n_windows": 7,
+  "windows_meta": [
+    {
+      "idx": 0,
+      "is_start": "2015-01-01T00:00:00+00:00",
+      "is_end": "2019-01-01T00:00:00+00:00",
+      "oos_start": "2019-01-01T00:00:00+00:00",
+      "oos_end": "2020-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 1,
+      "is_start": "2016-01-01T00:00:00+00:00",
+      "is_end": "2020-01-01T00:00:00+00:00",
+      "oos_start": "2020-01-01T00:00:00+00:00",
+      "oos_end": "2021-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 2,
+      "is_start": "2017-01-01T00:00:00+00:00",
+      "is_end": "2021-01-01T00:00:00+00:00",
+      "oos_start": "2021-01-01T00:00:00+00:00",
+      "oos_end": "2022-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 3,
+      "is_start": "2018-01-01T00:00:00+00:00",
+      "is_end": "2022-01-01T00:00:00+00:00",
+      "oos_start": "2022-01-01T00:00:00+00:00",
+      "oos_end": "2023-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 4,
+      "is_start": "2019-01-01T00:00:00+00:00",
+      "is_end": "2023-01-01T00:00:00+00:00",
+      "oos_start": "2023-01-01T00:00:00+00:00",
+      "oos_end": "2024-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 5,
+      "is_start": "2020-01-01T00:00:00+00:00",
+      "is_end": "2024-01-01T00:00:00+00:00",
+      "oos_start": "2024-01-01T00:00:00+00:00",
+      "oos_end": "2025-01-01T00:00:00+00:00"
+    },
+    {
+      "idx": 6,
+      "is_start": "2021-01-01T00:00:00+00:00",
+      "is_end": "2025-01-01T00:00:00+00:00",
+      "oos_start": "2025-01-01T00:00:00+00:00",
+      "oos_end": "2025-12-31T00:00:00+00:00"
+    }
+  ],
+  "per_agent_window": [
+    {
+      "agent_id": "isagi_yoichi",
+      "window_idx": 0,
+      "n_trades": 139,
+      "mean_tqs": 0.3789209768329189,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 12,
+          "mean_tqs": 0.4142459544597906
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 77,
+          "mean_tqs": 0.3725179391963001
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 50,
+          "mean_tqs": 0.3803036601628627
+        }
+      ]
+    },
+    {
+      "agent_id": "bachira_meguru",
+      "window_idx": 0,
+      "n_trades": 124,
+      "mean_tqs": 0.3802355787193624,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 27,
+          "mean_tqs": 0.43582121674505797
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 45,
+          "mean_tqs": 0.4150117675871583
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 52,
+          "mean_tqs": 0.32127902630119715
+        }
+      ]
+    },
+    {
+      "agent_id": "itoshi_rin",
+      "window_idx": 0,
+      "n_trades": 11,
+      "mean_tqs": 0.32472682306673495,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 11,
+          "mean_tqs": 0.32472682306673495
+        }
+      ]
+    },
+    {
+      "agent_id": "chigiri_hyoma",
+      "window_idx": 0,
+      "n_trades": 73,
+      "mean_tqs": 0.24822253534098013,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 39,
+          "mean_tqs": 0.2474579361613117
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 34,
+          "mean_tqs": 0.24909957557648213
+        }
+      ]
+    },
+    {
+      "agent_id": "reo_mikage",
+      "window_idx": 0,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "nagi_seishiro",
+      "window_idx": 0,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "barou_shoei",
+      "window_idx": 0,
+      "n_trades": 69,
+      "mean_tqs": 0.3289798984191254,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 19,
+          "mean_tqs": 0.24363510463037108
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 29,
+          "mean_tqs": 0.33567737861245744
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 21,
+          "mean_tqs": 0.39694771538958745
+        }
+      ]
+    },
+    {
+      "agent_id": "kunigami_rensuke",
+      "window_idx": 0,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "isagi_yoichi",
+      "window_idx": 1,
+      "n_trades": 144,
+      "mean_tqs": 0.34919380243115156,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 24,
+          "mean_tqs": 0.1705511344066922
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 53,
+          "mean_tqs": 0.3897986412474407
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 67,
+          "mean_tqs": 0.3810649602718038
+        }
+      ]
+    },
+    {
+      "agent_id": "bachira_meguru",
+      "window_idx": 1,
+      "n_trades": 86,
+      "mean_tqs": 0.35275126645242844,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 41,
+          "mean_tqs": 0.35845267746025217
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 22,
+          "mean_tqs": 0.27787396653651125
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 23,
+          "mean_tqs": 0.414209646749359
+        }
+      ]
+    },
+    {
+      "agent_id": "itoshi_rin",
+      "window_idx": 1,
+      "n_trades": 27,
+      "mean_tqs": 0.3371607298830675,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 27,
+          "mean_tqs": 0.3371607298830675
+        }
+      ]
+    },
+    {
+      "agent_id": "chigiri_hyoma",
+      "window_idx": 1,
+      "n_trades": 80,
+      "mean_tqs": 0.25603550104355866,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 47,
+          "mean_tqs": 0.2932658048316363
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 33,
+          "mean_tqs": 0.20301052292114502
+        }
+      ]
+    },
+    {
+      "agent_id": "reo_mikage",
+      "window_idx": 1,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "nagi_seishiro",
+      "window_idx": 1,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "barou_shoei",
+      "window_idx": 1,
+      "n_trades": 47,
+      "mean_tqs": 0.40341523771939697,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 10,
+          "mean_tqs": 0.46804512408696597
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 20,
+          "mean_tqs": 0.4773637193707606
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 17,
+          "mean_tqs": 0.27839944379569337
+        }
+      ]
+    },
+    {
+      "agent_id": "kunigami_rensuke",
+      "window_idx": 1,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "isagi_yoichi",
+      "window_idx": 2,
+      "n_trades": 148,
+      "mean_tqs": 0.33604707389233535,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 9,
+          "mean_tqs": 0.42815101708567743
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 89,
+          "mean_tqs": 0.3456034301776052
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 50,
+          "mean_tqs": 0.30245804992975345
+        }
+      ]
+    },
+    {
+      "agent_id": "bachira_meguru",
+      "window_idx": 2,
+      "n_trades": 148,
+      "mean_tqs": 0.3116173272547901,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 34,
+          "mean_tqs": 0.4119623291809871
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 50,
+          "mean_tqs": 0.22823443616373565
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 64,
+          "mean_tqs": 0.32345192864638417
+        }
+      ]
+    },
+    {
+      "agent_id": "itoshi_rin",
+      "window_idx": 2,
+      "n_trades": 25,
+      "mean_tqs": 0.31346605384204773,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 25,
+          "mean_tqs": 0.31346605384204773
+        }
+      ]
+    },
+    {
+      "agent_id": "chigiri_hyoma",
+      "window_idx": 2,
+      "n_trades": 69,
+      "mean_tqs": 0.2209482106161233,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 43,
+          "mean_tqs": 0.21656112502675537
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 26,
+          "mean_tqs": 0.22820377524469332
+        }
+      ]
+    },
+    {
+      "agent_id": "reo_mikage",
+      "window_idx": 2,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "nagi_seishiro",
+      "window_idx": 2,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "barou_shoei",
+      "window_idx": 2,
+      "n_trades": 75,
+      "mean_tqs": 0.473656199158872,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 18,
+          "mean_tqs": 0.4943096325363304
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 34,
+          "mean_tqs": 0.4926522582814963
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 23,
+          "mean_tqs": 0.4294115117256775
+        }
+      ]
+    },
+    {
+      "agent_id": "kunigami_rensuke",
+      "window_idx": 2,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "isagi_yoichi",
+      "window_idx": 3,
+      "n_trades": 163,
+      "mean_tqs": 0.3557838923896876,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 18,
+          "mean_tqs": 0.40400050891925243
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 92,
+          "mean_tqs": 0.35929805581224944
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 53,
+          "mean_tqs": 0.33330838045746386
+        }
+      ]
+    },
+    {
+      "agent_id": "bachira_meguru",
+      "window_idx": 3,
+      "n_trades": 103,
+      "mean_tqs": 0.43191100661435927,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 42,
+          "mean_tqs": 0.41540384791744567
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 21,
+          "mean_tqs": 0.4797842119817139
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 40,
+          "mean_tqs": 0.42411009042825737
+        }
+      ]
+    },
+    {
+      "agent_id": "itoshi_rin",
+      "window_idx": 3,
+      "n_trades": 73,
+      "mean_tqs": 0.4536348610068982,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 73,
+          "mean_tqs": 0.4536348610068982
+        }
+      ]
+    },
+    {
+      "agent_id": "chigiri_hyoma",
+      "window_idx": 3,
+      "n_trades": 66,
+      "mean_tqs": 0.29666224852569445,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 35,
+          "mean_tqs": 0.3716740381679067
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 31,
+          "mean_tqs": 0.21197151828448713
+        }
+      ]
+    },
+    {
+      "agent_id": "reo_mikage",
+      "window_idx": 3,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "nagi_seishiro",
+      "window_idx": 3,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "barou_shoei",
+      "window_idx": 3,
+      "n_trades": 64,
+      "mean_tqs": 0.46292416279669657,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 25,
+          "mean_tqs": 0.4544585546095106
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 22,
+          "mean_tqs": 0.5197414709179176
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 17,
+          "mean_tqs": 0.40184530550333103
+        }
+      ]
+    },
+    {
+      "agent_id": "kunigami_rensuke",
+      "window_idx": 3,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "isagi_yoichi",
+      "window_idx": 4,
+      "n_trades": 154,
+      "mean_tqs": 0.3750849173666357,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 20,
+          "mean_tqs": 0.3590878171586808
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 68,
+          "mean_tqs": 0.3463010784323208
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 66,
+          "mean_tqs": 0.4095885999680374
+        }
+      ]
+    },
+    {
+      "agent_id": "bachira_meguru",
+      "window_idx": 4,
+      "n_trades": 97,
+      "mean_tqs": 0.42492147563809185,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 35,
+          "mean_tqs": 0.4609178038013655
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 35,
+          "mean_tqs": 0.384218617095916
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 27,
+          "mean_tqs": 0.431022533536669
+        }
+      ]
+    },
+    {
+      "agent_id": "itoshi_rin",
+      "window_idx": 4,
+      "n_trades": 29,
+      "mean_tqs": 0.32433047989419234,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 29,
+          "mean_tqs": 0.32433047989419234
+        }
+      ]
+    },
+    {
+      "agent_id": "chigiri_hyoma",
+      "window_idx": 4,
+      "n_trades": 72,
+      "mean_tqs": 0.17131741128598396,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 40,
+          "mean_tqs": 0.18981131320500388
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 32,
+          "mean_tqs": 0.14820003388720907
+        }
+      ]
+    },
+    {
+      "agent_id": "reo_mikage",
+      "window_idx": 4,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "nagi_seishiro",
+      "window_idx": 4,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "barou_shoei",
+      "window_idx": 4,
+      "n_trades": 66,
+      "mean_tqs": 0.546512673257123,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 14,
+          "mean_tqs": 0.5074381029436548
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 24,
+          "mean_tqs": 0.6093444960648291
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 28,
+          "mean_tqs": 0.5121941102929664
+        }
+      ]
+    },
+    {
+      "agent_id": "kunigami_rensuke",
+      "window_idx": 4,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "isagi_yoichi",
+      "window_idx": 5,
+      "n_trades": 98,
+      "mean_tqs": 0.36510566602692457,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 18,
+          "mean_tqs": 0.45363550501378064
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 40,
+          "mean_tqs": 0.43129704848882594
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 40,
+          "mean_tqs": 0.2590758560209379
+        }
+      ]
+    },
+    {
+      "agent_id": "bachira_meguru",
+      "window_idx": 5,
+      "n_trades": 86,
+      "mean_tqs": 0.40135960307679375,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 23,
+          "mean_tqs": 0.44618745308394203
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 28,
+          "mean_tqs": 0.401779330262974
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 35,
+          "mean_tqs": 0.3715655198945806
+        }
+      ]
+    },
+    {
+      "agent_id": "itoshi_rin",
+      "window_idx": 5,
+      "n_trades": 17,
+      "mean_tqs": 0.3722728996648678,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 17,
+          "mean_tqs": 0.3722728996648678
+        }
+      ]
+    },
+    {
+      "agent_id": "chigiri_hyoma",
+      "window_idx": 5,
+      "n_trades": 70,
+      "mean_tqs": 0.2569910148305863,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 32,
+          "mean_tqs": 0.22929030098823766
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 38,
+          "mean_tqs": 0.2803179317504588
+        }
+      ]
+    },
+    {
+      "agent_id": "reo_mikage",
+      "window_idx": 5,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "nagi_seishiro",
+      "window_idx": 5,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "barou_shoei",
+      "window_idx": 5,
+      "n_trades": 62,
+      "mean_tqs": 0.31191010406058683,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 19,
+          "mean_tqs": 0.320597663829153
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 14,
+          "mean_tqs": 0.3505408576820408
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 29,
+          "mean_tqs": 0.2875689252225485
+        }
+      ]
+    },
+    {
+      "agent_id": "kunigami_rensuke",
+      "window_idx": 5,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "isagi_yoichi",
+      "window_idx": 6,
+      "n_trades": 109,
+      "mean_tqs": 0.34493438078483646,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 7,
+          "mean_tqs": 0.5628851379763439
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 59,
+          "mean_tqs": 0.32612614058945366
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 43,
+          "mean_tqs": 0.33526068011476745
+        }
+      ]
+    },
+    {
+      "agent_id": "bachira_meguru",
+      "window_idx": 6,
+      "n_trades": 92,
+      "mean_tqs": 0.44067369538456097,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 27,
+          "mean_tqs": 0.44474191270081953
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 25,
+          "mean_tqs": 0.4270035284645911
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 40,
+          "mean_tqs": 0.4464715030210676
+        }
+      ]
+    },
+    {
+      "agent_id": "itoshi_rin",
+      "window_idx": 6,
+      "n_trades": 21,
+      "mean_tqs": 0.4665819695710504,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 21,
+          "mean_tqs": 0.4665819695710504
+        }
+      ]
+    },
+    {
+      "agent_id": "chigiri_hyoma",
+      "window_idx": 6,
+      "n_trades": 73,
+      "mean_tqs": 0.2226134999998213,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 35,
+          "mean_tqs": 0.23653090025545373
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 38,
+          "mean_tqs": 0.20979484186963354
+        }
+      ]
+    },
+    {
+      "agent_id": "reo_mikage",
+      "window_idx": 6,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "nagi_seishiro",
+      "window_idx": 6,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    },
+    {
+      "agent_id": "barou_shoei",
+      "window_idx": 6,
+      "n_trades": 55,
+      "mean_tqs": 0.282342279668977,
+      "per_pair": [
+        {
+          "symbol": "EURUSD",
+          "n_trades": 16,
+          "mean_tqs": 0.10164333435147105
+        },
+        {
+          "symbol": "GBPUSD",
+          "n_trades": 15,
+          "mean_tqs": 0.3504183209524652
+        },
+        {
+          "symbol": "USDCAD",
+          "n_trades": 24,
+          "mean_tqs": 0.3602607174118009
+        }
+      ]
+    },
+    {
+      "agent_id": "kunigami_rensuke",
+      "window_idx": 6,
+      "n_trades": 0,
+      "mean_tqs": null,
+      "per_pair": []
+    }
+  ],
+  "workspace_publish_counts": {
+    "bachira_meguru": 53163,
+    "barou_shoei": 53163,
+    "chigiri_hyoma": 35441,
+    "isagi_yoichi": 53163,
+    "itoshi_rin": 17723,
+    "nagi_seishiro": 53163,
+    "reo_mikage": 53163
+  },
+  "workspace_read_counts": {
+    "bachira_meguru": 3620,
+    "barou_shoei": 6793,
+    "isagi_yoichi": 6571,
+    "itoshi_rin": 2988,
+    "chigiri_hyoma": 1231
+  },
+  "n_thoughts": 318979,
+  "n_proposals": 19709,
+  "n_trades": 5117
+}
