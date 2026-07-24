@@ -1,0 +1,341 @@
+{
+  "tag": "ae-baseline",
+  "run_at_utc": "2026-07-24T03:12:24.097894+00:00",
+  "sae_enabled": false,
+  "panel": {
+    "start": "2015-01-01T00:00:00+00:00",
+    "end": "2025-12-31T00:00:00+00:00",
+    "symbols": [
+      "EURUSD",
+      "GBPUSD",
+      "USDCAD"
+    ],
+    "n_windows": 7
+  },
+  "roster": [
+    "bachira_meguru",
+    "barou_shoei",
+    "chigiri_hyoma",
+    "isagi_yoichi",
+    "itoshi_rin",
+    "nagi_seishiro",
+    "reo_mikage"
+  ],
+  "config": {
+    "aggregator_arm": "phi41",
+    "sentinel_blocks": true,
+    "use_workspace": true,
+    "kunigami": "retired_r5_side_channel",
+    "r7": "absent_from_research_sim (PROTOCOL \u00a70 amendment 5)",
+    "calendar_fixture": "programs/M001_multi_agent_ensemble/data/news_calendar_frozen_2026-07-24.json",
+    "n_calendar_events": 0
+  },
+  "totals": {
+    "n_trades": 5128,
+    "n_proposals_all": 19917,
+    "n_rejections": 17726,
+    "n_thoughts": 318979
+  },
+  "workspace_publish_counts": {
+    "bachira_meguru": 53163,
+    "barou_shoei": 53163,
+    "chigiri_hyoma": 35441,
+    "isagi_yoichi": 53163,
+    "itoshi_rin": 17723,
+    "nagi_seishiro": 53163,
+    "reo_mikage": 53163
+  },
+  "workspace_read_counts": {
+    "bachira_meguru": 3620,
+    "barou_shoei": 6793,
+    "isagi_yoichi": 6571,
+    "itoshi_rin": 2988,
+    "nagi_seishiro": 208,
+    "chigiri_hyoma": 1231
+  },
+  "per_window": [
+    {
+      "window_idx": 0,
+      "oos_start": "2019-01-01T00:00:00+00:00",
+      "oos_end": "2020-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 129,
+          "mean_tqs": 0.3905664584699024
+        },
+        "bachira_meguru": {
+          "n_trades": 124,
+          "mean_tqs": 0.38566957373712574
+        },
+        "itoshi_rin": {
+          "n_trades": 10,
+          "mean_tqs": 0.24346308424257412
+        },
+        "chigiri_hyoma": {
+          "n_trades": 73,
+          "mean_tqs": 0.24822253534098013
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 5,
+          "mean_tqs": 0.14668543106921222
+        },
+        "barou_shoei": {
+          "n_trades": 72,
+          "mean_tqs": 0.3327687912730067
+        }
+      }
+    },
+    {
+      "window_idx": 1,
+      "oos_start": "2020-01-01T00:00:00+00:00",
+      "oos_end": "2021-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 142,
+          "mean_tqs": 0.3541120250006044
+        },
+        "bachira_meguru": {
+          "n_trades": 86,
+          "mean_tqs": 0.35275126645242844
+        },
+        "itoshi_rin": {
+          "n_trades": 27,
+          "mean_tqs": 0.3371607298830675
+        },
+        "chigiri_hyoma": {
+          "n_trades": 80,
+          "mean_tqs": 0.25603550104355866
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 4,
+          "mean_tqs": 0.0
+        },
+        "barou_shoei": {
+          "n_trades": 47,
+          "mean_tqs": 0.40341523771939697
+        }
+      }
+    },
+    {
+      "window_idx": 2,
+      "oos_start": "2021-01-01T00:00:00+00:00",
+      "oos_end": "2022-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 147,
+          "mean_tqs": 0.33360717125425726
+        },
+        "bachira_meguru": {
+          "n_trades": 146,
+          "mean_tqs": 0.3104727886041153
+        },
+        "itoshi_rin": {
+          "n_trades": 25,
+          "mean_tqs": 0.31346605384204773
+        },
+        "chigiri_hyoma": {
+          "n_trades": 69,
+          "mean_tqs": 0.2209482106161233
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 6,
+          "mean_tqs": 0.3207222294516613
+        },
+        "barou_shoei": {
+          "n_trades": 75,
+          "mean_tqs": 0.473656199158872
+        }
+      }
+    },
+    {
+      "window_idx": 3,
+      "oos_start": "2022-01-01T00:00:00+00:00",
+      "oos_end": "2023-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 163,
+          "mean_tqs": 0.3557838923896876
+        },
+        "bachira_meguru": {
+          "n_trades": 102,
+          "mean_tqs": 0.43614542824783337
+        },
+        "itoshi_rin": {
+          "n_trades": 73,
+          "mean_tqs": 0.4536348610068982
+        },
+        "chigiri_hyoma": {
+          "n_trades": 66,
+          "mean_tqs": 0.29666224852569445
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 2,
+          "mean_tqs": 0.735348809083063
+        },
+        "barou_shoei": {
+          "n_trades": 63,
+          "mean_tqs": 0.4572112398500777
+        }
+      }
+    },
+    {
+      "window_idx": 4,
+      "oos_start": "2023-01-01T00:00:00+00:00",
+      "oos_end": "2024-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 149,
+          "mean_tqs": 0.38227409197359224
+        },
+        "bachira_meguru": {
+          "n_trades": 97,
+          "mean_tqs": 0.42492147563809185
+        },
+        "itoshi_rin": {
+          "n_trades": 29,
+          "mean_tqs": 0.32433047989419234
+        },
+        "chigiri_hyoma": {
+          "n_trades": 72,
+          "mean_tqs": 0.17131741128598396
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 2,
+          "mean_tqs": 0.0
+        },
+        "barou_shoei": {
+          "n_trades": 69,
+          "mean_tqs": 0.5362706517573155
+        }
+      }
+    },
+    {
+      "window_idx": 5,
+      "oos_start": "2024-01-01T00:00:00+00:00",
+      "oos_end": "2025-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 96,
+          "mean_tqs": 0.37271203406915215
+        },
+        "bachira_meguru": {
+          "n_trades": 86,
+          "mean_tqs": 0.40135960307679375
+        },
+        "itoshi_rin": {
+          "n_trades": 17,
+          "mean_tqs": 0.3722728996648678
+        },
+        "chigiri_hyoma": {
+          "n_trades": 70,
+          "mean_tqs": 0.2569910148305863
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 1,
+          "mean_tqs": 0.0
+        },
+        "barou_shoei": {
+          "n_trades": 63,
+          "mean_tqs": 0.3225761986815858
+        }
+      }
+    },
+    {
+      "window_idx": 6,
+      "oos_start": "2025-01-01T00:00:00+00:00",
+      "oos_end": "2025-12-31T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 109,
+          "mean_tqs": 0.34493438078483646
+        },
+        "bachira_meguru": {
+          "n_trades": 92,
+          "mean_tqs": 0.44067369538456097
+        },
+        "itoshi_rin": {
+          "n_trades": 21,
+          "mean_tqs": 0.4665819695710504
+        },
+        "chigiri_hyoma": {
+          "n_trades": 73,
+          "mean_tqs": 0.2226134999998213
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 1,
+          "mean_tqs": 0.0
+        },
+        "barou_shoei": {
+          "n_trades": 55,
+          "mean_tqs": 0.282342279668977
+        }
+      }
+    }
+  ],
+  "union_oos": {
+    "isagi_yoichi": {
+      "n_trades": 935,
+      "mean_tqs": 0.36153695380411677,
+      "tqs_values": null
+    },
+    "bachira_meguru": {
+      "n_trades": 733,
+      "mean_tqs": 0.3877923408631256,
+      "tqs_values": null
+    },
+    "itoshi_rin": {
+      "n_trades": 202,
+      "mean_tqs": 0.3862495609952956,
+      "tqs_values": null
+    },
+    "chigiri_hyoma": {
+      "n_trades": 503,
+      "mean_tqs": 0.23857501043599091,
+      "tqs_values": null
+    },
+    "reo_mikage": {
+      "n_trades": 0,
+      "mean_tqs": null,
+      "tqs_values": null
+    },
+    "nagi_seishiro": {
+      "n_trades": 21,
+      "mean_tqs": 0.19659324524867405,
+      "tqs_values": null
+    },
+    "barou_shoei": {
+      "n_trades": 444,
+      "mean_tqs": 0.40563556995929473,
+      "tqs_values": null
+    }
+  },
+  "sae_trade_meta": []
+}

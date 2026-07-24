@@ -1,0 +1,1475 @@
+{
+  "tag": "ae-treatment",
+  "run_at_utc": "2026-07-24T03:36:17.059595+00:00",
+  "sae_enabled": true,
+  "panel": {
+    "start": "2015-01-01T00:00:00+00:00",
+    "end": "2025-12-31T00:00:00+00:00",
+    "symbols": [
+      "EURUSD",
+      "GBPUSD",
+      "USDCAD"
+    ],
+    "n_windows": 7
+  },
+  "roster": [
+    "bachira_meguru",
+    "barou_shoei",
+    "chigiri_hyoma",
+    "isagi_yoichi",
+    "itoshi_rin",
+    "nagi_seishiro",
+    "reo_mikage"
+  ],
+  "config": {
+    "aggregator_arm": "phi41",
+    "sentinel_blocks": true,
+    "use_workspace": true,
+    "kunigami": "retired_r5_side_channel",
+    "r7": "absent_from_research_sim (PROTOCOL \u00a70 amendment 5)",
+    "calendar_fixture": "programs/M001_multi_agent_ensemble/data/news_calendar_frozen_2026-07-24.json",
+    "n_calendar_events": 349
+  },
+  "totals": {
+    "n_trades": 5208,
+    "n_proposals_all": 20107,
+    "n_rejections": 17841,
+    "n_thoughts": 319677
+  },
+  "workspace_publish_counts": {
+    "bachira_meguru": 53163,
+    "barou_shoei": 53163,
+    "chigiri_hyoma": 35441,
+    "isagi_yoichi": 53163,
+    "itoshi_rin": 17723,
+    "nagi_seishiro": 53163,
+    "reo_mikage": 53163,
+    "sae_itoshi": 698
+  },
+  "workspace_read_counts": {
+    "bachira_meguru": 3620,
+    "barou_shoei": 6793,
+    "isagi_yoichi": 6571,
+    "itoshi_rin": 2988,
+    "nagi_seishiro": 208,
+    "chigiri_hyoma": 1231
+  },
+  "per_window": [
+    {
+      "window_idx": 0,
+      "oos_start": "2019-01-01T00:00:00+00:00",
+      "oos_end": "2020-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 129,
+          "mean_tqs": 0.3905664584699024
+        },
+        "bachira_meguru": {
+          "n_trades": 124,
+          "mean_tqs": 0.38566957373712574
+        },
+        "itoshi_rin": {
+          "n_trades": 10,
+          "mean_tqs": 0.24346308424257412
+        },
+        "chigiri_hyoma": {
+          "n_trades": 73,
+          "mean_tqs": 0.24822253534098013
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 5,
+          "mean_tqs": 0.14668543106921222
+        },
+        "barou_shoei": {
+          "n_trades": 72,
+          "mean_tqs": 0.3327687912730067
+        },
+        "sae_itoshi": {
+          "n_trades": 3,
+          "mean_tqs": 0.24537399493586698
+        }
+      }
+    },
+    {
+      "window_idx": 1,
+      "oos_start": "2020-01-01T00:00:00+00:00",
+      "oos_end": "2021-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 142,
+          "mean_tqs": 0.3541120250006044
+        },
+        "bachira_meguru": {
+          "n_trades": 86,
+          "mean_tqs": 0.35275126645242844
+        },
+        "itoshi_rin": {
+          "n_trades": 27,
+          "mean_tqs": 0.3371607298830675
+        },
+        "chigiri_hyoma": {
+          "n_trades": 80,
+          "mean_tqs": 0.25603550104355866
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 4,
+          "mean_tqs": 0.0
+        },
+        "barou_shoei": {
+          "n_trades": 47,
+          "mean_tqs": 0.40341523771939697
+        },
+        "sae_itoshi": {
+          "n_trades": 9,
+          "mean_tqs": 0.06372603020580501
+        }
+      }
+    },
+    {
+      "window_idx": 2,
+      "oos_start": "2021-01-01T00:00:00+00:00",
+      "oos_end": "2022-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 147,
+          "mean_tqs": 0.33360717125425726
+        },
+        "bachira_meguru": {
+          "n_trades": 146,
+          "mean_tqs": 0.3104727886041153
+        },
+        "itoshi_rin": {
+          "n_trades": 25,
+          "mean_tqs": 0.31346605384204773
+        },
+        "chigiri_hyoma": {
+          "n_trades": 69,
+          "mean_tqs": 0.2209482106161233
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 6,
+          "mean_tqs": 0.3207222294516613
+        },
+        "barou_shoei": {
+          "n_trades": 75,
+          "mean_tqs": 0.473656199158872
+        },
+        "sae_itoshi": {
+          "n_trades": 7,
+          "mean_tqs": 0.09644444480983436
+        }
+      }
+    },
+    {
+      "window_idx": 3,
+      "oos_start": "2022-01-01T00:00:00+00:00",
+      "oos_end": "2023-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 163,
+          "mean_tqs": 0.3557838923896876
+        },
+        "bachira_meguru": {
+          "n_trades": 102,
+          "mean_tqs": 0.43614542824783337
+        },
+        "itoshi_rin": {
+          "n_trades": 73,
+          "mean_tqs": 0.4536348610068982
+        },
+        "chigiri_hyoma": {
+          "n_trades": 65,
+          "mean_tqs": 0.30122628311839744
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 2,
+          "mean_tqs": 0.735348809083063
+        },
+        "barou_shoei": {
+          "n_trades": 63,
+          "mean_tqs": 0.4572112398500777
+        },
+        "sae_itoshi": {
+          "n_trades": 6,
+          "mean_tqs": 0.2664546628347988
+        }
+      }
+    },
+    {
+      "window_idx": 4,
+      "oos_start": "2023-01-01T00:00:00+00:00",
+      "oos_end": "2024-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 149,
+          "mean_tqs": 0.38227409197359224
+        },
+        "bachira_meguru": {
+          "n_trades": 97,
+          "mean_tqs": 0.42492147563809185
+        },
+        "itoshi_rin": {
+          "n_trades": 29,
+          "mean_tqs": 0.32433047989419234
+        },
+        "chigiri_hyoma": {
+          "n_trades": 71,
+          "mean_tqs": 0.17373033257170206
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 2,
+          "mean_tqs": 0.0
+        },
+        "barou_shoei": {
+          "n_trades": 69,
+          "mean_tqs": 0.5362706517573155
+        },
+        "sae_itoshi": {
+          "n_trades": 12,
+          "mean_tqs": 0.08813866817436827
+        }
+      }
+    },
+    {
+      "window_idx": 5,
+      "oos_start": "2024-01-01T00:00:00+00:00",
+      "oos_end": "2025-01-01T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 96,
+          "mean_tqs": 0.37271203406915215
+        },
+        "bachira_meguru": {
+          "n_trades": 86,
+          "mean_tqs": 0.40135960307679375
+        },
+        "itoshi_rin": {
+          "n_trades": 17,
+          "mean_tqs": 0.3722728996648678
+        },
+        "chigiri_hyoma": {
+          "n_trades": 70,
+          "mean_tqs": 0.2569910148305863
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 1,
+          "mean_tqs": 0.0
+        },
+        "barou_shoei": {
+          "n_trades": 63,
+          "mean_tqs": 0.3225761986815858
+        },
+        "sae_itoshi": {
+          "n_trades": 9,
+          "mean_tqs": 0.0
+        }
+      }
+    },
+    {
+      "window_idx": 6,
+      "oos_start": "2025-01-01T00:00:00+00:00",
+      "oos_end": "2025-12-31T00:00:00+00:00",
+      "agents": {
+        "isagi_yoichi": {
+          "n_trades": 109,
+          "mean_tqs": 0.34493438078483646
+        },
+        "bachira_meguru": {
+          "n_trades": 92,
+          "mean_tqs": 0.44067369538456097
+        },
+        "itoshi_rin": {
+          "n_trades": 21,
+          "mean_tqs": 0.4665819695710504
+        },
+        "chigiri_hyoma": {
+          "n_trades": 73,
+          "mean_tqs": 0.2226134999998213
+        },
+        "reo_mikage": {
+          "n_trades": 0,
+          "mean_tqs": null
+        },
+        "nagi_seishiro": {
+          "n_trades": 1,
+          "mean_tqs": 0.0
+        },
+        "barou_shoei": {
+          "n_trades": 55,
+          "mean_tqs": 0.282342279668977
+        },
+        "sae_itoshi": {
+          "n_trades": 8,
+          "mean_tqs": 0.07275536221452096
+        }
+      }
+    }
+  ],
+  "union_oos": {
+    "isagi_yoichi": {
+      "n_trades": 935,
+      "mean_tqs": 0.36153695380411677,
+      "tqs_values": null
+    },
+    "bachira_meguru": {
+      "n_trades": 733,
+      "mean_tqs": 0.3877923408631256,
+      "tqs_values": null
+    },
+    "itoshi_rin": {
+      "n_trades": 202,
+      "mean_tqs": 0.3862495609952956,
+      "tqs_values": null
+    },
+    "chigiri_hyoma": {
+      "n_trades": 501,
+      "mean_tqs": 0.23952740568723238,
+      "tqs_values": null
+    },
+    "reo_mikage": {
+      "n_trades": 0,
+      "mean_tqs": null,
+      "tqs_values": null
+    },
+    "nagi_seishiro": {
+      "n_trades": 21,
+      "mean_tqs": 0.19659324524867405,
+      "tqs_values": null
+    },
+    "barou_shoei": {
+      "n_trades": 444,
+      "mean_tqs": 0.40563556995929473,
+      "tqs_values": null
+    },
+    "sae_itoshi": {
+      "n_trades": 54,
+      "mean_tqs": 0.09672596783603826,
+      "tqs_values": [
+        0.7361219848076009,
+        0.0,
+        0.0,
+        0.0,
+        0.46464865510016173,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.10888561675208336,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.6751111136688405,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.13090979202583922,
+        0.0,
+        0.7994971159153795,
+        0.0,
+        0.668321069067574,
+        0.0,
+        0.48604553350991087,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5716184845825084,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.5820428977161677,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  },
+  "sae_trade_meta": [
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2015-01-09T13:30:00+00:00",
+      "entry_time": "2015-01-09T13:45:00+00:00",
+      "exit_time": "2015-01-09T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 8.849999999998026,
+      "r_multiple": 1.5,
+      "tqs": 0.7230941046373549
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2015-01-16T13:30:00+00:00",
+      "entry_time": "2015-01-16T14:00:00+00:00",
+      "exit_time": "2015-01-16T14:15:00+00:00",
+      "direction": "short",
+      "exit_reason": "tp",
+      "pnl_pips": 22.95000000000158,
+      "r_multiple": 1.5000000000000726,
+      "tqs": 0.7787567215254555
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2015-02-06T13:30:00+00:00",
+      "entry_time": "2015-02-06T13:45:00+00:00",
+      "exit_time": "2015-02-06T14:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -31.49999999999986,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2015-03-06T13:30:00+00:00",
+      "entry_time": "2015-03-06T13:45:00+00:00",
+      "exit_time": "2015-03-06T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 20.700000000002383,
+      "r_multiple": 1.5,
+      "tqs": 0.5946056667406694
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Consumer Price Index",
+      "event_time": "2015-04-17T12:30:00+00:00",
+      "entry_time": "2015-04-17T12:45:00+00:00",
+      "exit_time": "2015-04-17T12:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -10.699999999999044,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2015-05-08T12:30:00+00:00",
+      "entry_time": "2015-05-08T12:45:00+00:00",
+      "exit_time": "2015-05-08T12:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 54.7500000000034,
+      "r_multiple": 1.5000000000000302,
+      "tqs": 0.7485951440372914
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Consumer Price Index",
+      "event_time": "2015-05-22T12:30:00+00:00",
+      "entry_time": "2015-05-22T12:45:00+00:00",
+      "exit_time": "2015-05-22T12:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -14.299999999998203,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2015-07-02T12:30:00+00:00",
+      "entry_time": "2015-07-02T13:00:00+00:00",
+      "exit_time": "2015-07-05T21:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -44.39999999999999,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2015-09-16T12:30:00+00:00",
+      "entry_time": "2015-09-16T13:00:00+00:00",
+      "exit_time": "2015-09-16T16:30:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 46.49999999999821,
+      "r_multiple": 1.5,
+      "tqs": 1.1701062512386895
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Consumer Price Index",
+      "event_time": "2015-10-15T12:30:00+00:00",
+      "entry_time": "2015-10-15T12:45:00+00:00",
+      "exit_time": "2015-10-15T12:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 12.149999999999661,
+      "r_multiple": 1.5,
+      "tqs": 0.6276720020571733
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2015-10-28T18:00:00+00:00",
+      "entry_time": "2015-10-28T18:15:00+00:00",
+      "exit_time": "2015-10-28T18:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -26.999999999999247,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2015-11-17T13:30:00+00:00",
+      "entry_time": "2015-11-17T14:00:00+00:00",
+      "exit_time": "2015-11-17T14:15:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -12.999999999998568,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2015-12-04T13:30:00+00:00",
+      "entry_time": "2015-12-04T13:45:00+00:00",
+      "exit_time": "2015-12-04T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 28.049999999997244,
+      "r_multiple": 1.5,
+      "tqs": 0.7790731356340571
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2016-02-05T13:30:00+00:00",
+      "entry_time": "2016-02-05T13:45:00+00:00",
+      "exit_time": "2016-02-05T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -6.999999999999229,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2016-03-04T13:30:00+00:00",
+      "entry_time": "2016-03-04T13:45:00+00:00",
+      "exit_time": "2016-03-04T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 46.0499999999997,
+      "r_multiple": 1.500000000000036,
+      "tqs": 0.6352092376158204
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2016-04-01T12:30:00+00:00",
+      "entry_time": "2016-04-01T13:00:00+00:00",
+      "exit_time": "2016-04-01T14:00:00+00:00",
+      "direction": "short",
+      "exit_reason": "tp",
+      "pnl_pips": 38.549999999999415,
+      "r_multiple": 1.4999999999999998,
+      "tqs": 0.7372372510875136
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2016-06-15T18:00:00+00:00",
+      "entry_time": "2016-06-15T18:30:00+00:00",
+      "exit_time": "2016-06-15T18:30:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -14.300000000000423,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2016-08-05T12:30:00+00:00",
+      "entry_time": "2016-08-05T12:45:00+00:00",
+      "exit_time": "2016-08-05T13:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -22.100000000000453,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2016-09-16T12:30:00+00:00",
+      "entry_time": "2016-09-16T13:00:00+00:00",
+      "exit_time": "2016-09-21T04:15:00+00:00",
+      "direction": "short",
+      "exit_reason": "tp",
+      "pnl_pips": 57.899999999999615,
+      "r_multiple": 1.5,
+      "tqs": 9.814315057048445e-68
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2016-10-07T12:30:00+00:00",
+      "entry_time": "2016-10-07T13:00:00+00:00",
+      "exit_time": "2016-10-10T17:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -33.69999999999873,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2016-12-02T13:30:00+00:00",
+      "entry_time": "2016-12-02T14:00:00+00:00",
+      "exit_time": "2016-12-02T14:00:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -8.699999999999264,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2016-12-14T19:00:00+00:00",
+      "entry_time": "2016-12-14T19:15:00+00:00",
+      "exit_time": "2016-12-14T19:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 13.650000000000606,
+      "r_multiple": 1.500000000000122,
+      "tqs": 0.5058385792078016
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2016-12-15T13:30:00+00:00",
+      "entry_time": "2016-12-15T14:00:00+00:00",
+      "exit_time": "2016-12-15T15:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -15.300000000000313,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2017-01-18T13:30:00+00:00",
+      "entry_time": "2017-01-18T14:00:00+00:00",
+      "exit_time": "2017-01-18T14:30:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 8.550000000000502,
+      "r_multiple": 1.5000000000001947,
+      "tqs": 0.5981763713166028
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2017-03-10T13:30:00+00:00",
+      "entry_time": "2017-03-10T14:00:00+00:00",
+      "exit_time": "2017-03-14T19:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -44.50000000000065,
+      "r_multiple": -0.9999999999999999,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2017-04-14T12:30:00+00:00",
+      "entry_time": "2017-04-14T13:00:00+00:00",
+      "exit_time": "2017-04-14T18:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -16.100000000001113,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2017-05-03T18:00:00+00:00",
+      "entry_time": "2017-05-03T18:30:00+00:00",
+      "exit_time": "2017-05-04T07:45:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -17.400000000000748,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2017-06-14T18:00:00+00:00",
+      "entry_time": "2017-06-14T18:30:00+00:00",
+      "exit_time": "2017-06-14T18:30:00+00:00",
+      "direction": "short",
+      "exit_reason": "tp",
+      "pnl_pips": 33.449999999999314,
+      "r_multiple": 1.5,
+      "tqs": 0.6602555108903827
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2017-09-20T18:00:00+00:00",
+      "entry_time": "2017-09-20T18:15:00+00:00",
+      "exit_time": "2017-09-20T18:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -24.799999999998157,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2018-04-06T12:30:00+00:00",
+      "entry_time": "2018-04-06T13:00:00+00:00",
+      "exit_time": "2018-04-06T13:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 26.399999999999757,
+      "r_multiple": 1.5,
+      "tqs": 0.6845628850279667
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2018-06-12T12:30:00+00:00",
+      "entry_time": "2018-06-12T13:00:00+00:00",
+      "exit_time": "2018-06-12T15:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -21.400000000000308,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2018-08-10T12:30:00+00:00",
+      "entry_time": "2018-08-10T13:00:00+00:00",
+      "exit_time": "2018-08-10T13:15:00+00:00",
+      "direction": "short",
+      "exit_reason": "tp",
+      "pnl_pips": 11.250000000000426,
+      "r_multiple": 1.5,
+      "tqs": 0.6378714753003769
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2018-12-12T13:30:00+00:00",
+      "entry_time": "2018-12-12T14:00:00+00:00",
+      "exit_time": "2018-12-12T14:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -17.100000000001003,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2019-07-31T18:00:00+00:00",
+      "entry_time": "2019-07-31T18:30:00+00:00",
+      "exit_time": "2019-07-31T18:45:00+00:00",
+      "direction": "short",
+      "exit_reason": "tp",
+      "pnl_pips": 38.999999999997925,
+      "r_multiple": 1.4999999999999574,
+      "tqs": 0.7361219848076009
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2019-08-13T12:30:00+00:00",
+      "entry_time": "2019-08-13T13:00:00+00:00",
+      "exit_time": "2019-08-13T13:00:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -2.9999999999996696,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2019-11-13T13:30:00+00:00",
+      "entry_time": "2019-11-13T14:00:00+00:00",
+      "exit_time": "2019-11-13T14:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -1.2999999999996348,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2020-01-14T13:30:00+00:00",
+      "entry_time": "2020-01-14T14:00:00+00:00",
+      "exit_time": "2020-01-14T14:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -0.4999999999988347,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2020-01-29T19:00:00+00:00",
+      "entry_time": "2020-01-29T19:30:00+00:00",
+      "exit_time": "2020-01-29T19:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 8.40000000000174,
+      "r_multiple": 1.5,
+      "tqs": 0.46464865510016173
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2020-04-03T12:30:00+00:00",
+      "entry_time": "2020-04-03T13:00:00+00:00",
+      "exit_time": "2020-04-03T14:45:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -24.200000000000887,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2020-04-10T12:30:00+00:00",
+      "entry_time": "2020-04-10T13:00:00+00:00",
+      "exit_time": "2020-04-10T13:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -1.0999999999983245,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2020-06-05T12:30:00+00:00",
+      "entry_time": "2020-06-05T13:00:00+00:00",
+      "exit_time": "2020-06-09T13:30:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -37.199999999999456,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2020-06-10T18:00:00+00:00",
+      "entry_time": "2020-06-10T18:30:00+00:00",
+      "exit_time": "2020-06-10T19:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -43.10000000000036,
+      "r_multiple": -0.9999999999999999,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2020-08-12T12:30:00+00:00",
+      "entry_time": "2020-08-12T13:00:00+00:00",
+      "exit_time": "2020-08-13T06:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 32.8499999999976,
+      "r_multiple": 1.4999999999999492,
+      "tqs": 0.10888561675208336
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2020-09-16T18:00:00+00:00",
+      "entry_time": "2020-09-16T18:30:00+00:00",
+      "exit_time": "2020-09-16T18:30:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -5.599999999998939,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2020-10-02T12:30:00+00:00",
+      "entry_time": "2020-10-02T13:00:00+00:00",
+      "exit_time": "2020-10-05T00:30:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -18.500000000001293,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2021-03-10T13:30:00+00:00",
+      "entry_time": "2021-03-10T14:00:00+00:00",
+      "exit_time": "2021-03-10T15:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -23.199999999998777,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2021-04-02T12:30:00+00:00",
+      "entry_time": "2021-04-02T13:00:00+00:00",
+      "exit_time": "2021-04-02T13:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -1.100000000000545,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2021-04-28T18:00:00+00:00",
+      "entry_time": "2021-04-28T18:30:00+00:00",
+      "exit_time": "2021-04-28T18:30:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 26.55000000000074,
+      "r_multiple": 1.5,
+      "tqs": 0.6751111136688405
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2021-09-03T12:30:00+00:00",
+      "entry_time": "2021-09-03T13:00:00+00:00",
+      "exit_time": "2021-09-03T14:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -19.999999999997797,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2021-09-14T12:30:00+00:00",
+      "entry_time": "2021-09-14T13:00:00+00:00",
+      "exit_time": "2021-09-14T18:30:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -30.600000000000627,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2021-12-10T13:30:00+00:00",
+      "entry_time": "2021-12-10T14:00:00+00:00",
+      "exit_time": "2021-12-13T09:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -25.899999999998702,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2021-12-15T19:00:00+00:00",
+      "entry_time": "2021-12-15T19:30:00+00:00",
+      "exit_time": "2021-12-15T19:45:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -27.599999999998737,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2022-01-12T13:30:00+00:00",
+      "entry_time": "2022-01-12T14:00:00+00:00",
+      "exit_time": "2022-01-13T08:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 63.1500000000007,
+      "r_multiple": 1.5,
+      "tqs": 0.13090979202583922
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2022-08-05T12:30:00+00:00",
+      "entry_time": "2022-08-05T12:45:00+00:00",
+      "exit_time": "2022-08-05T12:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -11.699999999998933,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2022-09-21T18:00:00+00:00",
+      "entry_time": "2022-09-21T18:15:00+00:00",
+      "exit_time": "2022-09-21T18:30:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 35.69999999999851,
+      "r_multiple": 1.4999999999999765,
+      "tqs": 0.7994971159153795
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2022-10-07T12:30:00+00:00",
+      "entry_time": "2022-10-07T12:45:00+00:00",
+      "exit_time": "2022-10-07T12:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -7.899999999999574,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Consumer Price Index",
+      "event_time": "2022-10-13T12:30:00+00:00",
+      "entry_time": "2022-10-13T12:45:00+00:00",
+      "exit_time": "2022-10-13T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 33.449999999999314,
+      "r_multiple": 1.5,
+      "tqs": 0.668321069067574
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2022-12-02T13:30:00+00:00",
+      "entry_time": "2022-12-02T13:45:00+00:00",
+      "exit_time": "2022-12-02T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -19.199999999999218,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2023-01-06T13:30:00+00:00",
+      "entry_time": "2023-01-06T14:00:00+00:00",
+      "exit_time": "2023-01-06T16:30:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 72.3000000000007,
+      "r_multiple": 1.5,
+      "tqs": 0.48604553350991087
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2023-02-01T19:00:00+00:00",
+      "entry_time": "2023-02-01T19:30:00+00:00",
+      "exit_time": "2023-02-01T19:30:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -4.799999999998139,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2023-02-03T13:30:00+00:00",
+      "entry_time": "2023-02-03T13:45:00+00:00",
+      "exit_time": "2023-02-03T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -6.500000000000394,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2023-03-14T12:30:00+00:00",
+      "entry_time": "2023-03-14T13:00:00+00:00",
+      "exit_time": "2023-03-14T13:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -9.299999999998754,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2023-06-02T12:30:00+00:00",
+      "entry_time": "2023-06-02T13:00:00+00:00",
+      "exit_time": "2023-06-02T13:00:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -14.000000000000679,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2023-07-07T12:30:00+00:00",
+      "entry_time": "2023-07-07T13:00:00+00:00",
+      "exit_time": "2023-07-07T14:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "tp",
+      "pnl_pips": 37.65000000000018,
+      "r_multiple": 1.5,
+      "tqs": 0.5716184845825084
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2023-08-04T12:30:00+00:00",
+      "entry_time": "2023-08-04T13:00:00+00:00",
+      "exit_time": "2023-08-08T11:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -39.89999999999938,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2023-09-01T12:30:00+00:00",
+      "entry_time": "2023-09-01T13:00:00+00:00",
+      "exit_time": "2023-09-01T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -20.899999999999253,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2023-09-13T12:30:00+00:00",
+      "entry_time": "2023-09-13T13:00:00+00:00",
+      "exit_time": "2023-09-13T13:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -10.200000000000209,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2023-10-06T12:30:00+00:00",
+      "entry_time": "2023-10-06T12:45:00+00:00",
+      "exit_time": "2023-10-06T12:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -11.499999999997623,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Consumer Price Index",
+      "event_time": "2023-10-12T12:30:00+00:00",
+      "entry_time": "2023-10-12T12:45:00+00:00",
+      "exit_time": "2023-10-12T13:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -15.999999999998238,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2023-12-12T13:30:00+00:00",
+      "entry_time": "2023-12-12T14:00:00+00:00",
+      "exit_time": "2023-12-13T14:00:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -32.29999999999844,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2024-01-11T13:30:00+00:00",
+      "entry_time": "2024-01-11T14:00:00+00:00",
+      "exit_time": "2024-01-12T15:00:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -47.50000000000032,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2024-02-02T13:30:00+00:00",
+      "entry_time": "2024-02-02T13:45:00+00:00",
+      "exit_time": "2024-02-02T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -21.800000000000708,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Consumer Price Index",
+      "event_time": "2024-02-13T13:30:00+00:00",
+      "entry_time": "2024-02-13T13:45:00+00:00",
+      "exit_time": "2024-02-13T13:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -10.700000000001264,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2024-03-20T18:00:00+00:00",
+      "entry_time": "2024-03-20T18:30:00+00:00",
+      "exit_time": "2024-03-20T18:30:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -17.000000000000348,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2024-04-05T12:30:00+00:00",
+      "entry_time": "2024-04-05T13:00:00+00:00",
+      "exit_time": "2024-04-05T15:45:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -35.70000000000073,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2024-06-07T12:30:00+00:00",
+      "entry_time": "2024-06-07T12:45:00+00:00",
+      "exit_time": "2024-06-07T12:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -8.899999999998354,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2024-09-18T18:00:00+00:00",
+      "entry_time": "2024-09-18T18:30:00+00:00",
+      "exit_time": "2024-09-18T19:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -46.800000000000175,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2024-10-10T12:30:00+00:00",
+      "entry_time": "2024-10-10T13:00:00+00:00",
+      "exit_time": "2024-10-10T14:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -12.499999999999734,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2024-11-07T19:00:00+00:00",
+      "entry_time": "2024-11-07T19:30:00+00:00",
+      "exit_time": "2024-11-07T19:30:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -14.400000000001079,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2025-03-12T12:30:00+00:00",
+      "entry_time": "2025-03-12T13:00:00+00:00",
+      "exit_time": "2025-03-12T13:00:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -14.199999999999768,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2025-03-19T18:00:00+00:00",
+      "entry_time": "2025-03-19T18:30:00+00:00",
+      "exit_time": "2025-03-20T07:30:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -19.099999999998563,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_fade",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2025-04-04T12:30:00+00:00",
+      "entry_time": "2025-04-04T12:45:00+00:00",
+      "exit_time": "2025-04-04T12:45:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -5.1000000000001044,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2025-05-02T12:30:00+00:00",
+      "entry_time": "2025-05-02T13:00:00+00:00",
+      "exit_time": "2025-05-02T13:15:00+00:00",
+      "direction": "short",
+      "exit_reason": "sl",
+      "pnl_pips": -14.899999999999913,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Employment Situation (NFP)",
+      "event_time": "2025-06-06T12:30:00+00:00",
+      "entry_time": "2025-06-06T13:00:00+00:00",
+      "exit_time": "2025-06-06T13:15:00+00:00",
+      "direction": "short",
+      "exit_reason": "tp",
+      "pnl_pips": 14.849999999999586,
+      "r_multiple": 1.4999999999998879,
+      "tqs": 0.5820428977161677
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2025-07-15T12:30:00+00:00",
+      "entry_time": "2025-07-15T13:00:00+00:00",
+      "exit_time": "2025-07-15T13:00:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -12.400000000001299,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "FOMC Statement (scheduled)",
+      "event_time": "2025-07-30T18:00:00+00:00",
+      "entry_time": "2025-07-30T18:30:00+00:00",
+      "exit_time": "2025-07-30T18:30:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -5.399999999999849,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    },
+    {
+      "mechanic": "sae_ride",
+      "event_title": "Consumer Price Index",
+      "event_time": "2025-12-18T13:30:00+00:00",
+      "entry_time": "2025-12-18T14:00:00+00:00",
+      "exit_time": "2025-12-18T15:15:00+00:00",
+      "direction": "long",
+      "exit_reason": "sl",
+      "pnl_pips": -18.599999999999728,
+      "r_multiple": -1.0,
+      "tqs": 0.0
+    }
+  ]
+}

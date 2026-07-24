@@ -1,0 +1,103 @@
+{
+  "verdict": "FAIL",
+  "verdict_rule": "PASS iff AE1 AND AE2 AND AE4 (AE3 parks only)",
+  "ae1": {
+    "pass": true,
+    "n_oos_trades": 54,
+    "threshold": 30
+  },
+  "ae2": {
+    "pass": false,
+    "mean_tqs": 0.09672596783603826,
+    "bootstrap_ci95": [
+      0.04167919527548031,
+      0.16199825163716441
+    ],
+    "mean_floor": 0.3,
+    "ci_lower_floor": 0.2,
+    "bootstrap": {
+      "n": 10000,
+      "seed": 42,
+      "method": "percentile"
+    }
+  },
+  "ae3": {
+    "split": {
+      "sae_fade": {
+        "n_trades": 12,
+        "fraction": 0.2222222222222222,
+        "mean_tqs": 0.1223181820819128,
+        "mean_pnl_pips": -4.179166666666382
+      },
+      "sae_ride": {
+        "n_trades": 42,
+        "fraction": 0.7777777777777778,
+        "mean_tqs": 0.08941390662293125,
+        "mean_pnl_pips": -8.524999999999757
+      }
+    },
+    "n_oos_meta": 54,
+    "park_threshold_fraction": 0.2,
+    "parked_mechanics": []
+  },
+  "ae4": {
+    "pass": true,
+    "max_regression_allowed": 0.02,
+    "regressed_agents": [],
+    "per_agent": {
+      "isagi_yoichi": {
+        "baseline_mean_tqs": 0.36153695380411677,
+        "treatment_mean_tqs": 0.36153695380411677,
+        "delta": 0.0,
+        "baseline_n": 935,
+        "treatment_n": 935
+      },
+      "bachira_meguru": {
+        "baseline_mean_tqs": 0.3877923408631256,
+        "treatment_mean_tqs": 0.3877923408631256,
+        "delta": 0.0,
+        "baseline_n": 733,
+        "treatment_n": 733
+      },
+      "itoshi_rin": {
+        "baseline_mean_tqs": 0.3862495609952956,
+        "treatment_mean_tqs": 0.3862495609952956,
+        "delta": 0.0,
+        "baseline_n": 202,
+        "treatment_n": 202
+      },
+      "chigiri_hyoma": {
+        "baseline_mean_tqs": 0.23857501043599091,
+        "treatment_mean_tqs": 0.23952740568723238,
+        "delta": 0.0009523952512414668,
+        "baseline_n": 503,
+        "treatment_n": 501
+      },
+      "reo_mikage": {
+        "baseline_mean_tqs": null,
+        "treatment_mean_tqs": null,
+        "delta": null,
+        "baseline_n": 0,
+        "treatment_n": 0
+      },
+      "nagi_seishiro": {
+        "baseline_mean_tqs": 0.19659324524867405,
+        "treatment_mean_tqs": 0.19659324524867405,
+        "delta": 0.0,
+        "baseline_n": 21,
+        "treatment_n": 21
+      },
+      "barou_shoei": {
+        "baseline_mean_tqs": 0.40563556995929473,
+        "treatment_mean_tqs": 0.40563556995929473,
+        "delta": 0.0,
+        "baseline_n": 444,
+        "treatment_n": 444
+      }
+    }
+  },
+  "arms": {
+    "baseline_tag": "ae-baseline",
+    "treatment_tag": "ae-treatment"
+  }
+}
