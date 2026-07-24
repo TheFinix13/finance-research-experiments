@@ -1,0 +1,3015 @@
+{
+  "fixture_name": "news_calendar_frozen_2026-07-24",
+  "frozen_at_utc": "2026-07-24T02:28:22.644215+00:00",
+  "window": [
+    "2015-01-01T00:00:00+00:00",
+    "2025-12-31T23:59:00+00:00"
+  ],
+  "event_types": [
+    "Employment Situation (NFP)",
+    "Consumer Price Index",
+    "FOMC Statement (scheduled)"
+  ],
+  "scope_note": "Conservative subset of high-impact USD (NFP+CPI+FOMC only); ~2.7 events/month vs the FF-High 4-8/month prior. See Phase AE PROTOCOL pre-run amendment 2026-07-24.",
+  "n_events": 349,
+  "manifest": [
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20150112110626)",
+      "url": "http://web.archive.org/web/20150112110626/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "a3186863c1fabd31866e3b0704ca4ddf768ada409715fd0cad6d124b76975cf4",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20151108140129)",
+      "url": "http://web.archive.org/web/20151108140129/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "9f87e7f96b0892595e42373ca2ebade1e356a4003ee2e197b3e2890e7e4a3c62",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20161102205218)",
+      "url": "http://web.archive.org/web/20161102205218/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "23b0b9d7aabb0ce59627e25ad71a9d4c0b1ed59a75b046c287e5d3dd2106f32c",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20170712082328)",
+      "url": "http://web.archive.org/web/20170712082328/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "b63c5588da56c6c12da1088cba4a9ca91ab17894f00c39eb8ba885aa5b88b06c",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20180403044014)",
+      "url": "http://web.archive.org/web/20180403044014/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "b0e6bfcb1fcb0310b64edbd75dce7aa642c29ae87d916daf066559883dde2aa9",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20180709171127)",
+      "url": "http://web.archive.org/web/20180709171127/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "4ee02a3993e2f599f4578b5cf760d06445ab40b2a6251e14506ef335fa347536",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20190109020429)",
+      "url": "http://web.archive.org/web/20190109020429/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "c6fd56a2463dce0ecfaa9b86004abff438584da57254c5dcc98dea63b7070b7a",
+      "rows_parsed": 15
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20191216030043)",
+      "url": "http://web.archive.org/web/20191216030043/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "7c7013f212c8e8b5bb60abdbf736e9a4a7219c9ab80b7ef544d7fca4b53b224a",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20201210210550)",
+      "url": "http://web.archive.org/web/20201210210550/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "3f1bc7dfddd24bf397d93a9d400b8dd8081b2fbeae9d69b4c5a9400ff3c726e3",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20220110090111)",
+      "url": "http://web.archive.org/web/20220110090111/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "d0461c38f47fa3ebbe9fc556e3fd37489688e1dd44afe9ad1ac3d03dc456f3cb",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20230101123540)",
+      "url": "http://web.archive.org/web/20230101123540/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "32e57714721bc8820e371dce6c32f4139233a8fc43fee945552ee5a18368e7d1",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20240104231820)",
+      "url": "http://web.archive.org/web/20240104231820/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "157ab243461886d4b2ed5f0fceaf7e75a993fe7a61356a19e521616bdd3cf3f8",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20250104044052)",
+      "url": "http://web.archive.org/web/20250104044052/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "2a678eedc7ffcdd4e651590acaa26ec834c5a4e095c2a0cea2673ab7487e83a7",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS empsit schedule (official page via Internet Archive snapshot 20251218182154)",
+      "url": "http://web.archive.org/web/20251218182154/https://www.bls.gov/schedule/news_release/empsit.htm",
+      "sha256": "561b7764bd695f92c84123872a566eac86d6f017120d6d3c9226cb5561e242ab",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20150106084259)",
+      "url": "http://web.archive.org/web/20150106084259/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "a3bd13021b8f98cda2c7bbe0f3e99dd12c55344981136b45e35b1a29cfaef924",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20151104144625)",
+      "url": "http://web.archive.org/web/20151104144625/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "18ec366138e114c80e837246cf4f3cfc3282fae059dcf211eb82b8974fb47306",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20161113011116)",
+      "url": "http://web.archive.org/web/20161113011116/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "b943896bcd5110abb9a4dfc478504e43b01bfa71482f7cad65eed412e8a2a494",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20170712123245)",
+      "url": "http://web.archive.org/web/20170712123245/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "1376b37f1a9b04fb26e8a3c991d349b96b0bb10e8116e698a9d7892df9167c04",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20180910095325)",
+      "url": "http://web.archive.org/web/20180910095325/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "ff8a3d2dfff94653b03924df8dc828b63586b66a066af9c10b3b56f54afc2f1c",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20190109024228)",
+      "url": "http://web.archive.org/web/20190109024228/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "69e2a3dccaf902c0fc0a05596be045f867ac0760c8092927d5865d3dbddce6bf",
+      "rows_parsed": 15
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20191216023559)",
+      "url": "http://web.archive.org/web/20191216023559/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "a85afca0751288faa9cf079ddd454e65956635726dbccbebcdf4ec3a6f136aa1",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20201223200317)",
+      "url": "http://web.archive.org/web/20201223200317/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "1b4be19f8e65f52bdb5b2fcbce4f9533d2144fc4323d540637f52ef2e62b19f9",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20220109075526)",
+      "url": "http://web.archive.org/web/20220109075526/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "088b6ddde3d37bf11ca52dddab2f735cd465d988661182de5e54e93f68d9cf54",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20230104040906)",
+      "url": "http://web.archive.org/web/20230104040906/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "a8282240a4b98698e3c0ce49d8dfc8efb64e556ba9815c9d29356f2a40b03533",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20240104231820)",
+      "url": "http://web.archive.org/web/20240104231820/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "ed624509e1918607f65c06ebdcae7531a11835e15935969ac5783d49710f3fba",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20250104044048)",
+      "url": "http://web.archive.org/web/20250104044048/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "c9220b1a3eb65fa8910ce32191c406a0985c80986cda6928deaaed2615a9ad7f",
+      "rows_parsed": 14
+    },
+    {
+      "source": "BLS cpi schedule (official page via Internet Archive snapshot 20251201084332)",
+      "url": "http://web.archive.org/web/20251201084332/https://www.bls.gov/schedule/news_release/cpi.htm",
+      "sha256": "019f9e3801cbb1434846623c271797fd11319ab537145dd1b67a4296e1fa5800",
+      "rows_parsed": 14
+    },
+    {
+      "source": "Federal Reserve FOMC historical calendar 2015 (scheduled meetings only; unscheduled/cancelled/notation-vote panels excluded)",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm",
+      "sha256": "e494cae498afa1cde87949b24a4171900aceec57040534c716f74131ac14963d",
+      "rows_parsed": 8
+    },
+    {
+      "source": "Federal Reserve FOMC historical calendar 2016 (scheduled meetings only; unscheduled/cancelled/notation-vote panels excluded)",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm",
+      "sha256": "325282a548b06443333d2cbcf575a66355fc0d962688f9996d6cd8d25c2d2e88",
+      "rows_parsed": 8
+    },
+    {
+      "source": "Federal Reserve FOMC historical calendar 2017 (scheduled meetings only; unscheduled/cancelled/notation-vote panels excluded)",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm",
+      "sha256": "23bff405b40e900d2059121b4f2f6bd5f13a7593dad62ce9f84118d86d8a7e6c",
+      "rows_parsed": 8
+    },
+    {
+      "source": "Federal Reserve FOMC historical calendar 2018 (scheduled meetings only; unscheduled/cancelled/notation-vote panels excluded)",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm",
+      "sha256": "ffb1ef386189d480a18af7fbff80586777241528e5180767a5c1ad50fb38cb83",
+      "rows_parsed": 8
+    },
+    {
+      "source": "Federal Reserve FOMC historical calendar 2019 (scheduled meetings only; unscheduled/cancelled/notation-vote panels excluded)",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm",
+      "sha256": "f7c1ef4b66620237f8be75032178c7a11a2f49233a0af0ddc4561d012872a3e4",
+      "rows_parsed": 8
+    },
+    {
+      "source": "Federal Reserve FOMC historical calendar 2020 (scheduled meetings only; unscheduled/cancelled/notation-vote panels excluded)",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm",
+      "sha256": "884699907f0269b8e8276a597e1052c631352c7d01c6bea53e47cb655bd87da8",
+      "rows_parsed": 7
+    },
+    {
+      "source": "Federal Reserve fomccalendars.htm (2021+ scheduled statement links)",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+      "sha256": "f37dc34bf166a24c81b9ec18be1ef1febea41c4411547b79aac5dc58df939bf3",
+      "rows_parsed": 44
+    }
+  ],
+  "events": [
+    {
+      "time_utc": "2015-01-09T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-01-09T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20150112110626)"
+    },
+    {
+      "time_utc": "2015-01-16T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-01-16T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20150106084259)"
+    },
+    {
+      "time_utc": "2015-01-28T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2015-01-28T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm"
+    },
+    {
+      "time_utc": "2015-02-06T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-02-06T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20150112110626)"
+    },
+    {
+      "time_utc": "2015-02-26T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-02-26T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20150106084259)"
+    },
+    {
+      "time_utc": "2015-03-06T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-03-06T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20150112110626)"
+    },
+    {
+      "time_utc": "2015-03-18T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2015-03-18T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm"
+    },
+    {
+      "time_utc": "2015-03-24T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-03-24T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150106084259)"
+    },
+    {
+      "time_utc": "2015-04-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-04-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150112110626)"
+    },
+    {
+      "time_utc": "2015-04-17T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-04-17T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150106084259)"
+    },
+    {
+      "time_utc": "2015-04-29T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2015-04-29T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm"
+    },
+    {
+      "time_utc": "2015-05-08T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-05-08T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150112110626)"
+    },
+    {
+      "time_utc": "2015-05-22T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-05-22T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150106084259)"
+    },
+    {
+      "time_utc": "2015-06-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-06-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150112110626)"
+    },
+    {
+      "time_utc": "2015-06-17T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2015-06-17T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm"
+    },
+    {
+      "time_utc": "2015-06-18T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-06-18T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150106084259)"
+    },
+    {
+      "time_utc": "2015-07-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-07-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150112110626)"
+    },
+    {
+      "time_utc": "2015-07-17T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-07-17T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150106084259)"
+    },
+    {
+      "time_utc": "2015-07-29T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2015-07-29T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm"
+    },
+    {
+      "time_utc": "2015-08-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-08-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150112110626)"
+    },
+    {
+      "time_utc": "2015-08-19T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-08-19T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150106084259)"
+    },
+    {
+      "time_utc": "2015-09-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-09-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150112110626)"
+    },
+    {
+      "time_utc": "2015-09-16T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-09-16T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150106084259)"
+    },
+    {
+      "time_utc": "2015-09-17T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2015-09-17T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm"
+    },
+    {
+      "time_utc": "2015-10-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-10-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150112110626)"
+    },
+    {
+      "time_utc": "2015-10-15T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-10-15T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20150106084259)"
+    },
+    {
+      "time_utc": "2015-10-28T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2015-10-28T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm"
+    },
+    {
+      "time_utc": "2015-11-06T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-11-06T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2015-11-17T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-11-17T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2015-12-04T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2015-12-04T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2015-12-15T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2015-12-15T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2015-12-16T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2015-12-16T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2015.htm"
+    },
+    {
+      "time_utc": "2016-01-08T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-01-08T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2016-01-20T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-01-20T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2016-01-27T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2016-01-27T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm"
+    },
+    {
+      "time_utc": "2016-02-05T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-02-05T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2016-02-19T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-02-19T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2016-03-04T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-03-04T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2016-03-16T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-03-16T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2016-03-16T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2016-03-16T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm"
+    },
+    {
+      "time_utc": "2016-04-01T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-04-01T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2016-04-14T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-04-14T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2016-04-27T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2016-04-27T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm"
+    },
+    {
+      "time_utc": "2016-05-06T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-05-06T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2016-05-17T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-05-17T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2016-06-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-06-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2016-06-15T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2016-06-15T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm"
+    },
+    {
+      "time_utc": "2016-06-16T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-06-16T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2016-07-08T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-07-08T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2016-07-15T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-07-15T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2016-07-27T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2016-07-27T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm"
+    },
+    {
+      "time_utc": "2016-08-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-08-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2016-08-16T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-08-16T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2016-09-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-09-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2016-09-16T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-09-16T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2016-09-21T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2016-09-21T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm"
+    },
+    {
+      "time_utc": "2016-10-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-10-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161102205218)"
+    },
+    {
+      "time_utc": "2016-10-18T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-10-18T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20161113011116)"
+    },
+    {
+      "time_utc": "2016-11-02T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2016-11-02T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm"
+    },
+    {
+      "time_utc": "2016-11-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-11-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2016-11-17T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-11-17T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2016-12-02T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2016-12-02T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2016-12-14T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2016-12-14T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2016.htm"
+    },
+    {
+      "time_utc": "2016-12-15T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2016-12-15T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-01-06T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-01-06T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2017-01-18T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-01-18T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-02-01T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2017-02-01T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm"
+    },
+    {
+      "time_utc": "2017-02-03T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-02-03T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2017-02-15T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-02-15T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-03-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-03-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2017-03-15T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-03-15T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-03-15T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2017-03-15T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm"
+    },
+    {
+      "time_utc": "2017-04-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-04-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2017-04-14T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-04-14T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-05-03T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2017-05-03T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm"
+    },
+    {
+      "time_utc": "2017-05-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-05-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2017-05-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-05-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-06-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-06-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2017-06-14T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-06-14T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-06-14T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2017-06-14T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm"
+    },
+    {
+      "time_utc": "2017-07-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-07-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2017-07-14T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-07-14T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-07-26T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2017-07-26T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm"
+    },
+    {
+      "time_utc": "2017-08-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-08-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2017-08-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-08-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-09-01T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-09-01T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2017-09-14T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-09-14T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-09-20T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2017-09-20T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm"
+    },
+    {
+      "time_utc": "2017-10-06T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-10-06T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712082328)"
+    },
+    {
+      "time_utc": "2017-10-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-10-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20170712123245)"
+    },
+    {
+      "time_utc": "2017-11-01T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2017-11-01T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm"
+    },
+    {
+      "time_utc": "2017-11-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-11-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2017-11-15T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-11-15T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2017-12-08T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2017-12-08T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2017-12-13T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2017-12-13T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2017-12-13T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2017-12-13T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2017.htm"
+    },
+    {
+      "time_utc": "2018-01-05T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-01-05T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2018-01-12T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-01-12T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2018-01-31T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2018-01-31T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm"
+    },
+    {
+      "time_utc": "2018-02-02T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-02-02T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2018-02-14T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-02-14T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2018-03-09T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-03-09T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2018-03-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-03-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2018-03-21T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2018-03-21T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm"
+    },
+    {
+      "time_utc": "2018-04-06T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-04-06T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2018-04-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-04-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2018-05-02T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2018-05-02T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm"
+    },
+    {
+      "time_utc": "2018-05-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-05-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2018-05-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-05-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2018-06-01T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-06-01T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2018-06-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-06-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2018-06-13T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2018-06-13T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm"
+    },
+    {
+      "time_utc": "2018-07-06T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-07-06T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2018-07-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-07-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2018-08-01T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2018-08-01T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm"
+    },
+    {
+      "time_utc": "2018-08-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-08-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2018-08-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-08-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2018-09-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-09-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180709171127)"
+    },
+    {
+      "time_utc": "2018-09-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-09-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20180910095325)"
+    },
+    {
+      "time_utc": "2018-09-26T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2018-09-26T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm"
+    },
+    {
+      "time_utc": "2018-10-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-10-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2018-10-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-10-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2018-11-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-11-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2018-11-08T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2018-11-08T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm"
+    },
+    {
+      "time_utc": "2018-11-14T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-11-14T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2018-12-07T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2018-12-07T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2018-12-12T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2018-12-12T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2018-12-19T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2018-12-19T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2018.htm"
+    },
+    {
+      "time_utc": "2019-01-04T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-01-04T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2019-01-11T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-01-11T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2019-01-30T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2019-01-30T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm"
+    },
+    {
+      "time_utc": "2019-02-01T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-02-01T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2019-02-13T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-02-13T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2019-03-08T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-03-08T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2019-03-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-03-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2019-03-20T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2019-03-20T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm"
+    },
+    {
+      "time_utc": "2019-04-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-04-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2019-04-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-04-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2019-05-01T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2019-05-01T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm"
+    },
+    {
+      "time_utc": "2019-05-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-05-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2019-05-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-05-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2019-06-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-06-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2019-06-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-06-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2019-06-19T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2019-06-19T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm"
+    },
+    {
+      "time_utc": "2019-07-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-07-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2019-07-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-07-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2019-07-31T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2019-07-31T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm"
+    },
+    {
+      "time_utc": "2019-08-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-08-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2019-08-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-08-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2019-09-06T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-09-06T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2019-09-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-09-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2019-09-18T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2019-09-18T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm"
+    },
+    {
+      "time_utc": "2019-10-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-10-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109020429)"
+    },
+    {
+      "time_utc": "2019-10-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-10-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20190109024228)"
+    },
+    {
+      "time_utc": "2019-10-30T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2019-10-30T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm"
+    },
+    {
+      "time_utc": "2019-11-01T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-11-01T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2019-11-13T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-11-13T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2019-12-06T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2019-12-06T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2019-12-11T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2019-12-11T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2019-12-11T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2019-12-11T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2019.htm"
+    },
+    {
+      "time_utc": "2020-01-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-01-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2020-01-14T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-01-14T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2020-01-29T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2020-01-29T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm"
+    },
+    {
+      "time_utc": "2020-02-07T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-02-07T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2020-02-13T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-02-13T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2020-03-06T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-03-06T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2020-03-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-03-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2020-04-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-04-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2020-04-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-04-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2020-04-29T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2020-04-29T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm"
+    },
+    {
+      "time_utc": "2020-05-08T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-05-08T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2020-05-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-05-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2020-06-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-06-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2020-06-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-06-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2020-06-10T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2020-06-10T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm"
+    },
+    {
+      "time_utc": "2020-07-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-07-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2020-07-14T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-07-14T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2020-07-29T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2020-07-29T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm"
+    },
+    {
+      "time_utc": "2020-08-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-08-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2020-08-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-08-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2020-09-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-09-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2020-09-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-09-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2020-09-16T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2020-09-16T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm"
+    },
+    {
+      "time_utc": "2020-10-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-10-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216030043)"
+    },
+    {
+      "time_utc": "2020-10-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-10-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20191216023559)"
+    },
+    {
+      "time_utc": "2020-11-05T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2020-11-05T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm"
+    },
+    {
+      "time_utc": "2020-11-06T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-11-06T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2020-11-12T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-11-12T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2020-12-04T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2020-12-04T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2020-12-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2020-12-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2020-12-16T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2020-12-16T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomchistorical2020.htm"
+    },
+    {
+      "time_utc": "2021-01-08T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-01-08T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2021-01-13T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-01-13T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2021-01-27T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2021-01-27T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2021-02-05T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-02-05T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2021-02-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-02-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2021-03-05T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-03-05T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2021-03-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-03-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2021-03-17T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2021-03-17T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2021-04-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-04-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2021-04-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-04-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2021-04-28T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2021-04-28T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2021-05-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-05-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2021-05-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-05-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2021-06-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-06-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2021-06-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-06-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2021-06-16T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2021-06-16T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2021-07-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-07-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2021-07-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-07-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2021-07-28T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2021-07-28T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2021-08-06T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-08-06T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2021-08-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-08-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2021-09-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-09-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2021-09-14T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-09-14T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2021-09-22T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2021-09-22T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2021-10-08T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-10-08T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201210210550)"
+    },
+    {
+      "time_utc": "2021-10-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-10-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20201223200317)"
+    },
+    {
+      "time_utc": "2021-11-03T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2021-11-03T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2021-11-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-11-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2021-11-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-11-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2021-12-03T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2021-12-03T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2021-12-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2021-12-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2021-12-15T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2021-12-15T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2022-01-07T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-01-07T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2022-01-12T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-01-12T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2022-01-26T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2022-01-26T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2022-02-04T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-02-04T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2022-02-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-02-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2022-03-04T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-03-04T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2022-03-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-03-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2022-03-16T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2022-03-16T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2022-04-01T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-04-01T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2022-04-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-04-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2022-05-04T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2022-05-04T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2022-05-06T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-05-06T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2022-05-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-05-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2022-06-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-06-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2022-06-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-06-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2022-06-15T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2022-06-15T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2022-07-08T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-07-08T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2022-07-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-07-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2022-07-27T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2022-07-27T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2022-08-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-08-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2022-08-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-08-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2022-09-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-09-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2022-09-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-09-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2022-09-21T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2022-09-21T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2022-10-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-10-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220110090111)"
+    },
+    {
+      "time_utc": "2022-10-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-10-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20220109075526)"
+    },
+    {
+      "time_utc": "2022-11-02T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2022-11-02T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2022-11-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-11-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2022-11-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-11-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2022-12-02T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2022-12-02T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2022-12-13T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2022-12-13T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2022-12-14T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2022-12-14T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2023-01-06T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-01-06T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2023-01-12T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-01-12T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2023-02-01T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2023-02-01T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2023-02-03T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-02-03T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2023-02-14T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-02-14T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2023-03-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-03-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2023-03-14T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-03-14T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2023-03-22T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2023-03-22T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2023-04-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-04-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2023-04-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-04-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2023-05-03T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2023-05-03T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2023-05-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-05-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2023-05-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-05-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2023-06-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-06-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2023-06-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-06-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2023-06-14T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2023-06-14T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2023-07-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-07-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2023-07-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-07-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2023-07-26T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2023-07-26T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2023-08-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-08-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2023-08-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-08-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2023-09-01T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-09-01T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2023-09-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-09-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2023-09-20T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2023-09-20T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2023-10-06T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-10-06T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230101123540)"
+    },
+    {
+      "time_utc": "2023-10-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-10-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20230104040906)"
+    },
+    {
+      "time_utc": "2023-11-01T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2023-11-01T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2023-11-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-11-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2023-11-14T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-11-14T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2023-12-08T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2023-12-08T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2023-12-12T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2023-12-12T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2023-12-13T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2023-12-13T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2024-01-05T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-01-05T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-01-11T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-01-11T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-01-31T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2024-01-31T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2024-02-02T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-02-02T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-02-13T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-02-13T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-03-08T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-03-08T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-03-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-03-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-03-20T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2024-03-20T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2024-04-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-04-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-04-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-04-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-05-01T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2024-05-01T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2024-05-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-05-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-05-15T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-05-15T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-06-07T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-06-07T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-06-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-06-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-06-12T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2024-06-12T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2024-07-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-07-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-07-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-07-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-07-31T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2024-07-31T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2024-08-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-08-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-08-14T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-08-14T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-09-06T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-09-06T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-09-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-09-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-09-18T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2024-09-18T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2024-10-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-10-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-10-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-10-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20240104231820)"
+    },
+    {
+      "time_utc": "2024-11-01T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-11-01T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2024-11-07T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2024-11-07T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2024-11-13T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-11-13T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2024-12-06T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2024-12-06T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2024-12-11T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2024-12-11T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2024-12-18T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2024-12-18T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2025-01-10T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-01-10T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-01-15T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-01-15T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2025-01-29T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2025-01-29T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2025-02-07T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-02-07T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-02-12T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-02-12T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2025-03-07T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-03-07T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-03-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-03-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2025-03-19T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2025-03-19T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2025-04-04T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-04-04T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-04-10T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-04-10T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2025-05-02T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-05-02T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-05-07T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2025-05-07T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2025-05-13T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-05-13T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2025-06-06T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-06-06T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-06-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-06-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2025-06-18T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2025-06-18T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2025-07-03T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-07-03T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-07-15T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-07-15T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2025-07-30T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2025-07-30T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2025-08-01T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-08-01T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-08-12T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-08-12T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2025-09-05T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-09-05T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-09-11T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-09-11T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2025-09-17T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2025-09-17T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2025-10-24T12:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-10-24T08:30:00-04:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    },
+    {
+      "time_utc": "2025-10-29T18:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2025-10-29T14:00:00-04:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2025-11-20T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-11-20T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-12-10T19:00:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "FOMC Statement (scheduled)",
+      "time_local_et": "2025-12-10T14:00:00-05:00",
+      "source": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm"
+    },
+    {
+      "time_utc": "2025-12-16T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Employment Situation (NFP)",
+      "time_local_et": "2025-12-16T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251218182154)"
+    },
+    {
+      "time_utc": "2025-12-18T13:30:00+00:00",
+      "currency": "USD",
+      "impact": "High",
+      "title": "Consumer Price Index",
+      "time_local_et": "2025-12-18T08:30:00-05:00",
+      "source": "BLS official schedule (snapshot 20251201084332)"
+    }
+  ]
+}

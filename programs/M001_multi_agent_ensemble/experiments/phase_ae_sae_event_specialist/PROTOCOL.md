@@ -1,16 +1,19 @@
-# Phase AE — Sae Itoshi event specialist (pre-registration DRAFT)
+# Phase AE — Sae Itoshi event specialist (pre-registration)
 
-- **Registered:** 2026-07-20 (DRAFT — untracked working-tree file in
-  `finance-research-experiments`; not yet committed). Sibling
+- **Registered:** 2026-07-20 (draft). Sibling
   implementation commits live on `next-gen` of the trading-agent
   repo (`multi-pair-trading-agent`) at `a26eba8`
   *"sae: event-specialist agent (disabled by default, EURUSD-only)"*
   and `38a91b4` *"squad: export A9SaeV1 + SaeConfig …"*.
+- **LOCKED + committed:** 2026-07-24, on `multi-agent-ensemble`,
+  BEFORE any arm was run. Mechanics (§2), success criteria AE1-AE4
+  (§4) and stop rules (§5) are unchanged from the 2026-07-20 draft;
+  the only changes are the factual pre-run amendments in §0 below.
 - **Program:** M001 multi-agent ensemble.
-- **Branch (target for merge, when ratified):** `multi-agent-ensemble`
-  (research repo). Draft on `main` mirrors the standard M001 WIP
-  pattern.
-- **Authorization:** user 2026-07-20 (this session). Motivated by:
+- **Branch:** `multi-agent-ensemble` (research repo).
+- **Authorization:** user, 2026-07-24 session (arm for the Aug 7
+  NFP if PASS). Original draft authorization user 2026-07-20.
+  Motivated by:
   (a) the same 3-year hour-13 EURUSD bleed that motivates Phase AD
   Karasu — some of those pips come from *tradable* impulses on
   scheduled prints, not just avoidable ones; (b) canon Sae is
@@ -23,6 +26,49 @@
   the two studies test different mechanisms (defender vs striker).
 
 ---
+
+## 0. Pre-run amendments (2026-07-24 — factual corrections only, made BEFORE any arm run)
+
+1. **Calendar fixture source replaced.** Phase AD §7's fixture was
+   never frozen: the pre-registered Dukascopy backfill was HALTED
+   2026-07-03 (endpoint deprecated; `data/news_calendar/
+   STOP_NOTICE.md`) and the archive is empty. Phase AE therefore
+   froze its own fixture from PRIMARY official sources (US-government
+   public domain): BLS Employment Situation + CPI release schedules
+   (official pages via pinned Internet Archive snapshots) and FOMC
+   scheduled-meeting statements (federalreserve.gov calendars,
+   notation-vote / unscheduled / cancelled entries excluded
+   rule-based). Frozen at
+   `programs/M001_multi_agent_ensemble/data/news_calendar_frozen_2026-07-24.json`
+   — 349 events, 2015-2025, sha256
+   `cfd186021ea87a5acba4f672250519d89fb8657c11473a73621bcc78c0ee3134`.
+   Builder: `experiments/phase_ae_sae_event_specialist/build_calendar_fixture.py`.
+   Never refetched after freeze.
+2. **Scope consequence of (1), disclosed:** NFP + CPI + FOMC is a
+   CONSERVATIVE SUBSET of "high-impact USD" — ~2.7 events/month vs
+   the §2 volume prior's 4-8/month (ForexFactory-High set). The §2
+   "~200-400 trades at 100 % fire rate" prior scales down to
+   ~349 event opportunities on the panel. The AE1 floor (≥ 30 OOS
+   trades) is NOT changed — it stays as locked.
+3. **2025 shutdown handling (rule-based):** the Oct-Nov 2025 US
+   government shutdown suspended BLS releases; the fixture carries
+   the ACTUAL release dates (11 NFP + 11 CPI in calendar 2025, not
+   12 + 12) via a later-snapshot-supersedes rule, and 7 FOMC
+   statements in 2020 (March meeting cancelled).
+4. **Driver cadence correction (§7 wording):** the G7 walk-forward
+   driver replays **H4** bars, not M15. The Phase AE harness keeps
+   the H4 replay for the seven incumbent proposers and additionally
+   evaluates Sae at his M15 event ticks (T+15 / T+30 around each
+   calendar event) via an M15 `bars_provider` closure over the
+   trading-repo parquet cache (read-only coupling):
+   `/Users/the1finix/Documents/GitHub/multi-pair-trading-agent/data/parquet/EURUSD_M15.parquet`,
+   coverage 2015-01-01 22:00 UTC → 2026-05-27 12:45 UTC (covers the
+   §11.17 panel). Sae's trades are opened and managed on M15 bars;
+   incumbent agents are untouched on H4.
+5. **R7 status:** the research sim's sentinel implements R1-R6 only
+   — R7 (Karasu) was never ported to the research harness. "R7
+   DISABLED in both arms" (§3) is therefore satisfied by
+   construction; no code toggle needed.
 
 ## 1. Problem (banked evidence)
 
