@@ -147,15 +147,28 @@ DEFAULT_CALENDAR_PATH = (
 def _load_production_bars_m15(
     symbol: str, start: datetime, end: datetime,
 ) -> list:
-    """Load OHLCV M15 bars from the production parquet cache (read-only)."""
+    """Load OHLCV M15 bars from the production parquet cache (read-only).
+
+    Reads the parquet file DIRECTLY (pandas), never through
+    ``BarLoader.get``: the loader's head-gap auto-backfill would hit the
+    Dukascopy network path (and rewrite the cache file) whenever the
+    requested ``start`` precedes the first cached bar — e.g. the §11.17
+    panel start 2015-01-01 00:00 vs the cache's first M15 bar at
+    22:00 the same day. Direct read keeps the trading-repo coupling
+    strictly read-only (campaign hard rule; incident 2026-07-24 logged
+    in the Phase AE report).
+    """
     ensure_production_repo_on_path()
+    import pandas as pd  # noqa: E402
+
     from agent.config import load_config  # noqa: E402
-    from agent.data.loader import BarLoader, df_to_bars  # noqa: E402
+    from agent.data.loader import df_to_bars  # noqa: E402
     from agent.types import Timeframe  # noqa: E402
 
     cfg = load_config()
-    loader = BarLoader(cache_root=cfg.data_dir)
-    df = loader.get(symbol, Timeframe.M15, start, end, refresh=False)
+    path = Path(cfg.data_dir) / f"{symbol}_M15.parquet"
+    df = pd.read_parquet(path)
+    df = df.loc[(df.index >= pd.Timestamp(start)) & (df.index <= pd.Timestamp(end))]
     return df_to_bars(df, Timeframe.M15)
 
 
