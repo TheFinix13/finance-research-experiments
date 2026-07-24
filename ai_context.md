@@ -1,4 +1,57 @@
-# AI Context — finance research experiments (updated 2026-07-21 late-night, Phase AC pipeline COMPLETE: AC.0-v2 PASS (thin), AC.1 authorised Rin USDCHF only, AC.2 A2 FAILED squad-lift (delta −0.006, p=0.861) + Nagi=0 in BOTH arms — recommended action: stay with A1 baseline, no port to `next-gen`. B1-hard/B1-soft deferred, AC2.4/AC2.5 not measured. REPORT.md written. Earlier same evening: AC.0-v2 amendment landed + harness/tests shipped.)
+# AI Context — finance research experiments (updated 2026-07-24, Phase AE Sae event specialist COMPLETE: **FAIL** — AE1 volume PASS (54 OOS trades), AE2 quality FAIL (mean TQS 0.097, boot CI [0.042, 0.162] vs 0.30/0.20 floors), AE4 chemistry PASS (incumbents untouched). `sae_enabled` stays False; NO Aug 7 NFP arming. Hour-13 bleed reads "avoidable, not tradable" — Phase AD Karasu remains the only event-window lever.)
+
+## 2026-07-24 — Phase AE Sae Itoshi event specialist: FAIL (evaluated once, locked pre-reg)
+
+Full campaign on `multi-agent-ensemble`: pre-reg lock → frozen
+calendar fixture → additive harness + tests → both arms → one-shot
+evaluation → verdict + REPORT. Commits (oldest first): `dfe5ce1`
+(PROTOCOL LOCKED + frozen calendar fixture, BEFORE any arm),
+`8fbc2ba` (sim Sae port + AE driver + one-shot evaluator + 15 tests,
+BEFORE any arm), `766326a` (M15 loader made network-free after
+incident, see below), `16a404b` (verdict FAIL + results + REPORT).
+
+**Verdict (rule: PASS iff AE1 ∧ AE2 ∧ AE4; AE3 parks only):**
+- **AE1 PASS** — 54 OOS Sae trades ≥ 30 floor (87 full-panel, 100%
+  calendar-gated).
+- **AE2 FAIL** — OOS mean TQS **0.097** vs 0.30 floor; boot 95% CI
+  **[0.042, 0.162]** (n=10k, seed 42) vs 0.20 lower floor. 25 TP /
+  62 SL = 28.7% wins at fixed 1.5R (breakeven 40%), mean −4.16
+  pips/trade. Per-window mean TQS max 0.266, min 0.000 — uniform.
+- **AE3** — fade 12/54 (22.2%, TQS 0.122, −4.18 pips), ride 42/54
+  (77.8%, TQS 0.089, −8.52 pips). No mechanic parked; both negative.
+- **AE4 PASS** — incumbent deltas: 5 agents exactly 0.000; Chigiri
+  +0.001 (503→501 trades, only 2 H4 trades displaced in 11 yr);
+  Reo 0 trades both arms (pre-existing).
+
+**Data provenance:** frozen fixture
+`data/news_calendar_frozen_2026-07-24.json` — 349 high-impact USD
+events 2015-2025 (131 NFP + 131 CPI + 87 FOMC), primary sources (BLS
+schedules via pinned Wayback snapshots + federalreserve.gov FOMC
+calendars), sha256 `cfd18602…3134`, never refetched. M15 bars:
+trading-repo parquet (read-only), 284,277 rows, 2015-01-01 22:00 →
+2026-05-27 12:45 UTC.
+
+**Harness integrity:** `_drive_squad_replay_ae` (phi41-specialised,
+Sae M15 event ticks T+15/T+30 injected into the H4 replay in
+wall-clock order, shared single-position slot both directions)
+reproduces the sealed g7retry2 `_drive_squad_replay` stream
+byte-for-byte with `sae=None` — equivalence test on a real 2-yr
+EURUSD slice, committed and green BEFORE the arms. Sae mechanics are
+a verbatim port of trading-repo `a09_sae.py` (next-gen `a26eba8`);
+divergences are harness plumbing only, flagged in the module
+docstring. R7 absent from the research sim by construction.
+
+**Incident (disclosed, REPORT §3):** first M15 loader went through
+production `BarLoader.get(refresh=False)` whose head-gap auto-backfill
+opened a live Dukascopy fetch (panel start 00:00 precedes cache first
+bar 22:00) — killed within ~5 min, cache verified undamaged
+(row-count/coverage/gap-structure identical), loader rewritten to
+direct parquet read (`766326a`). No scored arm used fetched data.
+
+**Consequences:** Sae v2 (if ever) needs a fresh pre-registration —
+v1 fade/ride + 1.5R are spent and may NOT be retuned against this
+panel. Trading-repo enablement decision is moot; parent session
+handles brain-box write-back.
 
 ## 2026-07-21 late-night — Phase AC pipeline resumed and COMPLETED (AC.0-v2 → AC.1 → AC.2-partial → REPORT.md)
 
