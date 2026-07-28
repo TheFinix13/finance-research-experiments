@@ -290,7 +290,29 @@ interacting with the screen window:
   expected here because the exploratory data showed every cell at
   n_joint ≥ 153 on the same window.
 
-_(No amendments yet — appended after pre-registration commits only.)_
+**A1 — 2026-07-28 (infrastructure, pre-Stage-0, non-claiming).** Bars
+are loaded by direct read-only `pd.read_parquet` of the canonical
+cache (`multi-pair-trading-agent/data/parquet/`) instead of
+`conflab.data.load_frames`: `BarLoader`'s head-gap backfill hits the
+Dukascopy network path (Phase AE incident 2026-07-24; reproduced
+2026-07-28 during E027/E028 Stage-0 coverage checks and killed before
+any cache write). Window slicing and column schema are identical; no
+detector parameter, statistical routine, or null specification
+changes; no E010 statistic had been scored at the time of this
+amendment. Runner code: `scripts/E010/` (`diagnose_counts.py`
+count-only diagnostic per §7; `run_e010.py` stage runner).
+
+**A2 — 2026-07-28 (clarification, pre-Stage-0, non-claiming).** The
+setup-marginal MFE in the §1 selection-term decomposition is computed
+with the identical event/outcome code path as `screen_cell`
+(`directional_outcome` over all usable setup events of the cell's
+type, warmup-filtered) accompanied by 5× hour-matched
+direction-matched random-time control draws, but WITHOUT
+`screen_cell`'s marginal permutation p-value — no test is
+pre-registered on the marginal itself and computing that p on
+10⁴–10⁵-event M15 marginals would burn hours for a number the §3
+verdict never consults. The verdict-bearing p remains `screen_pair`'s
+displacement null with `n_perm = 5000`, unchanged.
 
 ---
 
