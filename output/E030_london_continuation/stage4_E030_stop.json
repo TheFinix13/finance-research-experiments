@@ -1,0 +1,13 @@
+{
+  "experiment": "E030",
+  "stage": 1,
+  "trigger": "Stage-1 go/no-go failed (PROTOCOL \u00a74): short: mean<=0 at base costs",
+  "results": "/Users/the1finix/Documents/GitHub/finance-research-experiments/output/E030_london_continuation/stage1_EURUSD_lock_2026-07-28_1813.json",
+  "stamp": "2026-07-28_1813",
+  "downstream_not_run": [
+    "stage2",
+    "stage3",
+    "stage4"
+  ],
+  "note": "sealed reservation released for E030 (E029 co-reservation unaffected)"
+}

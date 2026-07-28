@@ -1,0 +1,41 @@
+{
+  "experiment": "E030",
+  "stage": 1,
+  "pair": "EURUSD",
+  "window": [
+    "2015-01-01",
+    "2021-12-31"
+  ],
+  "seed": 30,
+  "claiming": false,
+  "cells": {
+    "long": {
+      "n_trades": 580,
+      "mean_net_pips_base": 0.344,
+      "mean_net_pips_stress": -1.056,
+      "boot_ci95_base": [
+        -2.346,
+        3.113
+      ],
+      "boot_p_le0": 0.41006,
+      "median_net_pips_base": -2.25,
+      "win_rate_base": 0.4603,
+      "placebo_mean_net_pips": -2.016,
+      "n_placebo_days": 636
+    },
+    "short": {
+      "n_trades": 600,
+      "mean_net_pips_base": -1.381,
+      "mean_net_pips_stress": -2.781,
+      "boot_ci95_base": [
+        -4.442,
+        1.587
+      ],
+      "boot_p_le0": 0.81472,
+      "median_net_pips_base": -0.7,
+      "win_rate_base": 0.4933,
+      "placebo_mean_net_pips": 0.816,
+      "n_placebo_days": 636
+    }
+  }
+}

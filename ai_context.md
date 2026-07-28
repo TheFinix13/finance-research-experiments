@@ -57,10 +57,17 @@ studies run to verdict in one session (pre-reg `cdb7a01`, harnesses
 | E028 Power-of-Three sessions | STOPPED-DEAD Stage 1 (full stop) | Narrative inverted: NY completes to untapped Asia extreme 26.2 % vs 61.2 % baseline; both mechanical arms negative at base costs; stable 7/7 years |
 | E010 equal_highs_pool × M15 (executed per `fd8eb3d` pre-reg) | STOPPED Stage 2; survivors parked_weak_effect | Stage 1 7/10 alive; confirm 2022–24: selection term flips negative everywhere (−0.05…−0.66) while displacement lift stays +0.11…+0.28 (p ≤ 0.0036). Timing edge real OOS; selection edge regime-local. A6 Nagi confluence stays blocked. E010 sealed + Stage-3 reservations RELEASED (EURUSD H1/M15 2025→2026-06-09 pristine again) |
 
-Standing blocks: no valid-liquidity striker, no Po3-reversal striker
-without a NEW pre-registration. Legitimate new-ID follow-ups: (a)
-E010's lift-only (timing) hypothesis; (b) London-continuation session
-hypothesis (E028's inversion).
+**Follow-ups E029/E030 (2026-07-28, pre-reg `36328ab`, harnesses `3e90cf4`):**
+
+| Study | Verdict | Headline |
+|---|---|---|
+| E029 pool-window timing (lift-only) | **ALIVE at sealed — first alive of the line** | GBPUSD 2015–21: 8/10 cells alive (lift +0.11…+0.38 ATR, p=0.0002). Sealed EURUSD 2025→2026-05-27 (run once, now CONSUMED): `bullish_fvg_touch` +0.101 (p=0.0002, n=381) and `trendline_support_touch` +0.102 (p=0.0014, n=422) alive; `channel_bottom_touch` +0.091 under floor; 5 fib/OTE cells parked_insufficient_n (83 pool events). Claim = when-filter timing primitive, screen-grade MFE, NOT tradable expectancy |
+| E030 London-continuation drift | STOPPED Stage 1 go/no-go (zero OOS cost) | WITH-London 13:30→21:00 time-exit trade: SHORT −1.38 p/trade (n=600), LONG +0.34 = noise (p=0.41, stress-negative). E028's 60 % extension is touch/path, not holdable drift. Both Po3 readings now dead |
+
+Standing blocks: no valid-liquidity striker, no Po3 striker (either
+direction). EURUSD 2025→2026-05-27 sealed slice is CONSUMED (E029) —
+no longer pristine. E029's production use (timing gate on a validated
+entry) needs its own study + agent validation chain.
 
 ## 2) Key file paths
 
@@ -89,10 +96,11 @@ to locally optimal.
 
 **Parked (do not start without discussion):** E008 indicators; E009
 cross-family; E023 post-BE structure trail (pre-registered on main but
-not run — decide before touching); E010 lift-only follow-up and E028
-London-continuation follow-up (both need new IDs + protocols); any new
-exit-side mechanism that has not been pre-registered. E026 is reserved
-by the `e026-low-mfe-time-stop` branch.
+not run — decide before touching); an E029 production-use study
+(pool-window timing gate on the deployed entry — needs new ID, cost
+model, agent validation chain); any new exit-side mechanism that has
+not been pre-registered. E026 is reserved by the
+`e026-low-mfe-time-stop` branch; E027–E030 are consumed IDs.
 
 **Do not:** flip `LiveConfig.partial_exits`, wire `agent/live/exit_manager.py`,
 or narrow the 1.5R TP without a fresh pre-registration and full agent

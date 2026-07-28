@@ -29,10 +29,10 @@ reservations RELEASED)
 | H4 | 2026-01-01 → present | live | (agent demo — not a lab split) |
 | H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E007, E010 (consumed 2026-07-28), E027 (consumed 2026-07-28) |
 | H1 | 2022-01-01 → 2024-12-31 | confirm | E006, E007, E010 (consumed 2026-07-28); E027 stopped at Stage 1 — not consumed |
-| H1 | 2025-01-01 → 2026-05-27 | **sealed (re-reserved)** | **E029 (Stage 2; pre-reg 2026-07-28, not yet consumed)** — window trimmed to M15 cache end |
-| M15 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E010 (consumed 2026-07-28), E028 (consumed 2026-07-28; day-sequence outcome), **E030 (Stage-1 effect-size lock, non-claiming — E028 taint declared in E030 §0)** |
-| M15 | 2022-01-01 → 2024-12-31 | confirm | E006, E010 (consumed 2026-07-28); **E030 (Stage 2 verdict stage, pre-reg 2026-07-28)** |
-| M15 | 2025-01-01 → 2026-05-27 | **sealed (shared re-reservation)** | **E029 (Stage 2) + E030 (Stage 4)** — declared in the same pre-reg commit, before either look; different event families/statistics |
+| H1 | 2025-01-01 → 2026-05-27 | sealed — **CONSUMED** | E029 Stage 2 (sealed run executed once 2026-07-28; verdict ALIVE ×2 cells). No longer pristine for any future experiment |
+| M15 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E010 (consumed 2026-07-28), E028 (consumed 2026-07-28; day-sequence outcome), E030 (Stage-1 lock consumed 2026-07-28 — go/no-go stop fired here) |
+| M15 | 2022-01-01 → 2024-12-31 | confirm | E006, E010 (consumed 2026-07-28); E030 Stage-2 reservation RELEASED un-consumed 2026-07-28 (stopped at Stage 1) |
+| M15 | 2025-01-01 → 2026-05-27 | sealed — **CONSUMED** | E029 Stage 2 (executed once 2026-07-28); E030 co-reservation released un-consumed. No longer pristine for any future experiment |
 | D1 | 2015-01-01 → 2025-12-31 | screen | E001, E002, E004 |
 | M5 | 2015-01-01 → 2021-12-31 | screen | E001 |
 
@@ -47,9 +47,9 @@ EURUSD M30 (if cached), any TF on pairs below with `pristine` H1/M15.
 |---|---|---|---|
 | H4 | 2015-01-01 → 2024-12-31 | sealed | E005, E006 (replication) |
 | H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 |
-| H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, **E029 (Stage 1, pre-reg 2026-07-28 — first computation of the lift statistic on this pair)** |
+| H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E029 (Stage 1 consumed 2026-07-28 — first computation of the lift statistic on this pair; 8/10 alive) |
 | H1 | 2022+ | pristine | — (cache audit per E007 §3.8: GBPUSD H1 not available past 2021) |
-| M15 | 2015-01-01 → 2021-12-31 | screen | E006 (screen-style replication), **E029 (Stage 1)**, **E030 (Stage 3, reserved)** |
+| M15 | 2015-01-01 → 2021-12-31 | screen | E006 (screen-style replication), E029 (Stage 1 consumed 2026-07-28); E030 Stage-3 reservation RELEASED un-consumed 2026-07-28 |
 | M15 | 2022+ | pristine | — (subject to cache audit) |
 
 Agent **live deployment** started 2026-06; lab should prefer USDCAD H1/M15
