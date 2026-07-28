@@ -74,6 +74,23 @@ the initial campaign — deferred until E020 verdict lands so the
 combined behaviour of MFE-ratchet + structural anchor can be
 scoped precisely.
 
+Note: **E026** is reserved by the in-flight `e026-low-mfe-time-stop`
+branch (I021 time-boxed-trades candidate); not part of this registry
+table until that lane lands.
+
+### Liquidity-structure line (2026-07-28)
+
+Two pre-registered studies reducing externally-sourced discretionary
+"liquidity" folklore to falsifiable tests, sequenced per
+component-before-composite discipline. Both are prerequisites for any
+M001 Po3 / valid-liquidity striker and for any v1-side liquidity
+candidate; neither touches production.
+
+| ID | Short name | Repo folder | Pre-reg | Notes |
+|---|---|---|---|---|
+| E027 | Valid-liquidity sweep reversal (BOS-qualified) | [E027_valid_liquidity_sweep](experiments/E027_valid_liquidity_sweep/) | yes (2026-07-28) | Conditional split within the sweep universe: swept swing lows/highs whose exit leg **closed beyond the origin swing** (valid) vs not (invalid); primary statistic = MFE(valid) − MFE(invalid) in ATR units, hour-stratified label-shuffle permutation, floor +0.10 ATR, BH α=0.05 across 4 EURUSD H1/H4 cells; confirm 2022–2024; cross-pair GBPUSD H1/H4 + USDCAD H4. New definition distinct from E001's dead marginal sweep (REPORT §6 definition-not-concept clause). Harness: `programs/E027/`. |
+| E028 | "Power of Three" session sequence | [E028_power_of_three_sessions](experiments/E028_power_of_three_sessions/) | yes (2026-07-28) | Descriptive base rates D1–D6 (Asia range → London one-side take → NY opposite-extreme completion, vs unconditional + BOTH/NEITHER placebo baselines, +5 pp margin) + one mechanical 13:30 UTC reversal rule (2 cells, bootstrap CI, 0.3 pip/side base + 1.0 pip/side stress). EURUSD M15 screen 2015–2021, confirm 2022–2024, GBPUSD M15 cross-pair. E010's M15 sealed reservation untouched. Harness: `programs/E028/`. |
+
 Register in this table **before** writing `experiments/E00X_*/PROTOCOL.md`.
 
 ## M001 program gates (cross-registry visibility)
