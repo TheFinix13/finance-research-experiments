@@ -1,0 +1,437 @@
+{
+  "phase": "AD.2 Stage 1",
+  "run_at_utc": "2026-07-28T17:00:41.741412+00:00",
+  "fixture": "news_calendar_frozen_2026-07-24.json",
+  "n_events": 349,
+  "panel_window": [
+    "2015-02-17T00:00:00+00:00",
+    "2025-12-30T12:00:00+00:00"
+  ],
+  "n_evaluation_points": 51042,
+  "fires": {
+    "A": 0,
+    "B": 0,
+    "C": 1035
+  },
+  "S1_disagreement_A_vs_B": {
+    "count": 0,
+    "rate": 0.0
+  },
+  "S1_audit_A_vs_C": {
+    "count": 1035,
+    "rate": 0.02027741859644998
+  },
+  "n_admitted_trades": 5236,
+  "S2_flipped_admissions_A_vs_B": {
+    "count": 0,
+    "flips": []
+  },
+  "S2_audit_flips_A_vs_C": {
+    "count": 166,
+    "flips": [
+      {
+        "symbol": "EURUSD",
+        "agent": "itoshi_rin",
+        "entry_time": "2015-03-24T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -32.33571428571391
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-04-03T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 69.358928571428
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-04-17T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -38.95357142857048
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-04-29T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 33.02678571428519
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-05-08T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -39.32857142857182
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "nagi_seishiro",
+        "entry_time": "2015-05-22T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 35.662499999997706
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-07-17T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -25.18214285714304
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-07-29T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -20.400000000000418
+      },
+      {
+        "symbol": "EURUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-08-19T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -15.974999999999184
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-08-19T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -19.732142857142865
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-08-19T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -17.71428571428535
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-09-04T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -48.921428571429004
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-10-02T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 61.84285714285975
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-10-02T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 28.092857142858474
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-10-28T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -17.739285714286623
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-12-04T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -29.38214285714391
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-12-04T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 30.401785714284646
+      },
+      {
+        "symbol": "EURUSD",
+        "agent": "itoshi_rin",
+        "entry_time": "2015-12-15T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 63.41071428571654
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2015-12-15T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 41.030357142857184
+      },
+      {
+        "symbol": "EURUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-01-08T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -42.7571428571416
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-01-20T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 53.2982142857108
+      },
+      {
+        "symbol": "EURUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-01-20T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -21.421428571428702
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-02-19T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -28.54285714285698
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-02-19T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -27.14285714285669
+      },
+      {
+        "symbol": "EURUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-03-16T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 22.698214285714613
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-03-16T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 56.341071428571695
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-04-14T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -25.42499999999892
+      },
+      {
+        "symbol": "EURUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-04-27T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -14.407142857142397
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-04-27T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -18.739285714286513
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-05-17T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -20.55714285714272
+      },
+      {
+        "symbol": "EURUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-07-15T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 52.15178571428947
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-08-05T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 40.312499999999304
+      },
+      {
+        "symbol": "EURUSD",
+        "agent": "chigiri_hyoma",
+        "entry_time": "2016-08-16T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -28.39736344356636
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-09-02T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 40.392857142859114
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-09-21T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 42.192857142857584
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-09-21T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -37.667857142855695
+      },
+      {
+        "symbol": "EURUSD",
+        "agent": "chigiri_hyoma",
+        "entry_time": "2016-11-02T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -25.238169309620417
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "nagi_seishiro",
+        "entry_time": "2016-11-02T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -15.139285714285133
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-11-04T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -23.757142857143698
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "chigiri_hyoma",
+        "entry_time": "2016-12-15T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 64.8569324528836
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2016-12-15T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -20.857142857142463
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2017-01-06T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -25.06785714285753
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2017-01-06T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 72.28392857143051
+      },
+      {
+        "symbol": "EURUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2017-02-03T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -15.785714285714292
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2017-02-03T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -16.521428571427688
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2017-04-07T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -14.521428571427908
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2017-05-03T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 50.03571428571662
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2017-05-05T12:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": -49.88214285714276
+      },
+      {
+        "symbol": "GBPUSD",
+        "agent": "bachira_meguru",
+        "entry_time": "2017-06-14T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 30.02678571428774
+      },
+      {
+        "symbol": "USDCAD",
+        "agent": "bachira_meguru",
+        "entry_time": "2017-06-14T16:00:00+00:00",
+        "A": false,
+        "C": true,
+        "pnl_pips": 48.88928571428419
+      }
+    ],
+    "truncated": true
+  },
+  "gate_rule": "Stage 2 opens iff S1 >= 1% OR S2 > 0 (locked, PROTOCOL sec 2)",
+  "stage2_gate_opens": false
+}

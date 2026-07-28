@@ -1,4 +1,34 @@
-# AI Context — finance research experiments (updated 2026-07-24, Phase AE Sae event specialist COMPLETE: **FAIL** — AE1 volume PASS (54 OOS trades), AE2 quality FAIL (mean TQS 0.097, boot CI [0.042, 0.162] vs 0.30/0.20 floors), AE4 chemistry PASS (incumbents untouched). `sae_enabled` stays False; NO Aug 7 NFP arming. Hour-13 bleed reads "avoidable, not tradable" — Phase AD Karasu remains the only event-window lever.)
+# AI Context — finance research experiments (updated 2026-07-28, Phase AD.2 Karasu window anchor semantics: **NULL** — Stage 1 gate closed, ±15-min ladder fired 0 times under both anchors across 51,042 panel points; live path keeps semantics A; structural inertness of the point window on the H4 grid banked + prior AGAINST a holding-window C lever.)
+
+## 2026-07-28 — Phase AD.2 Karasu window anchor semantics: NULL (Stage 1 evaluated once, gate closed)
+
+Question from trading-agent intake I020: the live engine checks
+Karasu's ±15-min news window at `as_of = bar.time` (the H4 OPEN
+label), ~4 h before the real entry moment — should it anchor at
+entry instead? Pre-reg + §1b pre-run amendment (fixture substitution:
+Phase AE frozen USD calendar; panel substrate: phi41 physical ledger,
+R7-naive; sim midnight grid). **Result: S1 = 0/51,042 evaluation
+points disagree, S2 = 0/5,236 admitted trades flip — the window
+fired ZERO times under BOTH anchors in 11 years.** Stage 2 gate
+CLOSED per the locked rule; no counterfactual replay; live path
+keeps semantics A (D131 on trading-agent `product`).
+
+Stronger finding, banked: the point-anchored ±15-min window is
+structurally inert on the H4 grid for NFP/CPI/FOMC (releases at
+13:30/18:00/19:00 UTC never fall within 15 min of a 00/04/…/20
+anchor). The only semantics that engages is C (protect the holding
+bar): 1,035 points, 166 admitted trades ≈ 3.2 % — and the sampled
+C-gated trades were net WINNERS (+3.18 pips mean), so C-as-a-lever
+carries a banked prior AGAINST and needs its own pre-reg. Scope
+honestly bounded: USD NFP/CPI/FOMC subset + midnight grid; the live
+tape (03/07/…/23 grid, full FF calendar) is NOT claimed inert.
+
+Session note: Stage 1 ran against the `multi-agent-ensemble` tree;
+a concurrent session switched the shared checkout to `main` minutes
+later — artifacts were untracked, survived, committed via a
+dedicated worktree after the user declared the branch. Parent Phase
+AD PROTOCOL stays an untracked draft (2026-07-20 session's work,
+not committed here).
 
 ## 2026-07-24 — Phase AE Sae Itoshi event specialist: FAIL (evaluated once, locked pre-reg)
 
