@@ -192,6 +192,13 @@ as a survivor.
 _(Append-only; each amendment lands as its own commit before the
 analysis it enables runs.)_
 
+**A1 — 2026-07-28 (infrastructure, pre-Stage-1, non-claiming).** Bars
+are loaded by direct read-only `pd.read_parquet` of the canonical
+cache instead of `conflab.data.load_frames` — same rationale and same
+incident record as E027 §7 A1 (BarLoader head-gap backfill hits the
+Dukascopy network path). No statistic was scored before this
+amendment.
+
 ---
 
 ## §8 Data-ledger declaration

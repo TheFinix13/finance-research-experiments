@@ -204,6 +204,15 @@ as a survivor.
 _(Append-only; each amendment lands as its own commit before the
 analysis it enables runs.)_
 
+**A1 — 2026-07-28 (infrastructure, pre-Stage-1, non-claiming).** Bars
+are loaded by direct read-only `pd.read_parquet` of the canonical
+cache instead of `conflab.data.load_frames`: `BarLoader`'s head-gap
+backfill hits the Dukascopy network path (Phase AE incident
+2026-07-24, reproduced 2026-07-28 during the Stage-0 coverage check
+and killed before any cache write; mtimes verified untouched). No
+statistic was scored before this amendment. Window slicing and column
+schema are identical.
+
 Pre-declared non-amendment: the tighter "immediate-leg" validity
 variant (break must occur before the next confirmed same-side swing
 forms) is **out of scope**; testing it later requires a new ID, not an
