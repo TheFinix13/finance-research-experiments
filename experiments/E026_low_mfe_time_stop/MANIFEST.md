@@ -5,7 +5,7 @@
 | ID | E026 |
 | Short name | Low-MFE time-stop — close trades that never "get going" (age ≥ B bars with MFE < P) |
 | Pre-registration commit | (this commit — PROTOCOL.md frozen before Phase-2 execution) |
-| Status | (set at verdict) |
+| Status | **Phase 2 stage-1 complete · `parked_low_yield`** (2026-07-28). 0/45 cells alive; stage 2 (health meter) cancelled per PROTOCOL §6; no live wiring. Two same-day validity amendments (PROTOCOL §7). See [`REPORT.md`](./REPORT.md), [`STOP_NOTICE.md`](./STOP_NOTICE.md). |
 | Direct motivator | User directive 2026-07-28 (weekly v1 review): GBPUSD 3000652586 held 4+ days / USDCAD 2987854368 held 7+ days, both range-trapped below 1R MFE; user proposed a per-trade time limit plus a "health points" vitality meter. Stage 1 tests the time limit; the meter is stage 2, gated. |
 | Study type | per-trade exit-mechanism study on the deployed `zone_d1_against` H4 all cell (does NOT touch the 1.5R TP) |
 | Design shape | two-stage: **stage 1** = 15-arm time-stop grid with `exit_action = close_at_market` fixed; **stage 2** (health-meter controller) gated on ≥ 1 stage-1 alive cell, requires a fresh §7 amendment |

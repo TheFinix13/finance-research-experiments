@@ -74,9 +74,11 @@ the initial campaign — deferred until E020 verdict lands so the
 combined behaviour of MFE-ratchet + structural anchor can be
 scoped precisely.
 
-Note: **E026** is reserved by the in-flight `e026-low-mfe-time-stop`
-branch (I021 time-boxed-trades candidate); not part of this registry
-table until that lane lands.
+### E026 — Low-MFE time-stop (post-campaign, user-motivated)
+
+| ID | Short name | Repo folder | Pre-reg | Notes |
+|---|---|---|---|---|
+| E026 | Low-MFE time-stop ("get going or get out") | [E026_low_mfe_time_stop](experiments/E026_low_mfe_time_stop/) | yes (2026-07-28) | **STOPPED-PARKED-LOW-YIELD (2026-07-28).** User-motivated (I021 stage 1: two multi-day sub-1R holds in the Jul 20–28 live week). 15-arm grid `P∈{0.25,0.5,0.75} × B∈{12,18,24,30,42}` H4-equivalent bars; close-at-market when held ≥ B bars with MFE never ≥ P. 0/45 cells `alive`, 18/45 `parked_low_yield`, 27/45 `dead`; best cell EURUSD P0.75_B12 ΔSharpe +0.0150 CI [+0.0007, +0.0292] BH-passed but 3/5 folds. Binding constraint: the aged-and-still-flat cohort is a TAIL EVENT (0–49 fires per symbol in 11 y; at the user-anchor P0.50/B30 ≈ 5 trading days: 2–5 fires/symbol) — nothing to police at scale. H2 cohort-separation held (FP 0–0.50, mostly ≤ 0.33 vs E024's 0.63–0.91; same-bar-TP fire structurally impossible). **Stage 2 (I021 health meter) cancelled per §6.** Two same-day validity amendments (PROTOCOL §7): (1) replayed null-arm baseline after a zero-fire arm showed ΔSharpe −0.145 (pure reconstruction drift); (2) H4-equivalent age clock (path bars are per-symbol resolution). **Collateral finding (REPORT §5): E020–E025 degradation effect sizes match pure reconstruction drift (−0.090/−0.089/−0.145 per symbol) — their "actively harmful" claims are unsafe; "no improvement" conclusions stand; re-opening is a user decision.** See [REPORT.md](experiments/E026_low_mfe_time_stop/REPORT.md), [STOP_NOTICE.md](experiments/E026_low_mfe_time_stop/STOP_NOTICE.md), [results.json](programs/E026/results.json). |
 
 ### Liquidity-structure line (2026-07-28)
 

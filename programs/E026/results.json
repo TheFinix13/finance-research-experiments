@@ -1,0 +1,4432 @@
+{
+  "study": "E026",
+  "title": "Low-MFE time-stop (stage 1)",
+  "generated_at": "2026-07-28T17:07:47.201960+00:00",
+  "generator_commit": "846c07f",
+  "pre_registration": "experiments/E026_low_mfe_time_stop/PROTOCOL.md",
+  "harness": "programs/_shared/counterfactual_replay/replay.py",
+  "symbols": [
+    "EURUSD",
+    "GBPUSD",
+    "USDCAD"
+  ],
+  "per_symbol_meta": {
+    "EURUSD": {
+      "symbol": "EURUSD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "M5": 737
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:16:14.472863+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 737,
+      "hit_rate": 0.5577,
+      "mean_r": 0.382,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    },
+    "GBPUSD": {
+      "symbol": "GBPUSD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "M15": 668,
+        "H4": 276
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:15:58.944332+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 944,
+      "hit_rate": 0.5561,
+      "mean_r": 0.3586,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    },
+    "USDCAD": {
+      "symbol": "USDCAD",
+      "timeframe": "H4",
+      "alpha": "zone_d1_against",
+      "toggles": "all_on (wick_proof + be_migration + plg) \u2014 production-matching",
+      "harness": "scripts/run_walk_forward_ab.py::_run_alpha_ab (E013)",
+      "path_resolution_histogram": {
+        "H4": 707
+      },
+      "full_start": "2015-01-01T00:00:00+00:00",
+      "full_end": "2025-12-01T00:00:00+00:00",
+      "generated_at": "2026-07-20T17:15:47.885405+00:00",
+      "generator_commit": "bb00c9e",
+      "n_trades": 707,
+      "hit_rate": 0.5446,
+      "mean_r": 0.3685,
+      "median_r": 1.5,
+      "min_r": -2.0,
+      "max_r": 1.5,
+      "schema_version": "pre0.v1"
+    }
+  },
+  "grid": {
+    "progress_r": [
+      0.25,
+      0.5,
+      0.75
+    ],
+    "age_bars": [
+      12,
+      18,
+      24,
+      30,
+      42
+    ],
+    "n_arms": 15
+  },
+  "folds": [
+    {
+      "name": "fold1",
+      "start": "2017-01-01T00:00:00+00:00",
+      "end": "2019-01-01T00:00:00+00:00"
+    },
+    {
+      "name": "fold2",
+      "start": "2019-01-01T00:00:00+00:00",
+      "end": "2021-01-01T00:00:00+00:00"
+    },
+    {
+      "name": "fold3",
+      "start": "2021-01-01T00:00:00+00:00",
+      "end": "2023-01-01T00:00:00+00:00"
+    },
+    {
+      "name": "fold4",
+      "start": "2023-01-01T00:00:00+00:00",
+      "end": "2024-07-01T00:00:00+00:00"
+    },
+    {
+      "name": "fold5",
+      "start": "2024-07-01T00:00:00+00:00",
+      "end": "2026-01-01T00:00:00+00:00"
+    }
+  ],
+  "bootstrap": {
+    "seed": 42,
+    "resamples": 5000
+  },
+  "fdr": {
+    "method": "BH",
+    "alpha": 0.1,
+    "family_size_per_symbol": 15,
+    "note": "Applied per-symbol, not pooled across symbols."
+  },
+  "per_symbol": [
+    {
+      "symbol": "EURUSD",
+      "n_trades": 737,
+      "reconstruction_audit": {
+        "n_trades": 737,
+        "n_null_vs_ledger_mismatch": 639,
+        "sharpe_null_arm": 0.1967,
+        "sharpe_ledger": 0.2871,
+        "delta_sharpe_null_vs_ledger": -0.0904
+      },
+      "arms": [
+        {
+          "arm_id": "P0.25_B12",
+          "progress_r": 0.25,
+          "age_bars": 12,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.015,
+              "ci_low": 0.0,
+              "ci_high": 0.0353,
+              "p_two_sided": 0.0996,
+              "mean_delta_r": 0.0155
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0068,
+              "ci_low": 0.0,
+              "ci_high": 0.0208,
+              "p_two_sided": 0.2648,
+              "mean_delta_r": 0.0056
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 2,
+          "joint_p_stouffer": 0.205768,
+          "joint_z_stouffer": 1.2653,
+          "joint_p_fisher": 0.699661,
+          "pooled": {
+            "delta_sharpe": 0.0039,
+            "ci_low": 0.0005,
+            "ci_high": 0.0087,
+            "p_two_sided": 0.0072,
+            "sharpe_arm": 0.2006,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.004,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 5,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 5,
+            "delta_p_fire": 0.0068,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 0.5835,
+            "mean_mfe_r_at_fire": 0.1909
+          },
+          "bars_held": {
+            "mean_arm_all": 7.39,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 12.0,
+            "mean_base_fired": 36.61
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.25_B18",
+          "progress_r": 0.25,
+          "age_bars": 18,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0077,
+              "ci_low": 0.0,
+              "ci_high": 0.0261,
+              "p_two_sided": 0.7368,
+              "mean_delta_r": 0.0062
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.907154,
+          "joint_z_stouffer": 0.1166,
+          "joint_p_fisher": 0.999983,
+          "pooled": {
+            "delta_sharpe": 0.0006,
+            "ci_low": 0.0,
+            "ci_high": 0.0019,
+            "p_two_sided": 0.7104,
+            "sharpe_arm": 0.1973,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0006,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 1,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 1,
+            "delta_p_fire": 0.0014,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 0.4284,
+            "mean_mfe_r_at_fire": 0.0193
+          },
+          "bars_held": {
+            "mean_arm_all": 7.53,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 18.0,
+            "mean_base_fired": 37.04
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.25_B24",
+          "progress_r": 0.25,
+          "age_bars": 24,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0147,
+              "ci_low": 0.0,
+              "ci_high": 0.0503,
+              "p_two_sided": 0.7368,
+              "mean_delta_r": 0.0124
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.907154,
+          "joint_z_stouffer": 0.1166,
+          "joint_p_fisher": 0.999983,
+          "pooled": {
+            "delta_sharpe": 0.0011,
+            "ci_low": 0.0,
+            "ci_high": 0.0036,
+            "p_two_sided": 0.7104,
+            "sharpe_arm": 0.1979,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0012,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 1,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 1,
+            "delta_p_fire": 0.0014,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 0.8555,
+            "mean_mfe_r_at_fire": 0.0193
+          },
+          "bars_held": {
+            "mean_arm_all": 7.54,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 24.0,
+            "mean_base_fired": 37.04
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.25_B30",
+          "progress_r": 0.25,
+          "age_bars": 30,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0169,
+              "ci_low": 0.0,
+              "ci_high": 0.0582,
+              "p_two_sided": 0.7368,
+              "mean_delta_r": 0.0146
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.907154,
+          "joint_z_stouffer": 0.1166,
+          "joint_p_fisher": 0.999983,
+          "pooled": {
+            "delta_sharpe": 0.0013,
+            "ci_low": 0.0,
+            "ci_high": 0.0041,
+            "p_two_sided": 0.7104,
+            "sharpe_arm": 0.198,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0014,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 1,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 1,
+            "delta_p_fire": 0.0014,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 1.0073,
+            "mean_mfe_r_at_fire": 0.0669
+          },
+          "bars_held": {
+            "mean_arm_all": 7.54,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 30.0,
+            "mean_base_fired": 37.04
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.25_B42",
+          "progress_r": 0.25,
+          "age_bars": 42,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 0,
+          "joint_p_stouffer": 1.0,
+          "joint_z_stouffer": 0.0,
+          "joint_p_fisher": 1.0,
+          "pooled": {
+            "delta_sharpe": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "p_two_sided": 1.0,
+            "sharpe_arm": 0.1967,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 0,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 0,
+            "delta_p_fire": 0.0,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 0.0,
+            "delta_mean_r_fired_cohort": 0.0,
+            "mean_mfe_r_at_fire": null
+          },
+          "bars_held": {
+            "mean_arm_all": 7.55,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": null,
+            "mean_base_fired": null
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.50_B12",
+          "progress_r": 0.5,
+          "age_bars": 12,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0076,
+              "ci_low": -0.0259,
+              "ci_high": 0.0366,
+              "p_two_sided": 0.5952,
+              "mean_delta_r": 0.0066
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0124,
+              "ci_low": 0.0,
+              "ci_high": 0.0307,
+              "p_two_sided": 0.0956,
+              "mean_delta_r": 0.0126
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0093,
+              "ci_low": 0.0,
+              "ci_high": 0.0311,
+              "p_two_sided": 0.7376,
+              "mean_delta_r": 0.0089
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": -0.0217,
+              "ci_low": -0.071,
+              "ci_high": 0.0125,
+              "p_two_sided": 0.318,
+              "mean_delta_r": -0.0326
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            false,
+            true,
+            true,
+            false
+          ],
+          "n_folds_positive": 3,
+          "joint_p_stouffer": 0.346462,
+          "joint_z_stouffer": 0.9415,
+          "joint_p_fisher": 0.567251,
+          "pooled": {
+            "delta_sharpe": 0.0033,
+            "ci_low": -0.006,
+            "ci_high": 0.0123,
+            "p_two_sided": 0.4848,
+            "sharpe_arm": 0.2,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0019,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 15,
+            "n_fires_on_tp": 4,
+            "n_fires_on_sl": 11,
+            "delta_p_fire": 0.0204,
+            "delta_p_false_positive": 0.2667,
+            "delta_p_rescued": 0.7333,
+            "delta_mean_r_fired_cohort": 0.0932,
+            "mean_mfe_r_at_fire": 0.3073
+          },
+          "bars_held": {
+            "mean_arm_all": 6.79,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 12.0,
+            "mean_base_fired": 49.73
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.50_B18",
+          "progress_r": 0.5,
+          "age_bars": 18,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0042,
+              "ci_low": -0.0226,
+              "ci_high": 0.0312,
+              "p_two_sided": 0.8128,
+              "mean_delta_r": 0.0033
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0037,
+              "ci_low": 0.0,
+              "ci_high": 0.0121,
+              "p_two_sided": 0.7328,
+              "mean_delta_r": 0.0036
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0041,
+              "ci_low": 0.0,
+              "ci_high": 0.0135,
+              "p_two_sided": 0.7376,
+              "mean_delta_r": 0.0038
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0077,
+              "ci_low": 0.0,
+              "ci_high": 0.0261,
+              "p_two_sided": 0.7368,
+              "mean_delta_r": 0.0062
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            false,
+            true,
+            true,
+            true
+          ],
+          "n_folds_positive": 4,
+          "joint_p_stouffer": 0.585674,
+          "joint_z_stouffer": 0.5451,
+          "joint_p_fisher": 0.993976,
+          "pooled": {
+            "delta_sharpe": 0.004,
+            "ci_low": -0.0023,
+            "ci_high": 0.0108,
+            "p_two_sided": 0.2148,
+            "sharpe_arm": 0.2007,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0036,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 7,
+            "n_fires_on_tp": 1,
+            "n_fires_on_sl": 6,
+            "delta_p_fire": 0.0095,
+            "delta_p_false_positive": 0.1429,
+            "delta_p_rescued": 0.8571,
+            "delta_mean_r_fired_cohort": 0.3821,
+            "mean_mfe_r_at_fire": 0.3395
+          },
+          "bars_held": {
+            "mean_arm_all": 7.17,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 18.0,
+            "mean_base_fired": 58.13
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.50_B24",
+          "progress_r": 0.5,
+          "age_bars": 24,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0129,
+              "ci_low": 0.0,
+              "ci_high": 0.0336,
+              "p_two_sided": 0.2608,
+              "mean_delta_r": 0.0135
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0147,
+              "ci_low": 0.0,
+              "ci_high": 0.0503,
+              "p_two_sided": 0.7368,
+              "mean_delta_r": 0.0124
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 2,
+          "joint_p_stouffer": 0.473752,
+          "joint_z_stouffer": 0.7164,
+          "joint_p_fisher": 0.97349,
+          "pooled": {
+            "delta_sharpe": 0.004,
+            "ci_low": 0.0,
+            "ci_high": 0.0093,
+            "p_two_sided": 0.0928,
+            "sharpe_arm": 0.2007,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0041,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 3,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 3,
+            "delta_p_fire": 0.0041,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 1.0169,
+            "mean_mfe_r_at_fire": 0.2805
+          },
+          "bars_held": {
+            "mean_arm_all": 7.27,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 24.0,
+            "mean_base_fired": 92.67
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.50_B30",
+          "progress_r": 0.5,
+          "age_bars": 30,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0037,
+              "ci_low": 0.0,
+              "ci_high": 0.0118,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0038
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0169,
+              "ci_low": 0.0,
+              "ci_high": 0.0582,
+              "p_two_sided": 0.7368,
+              "mean_delta_r": 0.0146
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 2,
+          "joint_p_stouffer": 0.767965,
+          "joint_z_stouffer": 0.295,
+          "joint_p_fisher": 0.999577,
+          "pooled": {
+            "delta_sharpe": 0.0022,
+            "ci_low": 0.0,
+            "ci_high": 0.0058,
+            "p_two_sided": 0.252,
+            "sharpe_arm": 0.1989,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0022,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 2,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 2,
+            "delta_p_fire": 0.0027,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 0.8118,
+            "mean_mfe_r_at_fire": 0.2424
+          },
+          "bars_held": {
+            "mean_arm_all": 7.46,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 30.0,
+            "mean_base_fired": 64.02
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.50_B42",
+          "progress_r": 0.5,
+          "age_bars": 42,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0065,
+              "ci_low": 0.0,
+              "ci_high": 0.0205,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0068
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.858402,
+          "joint_z_stouffer": 0.1784,
+          "joint_p_fisher": 0.999983,
+          "pooled": {
+            "delta_sharpe": 0.0015,
+            "ci_low": 0.0,
+            "ci_high": 0.0045,
+            "p_two_sided": 0.7248,
+            "sharpe_arm": 0.1982,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0015,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 1,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 1,
+            "delta_p_fire": 0.0014,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 1.1084,
+            "mean_mfe_r_at_fire": 0.4305
+          },
+          "bars_held": {
+            "mean_arm_all": 7.49,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 42.0,
+            "mean_base_fired": 91.0
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.75_B12",
+          "progress_r": 0.75,
+          "age_bars": 12,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0172,
+              "ci_low": -0.0195,
+              "ci_high": 0.0506,
+              "p_two_sided": 0.324,
+              "mean_delta_r": 0.0165
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0146,
+              "ci_low": 0.0,
+              "ci_high": 0.0367,
+              "p_two_sided": 0.0896,
+              "mean_delta_r": 0.0146
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0346,
+              "ci_low": 0.0119,
+              "ci_high": 0.0627,
+              "p_two_sided": 0.0,
+              "mean_delta_r": 0.0345
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": -0.0051,
+              "ci_low": -0.0433,
+              "ci_high": 0.0261,
+              "p_two_sided": 0.928,
+              "mean_delta_r": -0.0096
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": -0.0124,
+              "ci_low": -0.0893,
+              "ci_high": 0.0684,
+              "p_two_sided": 0.7476,
+              "mean_delta_r": -0.0373
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            true,
+            true,
+            false,
+            false
+          ],
+          "n_folds_positive": 3,
+          "joint_p_stouffer": 0.0,
+          "joint_z_stouffer": 5.5105,
+          "joint_p_fisher": 0.0,
+          "pooled": {
+            "delta_sharpe": 0.015,
+            "ci_low": 0.0007,
+            "ci_high": 0.0292,
+            "p_two_sided": 0.0408,
+            "sharpe_arm": 0.2117,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0122,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 39,
+            "n_fires_on_tp": 8,
+            "n_fires_on_sl": 31,
+            "delta_p_fire": 0.0529,
+            "delta_p_false_positive": 0.2051,
+            "delta_p_rescued": 0.7949,
+            "delta_mean_r_fired_cohort": 0.2308,
+            "mean_mfe_r_at_fire": 0.5071
+          },
+          "bars_held": {
+            "mean_arm_all": 6.29,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 12.0,
+            "mean_base_fired": 35.91
+          },
+          "bh_fdr_rejected": true,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.75_B18",
+          "progress_r": 0.75,
+          "age_bars": 18,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0079,
+              "ci_low": -0.0206,
+              "ci_high": 0.0361,
+              "p_two_sided": 0.5896,
+              "mean_delta_r": 0.007
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0064,
+              "ci_low": 0.0,
+              "ci_high": 0.0216,
+              "p_two_sided": 0.7124,
+              "mean_delta_r": 0.0062
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0097,
+              "ci_low": 0.0,
+              "ci_high": 0.0248,
+              "p_two_sided": 0.2744,
+              "mean_delta_r": 0.0096
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0041,
+              "ci_low": 0.0,
+              "ci_high": 0.0135,
+              "p_two_sided": 0.7376,
+              "mean_delta_r": 0.0038
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0067,
+              "ci_low": -0.0405,
+              "ci_high": 0.0632,
+              "p_two_sided": 0.8408,
+              "mean_delta_r": -0.0059
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "n_folds_positive": 5,
+          "joint_p_stouffer": 0.224069,
+          "joint_z_stouffer": 1.2158,
+          "joint_p_fisher": 0.871944,
+          "pooled": {
+            "delta_sharpe": 0.0098,
+            "ci_low": 0.0008,
+            "ci_high": 0.0194,
+            "p_two_sided": 0.0324,
+            "sharpe_arm": 0.2065,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0089,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 17,
+            "n_fires_on_tp": 3,
+            "n_fires_on_sl": 14,
+            "delta_p_fire": 0.0231,
+            "delta_p_false_positive": 0.1765,
+            "delta_p_rescued": 0.8235,
+            "delta_mean_r_fired_cohort": 0.3839,
+            "mean_mfe_r_at_fire": 0.5153
+          },
+          "bars_held": {
+            "mean_arm_all": 6.67,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 18.0,
+            "mean_base_fired": 56.19
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B24",
+          "progress_r": 0.75,
+          "age_bars": 24,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0149,
+              "ci_low": -0.0015,
+              "ci_high": 0.0365,
+              "p_two_sided": 0.1068,
+              "mean_delta_r": 0.0154
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0077,
+              "ci_low": 0.0,
+              "ci_high": 0.026,
+              "p_two_sided": 0.7124,
+              "mean_delta_r": 0.0076
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0042,
+              "ci_low": 0.0,
+              "ci_high": 0.0137,
+              "p_two_sided": 0.7584,
+              "mean_delta_r": 0.0042
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0228,
+              "ci_low": 0.0,
+              "ci_high": 0.0632,
+              "p_two_sided": 0.2564,
+              "mean_delta_r": 0.0188
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            true,
+            true,
+            false,
+            true
+          ],
+          "n_folds_positive": 4,
+          "joint_p_stouffer": 0.115291,
+          "joint_z_stouffer": 1.5748,
+          "joint_p_fisher": 0.587208,
+          "pooled": {
+            "delta_sharpe": 0.0094,
+            "ci_low": 0.0035,
+            "ci_high": 0.0166,
+            "p_two_sided": 0.0012,
+            "sharpe_arm": 0.2061,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0095,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 10,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 10,
+            "delta_p_fire": 0.0136,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 0.7026,
+            "mean_mfe_r_at_fire": 0.5444
+          },
+          "bars_held": {
+            "mean_arm_all": 7.08,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 24.0,
+            "mean_base_fired": 59.04
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B30",
+          "progress_r": 0.75,
+          "age_bars": 30,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0037,
+              "ci_low": 0.0,
+              "ci_high": 0.0118,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0038
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0061,
+              "ci_low": 0.0,
+              "ci_high": 0.0208,
+              "p_two_sided": 0.7124,
+              "mean_delta_r": 0.006
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0169,
+              "ci_low": 0.0,
+              "ci_high": 0.0582,
+              "p_two_sided": 0.7368,
+              "mean_delta_r": 0.0146
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            true,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 3,
+          "joint_p_stouffer": 0.650663,
+          "joint_z_stouffer": 0.4528,
+          "joint_p_fisher": 0.997072,
+          "pooled": {
+            "delta_sharpe": 0.0049,
+            "ci_low": 0.0008,
+            "ci_high": 0.0108,
+            "p_two_sided": 0.0324,
+            "sharpe_arm": 0.2016,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.005,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 4,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 4,
+            "delta_p_fire": 0.0054,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 0.9272,
+            "mean_mfe_r_at_fire": 0.4731
+          },
+          "bars_held": {
+            "mean_arm_all": 7.35,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 30.0,
+            "mean_base_fired": 68.1
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.75_B42",
+          "progress_r": 0.75,
+          "age_bars": 42,
+          "n_trades": 737,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 163,
+              "delta_sharpe": 0.0065,
+              "ci_low": 0.0,
+              "ci_high": 0.0205,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0068
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 105,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 161,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 75,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 69,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.858402,
+          "joint_z_stouffer": 0.1784,
+          "joint_p_fisher": 0.999983,
+          "pooled": {
+            "delta_sharpe": 0.003,
+            "ci_low": 0.0,
+            "ci_high": 0.0078,
+            "p_two_sided": 0.2592,
+            "sharpe_arm": 0.1997,
+            "sharpe_base": 0.1967,
+            "mean_delta_r": 0.0031,
+            "tail_arm_worst10": -1.0014,
+            "tail_base_worst10": -1.0014,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 2,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 2,
+            "delta_p_fire": 0.0027,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 1.1578,
+            "mean_mfe_r_at_fire": 0.5889
+          },
+          "bars_held": {
+            "mean_arm_all": 7.4,
+            "mean_base_all": 7.55,
+            "mean_arm_fired": 42.0,
+            "mean_base_fired": 98.5
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        }
+      ],
+      "verdict_counts": {
+        "dead": 4,
+        "parked_low_yield": 11
+      },
+      "fdr": {
+        "method": "BH",
+        "alpha": 0.1,
+        "family_size": 15
+      }
+    },
+    {
+      "symbol": "GBPUSD",
+      "n_trades": 944,
+      "reconstruction_audit": {
+        "n_trades": 944,
+        "n_null_vs_ledger_mismatch": 818,
+        "sharpe_null_arm": 0.1756,
+        "sharpe_ledger": 0.2651,
+        "delta_sharpe_null_vs_ledger": -0.0895
+      },
+      "arms": [
+        {
+          "arm_id": "P0.25_B12",
+          "progress_r": 0.25,
+          "age_bars": 12,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": 0.0006,
+              "ci_low": 0.0,
+              "ci_high": 0.0021,
+              "p_two_sided": 0.7144,
+              "mean_delta_r": 0.0006
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0006,
+              "ci_low": -0.0219,
+              "ci_high": 0.0162,
+              "p_two_sided": 1.0,
+              "mean_delta_r": -0.0015
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": 0.0058,
+              "ci_low": 0.0,
+              "ci_high": 0.0197,
+              "p_two_sided": 0.7264,
+              "mean_delta_r": 0.0056
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": -0.0122,
+              "ci_low": -0.0486,
+              "ci_high": 0.0101,
+              "p_two_sided": 0.7308,
+              "mean_delta_r": -0.0167
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            false,
+            false,
+            true,
+            false
+          ],
+          "n_folds_positive": 2,
+          "joint_p_stouffer": 0.835239,
+          "joint_z_stouffer": 0.208,
+          "joint_p_fisher": 0.996785,
+          "pooled": {
+            "delta_sharpe": 0.0003,
+            "ci_low": -0.0046,
+            "ci_high": 0.0049,
+            "p_two_sided": 0.8568,
+            "sharpe_arm": 0.176,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0003,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 9,
+            "n_fires_on_tp": 2,
+            "n_fires_on_sl": 7,
+            "delta_p_fire": 0.0095,
+            "delta_p_false_positive": 0.2222,
+            "delta_p_rescued": 0.7778,
+            "delta_mean_r_fired_cohort": -0.0328,
+            "mean_mfe_r_at_fire": 0.1343
+          },
+          "bars_held": {
+            "mean_arm_all": 7.75,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 12.0,
+            "mean_base_fired": 25.11
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.25_B18",
+          "progress_r": 0.25,
+          "age_bars": 18,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0076,
+              "ci_low": -0.0318,
+              "ci_high": 0.0081,
+              "p_two_sided": 0.7332,
+              "mean_delta_r": -0.0091
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": 0.0026,
+              "ci_low": 0.0,
+              "ci_high": 0.0086,
+              "p_two_sided": 0.7292,
+              "mean_delta_r": 0.0026
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.958807,
+          "joint_z_stouffer": -0.0517,
+          "joint_p_fisher": 0.999522,
+          "pooled": {
+            "delta_sharpe": -0.0011,
+            "ci_low": -0.0056,
+            "ci_high": 0.0018,
+            "p_two_sided": 0.7684,
+            "sharpe_arm": 0.1745,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0015,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 3,
+            "n_fires_on_tp": 1,
+            "n_fires_on_sl": 2,
+            "delta_p_fire": 0.0032,
+            "delta_p_false_positive": 0.3333,
+            "delta_p_rescued": 0.6667,
+            "delta_mean_r_fired_cohort": -0.4612,
+            "mean_mfe_r_at_fire": 0.0644
+          },
+          "bars_held": {
+            "mean_arm_all": 7.84,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 18.0,
+            "mean_base_fired": 29.0
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.25_B24",
+          "progress_r": 0.25,
+          "age_bars": 24,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0079,
+              "ci_low": -0.0254,
+              "ci_high": 0.0,
+              "p_two_sided": 0.72,
+              "mean_delta_r": -0.0094
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 0,
+          "joint_p_stouffer": 0.860491,
+          "joint_z_stouffer": -0.1757,
+          "joint_p_fisher": 0.999976,
+          "pooled": {
+            "delta_sharpe": -0.0014,
+            "ci_low": -0.0043,
+            "ci_high": 0.0,
+            "p_two_sided": 0.7372,
+            "sharpe_arm": 0.1742,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0017,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 1,
+            "n_fires_on_tp": 1,
+            "n_fires_on_sl": 0,
+            "delta_p_fire": 0.0011,
+            "delta_p_false_positive": 1.0,
+            "delta_p_rescued": 0.0,
+            "delta_mean_r_fired_cohort": -1.6383,
+            "mean_mfe_r_at_fire": 0.2378
+          },
+          "bars_held": {
+            "mean_arm_all": 7.85,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 24.0,
+            "mean_base_fired": 49.0
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.25_B30",
+          "progress_r": 0.25,
+          "age_bars": 30,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0097,
+              "ci_low": -0.0308,
+              "ci_high": 0.0,
+              "p_two_sided": 0.72,
+              "mean_delta_r": -0.0114
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 0,
+          "joint_p_stouffer": 0.860491,
+          "joint_z_stouffer": -0.1757,
+          "joint_p_fisher": 0.999976,
+          "pooled": {
+            "delta_sharpe": -0.0017,
+            "ci_low": -0.0053,
+            "ci_high": 0.0,
+            "p_two_sided": 0.7372,
+            "sharpe_arm": 0.1739,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0021,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 1,
+            "n_fires_on_tp": 1,
+            "n_fires_on_sl": 0,
+            "delta_p_fire": 0.0011,
+            "delta_p_false_positive": 1.0,
+            "delta_p_rescued": 0.0,
+            "delta_mean_r_fired_cohort": -1.9944,
+            "mean_mfe_r_at_fire": 0.2378
+          },
+          "bars_held": {
+            "mean_arm_all": 7.85,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 30.0,
+            "mean_base_fired": 49.0
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.25_B42",
+          "progress_r": 0.25,
+          "age_bars": 42,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 0,
+          "joint_p_stouffer": 1.0,
+          "joint_z_stouffer": 0.0,
+          "joint_p_fisher": 1.0,
+          "pooled": {
+            "delta_sharpe": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "p_two_sided": 1.0,
+            "sharpe_arm": 0.1756,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": 0.0,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 0,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 0,
+            "delta_p_fire": 0.0,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 0.0,
+            "delta_mean_r_fired_cohort": 0.0,
+            "mean_mfe_r_at_fire": null
+          },
+          "bars_held": {
+            "mean_arm_all": 7.87,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": null,
+            "mean_base_fired": null
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.50_B12",
+          "progress_r": 0.5,
+          "age_bars": 12,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": 0.0002,
+              "ci_low": -0.0156,
+              "ci_high": 0.0149,
+              "p_two_sided": 0.9796,
+              "mean_delta_r": -0.001
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.006,
+              "ci_low": 0.0,
+              "ci_high": 0.0204,
+              "p_two_sided": 0.7212,
+              "mean_delta_r": 0.0056
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0005,
+              "ci_low": -0.0218,
+              "ci_high": 0.0172,
+              "p_two_sided": 1.0,
+              "mean_delta_r": -0.0014
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": -0.0094,
+              "ci_low": -0.047,
+              "ci_high": 0.0164,
+              "p_two_sided": 0.7796,
+              "mean_delta_r": -0.0134
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": -0.0058,
+              "ci_low": -0.0641,
+              "ci_high": 0.045,
+              "p_two_sided": 0.8632,
+              "mean_delta_r": -0.0138
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 2,
+          "joint_p_stouffer": 0.978736,
+          "joint_z_stouffer": 0.0267,
+          "joint_p_fisher": 0.998975,
+          "pooled": {
+            "delta_sharpe": -0.0015,
+            "ci_low": -0.0105,
+            "ci_high": 0.0069,
+            "p_two_sided": 0.7776,
+            "sharpe_arm": 0.1741,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0037,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 22,
+            "n_fires_on_tp": 7,
+            "n_fires_on_sl": 15,
+            "delta_p_fire": 0.0233,
+            "delta_p_false_positive": 0.3182,
+            "delta_p_rescued": 0.6818,
+            "delta_mean_r_fired_cohort": -0.1575,
+            "mean_mfe_r_at_fire": 0.2644
+          },
+          "bars_held": {
+            "mean_arm_all": 7.41,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 12.0,
+            "mean_base_fired": 31.91
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.50_B18",
+          "progress_r": 0.5,
+          "age_bars": 18,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": -0.0035,
+              "ci_low": -0.0252,
+              "ci_high": 0.0137,
+              "p_two_sided": 0.9204,
+              "mean_delta_r": -0.0048
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0018,
+              "ci_low": 0.0,
+              "ci_high": 0.006,
+              "p_two_sided": 0.7212,
+              "mean_delta_r": 0.0016
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.004,
+              "ci_low": -0.0296,
+              "ci_high": 0.0131,
+              "p_two_sided": 0.8336,
+              "mean_delta_r": -0.0052
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": -0.0093,
+              "ci_low": -0.0296,
+              "ci_high": 0.0,
+              "p_two_sided": 0.7256,
+              "mean_delta_r": -0.0125
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": -0.0018,
+              "ci_low": -0.039,
+              "ci_high": 0.0285,
+              "p_two_sided": 1.0,
+              "mean_delta_r": -0.0057
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.910819,
+          "joint_z_stouffer": -0.112,
+          "joint_p_fisher": 0.997513,
+          "pooled": {
+            "delta_sharpe": -0.0012,
+            "ci_low": -0.0084,
+            "ci_high": 0.0052,
+            "p_two_sided": 0.7624,
+            "sharpe_arm": 0.1744,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0024,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 12,
+            "n_fires_on_tp": 4,
+            "n_fires_on_sl": 8,
+            "delta_p_fire": 0.0127,
+            "delta_p_false_positive": 0.3333,
+            "delta_p_rescued": 0.6667,
+            "delta_mean_r_fired_cohort": -0.1873,
+            "mean_mfe_r_at_fire": 0.2868
+          },
+          "bars_held": {
+            "mean_arm_all": 7.55,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 18.0,
+            "mean_base_fired": 43.51
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.50_B24",
+          "progress_r": 0.5,
+          "age_bars": 24,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": -0.0051,
+              "ci_low": -0.0229,
+              "ci_high": 0.0065,
+              "p_two_sided": 0.75,
+              "mean_delta_r": -0.0066
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0079,
+              "ci_low": -0.0254,
+              "ci_high": 0.0,
+              "p_two_sided": 0.72,
+              "mean_delta_r": -0.0094
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": -0.0059,
+              "ci_low": -0.0423,
+              "ci_high": 0.0228,
+              "p_two_sided": 0.9236,
+              "mean_delta_r": -0.0099
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 0,
+          "joint_p_stouffer": 0.704479,
+          "joint_z_stouffer": -0.3793,
+          "joint_p_fisher": 0.999236,
+          "pooled": {
+            "delta_sharpe": -0.0023,
+            "ci_low": -0.0081,
+            "ci_high": 0.0024,
+            "p_two_sided": 0.4088,
+            "sharpe_arm": 0.1733,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0033,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 6,
+            "n_fires_on_tp": 3,
+            "n_fires_on_sl": 3,
+            "delta_p_fire": 0.0064,
+            "delta_p_false_positive": 0.5,
+            "delta_p_rescued": 0.5,
+            "delta_mean_r_fired_cohort": -0.5158,
+            "mean_mfe_r_at_fire": 0.3153
+          },
+          "bars_held": {
+            "mean_arm_all": 7.74,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 24.0,
+            "mean_base_fired": 45.02
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.50_B30",
+          "progress_r": 0.5,
+          "age_bars": 30,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": -0.0048,
+              "ci_low": -0.0218,
+              "ci_high": 0.0064,
+              "p_two_sided": 0.7556,
+              "mean_delta_r": -0.0063
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0097,
+              "ci_low": -0.0308,
+              "ci_high": 0.0,
+              "p_two_sided": 0.72,
+              "mean_delta_r": -0.0114
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": 0.0083,
+              "ci_low": 0.0,
+              "ci_high": 0.0277,
+              "p_two_sided": 0.7208,
+              "mean_delta_r": 0.0085
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.822672,
+          "joint_z_stouffer": -0.2241,
+          "joint_p_fisher": 0.997229,
+          "pooled": {
+            "delta_sharpe": -0.0014,
+            "ci_low": -0.0068,
+            "ci_high": 0.003,
+            "p_two_sided": 0.6152,
+            "sharpe_arm": 0.1742,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0021,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 5,
+            "n_fires_on_tp": 2,
+            "n_fires_on_sl": 3,
+            "delta_p_fire": 0.0053,
+            "delta_p_false_positive": 0.4,
+            "delta_p_rescued": 0.6,
+            "delta_mean_r_fired_cohort": -0.3983,
+            "mean_mfe_r_at_fire": 0.3219
+          },
+          "bars_held": {
+            "mean_arm_all": 7.8,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 30.0,
+            "mean_base_fired": 43.62
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.50_B42",
+          "progress_r": 0.5,
+          "age_bars": 42,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0062,
+              "ci_low": -0.0202,
+              "ci_high": 0.0,
+              "p_two_sided": 0.72,
+              "mean_delta_r": -0.0075
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 0,
+          "joint_p_stouffer": 0.860491,
+          "joint_z_stouffer": -0.1757,
+          "joint_p_fisher": 0.999976,
+          "pooled": {
+            "delta_sharpe": -0.0011,
+            "ci_low": -0.0033,
+            "ci_high": 0.0,
+            "p_two_sided": 0.7372,
+            "sharpe_arm": 0.1746,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0014,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 1,
+            "n_fires_on_tp": 1,
+            "n_fires_on_sl": 0,
+            "delta_p_fire": 0.0011,
+            "delta_p_false_positive": 1.0,
+            "delta_p_rescued": 0.0,
+            "delta_mean_r_fired_cohort": -1.3066,
+            "mean_mfe_r_at_fire": 0.286
+          },
+          "bars_held": {
+            "mean_arm_all": 7.87,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 42.0,
+            "mean_base_fired": 49.0
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B12",
+          "progress_r": 0.75,
+          "age_bars": 12,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": -0.0039,
+              "ci_low": -0.0266,
+              "ci_high": 0.017,
+              "p_two_sided": 0.7236,
+              "mean_delta_r": -0.0071
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0242,
+              "ci_low": -0.0086,
+              "ci_high": 0.0618,
+              "p_two_sided": 0.1696,
+              "mean_delta_r": 0.0185
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": 0.0089,
+              "ci_low": -0.0194,
+              "ci_high": 0.039,
+              "p_two_sided": 0.5452,
+              "mean_delta_r": 0.0081
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": -0.0048,
+              "ci_low": -0.0445,
+              "ci_high": 0.0228,
+              "p_two_sided": 0.9064,
+              "mean_delta_r": -0.009
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": -0.0432,
+              "ci_low": -0.1169,
+              "ci_high": 0.0214,
+              "p_two_sided": 0.1948,
+              "mean_delta_r": -0.0614
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            true,
+            false,
+            false
+          ],
+          "n_folds_positive": 2,
+          "joint_p_stouffer": 0.772324,
+          "joint_z_stouffer": 0.2893,
+          "joint_p_fisher": 0.543818,
+          "pooled": {
+            "delta_sharpe": -0.0017,
+            "ci_low": -0.0153,
+            "ci_high": 0.0119,
+            "p_two_sided": 0.8068,
+            "sharpe_arm": 0.1739,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0064,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 48,
+            "n_fires_on_tp": 18,
+            "n_fires_on_sl": 30,
+            "delta_p_fire": 0.0508,
+            "delta_p_false_positive": 0.375,
+            "delta_p_rescued": 0.625,
+            "delta_mean_r_fired_cohort": -0.1267,
+            "mean_mfe_r_at_fire": 0.4632
+          },
+          "bars_held": {
+            "mean_arm_all": 6.9,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 12.0,
+            "mean_base_fired": 31.15
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B18",
+          "progress_r": 0.75,
+          "age_bars": 18,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": -0.0003,
+              "ci_low": -0.025,
+              "ci_high": 0.0216,
+              "p_two_sided": 0.9984,
+              "mean_delta_r": -0.0015
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.003,
+              "ci_low": -0.0155,
+              "ci_high": 0.0223,
+              "p_two_sided": 0.7656,
+              "mean_delta_r": 0.0006
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0051,
+              "ci_low": -0.0305,
+              "ci_high": 0.0123,
+              "p_two_sided": 0.7472,
+              "mean_delta_r": -0.0064
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": -0.0093,
+              "ci_low": -0.0296,
+              "ci_high": 0.0,
+              "p_two_sided": 0.7256,
+              "mean_delta_r": -0.0125
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": -0.0018,
+              "ci_low": -0.039,
+              "ci_high": 0.0285,
+              "p_two_sided": 1.0,
+              "mean_delta_r": -0.0057
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.886729,
+          "joint_z_stouffer": -0.1424,
+          "joint_p_fisher": 0.997862,
+          "pooled": {
+            "delta_sharpe": -0.0018,
+            "ci_low": -0.0105,
+            "ci_high": 0.0063,
+            "p_two_sided": 0.6884,
+            "sharpe_arm": 0.1739,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0035,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 19,
+            "n_fires_on_tp": 6,
+            "n_fires_on_sl": 13,
+            "delta_p_fire": 0.0201,
+            "delta_p_false_positive": 0.3158,
+            "delta_p_rescued": 0.6842,
+            "delta_mean_r_fired_cohort": -0.1737,
+            "mean_mfe_r_at_fire": 0.4054
+          },
+          "bars_held": {
+            "mean_arm_all": 7.33,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 18.0,
+            "mean_base_fired": 44.8
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B24",
+          "progress_r": 0.75,
+          "age_bars": 24,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": -0.0036,
+              "ci_low": -0.0246,
+              "ci_high": 0.0129,
+              "p_two_sided": 0.7476,
+              "mean_delta_r": -0.0051
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0118,
+              "ci_low": 0.0,
+              "ci_high": 0.0328,
+              "p_two_sided": 0.2692,
+              "mean_delta_r": 0.0111
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0084,
+              "ci_low": -0.0261,
+              "ci_high": 0.0,
+              "p_two_sided": 0.258,
+              "mean_delta_r": -0.0099
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": -0.0091,
+              "ci_low": -0.029,
+              "ci_high": 0.0,
+              "p_two_sided": 0.7256,
+              "mean_delta_r": -0.0123
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": -0.0059,
+              "ci_low": -0.0423,
+              "ci_high": 0.0228,
+              "p_two_sided": 0.9236,
+              "mean_delta_r": -0.0099
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.721285,
+          "joint_z_stouffer": -0.3567,
+          "joint_p_fisher": 0.751917,
+          "pooled": {
+            "delta_sharpe": -0.0011,
+            "ci_low": -0.008,
+            "ci_high": 0.0054,
+            "p_two_sided": 0.7612,
+            "sharpe_arm": 0.1745,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0023,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 12,
+            "n_fires_on_tp": 4,
+            "n_fires_on_sl": 8,
+            "delta_p_fire": 0.0127,
+            "delta_p_false_positive": 0.3333,
+            "delta_p_rescued": 0.6667,
+            "delta_mean_r_fired_cohort": -0.1817,
+            "mean_mfe_r_at_fire": 0.4583
+          },
+          "bars_held": {
+            "mean_arm_all": 7.48,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 24.0,
+            "mean_base_fired": 54.51
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B30",
+          "progress_r": 0.75,
+          "age_bars": 30,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": -0.0053,
+              "ci_low": -0.0225,
+              "ci_high": 0.0058,
+              "p_two_sided": 0.5768,
+              "mean_delta_r": -0.0068
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0085,
+              "ci_low": 0.0,
+              "ci_high": 0.0253,
+              "p_two_sided": 0.2692,
+              "mean_delta_r": 0.0079
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0097,
+              "ci_low": -0.0308,
+              "ci_high": 0.0,
+              "p_two_sided": 0.72,
+              "mean_delta_r": -0.0114
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": 0.0083,
+              "ci_low": 0.0,
+              "ci_high": 0.0277,
+              "p_two_sided": 0.7208,
+              "mean_delta_r": 0.0085
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 2,
+          "joint_p_stouffer": 0.863265,
+          "joint_z_stouffer": 0.1722,
+          "joint_p_fisher": 0.888698,
+          "pooled": {
+            "delta_sharpe": -0.0002,
+            "ci_low": -0.0061,
+            "ci_high": 0.005,
+            "p_two_sided": 0.9976,
+            "sharpe_arm": 0.1755,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0008,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 8,
+            "n_fires_on_tp": 2,
+            "n_fires_on_sl": 6,
+            "delta_p_fire": 0.0085,
+            "delta_p_false_positive": 0.25,
+            "delta_p_rescued": 0.75,
+            "delta_mean_r_fired_cohort": -0.0981,
+            "mean_mfe_r_at_fire": 0.425
+          },
+          "bars_held": {
+            "mean_arm_all": 7.69,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 30.0,
+            "mean_base_fired": 51.52
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B42",
+          "progress_r": 0.75,
+          "age_bars": 42,
+          "n_trades": 944,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 211,
+              "delta_sharpe": -0.0036,
+              "ci_low": -0.0116,
+              "ci_high": 0.0,
+              "p_two_sided": 0.7312,
+              "mean_delta_r": -0.0046
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 167,
+              "delta_sharpe": 0.0058,
+              "ci_low": 0.0,
+              "ci_high": 0.0151,
+              "p_two_sided": 0.2692,
+              "mean_delta_r": 0.0051
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 175,
+              "delta_sharpe": -0.0062,
+              "ci_low": -0.0202,
+              "ci_high": 0.0,
+              "p_two_sided": 0.72,
+              "mean_delta_r": -0.0075
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 94,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 81,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.866186,
+          "joint_z_stouffer": 0.1685,
+          "joint_p_fisher": 0.951413,
+          "pooled": {
+            "delta_sharpe": -0.001,
+            "ci_low": -0.0041,
+            "ci_high": 0.0016,
+            "p_two_sided": 0.5568,
+            "sharpe_arm": 0.1747,
+            "sharpe_base": 0.1756,
+            "mean_delta_r": -0.0015,
+            "tail_arm_worst10": -1.0012,
+            "tail_base_worst10": -1.0012,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 4,
+            "n_fires_on_tp": 2,
+            "n_fires_on_sl": 2,
+            "delta_p_fire": 0.0042,
+            "delta_p_false_positive": 0.5,
+            "delta_p_rescued": 0.5,
+            "delta_mean_r_fired_cohort": -0.3557,
+            "mean_mfe_r_at_fire": 0.5121
+          },
+          "bars_held": {
+            "mean_arm_all": 7.78,
+            "mean_base_all": 7.87,
+            "mean_arm_fired": 42.0,
+            "mean_base_fired": 63.78
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        }
+      ],
+      "verdict_counts": {
+        "parked_low_yield": 1,
+        "dead": 14
+      },
+      "fdr": {
+        "method": "BH",
+        "alpha": 0.1,
+        "family_size": 15
+      }
+    },
+    {
+      "symbol": "USDCAD",
+      "n_trades": 707,
+      "reconstruction_audit": {
+        "n_trades": 707,
+        "n_null_vs_ledger_mismatch": 605,
+        "sharpe_null_arm": 0.136,
+        "sharpe_ledger": 0.2813,
+        "delta_sharpe_null_vs_ledger": -0.1453
+      },
+      "arms": [
+        {
+          "arm_id": "P0.25_B12",
+          "progress_r": 0.25,
+          "age_bars": 12,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": 0.0074,
+              "ci_low": 0.0,
+              "ci_high": 0.0191,
+              "p_two_sided": 0.2596,
+              "mean_delta_r": 0.0076
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0039,
+              "ci_low": 0.0,
+              "ci_high": 0.0131,
+              "p_two_sided": 0.7348,
+              "mean_delta_r": 0.0038
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": -0.0108,
+              "ci_low": -0.0506,
+              "ci_high": 0.014,
+              "p_two_sided": 0.786,
+              "mean_delta_r": -0.0133
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0146,
+              "ci_low": 0.0,
+              "ci_high": 0.0391,
+              "p_two_sided": 0.2696,
+              "mean_delta_r": 0.0164
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            true,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 3,
+          "joint_p_stouffer": 0.306825,
+          "joint_z_stouffer": 1.0219,
+          "joint_p_fisher": 0.779118,
+          "pooled": {
+            "delta_sharpe": -0.0002,
+            "ci_low": -0.0102,
+            "ci_high": 0.0087,
+            "p_two_sided": 1.0,
+            "sharpe_arm": 0.1358,
+            "sharpe_base": 0.136,
+            "mean_delta_r": -0.0013,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 12,
+            "n_fires_on_tp": 3,
+            "n_fires_on_sl": 9,
+            "delta_p_fire": 0.017,
+            "delta_p_false_positive": 0.25,
+            "delta_p_rescued": 0.75,
+            "delta_mean_r_fired_cohort": -0.0743,
+            "mean_mfe_r_at_fire": 0.158
+          },
+          "bars_held": {
+            "mean_arm_all": 8.14,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 12.0,
+            "mean_base_fired": 41.75
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.25_B18",
+          "progress_r": 0.25,
+          "age_bars": 18,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": -0.0135,
+              "ci_low": -0.0436,
+              "ci_high": 0.0,
+              "p_two_sided": 0.7412,
+              "mean_delta_r": -0.0161
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0148,
+              "ci_low": 0.0,
+              "ci_high": 0.0399,
+              "p_two_sided": 0.2696,
+              "mean_delta_r": 0.0167
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.795756,
+          "joint_z_stouffer": 0.2588,
+          "joint_p_fisher": 0.975745,
+          "pooled": {
+            "delta_sharpe": 0.0004,
+            "ci_low": -0.0053,
+            "ci_high": 0.0047,
+            "p_two_sided": 0.8484,
+            "sharpe_arm": 0.1364,
+            "sharpe_base": 0.136,
+            "mean_delta_r": 0.0,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 4,
+            "n_fires_on_tp": 1,
+            "n_fires_on_sl": 3,
+            "delta_p_fire": 0.0057,
+            "delta_p_false_positive": 0.25,
+            "delta_p_rescued": 0.75,
+            "delta_mean_r_fired_cohort": 0.0077,
+            "mean_mfe_r_at_fire": 0.161
+          },
+          "bars_held": {
+            "mean_arm_all": 8.32,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 18.0,
+            "mean_base_fired": 75.5
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.25_B24",
+          "progress_r": 0.25,
+          "age_bars": 24,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0127,
+              "ci_low": 0.0,
+              "ci_high": 0.0339,
+              "p_two_sided": 0.2696,
+              "mean_delta_r": 0.0143
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.682087,
+          "joint_z_stouffer": 0.4096,
+          "joint_p_fisher": 0.988982,
+          "pooled": {
+            "delta_sharpe": 0.0024,
+            "ci_low": 0.0,
+            "ci_high": 0.0057,
+            "p_two_sided": 0.0972,
+            "sharpe_arm": 0.1384,
+            "sharpe_base": 0.136,
+            "mean_delta_r": 0.0026,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 3,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 3,
+            "delta_p_fire": 0.0042,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 0.6061,
+            "mean_mfe_r_at_fire": 0.1498
+          },
+          "bars_held": {
+            "mean_arm_all": 8.51,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 24.0,
+            "mean_base_fired": 55.67
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.25_B30",
+          "progress_r": 0.25,
+          "age_bars": 30,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0074,
+              "ci_low": 0.0,
+              "ci_high": 0.021,
+              "p_two_sided": 0.2696,
+              "mean_delta_r": 0.0083
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.682087,
+          "joint_z_stouffer": 0.4096,
+          "joint_p_fisher": 0.988982,
+          "pooled": {
+            "delta_sharpe": 0.0008,
+            "ci_low": 0.0,
+            "ci_high": 0.0023,
+            "p_two_sided": 0.2636,
+            "sharpe_arm": 0.1368,
+            "sharpe_base": 0.136,
+            "mean_delta_r": 0.0008,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 2,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 2,
+            "delta_p_fire": 0.0028,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 0.2983,
+            "mean_mfe_r_at_fire": 0.1093
+          },
+          "bars_held": {
+            "mean_arm_all": 8.6,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 30.0,
+            "mean_base_fired": 46.5
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.25_B42",
+          "progress_r": 0.25,
+          "age_bars": 42,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 0,
+          "joint_p_stouffer": 1.0,
+          "joint_z_stouffer": 0.0,
+          "joint_p_fisher": 1.0,
+          "pooled": {
+            "delta_sharpe": 0.0,
+            "ci_low": 0.0,
+            "ci_high": 0.0,
+            "p_two_sided": 1.0,
+            "sharpe_arm": 0.136,
+            "sharpe_base": 0.136,
+            "mean_delta_r": 0.0,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 0,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 0,
+            "delta_p_fire": 0.0,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 0.0,
+            "delta_mean_r_fired_cohort": 0.0,
+            "mean_mfe_r_at_fire": null
+          },
+          "bars_held": {
+            "mean_arm_all": 8.65,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": null,
+            "mean_base_fired": null
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.50_B12",
+          "progress_r": 0.5,
+          "age_bars": 12,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": 0.0091,
+              "ci_low": -0.0304,
+              "ci_high": 0.0473,
+              "p_two_sided": 0.6704,
+              "mean_delta_r": 0.0059
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0049,
+              "ci_low": -0.0206,
+              "ci_high": 0.0328,
+              "p_two_sided": 0.6752,
+              "mean_delta_r": 0.0027
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": -0.0053,
+              "ci_low": -0.0486,
+              "ci_high": 0.0281,
+              "p_two_sided": 0.8688,
+              "mean_delta_r": -0.0077
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0085,
+              "ci_low": 0.0,
+              "ci_high": 0.0292,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0087
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0109,
+              "ci_low": -0.0405,
+              "ci_high": 0.061,
+              "p_two_sided": 0.6744,
+              "mean_delta_r": 0.0105
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            true,
+            false,
+            true,
+            true
+          ],
+          "n_folds_positive": 4,
+          "joint_p_stouffer": 0.526077,
+          "joint_z_stouffer": 0.634,
+          "joint_p_fisher": 0.974568,
+          "pooled": {
+            "delta_sharpe": -0.0003,
+            "ci_low": -0.0145,
+            "ci_high": 0.013,
+            "p_two_sided": 0.9816,
+            "sharpe_arm": 0.1357,
+            "sharpe_base": 0.136,
+            "mean_delta_r": -0.0029,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 27,
+            "n_fires_on_tp": 8,
+            "n_fires_on_sl": 19,
+            "delta_p_fire": 0.0382,
+            "delta_p_false_positive": 0.2963,
+            "delta_p_rescued": 0.7037,
+            "delta_mean_r_fired_cohort": -0.0767,
+            "mean_mfe_r_at_fire": 0.2875
+          },
+          "bars_held": {
+            "mean_arm_all": 7.6,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 12.0,
+            "mean_base_fired": 39.56
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.50_B18",
+          "progress_r": 0.5,
+          "age_bars": 18,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": 0.011,
+              "ci_low": 0.0,
+              "ci_high": 0.0328,
+              "p_two_sided": 0.2792,
+              "mean_delta_r": 0.0118
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0031,
+              "ci_low": -0.0175,
+              "ci_high": 0.0232,
+              "p_two_sided": 0.7424,
+              "mean_delta_r": 0.0008
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": -0.0132,
+              "ci_low": -0.0432,
+              "ci_high": 0.001,
+              "p_two_sided": 0.7412,
+              "mean_delta_r": -0.0158
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.008,
+              "ci_low": 0.0,
+              "ci_high": 0.0272,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0081
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0097,
+              "ci_low": -0.0406,
+              "ci_high": 0.0562,
+              "p_two_sided": 0.6888,
+              "mean_delta_r": 0.0091
+            }
+          ],
+          "fold_positive_flags": [
+            true,
+            true,
+            false,
+            true,
+            true
+          ],
+          "n_folds_positive": 4,
+          "joint_p_stouffer": 0.401187,
+          "joint_z_stouffer": 0.8395,
+          "joint_p_fisher": 0.884427,
+          "pooled": {
+            "delta_sharpe": 0.0033,
+            "ci_low": -0.0053,
+            "ci_high": 0.0116,
+            "p_two_sided": 0.4144,
+            "sharpe_arm": 0.1394,
+            "sharpe_base": 0.136,
+            "mean_delta_r": 0.0027,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 14,
+            "n_fires_on_tp": 3,
+            "n_fires_on_sl": 11,
+            "delta_p_fire": 0.0198,
+            "delta_p_false_positive": 0.2143,
+            "delta_p_rescued": 0.7857,
+            "delta_mean_r_fired_cohort": 0.135,
+            "mean_mfe_r_at_fire": 0.3356
+          },
+          "bars_held": {
+            "mean_arm_all": 7.9,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 18.0,
+            "mean_base_fired": 55.57
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.50_B24",
+          "progress_r": 0.5,
+          "age_bars": 24,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0074,
+              "ci_low": 0.0,
+              "ci_high": 0.0244,
+              "p_two_sided": 0.7428,
+              "mean_delta_r": 0.0076
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": 0.0024,
+              "ci_low": 0.0,
+              "ci_high": 0.0077,
+              "p_two_sided": 0.7332,
+              "mean_delta_r": 0.0027
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0073,
+              "ci_low": 0.0,
+              "ci_high": 0.0249,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0074
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0239,
+              "ci_low": 0.0,
+              "ci_high": 0.0572,
+              "p_two_sided": 0.088,
+              "mean_delta_r": 0.0268
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            true,
+            true,
+            true
+          ],
+          "n_folds_positive": 4,
+          "joint_p_stouffer": 0.279119,
+          "joint_z_stouffer": 1.0823,
+          "joint_p_fisher": 0.754922,
+          "pooled": {
+            "delta_sharpe": 0.0061,
+            "ci_low": 0.002,
+            "ci_high": 0.0114,
+            "p_two_sided": 0.0008,
+            "sharpe_arm": 0.1421,
+            "sharpe_base": 0.136,
+            "mean_delta_r": 0.0065,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 7,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 7,
+            "delta_p_fire": 0.0099,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 0.6553,
+            "mean_mfe_r_at_fire": 0.2841
+          },
+          "bars_held": {
+            "mean_arm_all": 8.35,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 24.0,
+            "mean_base_fired": 54.43
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.50_B30",
+          "progress_r": 0.5,
+          "age_bars": 30,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0051,
+              "ci_low": 0.0,
+              "ci_high": 0.0168,
+              "p_two_sided": 0.7428,
+              "mean_delta_r": 0.0051
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0049,
+              "ci_low": 0.0,
+              "ci_high": 0.0169,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0049
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0074,
+              "ci_low": 0.0,
+              "ci_high": 0.021,
+              "p_two_sided": 0.2696,
+              "mean_delta_r": 0.0083
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            false,
+            true,
+            true
+          ],
+          "n_folds_positive": 3,
+          "joint_p_stouffer": 0.481869,
+          "joint_z_stouffer": 0.7033,
+          "joint_p_fisher": 0.954941,
+          "pooled": {
+            "delta_sharpe": 0.0036,
+            "ci_low": 0.0006,
+            "ci_high": 0.0078,
+            "p_two_sided": 0.0092,
+            "sharpe_arm": 0.1396,
+            "sharpe_base": 0.136,
+            "mean_delta_r": 0.0038,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 5,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 5,
+            "delta_p_fire": 0.0071,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 0.5424,
+            "mean_mfe_r_at_fire": 0.2493
+          },
+          "bars_held": {
+            "mean_arm_all": 8.49,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 30.0,
+            "mean_base_fired": 52.2
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.50_B42",
+          "progress_r": 0.5,
+          "age_bars": 42,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0086,
+              "ci_low": 0.0,
+              "ci_high": 0.0282,
+              "p_two_sided": 0.7428,
+              "mean_delta_r": 0.0089
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "n_folds_positive": 1,
+          "joint_p_stouffer": 0.872546,
+          "joint_z_stouffer": 0.1604,
+          "joint_p_fisher": 0.999985,
+          "pooled": {
+            "delta_sharpe": 0.0015,
+            "ci_low": 0.0,
+            "ci_high": 0.0045,
+            "p_two_sided": 0.7228,
+            "sharpe_arm": 0.1375,
+            "sharpe_base": 0.136,
+            "mean_delta_r": 0.0016,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 1,
+            "n_fires_on_tp": 0,
+            "n_fires_on_sl": 1,
+            "delta_p_fire": 0.0014,
+            "delta_p_false_positive": 0.0,
+            "delta_p_rescued": 1.0,
+            "delta_mean_r_fired_cohort": 1.1158,
+            "mean_mfe_r_at_fire": 0.4716
+          },
+          "bars_held": {
+            "mean_arm_all": 8.63,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 42.0,
+            "mean_base_fired": 58.0
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "parked_low_yield"
+        },
+        {
+          "arm_id": "P0.75_B12",
+          "progress_r": 0.75,
+          "age_bars": 12,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": -0.0446,
+              "ci_low": -0.1056,
+              "ci_high": 0.0074,
+              "p_two_sided": 0.0992,
+              "mean_delta_r": -0.0581
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": -0.0001,
+              "ci_low": -0.0293,
+              "ci_high": 0.0302,
+              "p_two_sided": 1.0,
+              "mean_delta_r": -0.0043
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": -0.004,
+              "ci_low": -0.0534,
+              "ci_high": 0.0397,
+              "p_two_sided": 0.8948,
+              "mean_delta_r": -0.0079
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0085,
+              "ci_low": 0.0,
+              "ci_high": 0.0292,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0087
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0184,
+              "ci_low": -0.0534,
+              "ci_high": 0.0882,
+              "p_two_sided": 0.5908,
+              "mean_delta_r": 0.017
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "n_folds_positive": 2,
+          "joint_p_stouffer": 0.574001,
+          "joint_z_stouffer": -0.5622,
+          "joint_p_fisher": 0.771318,
+          "pooled": {
+            "delta_sharpe": -0.0074,
+            "ci_low": -0.0265,
+            "ci_high": 0.0109,
+            "p_two_sided": 0.4464,
+            "sharpe_arm": 0.1286,
+            "sharpe_base": 0.136,
+            "mean_delta_r": -0.0133,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 49,
+            "n_fires_on_tp": 19,
+            "n_fires_on_sl": 30,
+            "delta_p_fire": 0.0693,
+            "delta_p_false_positive": 0.3878,
+            "delta_p_rescued": 0.6122,
+            "delta_mean_r_fired_cohort": -0.1917,
+            "mean_mfe_r_at_fire": 0.4443
+          },
+          "bars_held": {
+            "mean_arm_all": 6.88,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 12.0,
+            "mean_base_fired": 37.51
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B18",
+          "progress_r": 0.75,
+          "age_bars": 18,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": -0.0363,
+              "ci_low": -0.0819,
+              "ci_high": 0.0026,
+              "p_two_sided": 0.0652,
+              "mean_delta_r": -0.0462
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0064,
+              "ci_low": -0.0151,
+              "ci_high": 0.028,
+              "p_two_sided": 0.5316,
+              "mean_delta_r": 0.0047
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": -0.0113,
+              "ci_low": -0.0538,
+              "ci_high": 0.0259,
+              "p_two_sided": 0.646,
+              "mean_delta_r": -0.0151
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.008,
+              "ci_low": 0.0,
+              "ci_high": 0.0272,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0081
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0108,
+              "ci_low": -0.0505,
+              "ci_high": 0.0688,
+              "p_two_sided": 0.7248,
+              "mean_delta_r": 0.0088
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            false,
+            true,
+            true
+          ],
+          "n_folds_positive": 3,
+          "joint_p_stouffer": 0.566431,
+          "joint_z_stouffer": -0.5733,
+          "joint_p_fisher": 0.546437,
+          "pooled": {
+            "delta_sharpe": -0.0052,
+            "ci_low": -0.0182,
+            "ci_high": 0.0083,
+            "p_two_sided": 0.438,
+            "sharpe_arm": 0.1309,
+            "sharpe_base": 0.136,
+            "mean_delta_r": -0.0089,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 29,
+            "n_fires_on_tp": 13,
+            "n_fires_on_sl": 16,
+            "delta_p_fire": 0.041,
+            "delta_p_false_positive": 0.4483,
+            "delta_p_rescued": 0.5517,
+            "delta_mean_r_fired_cohort": -0.2178,
+            "mean_mfe_r_at_fire": 0.4889
+          },
+          "bars_held": {
+            "mean_arm_all": 7.37,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 18.0,
+            "mean_base_fired": 49.24
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B24",
+          "progress_r": 0.75,
+          "age_bars": 24,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": -0.0341,
+              "ci_low": -0.0792,
+              "ci_high": 0.0,
+              "p_two_sided": 0.092,
+              "mean_delta_r": -0.0411
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0013,
+              "ci_low": -0.022,
+              "ci_high": 0.0241,
+              "p_two_sided": 0.9272,
+              "mean_delta_r": -0.0007
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": -0.0188,
+              "ci_low": -0.0545,
+              "ci_high": 0.0049,
+              "p_two_sided": 0.2784,
+              "mean_delta_r": -0.023
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0073,
+              "ci_low": 0.0,
+              "ci_high": 0.0249,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0074
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0402,
+              "ci_low": 0.0054,
+              "ci_high": 0.0884,
+              "p_two_sided": 0.032,
+              "mean_delta_r": 0.0453
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            false,
+            true,
+            true
+          ],
+          "n_folds_positive": 3,
+          "joint_p_stouffer": 0.708305,
+          "joint_z_stouffer": -0.3741,
+          "joint_p_fisher": 0.13308,
+          "pooled": {
+            "delta_sharpe": -0.0025,
+            "ci_low": -0.0136,
+            "ci_high": 0.0077,
+            "p_two_sided": 0.6476,
+            "sharpe_arm": 0.1335,
+            "sharpe_base": 0.136,
+            "mean_delta_r": -0.0045,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 16,
+            "n_fires_on_tp": 6,
+            "n_fires_on_sl": 10,
+            "delta_p_fire": 0.0226,
+            "delta_p_false_positive": 0.375,
+            "delta_p_rescued": 0.625,
+            "delta_mean_r_fired_cohort": -0.1976,
+            "mean_mfe_r_at_fire": 0.4683
+          },
+          "bars_held": {
+            "mean_arm_all": 7.77,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 24.0,
+            "mean_base_fired": 62.62
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B30",
+          "progress_r": 0.75,
+          "age_bars": 30,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": -0.0216,
+              "ci_low": -0.0556,
+              "ci_high": 0.0,
+              "p_two_sided": 0.2648,
+              "mean_delta_r": -0.0263
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": -0.0014,
+              "ci_low": -0.019,
+              "ci_high": 0.0148,
+              "p_two_sided": 0.7924,
+              "mean_delta_r": -0.0036
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": -0.0215,
+              "ci_low": -0.0572,
+              "ci_high": 0.0015,
+              "p_two_sided": 0.272,
+              "mean_delta_r": -0.0261
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0049,
+              "ci_low": 0.0,
+              "ci_high": 0.0169,
+              "p_two_sided": 0.738,
+              "mean_delta_r": 0.0049
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0144,
+              "ci_low": 0.0,
+              "ci_high": 0.0346,
+              "p_two_sided": 0.1,
+              "mean_delta_r": 0.0161
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "n_folds_positive": 2,
+          "joint_p_stouffer": 0.651962,
+          "joint_z_stouffer": -0.451,
+          "joint_p_fisher": 0.36224,
+          "pooled": {
+            "delta_sharpe": -0.0041,
+            "ci_low": -0.0132,
+            "ci_high": 0.0038,
+            "p_two_sided": 0.3288,
+            "sharpe_arm": 0.1319,
+            "sharpe_base": 0.136,
+            "mean_delta_r": -0.0059,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 13,
+            "n_fires_on_tp": 5,
+            "n_fires_on_sl": 8,
+            "delta_p_fire": 0.0184,
+            "delta_p_false_positive": 0.3846,
+            "delta_p_rescued": 0.6154,
+            "delta_mean_r_fired_cohort": -0.3211,
+            "mean_mfe_r_at_fire": 0.4923
+          },
+          "bars_held": {
+            "mean_arm_all": 7.96,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 30.0,
+            "mean_base_fired": 67.15
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        },
+        {
+          "arm_id": "P0.75_B42",
+          "progress_r": 0.75,
+          "age_bars": 42,
+          "n_trades": 707,
+          "per_fold": [
+            {
+              "fold": "fold1",
+              "n_trades": 134,
+              "delta_sharpe": -0.0112,
+              "ci_low": -0.0365,
+              "ci_high": 0.0,
+              "p_two_sided": 0.746,
+              "mean_delta_r": -0.0136
+            },
+            {
+              "fold": "fold2",
+              "n_trades": 125,
+              "delta_sharpe": 0.0086,
+              "ci_low": 0.0,
+              "ci_high": 0.0282,
+              "p_two_sided": 0.7428,
+              "mean_delta_r": 0.0089
+            },
+            {
+              "fold": "fold3",
+              "n_trades": 109,
+              "delta_sharpe": -0.0162,
+              "ci_low": -0.0517,
+              "ci_high": 0.0,
+              "p_two_sided": 0.7412,
+              "mean_delta_r": -0.0191
+            },
+            {
+              "fold": "fold4",
+              "n_trades": 83,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two_sided": 1.0,
+              "mean_delta_r": 0.0
+            },
+            {
+              "fold": "fold5",
+              "n_trades": 72,
+              "delta_sharpe": 0.0113,
+              "ci_low": 0.0,
+              "ci_high": 0.0364,
+              "p_two_sided": 0.7632,
+              "mean_delta_r": 0.0129
+            }
+          ],
+          "fold_positive_flags": [
+            false,
+            true,
+            false,
+            false,
+            true
+          ],
+          "n_folds_positive": 2,
+          "joint_p_stouffer": 0.966083,
+          "joint_z_stouffer": -0.0425,
+          "joint_p_fisher": 0.993245,
+          "pooled": {
+            "delta_sharpe": -0.0019,
+            "ci_low": -0.01,
+            "ci_high": 0.005,
+            "p_two_sided": 0.6764,
+            "sharpe_arm": 0.1341,
+            "sharpe_base": 0.136,
+            "mean_delta_r": -0.0026,
+            "tail_arm_worst10": -1.0015,
+            "tail_base_worst10": -1.0015,
+            "delta_tail_worst10": 0.0
+          },
+          "fire_diagnostics": {
+            "n_fires": 4,
+            "n_fires_on_tp": 2,
+            "n_fires_on_sl": 2,
+            "delta_p_fire": 0.0057,
+            "delta_p_false_positive": 0.5,
+            "delta_p_rescued": 0.5,
+            "delta_mean_r_fired_cohort": -0.4647,
+            "mean_mfe_r_at_fire": 0.5845
+          },
+          "bars_held": {
+            "mean_arm_all": 8.36,
+            "mean_base_all": 8.65,
+            "mean_arm_fired": 42.0,
+            "mean_base_fired": 93.5
+          },
+          "bh_fdr_rejected": false,
+          "verdict": "dead"
+        }
+      ],
+      "verdict_counts": {
+        "dead": 9,
+        "parked_low_yield": 6
+      },
+      "fdr": {
+        "method": "BH",
+        "alpha": 0.1,
+        "family_size": 15
+      }
+    }
+  ],
+  "study_verdict": "parked_low_yield",
+  "alive_arms": [],
+  "stage_2_authorised": false
+}

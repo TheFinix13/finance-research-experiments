@@ -47,6 +47,17 @@ wick_proof + PLG stack is close to optimal given the entry model:
 | E024 near-TP stall exit | dead (72/72 cells) | Δ P(false positive) 0.63–0.91 across every arm | `93f4887` |
 | E025 joint stack | cancelled_dependency_failed | 0 alive upstream | `929a585` |
 
+**E026 low-MFE time-stop (2026-07-28, I021 stage 1):** `parked_low_yield`,
+0/45 cells alive (best EURUSD P0.75_B12 ΔSharpe +0.0150 CI-LB>0 but 3/5
+folds). Aged-and-still-flat cohort is a tail event (0–49 fires/symbol in
+11 y; 2–5 at the user-anchor P0.50/B30). Stage 2 (I021 health meter)
+cancelled per §6. **CAVEAT now on record (E026 REPORT §5): the E020–E025
+deltas above used a ledger-r baseline and are confounded with path-
+reconstruction drift (−0.090/−0.089/−0.145 Sharpe per symbol — same
+magnitude as the reported "degradation"). "No improvement" stands;
+"actively harmful" effect sizes are unsafe. E026 (and any future replay
+study) uses a replayed null-arm baseline (E026 PROTOCOL §7 Amendment 1).**
+
 **Liquidity-structure line + E010 execution (2026-07-28):** three
 studies run to verdict in one session (pre-reg `cdb7a01`, harnesses
 `6722012`, E010 amendments `a159ec1`):
@@ -75,8 +86,8 @@ entry) needs its own study + agent validation chain.
 |---|---|
 | Registry | `EXPERIMENTS.md`, `DATA_LEDGER.md`, `PROTOCOL_DISCIPLINE.md` |
 | PRE-0 shared harness | `programs/_shared/counterfactual_replay/{SPEC.md, replay.py, export_ledger_with_paths.py, tests/, data/*_H4_paths.jsonl}` |
-| E020–E025 experiment dirs | `experiments/E02{0..5}_*/{PROTOCOL,MANIFEST,REPORT,STOP_NOTICE}.md` |
-| E020–E024 program dirs | `programs/E02{0,1,2,4}/{run_e0xx_validation.py, results.json, tests/}` (E025 is docs-only) |
+| E020–E026 experiment dirs | `experiments/E02{0..6}_*/{PROTOCOL,MANIFEST,REPORT,STOP_NOTICE}.md` |
+| E020–E026 program dirs | `programs/E02{0,1,2,4,6}/{run_e0xx_validation.py, results.json, tests/}` (E025 is docs-only) |
 | E017 lineage | `programs/E017/{confidence_sim.py, export_trade_ledger.py, run_e017_validation.py, data/trade_ledger_EURUSD_H4.json}` |
 | E018/E019 lineage | `programs/E018/`, `programs/E019/` |
 | v1 harness | `scripts/{run_walk_forward_ab.py, run_e011.py, run_e014.py, analyze_e013.py}` (ported from multi-agent-ensemble in `bb00c9e`) |
@@ -86,21 +97,22 @@ Tests: E020–E024 unit tests + PRE-0 invariants all pass under
 
 ## 3) Next immediate goal
 
-**Exit-side campaign is closed on the current cell.** Any future exit-side
-work needs one of: (a) run E023 (post-BE structure trail, pre-registered
-but Phase-2 unstarted) — only mechanism outside the E020–E024 family;
-(b) redesign the underlying cell (fresh walk-forward with different
-`target_rr`) — new pre-registration required; (c) leave the deployed
-mechanics alone — the campaign is strong evidence that they are close
-to locally optimal.
+**Exit-side campaign is closed on the current cell** (E026 included).
+Open user decision: whether to re-run E020–E025 effect sizes against the
+null-arm baseline (E026 Amendment-1 finding) — verdict directions are
+not expected to flip to alive, but the "actively harmful" claims need
+re-basing before anyone cites them. Other options unchanged: (a) run
+E023 (pre-registered, Phase-2 unstarted); (b) redesign the cell (fresh
+`target_rr` walk-forward, new pre-registration); (c) leave deployed
+mechanics alone.
 
 **Parked (do not start without discussion):** E008 indicators; E009
 cross-family; E023 post-BE structure trail (pre-registered on main but
 not run — decide before touching); an E029 production-use study
 (pool-window timing gate on the deployed entry — needs new ID, cost
 model, agent validation chain); any new exit-side mechanism that has
-not been pre-registered. E026 is reserved by the
-`e026-low-mfe-time-stop` branch; E027–E030 are consumed IDs.
+not been pre-registered. E026–E030 are consumed IDs (E026 landed
+2026-07-28, verdict parked_low_yield).
 
 **Do not:** flip `LiveConfig.partial_exits`, wire `agent/live/exit_manager.py`,
 or narrow the 1.5R TP without a fresh pre-registration and full agent

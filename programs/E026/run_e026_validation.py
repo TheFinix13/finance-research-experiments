@@ -51,6 +51,7 @@ from programs.E026.time_stop_rule import (  # noqa: E402
     B_GRID,
     P_GRID,
     REASON_E026_TIME_STOP,
+    RESOLUTION_TO_H4_FRACTION,
     E026TimeStopRule,
     make_arm_grid,
 )
@@ -204,9 +205,9 @@ def _run_arm(
     arm_R: list[float] = []
     fires: list[Optional[dict]] = []
     alt_reasons: list[str] = []
-    bars_held_arm: list[int] = []
+    bars_held_arm: list[float] = []           # H4-equivalents (Amendment 2)
     for t in trades:
-        rule.reset()
+        rule.reset(path_resolution=t.path_resolution)
         alt = replay(t, rule=rule)
         arm_R.append(alt.r)
         alt_reasons.append(alt.exit_reason)
@@ -219,15 +220,20 @@ def _run_arm(
                 "bar_index": fd.bar_index,
                 "bar_time": fd.bar_time.isoformat(),
                 "fire_price": fd.fire_price,
-                "bars_held": fd.bars_held,
+                "bars_held_h4": fd.bars_held_h4,
                 "mfe_r_at_fire": fd.mfe_r_at_fire,
                 "mfe_pips_at_fire": fd.mfe_pips_at_fire,
             })
-            bars_held_arm.append(fd.bars_held)
+            bars_held_arm.append(fd.bars_held_h4)
         else:
             fires.append(None)
-            bars_held_arm.append(len(t.path))
+            bars_held_arm.append(_path_bars_h4(t))
     return arm_R, fires, alt_reasons, bars_held_arm
+
+
+def _path_bars_h4(t: TradeRecord) -> float:
+    """Full-path holding time in H4-equivalents."""
+    return len(t.path) * RESOLUTION_TO_H4_FRACTION[t.path_resolution]
 
 
 def _classify_arm(
@@ -256,6 +262,29 @@ def _classify_arm(
     return "dead"
 
 
+#: Amendment 1 — inert-rule age threshold (never fires on any real path).
+INERT_AGE_BARS: int = 10**9
+
+
+def _null_arm_baseline(trades: list[TradeRecord]) -> tuple[list[float], list[str]]:
+    """Replayed inert-rule baseline (PROTOCOL §7 Amendment 1).
+
+    Same rule class, ``age_bars`` so large it can never fire, so every
+    trade takes the engine's fall-through reconstruction — identical
+    semantics to a real arm's non-fired trades. The paired delta against
+    this baseline isolates the rule effect from reconstruction drift."""
+    rule = E026TimeStopRule(progress_r=0.50, age_bars=INERT_AGE_BARS)
+    base_R: list[float] = []
+    base_reasons: list[str] = []
+    for t in trades:
+        rule.reset(path_resolution=t.path_resolution)
+        alt = replay(t, rule=rule)
+        assert alt.exit_reason != REASON_E026_TIME_STOP
+        base_R.append(alt.r)
+        base_reasons.append(alt.exit_reason)
+    return base_R, base_reasons
+
+
 def _sweep_symbol(
     symbol: str,
     trades: list[TradeRecord],
@@ -266,8 +295,21 @@ def _sweep_symbol(
     fdr_alpha: float = FDR_ALPHA,
 ) -> dict:
     fold_ids = [_fold_of(t.entry_time, folds) for t in trades]
-    base_R_all = [t.r for t in trades]
-    bars_held_base = [len(t.path) for t in trades]
+    base_R_all, base_reasons = _null_arm_baseline(trades)
+    bars_held_base = [_path_bars_h4(t) for t in trades]
+
+    # Reconstruction audit (Amendment 1): quantify null-arm vs ledger drift.
+    ledger_R = [t.r for t in trades]
+    n_mismatch = sum(
+        1 for a, b in zip(base_R_all, ledger_R) if abs(a - b) > 1e-6)
+    drift_sharpe = _sharpe(base_R_all) - _sharpe(ledger_R)
+    reconstruction_audit = {
+        "n_trades": len(trades),
+        "n_null_vs_ledger_mismatch": n_mismatch,
+        "sharpe_null_arm": round(_sharpe(base_R_all), 4),
+        "sharpe_ledger": round(_sharpe(ledger_R), 4),
+        "delta_sharpe_null_vs_ledger": round(drift_sharpe, 4),
+    }
 
     arms_out: list[dict] = []
     per_arm_joint_p: list[float] = []
@@ -324,12 +366,14 @@ def _sweep_symbol(
         n_trades = len(trades)
         fired_mask = [f is not None for f in fires]
         n_fires = sum(fired_mask)
+        # FP/rescued keyed off the NULL-ARM baseline exit (Amendment 1 —
+        # the counterfactual for a fired trade is the null-arm outcome).
         n_fires_on_tp = sum(
-            1 for fd, t in zip(fires, trades)
-            if fd is not None and t.exit_reason == "tp")
+            1 for fd, br in zip(fires, base_reasons)
+            if fd is not None and br == "tp")
         n_fires_on_sl = sum(
-            1 for fd, t in zip(fires, trades)
-            if fd is not None and t.exit_reason.startswith("sl"))
+            1 for fd, br in zip(fires, base_reasons)
+            if fd is not None and br.startswith("sl"))
         delta_p_fire = n_fires / n_trades if n_trades else 0.0
         delta_p_false_pos = n_fires_on_tp / n_fires if n_fires else 0.0
         delta_p_rescued = n_fires_on_sl / n_fires if n_fires else 0.0
@@ -422,6 +466,7 @@ def _sweep_symbol(
     return {
         "symbol": symbol,
         "n_trades": len(trades),
+        "reconstruction_audit": reconstruction_audit,
         "arms": arms_out,
         "verdict_counts": dict(Counter(a["verdict"] for a in arms_out)),
         "fdr": {"method": "BH", "alpha": fdr_alpha, "family_size": len(arms_out)},

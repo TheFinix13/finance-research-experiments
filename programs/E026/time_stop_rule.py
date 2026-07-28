@@ -34,6 +34,16 @@ REASON_E026_TIME_STOP = "e026_time_stop"
 P_GRID: tuple[float, ...] = (0.25, 0.50, 0.75)
 B_GRID: tuple[int, ...] = (12, 18, 24, 30, 42)
 
+# Amendment 2 — PRE-0 path resolution → fraction of one H4 bar. The age
+# clock is defined in completed H4-equivalents so the rule is identical
+# across symbols regardless of path granularity.
+RESOLUTION_TO_H4_FRACTION: dict[str, float] = {
+    "M5": 1.0 / 48.0,
+    "M15": 1.0 / 16.0,
+    "H1": 1.0 / 4.0,
+    "H4": 1.0,
+}
+
 
 @dataclass
 class FireDetails:
@@ -42,7 +52,7 @@ class FireDetails:
     bar_index: int
     bar_time: datetime
     fire_price: float
-    bars_held: int
+    bars_held_h4: float
     mfe_r_at_fire: float
     mfe_pips_at_fire: float
 
@@ -54,7 +64,7 @@ class E026TimeStopRule:
 
         rule = E026TimeStopRule(progress_r=0.50, age_bars=30)
         for t in trades:
-            rule.reset()
+            rule.reset(path_resolution=t.path_resolution)
             alt = replay(t, rule=rule)
             if rule.fired_details is not None:
                 ...  # this trade was time-stopped
@@ -66,10 +76,14 @@ class E026TimeStopRule:
         if age_bars < 1:
             raise ValueError(f"age_bars must be >= 1, got {age_bars}")
         self.progress_r = float(progress_r)
-        self.age_bars = int(age_bars)
+        self.age_bars = int(age_bars)         # in H4-equivalents (Amendment 2)
+        self._h4_fraction = RESOLUTION_TO_H4_FRACTION["H4"]
         self.fired_details: Optional[FireDetails] = None
 
-    def reset(self) -> None:
+    def reset(self, path_resolution: str = "H4") -> None:
+        if path_resolution not in RESOLUTION_TO_H4_FRACTION:
+            raise ValueError(f"Unknown path resolution {path_resolution!r}")
+        self._h4_fraction = RESOLUTION_TO_H4_FRACTION[path_resolution]
         self.fired_details = None
 
     def __call__(self, state: TradeState, bar: Bar) -> Optional[ExitAction]:
@@ -77,15 +91,15 @@ class E026TimeStopRule:
         # per bar suffices — once >= P it stays >= P forever.
         if state.mfe_r_so_far >= self.progress_r:
             return None
-        bars_held = state.bar_index + 1
-        if bars_held < self.age_bars:
+        bars_held_h4 = (state.bar_index + 1) * self._h4_fraction
+        if bars_held_h4 < self.age_bars:
             return None
         if self.fired_details is None:
             self.fired_details = FireDetails(
                 bar_index=state.bar_index,
                 bar_time=state.now,
                 fire_price=bar.close,
-                bars_held=bars_held,
+                bars_held_h4=bars_held_h4,
                 mfe_r_at_fire=state.mfe_r_so_far,
                 mfe_pips_at_fire=state.mfe_pips_so_far,
             )

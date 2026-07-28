@@ -64,7 +64,7 @@ class TestFiring:
         assert alt.exit_reason == REASON_E026_TIME_STOP
         assert rule.fired_details is not None
         assert rule.fired_details.bar_index == 11
-        assert rule.fired_details.bars_held == 12
+        assert rule.fired_details.bars_held_h4 == 12.0
         # Closed at bar close = entry → r ≈ 0.
         assert abs(alt.r) < 1e-9
 
@@ -151,3 +151,44 @@ class TestGridAndNull:
         assert rule.fired_details is not None
         rule.reset()
         assert rule.fired_details is None
+
+
+class TestResolutionClock:
+    """Amendment 2 — the age clock counts H4-equivalents, not path bars."""
+
+    def test_m5_path_needs_48x_more_bars(self):
+        # 100 flat M5 bars ≈ 2.08 H4-equivalents: B=12 must NOT fire.
+        bars = [Bar(time=T0 + timedelta(minutes=5 * i),
+                    open=1.1000, high=1.1010, low=1.0990, close=1.1000)
+                for i in range(100)]
+        t_m5 = TradeRecord(
+            trade_id="t2", symbol="EURUSD", tf="H4", direction="long",
+            entry_time=T0, entry=ENTRY, stop=SOFT_STOP, soft_stop=SOFT_STOP,
+            take_profit=TP, stop_pips=STOP_PIPS, tp_pips=75.0,
+            r=-1.0, pnl_pips=-50.0, exit_time=bars[-1].time,
+            exit_price=SOFT_STOP, exit_reason="sl",
+            mfe_pips=10.0, mae_pips=10.0, mfe_ts=T0, mae_ts=T0,
+            mfe_r=0.2, mae_r=0.2, path=bars, path_resolution="M5",
+        )
+        rule = E026TimeStopRule(progress_r=0.50, age_bars=12)
+        rule.reset(path_resolution="M5")
+        replay(t_m5, rule=rule)
+        assert rule.fired_details is None
+
+        # 12 H4-equivalents = 576 M5 bars → fires at bar index 575.
+        long_bars = [Bar(time=T0 + timedelta(minutes=5 * i),
+                         open=1.1000, high=1.1010, low=1.0990, close=1.1000)
+                     for i in range(600)]
+        t_long = TradeRecord(
+            trade_id="t3", symbol="EURUSD", tf="H4", direction="long",
+            entry_time=T0, entry=ENTRY, stop=SOFT_STOP, soft_stop=SOFT_STOP,
+            take_profit=TP, stop_pips=STOP_PIPS, tp_pips=75.0,
+            r=-1.0, pnl_pips=-50.0, exit_time=long_bars[-1].time,
+            exit_price=SOFT_STOP, exit_reason="sl",
+            mfe_pips=10.0, mae_pips=10.0, mfe_ts=T0, mae_ts=T0,
+            mfe_r=0.2, mae_r=0.2, path=long_bars, path_resolution="M5",
+        )
+        rule.reset(path_resolution="M5")
+        alt = replay(t_long, rule=rule)
+        assert alt.exit_reason == REASON_E026_TIME_STOP
+        assert rule.fired_details.bar_index == 575

@@ -151,8 +151,54 @@ it looks), keep the deployed cell unchanged, and the health-meter idea
 
 ## §7 Amendments
 
-None. Any change after this commit is a numbered amendment with
-rationale, never a silent edit.
+Any change after the pre-registration commit is a numbered amendment
+with rationale, never a silent edit.
+
+### Amendment 1 — replayed null-arm baseline (2026-07-28, same day)
+
+**Trigger:** the first sweep failed a hard sanity invariant — USDCAD
+arm `P0.25_B42` fired on **0 of 707 trades** yet showed pooled
+ΔSharpe = −0.1453. An arm that never fires must have Δ ≡ 0. Cause:
+the §5 baseline was the ledger's `trade.r`, but a replayed arm's
+non-fired trades take the engine's fall-through, which *reconstructs*
+the exit from the path (BE-migration timing, intra-bar ordering) — on
+coarse paths (USDCAD is H4-resolution) the reconstruction disagrees
+with the original backtest's exits. The pre-amendment primary metric
+therefore confounded rule effect with reconstruction error. This is
+the known PRE-0 "null-rule identity is fast-path-only" caveat the
+E020–E025 campaign logged as a deferred amendment.
+
+**Change:** the baseline R sequence is now the **replayed inert-rule
+arm** (the same rule class with `age_bars = 10^9`, which provably
+never fires) instead of the raw ledger `trade.r`. Arm and baseline
+then share identical reconstruction semantics and the paired delta
+isolates the rule effect. A `reconstruction_audit` block (per-symbol
+null-vs-ledger mismatch count and ΔSharpe) is added to results.json
+to quantify the drift that motivated this amendment. Grid, metrics,
+folds, bootstrap, FDR, and §6 verdict gates are unchanged. The
+amendment was made after seeing confounded results but corrects a
+validity bug in a direction-neutral way (it can flip verdicts either
+way); the pre-amendment numbers are preserved in the REPORT/STOP
+notice for the record.
+
+### Amendment 2 — age clock in H4-equivalents (2026-07-28, same day)
+
+**Trigger:** the Amendment-1 run's bars-held audit showed EURUSD
+baseline mean holding of 362 "bars" — impossible for H4. Cause: §3
+implemented `bars_held = bar_index + 1` over PATH bars, but PRE-0
+path resolution is per-symbol (EURUSD M5, GBPUSD M15, USDCAD H4), so
+`B = 12` meant 1 wall-hour on EURUSD and 3 hours on GBPUSD instead of
+the pre-registered 2 trading days. The sweep was testing a different
+rule on each symbol — implementation error against the §3 intent
+("completed H4 bars"), not a design change.
+
+**Change:** `bars_held_h4 = (bar_index + 1) × f(path_resolution)`,
+with `f = {M5: 1/48, M15: 1/16, H1: 1/4, H4: 1}`; fire when
+`bars_held_h4 ≥ B`. This is exactly the §3 market-bar clock, now
+resolution-independent (finer paths simply fire at the first sub-bar
+close past the threshold — higher fidelity, same semantics). Grid and
+§6 gates unchanged. The invalid-clock run is preserved as
+`results_amendment1_wrong_clock.json` for the record.
 
 ## §8 Cross-references
 
