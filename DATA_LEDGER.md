@@ -11,7 +11,9 @@ Parquet cache: `../multi-pair-trading-agent/data/parquet/` (single canonical cop
 Live broker fills cache (Φ3): `~/Documents/TradingAgentLogs/{SYMBOL}/`
 (VM-only; absent on the Mac research host as of 2026-06-24).
 
-Last updated: **2026-07-28** (E027 + E028 pre-registration rows)
+Last updated: **2026-07-28** (E027/E028 screens consumed + stopped;
+E010 screen+confirm consumed, stopped at Stage 2 — sealed + Stage-3
+reservations RELEASED)
 
 ---
 
@@ -19,18 +21,18 @@ Last updated: **2026-07-28** (E027 + E028 pre-registration rows)
 
 | TF | Slice | Status | Experiments |
 |---|---|---|---|
-| H4 | 2015-01-01 → 2021-12-31 (7th use) | screen | E001, E002, E003, E004, E006, E007, **E027 (pre-reg 2026-07-28; overuse acknowledged in E027 §8 — conditional split, new event universe)** |
-| H4 | 2022-01-01 → 2024-12-31 | confirm | E003, E004, E006, E007, **E027 (pre-reg)** |
+| H4 | 2015-01-01 → 2021-12-31 (7th use) | screen | E001, E002, E003, E004, E006, E007, E027 (consumed 2026-07-28; overuse acknowledged in E027 §8) |
+| H4 | 2022-01-01 → 2024-12-31 | confirm | E003, E004, E006, E007; E027 stopped at Stage 1 — not consumed |
 | H4 | 2024-01-01 → 2024-12-31 | **observation** | M001 Φ3-prep regime weak-label validation (`sim/regime/validate_real.py`; 1617 bars; not an experiment, no claim, see `sim/regime/README.md`) |
 | H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E002, E004 |
 | H4 | 2025-01-01 → 2026-06-09 | sealed | E005 |
 | H4 | 2026-01-01 → present | live | (agent demo — not a lab split) |
-| H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E007, **E010 (reserved, pre-reg)**, **E027 (pre-reg 2026-07-28)** |
-| H1 | 2022-01-01 → 2024-12-31 | confirm | E006, E007, **E010 (reserved, pre-reg)**, **E027 (pre-reg)** |
-| H1 | 2025-01-01 → 2026-06-09 | **sealed (reserved)** | **E010 (Stage 4; not yet consumed)** |
-| M15 | 2015-01-01 → 2021-12-31 | screen | E001, E006, **E010 (reserved, pre-reg)**, **E028 (pre-reg 2026-07-28; day-sequence outcome, orthogonal to marginal screens)** |
-| M15 | 2022-01-01 → 2024-12-31 | confirm | E006, **E010 (reserved, pre-reg)**, **E028 (pre-reg)** |
-| M15 | 2025-01-01 → 2026-06-09 | **sealed (reserved)** | **E010 (Stage 4; not yet consumed)** |
+| H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E007, E010 (consumed 2026-07-28), E027 (consumed 2026-07-28) |
+| H1 | 2022-01-01 → 2024-12-31 | confirm | E006, E007, E010 (consumed 2026-07-28); E027 stopped at Stage 1 — not consumed |
+| H1 | 2025-01-01 → 2026-06-09 | **pristine** | — (E010 sealed reservation RELEASED 2026-07-28; E010 stopped at Stage 2) |
+| M15 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E010 (consumed 2026-07-28), E028 (consumed 2026-07-28; day-sequence outcome) |
+| M15 | 2022-01-01 → 2024-12-31 | confirm | E006, E010 (consumed 2026-07-28); E028 stopped at Stage 1 — not consumed |
+| M15 | 2025-01-01 → 2026-06-09 | **pristine** | — (E010 sealed reservation RELEASED 2026-07-28; E010 stopped at Stage 2) |
 | D1 | 2015-01-01 → 2025-12-31 | screen | E001, E002, E004 |
 | M5 | 2015-01-01 → 2021-12-31 | screen | E001 |
 
@@ -45,10 +47,9 @@ EURUSD M30 (if cached), any TF on pairs below with `pristine` H1/M15.
 |---|---|---|---|
 | H4 | 2015-01-01 → 2024-12-31 | sealed | E005, E006 (replication) |
 | H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 |
-| H4 | 2015-01-01 → 2021-12-31 | cross-pair (frozen params) | **E027 (Stage 3, pre-reg 2026-07-28; replication only, no selection)** |
-| H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, **E010 (Stage 3, reserved)**, **E027 (Stage 3, pre-reg)** |
+| H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006 (E010/E027 Stage-3 reservations released 2026-07-28 — both stopped earlier) |
 | H1 | 2022+ | pristine | — (cache audit per E007 §3.8: GBPUSD H1 not available past 2021) |
-| M15 | 2015-01-01 → 2021-12-31 | screen | E006 (screen-style replication), **E010 (Stage 3, reserved)**, **E028 (Stage 3, pre-reg 2026-07-28)** |
+| M15 | 2015-01-01 → 2021-12-31 | screen | E006 (screen-style replication) (E010/E028 Stage-3 reservations released 2026-07-28 — both stopped earlier) |
 | M15 | 2022+ | pristine | — (subject to cache audit) |
 
 Agent **live deployment** started 2026-06; lab should prefer USDCAD H1/M15
@@ -61,8 +62,7 @@ or new pairs before re-mining GBPUSD H4 2015-2024 for unrelated hypotheses.
 | TF | Slice | Status | Experiments |
 |---|---|---|---|
 | H4 | 2015-01-01 → 2024-12-31 | sealed | E005 |
-| H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 |
-| H4 | 2015-01-01 → 2021-12-31 | cross-pair (frozen params) | **E027 (Stage 3, pre-reg 2026-07-28; replication only, no selection)** |
+| H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 (E027 Stage-3 reservation released 2026-07-28 — stopped at Stage 1) |
 | H1 | all | pristine — **not cached** (E007 §3.8 audit; E010 §0 Stage-0 check confirms) | — |
 | M15 | all | pristine — **not cached** (E007 §3.8; E010 §0 Stage-0 check confirms) | — |
 

@@ -1,0 +1,11 @@
+{
+  "experiment": "E027",
+  "stage": 1,
+  "trigger": "0 of 4 Stage-1 cells alive (PROTOCOL \u00a76)",
+  "registry": "/Users/the1finix/Documents/GitHub/finance-research-experiments/output/E027_valid_liquidity_sweep/stage1_EURUSD_screen_2026-07-28_1716.jsonl",
+  "stamp": "2026-07-28_1716",
+  "downstream_not_run": [
+    "stage2_confirm",
+    "stage3_crosspair"
+  ]
+}

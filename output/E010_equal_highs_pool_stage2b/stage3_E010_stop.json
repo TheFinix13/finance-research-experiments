@@ -1,0 +1,11 @@
+{
+  "experiment": "E010",
+  "stage": 2,
+  "trigger": "0 alive at stage 2 (PROTOCOL \u00a76)",
+  "registry": "/Users/the1finix/Documents/GitHub/finance-research-experiments/output/E010_equal_highs_pool_stage2b/stage2_EURUSD_confirm_2026-07-28_1730.jsonl",
+  "stamp": "2026-07-28_1730",
+  "downstream_not_run": [
+    "stage3",
+    "stage4"
+  ]
+}

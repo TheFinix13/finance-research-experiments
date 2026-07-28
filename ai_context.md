@@ -1,4 +1,4 @@
-# AI Context — finance research experiments (updated 2026-07-20)
+# AI Context — finance research experiments (updated 2026-07-28)
 
 Read this first in a fresh chat. This repo is the **central research workshop**
 for all hypothesis tests. The trading agent (`multi-pair-trading-agent`)
@@ -47,6 +47,21 @@ wick_proof + PLG stack is close to optimal given the entry model:
 | E024 near-TP stall exit | dead (72/72 cells) | Δ P(false positive) 0.63–0.91 across every arm | `93f4887` |
 | E025 joint stack | cancelled_dependency_failed | 0 alive upstream | `929a585` |
 
+**Liquidity-structure line + E010 execution (2026-07-28):** three
+studies run to verdict in one session (pre-reg `cdb7a01`, harnesses
+`6722012`, E010 amendments `a159ec1`):
+
+| Study | Verdict | Headline |
+|---|---|---|
+| E027 valid-liquidity sweep (BOS-qualified) | STOPPED-DEAD Stage 1 (0/4) | "Valid" class reacts WORSE than invalid on every cell (diff −0.29…−0.57 ATR); the folk rule selects the weaker half |
+| E028 Power-of-Three sessions | STOPPED-DEAD Stage 1 (full stop) | Narrative inverted: NY completes to untapped Asia extreme 26.2 % vs 61.2 % baseline; both mechanical arms negative at base costs; stable 7/7 years |
+| E010 equal_highs_pool × M15 (executed per `fd8eb3d` pre-reg) | STOPPED Stage 2; survivors parked_weak_effect | Stage 1 7/10 alive; confirm 2022–24: selection term flips negative everywhere (−0.05…−0.66) while displacement lift stays +0.11…+0.28 (p ≤ 0.0036). Timing edge real OOS; selection edge regime-local. A6 Nagi confluence stays blocked. E010 sealed + Stage-3 reservations RELEASED (EURUSD H1/M15 2025→2026-06-09 pristine again) |
+
+Standing blocks: no valid-liquidity striker, no Po3-reversal striker
+without a NEW pre-registration. Legitimate new-ID follow-ups: (a)
+E010's lift-only (timing) hypothesis; (b) London-continuation session
+hypothesis (E028's inversion).
+
 ## 2) Key file paths
 
 | Area | Files |
@@ -73,9 +88,11 @@ mechanics alone — the campaign is strong evidence that they are close
 to locally optimal.
 
 **Parked (do not start without discussion):** E008 indicators; E009
-cross-family; E010 Stage-2b `equal_highs_pool`; E023 post-BE structure
-trail (pre-registered on main but not run — decide before touching);
-any new exit-side mechanism that has not been pre-registered.
+cross-family; E023 post-BE structure trail (pre-registered on main but
+not run — decide before touching); E010 lift-only follow-up and E028
+London-continuation follow-up (both need new IDs + protocols); any new
+exit-side mechanism that has not been pre-registered. E026 is reserved
+by the `e026-low-mfe-time-stop` branch.
 
 **Do not:** flip `LiveConfig.partial_exits`, wire `agent/live/exit_manager.py`,
 or narrow the 1.5R TP without a fresh pre-registration and full agent

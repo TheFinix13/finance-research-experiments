@@ -1,0 +1,11 @@
+{
+  "experiment": "E028",
+  "stage": 1,
+  "trigger": "descriptive margin failed AND both mechanical cells non-positive at base costs (PROTOCOL \u00a76)",
+  "results": "/Users/the1finix/Documents/GitHub/finance-research-experiments/output/E028_power_of_three_sessions/stage1_EURUSD_screen_2026-07-28_1716.json",
+  "stamp": "2026-07-28_1716",
+  "downstream_not_run": [
+    "stage2",
+    "stage3"
+  ]
+}

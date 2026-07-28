@@ -1,0 +1,59 @@
+{
+  "experiment": "E010",
+  "stage": 0,
+  "context": "H1:equal_highs_pool",
+  "n_context_events": 297,
+  "note": "count-only; MFE outcome path not invoked",
+  "cells": {
+    "bullish_fvg_touch": {
+      "n_joint_pre_mfe": 1319,
+      "n_marginal": 10641,
+      "crosses_gate": true
+    },
+    "channel_bottom_touch": {
+      "n_joint_pre_mfe": 2416,
+      "n_marginal": 19465,
+      "crosses_gate": true
+    },
+    "fib_382_tag": {
+      "n_joint_pre_mfe": 317,
+      "n_marginal": 2619,
+      "crosses_gate": true
+    },
+    "fib_50_tag": {
+      "n_joint_pre_mfe": 305,
+      "n_marginal": 2568,
+      "crosses_gate": true
+    },
+    "fib_618_tag": {
+      "n_joint_pre_mfe": 274,
+      "n_marginal": 2315,
+      "crosses_gate": true
+    },
+    "fib_ext_1272_tag": {
+      "n_joint_pre_mfe": 179,
+      "n_marginal": 1204,
+      "crosses_gate": true
+    },
+    "ote_tag": {
+      "n_joint_pre_mfe": 274,
+      "n_marginal": 2314,
+      "crosses_gate": true
+    },
+    "trendline_break_retest_bullish": {
+      "n_joint_pre_mfe": 394,
+      "n_marginal": 3007,
+      "crosses_gate": true
+    },
+    "trendline_liquidity_sweep_low": {
+      "n_joint_pre_mfe": 153,
+      "n_marginal": 1133,
+      "crosses_gate": true
+    },
+    "trendline_support_touch": {
+      "n_joint_pre_mfe": 1327,
+      "n_marginal": 11342,
+      "crosses_gate": true
+    }
+  }
+}
