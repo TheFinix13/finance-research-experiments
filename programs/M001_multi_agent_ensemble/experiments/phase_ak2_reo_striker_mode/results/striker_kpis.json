@@ -1,0 +1,78 @@
+{
+  "window": [
+    "2019-01-01",
+    "2023-12-31"
+  ],
+  "n_mirrors": 13187,
+  "n_skipped_no_plan": 8788,
+  "n_unfilled": 1141,
+  "n_executed": 3258,
+  "overall": {
+    "n": 3258,
+    "win_rate": 0.3846,
+    "profit_factor": 0.94,
+    "mean_r": -0.0394,
+    "total_r": -128.46,
+    "total_pips": -6845.1
+  },
+  "per_leader": {
+    "bachira_meguru": {
+      "n": 2770,
+      "win_rate": 0.3819,
+      "profit_factor": 0.916,
+      "mean_r": -0.0557,
+      "total_r": -154.25,
+      "total_pips": -8388.6
+    },
+    "barou_shoei": {
+      "n": 64,
+      "win_rate": 0.4219,
+      "profit_factor": 0.998,
+      "mean_r": 0.01,
+      "total_r": 0.64,
+      "total_pips": -4.8
+    },
+    "chigiri_hyoma": {
+      "n": 307,
+      "win_rate": 0.443,
+      "profit_factor": 1.259,
+      "mean_r": 0.0982,
+      "total_r": 30.15,
+      "total_pips": 1980.4
+    },
+    "itoshi_rin": {
+      "n": 117,
+      "win_rate": 0.2735,
+      "profit_factor": 0.849,
+      "mean_r": -0.0427,
+      "total_r": -5.0,
+      "total_pips": -432.2
+    }
+  },
+  "per_symbol": {
+    "EURUSD": {
+      "n": 999,
+      "win_rate": 0.3754,
+      "profit_factor": 0.998,
+      "mean_r": -0.0399,
+      "total_r": -39.87,
+      "total_pips": -59.9
+    },
+    "GBPUSD": {
+      "n": 1244,
+      "win_rate": 0.4076,
+      "profit_factor": 1.025,
+      "mean_r": 0.0096,
+      "total_r": 11.88,
+      "total_pips": 1224.8
+    },
+    "USDCAD": {
+      "n": 1015,
+      "win_rate": 0.3655,
+      "profit_factor": 0.788,
+      "mean_r": -0.099,
+      "total_r": -100.48,
+      "total_pips": -8010.0
+    }
+  }
+}
