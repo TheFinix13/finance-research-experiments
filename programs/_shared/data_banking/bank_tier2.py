@@ -23,7 +23,7 @@ from pathlib import Path
 import dukascopy_python as duka
 from dukascopy_python import instruments as ins
 
-OUT_DIR = Path(__file__).resolve().parents[2] / "data" / "parquet_tier2"
+OUT_DIR = Path(__file__).resolve().parents[3] / "data" / "parquet_tier2"
 
 GROUPS: dict[str, dict[str, object]] = {
     "crosses": {

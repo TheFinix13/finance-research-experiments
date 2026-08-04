@@ -36,3 +36,11 @@ programs/M001_multi_agent_ensemble/reviews/g7_leave_one_out_post-V/lo1_*/shadow_
 # Session claim files (ephemeral coordination state — see brain-box agents/concurrent-session-safety.md)
 .sessions/*
 !.sessions/README.md
+
+# Tier-2 banked market data (local only; manifest is committed)
+data/parquet_tier2/*.parquet
+data/tier2_banking.stdout.log
+
+# Tier-2 banked market data (local only; manifest is committed)
+data/parquet_tier2/*.parquet
+data/tier2_banking.stdout.log
