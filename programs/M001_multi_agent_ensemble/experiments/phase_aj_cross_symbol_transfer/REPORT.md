@@ -55,3 +55,52 @@ home game. The transfer readouts are trustworthy.
 occurred, so no false-promotion budget was spent. The Barou:EURUSD
 near-miss is a REGISTERED observation (this file) and may only be
 acted on through AJ-2's pre-registered floors.
+
+---
+
+# Phase AJ-2 addendum — executed same day (protocol at `d80d4cb`, before the replay)
+
+## In-sample (2015-01-01 → 2023-12-31, pooled + subset guard)
+
+| Cell | pooled n / PF / meanR | unseen 2015–2018 totalR | Verdict |
+|---|---|---|---|
+| Barou : GBPUSD | 51 / 1.441 / +0.225 | **+10.93 (positive)** | **passed rule 1** → validation |
+| Barou : EURUSD | 36 / 1.394 / +0.216 | −0.96 (negative) | not_promoted (**subset_carried** — the AJ shine was all in seen 2019–2023) |
+| Barou : USDCAD | 32 / 0.700 / −0.176 | −0.45 | fail |
+
+## Sealed validation (2024-01-01 → 2026-07-31, opened ONCE)
+
+**Barou:GBPUSD: n=25, PF 0.962, mean R +0.017, total −24.2 pips —
+FAIL** (floors were PF ≥ 1.10, mean R ≥ +0.03, n ≥ 10). The
+2015–2018 edge did not carry. Final verdict for the whole AJ/AJ-2
+family: **no cross-symbol promotion. 0 for 8 judged cells.**
+
+## Structural discovery (arguably the day's real finding)
+
+Barou's per-cell KPIs are severely **window-start path-dependent**:
+the same calendar years (2019–2023, EURUSD) hold n=25 / PF 2.03 when
+the replay starts in 2019 but n=10 when it starts in 2015 — squad
+state (open-position slots, aggregator interactions) accumulated over
+the extra four years changes which of his rare signals convert to
+trades. Two consequences, both registered:
+
+1. **Thin-n per-cell KPIs for low-fire agents are not robust
+   statistics.** Phase AF's "Barou positive in all 8 IS cells" prior
+   must be read with this fragility in mind.
+2. Any future study of a low-fire agent should judge the agent in
+   ISOLATION (single-agent replay) as well as in-squad, or the n
+   problem is compounded by path dependence. Registered as the
+   recommended design for any AJ-3.
+
+## Where this leaves the roster (recommendations, user decides)
+
+- **Rin:** EURUSD-only restriction is load-bearing — keep it.
+- **Barou:** stays USDCAD lone wolf; no expansion earned. His weapon
+  remains selective-but-unproven beyond his home record.
+- **Chigiri:** weapon-level redesign (AF direction) is the only path;
+  fields don't fix him.
+- The **validated survivors today remain: Rin (AF, home field)**. The
+  nearest live candidates for "an agent finds something new" are now
+  S1 (surprise panel — blocked on one VM export run), AG-2, Isagi's
+  AF-2 regime hypothesis, and the I029 Reo fix (an agent who cannot
+  shoot at all in replay).

@@ -1,0 +1,247 @@
+{
+  "label": "aj2_val_sealed",
+  "window": [
+    "2024-01-01",
+    "2026-07-31"
+  ],
+  "home_symbols_before_expansion": {
+    "rin": [
+      "EURUSD"
+    ],
+    "chigiri": [
+      "EURUSD",
+      "GBPUSD"
+    ],
+    "barou": [
+      "USDCAD"
+    ]
+  },
+  "run_batch": {
+    "bars_processed": 12486,
+    "n_proposals": 7078,
+    "n_rejected": 8994,
+    "n_trades": 884,
+    "workspace_publish": {
+      "bachira_meguru": 12486,
+      "barou_shoei": 12486,
+      "chigiri_hyoma": 12486,
+      "isagi_yoichi": 12486,
+      "itoshi_rin": 12486,
+      "nagi_seishiro": 12486,
+      "reo_mikage": 12486,
+      "karasu_tabito": 12486
+    },
+    "workspace_read": {
+      "bachira_meguru": 2923,
+      "barou_shoei": 1257,
+      "isagi_yoichi": 1209,
+      "itoshi_rin": 1994,
+      "nagi_seishiro": 403,
+      "chigiri_hyoma": 289
+    }
+  },
+  "squad": {
+    "n_trades": 884,
+    "win_rate": 0.3575,
+    "total_pips": -73.9,
+    "profit_factor": 0.996,
+    "mean_r": -0.0192,
+    "total_r": -16.98
+  },
+  "per_agent": {
+    "bachira_meguru": {
+      "n_trades": 370,
+      "win_rate": 0.4027,
+      "total_pips": 338.4,
+      "profit_factor": 1.047,
+      "mean_r": 0.0068,
+      "total_r": 2.5
+    },
+    "barou_shoei": {
+      "n_trades": 54,
+      "win_rate": 0.2963,
+      "total_pips": -582.6,
+      "profit_factor": 0.626,
+      "mean_r": -0.2503,
+      "total_r": -13.51
+    },
+    "chigiri_hyoma": {
+      "n_trades": 140,
+      "win_rate": 0.3786,
+      "total_pips": -193.7,
+      "profit_factor": 0.931,
+      "mean_r": -0.0489,
+      "total_r": -6.85
+    },
+    "isagi_yoichi": {
+      "n_trades": 58,
+      "win_rate": 0.3448,
+      "total_pips": -133.4,
+      "profit_factor": 0.773,
+      "mean_r": -0.1379,
+      "total_r": -8.0
+    },
+    "itoshi_rin": {
+      "n_trades": 228,
+      "win_rate": 0.2719,
+      "total_pips": -20.4,
+      "profit_factor": 0.996,
+      "mean_r": -0.0444,
+      "total_r": -10.12
+    },
+    "nagi_seishiro": {
+      "n_trades": 34,
+      "win_rate": 0.4706,
+      "total_pips": 517.8,
+      "profit_factor": 1.938,
+      "mean_r": 0.5588,
+      "total_r": 19.0
+    }
+  },
+  "per_agent_symbol": {
+    "bachira_meguru:EURUSD": {
+      "n_trades": 128,
+      "win_rate": 0.4375,
+      "total_pips": 545.6,
+      "profit_factor": 1.236,
+      "mean_r": 0.0937,
+      "total_r": 12.0
+    },
+    "bachira_meguru:GBPUSD": {
+      "n_trades": 121,
+      "win_rate": 0.3719,
+      "total_pips": -439.3,
+      "profit_factor": 0.835,
+      "mean_r": -0.0702,
+      "total_r": -8.5
+    },
+    "bachira_meguru:USDCAD": {
+      "n_trades": 121,
+      "win_rate": 0.3967,
+      "total_pips": 232.0,
+      "profit_factor": 1.102,
+      "mean_r": -0.0083,
+      "total_r": -1.0
+    },
+    "barou_shoei:EURUSD": {
+      "n_trades": 17,
+      "win_rate": 0.1176,
+      "total_pips": -460.7,
+      "profit_factor": 0.228,
+      "mean_r": -0.663,
+      "total_r": -11.27
+    },
+    "barou_shoei:GBPUSD": {
+      "n_trades": 25,
+      "win_rate": 0.4,
+      "total_pips": -24.2,
+      "profit_factor": 0.962,
+      "mean_r": 0.0169,
+      "total_r": 0.42
+    },
+    "barou_shoei:USDCAD": {
+      "n_trades": 12,
+      "win_rate": 0.3333,
+      "total_pips": -97.7,
+      "profit_factor": 0.705,
+      "mean_r": -0.2221,
+      "total_r": -2.67
+    },
+    "chigiri_hyoma:EURUSD": {
+      "n_trades": 48,
+      "win_rate": 0.5208,
+      "total_pips": 528.0,
+      "profit_factor": 1.748,
+      "mean_r": 0.3021,
+      "total_r": 14.5
+    },
+    "chigiri_hyoma:GBPUSD": {
+      "n_trades": 51,
+      "win_rate": 0.3137,
+      "total_pips": -391.1,
+      "profit_factor": 0.692,
+      "mean_r": -0.2157,
+      "total_r": -11.0
+    },
+    "chigiri_hyoma:USDCAD": {
+      "n_trades": 41,
+      "win_rate": 0.2927,
+      "total_pips": -330.6,
+      "profit_factor": 0.606,
+      "mean_r": -0.2524,
+      "total_r": -10.35
+    },
+    "isagi_yoichi:EURUSD": {
+      "n_trades": 19,
+      "win_rate": 0.4211,
+      "total_pips": -4.9,
+      "profit_factor": 0.97,
+      "mean_r": 0.0526,
+      "total_r": 1.0
+    },
+    "isagi_yoichi:GBPUSD": {
+      "n_trades": 20,
+      "win_rate": 0.3,
+      "total_pips": -76.5,
+      "profit_factor": 0.677,
+      "mean_r": -0.25,
+      "total_r": -5.0
+    },
+    "isagi_yoichi:USDCAD": {
+      "n_trades": 19,
+      "win_rate": 0.3158,
+      "total_pips": -51.9,
+      "profit_factor": 0.723,
+      "mean_r": -0.2105,
+      "total_r": -4.0
+    },
+    "itoshi_rin:EURUSD": {
+      "n_trades": 68,
+      "win_rate": 0.2647,
+      "total_pips": -28.1,
+      "profit_factor": 0.984,
+      "mean_r": -0.0605,
+      "total_r": -4.12
+    },
+    "itoshi_rin:GBPUSD": {
+      "n_trades": 97,
+      "win_rate": 0.2887,
+      "total_pips": 340.2,
+      "profit_factor": 1.151,
+      "mean_r": 0.0103,
+      "total_r": 1.0
+    },
+    "itoshi_rin:USDCAD": {
+      "n_trades": 63,
+      "win_rate": 0.254,
+      "total_pips": -332.6,
+      "profit_factor": 0.798,
+      "mean_r": -0.1111,
+      "total_r": -7.0
+    },
+    "nagi_seishiro:EURUSD": {
+      "n_trades": 7,
+      "win_rate": 0.5714,
+      "total_pips": 142.2,
+      "profit_factor": 2.351,
+      "mean_r": 1.0,
+      "total_r": 7.0
+    },
+    "nagi_seishiro:GBPUSD": {
+      "n_trades": 16,
+      "win_rate": 0.375,
+      "total_pips": 114.4,
+      "profit_factor": 1.369,
+      "mean_r": 0.1875,
+      "total_r": 3.0
+    },
+    "nagi_seishiro:USDCAD": {
+      "n_trades": 11,
+      "win_rate": 0.5455,
+      "total_pips": 261.2,
+      "profit_factor": 2.91,
+      "mean_r": 0.8182,
+      "total_r": 9.0
+    }
+  }
+}
