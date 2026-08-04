@@ -1,0 +1,220 @@
+{
+  "window": [
+    "2015-01-01",
+    "2022-12-31"
+  ],
+  "symbols": [
+    "AUDUSD",
+    "NZDUSD",
+    "USDJPY",
+    "USDCHF"
+  ],
+  "run_batch": {
+    "bars_processed": 51556,
+    "n_proposals": 30738,
+    "n_rejected": 40535,
+    "n_trades": 3462
+  },
+  "squad": {
+    "n_trades": 3462,
+    "win_rate": 0.3634,
+    "total_pips": 1170.1,
+    "profit_factor": 1.015,
+    "mean_r": -0.0066,
+    "total_r": -22.82
+  },
+  "per_agent_symbol": {
+    "bachira_meguru:AUDUSD": {
+      "n_trades": 336,
+      "win_rate": 0.375,
+      "total_pips": -421.2,
+      "profit_factor": 0.937,
+      "mean_r": -0.0625,
+      "total_r": -21.0
+    },
+    "bachira_meguru:NZDUSD": {
+      "n_trades": 332,
+      "win_rate": 0.4367,
+      "total_pips": 1591.7,
+      "profit_factor": 1.269,
+      "mean_r": 0.0919,
+      "total_r": 30.5
+    },
+    "bachira_meguru:USDCHF": {
+      "n_trades": 317,
+      "win_rate": 0.3312,
+      "total_pips": -1562.0,
+      "profit_factor": 0.774,
+      "mean_r": -0.1719,
+      "total_r": -54.5
+    },
+    "bachira_meguru:USDJPY": {
+      "n_trades": 254,
+      "win_rate": 0.4055,
+      "total_pips": 20.4,
+      "profit_factor": 1.003,
+      "mean_r": 0.0138,
+      "total_r": 3.5
+    },
+    "barou_shoei:AUDUSD": {
+      "n_trades": 30,
+      "win_rate": 0.4667,
+      "total_pips": 190.5,
+      "profit_factor": 1.301,
+      "mean_r": 0.1654,
+      "total_r": 4.96
+    },
+    "barou_shoei:NZDUSD": {
+      "n_trades": 22,
+      "win_rate": 0.2273,
+      "total_pips": -397.4,
+      "profit_factor": 0.418,
+      "mean_r": -0.4318,
+      "total_r": -9.5
+    },
+    "barou_shoei:USDCHF": {
+      "n_trades": 17,
+      "win_rate": 0.3529,
+      "total_pips": -134.5,
+      "profit_factor": 0.692,
+      "mean_r": -0.1176,
+      "total_r": -2.0
+    },
+    "barou_shoei:USDJPY": {
+      "n_trades": 78,
+      "win_rate": 0.4359,
+      "total_pips": 749.0,
+      "profit_factor": 1.364,
+      "mean_r": 0.1823,
+      "total_r": 14.22
+    },
+    "chigiri_hyoma:AUDUSD": {
+      "n_trades": 183,
+      "win_rate": 0.4699,
+      "total_pips": 1117.1,
+      "profit_factor": 1.376,
+      "mean_r": 0.1749,
+      "total_r": 32.0
+    },
+    "chigiri_hyoma:NZDUSD": {
+      "n_trades": 204,
+      "win_rate": 0.3873,
+      "total_pips": -267.1,
+      "profit_factor": 0.929,
+      "mean_r": -0.0319,
+      "total_r": -6.5
+    },
+    "chigiri_hyoma:USDCHF": {
+      "n_trades": 197,
+      "win_rate": 0.401,
+      "total_pips": -45.4,
+      "profit_factor": 0.988,
+      "mean_r": 0.0025,
+      "total_r": 0.5
+    },
+    "chigiri_hyoma:USDJPY": {
+      "n_trades": 134,
+      "win_rate": 0.3955,
+      "total_pips": -71.9,
+      "profit_factor": 0.979,
+      "mean_r": -0.0112,
+      "total_r": -1.5
+    },
+    "isagi_yoichi:AUDUSD": {
+      "n_trades": 52,
+      "win_rate": 0.2885,
+      "total_pips": -221.6,
+      "profit_factor": 0.603,
+      "mean_r": -0.2788,
+      "total_r": -14.5
+    },
+    "isagi_yoichi:NZDUSD": {
+      "n_trades": 60,
+      "win_rate": 0.2333,
+      "total_pips": -378.0,
+      "profit_factor": 0.469,
+      "mean_r": -0.4167,
+      "total_r": -25.0
+    },
+    "isagi_yoichi:USDCHF": {
+      "n_trades": 44,
+      "win_rate": 0.4091,
+      "total_pips": 63.3,
+      "profit_factor": 1.163,
+      "mean_r": 0.0227,
+      "total_r": 1.0
+    },
+    "isagi_yoichi:USDJPY": {
+      "n_trades": 159,
+      "win_rate": 0.3899,
+      "total_pips": -679.5,
+      "profit_factor": 0.836,
+      "mean_r": -0.0252,
+      "total_r": -4.0
+    },
+    "itoshi_rin:AUDUSD": {
+      "n_trades": 201,
+      "win_rate": 0.2687,
+      "total_pips": -368.0,
+      "profit_factor": 0.928,
+      "mean_r": -0.0597,
+      "total_r": -12.0
+    },
+    "itoshi_rin:NZDUSD": {
+      "n_trades": 197,
+      "win_rate": 0.3147,
+      "total_pips": 825.8,
+      "profit_factor": 1.176,
+      "mean_r": 0.1015,
+      "total_r": 20.0
+    },
+    "itoshi_rin:USDCHF": {
+      "n_trades": 171,
+      "win_rate": 0.2281,
+      "total_pips": -1251.9,
+      "profit_factor": 0.724,
+      "mean_r": -0.2018,
+      "total_r": -34.5
+    },
+    "itoshi_rin:USDJPY": {
+      "n_trades": 336,
+      "win_rate": 0.3214,
+      "total_pips": 1875.4,
+      "profit_factor": 1.212,
+      "mean_r": 0.125,
+      "total_r": 42.0
+    },
+    "nagi_seishiro:AUDUSD": {
+      "n_trades": 23,
+      "win_rate": 0.3913,
+      "total_pips": 220.7,
+      "profit_factor": 1.611,
+      "mean_r": 0.1957,
+      "total_r": 4.5
+    },
+    "nagi_seishiro:NZDUSD": {
+      "n_trades": 20,
+      "win_rate": 0.25,
+      "total_pips": 3.1,
+      "profit_factor": 1.008,
+      "mean_r": -0.175,
+      "total_r": -3.5
+    },
+    "nagi_seishiro:USDCHF": {
+      "n_trades": 31,
+      "win_rate": 0.4194,
+      "total_pips": 302.4,
+      "profit_factor": 1.568,
+      "mean_r": 0.2419,
+      "total_r": 7.5
+    },
+    "nagi_seishiro:USDJPY": {
+      "n_trades": 64,
+      "win_rate": 0.375,
+      "total_pips": 9.3,
+      "profit_factor": 1.005,
+      "mean_r": 0.0781,
+      "total_r": 5.0
+    }
+  }
+}

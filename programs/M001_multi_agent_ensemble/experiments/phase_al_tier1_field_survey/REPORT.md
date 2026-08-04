@@ -66,3 +66,44 @@ already-chartered multi-start n-growth study rather than a new one.
   pitch); numbers are not comparable to AF/AJ tables.
 - DATA_LEDGER updated: 2015–2022 × {AUDUSD, NZDUSD, USDCHF} now
   consumed as design data (USDJPY consumed-but-invalid).
+
+---
+
+## Amendment A1 results — post-I030-fix re-survey (2026-08-04)
+
+Engine fix `2650524` (product repo) re-run of the identical survey.
+`results/survey_postfix.json` supersedes the original readout.
+
+**USDJPY is unblocked**: 1,025 trades flowed (0 before). Squad-level:
+3,462 trades, PF 1.015, mean R −0.007 (exploratory noise, as expected
+for an unfiltered squad on unfamiliar fields).
+
+Cells worth a chartered follow-up (all exploratory, no promotions):
+
+| cell | n | win rate | PF | mean R | pips |
+|---|---|---|---|---|---|
+| itoshi_rin:USDJPY | 336 | 32.1% | 1.212 | +0.125 | +1,875.4 |
+| chigiri_hyoma:AUDUSD | 183 | 47.0% | 1.376 | +0.175 | +1,117.1 |
+| bachira_meguru:NZDUSD | 332 | 43.7% | 1.269 | +0.092 | +1,591.7 |
+| barou_shoei:USDJPY | 78 | 43.6% | 1.364 | +0.182 | +749.0 |
+
+Reading:
+
+- **Rin:USDJPY is the headline.** His largest-n positive cell on ANY
+  field (his home EURUSD baseline is thinner and weaker). A precision
+  fibre-zone counter-trend weapon appears to fit the yen tape. This
+  becomes the third chartered follow-up alongside Chigiri:AUDUSD and
+  Bachira:NZDUSD — same standard: multi-start K=5 on the design
+  region, sealed 2023+ single-open confirmation.
+- Chigiri:AUDUSD and Bachira:NZDUSD survived the re-run essentially
+  unchanged (183/1.376 and 332/1.269) — cross-symbol squad-state
+  coupling from USDJPY joining the contest was minimal.
+- Barou:USDJPY (n=78, PF 1.364) is noted but NOT chartered yet — thin
+  n and Barou already has an open n-growth question (AJ-2); folding a
+  new field into that charter is a user decision.
+- Isagi/Bachira on USDJPY are flat-to-negative; USDCHF remains the
+  weakest field surveyed (only Nagi positive, n=31).
+
+FDR discipline: three chartered follow-ups from ~24 surveyed cells is
+the selection event this survey exists to fund; the follow-up protocols
+carry the multiplicity accounting, not this report.
