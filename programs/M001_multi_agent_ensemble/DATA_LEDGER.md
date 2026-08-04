@@ -28,8 +28,11 @@ which windows have been consumed by which selection events, so
 | 2019-01→2023-12 | Reo ablation (mechanism, no edge claim) | Phase AK | 2026-08-04 | re-used, declared legitimate (plumbing question on fixed tape) |
 | AUDUSD/NZDUSD/USDJPY/USDCHF H4 2015→2025 | pitch-assignment widening | Phase AC | 2026-07-20 | fingerprinted ONCE under pre-D138 LOOKAHEAD semantics (results void, but a selection process saw the data); also E005 (v1 lane) touched AUDUSD/NZDUSD. Cleaner than the main three, NOT virgin. |
 | AUDUSD/NZDUSD/USDCHF H4 2015-01→2022-12 | field survey (design region) | Phase AL | 2026-08-04 | consumed as DESIGN data; 2023+ seals intact |
-| USDJPY H4 2015-01→2022-12 | field survey | Phase AL | 2026-08-04 | consumed-but-INVALID (`invalid_pip_semantics`, I030) — must be re-surveyed after the pip fix; treat as design-touched anyway |
-| XAUUSD/XAGUSD/USOIL/USTEC (any TF) | — | banked 2026-08-04 (Tier-2 pull), never studied | — | **VIRGIN for studies — 2023+ pre-sealed per rule 4; UNUSABLE until I030 pip fix** |
+| USDJPY H4 2015-01→2022-12 | field survey + A1 re-survey (post-I030 fix) | Phase AL | 2026-08-04 | consumed as DESIGN data (A1 re-survey supersedes the invalid first tape); 2023+ seal intact |
+| AUDUSD/NZDUSD/USDCHF H4 2015-01→2022-12 | A1 re-survey (same window, fixed engine) | Phase AL | 2026-08-04 | second look at already-consumed design data (no new consumption) |
+| 2019-01→2019-12 (3 majors) | I030 parity replay ×2 (mechanism, no selection) | i030_pip_semantics | 2026-08-04 | re-used, declared legitimate (byte-identity check, no readout of KPIs) |
+| 2015-01→2018-12 (EURUSD/GBPUSD, chigiri trades from AJ-2 tape) | quasi-holdout read of autopsy candidates | chigiri_v11_autopsy | 2026-08-04 | read-only re-read of existing tape; killed 2 rework candidates |
+| XAUUSD/XAGUSD/USOIL/USTEC (any TF) | — | banked 2026-08-04 (Tier-2 pull), never studied | — | **VIRGIN for studies — 2023+ pre-sealed per rule 4; pip semantics UNBLOCKED by I030 fix (2650524), field cards still required per D148** |
 
 Also consumed OUTSIDE this lane but on shared data: v1 E0xx studies
 (E001–E032) mined EURUSD/GBPUSD/USDCAD H4/H1/M15 extensively;
