@@ -97,6 +97,21 @@ candidate; neither touches production.
 
 Register in this table **before** writing `experiments/E00X_*/PROTOCOL.md`.
 
+## 2026-08-04 live-evidence campaign (E031–E032)
+
+Two pre-registered studies raised by the 2026-08-04 weekly v1 review
+(`multi-pair-trading-agent/docs/reviews/2026-08-04_week_review.md`):
+recurring slot-blocking counterfactual evidence (6/6 blocked winners
+across two live weeks) and the with-trend blind spot (EURUSD +200p /
+USDCAD −140p invisible to the fade-only book). Neither touches
+production; survivors are candidates for the agent's own validation
+chain only.
+
+| ID | Short name | Repo folder | Pre-reg | Notes |
+|---|---|---|---|---|
+| E031 | Slot-blocking: position-cap relaxation / queue-replacement | [E031_slot_blocking_position_cap](experiments/E031_slot_blocking_position_cap/) | pending push (registered 2026-08-04) | 4 arms (cap=2, cap=3, replace-losing, replace-losing-same-dir) vs reconstructed cap=1 baseline on the frozen `zone_d1_against` signal stream; ΔSharpe primary with MaxDD guardrail (`parked_risk_degraded` tier); Stage-0 feasibility floor ≥ 100 slot-conflict events/symbol. Interaction clause with E032. |
+| E032 | With-trend H4 breakout-continuation cell | [E032_with_trend_breakout_cell](experiments/E032_with_trend_breakout_cell/) | pending push (registered 2026-08-04) | 12 cells (N∈{10,20} × k∈{1.0,1.5}×ATR × 3 symbols), D1-aligned H4 range-break at close, structure SL / fixed 1.5R TP, base costs + stress. Priors AGAINST recorded (E004 with-mode, E030 dead, Chigiri v1 TQS 0.229). Motivating live week BURNT as motivation. Survivor = candidate NEW routed cell `htf_with_breakout`, never a fade-cell modification. |
+
 ## M001 program gates (cross-registry visibility)
 
 M001 gate protocols live under `programs/M001_multi_agent_ensemble/experiments/`;

@@ -85,6 +85,16 @@ new protocol's Related Work section.
 
 ---
 
+## Planned (pre-registered, Stage 1 not yet run)
+
+| Experiment | Slices reserved | Status |
+|---|---|---|
+| E031 (slot-blocking) | EURUSD/GBPUSD/USDCAD H4: screen 2015–2021, confirm 2022–2024, sealed 2025-01-01 → 2026-07-25 (prior sealed touch: E005 — documented in protocol §4) | planned |
+| E032 (with-trend breakout cell) | Same three H4 slices as E031 (orthogonal hypotheses — entry-class vs portfolio mechanics; EURUSD 2015–21 8th use acknowledged in both protocols) | planned |
+
+Rows above move into the per-pair tables in the same commit as each
+experiment's first Stage-1 run, per the atomic-update rule.
+
 ## Overuse warning
 
 EURUSD H4 **2015-2021** has been screened by **six** registered experiments.

@@ -1,4 +1,4 @@
-# AI Context — finance research experiments (updated 2026-07-28)
+# AI Context — finance research experiments (updated 2026-08-04)
 
 Read this first in a fresh chat. This repo is the **central research workshop**
 for all hypothesis tests. The trading agent (`multi-pair-trading-agent`)
@@ -96,6 +96,22 @@ Tests: E020–E024 unit tests + PRE-0 invariants all pass under
 `PYTHONPATH=../multi-pair-trading-agent:.:scripts ../multi-pair-trading-agent/.venv/bin/python -m pytest programs/`.
 
 ## 3) Next immediate goal
+
+**E031 + E032 registered 2026-08-04, awaiting pre-reg commit + push
+before ANY Stage-1 run** (user must declare the target branch; recent
+E-sessions were user-declared `main`). Raised by the 2026-08-04 weekly
+v1 review: E031 slot-blocking (cap=2/3 + queue-replacement arms vs
+reconstructed cap=1 baseline; live evidence 6/6 blocked winners across
+two weeks is motivation only; MaxDD guardrail tier
+`parked_risk_degraded`; Stage-0 floor ≥ 100 slot-conflict
+events/symbol). E032 with-trend H4 breakout-continuation cell (12
+cells, D1-aligned range-break, structure SL / 1.5R TP; priors AGAINST
+on record — E004 with-mode, E030 dead, Chigiri v1 TQS 0.229; the
+motivating 2026-07-28→08-03 live week is BURNT). Interaction clause:
+both alive → joint slot sim required before any deployment talk.
+Harnesses to build in `programs/E031/`, `programs/E032/` after the
+pre-reg push. Null-arm baseline convention (E026 Amendment 1) binds
+E031.
 
 **Exit-side campaign is closed on the current cell** (E026 included).
 Open user decision: whether to re-run E020–E025 effect sizes against the
