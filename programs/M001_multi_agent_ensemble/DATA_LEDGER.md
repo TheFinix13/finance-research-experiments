@@ -32,7 +32,8 @@ which windows have been consumed by which selection events, so
 | AUDUSD/NZDUSD/USDCHF H4 2015-01→2022-12 | A1 re-survey (same window, fixed engine) | Phase AL | 2026-08-04 | second look at already-consumed design data (no new consumption) |
 | 2019-01→2019-12 (3 majors) | I030 parity replay ×2 (mechanism, no selection) | i030_pip_semantics | 2026-08-04 | re-used, declared legitimate (byte-identity check, no readout of KPIs) |
 | 2015-01→2018-12 (EURUSD/GBPUSD, chigiri trades from AJ-2 tape) | quasi-holdout read of autopsy candidates | chigiri_v11_autopsy | 2026-08-04 | read-only re-read of existing tape; killed 2 rework candidates |
-| XAUUSD/XAGUSD/USOIL/USTEC (any TF) | — | banked 2026-08-04 (Tier-2 pull), never studied | — | **VIRGIN for studies — 2023+ pre-sealed per rule 4; pip semantics UNBLOCKED by I030 fix (2650524), field cards still required per D148** |
+| XAUUSD/XAGUSD/USOIL/USTEC H4 2015-01→2022-12 | field survey (design region, equity=500) | Phase AM | 2026-08-04 | consumed as DESIGN data (first contact); **2023+ seals intact, never opened** |
+| Other Tier-2 (crosses, UKOIL/NATGAS, US500/US30/DE40/UK100/JP225, BTCUSD) | — | banked 2026-08-04, never studied | — | **VIRGIN — 2023+ pre-sealed per rule 4; field cards required before first contact (D148)** |
 
 Also consumed OUTSIDE this lane but on shared data: v1 E0xx studies
 (E001–E032) mined EURUSD/GBPUSD/USDCAD H4/H1/M15 extensively;

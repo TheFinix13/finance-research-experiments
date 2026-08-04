@@ -1,0 +1,221 @@
+{
+  "window": [
+    "2015-01-01",
+    "2022-12-31"
+  ],
+  "symbols": [
+    "XAUUSD",
+    "XAGUSD",
+    "USOIL",
+    "USTEC"
+  ],
+  "equity": 500.0,
+  "run_batch": {
+    "bars_processed": 50112,
+    "n_proposals": 56767,
+    "n_rejected": 80833,
+    "n_trades": 4246
+  },
+  "squad": {
+    "n_trades": 4246,
+    "win_rate": 0.3709,
+    "total_pips": -10858.5,
+    "profit_factor": 0.955,
+    "mean_r": -0.0259,
+    "total_r": -109.83
+  },
+  "per_agent_symbol": {
+    "bachira_meguru:USOIL": {
+      "n_trades": 298,
+      "win_rate": 0.4094,
+      "total_pips": -421.7,
+      "profit_factor": 0.98,
+      "mean_r": 0.0219,
+      "total_r": 6.54
+    },
+    "bachira_meguru:USTEC": {
+      "n_trades": 269,
+      "win_rate": 0.4015,
+      "total_pips": 37.8,
+      "profit_factor": 1.002,
+      "mean_r": 0.0037,
+      "total_r": 1.0
+    },
+    "bachira_meguru:XAGUSD": {
+      "n_trades": 206,
+      "win_rate": 0.3981,
+      "total_pips": -91.7,
+      "profit_factor": 0.974,
+      "mean_r": -0.0049,
+      "total_r": -1.0
+    },
+    "bachira_meguru:XAUUSD": {
+      "n_trades": 282,
+      "win_rate": 0.422,
+      "total_pips": 1259.3,
+      "profit_factor": 1.063,
+      "mean_r": 0.0522,
+      "total_r": 14.71
+    },
+    "barou_shoei:USOIL": {
+      "n_trades": 102,
+      "win_rate": 0.3725,
+      "total_pips": -566.1,
+      "profit_factor": 0.93,
+      "mean_r": -0.0768,
+      "total_r": -7.84
+    },
+    "barou_shoei:USTEC": {
+      "n_trades": 98,
+      "win_rate": 0.4082,
+      "total_pips": 1344.1,
+      "profit_factor": 1.156,
+      "mean_r": 0.0406,
+      "total_r": 3.98
+    },
+    "barou_shoei:XAGUSD": {
+      "n_trades": 91,
+      "win_rate": 0.3736,
+      "total_pips": -292.6,
+      "profit_factor": 0.83,
+      "mean_r": -0.0488,
+      "total_r": -4.44
+    },
+    "barou_shoei:XAUUSD": {
+      "n_trades": 95,
+      "win_rate": 0.4,
+      "total_pips": 14.4,
+      "profit_factor": 1.002,
+      "mean_r": -0.0088,
+      "total_r": -0.84
+    },
+    "chigiri_hyoma:USOIL": {
+      "n_trades": 156,
+      "win_rate": 0.4167,
+      "total_pips": 628.5,
+      "profit_factor": 1.058,
+      "mean_r": 0.0417,
+      "total_r": 6.5
+    },
+    "chigiri_hyoma:USTEC": {
+      "n_trades": 117,
+      "win_rate": 0.4103,
+      "total_pips": -403.5,
+      "profit_factor": 0.93,
+      "mean_r": 0.0256,
+      "total_r": 3.0
+    },
+    "chigiri_hyoma:XAGUSD": {
+      "n_trades": 134,
+      "win_rate": 0.5,
+      "total_pips": 917.3,
+      "profit_factor": 1.541,
+      "mean_r": 0.2429,
+      "total_r": 32.55
+    },
+    "chigiri_hyoma:XAUUSD": {
+      "n_trades": 141,
+      "win_rate": 0.4043,
+      "total_pips": 1155.8,
+      "profit_factor": 1.126,
+      "mean_r": 0.0106,
+      "total_r": 1.5
+    },
+    "isagi_yoichi:USOIL": {
+      "n_trades": 395,
+      "win_rate": 0.3975,
+      "total_pips": -1285.4,
+      "profit_factor": 0.959,
+      "mean_r": -0.0063,
+      "total_r": -2.5
+    },
+    "isagi_yoichi:USTEC": {
+      "n_trades": 319,
+      "win_rate": 0.3448,
+      "total_pips": -6419.0,
+      "profit_factor": 0.762,
+      "mean_r": -0.1379,
+      "total_r": -44.0
+    },
+    "isagi_yoichi:XAGUSD": {
+      "n_trades": 172,
+      "win_rate": 0.3314,
+      "total_pips": -300.4,
+      "profit_factor": 0.788,
+      "mean_r": -0.1715,
+      "total_r": -29.5
+    },
+    "isagi_yoichi:XAUUSD": {
+      "n_trades": 343,
+      "win_rate": 0.3732,
+      "total_pips": -4503.6,
+      "profit_factor": 0.84,
+      "mean_r": -0.0671,
+      "total_r": -23.0
+    },
+    "itoshi_rin:USOIL": {
+      "n_trades": 148,
+      "win_rate": 0.277,
+      "total_pips": -247.3,
+      "profit_factor": 0.94,
+      "mean_r": -0.0304,
+      "total_r": -4.5
+    },
+    "itoshi_rin:USTEC": {
+      "n_trades": 155,
+      "win_rate": 0.2581,
+      "total_pips": -592.7,
+      "profit_factor": 0.871,
+      "mean_r": -0.0968,
+      "total_r": -15.0
+    },
+    "itoshi_rin:XAGUSD": {
+      "n_trades": 214,
+      "win_rate": 0.271,
+      "total_pips": 30.1,
+      "profit_factor": 1.006,
+      "mean_r": -0.0514,
+      "total_r": -11.0
+    },
+    "itoshi_rin:XAUUSD": {
+      "n_trades": 154,
+      "win_rate": 0.2662,
+      "total_pips": -270.7,
+      "profit_factor": 0.939,
+      "mean_r": -0.0682,
+      "total_r": -10.5
+    },
+    "nagi_seishiro:USOIL": {
+      "n_trades": 133,
+      "win_rate": 0.391,
+      "total_pips": 1096.3,
+      "profit_factor": 1.163,
+      "mean_r": -0.0,
+      "total_r": -0.0
+    },
+    "nagi_seishiro:USTEC": {
+      "n_trades": 93,
+      "win_rate": 0.3333,
+      "total_pips": -1104.3,
+      "profit_factor": 0.808,
+      "mean_r": -0.0914,
+      "total_r": -8.5
+    },
+    "nagi_seishiro:XAGUSD": {
+      "n_trades": 37,
+      "win_rate": 0.2703,
+      "total_pips": -160.0,
+      "profit_factor": 0.805,
+      "mean_r": -0.1351,
+      "total_r": -5.0
+    },
+    "nagi_seishiro:XAUUSD": {
+      "n_trades": 94,
+      "win_rate": 0.3404,
+      "total_pips": -683.1,
+      "profit_factor": 0.882,
+      "mean_r": -0.1277,
+      "total_r": -12.0
+    }
+  }
+}
