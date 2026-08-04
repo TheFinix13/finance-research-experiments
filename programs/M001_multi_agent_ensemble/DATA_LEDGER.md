@@ -54,7 +54,16 @@ different signal machinery, so cross-lane leakage is indirect
    claim no edge.
 3. **Every new protocol must cite this ledger** in its contamination
    note and update the registry row when it opens a window.
-4. Cross-study multiplicity: floors are honest within each study, but
+4. **Pre-sealed windows (declared 2026-08-04, BEFORE any study
+   touches these fields).** For AUDUSD, NZDUSD, USDJPY, USDCHF and
+   for any newly banked instrument (XAUUSD/XAGUSD/USOIL/USTEC/FX
+   crosses): the window **2023-01-01 → present is SEALED per field**.
+   Design/tuning may use pre-2023 data only; each seal may be opened
+   exactly ONCE, by a pre-registered protocol, for a single
+   validation replay, and the open is recorded here. This is the
+   "masking" that actually works — sealing ahead of first contact,
+   like AG's 2022–2025 event reservation.
+5. Cross-study multiplicity: floors are honest within each study, but
    2026-08-04 alone ran AF/AG/AH/AJ/AJ-2 against overlapping data.
    The more studies that touch a window, the higher the family-wise
    odds that SOMETHING passes by luck — which is why rule 1 exists
