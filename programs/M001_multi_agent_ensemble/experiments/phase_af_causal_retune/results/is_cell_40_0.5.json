@@ -1,0 +1,99 @@
+{
+  "label": "is_cell_40_0.5",
+  "impulse": 40.0,
+  "rr_delta": 0.5,
+  "applied_rr": {
+    "isagi": 2.0,
+    "bachira": 2.0,
+    "rin": 3.0,
+    "barou_v13": 2.0,
+    "barou_v1": 2.0,
+    "chigiri": 2.0
+  },
+  "window": [
+    "2019-01-01",
+    "2023-12-31"
+  ],
+  "run_batch": {
+    "bars_processed": 24173,
+    "n_proposals": 10414,
+    "n_rejected": 12002,
+    "n_trades": 1576,
+    "workspace_publish": {
+      "bachira_meguru": 24173,
+      "chigiri_hyoma": 16115,
+      "isagi_yoichi": 24173,
+      "itoshi_rin": 8058,
+      "nagi_seishiro": 24173,
+      "reo_mikage": 24173,
+      "karasu_tabito": 24173,
+      "barou_shoei": 8058
+    },
+    "workspace_read": {
+      "bachira_meguru": 5757,
+      "isagi_yoichi": 2484,
+      "itoshi_rin": 1152,
+      "barou_shoei": 874,
+      "nagi_seishiro": 270,
+      "chigiri_hyoma": 453
+    }
+  },
+  "squad": {
+    "n_trades": 1576,
+    "win_rate": 0.3039,
+    "total_pips": -3481.4,
+    "profit_factor": 0.904,
+    "mean_r": -0.0664,
+    "total_r": -104.64
+  },
+  "per_agent": {
+    "bachira_meguru": {
+      "n_trades": 671,
+      "win_rate": 0.3234,
+      "total_pips": -1133.2,
+      "profit_factor": 0.927,
+      "mean_r": -0.0298,
+      "total_r": -20.0
+    },
+    "barou_shoei": {
+      "n_trades": 27,
+      "win_rate": 0.4074,
+      "total_pips": 194.5,
+      "profit_factor": 1.304,
+      "mean_r": 0.1531,
+      "total_r": 4.13
+    },
+    "chigiri_hyoma": {
+      "n_trades": 179,
+      "win_rate": 0.2793,
+      "total_pips": -1048.8,
+      "profit_factor": 0.769,
+      "mean_r": -0.162,
+      "total_r": -29.0
+    },
+    "isagi_yoichi": {
+      "n_trades": 532,
+      "win_rate": 0.2989,
+      "total_pips": -1439.9,
+      "profit_factor": 0.872,
+      "mean_r": -0.1067,
+      "total_r": -56.77
+    },
+    "itoshi_rin": {
+      "n_trades": 144,
+      "win_rate": 0.2292,
+      "total_pips": -432.8,
+      "profit_factor": 0.884,
+      "mean_r": -0.0833,
+      "total_r": -12.0
+    },
+    "nagi_seishiro": {
+      "n_trades": 23,
+      "win_rate": 0.3913,
+      "total_pips": 378.8,
+      "profit_factor": 1.916,
+      "mean_r": 0.3913,
+      "total_r": 9.0
+    }
+  }
+}

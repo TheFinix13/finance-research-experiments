@@ -1,0 +1,4 @@
+# Raw replay caches (456MB: trades.jsonl/events.jsonl per cell) are
+# reproducible from replay_cell.py + the pinned window/grid; only the
+# KPI summaries are tracked.
+results/raw/

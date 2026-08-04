@@ -1,0 +1,4 @@
+# Raw statement HTML (7.1MB, 87 pages) is archived locally and
+# deterministically refetchable via fetch_statements.py (0 failures
+# recorded in data/fetch_failures.json). Derived scores are tracked.
+data/statements/
