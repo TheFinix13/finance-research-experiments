@@ -1,0 +1,96 @@
+{
+  "label": "ablation_no_reo",
+  "window": [
+    "2019-01-01",
+    "2023-12-31"
+  ],
+  "roster_after_ablation": [
+    "isagi_yoichi",
+    "bachira_meguru",
+    "itoshi_rin",
+    "chigiri_hyoma",
+    "nagi_seishiro",
+    "barou_shoei"
+  ],
+  "run_batch": {
+    "bars_processed": 24173,
+    "n_proposals": 11597,
+    "n_rejected": 13294,
+    "n_trades": 1805,
+    "workspace_publish": {
+      "bachira_meguru": 24173,
+      "chigiri_hyoma": 16115,
+      "isagi_yoichi": 24173,
+      "itoshi_rin": 8058,
+      "nagi_seishiro": 24173,
+      "karasu_tabito": 24173,
+      "barou_shoei": 8058
+    },
+    "workspace_read": {
+      "nagi_seishiro": 867,
+      "bachira_meguru": 6093,
+      "isagi_yoichi": 2637,
+      "itoshi_rin": 1296,
+      "barou_shoei": 899,
+      "chigiri_hyoma": 453
+    }
+  },
+  "squad": {
+    "n_trades": 1805,
+    "win_rate": 0.3729,
+    "total_pips": -1942.7,
+    "profit_factor": 0.948,
+    "mean_r": -0.0304,
+    "total_r": -54.84
+  },
+  "per_agent": {
+    "bachira_meguru": {
+      "n_trades": 762,
+      "win_rate": 0.395,
+      "total_pips": -598.8,
+      "profit_factor": 0.962,
+      "mean_r": -0.0122,
+      "total_r": -9.3
+    },
+    "barou_shoei": {
+      "n_trades": 29,
+      "win_rate": 0.4828,
+      "total_pips": 211.9,
+      "profit_factor": 1.345,
+      "mean_r": 0.1976,
+      "total_r": 5.73
+    },
+    "chigiri_hyoma": {
+      "n_trades": 188,
+      "win_rate": 0.3245,
+      "total_pips": -1394.9,
+      "profit_factor": 0.69,
+      "mean_r": -0.1888,
+      "total_r": -35.5
+    },
+    "isagi_yoichi": {
+      "n_trades": 596,
+      "win_rate": 0.3742,
+      "total_pips": -1004.4,
+      "profit_factor": 0.91,
+      "mean_r": -0.0667,
+      "total_r": -39.77
+    },
+    "itoshi_rin": {
+      "n_trades": 161,
+      "win_rate": 0.3168,
+      "total_pips": 708.5,
+      "profit_factor": 1.191,
+      "mean_r": 0.1087,
+      "total_r": 17.5
+    },
+    "nagi_seishiro": {
+      "n_trades": 69,
+      "win_rate": 0.3333,
+      "total_pips": 134.9,
+      "profit_factor": 1.094,
+      "mean_r": 0.0942,
+      "total_r": 6.5
+    }
+  }
+}
