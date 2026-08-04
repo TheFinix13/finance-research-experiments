@@ -27,7 +27,9 @@ which windows have been consumed by which selection events, so
 | 2024-01→2026-07 | 1 validation replay (Barou:GBPUSD) | Phase AJ-2 | 2026-08-04 | opened again (4th total) |
 | 2019-01→2023-12 | Reo ablation (mechanism, no edge claim) | Phase AK | 2026-08-04 | re-used, declared legitimate (plumbing question on fixed tape) |
 | AUDUSD/NZDUSD/USDJPY/USDCHF H4 2015→2025 | pitch-assignment widening | Phase AC | 2026-07-20 | fingerprinted ONCE under pre-D138 LOOKAHEAD semantics (results void, but a selection process saw the data); also E005 (v1 lane) touched AUDUSD/NZDUSD. Cleaner than the main three, NOT virgin. |
-| XAUUSD/XAGUSD/USOIL/USTEC (any TF) | — | never downloaded | — | **VIRGIN — the only truly unseen offline instruments** |
+| AUDUSD/NZDUSD/USDCHF H4 2015-01→2022-12 | field survey (design region) | Phase AL | 2026-08-04 | consumed as DESIGN data; 2023+ seals intact |
+| USDJPY H4 2015-01→2022-12 | field survey | Phase AL | 2026-08-04 | consumed-but-INVALID (`invalid_pip_semantics`, I030) — must be re-surveyed after the pip fix; treat as design-touched anyway |
+| XAUUSD/XAGUSD/USOIL/USTEC (any TF) | — | banked 2026-08-04 (Tier-2 pull), never studied | — | **VIRGIN for studies — 2023+ pre-sealed per rule 4; UNUSABLE until I030 pip fix** |
 
 Also consumed OUTSIDE this lane but on shared data: v1 E0xx studies
 (E001–E032) mined EURUSD/GBPUSD/USDCAD H4/H1/M15 extensively;
