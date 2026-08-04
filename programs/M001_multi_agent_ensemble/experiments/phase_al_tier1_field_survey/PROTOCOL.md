@@ -57,3 +57,21 @@ multiplicity accounting can cite it).
 Replay crash or all-agents-zero-trades on a symbol → investigate
 data/pip semantics before reading any KPI (I024/I029-class checks
 first).
+
+## Amendment A1 (2026-08-04, declared before the re-run)
+
+The original survey's USDJPY cell was invalidated by I030 (hardcoded
+pip size; sentinel R1 blocked 100% of 14,621 winning proposals). The
+product-repo fix landed as commit `2650524` with byte-identical parity
+proven on the deployed majors (see `../i030_pip_semantics/`).
+
+Re-run: the SAME survey (same window 2015-01-01 -> 2022-12-31, same
+four pairs, same expansion shim, same engine arm) on the fixed engine,
+output to `results/raw/survey_postfix/` + `results/survey_postfix.json`.
+This supersedes the original tape wholesale — because USDJPY now
+competes for slots, squad state (concurrency, contests) shifts on the
+other three pairs too; per-cell KPIs are re-read from the new tape.
+Same exploratory status as the original: NO promotion from this data;
+survey cells only nominate follow-up studies under the multi-start
+standard. USDJPY readout is mechanical first (do JPY trades flow at
+plausible stop sizes?) and directional second.
