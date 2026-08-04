@@ -1,0 +1,273 @@
+{
+  "stage": "screen",
+  "window": [
+    "2015-01-01T00:00:00+00:00",
+    "2021-12-31T00:00:00+00:00"
+  ],
+  "cells": {
+    "EURUSD_N10_k1.0": {
+      "symbol": "EURUSD",
+      "n_lookback": 10,
+      "k_atr": 1.0,
+      "n_trades": 374,
+      "hit_rate": 0.39572192513368987,
+      "mean_pips": 0.38489304812844327,
+      "median_pips": -24.899999999998922,
+      "sum_pips": 143.9500000000378,
+      "p_one_sided": 0.4785,
+      "mean_pips_stress2x": -0.6151069518715567,
+      "folds_mean": [
+        15.89459459459476,
+        1.2453333333333865,
+        -13.09866666666673,
+        0.3166666666669131,
+        -2.226666666666561
+      ],
+      "folds_positive": 3,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "EURUSD_N10_k1.5": {
+      "symbol": "EURUSD",
+      "n_lookback": 10,
+      "k_atr": 1.5,
+      "n_trades": 261,
+      "hit_rate": 0.4099616858237548,
+      "mean_pips": 1.3114942528737417,
+      "median_pips": -33.69999999999884,
+      "sum_pips": 342.30000000004657,
+      "p_one_sided": 0.4156,
+      "mean_pips_stress2x": 0.3114942528737416,
+      "folds_mean": [
+        19.33750000000014,
+        2.950000000000041,
+        -19.931730769230704,
+        1.7019230769233977,
+        2.477358490566364
+      ],
+      "folds_positive": 4,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "EURUSD_N20_k1.0": {
+      "symbol": "EURUSD",
+      "n_lookback": 20,
+      "k_atr": 1.0,
+      "n_trades": 313,
+      "hit_rate": 0.3993610223642173,
+      "mean_pips": 1.6755591054314154,
+      "median_pips": -24.500000000000743,
+      "sum_pips": 524.450000000033,
+      "p_one_sided": 0.3628,
+      "mean_pips_stress2x": 0.6755591054314154,
+      "folds_mean": [
+        17.356451612903363,
+        4.542857142857221,
+        -9.35080645161292,
+        0.546825396825626,
+        -4.643650793650697
+      ],
+      "folds_positive": 3,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "EURUSD_N20_k1.5": {
+      "symbol": "EURUSD",
+      "n_lookback": 20,
+      "k_atr": 1.5,
+      "n_trades": 221,
+      "hit_rate": 0.42081447963800905,
+      "mean_pips": 3.0294117647060474,
+      "median_pips": -32.29999999999855,
+      "sum_pips": 669.5000000000365,
+      "p_one_sided": 0.3251,
+      "mean_pips_stress2x": 2.0294117647060474,
+      "folds_mean": [
+        16.53863636363651,
+        11.626136363636364,
+        -16.02499999999992,
+        -0.051136363636051965,
+        3.0577777777780613
+      ],
+      "folds_positive": 3,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "GBPUSD_N10_k1.0": {
+      "symbol": "GBPUSD",
+      "n_lookback": 10,
+      "k_atr": 1.0,
+      "n_trades": 230,
+      "hit_rate": 0.39565217391304347,
+      "mean_pips": 9.914565217391292,
+      "median_pips": -40.65000000000002,
+      "sum_pips": 2280.349999999997,
+      "p_one_sided": 0.1614,
+      "mean_pips_stress2x": 8.414565217391294,
+      "folds_mean": [
+        21.997826086956334,
+        -15.072826086956384,
+        48.55869565217397,
+        -5.1826086956520685,
+        -0.7282608695653741
+      ],
+      "folds_positive": 2,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "GBPUSD_N10_k1.5": {
+      "symbol": "GBPUSD",
+      "n_lookback": 10,
+      "k_atr": 1.5,
+      "n_trades": 167,
+      "hit_rate": 0.41916167664670656,
+      "mean_pips": 17.581137724550867,
+      "median_pips": -47.799999999999116,
+      "sum_pips": 2936.0499999999947,
+      "p_one_sided": 0.0883,
+      "mean_pips_stress2x": 16.081137724550867,
+      "folds_mean": [
+        24.795454545454426,
+        -13.893939393939235,
+        66.55147058823559,
+        -2.6757575757576753,
+        11.819117647058437
+      ],
+      "folds_positive": 3,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "GBPUSD_N20_k1.0": {
+      "symbol": "GBPUSD",
+      "n_lookback": 20,
+      "k_atr": 1.0,
+      "n_trades": 183,
+      "hit_rate": 0.4098360655737705,
+      "mean_pips": 11.943989071038224,
+      "median_pips": -38.89999999999854,
+      "sum_pips": 2185.749999999995,
+      "p_one_sided": 0.1659,
+      "mean_pips_stress2x": 10.443989071038223,
+      "folds_mean": [
+        38.20277777777747,
+        -14.658108108107959,
+        54.248611111111444,
+        -14.80000000000017,
+        -1.4202702702704084
+      ],
+      "folds_positive": 2,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "GBPUSD_N20_k1.5": {
+      "symbol": "GBPUSD",
+      "n_lookback": 20,
+      "k_atr": 1.5,
+      "n_trades": 131,
+      "hit_rate": 0.4198473282442748,
+      "mean_pips": 20.42557251908392,
+      "median_pips": -50.500000000001265,
+      "sum_pips": 2675.7499999999936,
+      "p_one_sided": 0.1038,
+      "mean_pips_stress2x": 18.92557251908392,
+      "folds_mean": [
+        49.00769230769208,
+        2.782692307692351,
+        55.99807692307742,
+        -7.848076923077002,
+        2.862962962962512
+      ],
+      "folds_positive": 4,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "USDCAD_N10_k1.0": {
+      "symbol": "USDCAD",
+      "n_lookback": 10,
+      "k_atr": 1.0,
+      "n_trades": 402,
+      "hit_rate": 0.42786069651741293,
+      "mean_pips": 4.462437810945195,
+      "median_pips": -25.899999999998922,
+      "sum_pips": 1793.8999999999683,
+      "p_one_sided": 0.1487,
+      "mean_pips_stress2x": 2.4624378109451954,
+      "folds_mean": [
+        24.49312499999981,
+        4.469375000000054,
+        -0.2851851851853267,
+        -3.8568750000001457,
+        -2.36358024691355
+      ],
+      "folds_positive": 2,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "USDCAD_N10_k1.5": {
+      "symbol": "USDCAD",
+      "n_lookback": 10,
+      "k_atr": 1.5,
+      "n_trades": 266,
+      "hit_rate": 0.4548872180451128,
+      "mean_pips": 7.934210526315717,
+      "median_pips": -37.800000000000274,
+      "sum_pips": 2110.499999999981,
+      "p_one_sided": 0.1074,
+      "mean_pips_stress2x": 5.934210526315717,
+      "folds_mean": [
+        37.339622641509294,
+        -6.163207547169896,
+        -0.5858490566038957,
+        1.6264150943396252,
+        7.462962962962947
+      ],
+      "folds_positive": 3,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "USDCAD_N20_k1.0": {
+      "symbol": "USDCAD",
+      "n_lookback": 20,
+      "k_atr": 1.0,
+      "n_trades": 329,
+      "hit_rate": 0.425531914893617,
+      "mean_pips": 6.127355623100208,
+      "median_pips": -27.500000000000522,
+      "sum_pips": 2015.8999999999685,
+      "p_one_sided": 0.1128,
+      "mean_pips_stress2x": 4.127355623100208,
+      "folds_mean": [
+        27.36307692307655,
+        5.7795454545454845,
+        -0.32727272727277046,
+        -4.49166666666684,
+        2.6348484848485687
+      ],
+      "folds_positive": 3,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "USDCAD_N20_k1.5": {
+      "symbol": "USDCAD",
+      "n_lookback": 20,
+      "k_atr": 1.5,
+      "n_trades": 222,
+      "hit_rate": 0.4774774774774775,
+      "mean_pips": 13.273648648648548,
+      "median_pips": -35.449999999999314,
+      "sum_pips": 2946.7499999999777,
+      "p_one_sided": 0.0335,
+      "mean_pips_stress2x": 11.273648648648548,
+      "folds_mean": [
+        50.96931818181784,
+        -9.43409090909091,
+        8.884444444444247,
+        -0.6715909090908858,
+        16.643333333333345
+      ],
+      "folds_positive": 3,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    }
+  }
+}

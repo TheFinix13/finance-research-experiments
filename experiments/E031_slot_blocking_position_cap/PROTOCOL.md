@@ -108,4 +108,5 @@ sealed slices previously touched only by E005 (documented prior use).
 
 ---
 
-**Pre-registration commit:** _(hash after push)_
+**Pre-registration commit:** `c838b28` (pushed 2026-08-04, before any
+Stage-1 computation)

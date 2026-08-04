@@ -80,6 +80,13 @@ direction). EURUSD 2025→2026-05-27 sealed slice is CONSUMED (E029) —
 no longer pristine. E029's production use (timing gate on a validated
 entry) needs its own study + agent validation chain.
 
+**Live-evidence campaign E031/E032 (2026-08-04, pre-reg `c838b28`):**
+
+| Study | Verdict | Headline |
+|---|---|---|
+| E031 slot-blocking (cap relaxation / queue-replacement) | STOPPED-DEAD Stage 1 (0/4 arms) | Stage-0 passed hugely (741/1,212/804 slot conflicts vs 100 floor) but every arm's ΔSharpe is NEGATIVE (−0.10…−0.33, p 0.73–0.96); dose-response wrong way (cap=3 < cap=2); ~510 replacements per B arm crystallize losses the fade would have recovered. Live 6/6 blocked-winner evidence = anecdote-not-confirmed; production `max_open_positions=1` unchanged, if anything protective |
+| E032 with-trend H4 breakout cell | STOPPED-DEAD Stage 1 (0/12 cells) | All 12 means positive and monotone in N and k (descriptive only) but best raw p 0.034 vs BH threshold 0.0042, no 4/5-fold cell. Consistent with all 3 priors AGAINST. "Missing the big moves" thesis closed under this operationalisation; v1 stays fade-only; no `htf_with_breakout` candidate |
+
 ## 2) Key file paths
 
 | Area | Files |
@@ -97,21 +104,17 @@ Tests: E020–E024 unit tests + PRE-0 invariants all pass under
 
 ## 3) Next immediate goal
 
-**E031 + E032 registered 2026-08-04, awaiting pre-reg commit + push
-before ANY Stage-1 run** (user must declare the target branch; recent
-E-sessions were user-declared `main`). Raised by the 2026-08-04 weekly
-v1 review: E031 slot-blocking (cap=2/3 + queue-replacement arms vs
-reconstructed cap=1 baseline; live evidence 6/6 blocked winners across
-two weeks is motivation only; MaxDD guardrail tier
-`parked_risk_degraded`; Stage-0 floor ≥ 100 slot-conflict
-events/symbol). E032 with-trend H4 breakout-continuation cell (12
-cells, D1-aligned range-break, structure SL / 1.5R TP; priors AGAINST
-on record — E004 with-mode, E030 dead, Chigiri v1 TQS 0.229; the
-motivating 2026-07-28→08-03 live week is BURNT). Interaction clause:
-both alive → joint slot sim required before any deployment talk.
-Harnesses to build in `programs/E031/`, `programs/E032/` after the
-pre-reg push. Null-arm baseline convention (E026 Amendment 1) binds
-E031.
+**E031 + E032 landed 2026-08-04 — both STOPPED-DEAD at Stage-1
+go/no-go, zero OOS cost** (pre-reg `c838b28`, run same day on `main`
+per user declaration; results + stop notices in
+`experiments/E03{1,2}_*/`, runners + 10 passing unit tests in
+`programs/E03{1,2}/`). Operational consequences for the agent repo:
+production `max_open_positions=1` stays; v1 stays fade-only; the
+weekly-review "blocked winners" counterfactual line keeps being
+tracked but re-opening either question needs a materially different
+mechanism (e.g. Chigiri conjunctive guards or trailing exits for the
+breakout; anything-but-R-threshold for replacement). E031/E032 IDs are
+consumed. No queued lab study — next work item is user-driven.
 
 **Exit-side campaign is closed on the current cell** (E026 included).
 Open user decision: whether to re-run E020–E025 effect sizes against the

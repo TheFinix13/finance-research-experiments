@@ -1,0 +1,151 @@
+{
+  "stage": "screen",
+  "window": [
+    "2015-01-01T00:00:00+00:00",
+    "2021-12-31T00:00:00+00:00"
+  ],
+  "baseline": {
+    "n_trades": 2068,
+    "sharpe": 2.0124549303686745,
+    "max_dd": -0.1693686183487255,
+    "slot_conflicts": {
+      "EURUSD": 741,
+      "GBPUSD": 1212,
+      "USDCAD": 804
+    },
+    "ceiling_blocks": 0,
+    "final_equity": 10382.05801858775
+  },
+  "stage0_feasibility": {
+    "EURUSD": {
+      "slot_conflicts": 741,
+      "passes_floor_100": true
+    },
+    "GBPUSD": {
+      "slot_conflicts": 1212,
+      "passes_floor_100": true
+    },
+    "USDCAD": {
+      "slot_conflicts": 804,
+      "passes_floor_100": true
+    }
+  },
+  "arms": {
+    "A1_cap2": {
+      "n_trades": 3178,
+      "replacements": 0,
+      "ceiling_blocks": 0,
+      "sharpe": 1.9170173732953724,
+      "delta_sharpe": -0.09543755707330215,
+      "ci95": [
+        -0.38244998242052736,
+        0.2117007365302679
+      ],
+      "p_one_sided": 0.7252,
+      "folds_delta": [
+        0.39099046277547145,
+        -0.41498517226639864,
+        -0.30857518745730816,
+        -0.06138313012217411,
+        -0.059109968219965836
+      ],
+      "folds_positive": 1,
+      "max_dd": -0.1672270947696946,
+      "rel_dd_worsening_vs_base": 0.012644158049524528,
+      "big_down_days": [
+        36,
+        8
+      ],
+      "final_equity": 27008.06957290291,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "A2_cap3": {
+      "n_trades": 3867,
+      "replacements": 0,
+      "ceiling_blocks": 64,
+      "sharpe": 1.686047334419064,
+      "delta_sharpe": -0.32640759594961044,
+      "ci95": [
+        -0.6531543841542174,
+        0.044839092895780246
+      ],
+      "p_one_sided": 0.9576,
+      "folds_delta": [
+        0.22031293000122654,
+        -0.8875062124276397,
+        -0.595596784132955,
+        0.002853867617235828,
+        -0.4054016224852963
+      ],
+      "folds_positive": 2,
+      "max_dd": -0.2674110447243117,
+      "rel_dd_worsening_vs_base": -0.5788700842662569,
+      "big_down_days": [
+        69,
+        8
+      ],
+      "final_equity": 31204.48565511794,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "B1_replace_losing": {
+      "n_trades": 2827,
+      "replacements": 515,
+      "ceiling_blocks": 0,
+      "sharpe": 1.7469971792670553,
+      "delta_sharpe": -0.2654577511016192,
+      "ci95": [
+        -0.5724177004268973,
+        0.05914939534861133
+      ],
+      "p_one_sided": 0.9498,
+      "folds_delta": [
+        -0.27678770715621615,
+        -0.5047454725949783,
+        -0.24882095282587446,
+        -0.4588328627234599,
+        0.18877473225402452
+      ],
+      "folds_positive": 1,
+      "max_dd": -0.15708170910490743,
+      "rel_dd_worsening_vs_base": 0.07254537094067592,
+      "big_down_days": [
+        11,
+        8
+      ],
+      "final_equity": 8916.127320318448,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    },
+    "B2_replace_same_dir": {
+      "n_trades": 2813,
+      "replacements": 506,
+      "ceiling_blocks": 0,
+      "sharpe": 1.7900617183309047,
+      "delta_sharpe": -0.22239321203776985,
+      "ci95": [
+        -0.5303386038540722,
+        0.10038139365411862
+      ],
+      "p_one_sided": 0.9134,
+      "folds_delta": [
+        -0.29331021106693633,
+        -0.2905028320679106,
+        -0.22808538054992633,
+        -0.4588328627234688,
+        0.1887747322540243
+      ],
+      "folds_positive": 1,
+      "max_dd": -0.15708170910490876,
+      "rel_dd_worsening_vs_base": 0.07254537094066806,
+      "big_down_days": [
+        11,
+        8
+      ],
+      "final_equity": 9430.438948152545,
+      "bh_fdr_pass": false,
+      "verdict": "dead"
+    }
+  }
+}

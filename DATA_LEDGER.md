@@ -11,9 +11,9 @@ Parquet cache: `../multi-pair-trading-agent/data/parquet/` (single canonical cop
 Live broker fills cache (Φ3): `~/Documents/TradingAgentLogs/{SYMBOL}/`
 (VM-only; absent on the Mac research host as of 2026-06-24).
 
-Last updated: **2026-07-28** (E027/E028 screens consumed + stopped;
-E010 screen+confirm consumed, stopped at Stage 2 — sealed + Stage-3
-reservations RELEASED)
+Last updated: **2026-08-04** (E031/E032 screens consumed, both stopped
+at Stage-1 go/no-go — confirm + sealed reservations RELEASED
+un-consumed)
 
 ---
 
@@ -21,8 +21,8 @@ reservations RELEASED)
 
 | TF | Slice | Status | Experiments |
 |---|---|---|---|
-| H4 | 2015-01-01 → 2021-12-31 (7th use) | screen | E001, E002, E003, E004, E006, E007, E027 (consumed 2026-07-28; overuse acknowledged in E027 §8) |
-| H4 | 2022-01-01 → 2024-12-31 | confirm | E003, E004, E006, E007; E027 stopped at Stage 1 — not consumed |
+| H4 | 2015-01-01 → 2021-12-31 (9th use) | screen | E001, E002, E003, E004, E006, E007, E027 (consumed 2026-07-28; overuse acknowledged in E027 §8), E031 + E032 (consumed 2026-08-04; overuse acknowledged in both protocols §4 — orthogonal hypotheses: portfolio slot mechanics / breakout entry class) |
+| H4 | 2022-01-01 → 2024-12-31 | confirm | E003, E004, E006, E007; E027 stopped at Stage 1 — not consumed; E031/E032 stopped at Stage 1 2026-08-04 — not consumed |
 | H4 | 2024-01-01 → 2024-12-31 | **observation** | M001 Φ3-prep regime weak-label validation (`sim/regime/validate_real.py`; 1617 bars; not an experiment, no claim, see `sim/regime/README.md`) |
 | H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E002, E004 |
 | H4 | 2025-01-01 → 2026-06-09 | sealed | E005 |
@@ -45,6 +45,7 @@ EURUSD M30 (if cached), any TF on pairs below with `pristine` H1/M15.
 
 | TF | Slice | Status | Experiments |
 |---|---|---|---|
+| H4 | 2015-01-01 → 2021-12-31 | screen | E031 + E032 (consumed 2026-08-04; both stopped at Stage 1; prior E005/E006 sealed history on the wider slice documented in both protocols) |
 | H4 | 2015-01-01 → 2024-12-31 | sealed | E005, E006 (replication) |
 | H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 |
 | H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E029 (Stage 1 consumed 2026-07-28 — first computation of the lift statistic on this pair; 8/10 alive) |
@@ -61,6 +62,7 @@ or new pairs before re-mining GBPUSD H4 2015-2024 for unrelated hypotheses.
 
 | TF | Slice | Status | Experiments |
 |---|---|---|---|
+| H4 | 2015-01-01 → 2021-12-31 | screen | E031 + E032 (consumed 2026-08-04; both stopped at Stage 1; prior E005 sealed history on the wider slice documented in both protocols) |
 | H4 | 2015-01-01 → 2024-12-31 | sealed | E005 |
 | H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 (E027 Stage-3 reservation released 2026-07-28 — stopped at Stage 1) |
 | H1 | all | pristine — **not cached** (E007 §3.8 audit; E010 §0 Stage-0 check confirms) | — |
@@ -87,17 +89,14 @@ new protocol's Related Work section.
 
 ## Planned (pre-registered, Stage 1 not yet run)
 
-| Experiment | Slices reserved | Status |
-|---|---|---|
-| E031 (slot-blocking) | EURUSD/GBPUSD/USDCAD H4: screen 2015–2021, confirm 2022–2024, sealed 2025-01-01 → 2026-07-25 (prior sealed touch: E005 — documented in protocol §4) | planned |
-| E032 (with-trend breakout cell) | Same three H4 slices as E031 (orthogonal hypotheses — entry-class vs portfolio mechanics; EURUSD 2015–21 8th use acknowledged in both protocols) | planned |
-
-Rows above move into the per-pair tables in the same commit as each
-experiment's first Stage-1 run, per the atomic-update rule.
+(none — E031/E032 screens consumed 2026-08-04 and moved into the
+per-pair tables above; both stopped at Stage 1, so their confirm
+(2022–2024) and sealed (2025-01-01 → 2026-07-25) H4 reservations were
+RELEASED un-consumed.)
 
 ## Overuse warning
 
-EURUSD H4 **2015-2021** has been screened by **six** registered experiments.
+EURUSD H4 **2015-2021** has been screened by **nine** registered experiments.
 Treat further claims on that exact slice as **low independent power** unless
 the hypothesis is orthogonal (different outcome, different event definition)
 and the protocol documents the prior uses above.
