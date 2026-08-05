@@ -1,0 +1,180 @@
+{
+  "AN-3:chigiri_hyoma:XAGUSD": {
+    "verdict_at_1x_cost": "PASS",
+    "fail_reasons": [],
+    "n": {
+      "median": 60,
+      "min": 37,
+      "max": 72
+    },
+    "pf": {
+      "median": 1.27,
+      "min": 0.941,
+      "max": 1.313
+    },
+    "mean_r": {
+      "median": 0.198,
+      "min": 0.0044,
+      "max": 0.207
+    },
+    "pf_positive_starts": 4,
+    "honest_spread": 2.5,
+    "per_start": [
+      {
+        "start": "2023-01-01",
+        "cost_0.0x": {
+          "n": 72,
+          "win_rate": 0.5139,
+          "pf": 1.45,
+          "mean_r": 0.2847,
+          "total_pips": 509.2
+        },
+        "cost_0.5x": {
+          "n": 72,
+          "win_rate": 0.5139,
+          "pf": 1.356,
+          "mean_r": 0.2414,
+          "total_pips": 419.2
+        },
+        "cost_1.0x": {
+          "n": 72,
+          "win_rate": 0.5139,
+          "pf": 1.27,
+          "mean_r": 0.198,
+          "total_pips": 329.2
+        },
+        "cost_2.0x": {
+          "n": 72,
+          "win_rate": 0.5139,
+          "pf": 1.114,
+          "mean_r": 0.1113,
+          "total_pips": 149.2
+        }
+      },
+      {
+        "start": "2023-04-01",
+        "cost_0.0x": {
+          "n": 68,
+          "win_rate": 0.5147,
+          "pf": 1.464,
+          "mean_r": 0.2868,
+          "total_pips": 496.4
+        },
+        "cost_0.5x": {
+          "n": 68,
+          "win_rate": 0.5147,
+          "pf": 1.371,
+          "mean_r": 0.2435,
+          "total_pips": 411.4
+        },
+        "cost_1.0x": {
+          "n": 68,
+          "win_rate": 0.5147,
+          "pf": 1.284,
+          "mean_r": 0.2002,
+          "total_pips": 326.4
+        },
+        "cost_2.0x": {
+          "n": 68,
+          "win_rate": 0.5147,
+          "pf": 1.127,
+          "mean_r": 0.1137,
+          "total_pips": 156.4
+        }
+      },
+      {
+        "start": "2023-07-01",
+        "cost_0.0x": {
+          "n": 60,
+          "win_rate": 0.5167,
+          "pf": 1.495,
+          "mean_r": 0.2917,
+          "total_pips": 469.5
+        },
+        "cost_0.5x": {
+          "n": 60,
+          "win_rate": 0.5167,
+          "pf": 1.4,
+          "mean_r": 0.2493,
+          "total_pips": 394.5
+        },
+        "cost_1.0x": {
+          "n": 60,
+          "win_rate": 0.5167,
+          "pf": 1.313,
+          "mean_r": 0.207,
+          "total_pips": 319.5
+        },
+        "cost_2.0x": {
+          "n": 60,
+          "win_rate": 0.5167,
+          "pf": 1.155,
+          "mean_r": 0.1223,
+          "total_pips": 169.5
+        }
+      },
+      {
+        "start": "2023-10-01",
+        "cost_0.0x": {
+          "n": 46,
+          "win_rate": 0.4783,
+          "pf": 1.265,
+          "mean_r": 0.1957,
+          "total_pips": 215.2
+        },
+        "cost_0.5x": {
+          "n": 46,
+          "win_rate": 0.4783,
+          "pf": 1.187,
+          "mean_r": 0.1546,
+          "total_pips": 157.7
+        },
+        "cost_1.0x": {
+          "n": 46,
+          "win_rate": 0.4783,
+          "pf": 1.115,
+          "mean_r": 0.1135,
+          "total_pips": 100.2
+        },
+        "cost_2.0x": {
+          "n": 46,
+          "win_rate": 0.4783,
+          "pf": 0.984,
+          "mean_r": 0.0313,
+          "total_pips": -14.8
+        }
+      },
+      {
+        "start": "2024-01-01",
+        "cost_0.0x": {
+          "n": 37,
+          "win_rate": 0.4324,
+          "pf": 1.061,
+          "mean_r": 0.0811,
+          "total_pips": 45.5
+        },
+        "cost_0.5x": {
+          "n": 37,
+          "win_rate": 0.4324,
+          "pf": 0.999,
+          "mean_r": 0.0427,
+          "total_pips": -0.8
+        },
+        "cost_1.0x": {
+          "n": 37,
+          "win_rate": 0.4324,
+          "pf": 0.941,
+          "mean_r": 0.0044,
+          "total_pips": -47.0
+        },
+        "cost_2.0x": {
+          "n": 37,
+          "win_rate": 0.4324,
+          "pf": 0.836,
+          "mean_r": -0.0723,
+          "total_pips": -139.5
+        }
+      }
+    ]
+  }
+}

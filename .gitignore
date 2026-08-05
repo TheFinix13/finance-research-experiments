@@ -45,3 +45,7 @@ data/tier2_banking.stdout.log
 data/parquet_tier2/*.parquet
 data/tier2_banking.stdout.log
 programs/M001_multi_agent_ensemble/experiments/i030_pip_semantics/results/raw/
+
+# Phase AN raw replay tapes (370M local; summaries are committed)
+programs/M001_multi_agent_ensemble/experiments/phase_an_field_followups/results/AN-*/
+programs/M001_multi_agent_ensemble/experiments/phase_an_field_followups/results/*.stdout.log
