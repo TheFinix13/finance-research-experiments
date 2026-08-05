@@ -50,14 +50,15 @@ PF > 1 in ≥ 4/5 starts, all at 1x honest cost. One sealed open earned
 Median n=60, PF 1.27, mean R +0.198, 4/5 PF-positive → **sealed PASS**
 on the declared floors (n ≥ 25, PF ≥ 1.10, meanR > 0, ≥ 4/5).
 
-**Honest caveat — recency fade.** The pass is front-loaded: the three
-2023 starts are strong, but the 2023-10 start weakens and the 2024-01
-start (the only path judged almost entirely on 2024–2026 silver) is
-the one negative path. Two non-exclusive readings: (a) later starts
-have thinner n (37–46) so path noise dominates — exactly what AJ-2
-documented; (b) the edge genuinely decayed on the 2024+ silver regime.
-The live tape (accruing daily, never seen by any optimizer) is the
-only clean arbiter left. Deployment recommendation reflects this.
+**Sealed-fade audit (2026-08-05): `thin_sample_artifact`.** Full
+writeup in `SEALED_FADE_AUDIT.md`. Critical cut on the earliest
+(2023-01) path: calendar **2024 itself is still strong** (n=28, PF
+1.498, meanR +0.341 — matches 2023). The lone 2024-01 start loss is
+burn-in cutting off excellent 2024-H1 (PF 3.182) on a 100% nested
+subset; filtering the full path to the same window reproduces PF
+0.941 exactly. Separate forward-risk flag (does **not** flip the
+verdict): calendar 2025 is soft on small n (n=18, PF 0.732). Paper
+tape remains the arbiter for that softness.
 
 Cost sensitivity (sealed, median): PF 1.45 at 0x, 1.36 at 0.5x, 1.27
 at 1x, 1.11 at 2x — the cell survives a doubling of the declared

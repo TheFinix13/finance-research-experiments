@@ -1,0 +1,316 @@
+=== overall (1x cost) ===
+  start_0: {'n': 441, 'pf': 1.1131, 'mean_r': 0.0951, 'win_rate': 0.4331, 'sum_pips': 2448.9}
+  start_1: {'n': 426, 'pf': 1.1383, 'mean_r': 0.1049, 'win_rate': 0.4366, 'sum_pips': 2866.9}
+  start_2: {'n': 418, 'pf': 1.1146, 'mean_r': 0.0978, 'win_rate': 0.4354, 'sum_pips': 2336.5}
+  start_3: {'n': 399, 'pf': 1.1383, 'mean_r': 0.1204, 'win_rate': 0.4436, 'sum_pips': 2689.1}
+  start_4: {'n': 379, 'pf': 1.1606, 'mean_r': 0.1225, 'win_rate': 0.4433, 'sum_pips': 2882.6}
+
+=== loss anatomy start_0 ===
+{
+ "n": 441,
+ "win_rate": 0.4331,
+ "r_percentiles": {
+  "5": -1.03,
+  "10": -1.023,
+  "25": -1.015,
+  "50": -1.007,
+  "75": 1.483,
+  "90": 1.491,
+  "95": 1.494
+ },
+ "losers": {
+  "n": 250,
+  "full_stop_share": 0.996,
+  "mean_loss_r": -1.0124,
+  "mfe_over_sl_mean": 0.5193,
+  "losers_with_mfe_ge_0.5R": 0.44,
+  "losers_with_mfe_ge_1.0R": 0.156
+ },
+ "exit_reasons": {
+  "end_of_data": {
+   "n": 1,
+   "sum_pips": -11.3
+  },
+  "sl": {
+   "n": 249,
+   "sum_pips": -21638.8
+  },
+  "tp": {
+   "n": 191,
+   "sum_pips": 24099.0
+  }
+ },
+ "bars_held_distribution": {
+  "0-5": 441,
+  "6-15": 0,
+  "16-30": 0,
+  ">30": 0
+ }
+}
+
+=== quartile edges (start_0) ===
+{
+ "regime_fit": [
+  0.4044,
+  0.5317,
+  0.7501
+ ],
+ "conviction": [
+  0.75,
+  0.75,
+  0.75
+ ],
+ "atr": [
+  24.2648,
+  31.9036,
+  45.0041
+ ],
+ "stop_atr": [
+  1.7248,
+  2.2792,
+  2.8216
+ ]
+}
+
+=== slices start_0 ===
+
+-- session --
+  asia       {'n': 116, 'pf': 1.1971, 'mean_r': 0.2107, 'win_rate': 0.4655, 'sum_pips': 1109.2}
+  london     {'n': 114, 'pf': 1.2386, 'mean_r': 0.1411, 'win_rate': 0.4561, 'sum_pips': 1184.5}
+  ny         {'n': 152, 'pf': 1.0573, 'mean_r': 0.0361, 'win_rate': 0.4145, 'sum_pips': 445.7}
+  rollover   {'n': 59, 'pf': 0.9113, 'mean_r': -0.0687, 'win_rate': 0.3729, 'sum_pips': -290.6}
+
+-- day_of_week --
+  fri        {'n': 92, 'pf': 1.1043, 'mean_r': 0.0672, 'win_rate': 0.4239, 'sum_pips': 519.6}
+  mon        {'n': 72, 'pf': 1.6076, 'mean_r': 0.3072, 'win_rate': 0.5139, 'sum_pips': 1803.9}
+  sun        {'n': 1, 'pf': inf, 'mean_r': 1.4649, 'win_rate': 1.0, 'sum_pips': 41.8}
+  thu        {'n': 96, 'pf': 0.9162, 'mean_r': -0.0198, 'win_rate': 0.3958, 'sum_pips': -415.7}
+  tue        {'n': 86, 'pf': 0.8105, 'mean_r': -0.0544, 'win_rate': 0.3837, 'sum_pips': -812.5}
+  wed        {'n': 94, 'pf': 1.2946, 'mean_r': 0.1998, 'win_rate': 0.4574, 'sum_pips': 1311.8}
+
+-- regime_fit_q --
+  q1         {'n': 111, 'pf': 1.2291, 'mean_r': 0.1638, 'win_rate': 0.4775, 'sum_pips': 664.3}
+  q2         {'n': 110, 'pf': 1.0593, 'mean_r': 0.0572, 'win_rate': 0.4, 'sum_pips': 239.0}
+  q3         {'n': 110, 'pf': 1.131, 'mean_r': 0.0056, 'win_rate': 0.4091, 'sum_pips': 733.3}
+  q4         {'n': 110, 'pf': 1.089, 'mean_r': 0.1534, 'win_rate': 0.4455, 'sum_pips': 812.3}
+
+-- conviction_q --
+  q1         {'n': 441, 'pf': 1.1131, 'mean_r': 0.0951, 'win_rate': 0.4331, 'sum_pips': 2448.9}
+
+-- atr_q --
+  q1         {'n': 111, 'pf': 1.2291, 'mean_r': 0.1638, 'win_rate': 0.4775, 'sum_pips': 664.3}
+  q2         {'n': 110, 'pf': 1.0593, 'mean_r': 0.0572, 'win_rate': 0.4, 'sum_pips': 239.0}
+  q3         {'n': 110, 'pf': 1.131, 'mean_r': 0.0056, 'win_rate': 0.4091, 'sum_pips': 733.3}
+  q4         {'n': 110, 'pf': 1.089, 'mean_r': 0.1534, 'win_rate': 0.4455, 'sum_pips': 812.3}
+
+-- stop_atr_q --
+  q1         {'n': 111, 'pf': 1.3105, 'mean_r': 0.2008, 'win_rate': 0.4505, 'sum_pips': 967.0}
+  q2         {'n': 110, 'pf': 1.5748, 'mean_r': 0.2179, 'win_rate': 0.4909, 'sum_pips': 2301.7}
+  q3         {'n': 110, 'pf': 0.8136, 'mean_r': -0.1045, 'win_rate': 0.3636, 'sum_pips': -1246.0}
+  q4         {'n': 110, 'pf': 1.0543, 'mean_r': 0.0654, 'win_rate': 0.4273, 'sum_pips': 426.2}
+
+-- direction --
+  long       {'n': 222, 'pf': 1.1407, 'mean_r': 0.0855, 'win_rate': 0.4369, 'sum_pips': 1410.2}
+  short      {'n': 219, 'pf': 1.0893, 'mean_r': 0.1049, 'win_rate': 0.4292, 'sum_pips': 1038.7}
+
+-- bars_held_b --
+  0-5        {'n': 441, 'pf': 1.1131, 'mean_r': 0.0951, 'win_rate': 0.4331, 'sum_pips': 2448.9}
+
+=== loser MFE by start ===
+{
+ "start_0": {
+  "n_losers": 250,
+  "share_mfe_ge_0.5R": 0.44,
+  "share_mfe_ge_1.0R": 0.156
+ },
+ "start_1": {
+  "n_losers": 240,
+  "share_mfe_ge_0.5R": 0.4417,
+  "share_mfe_ge_1.0R": 0.1583
+ },
+ "start_2": {
+  "n_losers": 236,
+  "share_mfe_ge_0.5R": 0.4364,
+  "share_mfe_ge_1.0R": 0.1568
+ },
+ "start_3": {
+  "n_losers": 222,
+  "share_mfe_ge_0.5R": 0.455,
+  "share_mfe_ge_1.0R": 0.1622
+ },
+ "start_4": {
+  "n_losers": 211,
+  "share_mfe_ge_0.5R": 0.4645,
+  "share_mfe_ge_1.0R": 0.1706
+ }
+}
+
+=== candidate filters (screened 26) ===
+
+drop stop_atr_q=q3: pooled {'n': 1541, 'pf': 1.2717, 'mean_r': 0.1771, 'win_rate': 0.4627, 'sum_pips': 18600.2}, median_cf_pf=1.2747, improves 5/5, gate=PASS
+   start_0: base_pf=1.1131 -> cf_pf=1.2469 (n=331, meanR=0.1615, removed=110)
+   start_1: base_pf=1.1383 -> cf_pf=1.2941 (n=318, meanR=0.1782, removed=108)
+   start_2: base_pf=1.1146 -> cf_pf=1.2629 (n=312, meanR=0.1709, removed=106)
+   start_3: base_pf=1.1383 -> cf_pf=1.2747 (n=299, meanR=0.1892, removed=100)
+   start_4: base_pf=1.1606 -> cf_pf=1.2831 (n=281, meanR=0.1884, removed=98)
+
+drop day_of_week=tue: pooled {'n': 1665, 'pf': 1.2061, 'mean_r': 0.1384, 'win_rate': 0.448, 'sum_pips': 16597.1}, median_cf_pf=1.2008, improves 5/5, gate=PASS
+   start_0: base_pf=1.1131 -> cf_pf=1.1878 (n=355, meanR=0.1314, removed=86)
+   start_1: base_pf=1.1383 -> cf_pf=1.2131 (n=345, meanR=0.1356, removed=81)
+   start_2: base_pf=1.1146 -> cf_pf=1.1774 (n=338, meanR=0.1241, removed=80)
+   start_3: base_pf=1.1383 -> cf_pf=1.2008 (n=321, meanR=0.1466, removed=78)
+   start_4: base_pf=1.1606 -> cf_pf=1.2588 (n=306, meanR=0.1566, removed=73)
+
+drop day_of_week=thu: pooled {'n': 1614, 'pf': 1.1918, 'mean_r': 0.1392, 'win_rate': 0.4486, 'sum_pips': 14796.9}, median_cf_pf=1.2004, improves 5/5, gate=PASS
+   start_0: base_pf=1.1131 -> cf_pf=1.1716 (n=345, meanR=0.1271, removed=96)
+   start_1: base_pf=1.1383 -> cf_pf=1.2111 (n=332, meanR=0.1418, removed=94)
+   start_2: base_pf=1.1146 -> cf_pf=1.1763 (n=327, meanR=0.1306, removed=91)
+   start_3: base_pf=1.1383 -> cf_pf=1.2004 (n=313, meanR=0.1511, removed=86)
+   start_4: base_pf=1.1606 -> cf_pf=1.202 (n=297, meanR=0.147, removed=82)
+
+drop session=rollover: pooled {'n': 1779, 'pf': 1.1682, 'mean_r': 0.1327, 'win_rate': 0.4474, 'sum_pips': 14190.4}, median_cf_pf=1.1768, improves 5/5, gate=PASS
+   start_0: base_pf=1.1131 -> cf_pf=1.1491 (n=382, meanR=0.1204, removed=59)
+   start_1: base_pf=1.1383 -> cf_pf=1.1768 (n=368, meanR=0.1297, removed=58)
+   start_2: base_pf=1.1146 -> cf_pf=1.1495 (n=360, meanR=0.122, removed=58)
+   start_3: base_pf=1.1383 -> cf_pf=1.1803 (n=343, meanR=0.1501, removed=56)
+   start_4: base_pf=1.1606 -> cf_pf=1.1899 (n=326, meanR=0.1437, removed=53)
+
+drop regime_fit_q=q2: pooled {'n': 1558, 'pf': 1.1668, 'mean_r': 0.1341, 'win_rate': 0.4557, 'sum_pips': 13510.8}, median_cf_pf=1.173, improves 5/5, gate=PASS
+   start_0: base_pf=1.1131 -> cf_pf=1.1254 (n=331, meanR=0.1078, removed=110)
+   start_1: base_pf=1.1383 -> cf_pf=1.173 (n=322, meanR=0.1313, removed=104)
+   start_2: base_pf=1.1146 -> cf_pf=1.145 (n=316, meanR=0.1232, removed=102)
+   start_3: base_pf=1.1383 -> cf_pf=1.1814 (n=304, meanR=0.1517, removed=95)
+   start_4: base_pf=1.1606 -> cf_pf=1.2197 (n=285, meanR=0.1614, removed=94)
+
+drop atr_q=q2: pooled {'n': 1558, 'pf': 1.1668, 'mean_r': 0.1341, 'win_rate': 0.4557, 'sum_pips': 13510.8}, median_cf_pf=1.173, improves 5/5, gate=PASS
+   start_0: base_pf=1.1131 -> cf_pf=1.1254 (n=331, meanR=0.1078, removed=110)
+   start_1: base_pf=1.1383 -> cf_pf=1.173 (n=322, meanR=0.1313, removed=104)
+   start_2: base_pf=1.1146 -> cf_pf=1.145 (n=316, meanR=0.1232, removed=102)
+   start_3: base_pf=1.1383 -> cf_pf=1.1814 (n=304, meanR=0.1517, removed=95)
+   start_4: base_pf=1.1606 -> cf_pf=1.2197 (n=285, meanR=0.1614, removed=94)
+
+drop regime_fit_q=q4: pooled {'n': 1552, 'pf': 1.1725, 'mean_r': 0.0945, 'win_rate': 0.4356, 'sum_pips': 9914.2}, median_cf_pf=1.1663, improves 5/5, gate=PASS
+   start_0: base_pf=1.1131 -> cf_pf=1.1307 (n=331, meanR=0.0758, removed=110)
+   start_1: base_pf=1.1383 -> cf_pf=1.1663 (n=318, meanR=0.089, removed=108)
+   start_2: base_pf=1.1146 -> cf_pf=1.1593 (n=314, meanR=0.088, removed=104)
+   start_3: base_pf=1.1383 -> cf_pf=1.2214 (n=297, meanR=0.1187, removed=102)
+   start_4: base_pf=1.1606 -> cf_pf=1.1934 (n=292, meanR=0.1038, removed=87)
+
+drop atr_q=q4: pooled {'n': 1552, 'pf': 1.1725, 'mean_r': 0.0945, 'win_rate': 0.4356, 'sum_pips': 9914.2}, median_cf_pf=1.1663, improves 5/5, gate=PASS
+   start_0: base_pf=1.1131 -> cf_pf=1.1307 (n=331, meanR=0.0758, removed=110)
+   start_1: base_pf=1.1383 -> cf_pf=1.1663 (n=318, meanR=0.089, removed=108)
+   start_2: base_pf=1.1146 -> cf_pf=1.1593 (n=314, meanR=0.088, removed=104)
+   start_3: base_pf=1.1383 -> cf_pf=1.2214 (n=297, meanR=0.1187, removed=102)
+   start_4: base_pf=1.1606 -> cf_pf=1.1934 (n=292, meanR=0.1038, removed=87)
+
+drop direction=short: pooled {'n': 1041, 'pf': 1.1757, 'mean_r': 0.1039, 'win_rate': 0.4438, 'sum_pips': 8161.4}, median_cf_pf=1.1626, improves 5/5, gate=PASS
+   start_0: base_pf=1.1131 -> cf_pf=1.1407 (n=222, meanR=0.0855, removed=219)
+   start_1: base_pf=1.1383 -> cf_pf=1.1427 (n=212, meanR=0.0903, removed=214)
+   start_2: base_pf=1.1146 -> cf_pf=1.1626 (n=210, meanR=0.1008, removed=208)
+   start_3: base_pf=1.1383 -> cf_pf=1.187 (n=201, meanR=0.1152, removed=198)
+   start_4: base_pf=1.1606 -> cf_pf=1.2579 (n=196, meanR=0.1311, removed=183)
+
+drop session=ny: pooled {'n': 1370, 'pf': 1.1514, 'mean_r': 0.1265, 'win_rate': 0.4438, 'sum_pips': 9857.5}, median_cf_pf=1.1496, improves 5/5, gate=fail
+   start_0: base_pf=1.1131 -> cf_pf=1.1444 (n=289, meanR=0.1262, removed=152)
+   start_1: base_pf=1.1383 -> cf_pf=1.1575 (n=283, meanR=0.124, removed=143)
+   start_2: base_pf=1.1146 -> cf_pf=1.1286 (n=279, meanR=0.1145, removed=139)
+   start_3: base_pf=1.1383 -> cf_pf=1.1496 (n=266, meanR=0.1334, removed=133)
+   start_4: base_pf=1.1606 -> cf_pf=1.1806 (n=253, meanR=0.1356, removed=126)
+
+drop stop_atr_q=q4: pooled {'n': 1553, 'pf': 1.1696, 'mean_r': 0.1191, 'win_rate': 0.4411, 'sum_pips': 10917.1}, median_cf_pf=1.1474, improves 5/5, gate=fail
+   start_0: base_pf=1.1131 -> cf_pf=1.1466 (n=331, meanR=0.105, removed=110)
+   start_1: base_pf=1.1383 -> cf_pf=1.1474 (n=321, meanR=0.1089, removed=105)
+   start_2: base_pf=1.1146 -> cf_pf=1.1414 (n=316, meanR=0.1039, removed=102)
+   start_3: base_pf=1.1383 -> cf_pf=1.2142 (n=299, meanR=0.1437, removed=100)
+   start_4: base_pf=1.1606 -> cf_pf=1.2077 (n=286, meanR=0.1375, removed=93)
+
+=== regime_fit vs atr spearman (start_0) ===
+0.9928
+
+=== combined filter: stop <= median(stop/ATR) ===
+{
+ "threshold_stop_atr": 2.2792,
+ "per_start": {
+  "start_0": {
+   "base_pf": 1.1131,
+   "cf_pf": 1.4592,
+   "cf_n": 221,
+   "cf_mean_r": 0.2093
+  },
+  "start_1": {
+   "base_pf": 1.1383,
+   "cf_pf": 1.4773,
+   "cf_n": 213,
+   "cf_mean_r": 0.2203
+  },
+  "start_2": {
+   "base_pf": 1.1146,
+   "cf_pf": 1.4757,
+   "cf_n": 210,
+   "cf_mean_r": 0.2156
+  },
+  "start_3": {
+   "base_pf": 1.1383,
+   "cf_pf": 1.5858,
+   "cf_n": 199,
+   "cf_mean_r": 0.2588
+  },
+  "start_4": {
+   "base_pf": 1.1606,
+   "cf_pf": 1.5074,
+   "cf_n": 188,
+   "cf_mean_r": 0.2439
+  }
+ },
+ "pooled_cf": {
+  "n": 1031,
+  "pf": 1.4988,
+  "mean_r": 0.2287,
+  "win_rate": 0.4791,
+  "sum_pips": 16293.3
+ },
+ "improves_starts": 5
+}
+
+=== breakeven-at-1R upper bound ===
+{
+ "per_start": {
+  "start_0": {
+   "base_pf": 1.1131,
+   "cf_pf": 1.3026,
+   "cf_n": 441,
+   "cf_mean_r": 0.1836,
+   "losers_converted": 39
+  },
+  "start_1": {
+   "base_pf": 1.1383,
+   "cf_pf": 1.325,
+   "cf_n": 426,
+   "cf_mean_r": 0.1941,
+   "losers_converted": 38
+  },
+  "start_2": {
+   "base_pf": 1.1146,
+   "cf_pf": 1.2931,
+   "cf_n": 418,
+   "cf_mean_r": 0.1863,
+   "losers_converted": 37
+  },
+  "start_3": {
+   "base_pf": 1.1383,
+   "cf_pf": 1.3247,
+   "cf_n": 399,
+   "cf_mean_r": 0.2106,
+   "losers_converted": 36
+  },
+  "start_4": {
+   "base_pf": 1.1606,
+   "cf_pf": 1.3691,
+   "cf_n": 379,
+   "cf_mean_r": 0.2175,
+   "losers_converted": 36
+  }
+ },
+ "note": "upper bound only; winners' retrace timing unknown from tapes",
+ "improves_starts": 5
+}

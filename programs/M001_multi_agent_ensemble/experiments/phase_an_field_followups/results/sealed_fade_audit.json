@@ -1,0 +1,787 @@
+{
+  "cell": "AN-3:chigiri_hyoma:XAGUSD",
+  "cost_1x_field_pips": 2.5,
+  "burn_in_days": 92,
+  "question": "Is the sealed 2024-01 start being the only PF<1 path thin-sample noise or genuine edge decay?",
+  "VERDICT": "thin_sample_artifact",
+  "rationale": "Critical cut PASS: full-path 2024+ stays PF>1 / meanR>0, and calendar 2024 itself is still strong (not a dead year). The lone 2024-01 start loss is burn-in + nested-subset path noise (it drops most of excellent 2024-H1). Separate note: 2025 is weak on small n \u2014 forward risk, not the sealed multi-start fail.",
+  "full_path_2023-01": {
+    "start": "2023-01-01",
+    "end": "2026-05-31",
+    "overall_1x": {
+      "n": 72,
+      "win_rate": 0.5139,
+      "pf": 1.27,
+      "mean_r": 0.198,
+      "total_pips": 329.2
+    },
+    "by_year": {
+      "2023": {
+        "n": 26,
+        "win_rate": 0.5769,
+        "pf": 1.659,
+        "mean_r": 0.3476,
+        "total_pips": 229.0
+      },
+      "2024": {
+        "n": 28,
+        "win_rate": 0.5714,
+        "pf": 1.498,
+        "mean_r": 0.341,
+        "total_pips": 217.2
+      },
+      "2025": {
+        "n": 18,
+        "win_rate": 0.3333,
+        "pf": 0.732,
+        "mean_r": -0.2405,
+        "total_pips": -117.0
+      }
+    },
+    "by_half_year": {
+      "2023-H1": {
+        "n": 4,
+        "win_rate": 0.5,
+        "pf": 1.041,
+        "mean_r": 0.1602,
+        "total_pips": 2.8
+      },
+      "2023-H2": {
+        "n": 22,
+        "win_rate": 0.5909,
+        "pf": 1.812,
+        "mean_r": 0.3817,
+        "total_pips": 226.2
+      },
+      "2024-H1": {
+        "n": 17,
+        "win_rate": 0.7059,
+        "pf": 3.182,
+        "mean_r": 0.6686,
+        "total_pips": 326.6
+      },
+      "2024-H2": {
+        "n": 11,
+        "win_rate": 0.3636,
+        "pf": 0.619,
+        "mean_r": -0.1652,
+        "total_pips": -109.4
+      },
+      "2025-H1": {
+        "n": 9,
+        "win_rate": 0.2222,
+        "pf": 0.387,
+        "mean_r": -0.524,
+        "total_pips": -148.7
+      },
+      "2025-H2": {
+        "n": 9,
+        "win_rate": 0.4444,
+        "pf": 1.163,
+        "mean_r": 0.043,
+        "total_pips": 31.7
+      }
+    },
+    "y2023": {
+      "n": 26,
+      "win_rate": 0.5769,
+      "pf": 1.659,
+      "mean_r": 0.3476,
+      "total_pips": 229.0
+    },
+    "post_2023": {
+      "n": 46,
+      "win_rate": 0.4783,
+      "pf": 1.115,
+      "mean_r": 0.1135,
+      "total_pips": 100.2
+    }
+  },
+  "same_window_as_2024_01_on_full_path": {
+    "n": 37,
+    "win_rate": 0.4324,
+    "pf": 0.941,
+    "mean_r": 0.0044,
+    "total_pips": -47.0
+  },
+  "rolling_20": {
+    "summary": {
+      "n_windows": 53,
+      "first_window_end": "2023-11-16T16:00:00+00:00",
+      "last_window_end": "2025-09-25T12:00:00+00:00",
+      "pct_windows_pf_lt_1": 26.4,
+      "pct_last_half_pf_lt_1": 51.9,
+      "pct_windows_mean_r_le_0": 24.5,
+      "pct_last_half_mean_r_le_0": 48.1,
+      "median_mean_r_first_half": 0.5257,
+      "median_mean_r_last_half": 0.0478
+    },
+    "windows": [
+      {
+        "n": 20,
+        "win_rate": 0.5,
+        "pf": 1.128,
+        "mean_r": 0.1534,
+        "total_pips": 40.7,
+        "end_entry_time": "2023-11-16T16:00:00+00:00",
+        "end_index": 19
+      },
+      {
+        "n": 20,
+        "win_rate": 0.55,
+        "pf": 1.38,
+        "mean_r": 0.2778,
+        "total_pips": 108.8,
+        "end_entry_time": "2023-11-27T04:00:00+00:00",
+        "end_index": 20
+      },
+      {
+        "n": 20,
+        "win_rate": 0.55,
+        "pf": 1.419,
+        "mean_r": 0.2767,
+        "total_pips": 116.6,
+        "end_entry_time": "2023-12-04T00:00:00+00:00",
+        "end_index": 21
+      },
+      {
+        "n": 20,
+        "win_rate": 0.55,
+        "pf": 1.559,
+        "mean_r": 0.28,
+        "total_pips": 155.6,
+        "end_entry_time": "2023-12-04T16:00:00+00:00",
+        "end_index": 22
+      },
+      {
+        "n": 20,
+        "win_rate": 0.55,
+        "pf": 1.52,
+        "mean_r": 0.2786,
+        "total_pips": 144.8,
+        "end_entry_time": "2023-12-08T16:00:00+00:00",
+        "end_index": 23
+      },
+      {
+        "n": 20,
+        "win_rate": 0.55,
+        "pf": 1.479,
+        "mean_r": 0.2775,
+        "total_pips": 133.3,
+        "end_entry_time": "2023-12-08T20:00:00+00:00",
+        "end_index": 24
+      },
+      {
+        "n": 20,
+        "win_rate": 0.55,
+        "pf": 1.56,
+        "mean_r": 0.281,
+        "total_pips": 155.9,
+        "end_entry_time": "2023-12-14T00:00:00+00:00",
+        "end_index": 25
+      },
+      {
+        "n": 20,
+        "win_rate": 0.6,
+        "pf": 1.929,
+        "mean_r": 0.4069,
+        "total_pips": 231.8,
+        "end_entry_time": "2024-01-03T12:00:00+00:00",
+        "end_index": 26
+      },
+      {
+        "n": 20,
+        "win_rate": 0.6,
+        "pf": 1.933,
+        "mean_r": 0.4071,
+        "total_pips": 232.6,
+        "end_entry_time": "2024-02-16T16:00:00+00:00",
+        "end_index": 27
+      },
+      {
+        "n": 20,
+        "win_rate": 0.6,
+        "pf": 2.1,
+        "mean_r": 0.4046,
+        "total_pips": 252.5,
+        "end_entry_time": "2024-02-16T20:00:00+00:00",
+        "end_index": 28
+      },
+      {
+        "n": 20,
+        "win_rate": 0.6,
+        "pf": 2.046,
+        "mean_r": 0.4029,
+        "total_pips": 240.2,
+        "end_entry_time": "2024-03-01T16:00:00+00:00",
+        "end_index": 29
+      },
+      {
+        "n": 20,
+        "win_rate": 0.65,
+        "pf": 2.55,
+        "mean_r": 0.5275,
+        "total_pips": 307.7,
+        "end_entry_time": "2024-03-01T20:00:00+00:00",
+        "end_index": 30
+      },
+      {
+        "n": 20,
+        "win_rate": 0.7,
+        "pf": 3.222,
+        "mean_r": 0.6551,
+        "total_pips": 388.0,
+        "end_entry_time": "2024-03-04T16:00:00+00:00",
+        "end_index": 31
+      },
+      {
+        "n": 20,
+        "win_rate": 0.65,
+        "pf": 2.64,
+        "mean_r": 0.5297,
+        "total_pips": 327.9,
+        "end_entry_time": "2024-03-07T16:00:00+00:00",
+        "end_index": 32
+      },
+      {
+        "n": 20,
+        "win_rate": 0.65,
+        "pf": 2.572,
+        "mean_r": 0.5278,
+        "total_pips": 314.5,
+        "end_entry_time": "2024-03-13T16:00:00+00:00",
+        "end_index": 33
+      },
+      {
+        "n": 20,
+        "win_rate": 0.65,
+        "pf": 2.734,
+        "mean_r": 0.5258,
+        "total_pips": 326.2,
+        "end_entry_time": "2024-04-01T00:00:00+00:00",
+        "end_index": 34
+      },
+      {
+        "n": 20,
+        "win_rate": 0.65,
+        "pf": 2.728,
+        "mean_r": 0.5256,
+        "total_pips": 325.3,
+        "end_entry_time": "2024-04-02T08:00:00+00:00",
+        "end_index": 35
+      },
+      {
+        "n": 20,
+        "win_rate": 0.65,
+        "pf": 2.675,
+        "mean_r": 0.5245,
+        "total_pips": 315.2,
+        "end_entry_time": "2024-04-02T20:00:00+00:00",
+        "end_index": 36
+      },
+      {
+        "n": 20,
+        "win_rate": 0.7,
+        "pf": 3.46,
+        "mean_r": 0.6479,
+        "total_pips": 380.1,
+        "end_entry_time": "2024-04-03T04:00:00+00:00",
+        "end_index": 37
+      },
+      {
+        "n": 20,
+        "win_rate": 0.7,
+        "pf": 3.267,
+        "mean_r": 0.6506,
+        "total_pips": 371.0,
+        "end_entry_time": "2024-04-03T20:00:00+00:00",
+        "end_index": 38
+      },
+      {
+        "n": 20,
+        "win_rate": 0.7,
+        "pf": 2.989,
+        "mean_r": 0.6521,
+        "total_pips": 355.8,
+        "end_entry_time": "2024-04-08T04:00:00+00:00",
+        "end_index": 39
+      },
+      {
+        "n": 20,
+        "win_rate": 0.7,
+        "pf": 3.058,
+        "mean_r": 0.6533,
+        "total_pips": 368.2,
+        "end_entry_time": "2024-04-12T04:00:00+00:00",
+        "end_index": 40
+      },
+      {
+        "n": 20,
+        "win_rate": 0.75,
+        "pf": 3.969,
+        "mean_r": 0.7792,
+        "total_pips": 444.4,
+        "end_entry_time": "2024-04-22T16:00:00+00:00",
+        "end_index": 41
+      },
+      {
+        "n": 20,
+        "win_rate": 0.75,
+        "pf": 3.936,
+        "mean_r": 0.779,
+        "total_pips": 439.5,
+        "end_entry_time": "2024-05-15T16:00:00+00:00",
+        "end_index": 42
+      },
+      {
+        "n": 20,
+        "win_rate": 0.7,
+        "pf": 3.122,
+        "mean_r": 0.6548,
+        "total_pips": 379.0,
+        "end_entry_time": "2024-07-11T16:00:00+00:00",
+        "end_index": 43
+      },
+      {
+        "n": 20,
+        "win_rate": 0.7,
+        "pf": 3.152,
+        "mean_r": 0.6554,
+        "total_pips": 384.4,
+        "end_entry_time": "2024-07-18T20:00:00+00:00",
+        "end_index": 44
+      },
+      {
+        "n": 20,
+        "win_rate": 0.65,
+        "pf": 2.505,
+        "mean_r": 0.5294,
+        "total_pips": 310.9,
+        "end_entry_time": "2024-08-15T16:00:00+00:00",
+        "end_index": 45
+      },
+      {
+        "n": 20,
+        "win_rate": 0.65,
+        "pf": 2.491,
+        "mean_r": 0.5292,
+        "total_pips": 308.1,
+        "end_entry_time": "2024-09-02T04:00:00+00:00",
+        "end_index": 46
+      },
+      {
+        "n": 20,
+        "win_rate": 0.65,
+        "pf": 2.641,
+        "mean_r": 0.5326,
+        "total_pips": 339.1,
+        "end_entry_time": "2024-09-24T16:00:00+00:00",
+        "end_index": 47
+      },
+      {
+        "n": 20,
+        "win_rate": 0.65,
+        "pf": 2.414,
+        "mean_r": 0.535,
+        "total_pips": 319.7,
+        "end_entry_time": "2024-09-26T12:00:00+00:00",
+        "end_index": 48
+      },
+      {
+        "n": 20,
+        "win_rate": 0.6,
+        "pf": 1.889,
+        "mean_r": 0.4133,
+        "total_pips": 243.3,
+        "end_entry_time": "2024-11-11T16:00:00+00:00",
+        "end_index": 49
+      },
+      {
+        "n": 20,
+        "win_rate": 0.55,
+        "pf": 1.474,
+        "mean_r": 0.2906,
+        "total_pips": 154.5,
+        "end_entry_time": "2024-11-25T16:00:00+00:00",
+        "end_index": 50
+      },
+      {
+        "n": 20,
+        "win_rate": 0.5,
+        "pf": 1.179,
+        "mean_r": 0.1648,
+        "total_pips": 64.4,
+        "end_entry_time": "2024-12-04T16:00:00+00:00",
+        "end_index": 51
+      },
+      {
+        "n": 20,
+        "win_rate": 0.55,
+        "pf": 1.373,
+        "mean_r": 0.2903,
+        "total_pips": 124.7,
+        "end_entry_time": "2024-12-09T12:00:00+00:00",
+        "end_index": 52
+      },
+      {
+        "n": 20,
+        "win_rate": 0.5,
+        "pf": 1.119,
+        "mean_r": 0.1688,
+        "total_pips": 45.8,
+        "end_entry_time": "2024-12-09T16:00:00+00:00",
+        "end_index": 53
+      },
+      {
+        "n": 20,
+        "win_rate": 0.5,
+        "pf": 1.089,
+        "mean_r": 0.1707,
+        "total_pips": 35.3,
+        "end_entry_time": "2025-01-13T16:00:00+00:00",
+        "end_index": 54
+      },
+      {
+        "n": 20,
+        "win_rate": 0.5,
+        "pf": 1.124,
+        "mean_r": 0.1724,
+        "total_pips": 49.1,
+        "end_entry_time": "2025-02-04T16:00:00+00:00",
+        "end_index": 55
+      },
+      {
+        "n": 20,
+        "win_rate": 0.45,
+        "pf": 0.972,
+        "mean_r": 0.0478,
+        "total_pips": -11.8,
+        "end_entry_time": "2025-02-24T16:00:00+00:00",
+        "end_index": 56
+      },
+      {
+        "n": 20,
+        "win_rate": 0.4,
+        "pf": 0.842,
+        "mean_r": -0.0765,
+        "total_pips": -71.7,
+        "end_entry_time": "2025-03-27T16:00:00+00:00",
+        "end_index": 57
+      },
+      {
+        "n": 20,
+        "win_rate": 0.45,
+        "pf": 1.014,
+        "mean_r": 0.0498,
+        "total_pips": 5.8,
+        "end_entry_time": "2025-04-04T04:00:00+00:00",
+        "end_index": 58
+      },
+      {
+        "n": 20,
+        "win_rate": 0.45,
+        "pf": 1.039,
+        "mean_r": 0.0489,
+        "total_pips": 16.3,
+        "end_entry_time": "2025-05-01T12:00:00+00:00",
+        "end_index": 59
+      },
+      {
+        "n": 20,
+        "win_rate": 0.4,
+        "pf": 0.844,
+        "mean_r": -0.0759,
+        "total_pips": -70.5,
+        "end_entry_time": "2025-06-02T20:00:00+00:00",
+        "end_index": 60
+      },
+      {
+        "n": 20,
+        "win_rate": 0.35,
+        "pf": 0.695,
+        "mean_r": -0.2018,
+        "total_pips": -147.1,
+        "end_entry_time": "2025-06-09T16:00:00+00:00",
+        "end_index": 61
+      },
+      {
+        "n": 20,
+        "win_rate": 0.3,
+        "pf": 0.513,
+        "mean_r": -0.3267,
+        "total_pips": -258.0,
+        "end_entry_time": "2025-06-17T12:00:00+00:00",
+        "end_index": 62
+      },
+      {
+        "n": 20,
+        "win_rate": 0.3,
+        "pf": 0.498,
+        "mean_r": -0.325,
+        "total_pips": -273.3,
+        "end_entry_time": "2025-07-14T04:00:00+00:00",
+        "end_index": 63
+      },
+      {
+        "n": 20,
+        "win_rate": 0.25,
+        "pf": 0.4,
+        "mean_r": -0.4502,
+        "total_pips": -344.6,
+        "end_entry_time": "2025-07-31T12:00:00+00:00",
+        "end_index": 64
+      },
+      {
+        "n": 20,
+        "win_rate": 0.3,
+        "pf": 0.517,
+        "mean_r": -0.3237,
+        "total_pips": -263.9,
+        "end_entry_time": "2025-08-05T16:00:00+00:00",
+        "end_index": 65
+      },
+      {
+        "n": 20,
+        "win_rate": 0.3,
+        "pf": 0.523,
+        "mean_r": -0.3234,
+        "total_pips": -260.5,
+        "end_entry_time": "2025-08-29T20:00:00+00:00",
+        "end_index": 66
+      },
+      {
+        "n": 20,
+        "win_rate": 0.25,
+        "pf": 0.39,
+        "mean_r": -0.4486,
+        "total_pips": -358.0,
+        "end_entry_time": "2025-09-03T16:00:00+00:00",
+        "end_index": 67
+      },
+      {
+        "n": 20,
+        "win_rate": 0.3,
+        "pf": 0.522,
+        "mean_r": -0.324,
+        "total_pips": -258.9,
+        "end_entry_time": "2025-09-12T04:00:00+00:00",
+        "end_index": 68
+      },
+      {
+        "n": 20,
+        "win_rate": 0.35,
+        "pf": 0.717,
+        "mean_r": -0.1987,
+        "total_pips": -139.9,
+        "end_entry_time": "2025-09-22T04:00:00+00:00",
+        "end_index": 69
+      },
+      {
+        "n": 20,
+        "win_rate": 0.35,
+        "pf": 0.741,
+        "mean_r": -0.2,
+        "total_pips": -123.6,
+        "end_entry_time": "2025-09-23T12:00:00+00:00",
+        "end_index": 70
+      },
+      {
+        "n": 20,
+        "win_rate": 0.35,
+        "pf": 0.727,
+        "mean_r": -0.199,
+        "total_pips": -132.9,
+        "end_entry_time": "2025-09-25T12:00:00+00:00",
+        "end_index": 71
+      }
+    ]
+  },
+  "per_start_1x": {
+    "2023-01-01": {
+      "n": 72,
+      "win_rate": 0.5139,
+      "pf": 1.27,
+      "mean_r": 0.198,
+      "total_pips": 329.2
+    },
+    "2023-04-01": {
+      "n": 68,
+      "win_rate": 0.5147,
+      "pf": 1.284,
+      "mean_r": 0.2002,
+      "total_pips": 326.4
+    },
+    "2023-07-01": {
+      "n": 60,
+      "win_rate": 0.5167,
+      "pf": 1.313,
+      "mean_r": 0.207,
+      "total_pips": 319.5
+    },
+    "2023-10-01": {
+      "n": 46,
+      "win_rate": 0.4783,
+      "pf": 1.115,
+      "mean_r": 0.1135,
+      "total_pips": 100.2
+    },
+    "2024-01-01": {
+      "n": 37,
+      "win_rate": 0.4324,
+      "pf": 0.941,
+      "mean_r": 0.0044,
+      "total_pips": -47.0
+    }
+  },
+  "overlap": {
+    "pairwise_vs_earliest_style": {
+      "2023-04-01": {
+        "n": 68,
+        "shared_with_2023-01": 68,
+        "unique_vs_2023-01": 0,
+        "pct_subset_of_2023-01": 100.0
+      },
+      "2023-07-01": {
+        "n": 60,
+        "shared_with_2023-01": 60,
+        "unique_vs_2023-01": 0,
+        "pct_subset_of_2023-01": 100.0
+      },
+      "2023-10-01": {
+        "n": 46,
+        "shared_with_2023-01": 46,
+        "unique_vs_2023-01": 0,
+        "pct_subset_of_2023-01": 100.0
+      },
+      "2024-01-01": {
+        "n": 37,
+        "shared_with_2023-01": 37,
+        "unique_vs_2023-01": 0,
+        "pct_subset_of_2023-01": 100.0
+      }
+    },
+    "incremental_vs_earlier_starts": {
+      "2023-01-01": {
+        "n": 72,
+        "new_vs_earlier_starts": 72,
+        "already_seen_in_earlier": 0
+      },
+      "2023-04-01": {
+        "n": 68,
+        "new_vs_earlier_starts": 0,
+        "already_seen_in_earlier": 68
+      },
+      "2023-07-01": {
+        "n": 60,
+        "new_vs_earlier_starts": 0,
+        "already_seen_in_earlier": 60
+      },
+      "2023-10-01": {
+        "n": 46,
+        "new_vs_earlier_starts": 0,
+        "already_seen_in_earlier": 46
+      },
+      "2024-01-01": {
+        "n": 37,
+        "new_vs_earlier_starts": 0,
+        "already_seen_in_earlier": 37
+      }
+    },
+    "pairwise_selected": {
+      "2023-01-01 \u2229 2023-01-01": {
+        "shared": 72,
+        "only_a": 0,
+        "only_b": 0,
+        "jaccard": 1.0
+      },
+      "2023-01-01 \u2229 2023-04-01": {
+        "shared": 68,
+        "only_a": 4,
+        "only_b": 0,
+        "jaccard": 0.944
+      },
+      "2023-01-01 \u2229 2023-07-01": {
+        "shared": 60,
+        "only_a": 12,
+        "only_b": 0,
+        "jaccard": 0.833
+      },
+      "2023-01-01 \u2229 2023-10-01": {
+        "shared": 46,
+        "only_a": 26,
+        "only_b": 0,
+        "jaccard": 0.639
+      },
+      "2023-01-01 \u2229 2024-01-01": {
+        "shared": 37,
+        "only_a": 35,
+        "only_b": 0,
+        "jaccard": 0.514
+      },
+      "2023-04-01 \u2229 2024-01-01": {
+        "shared": 37,
+        "only_a": 31,
+        "only_b": 0,
+        "jaccard": 0.544
+      },
+      "2023-07-01 \u2229 2024-01-01": {
+        "shared": 37,
+        "only_a": 23,
+        "only_b": 0,
+        "jaccard": 0.617
+      },
+      "2023-10-01 \u2229 2024-01-01": {
+        "shared": 37,
+        "only_a": 9,
+        "only_b": 0,
+        "jaccard": 0.804
+      },
+      "2024-01-01 \u2229 2024-01-01": {
+        "shared": 37,
+        "only_a": 0,
+        "only_b": 0,
+        "jaccard": 1.0
+      }
+    },
+    "union_n": 72
+  },
+  "decision_numbers": {
+    "full_path_n": 72,
+    "y2023": {
+      "n": 26,
+      "win_rate": 0.5769,
+      "pf": 1.659,
+      "mean_r": 0.3476,
+      "total_pips": 229.0
+    },
+    "post_2023": {
+      "n": 46,
+      "win_rate": 0.4783,
+      "pf": 1.115,
+      "mean_r": 0.1135,
+      "total_pips": 100.2
+    },
+    "y2024": {
+      "n": 28,
+      "win_rate": 0.5714,
+      "pf": 1.498,
+      "mean_r": 0.341,
+      "total_pips": 217.2
+    },
+    "y2025": {
+      "n": 18,
+      "win_rate": 0.3333,
+      "pf": 0.732,
+      "mean_r": -0.2405,
+      "total_pips": -117.0
+    },
+    "start_2024-01_overall": {
+      "n": 37,
+      "win_rate": 0.4324,
+      "pf": 0.941,
+      "mean_r": 0.0044,
+      "total_pips": -47.0
+    },
+    "pct_2024-01_trades_subset_of_2023-01": 100.0
+  }
+}

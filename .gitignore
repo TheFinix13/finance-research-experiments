@@ -49,3 +49,9 @@ programs/M001_multi_agent_ensemble/experiments/i030_pip_semantics/results/raw/
 # Phase AN raw replay tapes (370M local; summaries are committed)
 programs/M001_multi_agent_ensemble/experiments/phase_an_field_followups/results/AN-*/
 programs/M001_multi_agent_ensemble/experiments/phase_an_field_followups/results/*.stdout.log
+
+# Barou v1.4 raw tapes (summaries committed)
+programs/M001_multi_agent_ensemble/experiments/barou_v1x_usdjpy_patch/results/design/
+programs/M001_multi_agent_ensemble/experiments/barou_v1x_usdjpy_patch/results/sealed/
+programs/M001_multi_agent_ensemble/experiments/barou_v1x_usdjpy_patch/results/*.stdout.log
+programs/M001_multi_agent_ensemble/experiments/barou_v1x_usdjpy_patch/reviews/
