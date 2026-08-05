@@ -1,0 +1,68 @@
+{
+  "verdict_at_1x_cost": "FAIL",
+  "fail_reasons": [
+    "pf_floor",
+    "mean_r_floor",
+    "pf_positive_starts=3/5"
+  ],
+  "n": {
+    "median": 200,
+    "min": 159,
+    "max": 243
+  },
+  "pf": {
+    "median": 1.005,
+    "min": 0.946,
+    "max": 1.076
+  },
+  "mean_r": {
+    "median": -0.0349,
+    "min": -0.0578,
+    "max": 0.0372
+  },
+  "pf_positive_starts": 3,
+  "honest_spread": 1.0,
+  "per_start": [
+    {
+      "start": "2023-01-01",
+      "n": 243,
+      "win_rate": 0.4074,
+      "pf": 1.054,
+      "mean_r": 0.0071,
+      "total_pips": 670.2
+    },
+    {
+      "start": "2023-04-01",
+      "n": 223,
+      "win_rate": 0.3901,
+      "pf": 1.005,
+      "mean_r": -0.0349,
+      "total_pips": 61.9
+    },
+    {
+      "start": "2023-07-01",
+      "n": 200,
+      "win_rate": 0.38,
+      "pf": 0.946,
+      "mean_r": -0.0578,
+      "total_pips": -576.3
+    },
+    {
+      "start": "2023-10-01",
+      "n": 177,
+      "win_rate": 0.3898,
+      "pf": 0.965,
+      "mean_r": -0.0415,
+      "total_pips": -336.4
+    },
+    {
+      "start": "2024-01-01",
+      "n": 159,
+      "win_rate": 0.4214,
+      "pf": 1.076,
+      "mean_r": 0.0372,
+      "total_pips": 632.5
+    }
+  ],
+  "note": "sealed judgment"
+}

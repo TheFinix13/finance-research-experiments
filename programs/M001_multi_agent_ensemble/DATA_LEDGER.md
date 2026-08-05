@@ -36,6 +36,8 @@ which windows have been consumed by which selection events, so
 | Other Tier-2 (crosses, UKOIL/NATGAS, US500/US30/DE40/UK100/JP225, BTCUSD) | — | banked 2026-08-04, never studied | — | **VIRGIN — 2023+ pre-sealed per rule 4; field cards required before first contact (D148)** |
 | USDJPY/AUDUSD/XAGUSD/NZDUSD/USDCAD/USTEC H4 2015-01→2022-12 | K=5 multi-start isolation design (7 cells) | Phase AN | 2026-08-05 | second look at consumed design data (declared in protocol; no new consumption) |
 | **XAGUSD H4 2023-01→2026-05** | **sealed open — chigiri_hyoma isolation, K=5 starts, ONE event** | Phase AN-3 | 2026-08-05 | **SEAL OPENED (first and only): sealed PASS (median PF 1.27, meanR +0.198, 4/5). Window now CONSUMED for XAGUSD — no future validation claims on it** |
+| USDJPY H4 2015-01→2022-12 | Barou v1.4 design (stop/ATR≤2.25), isolation K=5 | barou_v1x_usdjpy_patch | 2026-08-05 | second look at consumed design (declared); design PASS contaminated |
+| **USDJPY H4 2023-01→2026-05** | **sealed open — barou_shoei v1.4 isolation, K=5, ONE event** | barou_v1x_usdjpy_patch | 2026-08-05 | **SEAL OPENED: sealed FAIL (median PF 1.005, meanR −0.035, 3/5). Window now CONSUMED for USDJPY — no future validation claims on it** |
 
 Also consumed OUTSIDE this lane but on shared data: v1 E0xx studies
 (E001–E032) mined EURUSD/GBPUSD/USDCAD H4/H1/M15 extensively;

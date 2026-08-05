@@ -1,0 +1,64 @@
+{
+  "verdict_at_1x_cost": "PASS",
+  "fail_reasons": [],
+  "n": {
+    "median": 534,
+    "min": 494,
+    "max": 564
+  },
+  "pf": {
+    "median": 1.163,
+    "min": 1.151,
+    "max": 1.182
+  },
+  "mean_r": {
+    "median": 0.0664,
+    "min": 0.06,
+    "max": 0.0744
+  },
+  "pf_positive_starts": 5,
+  "honest_spread": 1.0,
+  "per_start": [
+    {
+      "start": "2015-01-01",
+      "n": 564,
+      "win_rate": 0.4273,
+      "pf": 1.159,
+      "mean_r": 0.0666,
+      "total_pips": 3009.4
+    },
+    {
+      "start": "2015-04-01",
+      "n": 547,
+      "win_rate": 0.4241,
+      "pf": 1.151,
+      "mean_r": 0.06,
+      "total_pips": 2795.1
+    },
+    {
+      "start": "2015-07-01",
+      "n": 534,
+      "win_rate": 0.427,
+      "pf": 1.163,
+      "mean_r": 0.0635,
+      "total_pips": 2916.8
+    },
+    {
+      "start": "2015-10-01",
+      "n": 515,
+      "win_rate": 0.4311,
+      "pf": 1.182,
+      "mean_r": 0.0744,
+      "total_pips": 3126.7
+    },
+    {
+      "start": "2016-01-01",
+      "n": 494,
+      "win_rate": 0.4271,
+      "pf": 1.168,
+      "mean_r": 0.0664,
+      "total_pips": 2739.9
+    }
+  ],
+  "note": "design KPIs are contaminated upper-bound; sealed is judgment"
+}

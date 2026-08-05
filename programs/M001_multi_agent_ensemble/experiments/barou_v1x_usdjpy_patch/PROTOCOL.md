@@ -38,8 +38,15 @@ if stop_pips / atr_pips > 2.25:  return None   # no proposal
 - K=5 starts: 2015-01 / 04 / 07 / 10 / 2016-01; 3-month burn-in; median.
 - Honest RT cost: **1.0** USDJPY pip (same as AN).
 - Equity=500, aggregator phi41, engine post-I030.
+- Fill costs: FX (incl. JPY) keep legacy `cost_pips * 1e-4` so the
+  tape stays AN-5-comparable; the autopsy threshold was calibrated on
+  that fill model. (Tier-2 non-FX uses field pip — not this study.)
 - Purpose: confirm median n ≥ 60 after the gate and that PF does not
   collapse. Design PASS is necessary but not sufficient.
+
+**Note (2026-08-05):** a first design attempt used JPY field-pip fill
+costs, which reshaped the path (n≈541, gate rejected 0 trades because
+stop/ATR compressed). That run is VOID; discarded; not a floor read.
 
 ## Sealed confirmation (the judgment)
 
