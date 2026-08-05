@@ -1,0 +1,45 @@
+{
+  "survey_all": {
+    "n": 331,
+    "win_rate": 0.326,
+    "pf": 1.2,
+    "mean_r": 0.1137,
+    "total_pips": 1764.6
+  },
+  "isolation_all": {
+    "n": 466,
+    "win_rate": 0.292,
+    "pf": 0.929,
+    "mean_r": -0.0019,
+    "total_pips": -1391.4
+  },
+  "filled_in_both": {
+    "n": 174,
+    "win_rate": 0.328,
+    "pf": 1.189,
+    "mean_r": 0.1172,
+    "total_pips": 849.7
+  },
+  "deleted_by_squad_context": {
+    "n": 292,
+    "win_rate": 0.271,
+    "pf": 0.851,
+    "mean_r": -0.0728,
+    "total_pips": -2241.1
+  },
+  "squad_only_extras": {
+    "n": 157,
+    "win_rate": 0.325,
+    "pf": 1.211,
+    "mean_r": 0.1098,
+    "total_pips": 914.8
+  },
+  "survey_rejection_reasons_rin_usdjpy": {
+    "open_position_concurrency_limit": 1373,
+    "contest_lost_to_isagi_yoichi": 474,
+    "sentinel_R1_block": 444,
+    "contest_lost_to_barou_shoei": 351,
+    "contest_lost_to_nagi_seishiro": 215,
+    "contest_lost_to_chigiri_hyoma": 20
+  }
+}

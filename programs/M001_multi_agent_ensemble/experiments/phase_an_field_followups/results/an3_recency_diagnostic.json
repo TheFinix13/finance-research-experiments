@@ -1,0 +1,214 @@
+{
+  "question": "is 2024+ sealed weakness outside normal single-year variation from design?",
+  "design_years_start0": {
+    "2015": {
+      "n": 17,
+      "win_rate": 0.412,
+      "pf": 0.872,
+      "mean_r": -0.1029,
+      "total_pips": -31.8,
+      "median_atr_pips": 15.4
+    },
+    "2016": {
+      "n": 34,
+      "win_rate": 0.471,
+      "pf": 1.078,
+      "mean_r": 0.0687,
+      "total_pips": 42.2,
+      "median_atr_pips": 16.1
+    },
+    "2017": {
+      "n": 29,
+      "win_rate": 0.552,
+      "pf": 1.762,
+      "mean_r": 0.2061,
+      "total_pips": 175.8,
+      "median_atr_pips": 12.1
+    },
+    "2018": {
+      "n": 35,
+      "win_rate": 0.371,
+      "pf": 0.806,
+      "mean_r": -0.2814,
+      "total_pips": -66.9,
+      "median_atr_pips": 10.3
+    },
+    "2019": {
+      "n": 33,
+      "win_rate": 0.545,
+      "pf": 1.515,
+      "mean_r": 0.1602,
+      "total_pips": 129.6,
+      "median_atr_pips": 10.8
+    },
+    "2020": {
+      "n": 23,
+      "win_rate": 0.522,
+      "pf": 1.835,
+      "mean_r": 0.2029,
+      "total_pips": 262.8,
+      "median_atr_pips": 22.6
+    },
+    "2021": {
+      "n": 29,
+      "win_rate": 0.483,
+      "pf": 1.298,
+      "mean_r": 0.1108,
+      "total_pips": 140.6,
+      "median_atr_pips": 24.6
+    },
+    "2022": {
+      "n": 36,
+      "win_rate": 0.5,
+      "pf": 1.059,
+      "mean_r": 0.1317,
+      "total_pips": 35.2,
+      "median_atr_pips": 25.3
+    }
+  },
+  "sealed_years_start0": {
+    "2023": {
+      "n": 26,
+      "win_rate": 0.577,
+      "pf": 1.659,
+      "mean_r": 0.3476,
+      "total_pips": 229.0,
+      "median_atr_pips": 22.9
+    },
+    "2024": {
+      "n": 28,
+      "win_rate": 0.571,
+      "pf": 1.498,
+      "mean_r": 0.341,
+      "total_pips": 217.2,
+      "median_atr_pips": 30.6
+    },
+    "2025": {
+      "n": 18,
+      "win_rate": 0.333,
+      "pf": 0.732,
+      "mean_r": -0.2405,
+      "total_pips": -117.0,
+      "median_atr_pips": 33.9
+    }
+  },
+  "sealed_years_all_paths": {
+    "2023": {
+      "path_0 (2023-01-01)": {
+        "n": 26,
+        "win_rate": 0.577,
+        "pf": 1.659,
+        "mean_r": 0.3476,
+        "total_pips": 229.0,
+        "median_atr_pips": 22.9
+      },
+      "path_1 (2023-04-01)": {
+        "n": 22,
+        "win_rate": 0.591,
+        "pf": 1.812,
+        "mean_r": 0.3817,
+        "total_pips": 226.2,
+        "median_atr_pips": 22.2
+      },
+      "path_2 (2023-07-01)": {
+        "n": 14,
+        "win_rate": 0.643,
+        "pf": 2.472,
+        "mean_r": 0.5142,
+        "total_pips": 219.3,
+        "median_atr_pips": 24.5
+      }
+    },
+    "2024": {
+      "path_0 (2023-01-01)": {
+        "n": 28,
+        "win_rate": 0.571,
+        "pf": 1.498,
+        "mean_r": 0.341,
+        "total_pips": 217.2,
+        "median_atr_pips": 30.6
+      },
+      "path_1 (2023-04-01)": {
+        "n": 28,
+        "win_rate": 0.571,
+        "pf": 1.498,
+        "mean_r": 0.341,
+        "total_pips": 217.2,
+        "median_atr_pips": 30.6
+      },
+      "path_2 (2023-07-01)": {
+        "n": 28,
+        "win_rate": 0.571,
+        "pf": 1.498,
+        "mean_r": 0.341,
+        "total_pips": 217.2,
+        "median_atr_pips": 30.6
+      },
+      "path_3 (2023-10-01)": {
+        "n": 28,
+        "win_rate": 0.571,
+        "pf": 1.498,
+        "mean_r": 0.341,
+        "total_pips": 217.2,
+        "median_atr_pips": 30.6
+      },
+      "path_4 (2024-01-01)": {
+        "n": 19,
+        "win_rate": 0.526,
+        "pf": 1.194,
+        "mean_r": 0.2364,
+        "total_pips": 70.0,
+        "median_atr_pips": 34.6
+      }
+    },
+    "2025": {
+      "path_0 (2023-01-01)": {
+        "n": 18,
+        "win_rate": 0.333,
+        "pf": 0.732,
+        "mean_r": -0.2405,
+        "total_pips": -117.0,
+        "median_atr_pips": 33.9
+      },
+      "path_1 (2023-04-01)": {
+        "n": 18,
+        "win_rate": 0.333,
+        "pf": 0.732,
+        "mean_r": -0.2405,
+        "total_pips": -117.0,
+        "median_atr_pips": 33.9
+      },
+      "path_2 (2023-07-01)": {
+        "n": 18,
+        "win_rate": 0.333,
+        "pf": 0.732,
+        "mean_r": -0.2405,
+        "total_pips": -117.0,
+        "median_atr_pips": 33.9
+      },
+      "path_3 (2023-10-01)": {
+        "n": 18,
+        "win_rate": 0.333,
+        "pf": 0.732,
+        "mean_r": -0.2405,
+        "total_pips": -117.0,
+        "median_atr_pips": 33.9
+      },
+      "path_4 (2024-01-01)": {
+        "n": 18,
+        "win_rate": 0.333,
+        "pf": 0.732,
+        "mean_r": -0.2405,
+        "total_pips": -117.0,
+        "median_atr_pips": 33.9
+      }
+    }
+  },
+  "design_single_year_pf_range": {
+    "min": 0.806,
+    "max": 1.835,
+    "median": 1.188,
+    "years_below_1": 2,
+    "n_years": 8
+  }
+}
