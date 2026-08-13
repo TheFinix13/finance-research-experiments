@@ -253,4 +253,6 @@ analysis runs. No silent edits.)
 
 ---
 
-**Pre-registration commit:** _(hash after user approval and push)_
+**Pre-registration commit:** `b62eae1` (2026-08-13, pushed to
+`origin/main`; user approved the two-family scope in the 2026-08-13
+session before registration).
