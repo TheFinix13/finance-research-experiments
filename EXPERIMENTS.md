@@ -112,6 +112,21 @@ chain only.
 | E031 | Slot-blocking: position-cap relaxation / queue-replacement | [E031_slot_blocking_position_cap](experiments/E031_slot_blocking_position_cap/) | `c838b28` (2026-08-04) | **DEAD — stopped at Stage-1 go/no-go 2026-08-04, 0/4 arms** (all ΔSharpe negative; cap=3 worse than cap=2; ~510 replacements per B arm destroy value). Stage-0 feasibility passed hugely (741/1,212/804 slot conflicts per symbol vs 100 floor) — blocking is frequent, the blocked signals just aren't worth taking. Live 6/6 evidence recorded anecdote-not-confirmed; production cap unchanged. Zero OOS cost. |
 | E032 | With-trend H4 breakout-continuation cell | [E032_with_trend_breakout_cell](experiments/E032_with_trend_breakout_cell/) | `c838b28` (2026-08-04) | **DEAD — stopped at Stage-1 go/no-go 2026-08-04, 0/12 cells** (best raw p 0.034 vs BH threshold 0.0042; no cell has 4/5 folds + BH pass). Descriptive-only: all 12 means positive, monotone in N and k. Consistent with all three recorded priors AGAINST. "Missing the big moves" thesis closed under this operationalisation; v1 stays fade-only. Zero OOS cost. |
 
+## 2026-08-13 news-awareness campaign (E033)
+
+Raised by the 2026-08-01→10 live week (Aug 7 NFP ran over both open
+positions — EURUSD short −1.53R, USDCAD long −2.40R, daily-DD halt;
+Aug 11 CPI reversed GBPUSD to a breakeven exit). Stage 1 of the
+user's three-stage news roadmap (1: calendar blackout/de-risking —
+this study; 2: event-distance as a regime feature — E034 candidate,
+own pre-reg, gated on E033; 3: directional surprise interpretation —
+v2/SAE lane, not v1). Does not touch production; survivors are
+candidates for the agent's validation chain only.
+
+| ID | Short name | Repo folder | Pre-reg | Notes |
+|---|---|---|---|---|
+| E033 | Scheduled-news blackout / pre-event de-risking | [E033_scheduled_news_blackout](experiments/E033_scheduled_news_blackout/) | this commit (2026-08-13) | **planned** — two families on the deployed-cell ledgers × Phase AE frozen NFP/CPI/FOMC calendar: (A) entry suppression, 6 window arms; (B) open-position de-risking (flatten / tighten-to-BE at T−4h/8h), 4 arms. Stage-0 engagement gate (AD.2 grid-inertness lesson); Stage-2 random-placebo control. Priors both ways on record: AD.2 C-variant gated squad trades were net winners (AGAINST); Phase AE "avoidable, not tradable" (FOR). |
+
 ## M001 program gates (cross-registry visibility)
 
 M001 gate protocols live under `programs/M001_multi_agent_ensemble/experiments/`;
