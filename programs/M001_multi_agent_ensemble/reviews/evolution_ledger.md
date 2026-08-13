@@ -131,3 +131,17 @@ their own evolution.
   §4.1a; every implemented agent must ship these before G7 fires.
   See `experiments/G7_v1_checkpoint_gate/PROTOCOL.md` for the formal
   pre-registration.
+- **2026-08-13 SAE enabled in the live shadow lineup (observability
+  decision, NOT a validated-edge claim).** User decision after the
+  squad missed Aug 7 NFP and Aug 11 CPI with `sae_enabled: false`:
+  the VM watchdog (`scripts/watchdog_squad.ps1` on trading-agent
+  `product`, commit `dcae1d9`) now launches `run_squad_live.py` with
+  `--enable-sae` by default (`-NoSae` opts out). Phase AE's verdict
+  stands unrevised: SAE as a TRADER scored FAIL ("avoidable, not
+  tradable"); running him live-shadow is telemetry so the next
+  NFP-class event window is observed, nothing more. Shadow paper
+  only — zero broker orders either way. Same-day sibling decisions
+  recorded on trading-agent `product`: tape event emission
+  (`f093c75`), market-hours staleness (`83086d4`), Telegram
+  shot/tackle pages (`5ff8b45`). Registered observational program:
+  Phase AO v1 tape review (`f63d543`, this repo).
