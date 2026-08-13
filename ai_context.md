@@ -1,4 +1,25 @@
-# AI Context — finance research experiments (updated 2026-07-28, Phase AD.2 Karasu window anchor semantics: **NULL** — Stage 1 gate closed, ±15-min ladder fired 0 times under both anchors across 51,042 panel points; live path keeps semantics A; structural inertness of the point window on the H4 grid banked + prior AGAINST a holding-window C lever.)
+# AI Context — finance research experiments (updated 2026-08-13, Phase AO registered: v1 tape review "big brother review" — weekly corrections ledger, observation-only; plus E033 news-blackout pre-reg on `main`.)
+
+## 2026-08-13 — Phase AO registered: v1 tape review ("big brother review"), M001 lane
+
+New standing observational program on `multi-agent-ensemble`
+(`programs/M001_multi_agent_ensemble/experiments/phase_ao_v1_tape_review/`,
+registration `f63d543`, hash-pin `3e6b15f`). Each week v1's live
+trades (losses first, wins too) are joined against the squad's
+live-shadow tape for the same window; output is a corrections ledger
+per trade: verdict (`agreed_and_filled` / `agreed_blocked` /
+`agreed_unfilled` / `opposed` / `no_opinion`), counterfactual ΔR, and
+an efficiency lens (hold hours, MFE capture, gave-back R). Headline
+metric is NET advice value (losses saved MINUS wins forfeited) —
+symmetric honesty locked in the protocol. Hard doctrine: observation
+only (squad is shadow-only, G7 ungated — no live coupling ever under
+this phase); descriptive only, no p-values; any actionable pattern
+needs its own pre-reg (E0xx for v1 changes, phase gate for squad).
+Harness: stdlib `tape_review.py` + 15 unit tests (pass) + CLI smoke.
+M1 counterfactual = the live squad tape itself (zero replay compute);
+M2 replay backfill reserved for pre-live weeks. Sibling same-day
+work: E033 scheduled-news blackout pre-reg lives on `main` (E0xx
+lane), commit `b62eae1` / pin `abed377`.
 
 ## 2026-07-28 — Phase AD.2 Karasu window anchor semantics: NULL (Stage 1 evaluated once, gate closed)
 
