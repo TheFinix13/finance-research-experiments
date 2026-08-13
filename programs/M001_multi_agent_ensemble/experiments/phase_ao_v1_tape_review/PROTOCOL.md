@@ -108,4 +108,4 @@ stay empty for months).
 
 ---
 
-**Registration commit:** _(hash after push)_
+**Registration commit:** `f63d543` (branch `multi-agent-ensemble`)
