@@ -1,0 +1,1729 @@
+{
+  "generated_at": "2026-08-19T11:13:54.873230+00:00",
+  "calendar": "/private/tmp/fre-main-e033/programs/E033/data/news_calendar_frozen_2026-07-24.json",
+  "calendar_sha256": "cfd186021ea87a5acba4f672250519d89fb8657c11473a73621bcc78c0ee3134",
+  "n_events": 349,
+  "symbols": {
+    "EURUSD": {
+      "n_trades": 573,
+      "stage0_A": {
+        "A_30_30": {
+          "touched": 7,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 2,
+            "fold2": 2,
+            "fold3": 1,
+            "fold4": 0,
+            "fold5": 2
+          }
+        },
+        "A_60_60": {
+          "touched": 8,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 2,
+            "fold2": 2,
+            "fold3": 1,
+            "fold4": 1,
+            "fold5": 2
+          }
+        },
+        "A_120_60": {
+          "touched": 15,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 4,
+            "fold2": 3,
+            "fold3": 4,
+            "fold4": 2,
+            "fold5": 2
+          }
+        },
+        "A_120_120": {
+          "touched": 19,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 4,
+            "fold2": 5,
+            "fold3": 6,
+            "fold4": 2,
+            "fold5": 2
+          }
+        },
+        "A_240_120": {
+          "touched": 21,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 5,
+            "fold2": 5,
+            "fold3": 6,
+            "fold4": 3,
+            "fold5": 2
+          }
+        },
+        "A_event_day": {
+          "touched": 81,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 23,
+            "fold2": 17,
+            "fold3": 17,
+            "fold4": 9,
+            "fold5": 15
+          }
+        }
+      },
+      "stage0_B": {
+        "B_flatten_4h": {
+          "touched": 69,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 23,
+            "fold2": 11,
+            "fold3": 16,
+            "fold4": 4,
+            "fold5": 15
+          }
+        },
+        "B_flatten_8h": {
+          "touched": 73,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 22,
+            "fold2": 12,
+            "fold3": 19,
+            "fold4": 5,
+            "fold5": 15
+          }
+        },
+        "B_be_4h": {
+          "touched": 69,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 23,
+            "fold2": 11,
+            "fold3": 16,
+            "fold4": 4,
+            "fold5": 15
+          }
+        },
+        "B_be_8h": {
+          "touched": 73,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 22,
+            "fold2": 12,
+            "fold3": 19,
+            "fold4": 5,
+            "fold5": 15
+          }
+        }
+      },
+      "stage1_A": {
+        "A_30_30": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_60_60": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_120_60": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_120_120": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_240_120": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_event_day": {
+          "arm": "A_event_day",
+          "folds": [
+            {
+              "n": 163,
+              "delta_sharpe": -0.039362,
+              "ci_low": -0.103432,
+              "ci_high": 0.024708,
+              "p_two": 0.2264,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 23
+            },
+            {
+              "n": 105,
+              "delta_sharpe": -0.028801,
+              "ci_low": -0.132511,
+              "ci_high": 0.072281,
+              "p_two": 0.5448,
+              "positive": false,
+              "fold": "fold2",
+              "touched": 17
+            },
+            {
+              "n": 161,
+              "delta_sharpe": 0.057978,
+              "ci_low": -0.008044,
+              "ci_high": 0.131994,
+              "p_two": 0.0952,
+              "positive": true,
+              "fold": "fold3",
+              "touched": 17
+            },
+            {
+              "n": 75,
+              "delta_sharpe": -0.073597,
+              "ci_low": -0.165965,
+              "ci_high": 0.003901,
+              "p_two": 0.0628,
+              "positive": false,
+              "fold": "fold4",
+              "touched": 9
+            },
+            {
+              "n": 69,
+              "delta_sharpe": -0.134748,
+              "ci_low": -0.255119,
+              "ci_high": -0.032186,
+              "p_two": 0.0108,
+              "positive": false,
+              "fold": "fold5",
+              "touched": 15
+            }
+          ],
+          "pooled": {
+            "n": 573,
+            "delta_sharpe": -0.027013,
+            "ci_low": -0.063638,
+            "ci_high": 0.009004,
+            "p_two": 0.1436,
+            "positive": false
+          },
+          "stouffer_z": -1.5777,
+          "joint_p": 0.114642,
+          "fold_positive": 1,
+          "winners_eaten_n": 49,
+          "winners_eaten_r": 73.5,
+          "winners_eaten_share": 0.6049,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        }
+      },
+      "stage1_B": {
+        "B_flatten_4h": {
+          "arm": "B_flatten_4h",
+          "folds": [
+            {
+              "n": 163,
+              "delta_sharpe": -0.036097,
+              "ci_low": -0.101988,
+              "ci_high": 0.024039,
+              "p_two": 0.252,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 23
+            },
+            {
+              "n": 105,
+              "delta_sharpe": -0.034418,
+              "ci_low": -0.094028,
+              "ci_high": 0.014825,
+              "p_two": 0.1872,
+              "positive": false,
+              "fold": "fold2",
+              "touched": 11
+            },
+            {
+              "n": 161,
+              "delta_sharpe": -0.009566,
+              "ci_low": -0.058989,
+              "ci_high": 0.034939,
+              "p_two": 0.7076,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 16
+            },
+            {
+              "n": 75,
+              "delta_sharpe": 0.037182,
+              "ci_low": -0.023557,
+              "ci_high": 0.118614,
+              "p_two": 0.3008,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 4
+            },
+            {
+              "n": 69,
+              "delta_sharpe": 0.000274,
+              "ci_low": -0.083165,
+              "ci_high": 0.093866,
+              "p_two": 1.0,
+              "positive": true,
+              "fold": "fold5",
+              "touched": 15
+            }
+          ],
+          "pooled": {
+            "n": 573,
+            "delta_sharpe": -0.014027,
+            "ci_low": -0.041871,
+            "ci_high": 0.013565,
+            "p_two": 0.3208,
+            "positive": false
+          },
+          "stouffer_z": -1.0,
+          "joint_p": 0.3173,
+          "fold_positive": 2,
+          "winners_eaten_n": 36,
+          "winners_eaten_r_given_back": 45.9321,
+          "touched_delta_r_in_profit_mean": -0.2906,
+          "touched_delta_r_underwater_mean": null,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        },
+        "B_flatten_8h": {
+          "arm": "B_flatten_8h",
+          "folds": [
+            {
+              "n": 163,
+              "delta_sharpe": -0.019322,
+              "ci_low": -0.076668,
+              "ci_high": 0.035773,
+              "p_two": 0.4912,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 22
+            },
+            {
+              "n": 105,
+              "delta_sharpe": -0.070177,
+              "ci_low": -0.142926,
+              "ci_high": -0.014026,
+              "p_two": 0.0096,
+              "positive": false,
+              "fold": "fold2",
+              "touched": 12
+            },
+            {
+              "n": 161,
+              "delta_sharpe": -0.002447,
+              "ci_low": -0.046954,
+              "ci_high": 0.038871,
+              "p_two": 0.9292,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 19
+            },
+            {
+              "n": 75,
+              "delta_sharpe": 0.036815,
+              "ci_low": -0.034978,
+              "ci_high": 0.134213,
+              "p_two": 0.4116,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 5
+            },
+            {
+              "n": 69,
+              "delta_sharpe": 0.021687,
+              "ci_low": -0.063236,
+              "ci_high": 0.119395,
+              "p_two": 0.6192,
+              "positive": true,
+              "fold": "fold5",
+              "touched": 15
+            }
+          ],
+          "pooled": {
+            "n": 573,
+            "delta_sharpe": -0.011108,
+            "ci_low": -0.037807,
+            "ci_high": 0.016403,
+            "p_two": 0.4304,
+            "positive": false
+          },
+          "stouffer_z": -1.0534,
+          "joint_p": 0.292151,
+          "fold_positive": 2,
+          "winners_eaten_n": 39,
+          "winners_eaten_r_given_back": 45.5615,
+          "touched_delta_r_in_profit_mean": -0.2658,
+          "touched_delta_r_underwater_mean": null,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        },
+        "B_be_4h": {
+          "arm": "B_be_4h",
+          "folds": [
+            {
+              "n": 163,
+              "delta_sharpe": 0.011398,
+              "ci_low": -0.013696,
+              "ci_high": 0.044061,
+              "p_two": 0.5616,
+              "positive": true,
+              "fold": "fold1",
+              "touched": 23
+            },
+            {
+              "n": 105,
+              "delta_sharpe": -0.010578,
+              "ci_low": -0.048726,
+              "ci_high": 0.023587,
+              "p_two": 0.564,
+              "positive": false,
+              "fold": "fold2",
+              "touched": 11
+            },
+            {
+              "n": 161,
+              "delta_sharpe": -0.00236,
+              "ci_low": -0.0338,
+              "ci_high": 0.028181,
+              "p_two": 0.8536,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 16
+            },
+            {
+              "n": 75,
+              "delta_sharpe": -0.013975,
+              "ci_low": -0.047547,
+              "ci_high": 0.0,
+              "p_two": 0.7224,
+              "positive": false,
+              "fold": "fold4",
+              "touched": 4
+            },
+            {
+              "n": 69,
+              "delta_sharpe": -0.009382,
+              "ci_low": -0.091837,
+              "ci_high": 0.068473,
+              "p_two": 0.8144,
+              "positive": false,
+              "fold": "fold5",
+              "touched": 15
+            }
+          ],
+          "pooled": {
+            "n": 573,
+            "delta_sharpe": -0.001838,
+            "ci_low": -0.01851,
+            "ci_high": 0.015458,
+            "p_two": 0.8548,
+            "positive": false
+          },
+          "stouffer_z": -0.2452,
+          "joint_p": 0.806328,
+          "fold_positive": 1,
+          "winners_eaten_n": 11,
+          "winners_eaten_r_given_back": 16.5,
+          "touched_delta_r_in_profit_mean": -0.1279,
+          "touched_delta_r_underwater_mean": 0.0,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        },
+        "B_be_8h": {
+          "arm": "B_be_8h",
+          "folds": [
+            {
+              "n": 163,
+              "delta_sharpe": -0.019245,
+              "ci_low": -0.04507,
+              "ci_high": 0.0,
+              "p_two": 0.1084,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 22
+            },
+            {
+              "n": 105,
+              "delta_sharpe": -0.010157,
+              "ci_low": -0.03499,
+              "ci_high": 0.0,
+              "p_two": 0.714,
+              "positive": false,
+              "fold": "fold2",
+              "touched": 12
+            },
+            {
+              "n": 161,
+              "delta_sharpe": -0.013847,
+              "ci_low": -0.041139,
+              "ci_high": 0.010238,
+              "p_two": 0.238,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 19
+            },
+            {
+              "n": 75,
+              "delta_sharpe": -0.013975,
+              "ci_low": -0.047547,
+              "ci_high": 0.0,
+              "p_two": 0.7224,
+              "positive": false,
+              "fold": "fold4",
+              "touched": 5
+            },
+            {
+              "n": 69,
+              "delta_sharpe": -0.022486,
+              "ci_low": -0.1001,
+              "ci_high": 0.049714,
+              "p_two": 0.542,
+              "positive": false,
+              "fold": "fold5",
+              "touched": 15
+            }
+          ],
+          "pooled": {
+            "n": 573,
+            "delta_sharpe": -0.015466,
+            "ci_low": -0.029547,
+            "ci_high": -0.002085,
+            "p_two": 0.0228,
+            "positive": false
+          },
+          "stouffer_z": -1.9788,
+          "joint_p": 0.047842,
+          "fold_positive": 0,
+          "winners_eaten_n": 12,
+          "winners_eaten_r_given_back": 18.0,
+          "touched_delta_r_in_profit_mean": -0.3415,
+          "touched_delta_r_underwater_mean": 0.0,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": true
+          },
+          "bh_pass": false,
+          "label": "dead"
+        }
+      }
+    },
+    "GBPUSD": {
+      "n_trades": 728,
+      "stage0_A": {
+        "A_30_30": {
+          "touched": 10,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 3,
+            "fold2": 2,
+            "fold3": 5,
+            "fold4": 0,
+            "fold5": 0
+          }
+        },
+        "A_60_60": {
+          "touched": 13,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 4,
+            "fold2": 2,
+            "fold3": 6,
+            "fold4": 1,
+            "fold5": 0
+          }
+        },
+        "A_120_60": {
+          "touched": 23,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 9,
+            "fold2": 5,
+            "fold3": 6,
+            "fold4": 2,
+            "fold5": 1
+          }
+        },
+        "A_120_120": {
+          "touched": 30,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 10,
+            "fold2": 7,
+            "fold3": 8,
+            "fold4": 4,
+            "fold5": 1
+          }
+        },
+        "A_240_120": {
+          "touched": 30,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 10,
+            "fold2": 7,
+            "fold3": 8,
+            "fold4": 4,
+            "fold5": 1
+          }
+        },
+        "A_event_day": {
+          "touched": 79,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 23,
+            "fold2": 19,
+            "fold3": 20,
+            "fold4": 15,
+            "fold5": 2
+          }
+        }
+      },
+      "stage0_B": {
+        "B_flatten_4h": {
+          "touched": 78,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 28,
+            "fold2": 8,
+            "fold3": 26,
+            "fold4": 7,
+            "fold5": 9
+          }
+        },
+        "B_flatten_8h": {
+          "touched": 88,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 29,
+            "fold2": 14,
+            "fold3": 28,
+            "fold4": 6,
+            "fold5": 11
+          }
+        },
+        "B_be_4h": {
+          "touched": 78,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 28,
+            "fold2": 8,
+            "fold3": 26,
+            "fold4": 7,
+            "fold5": 9
+          }
+        },
+        "B_be_8h": {
+          "touched": 88,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 29,
+            "fold2": 14,
+            "fold3": 28,
+            "fold4": 6,
+            "fold5": 11
+          }
+        }
+      },
+      "stage1_A": {
+        "A_30_30": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_60_60": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_120_60": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_120_120": {
+          "arm": "A_120_120",
+          "folds": [
+            {
+              "n": 211,
+              "delta_sharpe": 0.000364,
+              "ci_low": -0.032773,
+              "ci_high": 0.0356,
+              "p_two": 0.9992,
+              "positive": true,
+              "fold": "fold1",
+              "touched": 10
+            },
+            {
+              "n": 167,
+              "delta_sharpe": -0.007711,
+              "ci_low": -0.040787,
+              "ci_high": 0.023173,
+              "p_two": 0.606,
+              "positive": false,
+              "fold": "fold2",
+              "touched": 7
+            },
+            {
+              "n": 175,
+              "delta_sharpe": -0.025844,
+              "ci_low": -0.06106,
+              "ci_high": 0.003791,
+              "p_two": 0.088,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 8
+            },
+            {
+              "n": 94,
+              "delta_sharpe": 0.028903,
+              "ci_low": 0.0,
+              "ci_high": 0.079799,
+              "p_two": 0.2492,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 4
+            },
+            {
+              "n": 81,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two": 1.0,
+              "positive": false,
+              "fold": "fold5",
+              "touched": 1
+            }
+          ],
+          "pooled": {
+            "n": 728,
+            "delta_sharpe": -0.003644,
+            "ci_low": -0.018937,
+            "ci_high": 0.012206,
+            "p_two": 0.6744,
+            "positive": false
+          },
+          "stouffer_z": -0.6689,
+          "joint_p": 0.503561,
+          "fold_positive": 2,
+          "winners_eaten_n": 15,
+          "winners_eaten_r": 22.5,
+          "winners_eaten_share": 0.5,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        },
+        "A_240_120": {
+          "arm": "A_240_120",
+          "folds": [
+            {
+              "n": 211,
+              "delta_sharpe": 0.000364,
+              "ci_low": -0.032773,
+              "ci_high": 0.0356,
+              "p_two": 0.9992,
+              "positive": true,
+              "fold": "fold1",
+              "touched": 10
+            },
+            {
+              "n": 167,
+              "delta_sharpe": -0.007711,
+              "ci_low": -0.040787,
+              "ci_high": 0.023173,
+              "p_two": 0.606,
+              "positive": false,
+              "fold": "fold2",
+              "touched": 7
+            },
+            {
+              "n": 175,
+              "delta_sharpe": -0.025844,
+              "ci_low": -0.06106,
+              "ci_high": 0.003791,
+              "p_two": 0.088,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 8
+            },
+            {
+              "n": 94,
+              "delta_sharpe": 0.028903,
+              "ci_low": 0.0,
+              "ci_high": 0.079799,
+              "p_two": 0.2492,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 4
+            },
+            {
+              "n": 81,
+              "delta_sharpe": 0.0,
+              "ci_low": 0.0,
+              "ci_high": 0.0,
+              "p_two": 1.0,
+              "positive": false,
+              "fold": "fold5",
+              "touched": 1
+            }
+          ],
+          "pooled": {
+            "n": 728,
+            "delta_sharpe": -0.003644,
+            "ci_low": -0.018937,
+            "ci_high": 0.012206,
+            "p_two": 0.6744,
+            "positive": false
+          },
+          "stouffer_z": -0.6689,
+          "joint_p": 0.503561,
+          "fold_positive": 2,
+          "winners_eaten_n": 15,
+          "winners_eaten_r": 22.5,
+          "winners_eaten_share": 0.5,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        },
+        "A_event_day": {
+          "arm": "A_event_day",
+          "folds": [
+            {
+              "n": 211,
+              "delta_sharpe": -0.013943,
+              "ci_low": -0.061181,
+              "ci_high": 0.034641,
+              "p_two": 0.5644,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 23
+            },
+            {
+              "n": 167,
+              "delta_sharpe": -0.02902,
+              "ci_low": -0.08199,
+              "ci_high": 0.021025,
+              "p_two": 0.2628,
+              "positive": false,
+              "fold": "fold2",
+              "touched": 19
+            },
+            {
+              "n": 175,
+              "delta_sharpe": -0.031864,
+              "ci_low": -0.082938,
+              "ci_high": 0.01636,
+              "p_two": 0.2012,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 20
+            },
+            {
+              "n": 94,
+              "delta_sharpe": 0.103235,
+              "ci_low": 0.003338,
+              "ci_high": 0.223825,
+              "p_two": 0.044,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 15
+            },
+            {
+              "n": 81,
+              "delta_sharpe": -0.01266,
+              "ci_low": -0.041439,
+              "ci_high": 0.0,
+              "p_two": 0.7284,
+              "positive": false,
+              "fold": "fold5",
+              "touched": 2
+            }
+          ],
+          "pooled": {
+            "n": 728,
+            "delta_sharpe": -0.006353,
+            "ci_low": -0.032837,
+            "ci_high": 0.019819,
+            "p_two": 0.6488,
+            "positive": false
+          },
+          "stouffer_z": -0.8654,
+          "joint_p": 0.386842,
+          "fold_positive": 1,
+          "winners_eaten_n": 40,
+          "winners_eaten_r": 60.0,
+          "winners_eaten_share": 0.5063,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        }
+      },
+      "stage1_B": {
+        "B_flatten_4h": {
+          "arm": "B_flatten_4h",
+          "folds": [
+            {
+              "n": 211,
+              "delta_sharpe": -0.035427,
+              "ci_low": -0.082344,
+              "ci_high": 0.00845,
+              "p_two": 0.1068,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 28
+            },
+            {
+              "n": 167,
+              "delta_sharpe": 0.022636,
+              "ci_low": -0.009135,
+              "ci_high": 0.061103,
+              "p_two": 0.1636,
+              "positive": true,
+              "fold": "fold2",
+              "touched": 8
+            },
+            {
+              "n": 175,
+              "delta_sharpe": -0.037426,
+              "ci_low": -0.086346,
+              "ci_high": 0.008776,
+              "p_two": 0.1084,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 26
+            },
+            {
+              "n": 94,
+              "delta_sharpe": 0.008386,
+              "ci_low": -0.049315,
+              "ci_high": 0.072105,
+              "p_two": 0.8012,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 7
+            },
+            {
+              "n": 81,
+              "delta_sharpe": 0.011195,
+              "ci_low": -0.035277,
+              "ci_high": 0.059337,
+              "p_two": 0.6336,
+              "positive": true,
+              "fold": "fold5",
+              "touched": 9
+            }
+          ],
+          "pooled": {
+            "n": 728,
+            "delta_sharpe": -0.011965,
+            "ci_low": -0.03328,
+            "ci_high": 0.00886,
+            "p_two": 0.2772,
+            "positive": false
+          },
+          "stouffer_z": -0.7387,
+          "joint_p": 0.460102,
+          "fold_positive": 3,
+          "winners_eaten_n": 41,
+          "winners_eaten_r_given_back": 48.4449,
+          "touched_delta_r_in_profit_mean": -0.2536,
+          "touched_delta_r_underwater_mean": null,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        },
+        "B_flatten_8h": {
+          "arm": "B_flatten_8h",
+          "folds": [
+            {
+              "n": 211,
+              "delta_sharpe": -0.023689,
+              "ci_low": -0.069435,
+              "ci_high": 0.019403,
+              "p_two": 0.2876,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 29
+            },
+            {
+              "n": 167,
+              "delta_sharpe": 0.018263,
+              "ci_low": -0.020441,
+              "ci_high": 0.061864,
+              "p_two": 0.3604,
+              "positive": true,
+              "fold": "fold2",
+              "touched": 14
+            },
+            {
+              "n": 175,
+              "delta_sharpe": -0.028828,
+              "ci_low": -0.081268,
+              "ci_high": 0.022993,
+              "p_two": 0.2688,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 28
+            },
+            {
+              "n": 94,
+              "delta_sharpe": 0.010861,
+              "ci_low": -0.023834,
+              "ci_high": 0.051804,
+              "p_two": 0.564,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 6
+            },
+            {
+              "n": 81,
+              "delta_sharpe": 0.008359,
+              "ci_low": -0.047134,
+              "ci_high": 0.069599,
+              "p_two": 0.7616,
+              "positive": true,
+              "fold": "fold5",
+              "touched": 11
+            }
+          ],
+          "pooled": {
+            "n": 728,
+            "delta_sharpe": -0.007928,
+            "ci_low": -0.02887,
+            "ci_high": 0.013665,
+            "p_two": 0.478,
+            "positive": false
+          },
+          "stouffer_z": -0.3681,
+          "joint_p": 0.712782,
+          "fold_positive": 3,
+          "winners_eaten_n": 45,
+          "winners_eaten_r_given_back": 50.3812,
+          "touched_delta_r_in_profit_mean": -0.1984,
+          "touched_delta_r_underwater_mean": null,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        },
+        "B_be_4h": {
+          "arm": "B_be_4h",
+          "folds": [
+            {
+              "n": 211,
+              "delta_sharpe": -0.002835,
+              "ci_low": -0.025051,
+              "ci_high": 0.018702,
+              "p_two": 0.7864,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 28
+            },
+            {
+              "n": 167,
+              "delta_sharpe": 0.011604,
+              "ci_low": -0.013124,
+              "ci_high": 0.03762,
+              "p_two": 0.3904,
+              "positive": true,
+              "fold": "fold2",
+              "touched": 8
+            },
+            {
+              "n": 175,
+              "delta_sharpe": -0.023859,
+              "ci_low": -0.049198,
+              "ci_high": -0.005834,
+              "p_two": 0.0344,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 26
+            },
+            {
+              "n": 94,
+              "delta_sharpe": 0.018093,
+              "ci_low": 0.0,
+              "ci_high": 0.049183,
+              "p_two": 0.2784,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 7
+            },
+            {
+              "n": 81,
+              "delta_sharpe": -0.01266,
+              "ci_low": -0.041439,
+              "ci_high": 0.0,
+              "p_two": 0.7284,
+              "positive": false,
+              "fold": "fold5",
+              "touched": 9
+            }
+          ],
+          "pooled": {
+            "n": 728,
+            "delta_sharpe": -0.003064,
+            "ci_low": -0.013719,
+            "ci_high": 0.007469,
+            "p_two": 0.6184,
+            "positive": false
+          },
+          "stouffer_z": -0.498,
+          "joint_p": 0.618484,
+          "fold_positive": 2,
+          "winners_eaten_n": 9,
+          "winners_eaten_r_given_back": 13.5,
+          "touched_delta_r_in_profit_mean": -0.11,
+          "touched_delta_r_underwater_mean": 0.0,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        },
+        "B_be_8h": {
+          "arm": "B_be_8h",
+          "folds": [
+            {
+              "n": 211,
+              "delta_sharpe": -0.011657,
+              "ci_low": -0.034886,
+              "ci_high": 0.00869,
+              "p_two": 0.2744,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 29
+            },
+            {
+              "n": 167,
+              "delta_sharpe": 0.018047,
+              "ci_low": 0.0,
+              "ci_high": 0.041081,
+              "p_two": 0.0996,
+              "positive": true,
+              "fold": "fold2",
+              "touched": 14
+            },
+            {
+              "n": 175,
+              "delta_sharpe": -0.000892,
+              "ci_low": -0.017986,
+              "ci_high": 0.014529,
+              "p_two": 0.9744,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 28
+            },
+            {
+              "n": 94,
+              "delta_sharpe": -0.001893,
+              "ci_low": -0.033376,
+              "ci_high": 0.025907,
+              "p_two": 0.9688,
+              "positive": false,
+              "fold": "fold4",
+              "touched": 6
+            },
+            {
+              "n": 81,
+              "delta_sharpe": -0.00138,
+              "ci_low": -0.038722,
+              "ci_high": 0.033471,
+              "p_two": 1.0,
+              "positive": false,
+              "fold": "fold5",
+              "touched": 11
+            }
+          ],
+          "pooled": {
+            "n": 728,
+            "delta_sharpe": -0.000208,
+            "ci_low": -0.009848,
+            "ci_high": 0.009541,
+            "p_two": 0.9648,
+            "positive": false
+          },
+          "stouffer_z": 0.1705,
+          "joint_p": 0.864597,
+          "fold_positive": 1,
+          "winners_eaten_n": 7,
+          "winners_eaten_r_given_back": 10.5,
+          "touched_delta_r_in_profit_mean": -0.0455,
+          "touched_delta_r_underwater_mean": 0.0,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        }
+      }
+    },
+    "USDCAD": {
+      "n_trades": 523,
+      "stage0_A": {
+        "A_30_30": {
+          "touched": 6,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 1,
+            "fold2": 1,
+            "fold3": 2,
+            "fold4": 0,
+            "fold5": 2
+          }
+        },
+        "A_60_60": {
+          "touched": 10,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 2,
+            "fold2": 2,
+            "fold3": 2,
+            "fold4": 0,
+            "fold5": 4
+          }
+        },
+        "A_120_60": {
+          "touched": 17,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 3,
+            "fold2": 6,
+            "fold3": 2,
+            "fold4": 1,
+            "fold5": 5
+          }
+        },
+        "A_120_120": {
+          "touched": 23,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 5,
+            "fold2": 7,
+            "fold3": 4,
+            "fold4": 2,
+            "fold5": 5
+          }
+        },
+        "A_240_120": {
+          "touched": 25,
+          "underpowered": true,
+          "by_fold": {
+            "fold1": 7,
+            "fold2": 7,
+            "fold3": 4,
+            "fold4": 2,
+            "fold5": 5
+          }
+        },
+        "A_event_day": {
+          "touched": 72,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 16,
+            "fold2": 18,
+            "fold3": 17,
+            "fold4": 8,
+            "fold5": 13
+          }
+        }
+      },
+      "stage0_B": {
+        "B_flatten_4h": {
+          "touched": 76,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 21,
+            "fold2": 14,
+            "fold3": 20,
+            "fold4": 11,
+            "fold5": 10
+          }
+        },
+        "B_flatten_8h": {
+          "touched": 73,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 20,
+            "fold2": 16,
+            "fold3": 16,
+            "fold4": 10,
+            "fold5": 11
+          }
+        },
+        "B_be_4h": {
+          "touched": 76,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 21,
+            "fold2": 14,
+            "fold3": 20,
+            "fold4": 11,
+            "fold5": 10
+          }
+        },
+        "B_be_8h": {
+          "touched": 73,
+          "underpowered": false,
+          "by_fold": {
+            "fold1": 20,
+            "fold2": 16,
+            "fold3": 16,
+            "fold4": 10,
+            "fold5": 11
+          }
+        }
+      },
+      "stage1_A": {
+        "A_30_30": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_60_60": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_120_60": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_120_120": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_240_120": {
+          "skipped": true,
+          "label": "underpowered"
+        },
+        "A_event_day": {
+          "arm": "A_event_day",
+          "folds": [
+            {
+              "n": 134,
+              "delta_sharpe": -0.047381,
+              "ci_low": -0.10851,
+              "ci_high": 0.01406,
+              "p_two": 0.1264,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 16
+            },
+            {
+              "n": 125,
+              "delta_sharpe": -0.030607,
+              "ci_low": -0.103335,
+              "ci_high": 0.038643,
+              "p_two": 0.3752,
+              "positive": false,
+              "fold": "fold2",
+              "touched": 18
+            },
+            {
+              "n": 109,
+              "delta_sharpe": -0.097041,
+              "ci_low": -0.17608,
+              "ci_high": -0.024371,
+              "p_two": 0.0056,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 17
+            },
+            {
+              "n": 83,
+              "delta_sharpe": 0.081052,
+              "ci_low": -0.001064,
+              "ci_high": 0.185868,
+              "p_two": 0.0612,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 8
+            },
+            {
+              "n": 72,
+              "delta_sharpe": 0.023647,
+              "ci_low": -0.09631,
+              "ci_high": 0.143867,
+              "p_two": 0.6712,
+              "positive": true,
+              "fold": "fold5",
+              "touched": 13
+            }
+          ],
+          "pooled": {
+            "n": 523,
+            "delta_sharpe": -0.023005,
+            "ci_low": -0.058257,
+            "ci_high": 0.010715,
+            "p_two": 0.1876,
+            "positive": false
+          },
+          "stouffer_z": -1.5686,
+          "joint_p": 0.116733,
+          "fold_positive": 2,
+          "winners_eaten_n": 39,
+          "winners_eaten_r": 58.5,
+          "winners_eaten_share": 0.5417,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "dead"
+        }
+      },
+      "stage1_B": {
+        "B_flatten_4h": {
+          "arm": "B_flatten_4h",
+          "folds": [
+            {
+              "n": 134,
+              "delta_sharpe": 0.000579,
+              "ci_low": -0.077596,
+              "ci_high": 0.087035,
+              "p_two": 1.0,
+              "positive": true,
+              "fold": "fold1",
+              "touched": 21
+            },
+            {
+              "n": 125,
+              "delta_sharpe": 0.009984,
+              "ci_low": -0.026462,
+              "ci_high": 0.048262,
+              "p_two": 0.554,
+              "positive": true,
+              "fold": "fold2",
+              "touched": 14
+            },
+            {
+              "n": 109,
+              "delta_sharpe": 0.017759,
+              "ci_low": -0.061003,
+              "ci_high": 0.103153,
+              "p_two": 0.6704,
+              "positive": true,
+              "fold": "fold3",
+              "touched": 20
+            },
+            {
+              "n": 83,
+              "delta_sharpe": 0.055252,
+              "ci_low": -0.021736,
+              "ci_high": 0.161651,
+              "p_two": 0.204,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 11
+            },
+            {
+              "n": 72,
+              "delta_sharpe": 0.036366,
+              "ci_low": -0.032198,
+              "ci_high": 0.115373,
+              "p_two": 0.312,
+              "positive": true,
+              "fold": "fold5",
+              "touched": 10
+            }
+          ],
+          "pooled": {
+            "n": 523,
+            "delta_sharpe": 0.021263,
+            "ci_low": -0.010609,
+            "ci_high": 0.056083,
+            "p_two": 0.2052,
+            "positive": true
+          },
+          "stouffer_z": 1.3648,
+          "joint_p": 0.172328,
+          "fold_positive": 5,
+          "winners_eaten_n": 32,
+          "winners_eaten_r_given_back": 34.6928,
+          "touched_delta_r_in_profit_mean": 0.0236,
+          "touched_delta_r_underwater_mean": null,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": true,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "parked_low_yield"
+        },
+        "B_flatten_8h": {
+          "arm": "B_flatten_8h",
+          "folds": [
+            {
+              "n": 134,
+              "delta_sharpe": -0.004048,
+              "ci_low": -0.078024,
+              "ci_high": 0.072741,
+              "p_two": 0.8964,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 20
+            },
+            {
+              "n": 125,
+              "delta_sharpe": 0.002257,
+              "ci_low": -0.044049,
+              "ci_high": 0.04897,
+              "p_two": 0.888,
+              "positive": true,
+              "fold": "fold2",
+              "touched": 16
+            },
+            {
+              "n": 109,
+              "delta_sharpe": 0.050432,
+              "ci_low": -0.018972,
+              "ci_high": 0.129982,
+              "p_two": 0.1528,
+              "positive": true,
+              "fold": "fold3",
+              "touched": 16
+            },
+            {
+              "n": 83,
+              "delta_sharpe": 0.028646,
+              "ci_low": -0.025312,
+              "ci_high": 0.108339,
+              "p_two": 0.432,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 10
+            },
+            {
+              "n": 72,
+              "delta_sharpe": 0.031351,
+              "ci_low": -0.041596,
+              "ci_high": 0.11282,
+              "p_two": 0.38,
+              "positive": true,
+              "fold": "fold5",
+              "touched": 11
+            }
+          ],
+          "pooled": {
+            "n": 523,
+            "delta_sharpe": 0.019973,
+            "ci_low": -0.011191,
+            "ci_high": 0.051637,
+            "p_two": 0.2052,
+            "positive": true
+          },
+          "stouffer_z": 1.2944,
+          "joint_p": 0.195528,
+          "fold_positive": 4,
+          "winners_eaten_n": 32,
+          "winners_eaten_r_given_back": 32.8433,
+          "touched_delta_r_in_profit_mean": 0.0211,
+          "touched_delta_r_underwater_mean": null,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": true,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "parked_low_yield"
+        },
+        "B_be_4h": {
+          "arm": "B_be_4h",
+          "folds": [
+            {
+              "n": 134,
+              "delta_sharpe": -0.012986,
+              "ci_low": -0.061066,
+              "ci_high": 0.035839,
+              "p_two": 0.5644,
+              "positive": false,
+              "fold": "fold1",
+              "touched": 21
+            },
+            {
+              "n": 125,
+              "delta_sharpe": -0.000566,
+              "ci_low": -0.026158,
+              "ci_high": 0.023554,
+              "p_two": 1.0,
+              "positive": false,
+              "fold": "fold2",
+              "touched": 14
+            },
+            {
+              "n": 109,
+              "delta_sharpe": 0.016655,
+              "ci_low": -0.051189,
+              "ci_high": 0.086799,
+              "p_two": 0.6344,
+              "positive": true,
+              "fold": "fold3",
+              "touched": 20
+            },
+            {
+              "n": 83,
+              "delta_sharpe": 0.025896,
+              "ci_low": -0.027303,
+              "ci_high": 0.0968,
+              "p_two": 0.5032,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 11
+            },
+            {
+              "n": 72,
+              "delta_sharpe": 0.022474,
+              "ci_low": 0.0,
+              "ci_high": 0.0618,
+              "p_two": 0.2572,
+              "positive": true,
+              "fold": "fold5",
+              "touched": 10
+            }
+          ],
+          "pooled": {
+            "n": 523,
+            "delta_sharpe": 0.007161,
+            "ci_low": -0.014037,
+            "ci_high": 0.029974,
+            "p_two": 0.5248,
+            "positive": true
+          },
+          "stouffer_z": 0.6125,
+          "joint_p": 0.540228,
+          "fold_positive": 3,
+          "winners_eaten_n": 11,
+          "winners_eaten_r_given_back": 16.5,
+          "touched_delta_r_in_profit_mean": -0.0114,
+          "touched_delta_r_underwater_mean": 0.0,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": false,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "parked_low_yield"
+        },
+        "B_be_8h": {
+          "arm": "B_be_8h",
+          "folds": [
+            {
+              "n": 134,
+              "delta_sharpe": 0.001235,
+              "ci_low": -0.051929,
+              "ci_high": 0.058777,
+              "p_two": 1.0,
+              "positive": true,
+              "fold": "fold1",
+              "touched": 20
+            },
+            {
+              "n": 125,
+              "delta_sharpe": 0.008123,
+              "ci_low": 0.0,
+              "ci_high": 0.028336,
+              "p_two": 0.7124,
+              "positive": true,
+              "fold": "fold2",
+              "touched": 16
+            },
+            {
+              "n": 109,
+              "delta_sharpe": -0.002137,
+              "ci_low": -0.041572,
+              "ci_high": 0.035857,
+              "p_two": 0.8648,
+              "positive": false,
+              "fold": "fold3",
+              "touched": 16
+            },
+            {
+              "n": 83,
+              "delta_sharpe": 0.025896,
+              "ci_low": -0.027303,
+              "ci_high": 0.0968,
+              "p_two": 0.5032,
+              "positive": true,
+              "fold": "fold4",
+              "touched": 10
+            },
+            {
+              "n": 72,
+              "delta_sharpe": 0.011159,
+              "ci_low": 0.0,
+              "ci_high": 0.040608,
+              "p_two": 0.7056,
+              "positive": true,
+              "fold": "fold5",
+              "touched": 11
+            }
+          ],
+          "pooled": {
+            "n": 523,
+            "delta_sharpe": 0.007897,
+            "ci_low": -0.011166,
+            "ci_high": 0.028593,
+            "p_two": 0.4432,
+            "positive": true
+          },
+          "stouffer_z": 0.5093,
+          "joint_p": 0.610507,
+          "fold_positive": 4,
+          "winners_eaten_n": 8,
+          "winners_eaten_r_given_back": 12.0,
+          "touched_delta_r_in_profit_mean": 0.0233,
+          "touched_delta_r_underwater_mean": 0.0,
+          "alive_legs": {
+            "ci_lb_gt_0": false,
+            "fold_pos_ge_4": true,
+            "joint_p_lt_05": false
+          },
+          "bh_pass": false,
+          "label": "parked_low_yield"
+        }
+      }
+    }
+  },
+  "headline": "0 arms `stage1_alive` (parked=4, dead=13, underpowered=13). Both families STOP after Stage 1 per PROTOCOL \u00a75. Stage 2 not authorised.",
+  "stop": true
+}

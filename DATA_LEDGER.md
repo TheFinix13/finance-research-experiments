@@ -11,9 +11,9 @@ Parquet cache: `../multi-pair-trading-agent/data/parquet/` (single canonical cop
 Live broker fills cache (Φ3): `~/Documents/TradingAgentLogs/{SYMBOL}/`
 (VM-only; absent on the Mac research host as of 2026-06-24).
 
-Last updated: **2026-08-04** (E031/E032 screens consumed, both stopped
-at Stage-1 go/no-go — confirm + sealed reservations RELEASED
-un-consumed)
+Last updated: **2026-08-19** (E033 Stage-0+1 screen consumed, stopped
+at Stage-1 go/no-go — confirm-style Stage-2 placebo NOT run; no sealed
+window opened)
 
 ---
 
@@ -24,7 +24,7 @@ un-consumed)
 | H4 | 2015-01-01 → 2021-12-31 (9th use) | screen | E001, E002, E003, E004, E006, E007, E027 (consumed 2026-07-28; overuse acknowledged in E027 §8), E031 + E032 (consumed 2026-08-04; overuse acknowledged in both protocols §4 — orthogonal hypotheses: portfolio slot mechanics / breakout entry class) |
 | H4 | 2022-01-01 → 2024-12-31 | confirm | E003, E004, E006, E007; E027 stopped at Stage 1 — not consumed; E031/E032 stopped at Stage 1 2026-08-04 — not consumed |
 | H4 | 2024-01-01 → 2024-12-31 | **observation** | M001 Φ3-prep regime weak-label validation (`sim/regime/validate_real.py`; 1617 bars; not an experiment, no claim, see `sim/regime/README.md`) |
-| H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E002, E004 |
+| H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E002, E004; E033 Stage-1 blackout screen (consumed 2026-08-19; stopped at Stage 1 — Stage-2 placebo not run) |
 | H4 | 2025-01-01 → 2026-06-09 | sealed | E005 |
 | H4 | 2026-01-01 → present | live | (agent demo — not a lab split) |
 | H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E007, E010 (consumed 2026-07-28), E027 (consumed 2026-07-28) |
@@ -47,7 +47,7 @@ EURUSD M30 (if cached), any TF on pairs below with `pristine` H1/M15.
 |---|---|---|---|
 | H4 | 2015-01-01 → 2021-12-31 | screen | E031 + E032 (consumed 2026-08-04; both stopped at Stage 1; prior E005/E006 sealed history on the wider slice documented in both protocols) |
 | H4 | 2015-01-01 → 2024-12-31 | sealed | E005, E006 (replication) |
-| H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 |
+| H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005; E033 Stage-1 blackout screen (consumed 2026-08-19; stopped at Stage 1) |
 | H1 | 2015-01-01 → 2021-12-31 | screen | E001, E006, E029 (Stage 1 consumed 2026-07-28 — first computation of the lift statistic on this pair; 8/10 alive) |
 | H1 | 2022+ | pristine | — (cache audit per E007 §3.8: GBPUSD H1 not available past 2021) |
 | M15 | 2015-01-01 → 2021-12-31 | screen | E006 (screen-style replication), E029 (Stage 1 consumed 2026-07-28); E030 Stage-3 reservation RELEASED un-consumed 2026-07-28 |
@@ -64,7 +64,7 @@ or new pairs before re-mining GBPUSD H4 2015-2024 for unrelated hypotheses.
 |---|---|---|---|
 | H4 | 2015-01-01 → 2021-12-31 | screen | E031 + E032 (consumed 2026-08-04; both stopped at Stage 1; prior E005 sealed history on the wider slice documented in both protocols) |
 | H4 | 2015-01-01 → 2024-12-31 | sealed | E005 |
-| H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 (E027 Stage-3 reservation released 2026-07-28 — stopped at Stage 1) |
+| H4 | 2015-01-01 → 2025-12-31 | screen+confirm | E001, E004, E005 (E027 Stage-3 reservation released 2026-07-28 — stopped at Stage 1); E033 Stage-1 blackout screen (consumed 2026-08-19; stopped at Stage 1) |
 | H1 | all | pristine — **not cached** (E007 §3.8 audit; E010 §0 Stage-0 check confirms) | — |
 | M15 | all | pristine — **not cached** (E007 §3.8; E010 §0 Stage-0 check confirms) | — |
 
@@ -89,10 +89,8 @@ new protocol's Related Work section.
 
 ## Planned (pre-registered, Stage 1 not yet run)
 
-(none — E031/E032 screens consumed 2026-08-04 and moved into the
-per-pair tables above; both stopped at Stage 1, so their confirm
-(2022–2024) and sealed (2025-01-01 → 2026-07-25) H4 reservations were
-RELEASED un-consumed.)
+(none — E033 Stage-0+1 consumed 2026-08-19 and stopped at Stage 1;
+Stage-2 placebo was gated and not run.)
 
 ## Overuse warning
 

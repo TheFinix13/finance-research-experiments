@@ -125,7 +125,7 @@ candidates for the agent's validation chain only.
 
 | ID | Short name | Repo folder | Pre-reg | Notes |
 |---|---|---|---|---|
-| E033 | Scheduled-news blackout / pre-event de-risking | [E033_scheduled_news_blackout](experiments/E033_scheduled_news_blackout/) | this commit (2026-08-13) | **planned** — two families on the deployed-cell ledgers × Phase AE frozen NFP/CPI/FOMC calendar: (A) entry suppression, 6 window arms; (B) open-position de-risking (flatten / tighten-to-BE at T−4h/8h), 4 arms. Stage-0 engagement gate (AD.2 grid-inertness lesson); Stage-2 random-placebo control. Priors both ways on record: AD.2 C-variant gated squad trades were net winners (AGAINST); Phase AE "avoidable, not tradable" (FOR). |
+| E033 | Scheduled-news blackout / pre-event de-risking | [E033_scheduled_news_blackout](experiments/E033_scheduled_news_blackout/) | `b62eae1` (2026-08-13) | **DEAD — stopped at Stage 1 2026-08-19, 0/30 cells `stage1_alive`** (13 underpowered, 13 dead, 4 USDCAD Family-B `parked_low_yield`). Tight ±30–240 min entry windows barely fire (n=6–25); `event_day` engages and is dead on all three symbols. Family B (flatten/BE 4h/8h pre-event) engages (69–88 trades/symbol) and is dead on EURUSD/GBPUSD — touched news fills are net WINNERS (EURUSD ±30 min = 7/7 at +1.50R). AD.2 prior confirmed on the deployed cell. No Phase-3 wiring. Zero OOS cost. |
 
 ## M001 program gates (cross-registry visibility)
 

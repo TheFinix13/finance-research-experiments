@@ -1,8 +1,9 @@
 # E033 — Scheduled-news blackout window for the deployed fade cell
 
-Status: **PRE-REGISTERED (DRAFT for approval) 2026-08-13** · commit
-hash recorded below once approved and pushed. No Stage-1 outcome has
-been computed at registration time.
+Status: **STOPPED-DEAD at Stage 1 (2026-08-19).** Pre-registered
+`b62eae1` (2026-08-13). Stage 0 + Stage 1 run once; 0/30 cells
+`stage1_alive`; Stage 2 not authorised. See `REPORT.md` /
+`STOP_NOTICE.md`.
 
 Follows `PROTOCOL_DISCIPLINE.md` in full. Register a `planned` row in
 `EXPERIMENTS.md` at the pre-registration commit; add the

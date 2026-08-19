@@ -1,4 +1,4 @@
-# AI Context — finance research experiments (updated 2026-08-04)
+# AI Context — finance research experiments (updated 2026-08-19)
 
 Read this first in a fresh chat. This repo is the **central research workshop**
 for all hypothesis tests. The trading agent (`multi-pair-trading-agent`)
@@ -15,6 +15,14 @@ program (separate lane; do not commit v1 work there — see
 `.cursor/rules/branch-targeting-discipline.mdc`).
 
 ## 1) What is built and working
+
+**E033 scheduled-news blackout (2026-08-19): STOPPED-DEAD at Stage 1.**
+0/30 cells `stage1_alive`. Tight ±30–240 min entry windows underpowered
+(n=6–25); `event_day` dead on all three symbols. Family B flatten/BE
+4h/8h pre-event dead on EURUSD/GBPUSD, USDCAD `parked_low_yield`. Touched
+news fills are net WINNERS (EURUSD ±30 min of NFP/CPI/FOMC = 7/7 at
++1.50R) — AD.2 prior confirmed on the deployed fade cell. No Phase-3
+wiring. E034 not authorised. See `experiments/E033_scheduled_news_blackout/`.
 
 **Agent validation chain (documented retrospectively as E001–E005):**
 E001 concept ablation; E002 zone grid; E003 holdout; E004 walk-forward
