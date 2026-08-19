@@ -483,3 +483,96 @@ the deliverable.
 - Live parallel to the missing time stop: the 2026-08-13 finding that
   `target_hold_hours` only feeds TQS scoring and enforces no exit
   (Bachira's 5-day GBPUSD short).
+
+---
+
+## 8. Amendment 2026-08-19 — A9 rename, and Tier 0 landed
+
+Two things happened after this note was registered, on the same day.
+This section records them so §3's and §4's filenames stay accurate. **No
+text above this line has been changed.**
+
+### 8.1 The §1.6 naming collision is resolved
+
+The operator took §1.6's recommendation. The A9 event striker is
+**renamed `sae_itoshi` → `aoshi_tokimitsu`**: the roster already assigns
+the A9 slot to Aoshi Tokimitsu, whose canon brief ("Macro-event-only
+vol-breakout (FOMC / NFP / CPI)") is verbatim what this agent does,
+while "Sae Itoshi (foil)" / `opponent_sae` stays the frozen adversarial
+opponent and the `07-research-standards.md` §4.2 heritage floor.
+
+What did **not** move:
+
+- **Sealed Phase AE artifacts are byte-untouched.** Everything under
+  `experiments/phase_ae_sae_event_specialist/` and
+  `reviews/phase_ae_verdict.md` legitimately still reads `sae_itoshi`,
+  `sae_fade`, `sae_ride`. That is history, and history keeps its names.
+- **`sim/agents/a09_sae.py` is untouched**, per §10.6 "vN untouched".
+- **This note keeps its filename** (`sae_itoshi_v1_defeat.md`) because
+  it is the defeat record of the agent *as it was named when it was
+  defeated*, and the evolution-ledger row points at it under that name.
+- The mechanic strings on v2 proposals stay `sae_fade` / `sae_ride`:
+  Tier 0 changes no mechanic, so the mechanic keeps its name and the
+  sealed AE cross-tabs remain joinable. The proposal's `agent_id` is the
+  disambiguator.
+
+### 8.2 Filename corrections to §3 and §4
+
+The names this note wrote before the rename decision, and what actually
+shipped:
+
+| Written in this note | Actually on disk |
+|---|---|
+| §3 `sim/agents/a09_sae_v2.py` | `sim/agents/a09_aoshi_v2.py` (`A9AoshiV2`, alias `AoshiTokimitsu`, `agent_id="aoshi_tokimitsu"`) |
+| §4.1 `sim/tests/test_a09_sae_v2_regression.py` | `sim/tests/test_a09_aoshi_v2_regression.py` |
+| §4.2 `sim/tests/test_a09_sae_v2_resolves_ae2_ride_loss.py` | `sim/tests/test_a09_aoshi_v2_resolves_ae2.py` |
+| §3 Thought tags `["sae_v2", …]` | `["aoshi_v2", "tier0", …]` |
+
+`sim/scoring/run_sae_v2_arc.py` and `reviews/sae_v2_arc.md` are **not
+written** — they are Tier-1 artifacts and Tier 1 has not run.
+
+### 8.3 What landed: Tier 0 only
+
+`sim/agents/a09_aoshi_v2.py` implements **§2 Tier 0 items 1–5**. It
+**subclasses** `A9SaeV1` and its `intend` delegates to `super().intend`,
+so the trigger and both mechanics are inherited rather than transcribed
+and the geometry cannot drift. Items landed:
+
+1. `event_specialist` registered in the F19 and F20 dispatch tables
+   (pure addition; a golden-value test pins every existing playstyle's
+   output unchanged).
+2. Event-specialist F19 / F20 with the semantics §2 specifies. F20's
+   **first ladder rung is still 1.5R**, so the inherited bracket is
+   preserved and only the deeper rung is new.
+3. F21 `read_workspace` + abstention on directional conflict with a
+   Tier-1 incumbent.
+4. Conviction and regime-fit as functions of the observed geometry,
+   calibrated to return v1's literal `0.85` / `0.6` at v1's own trigger
+   boundary (impulse/ATR 4.0, wick 0.50, T+15) so the change is centred.
+5. Hard time stop at `target_hold_hours`, with the 6,675-minute case
+   from §1.5 as the explicit test fixture.
+
+Plus the §3 event-selection fix (nearest release, not earliest
+candidate).
+
+**Item 6 — the Karasu R7 interlock — is NOT resolved and remains open.**
+It needs an operator decision (grant an `agent_id` bypass with a stated
+reason, or accept that the agent is unreachable live), not code.
+
+### 8.4 What Tier 0 does and does not license
+
+Per §6, restated so it cannot be misread later:
+
+- **Tier 0 is not an alpha improvement and is not reported as one.**
+  Phase AE's `FAIL` stands unrevised. The arc is **not** closed; §5's
+  verdict criteria are untouched and unmet.
+- **No panel was consumed.** No walk-forward, replay or scoring harness
+  was run for this landing — code and unit tests only, per §11.
+- G7 bits **C3–C6 become passable** (measured directly: `lot_intent`
+  CV 0.356, `risk_intent` SL/TP1 CV 0.329, both against the 0.10 floor).
+  **C1 and C2 remain open**, exactly as §2 predicted: "He becomes
+  eligible, not good."
+- **Tier 1 and Tier 2 are untouched.** §4's forward test 2 (zero
+  `sae_ride`-class trades, proposal count ≤ 40 % of v1's), test 5
+  (AE4 chemistry re-run) and all of §5 belong to Tier 1 and have not
+  been attempted.
