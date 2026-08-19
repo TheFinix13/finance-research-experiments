@@ -145,3 +145,36 @@ their own evolution.
   (`f093c75`), market-hours staleness (`83086d4`), Telegram
   shot/tackle pages (`5ff8b45`). Registered observational program:
   Phase AO v1 tape review (`f63d543`, this repo).
+- **2026-08-19 A9 Sae v1 defeat note REGISTERED (no v2 code yet).**
+  `reviews/sae_itoshi_v1_defeat.md`, written to doctrine §3.11.2 steps
+  1–2 / standards §10.6 in response to the operator asking how to make
+  Sae "v1-ready like the other players". Separates two defeats that must
+  not be conflated: (a) the **alpha** defeat — Phase AE2 OOS mean TQS
+  0.097, CI95 [0.042, 0.162] vs 0.30 / 0.20 floors, 28.7 % win at fixed
+  1.5R, and the arc-triggering metric is the **45× mechanic asymmetry**
+  (fade n=26 at −0.13 pips/trade vs ride n=61 at −5.88, ride being 78 %
+  of the book); (b) the **v1-readiness** defeat — 1 of 6 G7 bits, where
+  C4-read / C5 / C6 fail purely because F19/F20/F21 are unimplemented
+  and `playstyle="event_specialist"` is absent from both dispatch
+  tables, so the primitives silently take the "not a valid v1
+  implementation" fallback. Hypothesis registered in three separable
+  tiers: Tier 0 plumbing (no panel consumed, no alpha claim), Tier 1
+  drop `sae_ride` + volatility-normalise the trigger to m×ATR96 per
+  Phase AG's sign-consistent ≥8×ATR band, Tier 2 the Phase AI surprise
+  panel (still blocked on one `ExportCalendarHistory.mq5` run on the
+  VM). Closed lanes recorded as closed: AH tone is dead (ρ = +0.144,
+  wrong sign), and AE §5.1's ban on retuning v1's thresholds against
+  the spent panel stands. Window declaration: tune on 2015–2021 (AG's
+  half), open 2022–2025 once, with the AE-contamination caveat stated.
+  Pre-committed honest prior: `parked_insufficient_n` is the most
+  likely outcome, and "trades less, loses less" may NOT be labelled
+  `alive`. Two blockers surfaced for decision before any v2 lands: the
+  unresolved Karasu R7 interlock (R7 blocks the exact events Sae
+  trades, and AD's own harness never ran), and the **A9 naming
+  collision** — the roster assigns A9 to `aoshi_tokimitsu` and lists
+  "Sae Itoshi (foil)" as the frozen *opponent* / heritage floor, so the
+  striker currently has no roster row and shares a name with the
+  benchmark. Recommended rename to `aoshi_tokimitsu`. Operator-facing
+  note: SAE remains live-shadow under the **v1** spec from 2026-08-13,
+  so the next NFP is expected to be a losing specialist book by
+  design — the observation is the deliverable.
