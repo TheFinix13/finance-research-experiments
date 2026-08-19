@@ -55,6 +55,7 @@ Playstyle = Literal[
     "copier_hrp",                  # A5 Reo
     "confluence_only",             # A6 Nagi
     "solo_king",                   # A7 Barou
+    "event_specialist",            # A9 Aoshi
     "defensive",                   # A10 Kunigami
 ]
 
@@ -241,6 +242,64 @@ def kelly_lot_intent(
 
 
 # ---------------------------------------------------------------------------
+# Shared building block: event-impulse lot (inverse-dominant, risk-shedding)
+# ---------------------------------------------------------------------------
+
+def event_impulse_lot_intent(
+    conviction: float,
+    sl_pips: float,
+    equity: float,               # noqa: ARG001 -- interface signature
+    regime_fit: float,
+    *,
+    base_lot: float = FIXED_LOT,
+    ref_sl_pips: float = 25.0,
+    min_lot_floor: float = MIN_LOT,
+    max_lot_ceiling: float = 0.20,
+    conviction_pivot: float = 0.85,
+    conviction_gain: float = 0.5,
+    regime_fit_gain: float = 1.0,
+    sl_ratio_floor: float = 0.25,
+    sl_ratio_cap: float = 1.5,
+) -> float:
+    """Event-specialist sizing: a violent print is a SMALLER-lot trade.
+
+    Registered for the ``event_specialist`` playstyle (A9 Aoshi) by the
+    Tier-0 v1-readiness landing of 2026-08-19
+    (``reviews/sae_itoshi_v1_defeat.md`` §2 Tier 0 item 2). The shape
+    the defeat note specifies is "size **down** as the pre-release
+    window narrows and as the impulse-to-ATR ratio grows"; both
+    channels reach F19 through its existing signature:
+
+    - **Impulse magnitude** arrives as ``sl_pips``. An event stop is
+      built from the impulse bar's wick, so a bigger impulse is a
+      mechanically wider stop. The inverse-SL ratio is therefore the
+      dominant term, and its floor is deliberately deeper (0.25) than
+      ``risk_normalised_lot_intent``'s (0.5) so a 4x-wider-than-anchor
+      stop actually sheds 4x the lot instead of saturating at half.
+    - **Window proximity** arrives as ``regime_fit``, which the agent
+      computes as an *execution*-regime read (violent and fresh tape =
+      catastrophic event spreads, per Phase AE REPORT §4.3) and which
+      therefore falls as the release gets closer.
+
+    ``conviction_gain`` is deliberately small (0.5) and pivoted at the
+    agent's own calibration conviction (0.85) so the conviction channel
+    cannot outrun the two risk-shedding channels: conviction rises with
+    impulse, and the note requires net size to FALL with impulse.
+    """
+    conviction = _clip01(conviction)
+    regime_fit = _clip01(regime_fit)
+    if sl_pips > 0 and ref_sl_pips > 0:
+        ratio = max(sl_ratio_floor, min(sl_ratio_cap, ref_sl_pips / sl_pips))
+    else:
+        ratio = 1.0
+    raw = base_lot * ratio * (
+        1.0 + conviction_gain * (conviction - conviction_pivot)
+    ) * (1.0 + regime_fit_gain * (regime_fit - 0.5))
+    clipped = max(min_lot_floor, min(max_lot_ceiling, raw))
+    return _round_down_to_min_lot(clipped, min_lot_floor)
+
+
+# ---------------------------------------------------------------------------
 # Playstyle dispatch
 # ---------------------------------------------------------------------------
 
@@ -360,6 +419,21 @@ def playstyle_lot_intent(
             conviction_pivot=0.55, conviction_gain=1.0,
             max_lot_ceiling=0.18, regime_fit_gain=0.4,
         )
+    if playstyle == "event_specialist":
+        # Aoshi (A9): macro-event striker. Registered 2026-08-19 by the
+        # Tier-0 v1-readiness landing -- before it, `event_specialist`
+        # was ABSENT from this table and A9 silently took the
+        # `default_lot_intent` fallback the module header labels "not a
+        # valid v1 implementation" (G7 C5 fail, defeat note §1.5).
+        # Anchor SL ~= 25 pips: the event bracket is the impulse wick
+        # plus 5 pips of padding, so the anchor sits near the 40-pip
+        # trigger floor's fade stop rather than a structural swing.
+        return event_impulse_lot_intent(
+            conviction, sl_pips, equity, regime_fit,
+            base_lot=FIXED_LOT, ref_sl_pips=25.0,
+            conviction_pivot=0.85, conviction_gain=0.5,
+            max_lot_ceiling=0.20, regime_fit_gain=1.0,
+        )
     if playstyle == "defensive":
         # Kunigami: 0.5× lot when warning_active_at fires. The 0.5x is
         # applied by the agent class BEFORE calling this fn; here we
@@ -406,5 +480,6 @@ __all__ = [
     "conviction_scaled_lot_intent",
     "risk_normalised_lot_intent",
     "kelly_lot_intent",
+    "event_impulse_lot_intent",
     "playstyle_lot_intent",
 ]

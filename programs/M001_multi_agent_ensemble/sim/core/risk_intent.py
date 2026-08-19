@@ -137,6 +137,57 @@ def structural_risk_intent(
 
 
 # ---------------------------------------------------------------------------
+# Shared building block: event-impulse SL + multi-rung R ladder
+# ---------------------------------------------------------------------------
+
+def event_impulse_risk_intent(
+    conviction: float,           # noqa: ARG001 -- interface signature
+    atr_pips: float,
+    h1_swing_pips: float,
+    *,
+    atr_multiplier: float = 2.0,
+    swing_floor_fraction: float = 0.15,
+    sl_pips_min: float = 20.0,
+    sl_pips_max: float = 60.0,
+    tp_multipliers: tuple[float, ...] = (1.5, 3.0),
+) -> tuple[float, list[float]]:
+    """ATR-driven event stop with an R-multiple ladder.
+
+    Registered for the ``event_specialist`` playstyle (A9 Aoshi) by the
+    Tier-0 v1-readiness landing of 2026-08-19
+    (``reviews/sae_itoshi_v1_defeat.md`` §2 Tier 0 item 1). A release
+    bracket is built from the impulse, so the stop is ATR-proportional
+    at a wider multiplier than any continuous-tape playstyle (2.0 vs
+    Isagi's 1.3): the event bar IS the volatility.
+
+    - SL = clip(max(atr_multiplier × atr_pips,
+                    swing_floor_fraction × h1_swing_pips),
+                sl_pips_min, sl_pips_max)
+    - ladder = [m × SL for m in tp_multipliers]
+
+    ``tp_multipliers[0]`` defaults to **1.5** on purpose: that is v1's
+    hard-coded ``target_rr`` and the Tier-0 change is additive, so the
+    inherited primary target is preserved byte-for-byte in R terms and
+    only the deeper rungs are new. Changing the first rung would be a
+    mechanic change, which Tier 0 forbids.
+
+    ``conviction`` is accepted for the interface but not consumed --
+    same convention as ``atr_scaled_risk_intent`` and
+    ``structural_risk_intent``. Guard: ``atr_pips <= 0`` and no usable
+    swing -> ``sl_pips_min``.
+    """
+    base = atr_multiplier * atr_pips if atr_pips > 0 else 0.0
+    if h1_swing_pips > 0:
+        base = max(base, swing_floor_fraction * h1_swing_pips)
+    if base <= 0:
+        sl = sl_pips_min
+    else:
+        sl = max(sl_pips_min, min(sl_pips_max, base))
+    ladder = [m * sl for m in tp_multipliers]
+    return sl, ladder
+
+
+# ---------------------------------------------------------------------------
 # Playstyle dispatch
 # ---------------------------------------------------------------------------
 
@@ -222,6 +273,19 @@ def playstyle_risk_intent(
             sl_pips_min=20.0, sl_pips_max=35.0,
             tp_multipliers=(1.5, 3.0),
         )
+    if playstyle == "event_specialist":
+        # Aoshi (A9): macro-event striker. Registered 2026-08-19 by the
+        # Tier-0 v1-readiness landing -- before it, `event_specialist`
+        # was ABSENT from this table and A9 silently took
+        # `default_risk_intent` (G7 C6 fail, defeat note §1.5). Wide
+        # ATR multiplier because the release bar is the volatility;
+        # first rung stays at v1's 1.5R so the change is additive.
+        return event_impulse_risk_intent(
+            conviction, atr_pips, h1_swing_pips,
+            atr_multiplier=2.0, swing_floor_fraction=0.15,
+            sl_pips_min=20.0, sl_pips_max=60.0,
+            tp_multipliers=(1.5, 3.0),
+        )
     if playstyle == "defensive":
         # Kunigami: standard 40-pip SL; warning fires -> refuse (handled elsewhere).
         return atr_scaled_risk_intent(
@@ -240,5 +304,6 @@ __all__ = [
     "default_risk_intent",
     "atr_scaled_risk_intent",
     "structural_risk_intent",
+    "event_impulse_risk_intent",
     "playstyle_risk_intent",
 ]
