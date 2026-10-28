@@ -1,0 +1,10 @@
+{
+  "publish": {
+    "chigiri_hyoma": 3857
+  },
+  "read": {
+    "chigiri_hyoma": 110
+  },
+  "n_thoughts": 3857,
+  "source": "phase_an:chigiri_hyoma:XAGUSD:2024-01-01"
+}

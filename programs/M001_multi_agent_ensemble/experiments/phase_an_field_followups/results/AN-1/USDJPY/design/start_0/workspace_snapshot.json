@@ -1,0 +1,1774 @@
+{
+  "as_of": "2026-08-05T04:39:55.307571+00:00",
+  "tick_id": 12889,
+  "thought_count": 1004,
+  "thoughts": [
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12889:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12889,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12889:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12889,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12888:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12888,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12888:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12888,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12887:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12887,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-30 12:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12887:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12887,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12886:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12886,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-30 08:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12886:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12886,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12885:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12885,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-30 04:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12885:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12885,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12884:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12884,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-30 00:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12884:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12884,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12883:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12883,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-29 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12883:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12883,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12882:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12882,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-29 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12882:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12882,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12881:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12881,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-29 12:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12881:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12881,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12880:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12880,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-29 08:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12880:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12880,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12879:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12879,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-29 04:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12879:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12879,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12878:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12878,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 close 2022-12-29 00:00:00+00:00: precision-zone long fade against D1 bias; entry=133.84900 stop=133.08075 (stop_pips=76.8); base_conv 0.65 + precision 0.05 = 0.70.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "zone_setup_h4",
+        "zone_d1_against",
+        "htf_against",
+        "rin_precision",
+        "rin_precision_lift_applied",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "htf_bias:down",
+        "htf_align:D1",
+        "htf_align_mode:against",
+        "htf_lookback:10",
+        "htf_min_move_pips:60.0"
+      ],
+      "confidence_in_thought": 0.7000000000000001,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "itoshi_rin",
+        "symbol": "USDJPY",
+        "price_lo": 133.08075000000002,
+        "price_hi": 134.61724999999996,
+        "time_start": "2022-12-29T00:00:00+00:00",
+        "time_end": "2022-12-30T08:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "rin_precision_zone_d1_against",
+        "expected_strength": 0.7000000000000001,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 133.849,
+          "stop": 133.08075000000002,
+          "take_profit": 135.7696249999999,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "stop_pips": 76.82499999999663,
+          "conviction_base": 0.65,
+          "conviction_final": 0.7000000000000001,
+          "atr_pips": 46.04030612244898,
+          "h1_swing_pips": 219.29999999999836
+        }
+      },
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "precision",
+        "direction_bias": "long",
+        "regime_read": "down",
+        "expected_stop_pips": 76.82499999999663,
+        "expected_r": 2.5,
+        "driving_evidence": [
+          "rin_precision",
+          "rin_precision_lift_applied",
+          "zone_d1_against",
+          "htf_against",
+          "signal_reason:zone_demand"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12878:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12878,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12877:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12877,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-28 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12877:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12877,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12876:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12876,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-28 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12876:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12876,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12875:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12875,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 close 2022-12-28 12:00:00+00:00: precision-zone long fade against D1 bias; entry=134.22800 stop=133.10607 (stop_pips=112.2); base_conv 0.65 + precision 0.05 = 0.70.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "zone_setup_h4",
+        "zone_d1_against",
+        "htf_against",
+        "rin_precision",
+        "rin_precision_lift_applied",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "htf_bias:down",
+        "htf_align:D1",
+        "htf_align_mode:against",
+        "htf_lookback:10",
+        "htf_min_move_pips:60.0"
+      ],
+      "confidence_in_thought": 0.7000000000000001,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "itoshi_rin",
+        "symbol": "USDJPY",
+        "price_lo": 133.10607142857145,
+        "price_hi": 135.34992857142856,
+        "time_start": "2022-12-28T12:00:00+00:00",
+        "time_end": "2022-12-29T20:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "rin_precision_zone_d1_against",
+        "expected_strength": 0.7000000000000001,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 134.228,
+          "stop": 133.10607142857145,
+          "take_profit": 137.0328214285714,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "stop_pips": 112.19285714285547,
+          "conviction_base": 0.65,
+          "conviction_final": 0.7000000000000001,
+          "atr_pips": 43.00408163265303,
+          "h1_swing_pips": 209.4999999999999
+        }
+      },
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "precision",
+        "direction_bias": "long",
+        "regime_read": "down",
+        "expected_stop_pips": 112.19285714285547,
+        "expected_r": 2.5,
+        "driving_evidence": [
+          "rin_precision",
+          "rin_precision_lift_applied",
+          "zone_d1_against",
+          "htf_against",
+          "signal_reason:zone_demand"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12875:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12875,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12874:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12874,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-28 08:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12874:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12874,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12873:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12873,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-28 04:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12873:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12873,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12872:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12872,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 close 2022-12-28 00:00:00+00:00: precision-zone long fade against D1 bias; entry=134.24300 stop=133.13068 (stop_pips=111.2); base_conv 0.65 + precision 0.05 = 0.70.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "zone_setup_h4",
+        "zone_d1_against",
+        "htf_against",
+        "rin_precision",
+        "rin_precision_lift_applied",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "htf_bias:down",
+        "htf_align:D1",
+        "htf_align_mode:against",
+        "htf_lookback:10",
+        "htf_min_move_pips:60.0"
+      ],
+      "confidence_in_thought": 0.7000000000000001,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "itoshi_rin",
+        "symbol": "USDJPY",
+        "price_lo": 133.13067857142858,
+        "price_hi": 135.35532142857141,
+        "time_start": "2022-12-28T00:00:00+00:00",
+        "time_end": "2022-12-29T08:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "rin_precision_zone_d1_against",
+        "expected_strength": 0.7000000000000001,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 134.243,
+          "stop": 133.13067857142858,
+          "take_profit": 137.02380357142854,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "stop_pips": 111.23214285714198,
+          "conviction_base": 0.65,
+          "conviction_final": 0.7000000000000001,
+          "atr_pips": 37.196428571428555,
+          "h1_swing_pips": 225.10000000000048
+        }
+      },
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "precision",
+        "direction_bias": "long",
+        "regime_read": "down",
+        "expected_stop_pips": 111.23214285714198,
+        "expected_r": 2.5,
+        "driving_evidence": [
+          "rin_precision",
+          "rin_precision_lift_applied",
+          "zone_d1_against",
+          "htf_against",
+          "signal_reason:zone_demand"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12872:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12872,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12871:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12871,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-27 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12871:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12871,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12870:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12870,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-27 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12870:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12870,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12869:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12869,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-27 12:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12869:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12869,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12868:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12868,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-27 08:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12868:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12868,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12867:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12867,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-27 04:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12867:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12867,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12866:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12866,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-27 00:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12866:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12866,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12865:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12865,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-26 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12865:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12865,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12864:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12864,
+      "timestamp": "2022-12-26T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-26 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12864:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12864,
+      "timestamp": "2022-12-26T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12863:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12863,
+      "timestamp": "2022-12-26T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-26 12:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12863:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12863,
+      "timestamp": "2022-12-26T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12862:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12862,
+      "timestamp": "2022-12-26T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-26 08:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12862:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12862,
+      "timestamp": "2022-12-26T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12861:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12861,
+      "timestamp": "2022-12-26T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-26 04:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12861:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12861,
+      "timestamp": "2022-12-26T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12860:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12860,
+      "timestamp": "2022-12-26T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-26 00:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12860:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12860,
+      "timestamp": "2022-12-26T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    }
+  ]
+}

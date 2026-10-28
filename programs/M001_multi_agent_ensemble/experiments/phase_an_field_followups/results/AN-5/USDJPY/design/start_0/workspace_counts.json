@@ -1,0 +1,11 @@
+{
+  "publish": {
+    "barou_shoei": 12889,
+    "karasu_tabito": 12889
+  },
+  "read": {
+    "barou_shoei": 3071
+  },
+  "n_thoughts": 25778,
+  "source": "phase_an:barou_shoei:USDJPY:2015-01-01"
+}

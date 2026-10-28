@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "source": "phase_aj:aj2_is_extended",
+  "aggregator_arm": "phi41",
+  "tick_id": 43493,
+  "bars_seen": {
+    "EURUSD": 14498,
+    "GBPUSD": 14497,
+    "USDCAD": 14498
+  },
+  "last_bar_times": {
+    "EURUSD": "2023-12-29T20:00:00+00:00",
+    "GBPUSD": "2023-12-29T20:00:00+00:00",
+    "USDCAD": "2023-12-29T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "bachira_meguru": 0,
+    "itoshi_rin": 2,
+    "isagi_yoichi": 3,
+    "chigiri_hyoma": 0,
+    "barou_shoei": 2,
+    "nagi_seishiro": 0
+  },
+  "per_agent_equity": {
+    "isagi_yoichi": -265.7785714285678,
+    "bachira_meguru": -89.94999999991016,
+    "itoshi_rin": -884.6750000000437,
+    "chigiri_hyoma": -1611.6671035640836,
+    "reo_mikage": 100.0,
+    "nagi_seishiro": 1328.5321428571613,
+    "barou_shoei": 607.1357142857191
+  },
+  "workspace_publish_counts": {
+    "bachira_meguru": 43493,
+    "barou_shoei": 43493,
+    "chigiri_hyoma": 43493,
+    "isagi_yoichi": 43493,
+    "itoshi_rin": 43493,
+    "nagi_seishiro": 43493,
+    "reo_mikage": 43493,
+    "karasu_tabito": 43493
+  },
+  "workspace_read_counts": {
+    "bachira_meguru": 9855,
+    "isagi_yoichi": 4449,
+    "itoshi_rin": 8062,
+    "nagi_seishiro": 1520,
+    "barou_shoei": 4846,
+    "chigiri_hyoma": 1210
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "EURUSD": {
+      "bars_seen": 14498,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    },
+    "GBPUSD": {
+      "bars_seen": 14497,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    },
+    "USDCAD": {
+      "bars_seen": 14498,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-04T13:38:32.171112+00:00"
+}

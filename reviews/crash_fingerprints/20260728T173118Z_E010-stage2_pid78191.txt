@@ -1,0 +1,23 @@
+# crash-fingerprint captured 20260728T173118Z
+# label=E010-stage2  pid=78191
+# source=output/E010_equal_highs_pool_stage2b/stage2_run.log
+# lines=200
+
+[E010 s2] EURUSD H1=18752 M15=74857 bars
+[E010 s2] 153 H1 equal_highs_pool events
+[E010 s2] bullish_fvg_touch: n_joint=680 joint=2.4374 marg=2.4243 sel=0.0131 lift=0.1124 p=0.0002
+[E010 s2] fib_382_tag: n_joint=156 joint=2.3411 marg=2.3915 sel=-0.0504 lift=0.1829 p=0.0002
+[E010 s2] fib_50_tag: n_joint=141 joint=2.1937 marg=2.5468 sel=-0.3531 lift=0.1385 p=0.0036
+[E010 s2] fib_618_tag: n_joint=121 joint=2.308 marg=2.611 sel=-0.303 lift=0.2788 p=0.0002
+[E010 s2] fib_ext_1272_tag: n_joint=92 joint=2.1668 marg=2.8303 sel=-0.6635 lift=0.2557 p=0.0016
+[E010 s2] ote_tag: n_joint=121 joint=2.308 marg=2.611 sel=-0.303 lift=0.2792 p=0.0002
+[E010 s2] trendline_support_touch: n_joint=712 joint=2.3692 marg=2.5347 sel=-0.1655 lift=0.1335 p=0.0002
+registry -> /Users/the1finix/Documents/GitHub/finance-research-experiments/output/E010_equal_highs_pool_stage2b/stage2_EURUSD_confirm_2026-07-28_1730.jsonl
+  bullish_fvg_touch: parked_weak_effect
+  fib_382_tag: dead
+  fib_50_tag: dead
+  fib_618_tag: dead
+  fib_ext_1272_tag: parked_insufficient_n
+  ote_tag: dead
+  trendline_support_touch: dead
+STOP RULE FIRED at stage 2: stop files emitted for [3, 4].

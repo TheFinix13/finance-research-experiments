@@ -1,0 +1,22 @@
+{
+  "publish": {
+    "bachira_meguru": 4812,
+    "chigiri_hyoma": 3208,
+    "isagi_yoichi": 4812,
+    "itoshi_rin": 1604,
+    "nagi_seishiro": 4812,
+    "reo_mikage": 4812,
+    "karasu_tabito": 4812,
+    "barou_shoei": 1604
+  },
+  "read": {
+    "bachira_meguru": 1080,
+    "isagi_yoichi": 440,
+    "itoshi_rin": 156,
+    "barou_shoei": 104,
+    "chigiri_hyoma": 88,
+    "nagi_seishiro": 49
+  },
+  "n_thoughts": 30476,
+  "source": "i030_parity"
+}

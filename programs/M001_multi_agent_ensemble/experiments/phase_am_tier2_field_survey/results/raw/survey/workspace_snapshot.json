@@ -1,0 +1,1857 @@
+{
+  "as_of": "2026-08-04T19:50:20.096969+00:00",
+  "tick_id": 50112,
+  "thought_count": 3535,
+  "thoughts": [
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50109:USOIL",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50109,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[bachira v1] USOIL H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50110:USTEC",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50110,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[bachira v1] USTEC H4 close 2022-12-30 20:00:00+00:00: baseline-zone long fade (NO D1 gate). entry=10958.43900 stop=10814.74814 tp=11173.97529; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "USTEC",
+        "price_lo": 10814.748142857143,
+        "price_hi": 11102.129857142858,
+        "time_start": "2022-12-30T20:00:00+00:00",
+        "time_end": "2022-12-31T20:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 10958.439,
+          "stop": 10814.748142857143,
+          "take_profit": 11173.975285714287,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 85.81839795918413,
+          "h1_swing_pips": 370.78999999999905
+        }
+      },
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 143.69085714285757,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50111:XAGUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50111,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[bachira v1] XAGUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50112:XAUUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50112,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[bachira v1] XAUUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:50109:USOIL",
+      "agent_id": "barou_shoei",
+      "tick_id": 50109,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[barou v1] USOIL H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:50110:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 50110,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:50111:XAGUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 50111,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[barou v1] XAGUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:50112:XAUUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 50112,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[barou v1] XAUUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:50109:USOIL",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 50109,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[chigiri v1] USOIL H4 @ 2022-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:50110:USTEC",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 50110,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[chigiri v1] USTEC H4 @ 2022-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:50111:XAGUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 50111,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[chigiri v1] XAGUSD H4 @ 2022-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:50112:XAUUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 50112,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[chigiri v1] XAUUSD H4 @ 2022-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:50109:USOIL",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 50109,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[isagi v1] USOIL H4 close 2022-12-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:50110:USTEC",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 50110,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[isagi v1] USTEC H4 close 2022-12-30 20:00:00+00:00: zone-touch long fade against D1 bias; entry=10958.43900 stop=10814.74814 tp=11173.97529.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed",
+        "htf_bias:down",
+        "htf_align:D1",
+        "htf_align_mode:against",
+        "htf_lookback:10",
+        "htf_min_move_pips:60.0",
+        "signal_reason:zone_demand"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "isagi_yoichi",
+        "symbol": "USTEC",
+        "price_lo": 10814.748142857143,
+        "price_hi": 11102.129857142858,
+        "time_start": "2022-12-30T20:00:00+00:00",
+        "time_end": "2022-12-31T20:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "D1_trend_against",
+        "expected_strength": 0.65,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 10958.439,
+          "stop": 10814.748142857143,
+          "take_profit": 11173.975285714287,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "atr_pips": 85.81839795918413,
+          "h1_swing_pips": 370.78999999999905
+        }
+      },
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "metavision",
+        "direction_bias": "long",
+        "regime_read": "down",
+        "expected_stop_pips": 143.69085714285757,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "zone_d1_against",
+          "htf_against",
+          "signal_reason:zone_demand"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:50111:XAGUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 50111,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[isagi v1] XAGUSD H4 close 2022-12-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:50112:XAUUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 50112,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[isagi v1] XAUUSD H4 close 2022-12-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:50109:USOIL",
+      "agent_id": "itoshi_rin",
+      "tick_id": 50109,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[rin v1] USOIL H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:50110:USTEC",
+      "agent_id": "itoshi_rin",
+      "tick_id": 50110,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[rin v1] USTEC H4 close 2022-12-30 20:00:00+00:00: precision-zone long fade against D1 bias; entry=10958.43900 stop=10814.74814 (stop_pips=143.7); base_conv 0.65 + precision 0.05 = 0.70.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "zone_setup_h4",
+        "zone_d1_against",
+        "htf_against",
+        "rin_precision",
+        "rin_precision_lift_applied",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "htf_bias:down",
+        "htf_align:D1",
+        "htf_align_mode:against",
+        "htf_lookback:10",
+        "htf_min_move_pips:60.0"
+      ],
+      "confidence_in_thought": 0.7000000000000001,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "itoshi_rin",
+        "symbol": "USTEC",
+        "price_lo": 10814.748142857143,
+        "price_hi": 11102.129857142858,
+        "time_start": "2022-12-30T20:00:00+00:00",
+        "time_end": "2023-01-01T04:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "rin_precision_zone_d1_against",
+        "expected_strength": 0.7000000000000001,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 10958.439,
+          "stop": 10814.748142857143,
+          "take_profit": 11317.666142857144,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "stop_pips": 143.69085714285757,
+          "conviction_base": 0.65,
+          "conviction_final": 0.7000000000000001,
+          "atr_pips": 85.81839795918413,
+          "h1_swing_pips": 370.78999999999905
+        }
+      },
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "precision",
+        "direction_bias": "long",
+        "regime_read": "down",
+        "expected_stop_pips": 143.69085714285757,
+        "expected_r": 2.5,
+        "driving_evidence": [
+          "rin_precision",
+          "rin_precision_lift_applied",
+          "zone_d1_against",
+          "htf_against",
+          "signal_reason:zone_demand"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:50111:XAGUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 50111,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[rin v1] XAGUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:50112:XAUUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 50112,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[rin v1] XAUUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:50109:USOIL",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 50109,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[nagi v1] USOIL H4 @ 2022-12-30 20:00:00+00:00 -- 4 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:50110:USTEC",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 50110,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[nagi v1] USTEC H4 @ 2022-12-30 20:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:50111:XAGUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 50111,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[nagi v1] XAGUSD H4 @ 2022-12-30 20:00:00+00:00 -- 2 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:50112:XAUUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 50112,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[nagi v1] XAUUSD H4 @ 2022-12-30 20:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:50109:USOIL",
+      "agent_id": "reo_mikage",
+      "tick_id": 50109,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[reo v1] USOIL H4 @ 2022-12-30 20:00:00+00:00 -- mirroring nagi_seishiro (short, base_conv 0.93); humility margin: band x1.20, time x0.75; mirror conv 1.00.",
+      "tags": [
+        "canon:nagi",
+        "canon:reo",
+        "direction:short",
+        "f11_chemical_reaction",
+        "leader:bachira_meguru",
+        "mirroring:nagi_seishiro",
+        "nagi_confluence",
+        "peer:itoshi_rin",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "signal_reason:zone_supply",
+        "weapon:chameleon",
+        "weapon:perfect_trap",
+        "zone_setup_h4"
+      ],
+      "confidence_in_thought": 1.0,
+      "expected_action": "mirror_short",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "USOIL",
+        "price_lo": 76.87584285714286,
+        "price_hi": 80.74815714285714,
+        "time_start": "2022-12-30T16:00:00+00:00",
+        "time_end": "2022-12-31T10:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "reo_mirror_of:nagi_seishiro",
+        "expected_strength": 1.0,
+        "direction_bias": "short",
+        "rationale": {
+          "mirrored_agent_id": "nagi_seishiro",
+          "mirrored_thought_id": "nagi_seishiro:50105:USOIL",
+          "leader_base_conviction": 0.925,
+          "reo_lift": 0.1,
+          "final_conviction": 1.0,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "leader": {
+              "entry": 78.812,
+              "stop": 80.42546428571428,
+              "take_profit": 76.39180357142857,
+              "signal_reason": "zone_supply",
+              "home_tf": "H4",
+              "conviction_base": 0.65,
+              "conviction_final": 0.75,
+              "atr_pips": 111.84744897959158,
+              "h1_swing_pips": 437.30000000000047,
+              "agent_id": "bachira_meguru",
+              "thought_id": "bachira_meguru:50101:USOIL",
+              "conviction": 0.75
+            },
+            "other_agent_id": "itoshi_rin",
+            "other_thought_id": "itoshi_rin:50101:USOIL",
+            "shared_tags": [
+              "direction:short",
+              "signal_reason:zone_supply",
+              "zone_setup_h4"
+            ],
+            "combined_conviction": 0.925,
+            "f11_formula": "1 - prod(1 - c_i)"
+          }
+        }
+      },
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "nagi_seishiro:50105:USOIL"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "short",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 161.34642857142865,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:nagi_seishiro",
+          "nagi_confluence",
+          "f11_chemical_reaction",
+          "leader:bachira_meguru",
+          "peer:itoshi_rin",
+          "direction:short",
+          "signal_reason:zone_supply",
+          "zone_setup_h4"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:50110:USTEC",
+      "agent_id": "reo_mikage",
+      "tick_id": 50110,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[reo v1] USTEC H4 @ 2022-12-30 20:00:00+00:00 -- 1 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:50111:XAGUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 50111,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[reo v1] XAGUSD H4 @ 2022-12-30 20:00:00+00:00 -- 2 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:50112:XAUUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 50112,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[reo v1] XAUUSD H4 @ 2022-12-30 20:00:00+00:00 -- 1 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50105:USOIL",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50105,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[bachira v1] USOIL H4 close 2022-12-30 16:00:00+00:00: baseline-zone long fade (NO D1 gate). entry=80.44200 stop=77.09636 tp=85.46046; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "USOIL",
+        "price_lo": 77.09635714285714,
+        "price_hi": 83.78764285714284,
+        "time_start": "2022-12-30T16:00:00+00:00",
+        "time_end": "2022-12-31T16:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 80.442,
+          "stop": 77.09635714285714,
+          "take_profit": 85.46046428571427,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 119.2147959183671,
+          "h1_swing_pips": 437.30000000000047
+        }
+      },
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 334.5642857142849,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50106:USTEC",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50106,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[bachira v1] USTEC H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50107:XAGUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50107,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[bachira v1] XAGUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50108:XAUUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50108,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[bachira v1] XAUUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:50105:USOIL",
+      "agent_id": "barou_shoei",
+      "tick_id": 50105,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-30 16:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) long. entry=80.44200 stop=76.49571 tp=86.36143; conv 0.65 + devour 0.20 = 0.85",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_demand",
+        "barou_devour_candidate",
+        "barou_devour_applied",
+        "devour_against:short"
+      ],
+      "confidence_in_thought": 0.8500000000000001,
+      "expected_action": "long_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USOIL",
+        "price_lo": 76.49571428571429,
+        "price_hi": 84.3882857142857,
+        "time_start": "2022-12-30T16:00:00+00:00",
+        "time_end": "2023-01-01T00:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.8500000000000001,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 80.442,
+          "stop": 76.49571428571429,
+          "take_profit": 86.36142857142855,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.8500000000000001,
+          "atr_pips": 119.2147959183671,
+          "h1_swing_pips": 437.30000000000047
+        }
+      },
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "isagi_yoichi:50101:USOIL"
+      ],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "long",
+        "regime_read": "devour_active",
+        "expected_stop_pips": 394.62857142857075,
+        "expected_r": 1.4999999999999982,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_demand",
+          "barou_devour_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:50106:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 50106,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:50107:XAGUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 50107,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[barou v1] XAGUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:50108:XAUUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 50108,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[barou v1] XAUUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:50105:USOIL",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 50105,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[chigiri v1] USOIL H4 @ 2022-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:50106:USTEC",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 50106,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[chigiri v1] USTEC H4 @ 2022-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:50107:XAGUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 50107,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[chigiri v1] XAGUSD H4 @ 2022-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:50108:XAUUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 50108,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[chigiri v1] XAUUSD H4 @ 2022-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:50105:USOIL",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 50105,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[isagi v1] USOIL H4 close 2022-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:50106:USTEC",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 50106,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[isagi v1] USTEC H4 close 2022-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:50107:XAGUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 50107,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[isagi v1] XAGUSD H4 close 2022-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:50108:XAUUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 50108,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[isagi v1] XAUUSD H4 close 2022-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:50105:USOIL",
+      "agent_id": "itoshi_rin",
+      "tick_id": 50105,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[rin v1] USOIL H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:50106:USTEC",
+      "agent_id": "itoshi_rin",
+      "tick_id": 50106,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[rin v1] USTEC H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:50107:XAGUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 50107,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[rin v1] XAGUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:50108:XAUUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 50108,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[rin v1] XAUUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:50105:USOIL",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 50105,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[nagi v1] USOIL H4 @ 2022-12-30 16:00:00+00:00 -- chemical reaction: bachira_meguru + itoshi_rin overlap on 3 tags & coordinate; combined conviction 0.93 (F11 OR).",
+      "tags": [
+        "canon:nagi",
+        "direction:short",
+        "f11_chemical_reaction",
+        "leader:bachira_meguru",
+        "nagi_confluence",
+        "peer:itoshi_rin",
+        "signal_reason:zone_supply",
+        "weapon:perfect_trap",
+        "zone_setup_h4"
+      ],
+      "confidence_in_thought": 0.925,
+      "expected_action": "short_on_chemical_reaction",
+      "coordinate": {
+        "agent_id": "nagi_seishiro",
+        "symbol": "USOIL",
+        "price_lo": 77.19853571428571,
+        "price_hi": 80.42546428571428,
+        "time_start": "2022-12-30T16:00:00+00:00",
+        "time_end": "2022-12-31T16:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "chemical_reaction_v1",
+        "expected_strength": 0.925,
+        "direction_bias": "short",
+        "rationale": {
+          "leader": {
+            "entry": 78.812,
+            "stop": 80.42546428571428,
+            "take_profit": 76.39180357142857,
+            "signal_reason": "zone_supply",
+            "home_tf": "H4",
+            "conviction_base": 0.65,
+            "conviction_final": 0.75,
+            "atr_pips": 111.84744897959158,
+            "h1_swing_pips": 437.30000000000047,
+            "agent_id": "bachira_meguru",
+            "thought_id": "bachira_meguru:50101:USOIL",
+            "conviction": 0.75
+          },
+          "other_agent_id": "itoshi_rin",
+          "other_thought_id": "itoshi_rin:50101:USOIL",
+          "shared_tags": [
+            "direction:short",
+            "signal_reason:zone_supply",
+            "zone_setup_h4"
+          ],
+          "combined_conviction": 0.925,
+          "f11_formula": "1 - prod(1 - c_i)"
+        }
+      },
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "bachira_meguru:50101:USOIL",
+        "itoshi_rin:50101:USOIL"
+      ],
+      "read": {
+        "signal_family": "confluence",
+        "direction_bias": "short",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 161.34642857142865,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "nagi_confluence",
+          "f11_chemical_reaction",
+          "leader:bachira_meguru",
+          "peer:itoshi_rin",
+          "direction:short",
+          "signal_reason:zone_supply",
+          "zone_setup_h4"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:50106:USTEC",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 50106,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[nagi v1] USTEC H4 @ 2022-12-30 16:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:50107:XAGUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 50107,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[nagi v1] XAGUSD H4 @ 2022-12-30 16:00:00+00:00 -- 3 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:50108:XAUUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 50108,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[nagi v1] XAUUSD H4 @ 2022-12-30 16:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:50105:USOIL",
+      "agent_id": "reo_mikage",
+      "tick_id": 50105,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[reo v1] USOIL H4 @ 2022-12-30 16:00:00+00:00 -- mirroring bachira_meguru (short, base_conv 0.75); humility margin: band x1.20, time x0.75; mirror conv 0.85.",
+      "tags": [
+        "bachira_rebel_baseline_zone",
+        "bachira_rebel_lift_applied",
+        "canon:bachira",
+        "canon:reo",
+        "direction:short",
+        "mirroring:bachira_meguru",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "signal_reason:zone_supply",
+        "weapon:chameleon",
+        "weapon:rebel_dribble",
+        "zone_setup_h4"
+      ],
+      "confidence_in_thought": 0.85,
+      "expected_action": "mirror_short",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "USOIL",
+        "price_lo": 76.87584285714286,
+        "price_hi": 80.74815714285714,
+        "time_start": "2022-12-30T12:00:00+00:00",
+        "time_end": "2022-12-31T06:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "reo_mirror_of:bachira_meguru",
+        "expected_strength": 0.85,
+        "direction_bias": "short",
+        "rationale": {
+          "mirrored_agent_id": "bachira_meguru",
+          "mirrored_thought_id": "bachira_meguru:50101:USOIL",
+          "leader_base_conviction": 0.75,
+          "reo_lift": 0.1,
+          "final_conviction": 0.85,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "entry": 78.812,
+            "stop": 80.42546428571428,
+            "take_profit": 76.39180357142857,
+            "signal_reason": "zone_supply",
+            "home_tf": "H4",
+            "conviction_base": 0.65,
+            "conviction_final": 0.75,
+            "atr_pips": 111.84744897959158,
+            "h1_swing_pips": 437.30000000000047
+          }
+        }
+      },
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "bachira_meguru:50101:USOIL"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "short",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 161.34642857142865,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:bachira_meguru",
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_supply",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:50106:USTEC",
+      "agent_id": "reo_mikage",
+      "tick_id": 50106,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[reo v1] USTEC H4 @ 2022-12-30 16:00:00+00:00 -- 1 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:50107:XAGUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 50107,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[reo v1] XAGUSD H4 @ 2022-12-30 16:00:00+00:00 -- mirroring bachira_meguru (long, base_conv 0.75); humility margin: band x1.20, time x0.75; mirror conv 0.85.",
+      "tags": [
+        "bachira_rebel_baseline_zone",
+        "bachira_rebel_lift_applied",
+        "canon:bachira",
+        "canon:reo",
+        "direction:long",
+        "mirroring:bachira_meguru",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "signal_reason:zone_demand",
+        "weapon:chameleon",
+        "weapon:rebel_dribble",
+        "zone_setup_h4"
+      ],
+      "confidence_in_thought": 0.85,
+      "expected_action": "mirror_long",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "XAGUSD",
+        "price_lo": 23.215314285714285,
+        "price_hi": 24.410685714285712,
+        "time_start": "2022-12-30T12:00:00+00:00",
+        "time_end": "2022-12-31T06:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "reo_mirror_of:bachira_meguru",
+        "expected_strength": 0.85,
+        "direction_bias": "long",
+        "rationale": {
+          "mirrored_agent_id": "bachira_meguru",
+          "mirrored_thought_id": "bachira_meguru:50103:XAGUSD",
+          "leader_base_conviction": 0.75,
+          "reo_lift": 0.1,
+          "final_conviction": 0.85,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "entry": 23.813,
+            "stop": 23.31492857142857,
+            "take_profit": 24.56010714285714,
+            "signal_reason": "zone_demand",
+            "home_tf": "H4",
+            "conviction_base": 0.65,
+            "conviction_final": 0.75,
+            "atr_pips": 25.438265306122442,
+            "h1_swing_pips": 82.60000000000005
+          }
+        }
+      },
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "bachira_meguru:50103:XAGUSD"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 49.80714285714285,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:bachira_meguru",
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:50108:XAUUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 50108,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[reo v1] XAUUSD H4 @ 2022-12-30 16:00:00+00:00 -- 1 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50101:USOIL",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50101,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "USOIL",
+      "narrative": "[bachira v1] USOIL H4 close 2022-12-30 12:00:00+00:00: baseline-zone short fade (NO D1 gate). entry=78.81200 stop=80.42546 tp=76.39180; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_supply",
+        "direction:short",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "short_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "USOIL",
+        "price_lo": 77.19853571428571,
+        "price_hi": 80.42546428571428,
+        "time_start": "2022-12-30T12:00:00+00:00",
+        "time_end": "2022-12-31T12:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 78.812,
+          "stop": 80.42546428571428,
+          "take_profit": 76.39180357142857,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 111.84744897959158,
+          "h1_swing_pips": 437.30000000000047
+        }
+      },
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "short",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 161.34642857142865,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_supply",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50102:USTEC",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50102,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[bachira v1] USTEC H4 @ 2022-12-30 12:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50103:XAGUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50103,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "XAGUSD",
+      "narrative": "[bachira v1] XAGUSD H4 close 2022-12-30 12:00:00+00:00: baseline-zone long fade (NO D1 gate). entry=23.81300 stop=23.31493 tp=24.56011; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "XAGUSD",
+        "price_lo": 23.31492857142857,
+        "price_hi": 24.311071428571427,
+        "time_start": "2022-12-30T12:00:00+00:00",
+        "time_end": "2022-12-31T12:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 23.813,
+          "stop": 23.31492857142857,
+          "take_profit": 24.56010714285714,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 25.438265306122442,
+          "h1_swing_pips": 82.60000000000005
+        }
+      },
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 49.80714285714285,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:50104:XAUUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 50104,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "XAUUSD",
+      "narrative": "[bachira v1] XAUUSD H4 @ 2022-12-30 12:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    }
+  ]
+}

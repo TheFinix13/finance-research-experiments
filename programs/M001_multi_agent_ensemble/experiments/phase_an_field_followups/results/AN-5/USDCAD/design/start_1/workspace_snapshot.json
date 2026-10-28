@@ -1,0 +1,1627 @@
+{
+  "as_of": "2026-08-05T04:58:08.162603+00:00",
+  "tick_id": 12497,
+  "thought_count": 1004,
+  "thoughts": [
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12497:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12497,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12497:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12497,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12496:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12496,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12496:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12496,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12495:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12495,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-30 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12495:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12495,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-30 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12494:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12494,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-30 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12494:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12494,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-30 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12493:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12493,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-30 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12493:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12493,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-30 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12492:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12492,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-30 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12492:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12492,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-30 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12491:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12491,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-29 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12491:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12491,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-29 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12490:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12490,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-29 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12490:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12490,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-29 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12489:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12489,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-29 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12489:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12489,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-29 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12488:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12488,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-29 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12488:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12488,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-29 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12487:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12487,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-29 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12487:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12487,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-29 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12486:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12486,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-29 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12486:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12486,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-29 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12485:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12485,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-28 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12485:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12485,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-28 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12484:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12484,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-28 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12484:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12484,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-28 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12483:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12483,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-28 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12483:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12483,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-28 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12482:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12482,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-28 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12482:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12482,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-28 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12481:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12481,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-28 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12481:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12481,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-28 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12480:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12480,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-28 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12480:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12480,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-28 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12479:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12479,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-27 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12479:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12479,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-27 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12478:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12478,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-27 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12478:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12478,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-27 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12477:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12477,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-27 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12477:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12477,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-27 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12476:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12476,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-27 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12476:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12476,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-27 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12475:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12475,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-27 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12475:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12475,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-27 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12474:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12474,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-27 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12474:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12474,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-27 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12473:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12473,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-26 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12473:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12473,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-26 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12472:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12472,
+      "timestamp": "2022-12-26T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-26 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12472:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12472,
+      "timestamp": "2022-12-26T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-26 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12471:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12471,
+      "timestamp": "2022-12-26T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-26 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12471:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12471,
+      "timestamp": "2022-12-26T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-26 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12470:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12470,
+      "timestamp": "2022-12-26T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-26 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12470:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12470,
+      "timestamp": "2022-12-26T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-26 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12469:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12469,
+      "timestamp": "2022-12-26T04:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-26 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12469:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12469,
+      "timestamp": "2022-12-26T04:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-26 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12468:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12468,
+      "timestamp": "2022-12-26T00:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2022-12-26 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12468:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12468,
+      "timestamp": "2022-12-26T00:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2022-12-26 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    }
+  ]
+}

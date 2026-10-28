@@ -1,0 +1,82 @@
+{
+  "schema": 1,
+  "source": "phase_al_survey",
+  "aggregator_arm": "phi41",
+  "tick_id": 51556,
+  "bars_seen": {
+    "AUDUSD": 12889,
+    "NZDUSD": 12888,
+    "USDJPY": 12889,
+    "USDCHF": 12890
+  },
+  "last_bar_times": {
+    "AUDUSD": "2022-12-30T20:00:00+00:00",
+    "NZDUSD": "2022-12-30T20:00:00+00:00",
+    "USDCHF": "2022-12-30T20:00:00+00:00",
+    "USDJPY": "2022-12-30T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "itoshi_rin": 5,
+    "bachira_meguru": 0,
+    "chigiri_hyoma": 2,
+    "barou_shoei": 2,
+    "isagi_yoichi": 1,
+    "nagi_seishiro": 0
+  },
+  "per_agent_equity": {
+    "isagi_yoichi": -1115.8553571428663,
+    "bachira_meguru": -271.1803571428356,
+    "itoshi_rin": 1181.3928571428019,
+    "chigiri_hyoma": 832.6892637197336,
+    "reo_mikage": 100.0,
+    "nagi_seishiro": 635.4750000000054,
+    "barou_shoei": 507.54642857142125
+  },
+  "workspace_publish_counts": {
+    "bachira_meguru": 51556,
+    "barou_shoei": 51556,
+    "chigiri_hyoma": 51556,
+    "isagi_yoichi": 51556,
+    "itoshi_rin": 51556,
+    "nagi_seishiro": 51556,
+    "reo_mikage": 51556,
+    "karasu_tabito": 51556
+  },
+  "workspace_read_counts": {
+    "bachira_meguru": 11309,
+    "barou_shoei": 6104,
+    "isagi_yoichi": 5439,
+    "itoshi_rin": 8996,
+    "nagi_seishiro": 2020,
+    "chigiri_hyoma": 1374
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "AUDUSD": {
+      "bars_seen": 12889,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    },
+    "NZDUSD": {
+      "bars_seen": 12888,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    },
+    "USDCHF": {
+      "bars_seen": 12890,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    },
+    "USDJPY": {
+      "bars_seen": 12889,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-04T17:09:21.944720+00:00"
+}

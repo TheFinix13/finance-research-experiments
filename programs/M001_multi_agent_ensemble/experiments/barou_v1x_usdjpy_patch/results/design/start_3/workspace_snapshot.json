@@ -1,0 +1,1697 @@
+{
+  "as_of": "2026-08-05T07:14:19.530965+00:00",
+  "tick_id": 11685,
+  "thought_count": 1004,
+  "thoughts": [
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11685:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11685,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11685:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11685,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11684:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11684,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-30 16:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=130.97100 stop=132.95293 tp=127.99811; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USDJPY",
+        "price_lo": 128.98907142857144,
+        "price_hi": 132.95292857142857,
+        "time_start": "2022-12-30T16:00:00+00:00",
+        "time_end": "2023-01-01T00:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 130.971,
+          "stop": 132.95292857142857,
+          "take_profit": 127.99810714285715,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 61.30306122448999,
+          "h1_swing_pips": 372.199999999998
+        }
+      },
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 198.19285714285684,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11684:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11684,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11683:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11683,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-30 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11683:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11683,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11682:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11682,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-30 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11682:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11682,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11681:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11681,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-30 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11681:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11681,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11680:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11680,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-30 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11680:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11680,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11679:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11679,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-29 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11679:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11679,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11678:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11678,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-29 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11678:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11678,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11677:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11677,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-29 12:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=133.22300 stop=134.35186 tp=131.52971; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USDJPY",
+        "price_lo": 132.09414285714288,
+        "price_hi": 134.35185714285714,
+        "time_start": "2022-12-29T12:00:00+00:00",
+        "time_end": "2022-12-30T20:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 133.223,
+          "stop": 134.35185714285714,
+          "take_profit": 131.5297142857143,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 51.222448979592194,
+          "h1_swing_pips": 205.49999999999784
+        }
+      },
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 112.88571428571288,
+        "expected_r": 1.5000000000000127,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11677:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11677,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11676:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11676,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-29 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11676:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11676,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11675:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11675,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-29 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11675:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11675,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11674:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11674,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-29 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11674:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11674,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-29 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11673:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11673,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-28 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11673:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11673,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11672:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11672,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-28 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11672:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11672,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11671:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11671,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-28 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11671:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11671,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11670:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11670,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-28 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11670:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11670,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11669:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11669,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-28 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11669:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11669,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11668:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11668,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-28 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11668:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11668,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-28 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11667:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11667,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-27 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11667:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11667,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11666:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11666,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-27 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11666:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11666,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11665:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11665,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-27 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11665:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11665,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11664:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11664,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-27 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11664:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11664,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11663:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11663,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-27 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11663:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11663,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11662:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11662,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-27 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11662:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11662,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-27 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11661:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11661,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-26 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11661:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11661,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11660:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11660,
+      "timestamp": "2022-12-26T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-26 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11660:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11660,
+      "timestamp": "2022-12-26T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11659:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11659,
+      "timestamp": "2022-12-26T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-26 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11659:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11659,
+      "timestamp": "2022-12-26T12:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11658:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11658,
+      "timestamp": "2022-12-26T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-26 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11658:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11658,
+      "timestamp": "2022-12-26T08:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11657:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11657,
+      "timestamp": "2022-12-26T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-26 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11657:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11657,
+      "timestamp": "2022-12-26T04:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11656:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 11656,
+      "timestamp": "2022-12-26T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-26 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:11656:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 11656,
+      "timestamp": "2022-12-26T00:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-26 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    }
+  ]
+}

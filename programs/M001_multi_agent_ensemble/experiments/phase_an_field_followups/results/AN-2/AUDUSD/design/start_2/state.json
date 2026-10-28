@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source": "phase_an:chigiri_hyoma:AUDUSD:2015-07-01",
+  "aggregator_arm": "phi41",
+  "tick_id": 12094,
+  "bars_seen": {
+    "AUDUSD": 12094
+  },
+  "last_bar_times": {
+    "AUDUSD": "2022-12-30T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "chigiri_hyoma": 3
+  },
+  "per_agent_equity": {
+    "chigiri_hyoma": 860.5501797142424
+  },
+  "workspace_publish_counts": {
+    "chigiri_hyoma": 12094,
+    "karasu_tabito": 12094
+  },
+  "workspace_read_counts": {
+    "chigiri_hyoma": 303
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "AUDUSD": {
+      "bars_seen": 12094,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-05T04:46:45.486806+00:00"
+}

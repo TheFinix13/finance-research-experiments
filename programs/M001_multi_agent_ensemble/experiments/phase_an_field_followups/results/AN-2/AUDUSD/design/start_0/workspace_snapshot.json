@@ -1,0 +1,1627 @@
+{
+  "as_of": "2026-08-05T04:45:02.655486+00:00",
+  "tick_id": 12889,
+  "thought_count": 1004,
+  "thoughts": [
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12889:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12889,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12889:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12889,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12888:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12888,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12888:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12888,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12887:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12887,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-30 12:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12887:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12887,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-30 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12886:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12886,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-30 08:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12886:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12886,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-30 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12885:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12885,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-30 04:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12885:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12885,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-30 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12884:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12884,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-30 00:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12884:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12884,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-30 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12883:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12883,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-29 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12883:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12883,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-29 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12882:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12882,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-29 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12882:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12882,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-29 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12881:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12881,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-29 12:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12881:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12881,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-29 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12880:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12880,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-29 08:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12880:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12880,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-29 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12879:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12879,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-29 04:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12879:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12879,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-29 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12878:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12878,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-29 00:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12878:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12878,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-29 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12877:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12877,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-28 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12877:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12877,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-28 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12876:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12876,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-28 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12876:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12876,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-28 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12875:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12875,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-28 12:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12875:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12875,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-28 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12874:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12874,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-28 08:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12874:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12874,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-28 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12873:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12873,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-28 04:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12873:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12873,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-28 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12872:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12872,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-28 00:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12872:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12872,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-28 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12871:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12871,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-27 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12871:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12871,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-27 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12870:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12870,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-27 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12870:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12870,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-27 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12869:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12869,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-27 12:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12869:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12869,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-27 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12868:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12868,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-27 08:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12868:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12868,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-27 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12867:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12867,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-27 04:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12867:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12867,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-27 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12866:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12866,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-27 00:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12866:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12866,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-27 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12865:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12865,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-26 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12865:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12865,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-26 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12864:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12864,
+      "timestamp": "2022-12-26T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-26 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12864:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12864,
+      "timestamp": "2022-12-26T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-26 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12863:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12863,
+      "timestamp": "2022-12-26T12:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-26 12:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12863:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12863,
+      "timestamp": "2022-12-26T12:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-26 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12862:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12862,
+      "timestamp": "2022-12-26T08:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-26 08:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12862:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12862,
+      "timestamp": "2022-12-26T08:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-26 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12861:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12861,
+      "timestamp": "2022-12-26T04:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-26 04:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12861:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12861,
+      "timestamp": "2022-12-26T04:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-26 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12860:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12860,
+      "timestamp": "2022-12-26T00:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-26 00:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12860:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12860,
+      "timestamp": "2022-12-26T00:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-26 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    }
+  ]
+}

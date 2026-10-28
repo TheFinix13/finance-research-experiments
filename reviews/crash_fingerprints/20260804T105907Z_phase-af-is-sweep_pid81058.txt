@@ -1,0 +1,6 @@
+# crash-fingerprint captured 20260804T105907Z
+# label=phase-af-is-sweep  pid=81058
+# source=/Users/the1finix/Documents/GitHub/finance-research-experiments/results/is_sweep.stdout.log
+# lines=200
+
+[monitor] tail-on-exit source not found: /Users/the1finix/Documents/GitHub/finance-research-experiments/results/is_sweep.stdout.log

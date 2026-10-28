@@ -1,0 +1,47 @@
+# crash-fingerprint captured 20260724T033639Z
+# label=phase-ae-treatment-v2  pid=75090
+# source=programs/M001_multi_agent_ensemble/experiments/phase_ae_sae_event_specialist/results/ae-treatment.log
+# lines=200
+
+2026-07-24 04:12:26,812 INFO __main__ -- Phase AE arm 'ae-treatment': sae_enabled=True | panel 2015-01-01 -> 2025-12-31 | 7 windows
+2026-07-24 04:12:27,290 INFO __main__ -- Loaded 17723 EURUSD H4 bars
+2026-07-24 04:12:27,500 INFO __main__ -- Loaded 17718 GBPUSD H4 bars
+2026-07-24 04:12:27,718 INFO __main__ -- Loaded 17722 USDCAD H4 bars
+2026-07-24 04:12:28,200 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-24 04:12:28,606 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-24 04:12:29,017 INFO programs.M001_multi_agent_ensemble.sim.agents.a03_rin -- A3RinV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-24 04:12:29,023 INFO programs.M001_multi_agent_ensemble.sim.agents.a04_chigiri -- A4ChigiriV1 prepared EURUSD: 17723 bars, ATR ready
+2026-07-24 04:12:29,414 INFO programs.M001_multi_agent_ensemble.sim.agents.a07_barou -- A7BarouV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-24 04:12:29,891 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings
+2026-07-24 04:12:30,394 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings
+2026-07-24 04:12:30,400 INFO programs.M001_multi_agent_ensemble.sim.agents.a04_chigiri -- A4ChigiriV1 prepared GBPUSD: 17718 bars, ATR ready
+2026-07-24 04:12:30,879 INFO programs.M001_multi_agent_ensemble.sim.agents.a07_barou -- A7BarouV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings
+2026-07-24 04:12:31,272 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared USDCAD: 17722 bars, 1704 zones, 2386 swings
+2026-07-24 04:12:31,703 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared USDCAD: 17722 bars, 1704 zones, 2386 swings
+2026-07-24 04:12:32,104 INFO programs.M001_multi_agent_ensemble.sim.agents.a07_barou -- A7BarouV1 prepared USDCAD: 17722 bars, 1704 zones, 2386 swings
+2026-07-24 04:12:35,293 INFO __main__ -- Loaded 274218 EURUSD M15 bars + 349 calendar events
+2026-07-24 04:12:35,300 INFO __main__ -- Built 698 Sae M15 event ticks
+2026-07-24 04:12:35,397 INFO __main__ -- Phase AE squad replay starting: 53163 global bars across 3 symbols (sae_active=True, 698 event ticks)
+2026-07-24 04:12:38,859 INFO __main__ -- Phase AE replay progress: 2658/53163 bars (5.0%), elapsed=3.5 s, eta=65.8 s, trades=302, proposals_all=1465
+2026-07-24 04:12:47,139 INFO __main__ -- Phase AE replay progress: 5316/53163 bars (10.0%), elapsed=11.7 s, eta=105.7 s, trades=673, proposals_all=3022
+2026-07-24 04:13:02,276 INFO __main__ -- Phase AE replay progress: 7974/53163 bars (15.0%), elapsed=26.9 s, eta=152.3 s, trades=973, proposals_all=4410
+2026-07-24 04:13:24,759 INFO __main__ -- Phase AE replay progress: 10632/53163 bars (20.0%), elapsed=49.4 s, eta=197.5 s, trades=1290, proposals_all=5690
+2026-07-24 04:13:54,502 INFO __main__ -- Phase AE replay progress: 13290/53163 bars (25.0%), elapsed=79.1 s, eta=237.3 s, trades=1623, proposals_all=6935
+2026-07-24 04:14:33,013 INFO __main__ -- Phase AE replay progress: 15948/53163 bars (30.0%), elapsed=117.6 s, eta=274.5 s, trades=1938, proposals_all=8232
+2026-07-24 04:15:15,727 INFO __main__ -- Phase AE replay progress: 18606/53163 bars (35.0%), elapsed=160.3 s, eta=297.8 s, trades=2236, proposals_all=9308
+2026-07-24 04:16:03,153 INFO __main__ -- Phase AE replay progress: 21264/53163 bars (40.0%), elapsed=207.8 s, eta=311.7 s, trades=2486, proposals_all=10179
+2026-07-24 04:16:54,158 INFO __main__ -- Phase AE replay progress: 23922/53163 bars (45.0%), elapsed=258.8 s, eta=316.3 s, trades=2719, proposals_all=10940
+2026-07-24 04:17:58,688 INFO __main__ -- Phase AE replay progress: 26580/53163 bars (50.0%), elapsed=323.3 s, eta=323.3 s, trades=2933, proposals_all=11958
+2026-07-24 04:19:05,485 INFO __main__ -- Phase AE replay progress: 29238/53163 bars (55.0%), elapsed=390.1 s, eta=319.2 s, trades=3144, proposals_all=12738
+2026-07-24 04:20:24,204 INFO __main__ -- Phase AE replay progress: 31896/53163 bars (60.0%), elapsed=468.8 s, eta=312.6 s, trades=3439, proposals_all=13731
+2026-07-24 04:21:42,324 INFO __main__ -- Phase AE replay progress: 34554/53163 bars (65.0%), elapsed=546.9 s, eta=294.5 s, trades=3658, proposals_all=14401
+2026-07-24 04:23:34,700 INFO __main__ -- Phase AE replay progress: 37212/53163 bars (70.0%), elapsed=659.3 s, eta=282.6 s, trades=3919, proposals_all=15650
+2026-07-24 04:25:46,940 INFO __main__ -- Phase AE replay progress: 39870/53163 bars (75.0%), elapsed=791.5 s, eta=263.9 s, trades=4195, proposals_all=16862
+2026-07-24 04:27:44,748 INFO __main__ -- Phase AE replay progress: 42528/53163 bars (80.0%), elapsed=909.4 s, eta=227.4 s, trades=4422, proposals_all=17506
+2026-07-24 04:29:40,166 INFO __main__ -- Phase AE replay progress: 45186/53163 bars (85.0%), elapsed=1024.8 s, eta=180.9 s, trades=4621, proposals_all=18082
+2026-07-24 04:31:46,698 INFO __main__ -- Phase AE replay progress: 47844/53163 bars (90.0%), elapsed=1151.3 s, eta=128.0 s, trades=4809, proposals_all=18606
+2026-07-24 04:34:07,940 INFO __main__ -- Phase AE replay progress: 50502/53163 bars (95.0%), elapsed=1292.5 s, eta=68.1 s, trades=5016, proposals_all=19517
+2026-07-24 04:36:16,792 INFO __main__ -- Phase AE replay progress: 53160/53163 bars (100.0%), elapsed=1421.4 s, eta=0.1 s, trades=5208, proposals_all=20107
+2026-07-24 04:36:16,849 INFO __main__ -- Phase AE replay complete: 53163 bars in 1421.5 s (37 bars/s), trades=5208, proposals_all=20107, sae_trades=87
+2026-07-24 04:36:17,041 INFO __main__ -- AE replay cache written: programs/M001_multi_agent_ensemble/experiments/phase_ae_sae_event_specialist/results/ae_replay_cache_ae-treatment (5208 trades)
+2026-07-24 04:36:17,060 INFO __main__ -- Wrote programs/M001_multi_agent_ensemble/experiments/phase_ae_sae_event_specialist/results/results_ae-treatment.json

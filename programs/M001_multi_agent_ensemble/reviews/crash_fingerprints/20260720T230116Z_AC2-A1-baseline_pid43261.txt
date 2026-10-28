@@ -1,0 +1,28 @@
+# crash-fingerprint captured 20260720T230116Z
+# label=AC2-A1-baseline  pid=43261
+# source=programs/M001_multi_agent_ensemble/experiments/phase_ac_pitch_assignment/results/ac2/A1_run.log
+# lines=200
+
+2026-07-21 00:01:02,707 INFO __main__ -- AC.2 [A1]: firing arm | panel 2015-01-01 -> 2025-12-31 | symbols=['EURUSD', 'GBPUSD', 'USDCAD', 'AUDUSD', 'NZDUSD', 'USDJPY', 'USDCHF'] | aggregator=phi41 | overrides={} | include_kunigami=False
+2026-07-21 00:01:03,324 INFO __main__ -- Loaded 17723 EURUSD bars
+2026-07-21 00:01:03,510 INFO __main__ -- Loaded 17718 GBPUSD bars
+2026-07-21 00:01:03,709 INFO __main__ -- Loaded 17722 USDCAD bars
+2026-07-21 00:01:03,712 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-21 00:01:03,779 INFO agent.data.dukascopy -- Dukascopy fetch: AUDUSD H4 2015-01-01 -> 2025-12-31
+2026-07-21 00:01:03,779 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-21 00:01:03,779 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-21 00:01:04,480 INFO DUKASCRIPT -- current timestamp :2019-10-24T09:00:00
+2026-07-21 00:01:05,060 INFO DUKASCRIPT -- current timestamp :2024-08-15T01:00:00
+2026-07-21 00:01:05,604 INFO __main__ -- Loaded 17719 AUDUSD bars
+2026-07-21 00:01:05,606 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-21 00:01:05,607 INFO agent.data.dukascopy -- Dukascopy fetch: NZDUSD H4 2015-01-01 -> 2025-12-31
+2026-07-21 00:01:05,607 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-21 00:01:05,607 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-21 00:01:06,117 INFO DUKASCRIPT -- current timestamp :2019-10-24T05:00:00
+2026-07-21 00:01:06,722 INFO DUKASCRIPT -- current timestamp :2024-08-15T01:00:00
+2026-07-21 00:01:08,469 INFO __main__ -- Loaded 17716 NZDUSD bars
+2026-07-21 00:01:08,472 INFO agent.data.source -- MT5 unavailable (No module named 'MetaTrader5')
+2026-07-21 00:01:08,472 INFO agent.data.dukascopy -- Dukascopy fetch: USDJPY H4 2015-01-01 -> 2025-12-31
+2026-07-21 00:01:08,472 INFO root -- Start Date :2015-01-01T00:00:00+00:00
+2026-07-21 00:01:08,472 INFO root -- End Date :2025-12-31T00:00:00+00:00
+2026-07-21 00:01:09,207 INFO DUKASCRIPT -- current timestamp :2019-10-23T13:00:00

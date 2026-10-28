@@ -1,0 +1,28 @@
+# crash-fingerprint captured 20260728T172501Z
+# label=E010-stage1  pid=59758
+# source=output/E010_equal_highs_pool_stage2b/stage1_run.log
+# lines=200
+
+[E010 s1] EURUSD H1=43656 M15=174548 bars
+[E010 s1] 297 H1 equal_highs_pool events
+[E010 s1] bullish_fvg_touch: n_joint=1319 joint=2.6207 marg=2.4232 sel=0.1975 lift=0.1313 p=0.0002
+[E010 s1] channel_bottom_touch: n_joint=2416 joint=2.584 marg=2.4854 sel=0.0986 lift=0.1234 p=0.0002
+[E010 s1] fib_382_tag: n_joint=317 joint=2.7386 marg=2.549 sel=0.1896 lift=0.1634 p=0.0004
+[E010 s1] fib_50_tag: n_joint=305 joint=2.8827 marg=2.6047 sel=0.278 lift=0.2448 p=0.0002
+[E010 s1] fib_618_tag: n_joint=274 joint=2.7234 marg=2.6052 sel=0.1182 lift=0.2751 p=0.0002
+[E010 s1] fib_ext_1272_tag: n_joint=179 joint=3.2213 marg=2.7561 sel=0.4652 lift=0.3254 p=0.0002
+[E010 s1] ote_tag: n_joint=274 joint=2.7234 marg=2.6052 sel=0.1182 lift=0.2745 p=0.0002
+[E010 s1] trendline_break_retest_bullish: n_joint=394 joint=2.7111 marg=2.5891 sel=0.122 lift=0.0208 p=0.30774
+[E010 s1] trendline_liquidity_sweep_low: n_joint=153 joint=3.0057 marg=2.8214 sel=0.1843 lift=0.0895 p=0.08118
+[E010 s1] trendline_support_touch: n_joint=1327 joint=2.6639 marg=2.4521 sel=0.2118 lift=0.1491 p=0.0002
+registry -> /Users/the1finix/Documents/GitHub/finance-research-experiments/output/E010_equal_highs_pool_stage2b/stage1_EURUSD_screen_2026-07-28_1724.jsonl
+  bullish_fvg_touch: alive
+  channel_bottom_touch: parked_weak_effect
+  fib_382_tag: alive
+  fib_50_tag: alive
+  fib_618_tag: alive
+  fib_ext_1272_tag: alive
+  ote_tag: alive
+  trendline_break_retest_bullish: dead
+  trendline_liquidity_sweep_low: dead
+  trendline_support_touch: alive

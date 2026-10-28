@@ -1,0 +1,59 @@
+# crash-fingerprint captured 20260804T112426Z
+# label=phase-af-is-sweep  pid=81924
+# source=/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/experiments/phase_af_causal_retune/results/is_sweep.stdout.log
+# lines=200
+
+[run ] is_cell_20_0.0
+EURUSD: 8058 bars 2019-01-01..2023-12-29
+GBPUSD: 8057 bars 2019-01-01..2023-12-29
+USDCAD: 8058 bars 2019-01-01..2023-12-29
+[run ] is_cell_20_0.0
+EURUSD: 8058 bars 2019-01-01..2023-12-29
+GBPUSD: 8057 bars 2019-01-01..2023-12-29
+USDCAD: 8058 bars 2019-01-01..2023-12-29
+run_batch stats: {'bars_processed': 24173, 'n_proposals': 11116, 'n_rejected': 12596, 'n_trades': 1809, 'workspace_publish': {'bachira_meguru': 24173, 'chigiri_hyoma': 16115, 'isagi_yoichi': 24173, 'itoshi_rin': 8058, 'nagi_seishiro': 24173, 'reo_mikage': 24173, 'karasu_tabito': 24173, 'barou_shoei': 8058}, 'workspace_read': {'bachira_meguru': 6188, 'isagi_yoichi': 2652, 'itoshi_rin': 1288, 'barou_shoei': 903, 'chigiri_hyoma': 453, 'nagi_seishiro': 276}}
+wrote /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/experiments/phase_af_causal_retune/results/is_cell_20_0.0.json
+[done] is_cell_20_0.0 rc=0 153s
+[run ] is_cell_40_0.0
+EURUSD: 8058 bars 2019-01-01..2023-12-29
+GBPUSD: 8057 bars 2019-01-01..2023-12-29
+USDCAD: 8058 bars 2019-01-01..2023-12-29
+run_batch stats: {'bars_processed': 24173, 'n_proposals': 10414, 'n_rejected': 11731, 'n_trades': 1734, 'workspace_publish': {'bachira_meguru': 24173, 'chigiri_hyoma': 16115, 'isagi_yoichi': 24173, 'itoshi_rin': 8058, 'nagi_seishiro': 24173, 'reo_mikage': 24173, 'karasu_tabito': 24173, 'barou_shoei': 8058}, 'workspace_read': {'bachira_meguru': 5757, 'isagi_yoichi': 2484, 'itoshi_rin': 1152, 'barou_shoei': 874, 'nagi_seishiro': 270, 'chigiri_hyoma': 453}}
+wrote /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/experiments/phase_af_causal_retune/results/is_cell_40_0.0.json
+[done] is_cell_40_0.0 rc=0 142s
+[run ] is_cell_50_0.0
+EURUSD: 8058 bars 2019-01-01..2023-12-29
+GBPUSD: 8057 bars 2019-01-01..2023-12-29
+USDCAD: 8058 bars 2019-01-01..2023-12-29
+run_batch stats: {'bars_processed': 24173, 'n_proposals': 9168, 'n_rejected': 10192, 'n_trades': 1607, 'workspace_publish': {'bachira_meguru': 24173, 'chigiri_hyoma': 16115, 'isagi_yoichi': 24173, 'itoshi_rin': 8058, 'nagi_seishiro': 24173, 'reo_mikage': 24173, 'karasu_tabito': 24173, 'barou_shoei': 8058}, 'workspace_read': {'bachira_meguru': 5066, 'isagi_yoichi': 2189, 'itoshi_rin': 964, 'barou_shoei': 764, 'nagi_seishiro': 214, 'chigiri_hyoma': 453}}
+wrote /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/experiments/phase_af_causal_retune/results/is_cell_50_0.0.json
+[done] is_cell_50_0.0 rc=0 133s
+[run ] is_cell_20_0.5
+EURUSD: 8058 bars 2019-01-01..2023-12-29
+GBPUSD: 8057 bars 2019-01-01..2023-12-29
+USDCAD: 8058 bars 2019-01-01..2023-12-29
+run_batch stats: {'bars_processed': 24173, 'n_proposals': 11116, 'n_rejected': 12872, 'n_trades': 1635, 'workspace_publish': {'bachira_meguru': 24173, 'chigiri_hyoma': 16115, 'isagi_yoichi': 24173, 'itoshi_rin': 8058, 'nagi_seishiro': 24173, 'reo_mikage': 24173, 'karasu_tabito': 24173, 'barou_shoei': 8058}, 'workspace_read': {'bachira_meguru': 6188, 'isagi_yoichi': 2652, 'itoshi_rin': 1288, 'barou_shoei': 903, 'chigiri_hyoma': 453, 'nagi_seishiro': 276}}
+wrote /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/experiments/phase_af_causal_retune/results/is_cell_20_0.5.json
+[done] is_cell_20_0.5 rc=0 146s
+[run ] is_cell_30_0.5
+EURUSD: 8058 bars 2019-01-01..2023-12-29
+GBPUSD: 8057 bars 2019-01-01..2023-12-29
+USDCAD: 8058 bars 2019-01-01..2023-12-29
+run_batch stats: {'bars_processed': 24173, 'n_proposals': 11019, 'n_rejected': 12777, 'n_trades': 1626, 'workspace_publish': {'bachira_meguru': 24173, 'chigiri_hyoma': 16115, 'isagi_yoichi': 24173, 'itoshi_rin': 8058, 'nagi_seishiro': 24173, 'reo_mikage': 24173, 'karasu_tabito': 24173, 'barou_shoei': 8058}, 'workspace_read': {'bachira_meguru': 6093, 'isagi_yoichi': 2637, 'itoshi_rin': 1296, 'barou_shoei': 899, 'chigiri_hyoma': 453, 'nagi_seishiro': 289}}
+wrote /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/experiments/phase_af_causal_retune/results/is_cell_30_0.5.json
+[done] is_cell_30_0.5 rc=0 168s
+[run ] is_cell_40_0.5
+EURUSD: 8058 bars 2019-01-01..2023-12-29
+GBPUSD: 8057 bars 2019-01-01..2023-12-29
+USDCAD: 8058 bars 2019-01-01..2023-12-29
+run_batch stats: {'bars_processed': 24173, 'n_proposals': 10414, 'n_rejected': 12002, 'n_trades': 1576, 'workspace_publish': {'bachira_meguru': 24173, 'chigiri_hyoma': 16115, 'isagi_yoichi': 24173, 'itoshi_rin': 8058, 'nagi_seishiro': 24173, 'reo_mikage': 24173, 'karasu_tabito': 24173, 'barou_shoei': 8058}, 'workspace_read': {'bachira_meguru': 5757, 'isagi_yoichi': 2484, 'itoshi_rin': 1152, 'barou_shoei': 874, 'nagi_seishiro': 270, 'chigiri_hyoma': 453}}
+wrote /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/experiments/phase_af_causal_retune/results/is_cell_40_0.5.json
+[done] is_cell_40_0.5 rc=0 164s
+[run ] is_cell_50_0.5
+EURUSD: 8058 bars 2019-01-01..2023-12-29
+GBPUSD: 8057 bars 2019-01-01..2023-12-29
+USDCAD: 8058 bars 2019-01-01..2023-12-29
+run_batch stats: {'bars_processed': 24173, 'n_proposals': 9168, 'n_rejected': 10418, 'n_trades': 1470, 'workspace_publish': {'bachira_meguru': 24173, 'chigiri_hyoma': 16115, 'isagi_yoichi': 24173, 'itoshi_rin': 8058, 'nagi_seishiro': 24173, 'reo_mikage': 24173, 'karasu_tabito': 24173, 'barou_shoei': 8058}, 'workspace_read': {'bachira_meguru': 5066, 'isagi_yoichi': 2189, 'itoshi_rin': 964, 'barou_shoei': 764, 'nagi_seishiro': 214, 'chigiri_hyoma': 453}}
+wrote /Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/experiments/phase_af_causal_retune/results/is_cell_50_0.5.json
+[done] is_cell_50_0.5 rc=0 139s
+[sweep complete]

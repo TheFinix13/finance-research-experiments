@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "source": "phase_an:chigiri_hyoma:XAGUSD:2024-01-01",
+  "aggregator_arm": "phi41",
+  "tick_id": 3857,
+  "bars_seen": {
+    "XAGUSD": 3857
+  },
+  "last_bar_times": {
+    "XAGUSD": "2026-05-29T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "chigiri_hyoma": 2
+  },
+  "per_agent_equity": {
+    "chigiri_hyoma": 665.7664757730213
+  },
+  "workspace_publish_counts": {
+    "chigiri_hyoma": 3857
+  },
+  "workspace_read_counts": {
+    "chigiri_hyoma": 110
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "XAGUSD": {
+      "bars_seen": 3857,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-05T05:18:38.551162+00:00"
+}

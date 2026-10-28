@@ -1,0 +1,1528 @@
+{
+  "as_of": "2026-08-04T17:09:21.944957+00:00",
+  "tick_id": 51556,
+  "thought_count": 4040,
+  "thoughts": [
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:51553:AUDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 51553,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[bachira v1] AUDUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:51554:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 51554,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:51555:USDCHF",
+      "agent_id": "bachira_meguru",
+      "tick_id": 51555,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[bachira v1] USDCHF H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:51556:USDJPY",
+      "agent_id": "bachira_meguru",
+      "tick_id": 51556,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[bachira v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:51553:AUDUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 51553,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[barou v1] AUDUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:51554:NZDUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 51554,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[barou v1] NZDUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:51555:USDCHF",
+      "agent_id": "barou_shoei",
+      "tick_id": 51555,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[barou v1] USDCHF H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:51556:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 51556,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:51553:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 51553,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:51554:NZDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 51554,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[chigiri v1] NZDUSD H4 @ 2022-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:51555:USDCHF",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 51555,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[chigiri v1] USDCHF H4 @ 2022-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:51556:USDJPY",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 51556,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[chigiri v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:51553:AUDUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 51553,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[isagi v1] AUDUSD H4 close 2022-12-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:51554:NZDUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 51554,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[isagi v1] NZDUSD H4 close 2022-12-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:51555:USDCHF",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 51555,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[isagi v1] USDCHF H4 close 2022-12-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:51556:USDJPY",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 51556,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[isagi v1] USDJPY H4 close 2022-12-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:51553:AUDUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 51553,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[rin v1] AUDUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:51554:NZDUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 51554,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[rin v1] NZDUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:51555:USDCHF",
+      "agent_id": "itoshi_rin",
+      "tick_id": 51555,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[rin v1] USDCHF H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:51556:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 51556,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:51553:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 51553,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:51554:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 51554,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:51555:USDCHF",
+      "agent_id": "karasu_tabito",
+      "tick_id": 51555,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[karasu v1] USDCHF H4 @ 2022-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:51556:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 51556,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:51553:AUDUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 51553,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[nagi v1] AUDUSD H4 @ 2022-12-30 20:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:51554:NZDUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 51554,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[nagi v1] NZDUSD H4 @ 2022-12-30 20:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:51555:USDCHF",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 51555,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[nagi v1] USDCHF H4 @ 2022-12-30 20:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:51556:USDJPY",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 51556,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[nagi v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00 -- 3 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:51553:AUDUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 51553,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[reo v1] AUDUSD H4 @ 2022-12-30 20:00:00+00:00 -- 1 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:51554:NZDUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 51554,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[reo v1] NZDUSD H4 @ 2022-12-30 20:00:00+00:00 -- 1 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:51555:USDCHF",
+      "agent_id": "reo_mikage",
+      "tick_id": 51555,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[reo v1] USDCHF H4 @ 2022-12-30 20:00:00+00:00 -- 1 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:51556:USDJPY",
+      "agent_id": "reo_mikage",
+      "tick_id": 51556,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[reo v1] USDJPY H4 @ 2022-12-30 20:00:00+00:00 -- mirroring bachira_meguru (short, base_conv 0.75); humility margin: band x1.20, time x0.75; mirror conv 0.85.",
+      "tags": [
+        "bachira_rebel_baseline_zone",
+        "bachira_rebel_lift_applied",
+        "canon:bachira",
+        "canon:reo",
+        "direction:short",
+        "mirroring:bachira_meguru",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "signal_reason:zone_supply",
+        "weapon:chameleon",
+        "weapon:rebel_dribble",
+        "zone_setup_h4"
+      ],
+      "confidence_in_thought": 0.85,
+      "expected_action": "mirror_short",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "USDJPY",
+        "price_lo": 128.96524285714287,
+        "price_hi": 132.97675714285714,
+        "time_start": "2022-12-30T16:00:00+00:00",
+        "time_end": "2022-12-31T10:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "reo_mirror_of:bachira_meguru",
+        "expected_strength": 0.85,
+        "direction_bias": "short",
+        "rationale": {
+          "mirrored_agent_id": "bachira_meguru",
+          "mirrored_thought_id": "bachira_meguru:51552:USDJPY",
+          "leader_base_conviction": 0.75,
+          "reo_lift": 0.1,
+          "final_conviction": 0.85,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "entry": 130.971,
+            "stop": 132.64246428571428,
+            "take_profit": 128.46380357142857,
+            "signal_reason": "zone_supply",
+            "home_tf": "H4",
+            "conviction_base": 0.65,
+            "conviction_final": 0.75,
+            "atr_pips": 61.30306122448999,
+            "h1_swing_pips": 372.199999999998
+          }
+        }
+      },
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "bachira_meguru:51552:USDJPY"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "short",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 167.14642857142792,
+        "expected_r": 1.5000000000000084,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:bachira_meguru",
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_supply",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:51549:AUDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 51549,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[bachira v1] AUDUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:51550:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 51550,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:51551:USDCHF",
+      "agent_id": "bachira_meguru",
+      "tick_id": 51551,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[bachira v1] USDCHF H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:51552:USDJPY",
+      "agent_id": "bachira_meguru",
+      "tick_id": 51552,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[bachira v1] USDJPY H4 close 2022-12-30 16:00:00+00:00: baseline-zone short fade (NO D1 gate). entry=130.97100 stop=132.64246 tp=128.46380; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_supply",
+        "direction:short",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "short_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "USDJPY",
+        "price_lo": 129.29953571428572,
+        "price_hi": 132.64246428571428,
+        "time_start": "2022-12-30T16:00:00+00:00",
+        "time_end": "2022-12-31T16:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 130.971,
+          "stop": 132.64246428571428,
+          "take_profit": 128.46380357142857,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 61.30306122448999,
+          "h1_swing_pips": 372.199999999998
+        }
+      },
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "short",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 167.14642857142792,
+        "expected_r": 1.5000000000000084,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_supply",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:51549:AUDUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 51549,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[barou v1] AUDUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:51550:NZDUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 51550,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[barou v1] NZDUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:51551:USDCHF",
+      "agent_id": "barou_shoei",
+      "tick_id": 51551,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[barou v1] USDCHF H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:51552:USDJPY",
+      "agent_id": "barou_shoei",
+      "tick_id": 51552,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-30 16:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=130.97100 stop=132.95293 tp=127.99811; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USDJPY",
+        "price_lo": 128.98907142857144,
+        "price_hi": 132.95292857142857,
+        "time_start": "2022-12-30T16:00:00+00:00",
+        "time_end": "2023-01-01T00:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 130.971,
+          "stop": 132.95292857142857,
+          "take_profit": 127.99810714285715,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 61.30306122448999,
+          "h1_swing_pips": 372.199999999998
+        }
+      },
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 198.19285714285684,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:51549:AUDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 51549,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[chigiri v1] AUDUSD H4 @ 2022-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:51550:NZDUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 51550,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[chigiri v1] NZDUSD H4 @ 2022-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:51551:USDCHF",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 51551,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[chigiri v1] USDCHF H4 @ 2022-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:51552:USDJPY",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 51552,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[chigiri v1] USDJPY H4 @ 2022-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:51549:AUDUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 51549,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[isagi v1] AUDUSD H4 close 2022-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:51550:NZDUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 51550,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[isagi v1] NZDUSD H4 close 2022-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:51551:USDCHF",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 51551,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[isagi v1] USDCHF H4 close 2022-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:51552:USDJPY",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 51552,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[isagi v1] USDJPY H4 close 2022-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:51549:AUDUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 51549,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[rin v1] AUDUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:51550:NZDUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 51550,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[rin v1] NZDUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:51551:USDCHF",
+      "agent_id": "itoshi_rin",
+      "tick_id": 51551,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[rin v1] USDCHF H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:51552:USDJPY",
+      "agent_id": "itoshi_rin",
+      "tick_id": 51552,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[rin v1] USDJPY H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:51549:AUDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 51549,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[karasu v1] AUDUSD H4 @ 2022-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:51550:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 51550,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:51551:USDCHF",
+      "agent_id": "karasu_tabito",
+      "tick_id": 51551,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[karasu v1] USDCHF H4 @ 2022-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:51552:USDJPY",
+      "agent_id": "karasu_tabito",
+      "tick_id": 51552,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[karasu v1] USDJPY H4 @ 2022-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:51549:AUDUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 51549,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "AUDUSD",
+      "narrative": "[nagi v1] AUDUSD H4 @ 2022-12-30 16:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:51550:NZDUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 51550,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[nagi v1] NZDUSD H4 @ 2022-12-30 16:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:51551:USDCHF",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 51551,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDCHF",
+      "narrative": "[nagi v1] USDCHF H4 @ 2022-12-30 16:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:51552:USDJPY",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 51552,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USDJPY",
+      "narrative": "[nagi v1] USDJPY H4 @ 2022-12-30 16:00:00+00:00 -- 1 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    }
+  ]
+}

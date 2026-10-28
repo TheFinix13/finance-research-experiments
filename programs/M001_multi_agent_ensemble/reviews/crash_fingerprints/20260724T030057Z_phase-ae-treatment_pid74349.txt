@@ -1,0 +1,18 @@
+# crash-fingerprint captured 20260724T030057Z
+# label=phase-ae-treatment  pid=74349
+# source=programs/M001_multi_agent_ensemble/experiments/phase_ae_sae_event_specialist/results/ae-treatment.log
+# lines=200
+
+2026-07-24 04:00:43,702 INFO __main__ -- Phase AE arm 'ae-treatment': sae_enabled=True | panel 2015-01-01 -> 2025-12-31 | 7 windows
+2026-07-24 04:00:44,416 INFO __main__ -- Loaded 17723 EURUSD H4 bars
+2026-07-24 04:00:44,617 INFO __main__ -- Loaded 17718 GBPUSD H4 bars
+2026-07-24 04:00:44,831 INFO __main__ -- Loaded 17722 USDCAD H4 bars
+2026-07-24 04:00:45,261 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-24 04:00:45,676 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-24 04:00:46,110 INFO programs.M001_multi_agent_ensemble.sim.agents.a03_rin -- A3RinV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-24 04:00:46,117 INFO programs.M001_multi_agent_ensemble.sim.agents.a04_chigiri -- A4ChigiriV1 prepared EURUSD: 17723 bars, ATR ready
+2026-07-24 04:00:46,527 INFO programs.M001_multi_agent_ensemble.sim.agents.a07_barou -- A7BarouV1 prepared EURUSD: 17723 bars, 1727 zones, 2281 swings
+2026-07-24 04:00:47,022 INFO programs.M001_multi_agent_ensemble.sim.agents.a01_isagi -- A1IsagiV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings
+2026-07-24 04:00:47,551 INFO programs.M001_multi_agent_ensemble.sim.agents.a02_bachira -- A2BachiraV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings
+2026-07-24 04:00:47,557 INFO programs.M001_multi_agent_ensemble.sim.agents.a04_chigiri -- A4ChigiriV1 prepared GBPUSD: 17718 bars, ATR ready
+2026-07-24 04:00:48,053 INFO programs.M001_multi_agent_ensemble.sim.agents.a07_barou -- A7BarouV1 prepared GBPUSD: 17718 bars, 2261 zones, 2279 swings

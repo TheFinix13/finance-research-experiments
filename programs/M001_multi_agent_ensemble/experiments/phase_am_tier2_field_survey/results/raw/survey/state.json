@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "source": "phase_am_survey",
+  "aggregator_arm": "phi41",
+  "tick_id": 50112,
+  "bars_seen": {
+    "XAUUSD": 12792,
+    "XAGUSD": 12792,
+    "USOIL": 12759,
+    "USTEC": 11769
+  },
+  "last_bar_times": {
+    "XAGUSD": "2022-12-30T20:00:00+00:00",
+    "XAUUSD": "2022-12-30T20:00:00+00:00",
+    "USOIL": "2022-12-30T20:00:00+00:00",
+    "USTEC": "2022-12-30T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "bachira_meguru": 0,
+    "itoshi_rin": 0,
+    "isagi_yoichi": 1,
+    "nagi_seishiro": 1,
+    "chigiri_hyoma": 2,
+    "barou_shoei": 1
+  },
+  "per_agent_equity": {
+    "isagi_yoichi": -12008.482267857136,
+    "bachira_meguru": 968.3279464285845,
+    "itoshi_rin": -580.5711428571307,
+    "chigiri_hyoma": 2776.525411786977,
+    "reo_mikage": 500.0,
+    "nagi_seishiro": -351.00205357142016,
+    "barou_shoei": 999.8377142856963
+  },
+  "workspace_publish_counts": {
+    "bachira_meguru": 50112,
+    "barou_shoei": 50112,
+    "chigiri_hyoma": 50112,
+    "isagi_yoichi": 50112,
+    "itoshi_rin": 50112,
+    "nagi_seishiro": 50112,
+    "reo_mikage": 50112
+  },
+  "workspace_read_counts": {
+    "bachira_meguru": 18249,
+    "barou_shoei": 12441,
+    "isagi_yoichi": 11592,
+    "itoshi_rin": 18840,
+    "nagi_seishiro": 3753,
+    "chigiri_hyoma": 1312
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "USOIL": {
+      "bars_seen": 12759,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    },
+    "USTEC": {
+      "bars_seen": 11769,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    },
+    "XAGUSD": {
+      "bars_seen": 12792,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    },
+    "XAUUSD": {
+      "bars_seen": 12792,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-04T19:50:20.096723+00:00"
+}

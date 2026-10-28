@@ -1,0 +1,1642 @@
+{
+  "as_of": "2026-08-05T05:08:27.699151+00:00",
+  "tick_id": 11051,
+  "thought_count": 502,
+  "thoughts": [
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11051:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11051,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11050:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11050,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11049:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11049,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-30 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11048:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11048,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-30 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11047:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11047,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-30 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11046:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11046,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-30 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11045:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11045,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-29 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11044:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11044,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-29 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11043:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11043,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-29 12:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=10844.99900 stop=10933.72514 tp=10711.90979; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USTEC",
+        "price_lo": 10756.272857142856,
+        "price_hi": 10933.725142857144,
+        "time_start": "2022-12-29T12:00:00+00:00",
+        "time_end": "2022-12-30T20:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 10844.999,
+          "stop": 10933.725142857144,
+          "take_profit": 10711.909785714284,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 84.98518367346935,
+          "h1_swing_pips": 420.28999999999905
+        }
+      },
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 88.72614285714371,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11042:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11042,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-29 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11041:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11041,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-29 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11040:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11040,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-29 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11039:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11039,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-28 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11038:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11038,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-28 16:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=10711.40900 stop=10929.80457 tp=10383.81564; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USTEC",
+        "price_lo": 10493.013428571428,
+        "price_hi": 10929.80457142857,
+        "time_start": "2022-12-28T16:00:00+00:00",
+        "time_end": "2022-12-30T00:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 10711.409,
+          "stop": 10929.80457142857,
+          "take_profit": 10383.815642857142,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 94.2641530612245,
+          "h1_swing_pips": 539.880000000001
+        }
+      },
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 218.3955714285712,
+        "expected_r": 1.5000000000000042,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11037:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11037,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-28 12:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=10734.29900 stop=10937.40886 tp=10429.63421; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USTEC",
+        "price_lo": 10531.189142857145,
+        "price_hi": 10937.408857142857,
+        "time_start": "2022-12-28T12:00:00+00:00",
+        "time_end": "2022-12-29T20:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 10734.299,
+          "stop": 10937.408857142857,
+          "take_profit": 10429.634214285717,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 92.25296938775503,
+          "h1_swing_pips": 547.5700000000015
+        }
+      },
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 203.10985714285562,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11036:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11036,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-28 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11035:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11035,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-28 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11034:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11034,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-28 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11033:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11033,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-27 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11032:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11032,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-27 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11031:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11031,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-27 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11030:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11030,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-27 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11029:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11029,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-27 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11028:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11028,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-27 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11027:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11027,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-26 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11026:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11026,
+      "timestamp": "2022-12-23T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-23 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-23T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11025:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11025,
+      "timestamp": "2022-12-23T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-23 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-23T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11024:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11024,
+      "timestamp": "2022-12-23T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-23 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-23T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11023:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11023,
+      "timestamp": "2022-12-23T08:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-23 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-23T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11022:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11022,
+      "timestamp": "2022-12-23T04:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-23 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-23T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11021:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11021,
+      "timestamp": "2022-12-23T00:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-23 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-23T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11020:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11020,
+      "timestamp": "2022-12-22T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-22 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-22T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11019:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11019,
+      "timestamp": "2022-12-22T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-22 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-22T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11018:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11018,
+      "timestamp": "2022-12-22T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-22 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-22T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11017:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11017,
+      "timestamp": "2022-12-22T08:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-22 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-22T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11016:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11016,
+      "timestamp": "2022-12-22T04:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-22 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-22T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11015:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11015,
+      "timestamp": "2022-12-22T00:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-22 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-22T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11014:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11014,
+      "timestamp": "2022-12-21T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-21 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-21T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11013:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11013,
+      "timestamp": "2022-12-21T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-21 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-21T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11012:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11012,
+      "timestamp": "2022-12-21T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-21 12:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=11248.60900 stop=11371.61700 tp=11064.09700; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USTEC",
+        "price_lo": 11125.601,
+        "price_hi": 11371.617,
+        "time_start": "2022-12-21T12:00:00+00:00",
+        "time_end": "2022-12-22T20:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 11248.609,
+          "stop": 11371.617,
+          "take_profit": 11064.097000000002,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 100.64129591836736,
+          "h1_swing_pips": 446.89999999999964
+        }
+      },
+      "decision_horizon": "2022-12-21T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 123.00799999999981,
+        "expected_r": 1.4999999999999927,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11011:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11011,
+      "timestamp": "2022-12-21T08:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-21 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-21T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11010:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11010,
+      "timestamp": "2022-12-21T04:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-21 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-21T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11009:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11009,
+      "timestamp": "2022-12-21T00:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-21 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-21T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11008:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11008,
+      "timestamp": "2022-12-20T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-20 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-20T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11007:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11007,
+      "timestamp": "2022-12-20T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-20 16:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=11074.10900 stop=11210.08086 tp=10891.90900; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USTEC",
+        "price_lo": 10938.137142857144,
+        "price_hi": 11210.080857142857,
+        "time_start": "2022-12-20T16:00:00+00:00",
+        "time_end": "2022-12-22T00:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 11074.109,
+          "stop": 11210.080857142857,
+          "take_profit": 10891.909,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 102.0192244897959,
+          "h1_swing_pips": 674.018
+        }
+      },
+      "decision_horizon": "2022-12-20T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 135.9718571428566,
+        "expected_r": 1.3399831687859884,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11006:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11006,
+      "timestamp": "2022-12-20T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-20 12:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=11089.77900 stop=11213.84586 tp=10891.90900; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USTEC",
+        "price_lo": 10965.712142857144,
+        "price_hi": 11213.845857142856,
+        "time_start": "2022-12-20T12:00:00+00:00",
+        "time_end": "2022-12-21T20:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 11089.779,
+          "stop": 11213.845857142856,
+          "take_profit": 10891.909,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 102.21604081632643,
+          "h1_swing_pips": 714.7800000000007
+        }
+      },
+      "decision_horizon": "2022-12-20T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 124.06685714285595,
+        "expected_r": 1.5948659017949065,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11005:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11005,
+      "timestamp": "2022-12-20T08:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-20 08:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=11059.85900 stop=11209.85243 tp=10891.90900; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USTEC",
+        "price_lo": 10909.865571428572,
+        "price_hi": 11209.852428571428,
+        "time_start": "2022-12-20T08:00:00+00:00",
+        "time_end": "2022-12-21T16:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 11059.859,
+          "stop": 11209.852428571428,
+          "take_profit": 10891.909,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 94.1708367346938,
+          "h1_swing_pips": 804.0599999999995
+        }
+      },
+      "decision_horizon": "2022-12-20T08:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 149.993428571428,
+        "expected_r": 1.1197157208792095,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11004:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11004,
+      "timestamp": "2022-12-20T04:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-20 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-20T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11003:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11003,
+      "timestamp": "2022-12-20T00:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-20 00:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=10982.17900 stop=11204.08314 tp=10649.32279; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USTEC",
+        "price_lo": 10760.274857142856,
+        "price_hi": 11204.083142857144,
+        "time_start": "2022-12-20T00:00:00+00:00",
+        "time_end": "2022-12-21T08:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 10982.179,
+          "stop": 11204.083142857144,
+          "take_profit": 10649.322785714285,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 89.2979285714284,
+          "h1_swing_pips": 915.619999999999
+        }
+      },
+      "decision_horizon": "2022-12-20T00:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 221.9041428571436,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11002:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11002,
+      "timestamp": "2022-12-19T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-19 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-19T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11001:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11001,
+      "timestamp": "2022-12-19T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-19 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-19T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:11000:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 11000,
+      "timestamp": "2022-12-19T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1.3] USDCAD H4 close 2022-12-19 12:00:00+00:00: king trend-continuation (D1 WITH gate, structural TP) short. entry=11129.90900 stop=11369.72579 tp=10770.18382; conv 0.65 (no devour; isagi silent_or_low_conviction)",
+      "tags": [
+        "barou_usdcad_baseline_zone",
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close_USDCAD",
+      "coordinate": {
+        "agent_id": "barou_shoei",
+        "symbol": "USTEC",
+        "price_lo": 10890.092214285714,
+        "price_hi": 11369.725785714285,
+        "time_start": "2022-12-19T12:00:00+00:00",
+        "time_end": "2022-12-20T20:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "USDCAD_baseline_zone_no_d1_gate",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 11129.909,
+          "stop": 11369.725785714285,
+          "take_profit": 10770.18382142857,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.65,
+          "atr_pips": 95.21385204081625,
+          "h1_swing_pips": 820.0100000000002
+        }
+      },
+      "decision_horizon": "2022-12-19T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "solo_king",
+        "direction_bias": "short",
+        "regime_read": "baseline_zone",
+        "expected_stop_pips": 239.8167857142853,
+        "expected_r": 1.5000000000000038,
+        "driving_evidence": [
+          "barou_usdcad_baseline_zone",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:10999:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 10999,
+      "timestamp": "2022-12-19T08:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-19 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-19T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:10998:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 10998,
+      "timestamp": "2022-12-19T04:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-19 04:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-19T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:10997:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 10997,
+      "timestamp": "2022-12-19T00:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-19 00:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-19T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:10996:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 10996,
+      "timestamp": "2022-12-18T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-18 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-18T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:10995:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 10995,
+      "timestamp": "2022-12-16T20:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-16 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-16T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:10994:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 10994,
+      "timestamp": "2022-12-16T16:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-16 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-16T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:10993:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 10993,
+      "timestamp": "2022-12-16T12:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-16 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-16T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:10992:USTEC",
+      "agent_id": "barou_shoei",
+      "tick_id": 10992,
+      "timestamp": "2022-12-16T08:00:00+00:00",
+      "symbol": "USTEC",
+      "narrative": "[barou v1] USTEC H4 @ 2022-12-16 08:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-16T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    }
+  ]
+}

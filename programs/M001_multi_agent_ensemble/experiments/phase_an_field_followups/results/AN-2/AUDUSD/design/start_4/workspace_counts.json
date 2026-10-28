@@ -1,0 +1,11 @@
+{
+  "publish": {
+    "chigiri_hyoma": 11280,
+    "karasu_tabito": 11280
+  },
+  "read": {
+    "chigiri_hyoma": 282
+  },
+  "n_thoughts": 22560,
+  "source": "phase_an:chigiri_hyoma:AUDUSD:2016-01-01"
+}

@@ -1,0 +1,22 @@
+{
+  "publish": {
+    "bachira_meguru": 24173,
+    "barou_shoei": 24173,
+    "chigiri_hyoma": 24173,
+    "isagi_yoichi": 24173,
+    "itoshi_rin": 24173,
+    "nagi_seishiro": 24173,
+    "reo_mikage": 24173,
+    "karasu_tabito": 24173
+  },
+  "read": {
+    "bachira_meguru": 6093,
+    "isagi_yoichi": 2637,
+    "itoshi_rin": 4584,
+    "barou_shoei": 2928,
+    "chigiri_hyoma": 645,
+    "nagi_seishiro": 872
+  },
+  "n_thoughts": 193384,
+  "source": "phase_aj:is_expanded"
+}

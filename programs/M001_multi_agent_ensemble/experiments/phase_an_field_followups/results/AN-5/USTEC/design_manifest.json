@@ -1,0 +1,57 @@
+[
+  {
+    "start": "2015-01-01",
+    "end": "2022-12-31",
+    "bars": 11769,
+    "run_batch": {
+      "bars_processed": 11769,
+      "n_proposals": 2753,
+      "n_rejected": 2186,
+      "n_trades": 567
+    }
+  },
+  {
+    "start": "2015-04-01",
+    "end": "2022-12-31",
+    "bars": 11381,
+    "run_batch": {
+      "bars_processed": 11381,
+      "n_proposals": 2660,
+      "n_rejected": 2114,
+      "n_trades": 546
+    }
+  },
+  {
+    "start": "2015-07-01",
+    "end": "2022-12-31",
+    "bars": 11051,
+    "run_batch": {
+      "bars_processed": 11051,
+      "n_proposals": 2583,
+      "n_rejected": 2055,
+      "n_trades": 528
+    }
+  },
+  {
+    "start": "2015-10-01",
+    "end": "2022-12-31",
+    "bars": 10724,
+    "run_batch": {
+      "bars_processed": 10724,
+      "n_proposals": 2510,
+      "n_rejected": 2001,
+      "n_trades": 509
+    }
+  },
+  {
+    "start": "2016-01-01",
+    "end": "2022-12-31",
+    "bars": 10403,
+    "run_batch": {
+      "bars_processed": 10403,
+      "n_proposals": 2412,
+      "n_rejected": 1925,
+      "n_trades": 487
+    }
+  }
+]

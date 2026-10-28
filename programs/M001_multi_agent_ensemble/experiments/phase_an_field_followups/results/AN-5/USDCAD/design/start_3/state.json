@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source": "phase_an:barou_shoei:USDCAD:2015-10-01",
+  "aggregator_arm": "phi41",
+  "tick_id": 11685,
+  "bars_seen": {
+    "USDCAD": 11685
+  },
+  "last_bar_times": {
+    "USDCAD": "2022-12-30T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "barou_shoei": 2
+  },
+  "per_agent_equity": {
+    "barou_shoei": -312.33214285717094
+  },
+  "workspace_publish_counts": {
+    "barou_shoei": 11685,
+    "karasu_tabito": 11685
+  },
+  "workspace_read_counts": {
+    "barou_shoei": 1186
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "USDCAD": {
+      "bars_seen": 11685,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-05T04:59:57.570576+00:00"
+}

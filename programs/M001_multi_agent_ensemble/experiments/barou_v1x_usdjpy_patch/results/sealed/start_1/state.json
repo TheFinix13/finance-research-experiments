@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source": "barou_v14:USDJPY:2023-04-01",
+  "aggregator_arm": "phi41",
+  "tick_id": 5090,
+  "bars_seen": {
+    "USDJPY": 5090
+  },
+  "last_bar_times": {
+    "USDJPY": "2026-05-29T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "barou_shoei": 0
+  },
+  "per_agent_equity": {
+    "barou_shoei": 1291.7964285714263
+  },
+  "workspace_publish_counts": {
+    "barou_shoei": 5090,
+    "karasu_tabito": 5090
+  },
+  "workspace_read_counts": {
+    "barou_shoei": 1195
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "USDJPY": {
+      "bars_seen": 5090,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-05T07:36:49.601035+00:00"
+}

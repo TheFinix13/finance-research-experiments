@@ -24,6 +24,7 @@ Master index of every hypothesis test in this repository. Numeric IDs
 |---|---|---|
 | E008 | Technical indicators only | v2-PROTOCOL "Test B" family — EMA/RSI/MACD/etc.; own pre-registration |
 | E009 | Cross-family confluence | v2-PROTOCOL "Test C"; A×B survivors; last |
+| E026 | ORB baseline (US equity + forex twin) | From reel-intel stocks brief; gates under `experiments/E026_orb_baseline/gates/`; Gate 1 literature draft awaiting Claude; no data run yet |
 
 ## M001 program gates (cross-registry visibility)
 

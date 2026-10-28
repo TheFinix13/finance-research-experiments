@@ -1,0 +1,11 @@
+{
+  "publish": {
+    "barou_shoei": 5090,
+    "karasu_tabito": 5090
+  },
+  "read": {
+    "barou_shoei": 1195
+  },
+  "n_thoughts": 10180,
+  "source": "barou_v14:USDJPY:2023-04-01"
+}

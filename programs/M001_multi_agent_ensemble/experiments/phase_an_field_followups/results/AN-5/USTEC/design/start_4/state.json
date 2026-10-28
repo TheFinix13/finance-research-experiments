@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "source": "phase_an:barou_shoei:USTEC:2016-01-01",
+  "aggregator_arm": "phi41",
+  "tick_id": 10403,
+  "bars_seen": {
+    "USTEC": 10403
+  },
+  "last_bar_times": {
+    "USTEC": "2022-12-30T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "barou_shoei": 0
+  },
+  "per_agent_equity": {
+    "barou_shoei": 4849.971392857133
+  },
+  "workspace_publish_counts": {
+    "barou_shoei": 10403
+  },
+  "workspace_read_counts": {
+    "barou_shoei": 2412
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "USTEC": {
+      "bars_seen": 10403,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-05T05:09:57.668961+00:00"
+}

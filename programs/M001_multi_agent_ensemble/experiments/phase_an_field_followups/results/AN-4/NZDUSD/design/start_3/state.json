@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source": "phase_an:bachira_meguru:NZDUSD:2015-10-01",
+  "aggregator_arm": "phi41",
+  "tick_id": 11684,
+  "bars_seen": {
+    "NZDUSD": 11684
+  },
+  "last_bar_times": {
+    "NZDUSD": "2022-12-30T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "bachira_meguru": 0
+  },
+  "per_agent_equity": {
+    "bachira_meguru": 1333.207142857148
+  },
+  "workspace_publish_counts": {
+    "bachira_meguru": 11684,
+    "karasu_tabito": 11684
+  },
+  "workspace_read_counts": {
+    "bachira_meguru": 2024
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "NZDUSD": {
+      "bars_seen": 11684,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-05T04:55:19.150296+00:00"
+}

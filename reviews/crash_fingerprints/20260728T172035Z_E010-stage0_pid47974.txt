@@ -1,0 +1,6 @@
+# crash-fingerprint captured 20260728T172035Z
+# label=E010-stage0  pid=47974
+# source=output/E010_equal_highs_pool_stage2b/stage0_run.log
+# lines=200
+
+[monitor] tail-on-exit source not found: output/E010_equal_highs_pool_stage2b/stage0_run.log

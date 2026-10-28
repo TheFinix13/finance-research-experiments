@@ -1,0 +1,1861 @@
+{
+  "as_of": "2026-08-05T04:52:34.215398+00:00",
+  "tick_id": 12888,
+  "thought_count": 1004,
+  "thoughts": [
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12888:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12888,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12888:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12888,
+      "timestamp": "2022-12-30T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12887:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12887,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12887:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12887,
+      "timestamp": "2022-12-30T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12886:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12886,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-30 12:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12886:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12886,
+      "timestamp": "2022-12-30T12:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-30 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12885:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12885,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-30 08:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12885:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12885,
+      "timestamp": "2022-12-30T08:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-30 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12884:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12884,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-30 04:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12884:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12884,
+      "timestamp": "2022-12-30T04:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-30 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12883:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12883,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-30 00:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12883:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12883,
+      "timestamp": "2022-12-30T00:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-30 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-30T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12882:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12882,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-29 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12882:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12882,
+      "timestamp": "2022-12-29T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-29 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12881:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12881,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-29 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12881:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12881,
+      "timestamp": "2022-12-29T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-29 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12880:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12880,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-29 12:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12880:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12880,
+      "timestamp": "2022-12-29T12:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-29 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12879:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12879,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-29 08:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12879:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12879,
+      "timestamp": "2022-12-29T08:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-29 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12878:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12878,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-29 04:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12878:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12878,
+      "timestamp": "2022-12-29T04:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-29 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12877:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12877,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-29 00:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12877:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12877,
+      "timestamp": "2022-12-29T00:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-29 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-29T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12876:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12876,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-28 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12876:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12876,
+      "timestamp": "2022-12-28T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-28 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12875:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12875,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-28 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12875:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12875,
+      "timestamp": "2022-12-28T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-28 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12874:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12874,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-28 12:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12874:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12874,
+      "timestamp": "2022-12-28T12:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-28 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12873:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12873,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-28 08:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12873:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12873,
+      "timestamp": "2022-12-28T08:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-28 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12872:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12872,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 close 2022-12-28 04:00:00+00:00: baseline-zone long fade (NO D1 gate). entry=0.63032 stop=0.62407 tp=0.63970; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "NZDUSD",
+        "price_lo": 0.6240667857142858,
+        "price_hi": 0.6365732142857142,
+        "time_start": "2022-12-28T04:00:00+00:00",
+        "time_end": "2022-12-29T04:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 0.63032,
+          "stop": 0.6240667857142858,
+          "take_profit": 0.6396998214285714,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 32.69540816326526,
+          "h1_swing_pips": 84.40000000000002
+        }
+      },
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 62.53214285714237,
+        "expected_r": 1.5000000000000089,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12872:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12872,
+      "timestamp": "2022-12-28T04:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-28 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12871:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12871,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-28 00:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12871:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12871,
+      "timestamp": "2022-12-28T00:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-28 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-28T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12870:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12870,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-27 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12870:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12870,
+      "timestamp": "2022-12-27T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-27 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12869:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12869,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 close 2022-12-27 16:00:00+00:00: baseline-zone long fade (NO D1 gate). entry=0.62790 stop=0.62359 tp=0.63436; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "NZDUSD",
+        "price_lo": 0.6235910714285715,
+        "price_hi": 0.6322089285714285,
+        "time_start": "2022-12-27T16:00:00+00:00",
+        "time_end": "2022-12-28T16:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 0.6279,
+          "stop": 0.6235910714285715,
+          "take_profit": 0.6343633928571428,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 30.114285714285614,
+          "h1_swing_pips": 87.30000000000015
+        }
+      },
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 43.08928571428505,
+        "expected_r": 1.5000000000000129,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12869:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12869,
+      "timestamp": "2022-12-27T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-27 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12868:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12868,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 close 2022-12-27 12:00:00+00:00: baseline-zone long fade (NO D1 gate). entry=0.62873 stop=0.62354 tp=0.63652; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "NZDUSD",
+        "price_lo": 0.62354,
+        "price_hi": 0.63392,
+        "time_start": "2022-12-27T12:00:00+00:00",
+        "time_end": "2022-12-28T12:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 0.62873,
+          "stop": 0.62354,
+          "take_profit": 0.636515,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 31.24897959183664,
+          "h1_swing_pips": 93.40000000000015
+        }
+      },
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 51.900000000000276,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12868:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12868,
+      "timestamp": "2022-12-27T12:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-27 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12867:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12867,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 close 2022-12-27 08:00:00+00:00: baseline-zone long fade (NO D1 gate). entry=0.62941 stop=0.62353 tp=0.63823; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "NZDUSD",
+        "price_lo": 0.6235292857142858,
+        "price_hi": 0.6352907142857143,
+        "time_start": "2022-12-27T08:00:00+00:00",
+        "time_end": "2022-12-28T08:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 0.62941,
+          "stop": 0.6235292857142858,
+          "take_profit": 0.6382310714285714,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 30.889285714285666,
+          "h1_swing_pips": 99.90000000000055
+        }
+      },
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 58.80714285714239,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12867:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12867,
+      "timestamp": "2022-12-27T08:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-27 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12866:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12866,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 close 2022-12-27 04:00:00+00:00: baseline-zone long fade (NO D1 gate). entry=0.63045 stop=0.62352 tp=0.64085; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "NZDUSD",
+        "price_lo": 0.6235175000000001,
+        "price_hi": 0.6373824999999999,
+        "time_start": "2022-12-27T04:00:00+00:00",
+        "time_end": "2022-12-28T04:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 0.63045,
+          "stop": 0.6235175000000001,
+          "take_profit": 0.6408487499999997,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 32.560204081632705,
+          "h1_swing_pips": 99.90000000000055
+        }
+      },
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 69.32499999999897,
+        "expected_r": 1.499999999999992,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12866:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12866,
+      "timestamp": "2022-12-27T04:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-27 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12865:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12865,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 close 2022-12-27 00:00:00+00:00: baseline-zone short fade (NO D1 gate). entry=0.62804 stop=0.63159 tp=0.62272; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_supply",
+        "direction:short",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "short_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "NZDUSD",
+        "price_lo": 0.6244921428571429,
+        "price_hi": 0.6315878571428571,
+        "time_start": "2022-12-27T00:00:00+00:00",
+        "time_end": "2022-12-28T00:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 0.62804,
+          "stop": 0.6315878571428571,
+          "take_profit": 0.6227182142857144,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 31.765816326530693,
+          "h1_swing_pips": 99.90000000000055
+        }
+      },
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "short",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 35.47857142857102,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_supply",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12865:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12865,
+      "timestamp": "2022-12-27T00:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-27 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-27T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12864:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12864,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-26 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12864:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12864,
+      "timestamp": "2022-12-26T20:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-26 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12863:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12863,
+      "timestamp": "2022-12-26T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-26 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12863:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12863,
+      "timestamp": "2022-12-26T16:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-26 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12862:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12862,
+      "timestamp": "2022-12-26T12:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-26 12:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12862:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12862,
+      "timestamp": "2022-12-26T12:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-26 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12861:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12861,
+      "timestamp": "2022-12-26T08:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-26 08:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12861:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12861,
+      "timestamp": "2022-12-26T08:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-26 08:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12860:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12860,
+      "timestamp": "2022-12-26T04:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-26 04:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12860:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12860,
+      "timestamp": "2022-12-26T04:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-26 04:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T04:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12859:NZDUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12859,
+      "timestamp": "2022-12-26T00:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[bachira v1] NZDUSD H4 @ 2022-12-26 00:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12859:NZDUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12859,
+      "timestamp": "2022-12-26T00:00:00+00:00",
+      "symbol": "NZDUSD",
+      "narrative": "[karasu v1] NZDUSD H4 @ 2022-12-26 00:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2022-12-26T00:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    }
+  ]
+}

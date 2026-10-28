@@ -1,0 +1,5 @@
+# crash-fingerprint captured 20260805T065751Z
+# label=barou_v14_design  pid=25420
+# source=/Users/the1finix/Documents/GitHub/finance-research-experiments/programs/M001_multi_agent_ensemble/experiments/barou_v1x_usdjpy_patch/results/design.stdout.log
+# lines=80
+

@@ -1,0 +1,2376 @@
+{
+  "as_of": "2026-08-04T13:40:55.848750+00:00",
+  "tick_id": 12486,
+  "thought_count": 4032,
+  "thoughts": [
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12484:EURUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12484,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[bachira v1] EURUSD H4 @ 2026-07-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12485:GBPUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12485,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[bachira v1] GBPUSD H4 @ 2026-07-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12486:USDCAD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12486,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[bachira v1] USDCAD H4 @ 2026-07-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12484:EURUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12484,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[barou v1] EURUSD H4 @ 2026-07-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12485:GBPUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12485,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[barou v1] GBPUSD H4 @ 2026-07-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12486:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12486,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2026-07-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12484:EURUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12484,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[chigiri v1] EURUSD H4 @ 2026-07-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12485:GBPUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12485,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[chigiri v1] GBPUSD H4 @ 2026-07-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12486:USDCAD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12486,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[chigiri v1] USDCAD H4 @ 2026-07-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:12484:EURUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 12484,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[isagi v1] EURUSD H4 close 2026-07-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:12485:GBPUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 12485,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[isagi v1] GBPUSD H4 close 2026-07-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:12486:USDCAD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 12486,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[isagi v1] USDCAD H4 close 2026-07-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12484:EURUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12484,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[rin v1] EURUSD H4 @ 2026-07-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12485:GBPUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12485,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[rin v1] GBPUSD H4 @ 2026-07-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12486:USDCAD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12486,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[rin v1] USDCAD H4 @ 2026-07-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12484:EURUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12484,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[karasu v1] EURUSD H4 @ 2026-07-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12485:GBPUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12485,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[karasu v1] GBPUSD H4 @ 2026-07-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12486:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12486,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2026-07-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:12484:EURUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 12484,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[nagi v1] EURUSD H4 @ 2026-07-30 20:00:00+00:00 -- chemical reaction: reo_mikage + chigiri_hyoma overlap on 8 tags & coordinate; combined conviction 0.99 (F11 OR).",
+      "tags": [
+        "breakout_continuation",
+        "breakout_level:1.14841",
+        "canon:chigiri",
+        "canon:nagi",
+        "chigiri_speed_breakout",
+        "direction:long",
+        "f11_chemical_reaction",
+        "leader:reo_mikage",
+        "momentum",
+        "nagi_confluence",
+        "peer:chigiri_hyoma",
+        "regime:vol_expansion",
+        "weapon:perfect_trap",
+        "weapon:speed"
+      ],
+      "confidence_in_thought": 0.988089099807636,
+      "expected_action": "long_on_chemical_reaction",
+      "coordinate": {
+        "agent_id": "nagi_seishiro",
+        "symbol": "EURUSD",
+        "price_lo": 1.1477020604096804,
+        "price_hi": 1.1564779395903197,
+        "time_start": "2026-07-30T20:00:00+00:00",
+        "time_end": "2026-07-31T20:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "chemical_reaction_v1",
+        "expected_strength": 0.988089099807636,
+        "direction_bias": "long",
+        "rationale": {
+          "leader": {
+            "mirrored_agent_id": "chigiri_hyoma",
+            "mirrored_thought_id": "chigiri_hyoma:12478:EURUSD",
+            "leader_base_conviction": 0.8299545911233424,
+            "reo_lift": 0.1,
+            "final_conviction": 0.9299545911233423,
+            "humility_band_widen_frac": 0.2,
+            "humility_time_shorten_frac": 0.25,
+            "leader_rationale": {
+              "entry": 1.15209,
+              "stop": 1.1477020604096804,
+              "take_profit": 1.1586719093854796,
+              "broken_level": 1.14841,
+              "magnitude": 0.0036800000000001276,
+              "atr": 0.002831758361278187,
+              "atr_median_vol": 0.001853536928861046,
+              "signal_reason": "chigiri_speed_breakout_continuation",
+              "home_tf": "H4",
+              "conviction_final": 0.8299545911233424,
+              "atr_pips": 30.390816326530548,
+              "h1_swing_pips": 183.8000000000006
+            },
+            "agent_id": "reo_mikage",
+            "thought_id": "reo_mikage:12481:EURUSD",
+            "conviction": 0.9299545911233423
+          },
+          "other_agent_id": "chigiri_hyoma",
+          "other_thought_id": "chigiri_hyoma:12478:EURUSD",
+          "shared_tags": [
+            "breakout_continuation",
+            "breakout_level:1.14841",
+            "canon:chigiri",
+            "chigiri_speed_breakout",
+            "direction:long",
+            "momentum",
+            "regime:vol_expansion",
+            "weapon:speed"
+          ],
+          "combined_conviction": 0.988089099807636,
+          "f11_formula": "1 - prod(1 - c_i)"
+        }
+      },
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "reo_mikage:12481:EURUSD",
+        "chigiri_hyoma:12478:EURUSD"
+      ],
+      "read": {
+        "signal_family": "confluence",
+        "direction_bias": "long",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "nagi_confluence",
+          "f11_chemical_reaction",
+          "leader:reo_mikage",
+          "peer:chigiri_hyoma",
+          "breakout_continuation",
+          "breakout_level:1.14841",
+          "canon:chigiri"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:12485:GBPUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 12485,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[nagi v1] GBPUSD H4 @ 2026-07-30 20:00:00+00:00 -- chemical reaction: reo_mikage + chigiri_hyoma overlap on 8 tags & coordinate; combined conviction 0.99 (F11 OR).",
+      "tags": [
+        "breakout_continuation",
+        "breakout_level:1.34067",
+        "canon:chigiri",
+        "canon:nagi",
+        "chigiri_speed_breakout",
+        "direction:long",
+        "f11_chemical_reaction",
+        "leader:reo_mikage",
+        "momentum",
+        "nagi_confluence",
+        "peer:chigiri_hyoma",
+        "regime:vol_expansion",
+        "weapon:perfect_trap",
+        "weapon:speed"
+      ],
+      "confidence_in_thought": 0.9909800468632081,
+      "expected_action": "long_on_chemical_reaction",
+      "coordinate": {
+        "agent_id": "nagi_seishiro",
+        "symbol": "GBPUSD",
+        "price_lo": 1.3397587996646263,
+        "price_hi": 1.3519812003353735,
+        "time_start": "2026-07-30T20:00:00+00:00",
+        "time_end": "2026-07-31T20:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "chemical_reaction_v1",
+        "expected_strength": 0.9909800468632081,
+        "direction_bias": "long",
+        "rationale": {
+          "leader": {
+            "mirrored_agent_id": "chigiri_hyoma",
+            "mirrored_thought_id": "chigiri_hyoma:12479:GBPUSD",
+            "leader_base_conviction": 0.842668955391313,
+            "reo_lift": 0.1,
+            "final_conviction": 0.942668955391313,
+            "humility_band_widen_frac": 0.2,
+            "humility_time_shorten_frac": 0.25,
+            "leader_rationale": {
+              "entry": 1.34587,
+              "stop": 1.3397587996646263,
+              "take_profit": 1.3550368005030604,
+              "broken_level": 1.34067,
+              "magnitude": 0.005199999999999871,
+              "atr": 0.003644801341495272,
+              "atr_median_vol": 0.0026481405669867997,
+              "signal_reason": "chigiri_speed_breakout_continuation",
+              "home_tf": "H4",
+              "conviction_final": 0.842668955391313,
+              "atr_pips": 37.48010204081639,
+              "h1_swing_pips": 189.60000000000088
+            },
+            "agent_id": "reo_mikage",
+            "thought_id": "reo_mikage:12482:GBPUSD",
+            "conviction": 0.942668955391313
+          },
+          "other_agent_id": "chigiri_hyoma",
+          "other_thought_id": "chigiri_hyoma:12479:GBPUSD",
+          "shared_tags": [
+            "breakout_continuation",
+            "breakout_level:1.34067",
+            "canon:chigiri",
+            "chigiri_speed_breakout",
+            "direction:long",
+            "momentum",
+            "regime:vol_expansion",
+            "weapon:speed"
+          ],
+          "combined_conviction": 0.9909800468632081,
+          "f11_formula": "1 - prod(1 - c_i)"
+        }
+      },
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "reo_mikage:12482:GBPUSD",
+        "chigiri_hyoma:12479:GBPUSD"
+      ],
+      "read": {
+        "signal_family": "confluence",
+        "direction_bias": "long",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "nagi_confluence",
+          "f11_chemical_reaction",
+          "leader:reo_mikage",
+          "peer:chigiri_hyoma",
+          "breakout_continuation",
+          "breakout_level:1.34067",
+          "canon:chigiri"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:12486:USDCAD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 12486,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[nagi v1] USDCAD H4 @ 2026-07-30 20:00:00+00:00 -- chemical reaction: reo_mikage + chigiri_hyoma overlap on 8 tags & coordinate; combined conviction 0.97 (F11 OR).",
+      "tags": [
+        "breakout_continuation",
+        "breakout_level:1.40228",
+        "canon:chigiri",
+        "canon:nagi",
+        "chigiri_speed_breakout",
+        "direction:short",
+        "f11_chemical_reaction",
+        "leader:reo_mikage",
+        "momentum",
+        "nagi_confluence",
+        "peer:chigiri_hyoma",
+        "regime:vol_expansion",
+        "weapon:perfect_trap",
+        "weapon:speed"
+      ],
+      "confidence_in_thought": 0.9713689398098737,
+      "expected_action": "short_on_chemical_reaction",
+      "coordinate": {
+        "agent_id": "nagi_seishiro",
+        "symbol": "USDCAD",
+        "price_lo": 1.3977874717889736,
+        "price_hi": 1.4029325282110265,
+        "time_start": "2026-07-30T20:00:00+00:00",
+        "time_end": "2026-07-31T20:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "chemical_reaction_v1",
+        "expected_strength": 0.9713689398098737,
+        "direction_bias": "short",
+        "rationale": {
+          "leader": {
+            "mirrored_agent_id": "chigiri_hyoma",
+            "mirrored_thought_id": "chigiri_hyoma:12480:USDCAD",
+            "leader_base_conviction": 0.7735600380012332,
+            "reo_lift": 0.1,
+            "final_conviction": 0.8735600380012332,
+            "humility_band_widen_frac": 0.2,
+            "humility_time_shorten_frac": 0.25,
+            "leader_rationale": {
+              "entry": 1.40036,
+              "stop": 1.4029325282110265,
+              "take_profit": 1.3965012076834604,
+              "broken_level": 1.40228,
+              "magnitude": 0.0019199999999999218,
+              "atr": 0.0026101128441066495,
+              "atr_median_vol": 0.002018816034595931,
+              "signal_reason": "chigiri_speed_breakout_continuation",
+              "home_tf": "H4",
+              "conviction_final": 0.7735600380012332,
+              "atr_pips": 27.612755102040854,
+              "h1_swing_pips": 127.40000000000195
+            },
+            "agent_id": "reo_mikage",
+            "thought_id": "reo_mikage:12483:USDCAD",
+            "conviction": 0.8735600380012332
+          },
+          "other_agent_id": "chigiri_hyoma",
+          "other_thought_id": "chigiri_hyoma:12480:USDCAD",
+          "shared_tags": [
+            "breakout_continuation",
+            "breakout_level:1.40228",
+            "canon:chigiri",
+            "chigiri_speed_breakout",
+            "direction:short",
+            "momentum",
+            "regime:vol_expansion",
+            "weapon:speed"
+          ],
+          "combined_conviction": 0.9713689398098737,
+          "f11_formula": "1 - prod(1 - c_i)"
+        }
+      },
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "reo_mikage:12483:USDCAD",
+        "chigiri_hyoma:12480:USDCAD"
+      ],
+      "read": {
+        "signal_family": "confluence",
+        "direction_bias": "short",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "nagi_confluence",
+          "f11_chemical_reaction",
+          "leader:reo_mikage",
+          "peer:chigiri_hyoma",
+          "breakout_continuation",
+          "breakout_level:1.40228",
+          "canon:chigiri"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:12484:EURUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 12484,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[reo v1] EURUSD H4 @ 2026-07-30 20:00:00+00:00 -- mirroring nagi_seishiro (long, base_conv 0.96); humility margin: band x1.20, time x0.75; mirror conv 1.00.",
+      "tags": [
+        "bachira_rebel_baseline_zone",
+        "bachira_rebel_lift_applied",
+        "canon:bachira",
+        "canon:nagi",
+        "canon:reo",
+        "direction:long",
+        "f11_chemical_reaction",
+        "leader:reo_mikage",
+        "mirroring:nagi_seishiro",
+        "nagi_confluence",
+        "peer:bachira_meguru",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "signal_reason:zone_demand",
+        "weapon:chameleon",
+        "weapon:perfect_trap",
+        "weapon:rebel_dribble",
+        "zone_setup_h4"
+      ],
+      "confidence_in_thought": 1.0,
+      "expected_action": "mirror_long",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "EURUSD",
+        "price_lo": 1.1409422857142857,
+        "price_hi": 1.1541577142857145,
+        "time_start": "2026-07-30T16:00:00+00:00",
+        "time_end": "2026-07-31T10:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "reo_mirror_of:nagi_seishiro",
+        "expected_strength": 1.0,
+        "direction_bias": "long",
+        "rationale": {
+          "mirrored_agent_id": "nagi_seishiro",
+          "mirrored_thought_id": "nagi_seishiro:12481:EURUSD",
+          "leader_base_conviction": 0.9625,
+          "reo_lift": 0.1,
+          "final_conviction": 1.0,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "leader": {
+              "mirrored_agent_id": "bachira_meguru",
+              "mirrored_thought_id": "bachira_meguru:12475:EURUSD",
+              "leader_base_conviction": 0.75,
+              "reo_lift": 0.1,
+              "final_conviction": 0.85,
+              "humility_band_widen_frac": 0.2,
+              "humility_time_shorten_frac": 0.25,
+              "leader_rationale": {
+                "entry": 1.14755,
+                "stop": 1.1420435714285715,
+                "take_profit": 1.155809642857143,
+                "signal_reason": "zone_demand",
+                "home_tf": "H4",
+                "conviction_base": 0.65,
+                "conviction_final": 0.75,
+                "atr_pips": 26.70408163265294,
+                "h1_swing_pips": 130.9999999999989
+              },
+              "agent_id": "reo_mikage",
+              "thought_id": "reo_mikage:12478:EURUSD",
+              "conviction": 0.85
+            },
+            "other_agent_id": "bachira_meguru",
+            "other_thought_id": "bachira_meguru:12475:EURUSD",
+            "shared_tags": [
+              "bachira_rebel_baseline_zone",
+              "bachira_rebel_lift_applied",
+              "canon:bachira",
+              "direction:long",
+              "signal_reason:zone_demand",
+              "weapon:rebel_dribble",
+              "zone_setup_h4"
+            ],
+            "combined_conviction": 0.9625,
+            "f11_formula": "1 - prod(1 - c_i)"
+          }
+        }
+      },
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "nagi_seishiro:12481:EURUSD"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 55.06428571428579,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:nagi_seishiro",
+          "nagi_confluence",
+          "f11_chemical_reaction",
+          "leader:reo_mikage",
+          "peer:bachira_meguru",
+          "bachira_rebel_baseline_zone",
+          "bachira_rebel_lift_applied",
+          "canon:bachira"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:12485:GBPUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 12485,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[reo v1] GBPUSD H4 @ 2026-07-30 20:00:00+00:00 -- mirroring chigiri_hyoma (long, base_conv 0.84); humility margin: band x1.20, time x0.75; mirror conv 0.94.",
+      "tags": [
+        "breakout_continuation",
+        "breakout_level:1.34067",
+        "canon:chigiri",
+        "canon:reo",
+        "chigiri_speed_breakout",
+        "direction:long",
+        "mirroring:chigiri_hyoma",
+        "momentum",
+        "regime:vol_expansion",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "weapon:chameleon",
+        "weapon:speed"
+      ],
+      "confidence_in_thought": 0.942668955391313,
+      "expected_action": "mirror_long",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "GBPUSD",
+        "price_lo": 1.3385365595975516,
+        "price_hi": 1.3532034404024482,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T06:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "reo_mirror_of:chigiri_hyoma",
+        "expected_strength": 0.942668955391313,
+        "direction_bias": "long",
+        "rationale": {
+          "mirrored_agent_id": "chigiri_hyoma",
+          "mirrored_thought_id": "chigiri_hyoma:12479:GBPUSD",
+          "leader_base_conviction": 0.842668955391313,
+          "reo_lift": 0.1,
+          "final_conviction": 0.942668955391313,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "entry": 1.34587,
+            "stop": 1.3397587996646263,
+            "take_profit": 1.3550368005030604,
+            "broken_level": 1.34067,
+            "magnitude": 0.005199999999999871,
+            "atr": 0.003644801341495272,
+            "atr_median_vol": 0.0026481405669867997,
+            "signal_reason": "chigiri_speed_breakout_continuation",
+            "home_tf": "H4",
+            "conviction_final": 0.842668955391313,
+            "atr_pips": 37.48010204081639,
+            "h1_swing_pips": 189.60000000000088
+          }
+        }
+      },
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "chigiri_hyoma:12479:GBPUSD"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "long",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:chigiri_hyoma",
+          "chigiri_speed_breakout",
+          "breakout_continuation",
+          "momentum",
+          "broken_level:1.34067"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:12486:USDCAD",
+      "agent_id": "reo_mikage",
+      "tick_id": 12486,
+      "timestamp": "2026-07-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[reo v1] USDCAD H4 @ 2026-07-30 20:00:00+00:00 -- mirroring chigiri_hyoma (short, base_conv 0.77); humility margin: band x1.20, time x0.75; mirror conv 0.87.",
+      "tags": [
+        "breakout_continuation",
+        "breakout_level:1.40228",
+        "canon:chigiri",
+        "canon:reo",
+        "chigiri_speed_breakout",
+        "direction:short",
+        "mirroring:chigiri_hyoma",
+        "momentum",
+        "regime:vol_expansion",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "weapon:chameleon",
+        "weapon:speed"
+      ],
+      "confidence_in_thought": 0.8735600380012332,
+      "expected_action": "mirror_short",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "USDCAD",
+        "price_lo": 1.3972729661467682,
+        "price_hi": 1.4034470338532319,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T06:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "reo_mirror_of:chigiri_hyoma",
+        "expected_strength": 0.8735600380012332,
+        "direction_bias": "short",
+        "rationale": {
+          "mirrored_agent_id": "chigiri_hyoma",
+          "mirrored_thought_id": "chigiri_hyoma:12480:USDCAD",
+          "leader_base_conviction": 0.7735600380012332,
+          "reo_lift": 0.1,
+          "final_conviction": 0.8735600380012332,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "entry": 1.40036,
+            "stop": 1.4029325282110265,
+            "take_profit": 1.3965012076834604,
+            "broken_level": 1.40228,
+            "magnitude": 0.0019199999999999218,
+            "atr": 0.0026101128441066495,
+            "atr_median_vol": 0.002018816034595931,
+            "signal_reason": "chigiri_speed_breakout_continuation",
+            "home_tf": "H4",
+            "conviction_final": 0.7735600380012332,
+            "atr_pips": 27.612755102040854,
+            "h1_swing_pips": 127.40000000000195
+          }
+        }
+      },
+      "decision_horizon": "2026-07-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "chigiri_hyoma:12480:USDCAD"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "short",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:chigiri_hyoma",
+          "chigiri_speed_breakout",
+          "breakout_continuation",
+          "momentum",
+          "broken_level:1.40228"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12481:EURUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12481,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[bachira v1] EURUSD H4 @ 2026-07-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12482:GBPUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12482,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[bachira v1] GBPUSD H4 @ 2026-07-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12483:USDCAD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12483,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[bachira v1] USDCAD H4 @ 2026-07-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12481:EURUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12481,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[barou v1] EURUSD H4 @ 2026-07-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12482:GBPUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12482,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[barou v1] GBPUSD H4 @ 2026-07-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12483:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12483,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2026-07-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12481:EURUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12481,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[chigiri v1] EURUSD H4 @ 2026-07-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12482:GBPUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12482,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[chigiri v1] GBPUSD H4 @ 2026-07-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12483:USDCAD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12483,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[chigiri v1] USDCAD H4 @ 2026-07-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:12481:EURUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 12481,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[isagi v1] EURUSD H4 close 2026-07-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:12482:GBPUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 12482,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[isagi v1] GBPUSD H4 close 2026-07-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:12483:USDCAD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 12483,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[isagi v1] USDCAD H4 close 2026-07-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12481:EURUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12481,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[rin v1] EURUSD H4 @ 2026-07-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12482:GBPUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12482,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[rin v1] GBPUSD H4 @ 2026-07-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:12483:USDCAD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 12483,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[rin v1] USDCAD H4 @ 2026-07-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12481:EURUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12481,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[karasu v1] EURUSD H4 @ 2026-07-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12482:GBPUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12482,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[karasu v1] GBPUSD H4 @ 2026-07-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:12483:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 12483,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2026-07-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:12481:EURUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 12481,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[nagi v1] EURUSD H4 @ 2026-07-30 16:00:00+00:00 -- chemical reaction: reo_mikage + bachira_meguru overlap on 7 tags & coordinate; combined conviction 0.96 (F11 OR).",
+      "tags": [
+        "bachira_rebel_baseline_zone",
+        "bachira_rebel_lift_applied",
+        "canon:bachira",
+        "canon:nagi",
+        "direction:long",
+        "f11_chemical_reaction",
+        "leader:reo_mikage",
+        "nagi_confluence",
+        "peer:bachira_meguru",
+        "signal_reason:zone_demand",
+        "weapon:perfect_trap",
+        "weapon:rebel_dribble",
+        "zone_setup_h4"
+      ],
+      "confidence_in_thought": 0.9625,
+      "expected_action": "long_on_chemical_reaction",
+      "coordinate": {
+        "agent_id": "nagi_seishiro",
+        "symbol": "EURUSD",
+        "price_lo": 1.1420435714285715,
+        "price_hi": 1.1530564285714286,
+        "time_start": "2026-07-30T16:00:00+00:00",
+        "time_end": "2026-07-31T16:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "chemical_reaction_v1",
+        "expected_strength": 0.9625,
+        "direction_bias": "long",
+        "rationale": {
+          "leader": {
+            "mirrored_agent_id": "bachira_meguru",
+            "mirrored_thought_id": "bachira_meguru:12475:EURUSD",
+            "leader_base_conviction": 0.75,
+            "reo_lift": 0.1,
+            "final_conviction": 0.85,
+            "humility_band_widen_frac": 0.2,
+            "humility_time_shorten_frac": 0.25,
+            "leader_rationale": {
+              "entry": 1.14755,
+              "stop": 1.1420435714285715,
+              "take_profit": 1.155809642857143,
+              "signal_reason": "zone_demand",
+              "home_tf": "H4",
+              "conviction_base": 0.65,
+              "conviction_final": 0.75,
+              "atr_pips": 26.70408163265294,
+              "h1_swing_pips": 130.9999999999989
+            },
+            "agent_id": "reo_mikage",
+            "thought_id": "reo_mikage:12478:EURUSD",
+            "conviction": 0.85
+          },
+          "other_agent_id": "bachira_meguru",
+          "other_thought_id": "bachira_meguru:12475:EURUSD",
+          "shared_tags": [
+            "bachira_rebel_baseline_zone",
+            "bachira_rebel_lift_applied",
+            "canon:bachira",
+            "direction:long",
+            "signal_reason:zone_demand",
+            "weapon:rebel_dribble",
+            "zone_setup_h4"
+          ],
+          "combined_conviction": 0.9625,
+          "f11_formula": "1 - prod(1 - c_i)"
+        }
+      },
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "reo_mikage:12478:EURUSD",
+        "bachira_meguru:12475:EURUSD"
+      ],
+      "read": {
+        "signal_family": "confluence",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 55.06428571428579,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "nagi_confluence",
+          "f11_chemical_reaction",
+          "leader:reo_mikage",
+          "peer:bachira_meguru",
+          "bachira_rebel_baseline_zone",
+          "bachira_rebel_lift_applied",
+          "canon:bachira"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:12482:GBPUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 12482,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[nagi v1] GBPUSD H4 @ 2026-07-30 16:00:00+00:00 -- 3 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:12483:USDCAD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 12483,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[nagi v1] USDCAD H4 @ 2026-07-30 16:00:00+00:00 -- 5 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:12481:EURUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 12481,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[reo v1] EURUSD H4 @ 2026-07-30 16:00:00+00:00 -- mirroring chigiri_hyoma (long, base_conv 0.83); humility margin: band x1.20, time x0.75; mirror conv 0.93.",
+      "tags": [
+        "breakout_continuation",
+        "breakout_level:1.14841",
+        "canon:chigiri",
+        "canon:reo",
+        "chigiri_speed_breakout",
+        "direction:long",
+        "mirroring:chigiri_hyoma",
+        "momentum",
+        "regime:vol_expansion",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "weapon:chameleon",
+        "weapon:speed"
+      ],
+      "confidence_in_thought": 0.9299545911233423,
+      "expected_action": "mirror_long",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "EURUSD",
+        "price_lo": 1.1468244724916163,
+        "price_hi": 1.1573555275083838,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T06:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "reo_mirror_of:chigiri_hyoma",
+        "expected_strength": 0.9299545911233423,
+        "direction_bias": "long",
+        "rationale": {
+          "mirrored_agent_id": "chigiri_hyoma",
+          "mirrored_thought_id": "chigiri_hyoma:12478:EURUSD",
+          "leader_base_conviction": 0.8299545911233424,
+          "reo_lift": 0.1,
+          "final_conviction": 0.9299545911233423,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "entry": 1.15209,
+            "stop": 1.1477020604096804,
+            "take_profit": 1.1586719093854796,
+            "broken_level": 1.14841,
+            "magnitude": 0.0036800000000001276,
+            "atr": 0.002831758361278187,
+            "atr_median_vol": 0.001853536928861046,
+            "signal_reason": "chigiri_speed_breakout_continuation",
+            "home_tf": "H4",
+            "conviction_final": 0.8299545911233424,
+            "atr_pips": 30.390816326530548,
+            "h1_swing_pips": 183.8000000000006
+          }
+        }
+      },
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "chigiri_hyoma:12478:EURUSD"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "long",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:chigiri_hyoma",
+          "chigiri_speed_breakout",
+          "breakout_continuation",
+          "momentum",
+          "broken_level:1.14841"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:12482:GBPUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 12482,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[reo v1] GBPUSD H4 @ 2026-07-30 16:00:00+00:00 -- mirroring chigiri_hyoma (long, base_conv 0.84); humility margin: band x1.20, time x0.75; mirror conv 0.94.",
+      "tags": [
+        "breakout_continuation",
+        "breakout_level:1.34067",
+        "canon:chigiri",
+        "canon:reo",
+        "chigiri_speed_breakout",
+        "direction:long",
+        "mirroring:chigiri_hyoma",
+        "momentum",
+        "regime:vol_expansion",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "weapon:chameleon",
+        "weapon:speed"
+      ],
+      "confidence_in_thought": 0.942668955391313,
+      "expected_action": "mirror_long",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "GBPUSD",
+        "price_lo": 1.3385365595975516,
+        "price_hi": 1.3532034404024482,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T06:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "reo_mirror_of:chigiri_hyoma",
+        "expected_strength": 0.942668955391313,
+        "direction_bias": "long",
+        "rationale": {
+          "mirrored_agent_id": "chigiri_hyoma",
+          "mirrored_thought_id": "chigiri_hyoma:12479:GBPUSD",
+          "leader_base_conviction": 0.842668955391313,
+          "reo_lift": 0.1,
+          "final_conviction": 0.942668955391313,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "entry": 1.34587,
+            "stop": 1.3397587996646263,
+            "take_profit": 1.3550368005030604,
+            "broken_level": 1.34067,
+            "magnitude": 0.005199999999999871,
+            "atr": 0.003644801341495272,
+            "atr_median_vol": 0.0026481405669867997,
+            "signal_reason": "chigiri_speed_breakout_continuation",
+            "home_tf": "H4",
+            "conviction_final": 0.842668955391313,
+            "atr_pips": 37.48010204081639,
+            "h1_swing_pips": 189.60000000000088
+          }
+        }
+      },
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "chigiri_hyoma:12479:GBPUSD"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "long",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:chigiri_hyoma",
+          "chigiri_speed_breakout",
+          "breakout_continuation",
+          "momentum",
+          "broken_level:1.34067"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:12483:USDCAD",
+      "agent_id": "reo_mikage",
+      "tick_id": 12483,
+      "timestamp": "2026-07-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[reo v1] USDCAD H4 @ 2026-07-30 16:00:00+00:00 -- mirroring chigiri_hyoma (short, base_conv 0.77); humility margin: band x1.20, time x0.75; mirror conv 0.87.",
+      "tags": [
+        "breakout_continuation",
+        "breakout_level:1.40228",
+        "canon:chigiri",
+        "canon:reo",
+        "chigiri_speed_breakout",
+        "direction:short",
+        "mirroring:chigiri_hyoma",
+        "momentum",
+        "regime:vol_expansion",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "weapon:chameleon",
+        "weapon:speed"
+      ],
+      "confidence_in_thought": 0.8735600380012332,
+      "expected_action": "mirror_short",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "USDCAD",
+        "price_lo": 1.3972729661467682,
+        "price_hi": 1.4034470338532319,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T06:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "reo_mirror_of:chigiri_hyoma",
+        "expected_strength": 0.8735600380012332,
+        "direction_bias": "short",
+        "rationale": {
+          "mirrored_agent_id": "chigiri_hyoma",
+          "mirrored_thought_id": "chigiri_hyoma:12480:USDCAD",
+          "leader_base_conviction": 0.7735600380012332,
+          "reo_lift": 0.1,
+          "final_conviction": 0.8735600380012332,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "entry": 1.40036,
+            "stop": 1.4029325282110265,
+            "take_profit": 1.3965012076834604,
+            "broken_level": 1.40228,
+            "magnitude": 0.0019199999999999218,
+            "atr": 0.0026101128441066495,
+            "atr_median_vol": 0.002018816034595931,
+            "signal_reason": "chigiri_speed_breakout_continuation",
+            "home_tf": "H4",
+            "conviction_final": 0.7735600380012332,
+            "atr_pips": 27.612755102040854,
+            "h1_swing_pips": 127.40000000000195
+          }
+        }
+      },
+      "decision_horizon": "2026-07-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "chigiri_hyoma:12480:USDCAD"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "short",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:chigiri_hyoma",
+          "chigiri_speed_breakout",
+          "breakout_continuation",
+          "momentum",
+          "broken_level:1.40228"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12478:EURUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12478,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[bachira v1] EURUSD H4 close 2026-07-30 12:00:00+00:00: baseline-zone short fade (NO D1 gate). entry=1.15209 stop=1.15439 tp=1.14864; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_supply",
+        "direction:short",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "short_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "EURUSD",
+        "price_lo": 1.1497878571428573,
+        "price_hi": 1.1543921428571429,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T12:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 1.15209,
+          "stop": 1.1543921428571429,
+          "take_profit": 1.1486367857142858,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 30.390816326530548,
+          "h1_swing_pips": 183.8000000000006
+        }
+      },
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "short",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 23.021428571428082,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_supply",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12479:GBPUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12479,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[bachira v1] GBPUSD H4 @ 2026-07-30 12:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:12480:USDCAD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 12480,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[bachira v1] USDCAD H4 close 2026-07-30 12:00:00+00:00: baseline-zone long fade (NO D1 gate). entry=1.40036 stop=1.39885 tp=1.40263; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "USDCAD",
+        "price_lo": 1.3988496428571429,
+        "price_hi": 1.4018703571428572,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T12:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 1.40036,
+          "stop": 1.3988496428571429,
+          "take_profit": 1.4026255357142858,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 27.612755102040854,
+          "h1_swing_pips": 127.40000000000195
+        }
+      },
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 15.103571428571883,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12478:EURUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12478,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[barou v1] EURUSD H4 @ 2026-07-30 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12479:GBPUSD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12479,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[barou v1] GBPUSD H4 @ 2026-07-30 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:12480:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 12480,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2026-07-30 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12478:EURUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12478,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[chigiri v1] EURUSD H4 close 2026-07-30 12:00:00+00:00: long breakout of 20-bar range; magnitude=0.00368 (1.30 ATR); ATR=0.00283; conv 0.70+0.13=0.83.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_speed_breakout",
+        "breakout_continuation",
+        "momentum",
+        "direction:long",
+        "breakout_level:1.14841",
+        "regime:vol_expansion"
+      ],
+      "confidence_in_thought": 0.8299545911233424,
+      "expected_action": "long_on_H4_close_breakout",
+      "coordinate": {
+        "agent_id": "chigiri_hyoma",
+        "symbol": "EURUSD",
+        "price_lo": 1.1477020604096804,
+        "price_hi": 1.1564779395903197,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T12:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "chigiri_speed_breakout_continuation",
+        "expected_strength": 0.8299545911233424,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 1.15209,
+          "stop": 1.1477020604096804,
+          "take_profit": 1.1586719093854796,
+          "broken_level": 1.14841,
+          "magnitude": 0.0036800000000001276,
+          "atr": 0.002831758361278187,
+          "atr_median_vol": 0.001853536928861046,
+          "signal_reason": "chigiri_speed_breakout_continuation",
+          "home_tf": "H4",
+          "conviction_final": 0.8299545911233424,
+          "atr_pips": 30.390816326530548,
+          "h1_swing_pips": 183.8000000000006
+        }
+      },
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "breakout",
+        "direction_bias": "long",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "chigiri_speed_breakout",
+          "breakout_continuation",
+          "momentum",
+          "broken_level:1.14841"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12479:GBPUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12479,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[chigiri v1] GBPUSD H4 close 2026-07-30 12:00:00+00:00: long breakout of 20-bar range; magnitude=0.00520 (1.43 ATR); ATR=0.00364; conv 0.70+0.14=0.84.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_speed_breakout",
+        "breakout_continuation",
+        "momentum",
+        "direction:long",
+        "breakout_level:1.34067",
+        "regime:vol_expansion"
+      ],
+      "confidence_in_thought": 0.842668955391313,
+      "expected_action": "long_on_H4_close_breakout",
+      "coordinate": {
+        "agent_id": "chigiri_hyoma",
+        "symbol": "GBPUSD",
+        "price_lo": 1.3397587996646263,
+        "price_hi": 1.3519812003353735,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T12:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "chigiri_speed_breakout_continuation",
+        "expected_strength": 0.842668955391313,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 1.34587,
+          "stop": 1.3397587996646263,
+          "take_profit": 1.3550368005030604,
+          "broken_level": 1.34067,
+          "magnitude": 0.005199999999999871,
+          "atr": 0.003644801341495272,
+          "atr_median_vol": 0.0026481405669867997,
+          "signal_reason": "chigiri_speed_breakout_continuation",
+          "home_tf": "H4",
+          "conviction_final": 0.842668955391313,
+          "atr_pips": 37.48010204081639,
+          "h1_swing_pips": 189.60000000000088
+        }
+      },
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "breakout",
+        "direction_bias": "long",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "chigiri_speed_breakout",
+          "breakout_continuation",
+          "momentum",
+          "broken_level:1.34067"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:12480:USDCAD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 12480,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[chigiri v1] USDCAD H4 close 2026-07-30 12:00:00+00:00: short breakout of 20-bar range; magnitude=0.00192 (0.74 ATR); ATR=0.00261; conv 0.70+0.07=0.77.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_speed_breakout",
+        "breakout_continuation",
+        "momentum",
+        "direction:short",
+        "breakout_level:1.40228",
+        "regime:vol_expansion"
+      ],
+      "confidence_in_thought": 0.7735600380012332,
+      "expected_action": "short_on_H4_close_breakout",
+      "coordinate": {
+        "agent_id": "chigiri_hyoma",
+        "symbol": "USDCAD",
+        "price_lo": 1.3977874717889736,
+        "price_hi": 1.4029325282110265,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T12:00:00+00:00",
+        "vol_band": [
+          1.2,
+          Infinity
+        ],
+        "regime_predicate": "chigiri_speed_breakout_continuation",
+        "expected_strength": 0.7735600380012332,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 1.40036,
+          "stop": 1.4029325282110265,
+          "take_profit": 1.3965012076834604,
+          "broken_level": 1.40228,
+          "magnitude": 0.0019199999999999218,
+          "atr": 0.0026101128441066495,
+          "atr_median_vol": 0.002018816034595931,
+          "signal_reason": "chigiri_speed_breakout_continuation",
+          "home_tf": "H4",
+          "conviction_final": 0.7735600380012332,
+          "atr_pips": 27.612755102040854,
+          "h1_swing_pips": 127.40000000000195
+        }
+      },
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "breakout",
+        "direction_bias": "short",
+        "regime_read": "vol_expansion",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "chigiri_speed_breakout",
+          "breakout_continuation",
+          "momentum",
+          "broken_level:1.40228"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:12478:EURUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 12478,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[isagi v1] EURUSD H4 close 2026-07-30 12:00:00+00:00: zone-touch short fade against D1 bias; entry=1.15209 stop=1.15439 tp=1.14864.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed",
+        "htf_bias:up",
+        "htf_align:D1",
+        "htf_align_mode:against",
+        "htf_lookback:10",
+        "htf_min_move_pips:60.0",
+        "signal_reason:zone_supply"
+      ],
+      "confidence_in_thought": 0.65,
+      "expected_action": "short_on_H4_close",
+      "coordinate": {
+        "agent_id": "isagi_yoichi",
+        "symbol": "EURUSD",
+        "price_lo": 1.1497878571428573,
+        "price_hi": 1.1543921428571429,
+        "time_start": "2026-07-30T12:00:00+00:00",
+        "time_end": "2026-07-31T12:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "D1_trend_against",
+        "expected_strength": 0.65,
+        "direction_bias": "short",
+        "rationale": {
+          "entry": 1.15209,
+          "stop": 1.1543921428571429,
+          "take_profit": 1.1486367857142858,
+          "signal_reason": "zone_supply",
+          "home_tf": "H4",
+          "atr_pips": 30.390816326530548,
+          "h1_swing_pips": 183.8000000000006
+        }
+      },
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "metavision",
+        "direction_bias": "short",
+        "regime_read": "up",
+        "expected_stop_pips": 23.021428571428082,
+        "expected_r": 1.5,
+        "driving_evidence": [
+          "zone_d1_against",
+          "htf_against",
+          "signal_reason:zone_supply"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:12479:GBPUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 12479,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[isagi v1] GBPUSD H4 close 2026-07-30 12:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:12480:USDCAD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 12480,
+      "timestamp": "2026-07-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[isagi v1] USDCAD H4 close 2026-07-30 12:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2026-07-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    }
+  ]
+}

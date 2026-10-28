@@ -1,0 +1,11 @@
+{
+  "publish": {
+    "barou_shoei": 11280,
+    "karasu_tabito": 11280
+  },
+  "read": {
+    "barou_shoei": 1115
+  },
+  "n_thoughts": 22560,
+  "source": "phase_an:barou_shoei:USDCAD:2016-01-01"
+}

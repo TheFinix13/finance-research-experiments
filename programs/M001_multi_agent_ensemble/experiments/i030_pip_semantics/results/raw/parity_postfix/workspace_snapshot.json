@@ -1,0 +1,1636 @@
+{
+  "as_of": "2026-08-04T17:00:31.646078+00:00",
+  "tick_id": 4812,
+  "thought_count": 3192,
+  "thoughts": [
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4810:EURUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4810,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[bachira v1] EURUSD H4 @ 2019-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4811:GBPUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4811,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[bachira v1] GBPUSD H4 @ 2019-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4812:USDCAD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4812,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[bachira v1] USDCAD H4 @ 2019-12-30 20:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:4812:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 4812,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2019-12-30 20:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:4810:EURUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 4810,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[chigiri v1] EURUSD H4 @ 2019-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:4811:GBPUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 4811,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[chigiri v1] GBPUSD H4 @ 2019-12-30 20:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:4810:EURUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 4810,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[isagi v1] EURUSD H4 close 2019-12-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:4811:GBPUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 4811,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[isagi v1] GBPUSD H4 close 2019-12-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:4812:USDCAD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 4812,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[isagi v1] USDCAD H4 close 2019-12-30 20:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:4810:EURUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 4810,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[rin v1] EURUSD H4 @ 2019-12-30 20:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:4810:EURUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 4810,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[karasu v1] EURUSD H4 @ 2019-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:4811:GBPUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 4811,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[karasu v1] GBPUSD H4 @ 2019-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:4812:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 4812,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2019-12-30 20:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:4810:EURUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 4810,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[nagi v1] EURUSD H4 @ 2019-12-30 20:00:00+00:00 -- chemical reaction: reo_mikage + bachira_meguru overlap on 7 tags & coordinate; combined conviction 0.96 (F11 OR).",
+      "tags": [
+        "bachira_rebel_baseline_zone",
+        "bachira_rebel_lift_applied",
+        "canon:bachira",
+        "canon:nagi",
+        "direction:long",
+        "f11_chemical_reaction",
+        "leader:reo_mikage",
+        "nagi_confluence",
+        "peer:bachira_meguru",
+        "signal_reason:zone_demand",
+        "weapon:perfect_trap",
+        "weapon:rebel_dribble",
+        "zone_setup_h4"
+      ],
+      "confidence_in_thought": 0.9625,
+      "expected_action": "long_on_chemical_reaction",
+      "coordinate": {
+        "agent_id": "nagi_seishiro",
+        "symbol": "EURUSD",
+        "price_lo": 1.116215,
+        "price_hi": 1.123965,
+        "time_start": "2019-12-30T20:00:00+00:00",
+        "time_end": "2019-12-31T20:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "chemical_reaction_v1",
+        "expected_strength": 0.9625,
+        "direction_bias": "long",
+        "rationale": {
+          "leader": {
+            "mirrored_agent_id": "bachira_meguru",
+            "mirrored_thought_id": "bachira_meguru:4804:EURUSD",
+            "leader_base_conviction": 0.75,
+            "reo_lift": 0.1,
+            "final_conviction": 0.85,
+            "humility_band_widen_frac": 0.2,
+            "humility_time_shorten_frac": 0.25,
+            "leader_rationale": {
+              "entry": 1.12009,
+              "stop": 1.116215,
+              "take_profit": 1.1259025,
+              "signal_reason": "zone_demand",
+              "home_tf": "H4",
+              "conviction_base": 0.65,
+              "conviction_final": 0.75,
+              "atr_pips": 19.00459183673519,
+              "h1_swing_pips": 137.80000000000126
+            },
+            "agent_id": "reo_mikage",
+            "thought_id": "reo_mikage:4807:EURUSD",
+            "conviction": 0.85
+          },
+          "other_agent_id": "bachira_meguru",
+          "other_thought_id": "bachira_meguru:4804:EURUSD",
+          "shared_tags": [
+            "bachira_rebel_baseline_zone",
+            "bachira_rebel_lift_applied",
+            "canon:bachira",
+            "direction:long",
+            "signal_reason:zone_demand",
+            "weapon:rebel_dribble",
+            "zone_setup_h4"
+          ],
+          "combined_conviction": 0.9625,
+          "f11_formula": "1 - prod(1 - c_i)"
+        }
+      },
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "reo_mikage:4807:EURUSD",
+        "bachira_meguru:4804:EURUSD"
+      ],
+      "read": {
+        "signal_family": "confluence",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 38.750000000000725,
+        "expected_r": 1.4999999999999714,
+        "driving_evidence": [
+          "nagi_confluence",
+          "f11_chemical_reaction",
+          "leader:reo_mikage",
+          "peer:bachira_meguru",
+          "bachira_rebel_baseline_zone",
+          "bachira_rebel_lift_applied",
+          "canon:bachira"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:4811:GBPUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 4811,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[nagi v1] GBPUSD H4 @ 2019-12-30 20:00:00+00:00 -- 2 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:4812:USDCAD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 4812,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[nagi v1] USDCAD H4 @ 2019-12-30 20:00:00+00:00 -- 2 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:4810:EURUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 4810,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[reo v1] EURUSD H4 @ 2019-12-30 20:00:00+00:00 -- mirroring bachira_meguru (long, base_conv 0.75); humility margin: band x1.20, time x0.75; mirror conv 0.85.",
+      "tags": [
+        "bachira_rebel_baseline_zone",
+        "bachira_rebel_lift_applied",
+        "canon:bachira",
+        "canon:reo",
+        "direction:long",
+        "mirroring:bachira_meguru",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "signal_reason:zone_demand",
+        "weapon:chameleon",
+        "weapon:rebel_dribble",
+        "zone_setup_h4"
+      ],
+      "confidence_in_thought": 0.85,
+      "expected_action": "mirror_long",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "EURUSD",
+        "price_lo": 1.11544,
+        "price_hi": 1.12474,
+        "time_start": "2019-12-30T12:00:00+00:00",
+        "time_end": "2019-12-31T06:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "reo_mirror_of:bachira_meguru",
+        "expected_strength": 0.85,
+        "direction_bias": "long",
+        "rationale": {
+          "mirrored_agent_id": "bachira_meguru",
+          "mirrored_thought_id": "bachira_meguru:4804:EURUSD",
+          "leader_base_conviction": 0.75,
+          "reo_lift": 0.1,
+          "final_conviction": 0.85,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "entry": 1.12009,
+            "stop": 1.116215,
+            "take_profit": 1.1259025,
+            "signal_reason": "zone_demand",
+            "home_tf": "H4",
+            "conviction_base": 0.65,
+            "conviction_final": 0.75,
+            "atr_pips": 19.00459183673519,
+            "h1_swing_pips": 137.80000000000126
+          }
+        }
+      },
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "bachira_meguru:4804:EURUSD"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 38.750000000000725,
+        "expected_r": 1.4999999999999714,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:bachira_meguru",
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:4811:GBPUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 4811,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[reo v1] GBPUSD H4 @ 2019-12-30 20:00:00+00:00 -- 2 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:4812:USDCAD",
+      "agent_id": "reo_mikage",
+      "tick_id": 4812,
+      "timestamp": "2019-12-30T20:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[reo v1] USDCAD H4 @ 2019-12-30 20:00:00+00:00 -- 2 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T20:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4807:EURUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4807,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[bachira v1] EURUSD H4 @ 2019-12-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4808:GBPUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4808,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[bachira v1] GBPUSD H4 @ 2019-12-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4809:USDCAD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4809,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[bachira v1] USDCAD H4 @ 2019-12-30 16:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:4809:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 4809,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2019-12-30 16:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:4807:EURUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 4807,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[chigiri v1] EURUSD H4 @ 2019-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:4808:GBPUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 4808,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[chigiri v1] GBPUSD H4 @ 2019-12-30 16:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:4807:EURUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 4807,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[isagi v1] EURUSD H4 close 2019-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:4808:GBPUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 4808,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[isagi v1] GBPUSD H4 close 2019-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:4809:USDCAD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 4809,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[isagi v1] USDCAD H4 close 2019-12-30 16:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:4807:EURUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 4807,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[rin v1] EURUSD H4 @ 2019-12-30 16:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:4807:EURUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 4807,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[karasu v1] EURUSD H4 @ 2019-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:4808:GBPUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 4808,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[karasu v1] GBPUSD H4 @ 2019-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:4809:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 4809,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2019-12-30 16:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:4807:EURUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 4807,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[nagi v1] EURUSD H4 @ 2019-12-30 16:00:00+00:00 -- 4 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:4808:GBPUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 4808,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[nagi v1] GBPUSD H4 @ 2019-12-30 16:00:00+00:00 -- 2 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:4809:USDCAD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 4809,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[nagi v1] USDCAD H4 @ 2019-12-30 16:00:00+00:00 -- 2 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:4807:EURUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 4807,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[reo v1] EURUSD H4 @ 2019-12-30 16:00:00+00:00 -- mirroring bachira_meguru (long, base_conv 0.75); humility margin: band x1.20, time x0.75; mirror conv 0.85.",
+      "tags": [
+        "bachira_rebel_baseline_zone",
+        "bachira_rebel_lift_applied",
+        "canon:bachira",
+        "canon:reo",
+        "direction:long",
+        "mirroring:bachira_meguru",
+        "reo_humility_margin",
+        "reo_lift:0.10",
+        "reo_mirror",
+        "signal_reason:zone_demand",
+        "weapon:chameleon",
+        "weapon:rebel_dribble",
+        "zone_setup_h4"
+      ],
+      "confidence_in_thought": 0.85,
+      "expected_action": "mirror_long",
+      "coordinate": {
+        "agent_id": "reo_mikage",
+        "symbol": "EURUSD",
+        "price_lo": 1.11544,
+        "price_hi": 1.12474,
+        "time_start": "2019-12-30T12:00:00+00:00",
+        "time_end": "2019-12-31T06:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "reo_mirror_of:bachira_meguru",
+        "expected_strength": 0.85,
+        "direction_bias": "long",
+        "rationale": {
+          "mirrored_agent_id": "bachira_meguru",
+          "mirrored_thought_id": "bachira_meguru:4804:EURUSD",
+          "leader_base_conviction": 0.75,
+          "reo_lift": 0.1,
+          "final_conviction": 0.85,
+          "humility_band_widen_frac": 0.2,
+          "humility_time_shorten_frac": 0.25,
+          "leader_rationale": {
+            "entry": 1.12009,
+            "stop": 1.116215,
+            "take_profit": 1.1259025,
+            "signal_reason": "zone_demand",
+            "home_tf": "H4",
+            "conviction_base": 0.65,
+            "conviction_final": 0.75,
+            "atr_pips": 19.00459183673519,
+            "h1_swing_pips": 137.80000000000126
+          }
+        }
+      },
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [
+        "bachira_meguru:4804:EURUSD"
+      ],
+      "read": {
+        "signal_family": "adaptive_copy",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 38.750000000000725,
+        "expected_r": 1.4999999999999714,
+        "driving_evidence": [
+          "reo_mirror",
+          "mirroring:bachira_meguru",
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:4808:GBPUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 4808,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[reo v1] GBPUSD H4 @ 2019-12-30 16:00:00+00:00 -- 2 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:4809:USDCAD",
+      "agent_id": "reo_mikage",
+      "tick_id": 4809,
+      "timestamp": "2019-12-30T16:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[reo v1] USDCAD H4 @ 2019-12-30 16:00:00+00:00 -- 2 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T16:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4804:EURUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4804,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[bachira v1] EURUSD H4 close 2019-12-30 12:00:00+00:00: baseline-zone long fade (NO D1 gate). entry=1.12009 stop=1.11621 tp=1.12590; conv 0.65 + rebel 0.10 = 0.75",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "zone_setup_h4",
+        "bachira_rebel_baseline_zone",
+        "signal_reason:zone_demand",
+        "direction:long",
+        "bachira_rebel_lift_applied"
+      ],
+      "confidence_in_thought": 0.75,
+      "expected_action": "long_on_H4_close",
+      "coordinate": {
+        "agent_id": "bachira_meguru",
+        "symbol": "EURUSD",
+        "price_lo": 1.116215,
+        "price_hi": 1.123965,
+        "time_start": "2019-12-30T12:00:00+00:00",
+        "time_end": "2019-12-31T12:00:00+00:00",
+        "vol_band": [
+          0.5,
+          2.0
+        ],
+        "regime_predicate": "bachira_rebel_baseline_zone",
+        "expected_strength": 0.75,
+        "direction_bias": "long",
+        "rationale": {
+          "entry": 1.12009,
+          "stop": 1.116215,
+          "take_profit": 1.1259025,
+          "signal_reason": "zone_demand",
+          "home_tf": "H4",
+          "conviction_base": 0.65,
+          "conviction_final": 0.75,
+          "atr_pips": 19.00459183673519,
+          "h1_swing_pips": 137.80000000000126
+        }
+      },
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 6,
+      "references": [],
+      "read": {
+        "signal_family": "pattern_rebel",
+        "direction_bias": "long",
+        "regime_read": "rebel_lift",
+        "expected_stop_pips": 38.750000000000725,
+        "expected_r": 1.4999999999999714,
+        "driving_evidence": [
+          "bachira_rebel_baseline_zone",
+          "signal_reason:zone_demand",
+          "bachira_rebel_lift_applied"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4805:GBPUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4805,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[bachira v1] GBPUSD H4 @ 2019-12-30 12:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4806:USDCAD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4806,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[bachira v1] USDCAD H4 @ 2019-12-30 12:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "barou_shoei:4806:USDCAD",
+      "agent_id": "barou_shoei",
+      "tick_id": 4806,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[barou v1] USDCAD H4 @ 2019-12-30 12:00:00+00:00 -- abstain (no_zone_touch); USDCAD-only specialist.",
+      "tags": [
+        "canon:barou",
+        "weapon:lone_wolf_baseline_zone",
+        "barou_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:4804:EURUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 4804,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[chigiri v1] EURUSD H4 @ 2019-12-30 12:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "chigiri_hyoma:4805:GBPUSD",
+      "agent_id": "chigiri_hyoma",
+      "tick_id": 4805,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[chigiri v1] GBPUSD H4 @ 2019-12-30 12:00:00+00:00 -- no breakout (no_breakout); standing by.",
+      "tags": [
+        "canon:chigiri",
+        "weapon:speed",
+        "chigiri_observation_clean",
+        "chigiri_reason:no_breakout"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:4804:EURUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 4804,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[isagi v1] EURUSD H4 close 2019-12-30 12:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:4805:GBPUSD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 4805,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[isagi v1] GBPUSD H4 close 2019-12-30 12:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "isagi_yoichi:4806:USDCAD",
+      "agent_id": "isagi_yoichi",
+      "tick_id": 4806,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[isagi v1] USDCAD H4 close 2019-12-30 12:00:00+00:00: no zone-touch + D1-counter alignment; waiting.",
+      "tags": [
+        "zone_d1_against",
+        "htf_against",
+        "canon:isagi",
+        "weapon:metavision_seed"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "itoshi_rin:4804:EURUSD",
+      "agent_id": "itoshi_rin",
+      "tick_id": 4804,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[rin v1] EURUSD H4 @ 2019-12-30 12:00:00+00:00 -- abstain (no_zone_touch); EURUSD-only precision specialist.",
+      "tags": [
+        "canon:rin",
+        "weapon:precision_geometry",
+        "rin_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:4804:EURUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 4804,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[karasu v1] EURUSD H4 @ 2019-12-30 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:4805:GBPUSD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 4805,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[karasu v1] GBPUSD H4 @ 2019-12-30 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "karasu_tabito:4806:USDCAD",
+      "agent_id": "karasu_tabito",
+      "tick_id": 4806,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[karasu v1] USDCAD H4 @ 2019-12-30 12:00:00+00:00: no scheduled release in the \u00b115/15-min window; field is clear.",
+      "tags": [
+        "canon:karasu",
+        "weapon:news_defender",
+        "risk_auxiliary",
+        "news_advisory",
+        "advisory_none"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": {
+        "signal_family": "risk_watch",
+        "direction_bias": "flat",
+        "regime_read": "news_clear",
+        "expected_stop_pips": null,
+        "expected_r": null,
+        "driving_evidence": [
+          "advisory_none"
+        ]
+      }
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:4804:EURUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 4804,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[nagi v1] EURUSD H4 @ 2019-12-30 12:00:00+00:00 -- 4 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:4805:GBPUSD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 4805,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[nagi v1] GBPUSD H4 @ 2019-12-30 12:00:00+00:00 -- 2 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "nagi_seishiro:4806:USDCAD",
+      "agent_id": "nagi_seishiro",
+      "tick_id": 4806,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[nagi v1] USDCAD H4 @ 2019-12-30 12:00:00+00:00 -- 2 peer thoughts in window; no high-conviction tag+coord overlap; waiting.",
+      "tags": [
+        "confluence_seeker",
+        "canon:nagi",
+        "weapon:perfect_trap"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:4804:EURUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 4804,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[reo v1] EURUSD H4 @ 2019-12-30 12:00:00+00:00 -- 4 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:4805:GBPUSD",
+      "agent_id": "reo_mikage",
+      "tick_id": 4805,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[reo v1] GBPUSD H4 @ 2019-12-30 12:00:00+00:00 -- 2 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "reo_mikage:4806:USDCAD",
+      "agent_id": "reo_mikage",
+      "tick_id": 4806,
+      "timestamp": "2019-12-30T12:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[reo v1] USDCAD H4 @ 2019-12-30 12:00:00+00:00 -- 2 peer thoughts visible; no qualifying leader (conviction or coordinate gate).",
+      "tags": [
+        "canon:reo",
+        "weapon:chameleon",
+        "reo_observation_clean"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T12:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4801:EURUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4801,
+      "timestamp": "2019-12-30T08:00:00+00:00",
+      "symbol": "EURUSD",
+      "narrative": "[bachira v1] EURUSD H4 @ 2019-12-30 08:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4802:GBPUSD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4802,
+      "timestamp": "2019-12-30T08:00:00+00:00",
+      "symbol": "GBPUSD",
+      "narrative": "[bachira v1] GBPUSD H4 @ 2019-12-30 08:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    },
+    {
+      "schema_version": 1,
+      "thought_id": "bachira_meguru:4803:USDCAD",
+      "agent_id": "bachira_meguru",
+      "tick_id": 4803,
+      "timestamp": "2019-12-30T08:00:00+00:00",
+      "symbol": "USDCAD",
+      "narrative": "[bachira v1] USDCAD H4 @ 2019-12-30 08:00:00+00:00 -- abstain (no_zone_touch).",
+      "tags": [
+        "canon:bachira",
+        "weapon:rebel_dribble",
+        "bachira_abstain",
+        "abstain_reason:no_zone_touch"
+      ],
+      "confidence_in_thought": 0.0,
+      "expected_action": "wait",
+      "coordinate": null,
+      "decision_horizon": "2019-12-30T08:00:00+00:00",
+      "ttl_ticks": 1,
+      "references": [],
+      "read": null
+    }
+  ]
+}

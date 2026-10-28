@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source": "phase_an:itoshi_rin:USDJPY:2015-10-01",
+  "aggregator_arm": "phi41",
+  "tick_id": 11685,
+  "bars_seen": {
+    "USDJPY": 11685
+  },
+  "last_bar_times": {
+    "USDJPY": "2022-12-30T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "itoshi_rin": 3
+  },
+  "per_agent_equity": {
+    "itoshi_rin": -480.87678571427045
+  },
+  "workspace_publish_counts": {
+    "itoshi_rin": 11685,
+    "karasu_tabito": 11685
+  },
+  "workspace_read_counts": {
+    "itoshi_rin": 4100
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "USDJPY": {
+      "bars_seen": 11685,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-05T04:43:14.559634+00:00"
+}

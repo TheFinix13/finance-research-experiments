@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "source": "phase_an:barou_shoei:USDJPY:2015-07-01",
+  "aggregator_arm": "phi41",
+  "tick_id": 12094,
+  "bars_seen": {
+    "USDJPY": 12094
+  },
+  "last_bar_times": {
+    "USDJPY": "2022-12-30T20:00:00+00:00"
+  },
+  "open_positions": [],
+  "per_agent_consecutive_losses": {
+    "barou_shoei": 0
+  },
+  "per_agent_equity": {
+    "barou_shoei": 4023.8785714285946
+  },
+  "workspace_publish_counts": {
+    "barou_shoei": 12094,
+    "karasu_tabito": 12094
+  },
+  "workspace_read_counts": {
+    "barou_shoei": 2855
+  },
+  "sae_enabled": false,
+  "warmup": {
+    "USDJPY": {
+      "bars_seen": 12094,
+      "warmup_bars": 200,
+      "burn_in_remaining": 0,
+      "seeded_bars": 0
+    }
+  },
+  "saved_at": "2026-08-05T05:04:02.734257+00:00"
+}
